@@ -10,33 +10,33 @@ tags:
 
 ![Git](https://user-gold-cdn.xitu.io/2018/11/2/166d3058fc3e4c8c?w=455&h=190&f=jpeg&s=10850)
 
-## 一、Git是什么？ ##
- - Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
+## 一、Git 是什么？ ##
+ - Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
  - Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
  - Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。
 
-## 二、Git与SVN区别 ##
-GIT不仅仅是个版本控制系统，它也是个内容管理系统(CMS),工作管理系统等。
+## 二、Git 与 SVN 区别 ##
+Git 不仅仅是个版本控制系统，它也是个内容管理系统(CMS),工作管理系统等。
 
-如果你是一个具有使用SVN背景的人，你需要做一定的思想转换，来适应GIT提供的一些概念和特征。
+如果你是一个具有使用 SVN 背景的人，你需要做一定的思想转换，来适应 Git 提供的一些概念和特征。
 Git 与 SVN 区别点：
-1. GIT是分布式的，SVN不是：这是GIT和其它非分布式的版本控制系统，例如SVN，CVS等，最核心的区别。
-2. GIT把内容按元数据方式存储，而SVN是按文件：所有的资源控制系统都是把文件的元信息隐藏在一个类似.svn,.cvs等的文件夹里。
-3. GIT分支和SVN的分支不同：分支在SVN中一点不特别，就是版本库中的另外的一个目录。
-4. GIT没有一个全局的版本号，而SVN有：目前为止这是跟SVN相比GIT缺少的最大的一个特征。
-5. GIT的内容完整性要优于SVN：GIT的内容存储使用的是SHA-1哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。
+1. Git 是分布式的，SVN不是：这是 Git 和其它非分布式的版本控制系统，例如SVN，CVS等，最核心的区别。
+2. Git 把内容按元数据方式存储，而 SVN 是按文件：所有的资源控制系统都是把文件的元信息隐藏在一个类似 .svn、.cvs 等的文件夹里。
+3. Git 分支和SVN的分支不同：分支在 SVN 中一点不特别，就是版本库中的另外的一个目录。
+4. Git 没有一个全局的版本号，而 SVN 有：目前为止这是跟 SVN 相比 Git 缺少的最大的一个特征。
+5. Git 的内容完整性要优于 SVN：Git 的内容存储使用的是 SHA-1 哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。
 
-## 三、Git快速入门 ##
-Git官网：[git-scm.com](https://git-scm.com/)
+## 三、Git 快速入门 ##
+Git 官网：[git-scm.com](https://git-scm.com/)
 
-Git完整命令手册：[git-scm.com/docs](https://git-scm.com/docs)
+Git 完整命令手册：[git-scm.com/docs](https://git-scm.com/docs)
 
-Git命令手册(pdf版)：[github-git-cheat-sheet.pdf](http://www.runoob.com/manual/github-git-cheat-sheet.pdf)
+Git 命令手册(pdf版)：[github-git-cheat-sheet.pdf](http://www.runoob.com/manual/github-git-cheat-sheet.pdf)
 
-Git简明指南：[git-guide](http://www.runoob.com/manual/git-guide/)
+Git 简明指南：[git-guide](http://www.runoob.com/manual/git-guide/)
 
-## 四、Git安装 ##
-在使用Git前我们需要先安装 Git。Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。
+## 四、Git 安装 ##
+在使用 Git 前我们需要先安装 Git。Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。
 Git 各平台安装包下载地址为：[git-scm.com/downloads](https://git-scm.com/downloads)
 
 ## 五、Git配置 ##
@@ -50,7 +50,7 @@ Git 提供了一个叫做 git config 的工具，专门用来配置或读取相�
 
 在 Windows 系统上，Git 会找寻用户主目录下的 .gitconfig 文件。主目录即 $HOME 变量指定的目录，一般都是 C:\Users\$USER。此外，Git 还会尝试找寻 /etc/gitconfig 文件，只不过看当初 Git 装在什么目录，就以此作为根目录来定位。 
 
-### 5.2 查看git的版本信息 ###
+### 5.2 查看 git 的版本信息 ###
 查看git的版本信息：
 ```shell
 git --version
@@ -415,6 +415,7 @@ git status
 
 #### 6.6.3 显示当前分支的提交历史记录 ####
 下表介绍了一些 git log 命令支持的一些常用的选项及其释义：
+
 | 选项            |  说明                             |
 | --------------- | :-------------------------------- |
 | -p 	          | 按补丁格式显示每个更新之间的差异。 |
@@ -425,9 +426,10 @@ git status
 | --name-status   | 显示新增、修改、删除的文件清单。 |
 | --abbrev-commit | 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。 |
 | --relative-date | 使用较短的相对时间显示(比如，“2 weeks ago”)。 |
-| --graph 	      | 显示 ASCII 图形表示的分支合并历史。 |
-| --pretty 	      | 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format(后跟指定格式)。|
+| --graph 	  | 显示 ASCII 图形表示的分支合并历史。 |
+| --pretty 	  | 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format(后跟指定格式)。|
 | --oneline 	  | --pretty=oneline --abbrev-commit 的简化用法。 |
+
 默认不用任何参数的话，`git log` 会按提交时间列出所有的更新，最近的更新排在最上面。可以看到，每次更新都有一个 SHA-1 校验和、作者的名字和电子邮件地址、提交时间，最后缩进一个段落显示提交说明。
 ```shell
 git log
@@ -455,6 +457,7 @@ git log --pretty=oneline
 git log --pretty=format:"%h - %an, %ar : %s"
 ```
 下表列出了常用的格式占位符写法及其代表的意义：
+
 | 选项   |  说明  |
 | ------ | :---- |
 | %H     |   提交对象(commit)的完整哈希字串    |
@@ -481,6 +484,7 @@ git log --pretty=format:"%h - %an, %ar : %s"
 
 除了定制输出格式的选项之外，`git log` 还有许多非常实用的限制输出长度的选项，也就是只输出部分提交信息。用 --since 和 --until选项显示按照时间作限制的提交，比如说具体的某一天（“2008-01-15”），或者是多久以前（“2 years 1 day 3 minutes ago”）。用 --author 选项显示指定作者的提交，用 --grep 选项搜索提交说明中的关键字。
 下表还列出了其他常用的类似选项：
+
 | 选项   |  说明  |
 | ------ | :---- |
 | -(n)              | 仅显示最近的 n 条提交 |
@@ -634,6 +638,6 @@ git push -u origin --tags
 ```
 
 ## 八、致谢 ##
-1. [Git教程](https://git-scm.com/book/zh/)
+1. [Git 教程](https://git-scm.com/book/zh/)
 2. [易百教程](https://www.yiibai.com/git/)
 3. [菜鸟教程](http://www.runoob.com/git/git-tutorial.html)
