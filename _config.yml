@@ -4,7 +4,7 @@
 
 # Site
 title: Liyunlong
-subtitle: Liyunlong's Blog
+subtitle: Liyunlong
 description: 从来没有真正的绝境，只有心灵的迷途
 keywords: Android, Google, Blog
 author: Liyunlong
@@ -92,10 +92,7 @@ deploy:
 search:
   path: search.xml
   field: post
-
-permalink_pinyin:
-  enable: true
-  separator: '-' # default: '-'
+  content: true
 
 feed:
   type: atom
@@ -106,3 +103,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'

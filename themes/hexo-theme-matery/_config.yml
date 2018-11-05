@@ -46,7 +46,7 @@ indexbtn:
 # 是否激活文章 TOC 功能，并配置TOC支持选中哪些标题类型.
 toc:
   enable: true
-  heading: h2, h3, h4
+  heading: h2, h3, h4, h5
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
@@ -66,23 +66,23 @@ profile:
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的项目"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myProjects:
-  enable: false
+  enable: true
   data:
-    hexo-theme-matery:
+    StatusLayout:
       icon: fa-meetup
       iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: http://github.com/blinkfox/hexo-theme-matery
-      desc: This is a Hexo blog theme with 'Material Design' and responsive design.
-    zealt:
+      url: https://github.com/lyl873825813/StatusLayout
+      desc: Activity/Fragment 中切换不同状态页：有数据、无数据、加载中、加载失败、网络异常、网络不佳。
+    SmartAdapter:
         icon: fa-database
         iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/blinkfox/zealot
-        desc: 一个轻量级的SQL和参数动态生成工具库
-    typora-vue-theme:
+        url: https://github.com/lyl873825813/SmartAdapter
+        desc: Android 万能的 Adapter for ListView、GridView、RecyclerView、ViewPager 等，支持多种Item类型的情况。
+    PermissionHelper:
         icon: fa-file-text-o
         iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/blinkfox/typora-vue-theme
-        desc: This is a typora theme inspired by Vue document style.
+        url: https://github.com/lyl873825813/PermissionHelper
+        desc: Android 6.0 运行时权限管理。
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
@@ -129,13 +129,13 @@ postCalendar: true
 # the Gitalk config，default disabled
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: false
-  owner:
-  repo:
+  enable: true
+  owner: lyl873825813
+  repo: lyl873825813.github.io
   oauth:
-    clientId:
-    clientSecret:
-  admin:
+    clientId: b27d1ff57c26076f312f
+    clientSecret: 813ecb40fe6f0fa06e02837facf17ecbbb037ad6
+  admin: lyl873825813
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
