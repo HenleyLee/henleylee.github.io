@@ -68,16 +68,16 @@ $ npm install
 完成上面的初始化工作后，指定文件夹的目录如下：
 ```
 .
-├── .deploy		# 需要部署的文件
-├── node_modules	# Hexo插件
-├── public		# 生成的静态网页文件
-├── scaffolds		# 模板
-├── source		# 博客正文和其他源文件，404、favicon、CNAME 都应该放在这里
-| ├── _drafts		# 草稿
-| └── _posts		# 文章
-├── themes		# 主题
-├── _config.yml		# 全局配置文件
-└── package.json	# npm 依赖等
+├── .deploy             # 需要部署的文件
+├── node_modules        # Hexo插件
+├── public              # 生成的静态网页文件
+├── scaffolds           # 模板
+├── source              # 博客正文和其他源文件，404、favicon、CNAME 都应该放在这里
+| ├── _drafts           # 草稿
+| └── _posts            # 文章
+├── themes              # 主题
+├── _config.yml         # 全局配置文件
+└── package.json        # npm 依赖等
 ```
 
 ### 运行本地 Hexo 服务 ###
@@ -205,7 +205,7 @@ INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.
 
 ## 安装 Hexo 插件 ##
 ### 代码高亮 ###
-由于 Hexo 自带的代码高亮主题显示不好看，所以主题中使用到了[hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin)的 Hexo 插件来做代码高亮，安装命令如下：
+由于 Hexo 自带的代码高亮主题显示不好看，所以主题中使用到了 [hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin) 的 Hexo 插件来做代码高亮，安装命令如下：
 ```bash
 npm i -S hexo-prism-plugin
 ```
@@ -223,7 +223,7 @@ prism_plugin:
 ```
 
 ### 站内搜索 ###
-安装 [`hexo-generator-search`](https://github.com/wzpan/hexo-generator-search) 在 `Hexo` 中实现搜索功能，在站点的根目录下执行以下命令：
+安装 [hexo-generator-search](https://github.com/wzpan/hexo-generator-search) 在 `Hexo` 中实现搜索功能，在站点的根目录下执行以下命令：
 ```bash
 npm install hexo-generator-search --save
 ```
