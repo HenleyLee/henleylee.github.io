@@ -28,10 +28,10 @@ tags:
  - **`ConcreteDecorator(具体装饰类)：`**它是抽象装饰类的子类，负责向构件添加新的职责。每一个具体装饰类都定义了一些新的行为，它可以调用在抽象装饰类中定义的方法，并可以增加新的方法用以扩充对象的行为。
 
 ### 结构图 ###
-![装饰模式结构图](http://localhost:4000/medias/design_pattern/decorator_uml.jpg)
+![装饰模式结构图](https://lyl873825813.github.io/medias/design_pattern/decorator_uml.jpg)
 
 ### 时序图 ###
-![装饰模式时序图](http://localhost:4000/medias/design_pattern/decorator_seq.jpg)
+![装饰模式时序图](https://lyl873825813.github.io/medias/design_pattern/decorator_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象构件和具体构件。Component 接口充当抽象构件，ConcreteComponent 类充当具体构件，完整代码如下所示：

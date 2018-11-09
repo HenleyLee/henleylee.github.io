@@ -24,10 +24,10 @@ tags:
  - **`FlyweightFactory(享元工厂类)：`**享元工厂类用于创建并管理享元对象，它针对抽象享元类编程，将各种类型的具体享元对象存储在一个享元池中，享元池一般设计为一个存储“键值对”的集合（也可以是其他类型的集合），可以结合工厂模式进行设计；当用户请求一个具体享元对象时，享元工厂提供一个存储在享元池中已创建的实例或者创建一个新的实例（如果不存在的话），返回新创建的实例并将其存储在享元池中。
 
 ### 结构图 ###
-![享元模式结构图](http://localhost:4000/medias/design_pattern/flyweight_uml.jpg)
+![享元模式结构图](https://lyl873825813.github.io/medias/design_pattern/flyweight_uml.jpg)
 
 ### 时序图 ###
-![享元模式时序图](http://localhost:4000/medias/design_pattern/flyweight_seq.jpg)
+![享元模式时序图](https://lyl873825813.github.io/medias/design_pattern/flyweight_seq.jpg)
 
 ## 模式实现 ##
 标准的享元模式结构图中既包含可以共享的具体享元类，也包含不可以共享的非共享具体享元类。但是在实际使用过程中，我们有时候会用到两种特殊的享元模式：单纯享元模式和复合享元模式。

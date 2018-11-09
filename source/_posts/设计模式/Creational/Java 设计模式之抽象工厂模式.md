@@ -23,10 +23,10 @@ tags:
  - **`ConcreteFactory(具体工厂)：`**它实现了在抽象工厂中声明的创建产品的方法，生成一组具体产品，这些产品构成了一个产品族，每一个产品都位于某个产品等级结构中。
 
 ### 结构图 ###
-![抽象工厂模式结构图](http://localhost:4000/medias/design_pattern/abatractfactory_uml.jpg)
+![抽象工厂模式结构图](https://lyl873825813.github.io/medias/design_pattern/abatractfactory_uml.jpg)
 
 ### 时序图 ###
-![抽象工厂模式时序图](http://localhost:4000/medias/design_pattern/abatractfactory_seq.jpg)
+![抽象工厂模式时序图](https://lyl873825813.github.io/medias/design_pattern/abatractfactory_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象的产品类和具体的产品类。接口 Button、ComboBox 和 TextField 充当抽象产品，其子类 SpringButton、SpringComboBox、SpringTextField 和 SummerButton、SummerComboBox、SummerTextField 充当具体产品。完整代码如下所示：

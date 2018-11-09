@@ -31,10 +31,10 @@ tags:
 - **`ConcreteColleague(具体同事类)`**它是抽象同事类的子类；每一个同事对象在需要和其他同事对象通信时，先与中介者通信，通过中介者来间接完成与其他同事类的通信；在具体同事类中实现了在抽象同事类中声明的抽象方法。
 
 ### 结构图 ###
-![命令模式结构图](http://localhost:4000/medias/design_pattern/mediator_uml.jpg)
+![命令模式结构图](https://lyl873825813.github.io/medias/design_pattern/mediator_uml.jpg)
 
 ### 时序图 ###
-![命令模式时序图](http://localhost:4000/medias/design_pattern/mediator_seq.jpg)
+![命令模式时序图](https://lyl873825813.github.io/medias/design_pattern/mediator_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象中介者和具体中介者。Mediator 抽象类充当抽象中介者，ConcreteMediator 类充当具体中介者，完整代码如下所示：

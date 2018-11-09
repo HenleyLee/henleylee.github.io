@@ -21,10 +21,10 @@ tags:
  - **`ConcreteFactory(具体工厂)：`**它是抽象工厂类的子类，实现了抽象工厂中定义的工厂方法，并可由客户端调用，返回一个具体产品类的实例。
 
 ### 结构图 ###
-![工厂方法模式结构图](http://localhost:4000/medias/design_pattern/factorymethod_uml.jpg)
+![工厂方法模式结构图](https://lyl873825813.github.io/medias/design_pattern/factorymethod_uml.jpg)
 
 ### 时序图 ###
-![工厂方法模式时序图](http://localhost:4000/medias/design_pattern/factorymethod_seq.jpg)
+![工厂方法模式时序图](https://lyl873825813.github.io/medias/design_pattern/factorymethod_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象的产品类和具体的产品类。Logger 接口充当抽象产品，其子类 FileLogger 和 DatabaseLogger 充当具体产品，完整代码如下所示：

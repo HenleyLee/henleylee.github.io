@@ -24,10 +24,10 @@ tags:
  - **`Client(客户端)：`**让一个原型对象克隆自身从而创建一个新的对象，在客户类中只需要直接实例化或通过工厂方法等方式创建一个原型对象，再通过调用该对象的克隆方法即可得到多个相同的对象。由于客户类针对抽象原型类 Prototype 编程，因此用户可以根据需要选择具体原型类，系统具有较好的可扩展性，增加或更换具体原型类都很方便。
 
 ### 结构图 ###
-![原型模式结构图](http://localhost:4000/medias/design_pattern/prototype_uml.jpg)
+![原型模式结构图](https://lyl873825813.github.io/medias/design_pattern/prototype_uml.jpg)
 
 ### 时序图 ###
-![原型模式时序图](http://localhost:4000/medias/design_pattern/prototype_seq.jpg)
+![原型模式时序图](https://lyl873825813.github.io/medias/design_pattern/prototype_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象原型类。Object 类充当抽象原型类。
@@ -125,13 +125,13 @@ public class PrototypeClient {
 
 ### 浅克隆 ###
 在浅克隆中，如果原型对象的成员变量是值类型，将复制一份给克隆对象；如果原型对象的成员变量是引用类型，则将引用对象的地址复制一份给克隆对象，也就是说原型对象和克隆对象的成员变量指向相同的内存地址。简单来说，在浅克隆中，当对象被复制时只复制它本身和其中包含的值类型的成员变量，而引用类型的成员对象并没有复制。下图为浅克隆示意图：
-![浅克隆示意图](http://localhost:4000/medias/design_pattern/clone_shallow.jpg)
+![浅克隆示意图](https://lyl873825813.github.io/medias/design_pattern/clone_shallow.jpg)
 
 > 在 Java 语言中，通过覆盖 `Object` 类的 `clone()` 方法可以实现浅克隆。
 
 ### 深克隆 ###
 在深克隆中，无论原型对象的成员变量是值类型还是引用类型，都将复制一份给克隆对象，深克隆将原型对象的所有引用对象也复制一份给克隆对象。简单来说，在深克隆中，除了对象本身被复制外，对象所包含的所有成员变量也将复制。下图为深克隆示意图：
-![深克隆示意图](http://localhost:4000/medias/design_pattern/clone_deep.jpg)
+![深克隆示意图](https://lyl873825813.github.io/medias/design_pattern/clone_deep.jpg)
 
 > 在 Java 语言中，如果需要实现深克隆，可以通过`序列化(Serialization)`等方式来实现。序列化就是将对象写到流的过程，写到流中的对象是原有对象的一个拷贝，而原对象仍然存在于内存中。通过序列化实现的拷贝不仅可以复制对象本身，而且可以复制其引用的成员对象，因此通过序列化将对象写到一个流中，再从流里将其读出来，可以实现深克隆。
 

@@ -24,10 +24,10 @@ tags:
  - **`ConcreteObserver(具体观察者)：`**在具体观察者中维护一个指向具体目标对象的引用，它存储具体观察者的有关状态，这些状态需要和具体目标的状态保持一致；它实现了在抽象观察者 Observer 中定义的 update() 方法。通常在实现时，可以调用具体目标类的 attach() 方法将自己添加到目标类的集合中或通过 detach() 方法将自己从目标类的集合中删除。
 
 ### 结构图 ###
-![观察者模式结构图](http://localhost:4000/medias/design_pattern/observer_uml.jpg)
+![观察者模式结构图](https://lyl873825813.github.io/medias/design_pattern/observer_uml.jpg)
 
 ### 时序图 ###
-![观察者模式时序图](http://localhost:4000/medias/design_pattern/observer_seq.jpg)
+![观察者模式时序图](https://lyl873825813.github.io/medias/design_pattern/observer_seq.jpg)
 
 ## 示例代码 ##
 首先，是观察者和具体观察者。Observer 接口充当观察者，ConcreteObserver 类充当具体观察者，完整代码如下所示：
@@ -136,7 +136,7 @@ public class ObserverClient {
 
 ## JDK 中的观察者模式 ##
 观察者模式在 Java 语言中的地位非常重要。在 `JDK` 的 `java.util` 包中，提供了 `Observable` 类以及 `Observer` 接口，它们构成了 JDK 对观察者模式的支持。JDK 提供的 Observable 类及 Observer 接口结构图如下图所示：
-![JDK提供的Observable类及Observer接口结构图](http://localhost:4000/medias/design_pattern/observer_jdk.jpg)
+![JDK提供的Observable类及Observer接口结构图](https://lyl873825813.github.io/medias/design_pattern/observer_jdk.jpg)
 
 ### Observer 接口 ###
 在 `java.util.Observer` 接口中只声明一个方法，它充当抽象观察者，其方法声明代码如下所示：

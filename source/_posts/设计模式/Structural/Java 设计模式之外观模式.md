@@ -22,10 +22,10 @@ tags:
  - **`SubSystem(子系统角色)：`**在软件系统中可以有一个或者多个子系统角色，每一个子系统可以不是一个单独的类，而是一个类的集合，它实现子系统的功能；每一个子系统都可以被客户端直接调用，或者被外观角色调用，它处理由外观类传过来的请求；子系统并不知道外观的存在，对于子系统而言，外观角色仅仅是另外一个客户端而已。
 
 ### 结构图 ###
-![外观模式结构图](http://localhost:4000/medias/design_pattern/facade_uml.jpg)
+![外观模式结构图](https://lyl873825813.github.io/medias/design_pattern/facade_uml.jpg)
 
 ### 时序图 ###
-![外观模式时序图](http://localhost:4000/medias/design_pattern/facade_seq.jpg)
+![外观模式时序图](https://lyl873825813.github.io/medias/design_pattern/facade_seq.jpg)
 
 ## 模式实现 ##
 首先，是子系统角色。SystemA、SystemB 和 SystemC 类充当子系统角色，完整代码如下所示：

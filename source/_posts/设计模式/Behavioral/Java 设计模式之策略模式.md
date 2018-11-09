@@ -28,10 +28,10 @@ tags:
  - **`ConcreteStrategy(具体策略类)：`**它实现了在抽象策略类中声明的算法，在运行时，具体策略类将覆盖在环境类中定义的抽象策略类对象，使用一种具体的算法实现某个业务处理。
 
 ### 结构图 ###
-![策略模式结构图](http://localhost:4000/medias/design_pattern/strategy_uml.jpg)
+![策略模式结构图](https://lyl873825813.github.io/medias/design_pattern/strategy_uml.jpg)
 
 ### 时序图 ###
-![策略模式时序图](http://localhost:4000/medias/design_pattern/strategy_seq.jpg)
+![策略模式时序图](https://lyl873825813.github.io/medias/design_pattern/strategy_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象策略类。AbstractStrategy 抽象类充当抽象策略类，完整代码如下所示：

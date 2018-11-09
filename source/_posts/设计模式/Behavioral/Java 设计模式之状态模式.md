@@ -27,10 +27,10 @@ tags:
 > 在状态模式中，我们将对象在不同状态下的行为封装到不同的状态类中，为了让系统具有更好的灵活性和可扩展性，同时对各状态下的共有行为进行封装，我们需要对状态进行抽象。
 
 ### 结构图 ###
-![状态模式结构图](http://localhost:4000/medias/design_pattern/state_uml.jpg)
+![状态模式结构图](https://lyl873825813.github.io/medias/design_pattern/state_uml.jpg)
 
 ### 时序图 ###
-![状态模式时序图](http://localhost:4000/medias/design_pattern/state_seq.jpg)
+![状态模式时序图](https://lyl873825813.github.io/medias/design_pattern/state_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象状态角色。State 抽象类充当抽象状态角色，完整代码如下所示：

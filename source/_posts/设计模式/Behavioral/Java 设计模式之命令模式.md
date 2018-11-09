@@ -26,10 +26,10 @@ tags:
 - **`Receiver(接收者)：`**接收者执行与请求相关的操作，它具体实现对请求的业务处理。
 
 ### 结构图 ###
-![命令模式结构图](http://localhost:4000/medias/design_pattern/command_uml.jpg)
+![命令模式结构图](https://lyl873825813.github.io/medias/design_pattern/command_uml.jpg)
 
 ### 时序图 ###
-![命令模式时序图](http://localhost:4000/medias/design_pattern/command_seq.jpg)
+![命令模式时序图](https://lyl873825813.github.io/medias/design_pattern/command_seq.jpg)
 
 ## 模式实现 ##
 首先，是抽象接收者和具体接收者。Receiver 抽象充当抽象接收者，ConcreteReceiver 抽象充当具体接收者，完整代码如下所示：

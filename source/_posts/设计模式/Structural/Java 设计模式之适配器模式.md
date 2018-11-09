@@ -33,13 +33,13 @@ tags:
 ### 结构图 ###
 适配器模式有两种实现：
  - 对象适配器
-![对象适配器模式结构图](http://localhost:4000/medias/design_pattern/adapter_uml_object.jpg)
+![对象适配器模式结构图](https://lyl873825813.github.io/medias/design_pattern/adapter_uml_object.jpg)
 
  - 类适配器
-![类适配器模式结构图](http://localhost:4000/medias/design_pattern/adapter_uml_class.jpg)
+![类适配器模式结构图](https://lyl873825813.github.io/medias/design_pattern/adapter_uml_class.jpg)
 
 ### 时序图 ###
-![适配器模式时序图](http://localhost:4000/medias/design_pattern/adapter_seq.jpg)
+![适配器模式时序图](https://lyl873825813.github.io/medias/design_pattern/adapter_seq.jpg)
 
 ## 模式实现 ##
 ### 对象适配器 ###

@@ -23,7 +23,7 @@ tags:
  - **`Composite(容器构件)：`**它在组合结构中表示容器节点对象，容器节点包含子节点，其子节点可以是叶子节点，也可以是容器节点，它提供一个集合用于存储子节点，实现了在抽象构件中定义的行为，包括那些访问及管理子构件的方法，在其业务方法中可以递归调用其子节点的业务方法。
 
 ### 结构图 ###
-![组合模式结构图](http://localhost:4000/medias/design_pattern/composite_uml.jpg)
+![组合模式结构图](https://lyl873825813.github.io/medias/design_pattern/composite_uml.jpg)
 
 ## 模式实现 ##
 首先，是抽象构件。Component 抽象类充当抽象构件，完整代码如下所示：
