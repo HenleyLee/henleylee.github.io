@@ -120,7 +120,7 @@ git config --system credential.helper store
 ```
 上面的命令可以解决每次提交都要输入用户名和密码的问题。具体可参考 [Git Credential Storage](https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage)
 
-## 六、Git常用命令 ##
+## 六、Git 常用命令 ##
 ### 6.1 创建代码仓库 ###
 #### 6.1.1 git init ####
 `git init` 的命令格式为：
@@ -192,7 +192,7 @@ git add .               # 将所有修改添加到暂存区
 git add *Presenter      # 将以Presenter结尾的文件的所有修改添加到暂存区
 git add Base*           # 将所有以Base开头的文件的修改添加到暂存区(例如:BaseActivity.java,BaseFragment.java)
 git add Model?          # 将以Model开头且后面只有一位的文件的修改添加到暂存区(例如:Model1.java,ModelA.java)
-git add model/*.java    # 将model目录及其子目录下所有*.java文件的修改添加到暂存区
+git add model/*.java    # 将model目录及其子目录下所有 *.java 文件的修改添加到暂存区
 ```
 
 ### 6.3 代码提交 ###
@@ -288,7 +288,7 @@ git branch <branch-name>
 git checkout <branch-name>
 ```
 
-#### 6.4.6 新建一个分支，指向指定commit ####
+#### 6.4.6 新建一个分支，指向指定 commit ####
 ```shell
 git branch <branch> <commit>
 ```
@@ -318,7 +318,7 @@ git branch --set-upstream <branch> <remote-branch>
 git merge <branch>
 ```
 
-#### 6.4.12 选择一个commit，合并进当前分支 ####
+#### 6.4.12 选择一个 commit，合并进当前分支 ####
 ```shell
 git cherry-pick <commit>
 ```
@@ -356,17 +356,17 @@ git tag -v [--format=<format>] <tagname>…
 git tag
 ```
 
-#### 6.5.2 新建一个标签在当前commit ####
+#### 6.5.2 新建一个标签在当前 commit ####
 ```shell
 git tag <tag-name>
 ```
 
-#### 6.5.3 新建一个标签在指定commit ####
+#### 6.5.3 新建一个标签在指定 commit ####
 ```shell
 git tag <tag-name> <commit>
 ```
 
-#### 6.5.4 新建一个带标签信息的标签在当前commit ####
+#### 6.5.4 新建一个带标签信息的标签在当前 commit ####
 ```shell
 git tag -a <tag-name> -m [message]
 ```
@@ -416,19 +416,19 @@ git status
 #### 6.6.3 显示当前分支的提交历史记录 ####
 下表介绍了一些 git log 命令支持的一些常用的选项及其释义：
 
-| 选项            |  说明                             |
-| --------------- | :-------------------------------- |
-| -p 	          | 按补丁格式显示每个更新之间的差异。 |
-| --word-diff     | 按 word diff 格式显示差异。 |
-| --stat 	      | 显示每次更新的文件修改统计信息。 |
-| --shortstat     | 只显示 --stat 中最后的行数修改添加移除统计。 |
-| --name-only 	  | 仅在提交信息后显示已修改的文件清单。 |
-| --name-status   | 显示新增、修改、删除的文件清单。 |
-| --abbrev-commit | 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。 |
-| --relative-date | 使用较短的相对时间显示(比如，“2 weeks ago”)。 |
-| --graph 	  | 显示 ASCII 图形表示的分支合并历史。 |
+| 选项            |  说明                                                                                              |
+| --------------- | :------------------------------------------------------------------------------------------------- |
+| -p 	          | 按补丁格式显示每个更新之间的差异。                                                                 |
+| --word-diff     | 按 word diff 格式显示差异。                                                                        |
+| --stat 	  | 显示每次更新的文件修改统计信息。                                                                   |
+| --shortstat     | 只显示 --stat 中最后的行数修改添加移除统计。                                                       |
+| --name-only 	  | 仅在提交信息后显示已修改的文件清单。                                                               |
+| --name-status   | 显示新增、修改、删除的文件清单。                                                                   |
+| --abbrev-commit | 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。                                                  |
+| --relative-date | 使用较短的相对时间显示(比如，“2 weeks ago”)。                                                      |
+| --graph 	  | 显示 ASCII 图形表示的分支合并历史。                                                                |
 | --pretty 	  | 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format(后跟指定格式)。|
-| --oneline 	  | --pretty=oneline --abbrev-commit 的简化用法。 |
+| --oneline 	  | --pretty=oneline --abbrev-commit 的简化用法。                                                      |
 
 默认不用任何参数的话，`git log` 会按提交时间列出所有的更新，最近的更新排在最上面。可以看到，每次更新都有一个 SHA-1 校验和、作者的名字和电子邮件地址、提交时间，最后缩进一个段落显示提交说明。
 ```shell
@@ -458,39 +458,39 @@ git log --pretty=format:"%h - %an, %ar : %s"
 ```
 下表列出了常用的格式占位符写法及其代表的意义：
 
-| 选项   |  说明  |
-| ------ | :---- |
-| %H     |   提交对象(commit)的完整哈希字串    |
-| %h     |   提交对象的简短哈希字串   |
-| %T     |   树对象(tree)的完整哈希字串    |
-| %t     |   树对象的简短哈希字串    |
-| %P     |   父对象(parent)的完整哈希字串    |
-| %p     |   父对象的简短哈希字串    |
-| %an    |   作者(author)的名字    |
-| %ae    |   作者的电子邮件地址    |
-| %ad    |   作者修订日期(--date= 制定的格式)    |
-| %aD    |   作者修订日期(RFC2822格式)    |
-| %ar    |   作者修订日期(相对格式，如：1 day ago)   |
-| %at    |   作者修订日期(UNIX timestamp)  |
-| %ai    |   作者修订日期(ISO 8601 格式)   |
-| %cn    |   提交者(committer)的名字    |
-| %ce    |   提交者的电子邮件地址    |
-| %cd    |   提交日期 (--date= 制定的格式)    |
-| %cD    |   提交日期(RFC2822格式)    |
-| %cr    |   提交日期(相对格式，如：1 day ago)    |
-| %ct    |   提交日期(UNIX timestamp)    |
-| %ci    |   提交日期(ISO 8601 格式)    |
-| %s     |   提交说明    |
+| 选项 | 说明                                  |
+| ---- | :------------------------------------ |
+| %H   | 提交对象(commit)的完整哈希字串        |
+| %h   | 提交对象的简短哈希字串                |
+| %T   | 树对象(tree)的完整哈希字串            |
+| %t   | 树对象的简短哈希字串                  |
+| %P   | 父对象(parent)的完整哈希字串          |
+| %p   | 父对象的简短哈希字串                  |
+| %an  | 作者(author)的名字                    |
+| %ae  | 作者的电子邮件地址                    |
+| %ad  | 作者修订日期(--date= 制定的格式)      |
+| %aD  | 作者修订日期(RFC2822格式)             |
+| %ar  | 作者修订日期(相对格式，如：1 day ago) |
+| %at  | 作者修订日期(UNIX timestamp)          |
+| %ai  | 作者修订日期(ISO 8601 格式)           |
+| %cn  | 提交者(committer)的名字               |
+| %ce  | 提交者的电子邮件地址                  |
+| %cd  | 提交日期 (--date= 制定的格式)         |
+| %cD  | 提交日期(RFC2822格式)                 |
+| %cr  | 提交日期(相对格式，如：1 day ago)     |
+| %ct  | 提交日期(UNIX timestamp)              |
+| %ci  | 提交日期(ISO 8601 格式)               |
+| %s   | 提交说明 |
 
 除了定制输出格式的选项之外，`git log` 还有许多非常实用的限制输出长度的选项，也就是只输出部分提交信息。用 --since 和 --until选项显示按照时间作限制的提交，比如说具体的某一天（“2008-01-15”），或者是多久以前（“2 years 1 day 3 minutes ago”）。用 --author 选项显示指定作者的提交，用 --grep 选项搜索提交说明中的关键字。
 下表还列出了其他常用的类似选项：
 
-| 选项   |  说明  |
-| ------ | :---- |
-| -(n)              | 仅显示最近的 n 条提交 |
-| --since, --after  | 仅显示指定时间之后的提交 |
-| --until, --before | 仅显示指定时间之前的提交 |
-| --author          | 仅显示指定作者相关的提交 |
+| 选项              | 说明                       |
+| ----------------- | :------------------------- |
+| -(n)              | 仅显示最近的 n 条提交      |
+| --since, --after  | 仅显示指定时间之后的提交   |
+| --until, --before | 仅显示指定时间之前的提交   |
+| --author          | 仅显示指定作者相关的提交   |
 | --committer       | 仅显示指定提交者相关的提交 |
  	
 ### 6.7 远程同步 ###

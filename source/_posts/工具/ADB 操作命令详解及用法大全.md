@@ -45,7 +45,7 @@ adb [-d|-e|-s <serial-number>] <command>
 |----------------------|----------------------------------------------------|
 | -d                   | 指定当前唯一通过 USB 连接的 Android 设备为命令目标 |
 | -e                   | 指定当前唯一运行的模拟器为命令目标                 |
-| `-s <serial-number>` | 指定相应设备序列号的设备/模拟器为命令目标         |
+| `-s <serial-number>` | 指定相应设备序列号的设备/模拟器为命令目标          |
 
 在多个设备/模拟器连接的情况下较常用的是 `-s <serial-number>` 参数，`serial-number`是指设备的设备序列号，可以通过 `adb devices` 命令获取。
 
@@ -293,12 +293,13 @@ adb shell pm path <package-name>
 ### 4.4 与应用交互 ###
 与应用交互主要是使用 `am <command>` 命令，常用的 `<command>` 如下：
 
-| command                           | 用途                            |
-|-----------------------------------|---------------------------------|
-| `start [options] <intent>`        | 启动 `<intent>` 指定的 Activity |
-| `startservice [options] <intent>` | 启动 `<intent>` 指定的 Service  |
-| `broadcast [options] <intent>`    | 发送 `<intent>` 指定的广播      |
+| command                           | 用途                             |
+|-----------------------------------|----------------------------------|
+| `start [options] <intent>`        | 启动 `<intent>` 指定的 Activity  |
+| `startservice [options] <intent>` | 启动 `<intent>` 指定的 Service   |
+| `broadcast [options] <intent>`    | 发送 `<intent>` 指定的广播       |
 | `force-stop <package-name>`       | 停止 `<package-name>` 相关的进程 |
+
 `<intent>` 参数很灵活，和写 Android 程序时代码里的 Intent 相对应。
 
 用于决定 intent 对象的选项如下：
@@ -496,7 +497,8 @@ adb shell rm [options] <files or directory>
 | -r         | 强制删除指定目录中的所有文件和子目录  |
 | -d         | 删除指定目录，即使它是一个非空目录    |
 | -i         | 交互式删除，删除前提示                |
-` rm -d` 等同于 `rmdir ` 命令，有些版本不包含`-d` 参数。
+
+`rm -d` 等同于 `rmdir ` 命令，有些版本不包含`-d` 参数。
 
 #### 4.5.7 创建目录 ####
 ```shell
@@ -1138,7 +1140,7 @@ adb shell cat /system/build.prop
 | ro.product.brand                | 品牌                          |
 | ro.product.name                 | 设备名                        |
 | ro.product.board                | 处理器型号                    |
-| ro.product.cpu.abilist          | CPU 支持的 abi 列表[*节注一*] |
+| ro.product.cpu.abilist          | CPU 支持的 abi 列表           |
 | persist.sys.isUsbOtgEnabled     | 是否支持 OTG                  |
 | dalvik.vm.heapsize              | 每个应用程序的内存上限        |
 | ro.sf.lcd_density               | 屏幕密度                      |
@@ -1292,7 +1294,7 @@ adb pull /sdcard/sc.png
 | 参数          | 含义                                       |
 |---------------|--------------------------------------------|
 | -p            | 指定保存文件为 png 格式                    |
-| -d display-id | 指定截图的显示屏编号（有多显示屏的情况下） |
+| -d display-id | 指定截图的显示屏编号(有多显示屏的情况下)   |
 
 实测如果指定文件名以 `.png` 结尾时可以省略 -p 参数；否则需要使用 -p 参数。如果不指定文件名，截图文件的内容将直接输出到 stdout。
 
@@ -1506,7 +1508,6 @@ adb shell top [-m max_procs] [-n iterations] [-d delay] [-s sort_column] [-t] [-
 | PCY  | 调度策略优先级，SP_BACKGROUND/SPFOREGROUND                 |
 | UID  | 进程所有者的用户 ID                                        |
 | NAME | 进程名                                                     |
-
 
 #### 4.14.3 查看进程 UID ####
 有两种方案：
