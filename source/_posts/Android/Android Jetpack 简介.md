@@ -11,7 +11,7 @@ Android Jetpack 深受支持库的启发，支持库包含的组件可以让开�
 
 ## Jetpack 简介 ##
 2018年的 Google I/O 大会上，谷歌推出了 Android Jetpack 架构组件。Android Jetpack 是一套组件、工具和指导，可以帮助您构建出色的 Android 应用。Android Jetpack 组件将现有的支持库与架构组件联系起来，并将它们分成四个类别：Architecture、Foundation、Behavior 以及 UI。
-![Android Jetpack 分类](http://localhost:4000/medias/android/android_jetpack.png)
+![Android Jetpack 分类](https://lyl873825813.github.io/medias/android/android_jetpack.png)
 
 Android Jetpack 组件以“未捆绑的”库形式提供，这些库不是基础 Android 平台的一部分。这就意味着，您可以根据自己的需求采用每一个组件。在新的 Android Jetpack 功能发布后，您可以将其添加到自己的应用中，将您的应用部署到应用商店并向用户提供新功能，如果您的行动足够快，所有这些可以在一天内完成！
 未捆绑的 Android Jetpack 库已经全部转移到新的 [`androidx.*`](https://developer.android.com/jetpack/androidx/) 命名空间中。这意味着它提供向后兼容性并且比 Android 平台更频繁地更新，确保开发者始终可以访问最新和最好的 Jetpack 组件版本。
@@ -33,14 +33,14 @@ WorkManager 根据设备 API 级别和应用程序状态等因素选择适当的
 
 ### Navigation ###
 尽管 Activity 是系统提供的您的应用界面的入口点，但在相互分享数据以及转场方面，Activity 表现得不够灵活，这就让它不适合作为构建您的应用内导航的理想架构。于是，Google 宣布推出`导航组件`，作为构建 Android 应用内界面的框架，重点是让单 Activity 应用成为首选架构。利用导航组件对 Fragment 的原生支持，开发者可以获得架构组件的所有好处（例如生命周期和 ViewModel），同时让此组件为开发者处理 FragmentTransaction 的复杂性。此外，导航组件还可以自动构建正确的“向上”和“返回”行为，包含对深层链接的完整支持，并提供了帮助程序，用于将导航关联到合适的 UI 小部件，例如抽屉式导航栏和底部导航。但这些并不是全部！`Android Studio 3.2` 中的`导航编辑器`让开发者可以直观地查看和管理导航属性：
-![导航编辑器](http://localhost:4000/medias/android/android_navigation.png)
+![导航编辑器](https://lyl873825813.github.io/medias/android/android_navigation.png)
 
 ### Paging ###
 应用中呈现的数据可能非常大，这就导致加载的开销比较大，因此，避免一次下载、创建或呈现过多数据就显得非常重要。`分页组件`让开发者可以轻松加载和呈现大型数据集，同时在 `RecyclerView` 中进行快速、无限滚动。它可以从本地存储和/或网络加载分页数据，并让开发者能够定义内容的加载方式。此组件原生支持 `Room`、`LiveData` 和 `RxJava`。
 
 ### Slices ###
 `切片`提供能在 App 之外展示(Google Search App 和 Googel Assistant）App 数据的 UI 元素，：
-![Slices](http://localhost:4000/medias/android/android_slices.png)
+![Slices](https://lyl873825813.github.io/medias/android/android_slices.png)
 
 Android Jetpack 内置了对切片的支持，可以一直延伸到 Android 4.4，大约 95% 的Android用户。
 

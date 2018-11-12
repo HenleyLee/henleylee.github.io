@@ -23,7 +23,7 @@ Activity 的生命周期分为两个部分：
  - **`onStop：`**在 Activity 对用户不再可见时调用。如果 Activity 被销毁，或另一个 Activity（一个现有 Activity 或新 Activity）继续执行并将其覆盖，就可能发生这种情况。如果 Activity 恢复与用户的交互，则后接 **onRestart()**，如果 Activity 被销毁，则后接 **onDestroy()**。
  - **`onDestroy：`**在 Activity 被销毁前调用。这是 Activity 将收到的最后调用。当 Activity 结束（有人对 Activity 调用了 finish()），或系统为节省空间而暂时销毁该 Activity 实例时，可能会调用它。可以通过 **isFinishing()** 方法区分这两种情形。
 
-![Activity 的生命周期](http://localhost:4000/medias/android/activity_lifecycle.png)
+![Activity 的生命周期](https://lyl873825813.github.io/medias/android/activity_lifecycle.png)
 
 > 注意：
 >  - onStart和onStop是从Activity是否可见这个角度来回调的
@@ -38,12 +38,12 @@ Activity 的生命周期分为两个部分：
 由于是异常情况终止，系统会在 `onStop` 之前调用 `onSaveInstanceState` 来保存当前 `Activity` 的状态。(与 `onPause` 没有时序关系)
 
 当 `Activity` 被系统重新创建后，系统会调用 `onRestoreInstanceState`，把之前 `onSaveInstanceState` 方法所保存的 `Bundle` 对象作为参数同时传给 `onRestoreInstanceState` 和 `onCreate` 方法。(从时序来说，`onRestoreInstanceState` 的调用时机在 `onStart` 之后)
-![异常情况下 Activity 的重建过程](http://localhost:4000/medias/android/activity_recreate.png)
+![异常情况下 Activity 的重建过程](https://lyl873825813.github.io/medias/android/activity_recreate.png)
 
 而在视图方面，当 Activity 在异常情况下需要重新创建时，系统会默认为我们保存当前 Activity 的视图结构，并且在 Activity 重启后为我们恢复这些数据。
 
 其实每个 View 都有 onSaveInstanceState 和 onRestoreInstanceState，关于保存和恢复 View 层级结构，系统的工作流程如下：
-![关于保存与恢复 View 层级结构](http://localhost:4000/medias/android/activity_view.png)
+![关于保存与恢复 View 层级结构](https://lyl873825813.github.io/medias/android/activity_view.png)
 
 > onSaveInstanceState 方法，系统只会在 Activity 即将被销毁并且有机会重新显示的情况下才会去调用它。
 
@@ -128,7 +128,7 @@ Activity的四种启动模式：
 adnroid:taskAffinity="com.dimon.task1"
 ```
 默认情况下 Activity 所需要的任务栈的名字为应用的包名。
-![TaskAffinity](http://localhost:4000/medias/android/activity_taskaffinity.png)
+![TaskAffinity](https://lyl873825813.github.io/medias/android/activity_taskaffinity.png)
 
 ### 给 Activity 指定启动模式 ###
  - 方法一：通过 AndroidMenifest 为 Activity 指定启动模式
