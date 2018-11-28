@@ -189,6 +189,7 @@ Java 集合框架功能介绍思维导图如下：
 | `List<E> subList(int fromIndex, int toIndex)`          | 返回指定开始和结束索引位置的子集合                                                          |
 
 ### Set 接口中的额外抽象方法 ###
+Set 除了继承自 Collection 的方法之外，没有额外抽象方法。
 
 ### Map 接口中的抽象方法 ###
 
