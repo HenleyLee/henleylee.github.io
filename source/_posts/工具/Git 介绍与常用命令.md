@@ -8,7 +8,7 @@ tags:
   - 工具
 ---
 
-![Git](https://user-gold-cdn.xitu.io/2018/11/2/166d3058fc3e4c8c?w=455&h=190&f=jpeg&s=10850)
+![Git](https://lyl873825813.github.io/medias/git/git_header.jpg)
 
 ## 一、Git 是什么？ ##
  - Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
@@ -27,17 +27,108 @@ Git 与 SVN 区别点：
 5. Git 的内容完整性要优于 SVN：Git 的内容存储使用的是 SHA-1 哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。
 
 ## 三、Git 快速入门 ##
-Git 官网：[git-scm.com](https://git-scm.com/)
+### 3.1 Git 相关网站 ###
+ - Git 官网：[git-scm.com](https://git-scm.com/)
+ - Git 完整命令手册：[git-scm.com/docs](https://git-scm.com/docs)
+ - Git 命令手册(pdf版)：[github-git-cheat-sheet.pdf](http://www.runoob.com/manual/github-git-cheat-sheet.pdf)
+ - Git 简明指南：[git-guide](http://www.runoob.com/manual/git-guide/)
 
-Git 完整命令手册：[git-scm.com/docs](https://git-scm.com/docs)
+### 3.2 Git 工作流程 ###
+Git 一般工作流程如下：
+ - 克隆 Git 资源作为工作目录。
+ - 在克隆的资源上添加或修改文件。
+ - 如果其他人修改了，可以更新资源。
+ - 在提交前查看修改。
+ - 提交修改。
+ - 在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。
 
-Git 命令手册(pdf版)：[github-git-cheat-sheet.pdf](http://www.runoob.com/manual/github-git-cheat-sheet.pdf)
+下图展示了 Git 的工作流程：
+![Git 工作流程](https://lyl873825813.github.io/medias/git/git_process.jpg)
 
-Git 简明指南：[git-guide](http://www.runoob.com/manual/git-guide/)
+### 3.3 Git 工作空间 ###
+Git 工作空间分为：
+ - **`工作区(Working Directory)：`**在电脑里能看到的目录。
+ - **`版本库(Repository)：`**工作区有一个隐藏目录 `.git`，这个目录不算工作区，而是 Git 的版本库
+ - **`暂存区(Stage/Index)：`**一般存放在 `.git` 目录下的 `index` 文件(`.git/index`)中，所以我们把暂存区有时也叫作索引(index)。
+
+下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：
+![Git 工作空间](https://lyl873825813.github.io/medias/git/git_workspace.jpg)
+图中左侧为工作区，右侧为版本库。在版本库中标记为 `index` 的区域是暂存区(stage/index)，标记为 `master` 的是 `master` 分支所代表的目录树。此时 `HEAD` 实际是指向 `master` 分支的一个“游标”，所以图示的命令中出现 `HEAD` 的地方可以用 `master` 来替换。图中的 `objects` 标识的区域为 git 的对象库，实际位于 `.git/objects` 目录下。 
+ - 当对工作区修改（或新增）的文件执行 `git add` 命令时，暂存区的目录树会被更新，同时工作区修改（或新增）的文件内容会被写入到对象库中的一个新的对象中，而该对象的id被记录在暂存区的文件索引中。
+ - 当执行提交操作 `git commit` 时，暂存区的目录树会写到版本库（对象库）中，master 分支会做相应的更新，即 master 最新指向的目录树就是提交时原暂存区的目录树。
+ - 当执行 `git reset HEAD` 命令时，暂存区的目录树会被重写，会被 master 分支指向的目录树所替换，但是工作区不受影响。
+ - 当执行 `git rm --cached` 命令时，会直接从暂存区删除文件，工作区则不做出改变。
+ - 当执行 `git checkout .` 或 `git checkout --` 命令时，会用暂存区全部的文件或指定的文件替换工作区的文件。这个操作很危险，会清楚工作区中未添加到暂存区的改动。
+ - 当执行 `git checkout HEAD .` 或 `git checkout HEAD` 命令时，会用 HEAD 指向的 master 分支中的全部或部分文件替换暂存区和工作区中的文件。这个命令也是极度危险的。因为不但会清楚工作区中未提交的改动，也会清楚暂存区中未提交的改动。
+
+### 3.4 Git 文件状态 ###
+Git 有三种状态，你的文件可能处于其中之一：
+ - **`已提交(committed)：`**表示数据已经安全的保存在本地数据库中。
+ - **`已修改(modified)：`**表示修改了文件，但还没保存到数据库中。
+ - **`已暂存(staged)：`**表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。
 
 ## 四、Git 安装 ##
 在使用 Git 前我们需要先安装 Git。Git 目前支持 Linux/Unix、Solaris、Mac和 Windows 平台上运行。
 Git 各平台安装包下载地址为：[git-scm.com/downloads](https://git-scm.com/downloads)
+
+### 4.1 在 Linux 上安装 ###
+如果要在 Linux 上用二进制安装程序来安装 Git，可以使用发行版包含的基础软件包管理工具来安装。如果以 `Fedora` 上为例，可以使用 `yum`：
+```shell
+$ sudo yum install git
+```
+
+如果在基于 `Debian` 的发行版上，请尝试用 `apt-get`：
+```shell
+$ sudo apt-get install git
+```
+
+要了解更多选择，Git 官方网站上有在各种 Unix 风格的系统上安装步骤，网址为 [git-scm.com/download/linux](http://git-scm.com/download/linux)。
+
+### 4.2 在 Mac 上安装 ###
+在 Mac 上安装 Git 有多种方式。最简单的方法是安装 `Xcode Command Line Tools`。Mavericks 10.9 或更高版本的系统中，在 Terminal 里尝试首次运行 git 命令即可。如果没有安装过命令行开发者工具，将会提示你安装。
+
+如果想安装更新的版本，可以使用二进制安装程序。官方维护的 OSX Git 安装程序可以在 Git 官方网站下载，网址为 [git-scm.com/download/mac](http://git-scm.com/download/mac)。
+
+也可以将 `Git OS X` 安装程序作为 GitHub for Mac 的一部分来安装。它们的图形化 Git 工具有一个安装命令行工具的选项。可以从 GitHub for Mac 网站下载该工具，网址为 [mac.github.com](http://mac.github.com)。
+
+### 4.3 在 Windows 上安装 ###
+在 Windows 上安装 Git 也有几种安装方法。官方版本可以在 Git 官方网站下载。打开 [git-scm.com/download/win](https://git-scm.com/download/win)，下载会自动开始。要注意这是一个名为 `Git for Windows` 的项目(也叫做 `msysGit`)，和 Git 是分别独立的项目；更多信息请访问 [msysgit.github.io](http://msysgit.github.io/)。
+
+另一个简单的方法是安装 `GitHub for Windows`。该安装程序包含图形化和命令行版本的 Git。它也能支持 `Powershell`，提供了稳定的凭证缓存和健全的 `CRLF` 设置。可以在 GitHub for Windows 网站下载，网址为 [windows.github.com](http://windows.github.com)。
+
+### 4.4 从源代码安装 ###
+有人觉得从源码安装 Git 更实用，因为可以得到最新的版本。二进制安装程序倾向于有一些滞后，当然近几年 Git 已经成熟，这个差异不再显著。
+
+如果想要从源码安装 Git，需要安装 Git 依赖的库：`curl`、`zlib`、`openssl`、`expat`，还有 `libiconv`。 如果你的系统上有 `yum`(如 Fedora)或者 `apt-get`(如基于 Debian 的系统)，可以使用以下命令之一来安装最小化的依赖包来编译和安装 Git 的二进制版：
+```shell
+$ sudo yum install curl-devel expat-devel gettext-devel \
+  openssl-devel zlib-devel
+$ sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
+  libz-dev libssl-dev
+```
+
+为了能够添加更多格式的文档(如 doc, html, info)，需要安装以下的依赖包：
+```shell
+$ sudo yum install asciidoc xmlto docbook2x
+$ sudo apt-get install asciidoc xmlto docbook2x
+```
+
+当安装好所有的必要依赖，可以继续从几个地方来取得最新发布版本的 `tar` 包。可以从 `kernel.org` 网站获取，网址为 [www.kernel.org/pub/software/scm/git](https://www.kernel.org/pub/software/scm/git)，或从 GitHub 网站上的镜像来获得，网址为 [github.com/git/git/releases](https://github.com/git/git/releases)。通常在 GitHub 上的是最新版本，但 `kernel.org` 上包含有文件下载签名，如果想验证下载正确性的话会用到。
+
+接着，编译并安装：
+```shell
+$ tar -zxf git-2.0.0.tar.gz
+$ cd git-2.0.0
+$ make configure
+$ ./configure --prefix=/usr
+$ make all doc info
+$ sudo make install install-doc install-html install-info
+```
+
+完成后，可以使用 Git 来获取 Git 的升级：
+```shell
+$ git clone git://git.kernel.org/pub/scm/git/git.git
+```
 
 ## 五、Git配置 ##
 Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。
