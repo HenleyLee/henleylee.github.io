@@ -373,7 +373,7 @@ Java 8 增加了很多新的工具类（date/time类），并扩展了现存的�
 #### Optional ####
 Java 应用中最常见的 bug 就是[空值异常](https://examples.javacodegeeks.com/java-basics/exceptions/java-lang-nullpointerexception-how-to-handle-null-pointer-exception/)。在 Java 8 之前，[Google Guava](https://github.com/google/guava) 引入了 `Optionals` 类来解决 `NullPointerException`，从而避免源码被各种 `null` 检查污染，以便开发者写出更加整洁的代码。Java 8 也将 `Optional` 加入了官方库。
 
-`Optional` 仅仅是一个容易：存放T类型的值或者 null。它提供了一些有用的接口来避免显式的 null 检查，可以参考 [Java 8 官方文档](https://docs.oracle.com/javase/8/docs/api/)了解更多细节。
+`Optional` 仅仅是一个容器：存放 `T` 类型的值或者 `null`，它提供了一些有用的方法来避免显式的 `null` 检查，可以参考 [Java 8 官方文档](https://docs.oracle.com/javase/8/docs/api/)了解更多细节。
 
 接下来看一点使用 `Optional` 的例子：可能为空的值或者某个类型的值：
 ```java
