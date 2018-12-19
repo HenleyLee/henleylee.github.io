@@ -24,7 +24,7 @@
                 <% } %>
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i><%- date(page.date, 'YYYY-MM-DD') %>
+                    <i class="fa fa-calendar fa-fw"></i><%- date(page.date, 'YYYY-MM-DD') %>
                 </span>
             </div>
         </div>
@@ -66,6 +66,10 @@
 
     <% if (theme.livere && theme.livere.enable) { %>
     <%- partial('_partial/livere') %>
+    <% } %>
+
+    <% if (theme.valine && theme.valine.enable) { %>
+        <%- partial('_partial/valine') %>
     <% } %>
 
     <%- partial('_partial/prev-next') %>
