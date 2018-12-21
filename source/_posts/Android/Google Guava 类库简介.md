@@ -1,10 +1,11 @@
 ---
 title: Google Guava 类库简介
-date: 2018-07-22 13:41:50
 categories: Android
 tags:
   - Android
   - Google
+abbrlink: 9a2ecb86
+date: 2018-07-22 13:41:50
 ---
 
 ## 一.Guava简介 ##

@@ -1,10 +1,11 @@
 ---
 title: Android 自动化测试之 Monkey
-date: 2018-07-08 12:23:45
 categories: Android
 tags:
   - Android
   - Monkey
+abbrlink: dd9cc5eb
+date: 2018-07-08 12:23:45
 ---
 
 ## Monkey 简介 ##

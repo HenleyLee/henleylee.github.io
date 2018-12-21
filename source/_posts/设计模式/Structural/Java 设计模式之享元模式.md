@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之享元模式
-date: 2018-09-27 18:36:42
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 545f3e64
+date: 2018-09-27 18:36:42
 ---
 
 ## 模式动机 ##

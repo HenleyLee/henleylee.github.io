@@ -1,9 +1,10 @@
 ---
 title: Android 中的颜色
-date: 2018-12-16 10:30:35
 categories: Android
 tags:
   - Android
+abbrlink: 936e3ab3
+date: 2018-12-16 10:30:35
 ---
 
 Android 中的颜色值通常遵循 `RGB/ARGB` 标准，使用时通常以 `#` 字符开头，以`16进制`表示。 

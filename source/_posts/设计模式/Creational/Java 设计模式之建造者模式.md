@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之建造者模式
-date: 2018-09-13 10:20:45
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 8738b822
+date: 2018-09-13 10:20:45
 ---
 
 ## 模式动机 ##

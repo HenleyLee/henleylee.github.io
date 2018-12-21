@@ -1,10 +1,11 @@
 ---
 title: Java 9 新特性
-date: 2018-11-17 12:45:38
 categories: Java
 tags:
   - Java
   - JDK
+abbrlink: 81153f7d
+date: 2018-11-17 12:45:38
 ---
 
 Java 9 正式发布于 2017 年 9 月 21 日。作为 Java 8 之后 3 年半才发布的新版本，Java 9 带来了很多重大的变化。其中最主要的变化是 Java 平台模块系统的引入。除此之外，还有一些新的特性。

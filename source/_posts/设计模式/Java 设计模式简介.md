@@ -1,11 +1,12 @@
 ---
 title: Java 设计模式简介
-date: 2018-09-05 13:05:25
 top: true
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 2c9d8138
+date: 2018-09-05 13:05:25
 ---
 
 ## 设计模式简介 ##

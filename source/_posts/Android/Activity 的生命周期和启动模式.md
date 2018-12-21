@@ -1,10 +1,11 @@
 ---
 title: Activity 的生命周期和启动模式
-date: 2018-11-03 11:35:35
 categories: Android
 tags:
   - Android
   - Activity
+abbrlink: e0d2d667
+date: 2018-11-03 11:35:35
 ---
 
 ## Activity的生命周期 ##

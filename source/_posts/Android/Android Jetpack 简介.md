@@ -1,10 +1,11 @@
 ---
 title: Android Jetpack 简介
-date: 2018-11-04 10:30:35
 categories: Android
 tags:
   - Android
   - Jetpack
+abbrlink: 741c7cd8
+date: 2018-11-04 10:30:35
 ---
 
 Android Jetpack 深受支持库的启发，支持库包含的组件可以让开发者轻松利用 Android 新功能，同时保持向后兼容性；现在，应用商店中 99% 的应用都使用支持库。在支持库取得成功后，Google 推出了[架构组件](https://developer.android.com/jetpack/arch/)，让开发者在面对应用生命周期变化和复杂性时可以更轻松地处理数据。自从 Google 在去年的 I/O 大会上推出以来，相当数量的开发者已经采用这些组件。LinkedIn、Zillow 和 iHeartRadio 等公司取得了显著成效，他们应用的错误减少、可测试性提高，这让他们可以将更多时间放在精心打造自己的应用上。

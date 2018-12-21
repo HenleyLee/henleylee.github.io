@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之观察者模式
-date: 2018-10-16 13:25:20
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: e39db608
+date: 2018-10-16 13:25:20
 ---
 
 ## 模式动机 ##

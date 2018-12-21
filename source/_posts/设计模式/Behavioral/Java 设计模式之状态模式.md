@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之状态模式
-date: 2018-10-14 18:26:45
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 3f098e58
+date: 2018-10-14 18:26:45
 ---
 
 ## 模式动机 ##

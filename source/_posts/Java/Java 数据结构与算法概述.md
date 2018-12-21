@@ -1,11 +1,12 @@
 ---
 title: Java 数据结构与算法概述
-date: 2018-11-20 18:32:28
 categories: Java
 tags:
   - Java
   - 数据结构
   - 算法
+abbrlink: 8359917f
+date: 2018-11-20 18:32:28
 ---
 
 ## 数据结构 ##

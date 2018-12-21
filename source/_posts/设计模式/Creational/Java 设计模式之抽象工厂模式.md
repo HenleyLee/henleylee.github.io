@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之抽象工厂模式
-date: 2018-09-11 18:25:50
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: da2ceb52
+date: 2018-09-11 18:25:50
 ---
 
 ## 模式定义 ##

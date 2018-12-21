@@ -1,9 +1,10 @@
 ---
 title: Kotlin 简介与入门指南
-date: 2018-11-08 18:36:32
 categories: Kotlin
 tags:
   - Kotlin
+abbrlink: b8875af9
+date: 2018-11-08 18:36:32
 ---
 
 ## Kotlin 是什么？ ##

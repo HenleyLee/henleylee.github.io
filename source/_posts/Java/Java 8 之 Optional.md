@@ -1,9 +1,10 @@
 ---
 title: Java 8 之 Optional
-date: 2018-12-01 19:45:22
 categories: Java
 tags:
   - Java
+abbrlink: e7fa2ea9
+date: 2018-12-01 19:45:22
 ---
 
 ## 概述 ##

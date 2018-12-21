@@ -1,9 +1,10 @@
 ---
 title: 使用 Hexo + GitHub Pages 搭建个人博客
-date: 2018-06-03 10:25:30
 categories: 前端
 tags:
   - Hexo
+abbrlink: 26c3db75
+date: 2018-06-03 10:25:30
 ---
 
 ## 搭建 Node.js 环境 ##
@@ -88,7 +89,7 @@ $ hexo s
 ```
 通过 `hexo server` 命令启动服务器。默认情况下，访问网址为： [http://localhost:4000/](http://localhost:4000/) 。如果 [http://localhost:4000/](http://localhost:4000/) 能够正常访问，则说明 Hexo 本地博客已经搭建起来了，只是本地哦，别人看不到的。
 
-## 配置 ##
+## 修改 Hexo 配置 ##
 您可以在站点主目录的 `_config.yml` 文件中修改大部份的配置。
 
 ### Site ###
@@ -111,7 +112,7 @@ $ hexo s
 | `permalink`          | 文章的 [永久链接](https://hexo.io/docs/permalinks) 格式 | `:year/:month/:day/:title/` |
 | `permalink_defaults` | 永久链接中各部分的默认值                                |                             |
 
->    如果您的网站存放在子目录中，例如 `http://yoursite.com/blog`，则请将您的 `url` 设为 `http://yoursite.com/blog` 并把 `root` 设为 `/blog/`。
+>    如果您的网站存放在子目录中，例如 `http://yoursite.com/blog`，则请将您的 `url` 设为 `http://yoursite.com/blog` 并把 `root` 设为 `/blog/`。建议 `permalink` 后面跟着的内容最好不要超过两个斜杠，影响爬虫爬取，因为一般搜索引擎爬虫不爬取深度超过三层的内容。
  	
 ### Directory ###
 | 参数           | 描述                                                                                       | 默认值           |
@@ -204,10 +205,12 @@ INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.
 本人的博客是使用的 [Matery](https://github.com/blinkfox/hexo-theme-matery) 主题。
 
 ## 安装 Hexo 插件 ##
+Hexo 有强大的[插件](https://hexo.io/plugins/)系统，使您能轻松扩展功能而不用修改核心模块的源码。
+
 ### 代码高亮 ###
 由于 Hexo 自带的代码高亮主题显示不好看，所以主题中使用到了 [hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin) 的 Hexo 插件来做代码高亮，安装命令如下：
 ```bash
-npm i -S hexo-prism-plugin
+$ npm i -S hexo-prism-plugin
 ```
 
 然后，修改 Hexo 根目录下`_config.yml`文件中`highlight.enable`的值为`false`，并新增`prism`插件相关的配置，主要配置如下：
@@ -225,7 +228,7 @@ prism_plugin:
 ### 站内搜索 ###
 安装 [hexo-generator-search](https://github.com/wzpan/hexo-generator-search) 在 `Hexo` 中实现搜索功能，在站点的根目录下执行以下命令：
 ```bash
-npm install hexo-generator-search --save
+$ npm install hexo-generator-search --save
 ```
 
 在 Hexo 站点根目录下的`_config.yml`文件中，新增以下的配置项：
@@ -236,10 +239,10 @@ search:
   content: true
 ```
 
-### RSS 订阅(可选) ###
+### RSS 订阅 ###
 安装 [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) 在 `Hexo` 中实现 `RSS 订阅`功能，安装命令如下：
 ```bash
-npm install hexo-generator-feed --save
+$ npm install hexo-generator-feed --save
 ```
 
 在 Hexo 站点根目录下的 `_config.yml` 文件中，新增以下的配置项：
@@ -255,15 +258,15 @@ feed:
   order_by: -date
 ```
 
-### 中文链接转拼音(可选) ###
-如果你的文章名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 `SEO`，且 `gitment` 评论对中文链接也不支持。我们可以用[hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) Hexo 插件使在生成文章时生成中文拼音的永久链接。
+### 中文链接转拼音 ###
+如果博客文章的名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 `SEO`，且 `gitment` 评论对中文链接也不支持。我们可以用[hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) Hexo 插件使在生成文章时生成中文拼音的永久链接。
 
 安装命令如下：
 ```bash
-npm i hexo-permalink-pinyin --save
+$ npm i hexo-permalink-pinyin --save
 ```
 
-在 Hexo 根目录下的`_config.yml`文件中，新增以下的配置项：
+在 Hexo 根目录下的 `_config.yml` 文件中，新增以下的配置项：
 ```yml
 permalink_pinyin:
   enable: true
@@ -271,6 +274,209 @@ permalink_pinyin:
 ```
 
 > **注**：除了此插件外，[hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink) 插件也可以生成非中文的链接。
+
+### 文章链接唯一化 ###
+每次修改文章标题或者变更文章发布时间，Hexo 在默认设置下生成的文章链接都会改变，不利于搜索引擎收录，也不利于分享。唯一永久链接才是更好的选择。我们可以用[hexo-abbrlink](https://github.com/Rozbo/hexo-abbrlink) Hexo 插件来实现链接唯一化。
+
+安装命令如下：
+```bash
+$ npm install hexo-abbrlink --save
+```
+
+在 Hexo 根目录下的 `_config.yml` 文件中，修改以下的配置项：
+```yml
+permalink: posts/:abbrlink/    # posts 部分可自行修改
+```
+
+然后，在 Hexo 根目录下的 `_config.yml` 文件中，新增以下的配置项：
+```yml
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
+```
+不同的算法和进制组合会得到不同的链接，下面提供了参考，如何选择就看需要了，需要注意的是使用 `crc16` 算法的文章数上限是 `65535`。
+```
+crc16 & hex
+https://post.zz173.com/posts/66c8.html
+
+crc16 & dec
+https://post.zz173.com/posts/65535.html
+
+crc32 & hex
+https://post.zz173.com/posts/8ddf18fb.html
+
+crc32 & dec
+https://post.zz173.com/posts/1690090958.html
+```
+
+### 添加萌宠或萌妹子 ###
+安装 [hexo-helper-live2d](https://github.com/EYHN/hexo-helper-live2d) 在 `Hexo` 中实现 `为博客添加萌宠或萌妹子`功能，安装命令如下：
+```bash
+$ npm install --save hexo-helper-live2d
+```
+
+可以到[作者动画展示网站](https://huaji8.top/post/live2d-plugin-2.0/)中查看，选择喜欢的萌宠或萌妹子造型：
+```
+live2d-widget-model-chitose
+live2d-widget-model-epsilon2_1
+live2d-widget-model-gf
+live2d-widget-model-haru/01 (use npm install --save live2d-widget-model-haru)
+live2d-widget-model-haru/02 (use npm install --save live2d-widget-model-haru)
+live2d-widget-model-haruto
+live2d-widget-model-hibiki
+live2d-widget-model-hijiki
+live2d-widget-model-izumi
+live2d-widget-model-koharu
+live2d-widget-model-miku
+live2d-widget-model-ni-j
+live2d-widget-model-nico
+live2d-widget-model-nietzsche
+live2d-widget-model-nipsilon
+live2d-widget-model-nito
+live2d-widget-model-shizuku
+live2d-widget-model-tororo
+live2d-widget-model-tsumiki
+live2d-widget-model-unitychan
+live2d-widget-model-wanko
+live2d-widget-model-z16
+```
+选好对应的模型，使用 `npm install 模型的包名`来安装。比如选择的的是 `live2d-widget-model-wanko` 模型包，在 Hexo 博客根目录下执行以下代码：
+```bash
+$ npm install live2d-widget-model-wanko
+```
+
+安装完成后，在 Hexo 站点根目录下的 `_config.yml` 文件或主题的 `_config.yml` 文件中，新增以下的配置项：
+```yml
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-wanko
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true
+```
+
+## 添加 Hexo 个性化设置 ##
+### 鼠标点击出现爱心特效 ###
+在当前主题的 `source/js` 下创建 `love.js` 文件，并将以下代码复制到创建的 `love.js` 文件中：
+```javascript
+ (function (window, document, undefined) {
+     var hearts = [];
+     window.requestAnimationFrame = (function () {
+         return window.requestAnimationFrame ||
+             window.webkitRequestAnimationFrame ||
+             window.mozRequestAnimationFrame ||
+             window.oRequestAnimationFrame ||
+             window.msRequestAnimationFrame ||
+             function (callback) {
+                 setTimeout(callback, 1000 / 60);
+             }
+     })();
+     init();
+
+     function init() {
+         css(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+         attachEvent();
+         gameloop();
+     }
+
+     function gameloop() {
+         for (var i = 0; i < hearts.length; i++) {
+             if (hearts[i].alpha <= 0) {
+                 document.body.removeChild(hearts[i].el);
+                 hearts.splice(i, 1);
+                 continue;
+             }
+             hearts[i].y--;
+             hearts[i].scale += 0.004;
+             hearts[i].alpha -= 0.013;
+             hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+         }
+         requestAnimationFrame(gameloop);
+     }
+
+     function attachEvent() {
+         var old = typeof window.onclick === "function" && window.onclick;
+         window.onclick = function (event) {
+             old && old();
+             createHeart(event);
+         }
+     }
+
+     function createHeart(event) {
+         var d = document.createElement("div");
+         d.className = "heart";
+         hearts.push({
+             el: d,
+             x: event.clientX - 5,
+             y: event.clientY - 5,
+             scale: 1,
+             alpha: 1,
+             color: randomColor()
+         });
+         document.body.appendChild(d);
+     }
+
+     function css(css) {
+         var style = document.createElement("style");
+         style.type = "text/css";
+         try {
+             style.appendChild(document.createTextNode(css));
+         } catch (ex) {
+             style.styleSheet.cssText = css;
+         }
+         document.getElementsByTagName('head')[0].appendChild(style);
+     }
+
+     function randomColor() {
+         return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+     }
+ })(window, document);
+```
+
+然后在当前主题下的 `layout` 目录中找到 `layout.ejs` 文件，打开该文件并在 `<body></body>` 添加以下代码：
+```html
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+```
+
+### 添加动态背景 ###
+在当前主题下的 `layout` 目录中找到 `layout.ejs` 文件，打开该文件并在 `<body></body>` 添加以下代码：
+```html
+<!-- 页面动态背景 -->
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+```
+
+如果想要自定义线条样式，可以使用以下代码代替之前的配置：
+```html
+<!-- 页面动态背景 -->
+<script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+```
+配置项说明
+ - **`color：`**线条颜色，默认：`'0,0,0'`，三个数字分别为`(R,G,B)`
+ - **`opacity：`**线条透明度（0~1），默认：`0.5`
+ - **`count：`**线条的总数量，默认：`150`
+ - **`zIndex：`**背景的 z-index 属性，css 属性用于控制所在层的位置，默认：`-1`
+
+### 在文章末尾添加“本文结束”标记 ###
+在当前主题的 `layout\_partial` 目录下创建 `post-end-tag.ejs` 文件，并将以下代码复制到创建的 `post-end-tag.ejs` 文件中：
+```html
+<div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
+```
+
+然后找到代表文章内容的 `post-detail.ejs` 文件，并在合适的位置(一般是在文章内容下面)添加以下代码：
+```html
+<%- partial('_partial/post-end-tag') %>
+```
 
 ## 部署 Hexo 到 GitHub ##
 Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。

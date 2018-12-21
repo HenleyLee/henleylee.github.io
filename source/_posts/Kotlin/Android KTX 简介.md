@@ -1,11 +1,12 @@
 ---
 title: Android KTX 简介
-date: 2018-11-11 13:45:38
 categories: Kotlin
 tags:
   - Android
   - Kotlin
   - KTX
+abbrlink: 476deb33
+date: 2018-11-11 13:45:38
 ---
 
 ## KTX 简介 ##

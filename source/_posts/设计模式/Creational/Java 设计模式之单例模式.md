@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之单例模式
-date: 2018-09-07 08:55:35
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 44a28b10
+date: 2018-09-07 08:55:35
 ---
 
 ## 模式动机 ##

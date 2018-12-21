@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之中介者模式
-date: 2018-10-20 10:20:30
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: a98fd302
+date: 2018-10-20 10:20:30
 ---
 
 ## 模式动机 ###

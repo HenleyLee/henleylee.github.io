@@ -1,9 +1,10 @@
 ---
 title: Hello Hexo
-date: 2018-06-02 11:33:45
 categories: 前端
 tags:
   - Hexo
+abbrlink: a1751c09
+date: 2018-06-02 11:33:45
 ---
 
 欢迎使用 [Hexo](https://hexo.io/)！本文将帮助您快速上手，如果您在使用过程中遇到问题，请查看 [Troubleshooting](https://hexo.io/docs/troubleshooting) 中的解答，或者在 [GitHub](https://github.com/hexojs/hexo/issues)、[Google Group](https://groups.google.com/group/hexo) 上提问。

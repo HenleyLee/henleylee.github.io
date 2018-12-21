@@ -1,11 +1,12 @@
 ---
 title: Android Studio 3.0 利用 Android Profiler 测量应用性能
-date: 2018-08-18 11:25:35
 categories: Android
 tags:
   - Android
   - Android Studio
   - Android Profiler
+abbrlink: 26cb225c
+date: 2018-08-18 11:25:35
 ---
 
 Android Studio 3.0 采用全新的 `Android Profiler` 窗口取代 `Android Monitor` 工具。 这些全新的分析工具能够提供关于应用 `CPU`、`内存`和`网络活动`的实时数据。 

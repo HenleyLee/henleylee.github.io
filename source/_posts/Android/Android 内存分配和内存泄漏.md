@@ -1,10 +1,11 @@
 ---
 title: Android 内存分配和内存泄漏
-date: 2018-07-29 18:55:45
 categories: Android
 tags:
   - Android
   - Java
+abbrlink: '20774213'
+date: 2018-07-29 18:55:45
 ---
 
 ## 1. 内存分配 ##

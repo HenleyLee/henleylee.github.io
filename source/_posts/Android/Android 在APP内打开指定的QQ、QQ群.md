@@ -1,9 +1,10 @@
 ---
 title: Android 在APP内打开指定的QQ、QQ群
-date: 2018-07-21 09:20:35
 categories: Android
 tags:
   - Android
+abbrlink: d699dc76
+date: 2018-07-21 09:20:35
 ---
 
 ## 1.判断是否安装 QQ 客户端 ##

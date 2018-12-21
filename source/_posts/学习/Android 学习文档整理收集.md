@@ -1,10 +1,11 @@
 ---
 title: Android 学习文档整理收集
-date: 2018-06-15 18:45:35
 categories: 学习
 tags:
   - Android
   - 学习
+abbrlink: 902f4e00
+date: 2018-06-15 18:45:35
 ---
 
 利用闲暇时间整理了一份 `Android` 学习文档整理收集，希望能够对大家有所帮助，也欢迎各位帮忙补充。

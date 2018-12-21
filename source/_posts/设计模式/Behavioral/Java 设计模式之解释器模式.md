@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之解释器模式
-date: 2018-10-24 19:20:22
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 4976d8cc
+date: 2018-10-24 19:20:22
 ---
 
 ## 模式动机 ##

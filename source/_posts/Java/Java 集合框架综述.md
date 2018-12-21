@@ -1,10 +1,11 @@
 ---
 title: Java 集合框架综述
-date: 2018-11-22 18:32:28
 categories: Java
 tags:
   - Java
   - 集合
+abbrlink: 83599db7
+date: 2018-11-22 18:32:28
 ---
 
 早在 Java 2 中之前，Java 就提供了特设类。比如：Dictionary、Vector、Stack 和 Properties 这些类用来存储和操作对象组。虽然这些类都非常有用，但是它们缺少一个核心的，统一的主题。由于这个原因，使用 Vector 类的方式和使用 Properties 类的方式有着很大不同。

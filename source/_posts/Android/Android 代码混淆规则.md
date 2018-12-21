@@ -1,10 +1,11 @@
 ---
 title: Android 代码混淆规则
-date: 2018-07-07 18:23:45
 categories: Android
 tags:
   - Android
   - Proguard
+abbrlink: 64dda27b
+date: 2018-07-07 18:23:45
 ---
 
 ## 1. Proguard介绍 ##

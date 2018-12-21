@@ -1,9 +1,10 @@
 ---
 title: Android 状态栏、导航栏相关
-date: 2018-07-20 15:55:35
 categories: Android
 tags:
   - Android
+abbrlink: '30124932'
+date: 2018-07-20 15:55:35
 ---
 
 ## 1.状态栏 ##

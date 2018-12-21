@@ -1,10 +1,11 @@
 ---
 title: IntelliJ IDEA 共享 IDE 设置
-date: 2018-08-12 15:36:33
 categories: 工具
 tags:
   - Android Studio
   - IntelliJ IDEA
+abbrlink: 6aff36ed
+date: 2018-08-12 15:36:33
 ---
 
 IntelliJ IDEA 支持安装在不同计算机上的 IntelliJ IDEA（或其他基于 IntelliJ 平台的）产品的不同实例之间共享 IDE 设置。如果您使用不同的计算机工作，这可以帮助您重新创建一个舒适的工作环境，而且不会让你对事物的外观和行为感到厌烦。

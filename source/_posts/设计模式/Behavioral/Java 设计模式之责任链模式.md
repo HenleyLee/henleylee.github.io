@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之责任链模式
-date: 2018-10-28 11:45:15
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 1bb1b660
+date: 2018-10-28 11:45:15
 ---
 
 ## 模式动机 ##

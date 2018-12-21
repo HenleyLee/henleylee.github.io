@@ -1,10 +1,11 @@
 ---
 title: Java 8 新特性
-date: 2018-11-12 18:45:38
 categories: Java
 tags:
   - Java
   - JDK
+abbrlink: 409be0bd
+date: 2018-11-12 18:45:38
 ---
 
 Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的 Stream API 等。

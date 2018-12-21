@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之命令模式
-date: 2018-10-27 10:26:30
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: cdd1d929
+date: 2018-10-27 10:26:30
 ---
 
 ## 模式动机 ##

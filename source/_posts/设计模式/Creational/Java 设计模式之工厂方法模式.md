@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之工厂方法模式
-date: 2018-09-09 13:22:45
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 90801a9
+date: 2018-09-09 13:22:45
 ---
 
 ## 模式定义 ##

@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之备忘录模式
-date: 2018-10-18 13:28:25
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: baaeb04b
+date: 2018-10-18 13:28:25
 ---
 
 ## 模式动机 ##

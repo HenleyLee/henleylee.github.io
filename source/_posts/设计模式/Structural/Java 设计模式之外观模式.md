@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之外观模式
-date: 2018-09-25 18:26:40
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 421c1d86
+date: 2018-09-25 18:26:40
 ---
 
 ## 模式动机 ##

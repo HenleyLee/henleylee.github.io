@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之代理模式
-date: 2018-09-29 13:35:36
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: ce93993e
+date: 2018-09-29 13:35:36
 ---
 
 ## 模式动机 ##

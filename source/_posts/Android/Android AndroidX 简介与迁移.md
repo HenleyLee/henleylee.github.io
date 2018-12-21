@@ -1,10 +1,11 @@
 ---
 title: Android AndroidX 简介与迁移
-date: 2018-11-06 18:32:35
 categories: Android
 tags:
   - Android
   - AndroidX
+abbrlink: 3e59253e
+date: 2018-11-06 18:32:35
 ---
 
 ## AndroidX 简介 ##

@@ -1,9 +1,10 @@
 ---
 title: Java 8 之 Stream
-date: 2018-12-02 19:22:36
 categories: Java
 tags:
   - Java
+abbrlink: 7ebad28b
+date: 2018-12-02 19:22:36
 ---
 
 ## 概述 ##

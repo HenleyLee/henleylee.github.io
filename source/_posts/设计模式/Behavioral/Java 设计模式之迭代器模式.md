@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之迭代器模式
-date: 2018-10-22 18:28:50
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: e9ec0609
+date: 2018-10-22 18:28:50
 ---
 
 ## 模式动机 ##

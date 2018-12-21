@@ -1,10 +1,11 @@
 ---
 title: Java 注解(Annotation)详解
-date: 2018-11-25 09:46:20
 categories: Java
 tags:
   - Java
   - 注解
+abbrlink: 52b68731
+date: 2018-11-25 09:46:20
 ---
 
 ## 什么叫注解 ##

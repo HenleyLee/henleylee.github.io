@@ -1,9 +1,10 @@
 ---
 title: Kotlin 1.2 的新特性
-date: 2018-12-12 18:45:36
 categories: Kotlin
 tags:
   - Kotlin
+abbrlink: 9e8f91b4
+date: 2018-12-12 18:45:36
 ---
 
 ## Kotlin 1.2 新特性 ##

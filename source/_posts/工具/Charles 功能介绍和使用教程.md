@@ -1,11 +1,12 @@
 ---
 title: Charles 功能介绍和使用教程
-date: 2018-08-11 17:45:35
 categories: 工具
 top: true
 tags:
   - Charles
   - 工具
+abbrlink: da575840
+date: 2018-08-11 17:45:35
 ---
 
 ![Charles](https://user-gold-cdn.xitu.io/2018/8/22/165612f68b7753f0?w=658&h=263&f=png&s=144254)

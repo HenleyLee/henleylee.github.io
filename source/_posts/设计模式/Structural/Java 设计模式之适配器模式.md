@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之适配器模式
-date: 2018-09-17 08:45:50
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 8c7ce1f4
+date: 2018-09-17 08:45:50
 ---
 
 ## 模式动机 ##

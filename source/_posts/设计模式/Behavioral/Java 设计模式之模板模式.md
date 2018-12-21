@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之模板模式
-date: 2018-10-10 18:28:30
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: a0cc9445
+date: 2018-10-10 18:28:30
 ---
 
 ## 模式动机 ##

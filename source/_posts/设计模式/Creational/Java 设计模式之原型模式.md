@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之原型模式
-date: 2018-09-15 12:55:40
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 246f0bcd
+date: 2018-09-15 12:55:40
 ---
 
 ## 模式定义 ##

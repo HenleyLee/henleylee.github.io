@@ -1,9 +1,10 @@
 ---
 title: Android 中的窗口坐标体系和屏幕的触控事件
-date: 2018-07-24 13:41:50
 categories: Android
 tags:
   - Android
+abbrlink: 74e7e0b3
+date: 2018-07-24 13:41:50
 ---
 
 ## Android坐标系 ##

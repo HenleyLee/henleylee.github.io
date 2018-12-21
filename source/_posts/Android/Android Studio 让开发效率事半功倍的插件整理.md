@@ -1,12 +1,13 @@
 ---
 title: Android Studio 让开发效率事半功倍的插件整理
-date: 2018-08-19 14:26:35
 categories: Android
 tags:
   - Android
   - Android Studio
   - IntelliJ IDEA
   - Plugins
+abbrlink: d09e4c2c
+date: 2018-08-19 14:26:35
 ---
 
 Google 在2013年5月的 I/O 开发者大会推出了基于 IntelliJ IDEA Java IDE 上的 Android Studio。Android Studio 是一个功能齐全的开发工具，还提供了对第三方插件的支持，让开发人员更快速更好的开发应用程序。

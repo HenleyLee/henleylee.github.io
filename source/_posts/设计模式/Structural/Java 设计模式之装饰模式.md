@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之装饰模式
-date: 2018-09-23 12:45:30
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 53b39445
+date: 2018-09-23 12:45:30
 ---
 
 ## 模式动机 ##

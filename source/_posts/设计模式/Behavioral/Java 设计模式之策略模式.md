@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之策略模式
-date: 2018-10-12 18:32:30
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: c721215f
+date: 2018-10-12 18:32:30
 ---
 
 ## 模式动机 ##

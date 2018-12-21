@@ -1,10 +1,11 @@
 ---
 title: Google Java 编程规范
-date: 2018-09-01 18:46:00
 categories: 编程之道
 tags:
   - Google
   - Java
+abbrlink: cd0e4ea6
+date: 2018-09-01 18:46:00
 ---
 
 ## 1 前言 ##

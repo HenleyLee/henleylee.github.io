@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之桥接模式
-date: 2018-09-19 13:25:46
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: e3f0fff2
+date: 2018-09-19 13:25:46
 ---
 
 ## 模式动机 ##

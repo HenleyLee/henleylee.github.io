@@ -1,11 +1,12 @@
 ---
 title: Lottie - 轻松实现复杂的动画效果
-date: 2018-08-23 18:56:26
 categories: Android
 tags:
   - Android
   - Lottie
   - 动画
+abbrlink: 238b7a36
+date: 2018-08-23 18:56:26
 ---
 
 ## 1. Lottie 介绍 ##

@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之组合模式
-date: 2018-09-21 12:27:50
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 6a4500bc
+date: 2018-09-21 12:27:50
 ---
 
 ## 模式动机 ##

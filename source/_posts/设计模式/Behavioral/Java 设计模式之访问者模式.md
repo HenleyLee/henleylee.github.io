@@ -1,10 +1,11 @@
 ---
 title: Java 设计模式之访问者模式
-date: 2018-10-08 18:29:25
 categories: 设计模式
 tags:
   - Java
   - 设计模式
+abbrlink: 1d0ccac7
+date: 2018-10-08 18:29:25
 ---
 
 ## 模式动机 ##

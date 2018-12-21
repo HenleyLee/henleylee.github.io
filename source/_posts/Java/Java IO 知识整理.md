@@ -1,10 +1,11 @@
 ---
 title: Java IO 知识整理
-date: 2018-11-24 10:30:28
 categories: Java
 tags:
   - Java
   - IO
+abbrlink: 5feeeebf
+date: 2018-11-24 10:30:28
 ---
 
 Java IO 是一套 Java 用来读写数据（输入和输出）的 API。大部分程序都要处理一些输入，并由输入产生一些输出。Java 为此提供了 `java.io` 包。`java.io` 包几乎包含了所有操作输入、输出需要的类。所有这些流类代表了输入源和输出目标。`java.io` 包中的流支持很多种格式，比如：基本类型、对象、文件、网络数据流、内存缓冲等等。

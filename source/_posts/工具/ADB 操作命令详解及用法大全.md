@@ -1,12 +1,13 @@
 ---
 title: ADB 操作命令详解及用法大全
-date: 2018-08-06 13:15:45
 categories: 工具
 top: true
 tags:
   - ADB
   - 命令行
   - 工具
+abbrlink: a91f712a
+date: 2018-08-06 13:15:45
 ---
 
 ![ADB](https://user-gold-cdn.xitu.io/2018/8/10/16522b67d2e66dfc?w=287&h=138&f=jpeg&s=10250)
