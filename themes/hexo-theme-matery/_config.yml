@@ -209,6 +209,19 @@ googleAnalytics:
   enable: false
   id:
 
+# Show number of visitors to each article.
+# You can visit LeanCloud get AppID and AppKey.
+leancloud_visitors:
+  enable: true
+  app_id: df95ecDckjvORDCh8EG5yruO-gzGzoHsz
+  app_key: bLtDdGCmo4pQOJ6h3q1eWLlK
+
+# 个性化设置
+personalized:
+  clickLove: true
+  canvasNest: true
+  postEndTag: false
+
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages: 

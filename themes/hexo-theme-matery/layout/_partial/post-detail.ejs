@@ -32,6 +32,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <%- page.content %>
+		<% if (theme.personalized.postEndTag) { %>
+		<!-- “本文结束”标记 -->
+		<%- partial('_partial/post-end-tag') %>
+		<% } %>
             </div>
             <hr/>
 
