@@ -131,7 +131,7 @@ $ sudo make install install-doc install-html install-info
 $ git clone git://git.kernel.org/pub/scm/git/git.git
 ```
 
-## 五、Git配置 ##
+## 五、Git 配置 ##
 Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。
 
 ### 5.1 配置文件的存储位置 ###
@@ -173,19 +173,23 @@ git config --global merge.tool vimdiff
 ```shell
 git config --list
 ```
- 有时候会看到重复的变量名，这是因为Git从不同的的配置文件中(例如：/etc/gitconfig以及~/.gitconfig)读取相同的变量名。在这种情况下，对每个唯一的变量名，Git使用最后的那个值。
+
+有时候会看到重复的变量名，这是因为Git从不同的的配置文件中(例如：/etc/gitconfig以及~/.gitconfig)读取相同的变量名。在这种情况下，对每个唯一的变量名，Git使用最后的那个值。
  
- 也可以直接查阅某个环境变量的设定，使用如下命令 git config {key}： 
+也可以直接查阅某个环境变量的设定，使用如下命令 git config {key}： 
 ```shell
 git config user.name
 ```
 
 也可以直接查看某个配置文件的配置信息：
 ```shell
-git config --global -l
+git config --local  --list
 or
-git config --system -l
+git config --global  --list
+or
+git config --system --list
 ```
+上面的三个命令分别为：查看当前仓库配置信息、查看当前用户(global)配置信息、查看系统配置信息。
 
 ### 5.7 git 配置文件 ###
 1. 系统级文件 $(prefix)/etc/gitconfig，本文即 /usr/etc/gitconfig 文件。

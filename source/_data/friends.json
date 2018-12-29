@@ -82,5 +82,19 @@
     "introduction": "小专栏 —— 专业人士的创作知识社区",
     "url": "https://xiaozhuanlan.com/",
     "title": "前去学习"
+  },
+  {
+    "avatar": "http://www.jikedaohang.com/static/img/jk.png",
+    "name": "极客导航",
+    "introduction": "极客导航 —— 程序员自己的导航",
+    "url": "http://www.jikedaohang.com/",
+    "title": "前去学习"
+  },
+  {
+    "avatar": "http://www.wanandroid.com/resources/image/pc/logo.png",
+    "name": "玩Android",
+    "introduction": "玩Android —— 每日推荐优质文章",
+    "url": "http://www.wanandroid.com/",
+    "title": "前去学习"
   }
 ]

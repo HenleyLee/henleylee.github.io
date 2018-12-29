@@ -128,4 +128,5 @@ live2d:
     height: 300
   mobile:
     show: true
+    scale: 0.5
 
