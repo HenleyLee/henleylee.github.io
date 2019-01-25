@@ -58,6 +58,14 @@ reward:
   wechat: /medias/reward/wechat.jpg
   alipay: /medias/reward/alipay.jpg
 
+# Whether to activate the copyright information of the blog and author when copying the post content.
+# minCharNumber: Approve copyright information by copying at least how many characters.
+# 是否激活复制文章时追加博客和作者的版权信息.
+copyright:
+  enable: false
+  minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
+  description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
+
 # Whether to activate the mathjax, this is a global configuration, but the post still does not open the mathjax rendering.
 # Considering that the mathjax loading is time consuming,
 # you also need to add `mathjax: true` to the Front-matter of the post that needs to be rendered.
@@ -67,6 +75,26 @@ mathjax:
   enable: false
   cdn: https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
+# Post word count, reading duration, site total word count.
+# Before you activate, please confirm that you have installed the hexo-wordcount plugin,
+# install the plugin command: `npm i --save hexo-wordcount`.
+# 文章字数统计、阅读时长、总字数统计(https://github.com/willin/hexo-wordcount)
+# 激活前请确认你已经安装了 hexo-wordcount 插件，安装命令: `npm i --save hexo-wordcount`
+wordCount:
+  enable: true
+  wordCount: true      # 单篇 字数统计
+  min2read: true       # 单篇 阅读时长
+  totalCount: true     # 全站 字数统计
+
+# Whether to activate the 'love' effect of clicking on the page.
+# 是否激活点击页面的'爱心'效果，默认激活.
+clickLove:
+  enable: true
+
+# 是否激活页面的动态背景效果，默认激活.
+canvasNest:
+  enable: true
+  
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
@@ -203,6 +231,11 @@ verifyPassword:
   promptMessage: 请输入访问本文章的密码
   errorMessage: 密码错误，将返回主页！
 
+# busuanzi(http://busuanzi.ibruce.info/) website statistics
+# 不蒜子(http://busuanzi.ibruce.info/) 网站统计
+busuanziStatistics:
+  enable: true
+
 # Add google analytics configuration
 # 添加 Google Analytics 配置
 googleAnalytics:
@@ -218,8 +251,6 @@ leancloud_visitors:
 
 # 个性化设置
 personalized:
-  clickLove: true
-  canvasNest: true
   postEndTag: false
 
 # The post featured images that needs to be displayed when there is no image.

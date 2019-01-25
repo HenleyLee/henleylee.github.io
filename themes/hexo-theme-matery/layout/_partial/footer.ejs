@@ -3,8 +3,25 @@
         <div class="col s12 m8 l8 copy-right">
 		&#xA9; 2018 <a href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
 		Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            <% if (theme.wordCount.enable && theme.wordCount.totalCount) { %>
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color"><%= totalcount(site) %></span>
+            <% } %>
+
+            <% let socialClass = '' %>
+                <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
+                <% socialClass = 'social-statis' %><br>
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次&nbsp;
+                </span>
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+                </span>
+            <% } %>
         </div>
-        <div class="col s12 m4 l0 social-link"><%- partial('_partial/social-link') %></div>
+        <div class="col s12 m4 l4 social-link <%- socialClass %>"><%- partial('_partial/social-link') %></div>
     </div>
 </footer>
 
