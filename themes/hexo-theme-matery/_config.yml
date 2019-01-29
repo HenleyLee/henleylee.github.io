@@ -33,7 +33,7 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: /favicon.png
+favicon: /favicon.ico
 logo: /medias/logo.png
 
 # The configuration of the second button in the home banner,
@@ -62,7 +62,7 @@ reward:
 # minCharNumber: Approve copyright information by copying at least how many characters.
 # 是否激活复制文章时追加博客和作者的版权信息.
 copyright:
-  enable: false
+  enable: true
   minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
   description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
 
@@ -94,7 +94,11 @@ clickLove:
 # 是否激活页面的动态背景效果，默认激活.
 canvasNest:
   enable: true
-  
+
+# 是否激活页面底部的本站运行时间，默认激活.
+runTime:
+  enable: true
+
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
@@ -219,6 +223,7 @@ githubLink:
   enable: true
   url: https://github.com/lyl873825813
   title: GitHub
+  tooltip: false
 
 # The password verification feature of read post. To use this feature,
 # activate the configuration item and write the 'password' key and Cipher in the post's Front-matter.

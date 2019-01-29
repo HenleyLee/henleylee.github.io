@@ -365,6 +365,21 @@ live2d:
     show: true
 ```
 
+### 文章字数阅读时长统计 ###
+安装 [hexo-wordcount](https://github.com/willin/hexo-wordcount) 在 `Hexo` 中实现 `文章字数、阅读时长统计`功能，安装命令如下：
+```bash
+$ npm i --save hexo-wordcount
+```
+
+在当前主题下的 `_config.yml` 文件中，新增以下的配置项：
+```yml
+wordCount:
+  enable: true
+  wordCount: true      # 单篇 字数统计
+  min2read: true       # 单篇 阅读时长
+  totalCount: true     # 全站 字数统计
+```
+
 ## 添加 Hexo 个性化设置 ##
 ### 鼠标点击出现爱心特效 ###
 在当前主题的 `source/js` 下创建 `love.js` 文件，并将以下代码复制到创建的 `love.js` 文件中：

@@ -14,6 +14,7 @@ date: 2019-01-13 10:36:35
 Android SDK 提供了 `GestureDetector` 类来帮助开发者识别一些基本的触摸手势，主要是通过它的 `onTouchEvent(event)` 方法完成了不同手势的识别。虽然它能识别手势，但是不同的手势要怎么处理，应该是提供给程序员实现的。
 
 ## GestureDetector 介绍 ##
+
 Detector 的意思就是探测者，所以 `GestureDetector` 就是用来监听手势的发生。`GestureDetector` 类对外提供了三个接口：`OnGestureListener`、`OnDoubleTapListener`、`OnContextClickListener`，用来回调不同类型的触摸事件。`GestureDetector` 的类图如下如所示：
 ![GestureDetector类图](https://lyl873825813.github.io/medias/view/view_gesture_detector.png)
 

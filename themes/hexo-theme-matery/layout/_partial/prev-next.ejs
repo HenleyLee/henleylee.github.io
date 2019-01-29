@@ -66,7 +66,7 @@ var featureImages = theme.featureImages;
                 <div class="card-action article-tags">
                     <% page.prev.tags.forEach(tag => { %>
                     <a href="<%- url_for(tag.path) %>" target="_blank">
-                        <span class="chip bg-color"><%= tag.name %></span>
+                        <span class="chip tag-bg-color"><%= tag.name %></span>
                     </a>
                     <% }); %>
                 </div>
@@ -123,7 +123,7 @@ var featureImages = theme.featureImages;
                 <div class="card-action article-tags">
                     <% page.tags.forEach(tag => { %>
                     <a href="<%- url_for(tag.path) %>" target="_blank">
-                        <span class="chip bg-color"><%= tag.name %></span>
+                        <span class="chip tag-bg-color"><%= tag.name %></span>
                     </a>
                     <% }); %>
                 </div>
@@ -180,7 +180,7 @@ var featureImages = theme.featureImages;
                 <div class="card-action article-tags">
                     <% page.next.tags.forEach(tag => { %>
                     <a href="<%- url_for(tag.path) %>" target="_blank">
-                        <span class="chip bg-color"><%= tag.name %></span>
+                        <span class="chip tag-bg-color"><%= tag.name %></span>
                     </a>
                     <% }); %>
                 </div>
@@ -237,7 +237,7 @@ var featureImages = theme.featureImages;
                 <div class="card-action article-tags">
                     <% page.tags.forEach(tag => { %>
                     <a href="<%- url_for(tag.path) %>" target="_blank">
-                        <span class="chip bg-color"><%= tag.name %></span>
+                        <span class="chip tag-bg-color"><%= tag.name %></span>
                     </a>
                     <% }); %>
                 </div>
