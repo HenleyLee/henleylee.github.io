@@ -17,6 +17,7 @@
 <script src="/libs/materialize/js/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
+<script src="/libs/device/current-device.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
@@ -29,14 +30,25 @@
     <script src="/libs/others/click-love.js"></script>
 <% } %>
 
-<!-- 页面动态背景 -->
-<% if (theme.canvasNest.enable) { %>
-    <script src="/libs/others/canvas-nest.min.js"></script>
-<% } %>
-
 <!-- 不蒜子统计 -->
 <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+<% } %>
+
+<!-- 页面动态背景 -->
+<% if (theme.canvasNest.enable) { %>
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
 <% } %>
 
 <!-- 本站运行时间 -->
