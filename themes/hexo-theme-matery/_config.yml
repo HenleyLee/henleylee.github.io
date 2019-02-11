@@ -45,6 +45,14 @@ indexbtn:
   icon: fa-github-alt
   url: https://github.com/lyl873825813
 
+# The configurations of the social link
+# icon/button will not show up if you leave the corresponding socialLink empty
+# 首页 banner 中的第二行个人信息配置，留空即不启用
+socialLink:
+  qq: 873825813
+  email: lyl873825813@gmail.com
+  github: https://github.com/lyl873825813
+
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # 是否激活文章 TOC 功能，并配置TOC支持选中哪些标题类型.
 toc:
@@ -63,7 +71,7 @@ reward:
 # 是否激活复制文章时追加博客和作者的版权信息.
 copyright:
   enable: true
-  minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
+  minCharNumber: 120         # 至少复制多少个字符就追加版权信息.
   description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
 
 # Whether to activate the mathjax, this is a global configuration, but the post still does not open the mathjax rendering.
@@ -240,6 +248,8 @@ verifyPassword:
 # 不蒜子(http://busuanzi.ibruce.info/) 网站统计
 busuanziStatistics:
   enable: true
+  totalTraffic: true               # 总访问量
+  totalNumberOfvisitors: true      # 总人次
 
 # Add google analytics configuration
 # 添加 Google Analytics 配置
@@ -253,10 +263,6 @@ leancloud_visitors:
   enable: true
   app_id: df95ecDckjvORDCh8EG5yruO-gzGzoHsz
   app_key: bLtDdGCmo4pQOJ6h3q1eWLlK
-
-# 个性化设置
-personalized:
-  postEndTag: false
 
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.

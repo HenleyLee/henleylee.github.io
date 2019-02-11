@@ -1,6 +1,6 @@
 <%
 var colorArr = ['#FFCC00', '#4CD964', '#34AADC', '#007AFF', '#5856D6',
-    '#FF2D55', '#1D77EF', '#FF3A2D', '#5BCAFF', '#FC5638', '#0098EF', '#F61232', '#FFFFFF'];
+    '#FF2D55', '#1D77EF', '#FF3A2D', '#5BCAFF', '#FC5638', '#0098EF', '#F61232'];
 var colorCount = colorArr.length;
 var hashCode = function (str) {
     if (!str && str.length === 0) {
@@ -33,7 +33,7 @@ var isCategory = is_category();
                             : colorArr[i - 1];
                 %>
                 <a href="<%- url_for(category.path) %>" title="<%- category.name %>: <%- category.length %>">
-                    <span class="chip center-align waves-effect waves-light
+                    <span class="chip center-align waves-effect waves-light chip-default classificationColor
                             <% if (isCategory && category.name == page.category) { %> chip-active <% } else { %> chip-default <% } %>"
                             style="background-color: <%- color %>;"><%- category.name %>
                         <span class="tag-length"><%- category.length %></span>

@@ -103,6 +103,7 @@ pre {
 
 code {
     padding: 1px 5px;
+    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
     font-size: 0.91rem;
     color: #e96900;
     background-color: #f8f8f8;
@@ -922,6 +923,7 @@ article .article-tags .chip {
     color: #007aff;
     font-weight: 500;
     text-decoration: underline;
+    word-wrap:break-word;
 }
 
 #articleContent .img-item {
@@ -1027,11 +1029,11 @@ table tr:nth-child(2n), thead {
 }
 
 .chip-container .chip {
+    color: #fff;
     margin: 10px 10px;
     padding: 0 16px;
     display: inline-block;
     height: 38px;
-	color: #fff;
     min-width: 80px;
     line-height: 39px;
     font-size: 1rem;
@@ -1044,7 +1046,7 @@ table tr:nth-child(2n), thead {
 
 .chip-container .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%) !important;
+    background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%) !important;
 }
 
 .chip .tag-length {
@@ -1525,14 +1527,15 @@ table tr:nth-child(2n), thead {
 }
 
 .other-skills .chip {
+    color: #34495e;
     background-color: #fff;
     border: 1px solid #eee;
 }
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);;
-    border: 1px solid #4cbf30;
+    background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%);;
+    border: 1px solid #1AD6FD;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
@@ -1560,6 +1563,7 @@ footer {
 
 footer .social-statis {
     margin-top: 10px;
+    position: relative;
 }
 
 footer a {
@@ -1635,4 +1639,59 @@ footer .copy-right {
 .top-scroll .btn-floating i {
     line-height: 48px;
     font-size: 1.8rem;
+}
+
+@media screen and (min-width: 368px) and (max-width: 767px) {
+    .info-break-policy {
+        word-break: keep-all;
+        float: left;
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .info-break-policy {
+        word-break: keep-all;
+        float: left;
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 367px) {
+    .info-break-policy {
+        word-break: keep-all;
+        float: left;
+        width: 100%;
+    }
+
+    .custom-card {
+        padding: 0 2px !important;
+    }
+}
+
+.info-break-policy {
+    margin-bottom: 8px;
+}
+
+.clearfix {
+    clear: left;
+}
+
+.img-shadow {
+  box-shadow: 0 0 10px 1px #eee;
+}
+
+.img-margin {
+  margin: 15px auto 15px auto;
+}
+
+.center-caption {
+  color: #5f5f5f;
+  padding: 10px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.caption {
+  text-align: center;
+  margin: 0 auto 15px auto;
 }

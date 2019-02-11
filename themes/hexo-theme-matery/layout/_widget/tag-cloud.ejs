@@ -1,6 +1,6 @@
 <%
 var colorArr = ['#FFCC00', '#4CD964', '#34AADC', '#007AFF', '#5856D6',
-    '#FF2D55', '#1D77EF', '#FF3A2D', '#5BCAFF', '#FC5638', '#0098EF', '#F61232', '#FFFFFF'];
+    '#FF2D55', '#1D77EF', '#FF3A2D', '#5BCAFF', '#FC5638', '#0098EF', '#F61232'];
 var colorCount = colorArr.length;
 var hashCode = function (str) {
     if (!str && str.length === 0) {
@@ -28,11 +28,10 @@ var isTag = is_tag();
                 <% site.tags.map(function(tag) { %>
                 <%
                     i++;
-                    var color = i >= colorCount ? colorArr[Math.abs(hashCode(tag.name) % colorCount)]
-                            : colorArr[i - 1];
+                    var color = i >= colorCount ? colorArr[Math.abs(hashCode(tag.name) % colorCount)] : colorArr[i - 1];
                 %>
                 <a href="<%- url_for(tag.path) %>" title="<%- tag.name %>: <%- tag.length %>">
-                    <span class="chip center-align waves-effect waves-light
+                    <span class="chip center-align waves-effect waves-light chip-default classificationColor
                             <% if (isTag && tag.name == page.tag) { %> chip-active <% } else { %> chip-default <% } %>"
                             data-tagname="<%- tag.name %>" style="background-color: <%- color %>;"><%- tag.name %>
                         <span class="tag-length"><%- tag.length %></span>
