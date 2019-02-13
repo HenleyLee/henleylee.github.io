@@ -143,16 +143,16 @@ mySkills:
   enable: true
   data:
     Java:
-      background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
-      percent: 85%
+      background: 'linear-gradient(to right, #F80000 0%, #F80000 100%)'
+      percent: 90%
     Android:
-      background: 'linear-gradient(to right, #008577 0%, #008577 100%)'
+      background: 'linear-gradient(to right, #77C353 0%, #77C353 100%)'
       percent: 90%
     Kotlin:
       background: 'linear-gradient(to right, #F88909 0%, #F88909 100%)'
       percent: 90%
     Gradle:
-      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
+      background: 'linear-gradient(to right, #02303A 0%, #02303A 100%)'
       percent: 80%
     SQL:
       background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
