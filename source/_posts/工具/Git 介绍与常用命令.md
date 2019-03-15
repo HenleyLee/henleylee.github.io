@@ -1,6 +1,7 @@
 ---
 title: Git 介绍与常用命令
 top: true
+cover: true
 categories: 工具
 tags:
   - Git

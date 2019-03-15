@@ -1,7 +1,8 @@
 ---
 title: ADB 操作命令详解及用法大全
-categories: 工具
 top: true
+cover: true
+categories: 工具
 tags:
   - ADB
   - 命令行

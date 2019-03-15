@@ -11,7 +11,7 @@
 - Simple and beautiful, and post is Beautiful and readable.
 - [Material Design](https://material.io/).
 - Responsive design,which can be displayed well on desktop, tablet, mobile phone, etc.
-- Changing 'banner' picture dynamically everday.
+- Home page carousel posts and changing 'banner' picture dynamically everday.
 - Blog posts list with waterflow(There will be 24 images if the articl dosn't have  featured pictures).
 - Archive page with timeline.
 - Tags page of the **word cloud** and categories page of the **radar chart**
@@ -24,6 +24,7 @@
 - Can be set to do password verification when reading a post
 - Comment module of [Gitalk](https://gitalk.github.io/), [Gitment](https://imsun.github.io/gitment/), [Valine](https://valine.js.org/) and [Disqus](https://disqus.com/).(Gitalk is recommended)
 - Integrated [Busuanzi Statistics](http://busuanzi.ibruce.info/), `Google Analytics` and post word count statistics.
+- Support music playback and video playback on the homepage
 
 ## Download
 
@@ -254,7 +255,7 @@ Website footer may need to be customized, and it is not convenient to make confi
 
 ### Modify social links
 
-In the `/layout/_partial/social-link.ejs` file of the theme, you can modify or add the social link address you need. To add a link, please refer to the following code:
+In the theme `_config.yml` file, the configuration of `QQ`, `GitHub` and mailbox is supported by default. In the `/layout/_partial/social-link.ejs` file of the theme, you can add or modify the social link address as you need. To add a link, please refer to the following code:
 
 ```html
 <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
@@ -275,25 +276,105 @@ You can search social icon such as `fa-github` in [Font Awesome](https://fontawe
 - Wechat: `fa-wechat`
 - QQ: `fa-qq`
 
-> **Note**: The version of `Font Awesome` is `4.5.0`.
+> **Note**: The version of `Font Awesome` is `4.7.0`.
 
-## Post Front-matter example
+### Configure music player (optional)
 
-The following is an example and description of the article `Front-matter`, and all content is **not required**.But we still suggest you write the value of `title` and `date`.
+To support music playing, you must activate the file of music playing configuration and music data.
+
+First, create a new `musics.json` file in the `_data` directory (new if you don't have one) of your blog's `source` directory. The contents of the file are as follows:
+
+```json
+[{
+	"name": "五月雨变奏电音",
+	"artist": "AnimeVibe",
+	"url": "http://xxx.com/music1.mp3",
+	"cover": "http://xxx.com/music-cover1.png"
+}, {
+	"name": "Take me hand",
+	"artist": "DAISHI DANCE,Cecile Corbel",
+	"url": "/medias/music/music2.mp3",
+	"cover": "/medias/music/cover2.png"
+}, {
+	"name": "Shape of You",
+	"artist": "J.Fla",
+	"url": "http://xxx.com/music3.mp3",
+	"cover": "http://xxx.com/music-cover3.png"
+}]
+```
+
+> **Note**: The properties in the above JSON: `name`, `artist`, `url`, `cover` indicate the name of the music, the author, the music file address, and the music cover, respectively.
+
+Then, activate the configuration in the theme's `_config.yml` configuration file:
+
+```yaml
+# Whether to display the musics.
+music:
+  enable: true
+  showTitle: false
+  title: Listen to music
+  fixed: false # enable fixed mode
+  autoplay: false # audio autoplay
+  theme: '#42b983'
+  loop: 'all' # player loop play, values: 'all', 'one', 'none'
+  order: 'list' # player play order, values: 'list', 'random'
+  preload: 'auto' # values: 'none', 'metadata', 'auto'
+  volume: 0.7 # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+  listFolded: false # indicate whether list should folded at first
+  listMaxHeight: # list max height
+```
+
+## Post Front-matter
+
+### Detailed Front-matter options
+
+Everything in the Front-matter option is **not required**. But I still recommend at least filling in the values of `title` and `date`.
+
+| Options   | Defaults              | Description                                             |
+| ---------- | --------------------------- | ------------------------------------------------------------ |
+| title      | Markdown's file title | Post title, it is highly recommended to fill in this option |
+| date       | Date and time when the file created | Publish time, it is highly recommended to fill in this option, and it is best to ensure that it is globally unique |
+| author     | `author` in root `_config.yml` | Post author                                    |
+| img        | a value in `featureImages`  | Post feature image，For exampl: `http://xxx.com/xxx.jpg` |
+| top        | `true`                      | Recommended post (whether the post is topped), if the `top` value is `true`, it will be recommended as a homepage post. |
+| cover      | `false`                     | The `v1.0.2` version is added to indicate whether the post needs to be added to the homepage carousel cover. |
+| coverImg   | null                        | The new version of `v1.0.2` indicates that the post needs to display the image path on the cover of the homepage. If not, the default image of the post is used by default. |
+| password   | null                        | The post read the password. If you want to set the reading verification password for the article, you can set the value of `password`, which must be encrypted with `SHA256` to prevent others from seeing it. The premise is that the `verifyPassword` option is activated in the theme's `config.yml` |
+| toc        | `true`                      | Whether TOC is turned on or not, you can turn off the TOC function for an article. The premise is that the `toc` option is activated in the theme's `config.yml` |
+| mathjax    | `false`                     | Whether to enable math formula support, whether this article starts `mathjax`, and you need to open it in the theme `_config.yml` file. |
+| summary    | null                        | Post summary, custom post summary content, if the attribute has a value, the post card summary will display the text, otherwise the program will automatically intercept part of the article as a summary |
+| categories | null                        | Article classification, the classification of this topic represents a macroscopically large classification, only one article is recommended for one classification. |
+| tags       | null                        | Post label, a post can have multiple labels |
+
+> **Note**: 
+> 1. post's featured piature will take remainder if not writing the `img` property,and chose the featured picture of theme to let all of post's picture **have their own characteristics**.
+> 2. The value of `date` should try to ensure that each article is unique, because `Gitalk` and `Gitment` recognize `id` in this topic are uniquely identified by the value of `date`.
+> 3. If you want to set the ability to read the verification password for the article, you should not only set the value of the password with SHA256 encryption in Front-matter, but also activate the configuration in the theme `_config.yml`.
+
+The following are examples of the post's `Front-matter`.
+
+### The simplest example
+
+```yaml
+---
+title: typora-vue-theme Theme introduction
+date: 2018-09-07 09:25:00
+---
+```
+
+### The most comprehensive example
 
 ```yaml
 ---
 title: typora-vue-theme Theme introduction
 date: 2018-09-07 09:25:00
 author: Qi Zhao
-# or: http://xxx.com/xxx.jpg
 img: /source/images/xxx.jpg
-# If top value is true, it will be the homepage recommendation post
 top: true
-# If you want to set the reading verification password for the post, 
-# you can set the password value, which must be encrypted with SHA256 to prevent others from seeing it.
+cover: true
+coverImg: /images/1.jpg
 password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
-# Does this post open mathjax, Need to be activated in the theme's _config.yml.
+toc: false
 mathjax: false
 summary: This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
 categories: Markdown
@@ -302,11 +383,6 @@ tags:
   - Markdown
 ---
 ```
-
-> **Note**: 
-> 1. post's featured piature will take remainder if not writing the `img` property,and chose the featured picture of theme to let all of post's picture **have their own characteristics**.
-> 2. The value of `date` should try to ensure that each article is unique, because `Gitalk` and `Gitment` recognize `id` in this topic are uniquely identified by the value of `date`.
-> 3. If you want to set the ability to read the verification password for the article, you should not only set the value of the password with SHA256 encryption in Front-matter, but also activate the configuration in the theme `_config.yml`.
 
 ## Screenshot
 
@@ -327,7 +403,8 @@ tags:
 You can modify some custom modification in `_config.yml` as follows:
 
 - Menu
-- Inspirational quotes on Home
+- My dream
+- Home music player and video player configuration
 - Whether to display the title of the recommended posts
 - `favicon` and `Logo`
 - profiles
@@ -356,11 +433,6 @@ Search `.bg-color` to modify background color in `/source/css/matery.css` in the
     background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
 }
 
-/* The color of the text with the same background color is only used in one place on the front page. You can also apply it to other places.*/
-.text-color {
-    color: #0f9d58 !important;
-}
-
 @-webkit-keyframes rainbow {
    /* Dynamically switch background colors. */
 }
@@ -372,10 +444,30 @@ Search `.bg-color` to modify background color in `/source/css/matery.css` in the
 
 ### Modify banner picture and post's featured pictures
 
-You can change `banner` pictures in `/source/medias/banner` as you like .Theme code can switch  dynamically every day and just need 7 pictures.If you master `JavaScript`,you can change it to your favorite swithing logic,such as Random switching.The code of switching `banner`is in `<script></script>` of `/layout/_partial/bg-cover.ejs`file.
+You can change `banner` pictures in `/source/medias/banner` as you like .Theme code can switch  dynamically every day and just need 7 pictures.If you master `JavaScript`,you can change it to your favorite swithing logic,such as Random switching.The code of switching `banner`is in `<script></script>` of `/layout/_partial/bg-cover-content.ejs`file.
 
 ```javascript
 $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 ```
 
 There are 24 featured pictures in `/source/medias/featureimages`,you can add or delete,and modify it in `_config.yml` at the sametime.
+
+## Changelog
+
+- v1.0.3
+  - Added `TOC` expansion, shrink button and related configuration, this button is displayed by default;
+- v1.0.2
+  - Upgraded the [Materialize](https://materializecss.com/) framework version to `1.0.0`, refactoring and modifying some files or problems during the upgrade process;
+  - Added a full-screen carousel effect on the front cover of the home page to set more important posts to the home page carousel;
+  - Fix the first button on the front page is Chinese;
+  - Fixed an issue where clicking search input on the iPhone to get focus;
+  - Fixed an issue where the page was enlarged after the input box on the iPhone got focus;
+  - Fix some posts or UI display issues;
+- v1.0.1
+  - Adjust the file request path of `css` and `js` in the `_config.yml` of the theme, so that you can quickly configure their own CDN;
+  - Whether the new code is configurable or not, the default is a line break;
+  - The `TOC` function is activated by default, and the `Front-matter` configuration option for `TOC` is turned off for a post;
+  - Fixed an issue where the highlighted directory option was inaccurate when scrolling through the post;
+  - Remove the search box under `IOS` to automatically get the focus attribute, preventing the view from moving up after automatically getting the focus;
+- v1.0.0
+  - Added all the basic features;

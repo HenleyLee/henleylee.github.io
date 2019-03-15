@@ -13,7 +13,7 @@ $(function () {
     articleCardHover();
 
     /*菜单切换*/
-    $('.button-collapse').sideNav();
+    $('.sidenav').sidenav();
 
     /* 修复文章卡片 div 的宽度. */
     let fixPostCardWidth = function (srcId, targetId) {
@@ -74,7 +74,7 @@ $(function () {
 
         $('#articleContent img').each(function () {
             let imgPath = $(this).attr('src');
-            $(this).wrap('<div class="img-item" data-src="' + imgPath + '"></div>');
+            $(this).wrap('<div class="img-item" data-src="' + imgPath + '" data-sub-html=".caption"></div>');
             // 图片添加阴影
             $(this).addClass("img-shadow img-margin");
             // 图片添加字幕
@@ -116,9 +116,7 @@ $(function () {
     };
     articleInit();
 
-    $('#toggleSearch').click(function () {
-        $('#searchModal').openModal();
-    });
+    $('.modal').modal();
 
     /*回到顶部*/
     $('#backTop').click(function () {

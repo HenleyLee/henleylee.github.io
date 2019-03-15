@@ -1,107 +1,107 @@
 [
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/luokangyuan.jpg",
-    "name": "码酱",
-    "introduction": "我不是大佬，只是在追寻大佬的脚步",
-    "url": "http://luokangyuan.com/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/gityuan.png",
-    "name": "Gityuan",
-    "introduction": "Gityuan —— Keep on going never give up!",
-    "url": "https://gityuan.com/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/gcssloop.jpg",
-    "name": "GcsSloop",
-    "introduction": "GcsSloop —— 一名来自2.5次元的魔法师",
-    "url": "https://www.gcssloop.com/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/lmj623565791.jpg",
-    "name": "张鸿洋",
-    "introduction": "生命不息，奋斗不止，万事起于忽微，量变引起质变",
-    "url": "https://me.csdn.net/lmj623565791",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/sinyu890807.jpg",
-    "name": "郭霖",
-    "introduction": "每当你在感叹，如果有这样一个东西就好了的时候，请注意...",
-    "url": "https://me.csdn.net/sinyu890807",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/luoshengyang.jpg",
-    "name": "罗升阳",
-    "introduction": "老罗的Android之旅 —— 爱生活，爱Android",
-    "url": "https://me.csdn.net/Luoshengyang",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/juejin.png",
-    "name": "掘金",
-    "introduction": "juejin.im —— 一个帮助开发者成长的社区",
-    "url": "https://juejin.im/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/jianshu.png",
-    "name": "简书",
-    "introduction": "简书 —— 一个优质的创作社区，在这里，你可以任性地创作",
-    "url": "https://www.jianshu.com/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/oschina.png",
-    "name": "开源中国",
-    "introduction": "开源中国 —— 找到您想要的开源项目，分享和交流",
-    "url": "https://www.oschina.net/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/androidweekly.png",
-    "name": "Android Weekly",
-    "introduction": "Write the code, Change the world",
-    "url": "https://androidweekly.io/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/androidblog.png",
-    "name": "Android Blog",
-    "introduction": "优质、精简Android博客周刊。每周一准时更新。",
-    "url": "http://androidblog.cn/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/material.png",
-    "name": "Material Design",
-    "introduction": "Material is a design system – backed by open-source code.",
-    "url": "https://www.material.io/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/xiaozhuanlan.png",
-    "name": "小专栏",
-    "introduction": "小专栏 —— 专业人士的创作知识社区",
-    "url": "https://xiaozhuanlan.com/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/jikedaohang.png",
-    "name": "极客导航",
-    "introduction": "极客导航 —— 程序员自己的导航",
-    "url": "http://www.jikedaohang.com/",
-    "title": "前去学习"
-  },
-  {
-    "avatar": "https://lyl873825813.github.io/medias/friends/wanandroid.png",
-    "name": "玩Android",
-    "introduction": "玩Android —— 每日推荐优质文章",
-    "url": "http://www.wanandroid.com/",
-    "title": "前去学习"
-  }
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/luokangyuan.jpg",
+        "name": "码酱",
+        "introduction": "我不是大佬，只是在追寻大佬的脚步",
+        "url": "http://luokangyuan.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/gityuan.png",
+        "name": "Gityuan",
+        "introduction": "Gityuan —— Keep on going never give up!",
+        "url": "https://gityuan.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/gcssloop.jpg",
+        "name": "GcsSloop",
+        "introduction": "GcsSloop —— 一名来自2.5次元的魔法师",
+        "url": "https://www.gcssloop.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/lmj623565791.jpg",
+        "name": "张鸿洋",
+        "introduction": "生命不息，奋斗不止，万事起于忽微，量变引起质变",
+        "url": "https://me.csdn.net/lmj623565791",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/sinyu890807.jpg",
+        "name": "郭霖",
+        "introduction": "每当你在感叹，如果有这样一个东西就好了的时候，请注意...",
+        "url": "https://me.csdn.net/sinyu890807",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/luoshengyang.jpg",
+        "name": "罗升阳",
+        "introduction": "老罗的Android之旅 —— 爱生活，爱Android",
+        "url": "https://me.csdn.net/Luoshengyang",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/juejin.png",
+        "name": "掘金",
+        "introduction": "juejin.im —— 一个帮助开发者成长的社区",
+        "url": "https://juejin.im/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/jianshu.png",
+        "name": "简书",
+        "introduction": "简书 —— 一个优质的创作社区，在这里，你可以任性地创作",
+        "url": "https://www.jianshu.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/oschina.png",
+        "name": "开源中国",
+        "introduction": "开源中国 —— 找到您想要的开源项目，分享和交流",
+        "url": "https://www.oschina.net/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/androidweekly.png",
+        "name": "Android Weekly",
+        "introduction": "Write the code, Change the world",
+        "url": "https://androidweekly.io/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/androidblog.png",
+        "name": "Android Blog",
+        "introduction": "优质、精简Android博客周刊。每周一准时更新。",
+        "url": "http://androidblog.cn/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/material.png",
+        "name": "Material Design",
+        "introduction": "Material is a design system – backed by open-source code.",
+        "url": "https://www.material.io/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/xiaozhuanlan.png",
+        "name": "小专栏",
+        "introduction": "小专栏 —— 专业人士的创作知识社区",
+        "url": "https://xiaozhuanlan.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/jikedaohang.png",
+        "name": "极客导航",
+        "introduction": "极客导航 —— 程序员自己的导航",
+        "url": "http://www.jikedaohang.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://lyl873825813.github.io/medias/friends/wanandroid.png",
+        "name": "玩Android",
+        "introduction": "玩Android —— 每日推荐优质文章",
+        "url": "http://www.wanandroid.com/",
+        "title": "前去学习"
+    }
 ]

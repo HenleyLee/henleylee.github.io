@@ -1,30 +1,73 @@
 # main menu navigation url and icon
 # 配置菜单导航的名称、路径和图标icon.
 menu:
-  首页:
+  Index:
     url: /
     icon: fa-home
-  标签:
+  Tags:
     url: /tags
     icon: fa-tags
-  分类:
+  Categories:
     url: /categories
     icon: fa-bookmark
-  归档:
+  Archives:
     url: /archives
     icon: fa-archive
-  关于:
+  About:
     url: /about
     icon: fa-user-circle-o
-  友情链接:
+  Friends:
     url: /friends
     icon: fa-address-book
+
+# Index cover carousel configuration.
+# 首页封面轮播图的相关配置.
+cover:
+  showPrevNext: true   # 是否显示左右切换按钮. Whether to display the left and right toggle buttons.
+  showIndicators: true # 是否显示指示器. # Whether to display the indicators
+  autoLoop: true       # 是否自动轮播. Whether it is automatically rotated.
+  duration: 120        # 切换延迟时间. Switching delay time.
+  intervalTime: 5000   # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
 
 # index page dream text,
 # 配置首页显示"梦想"的语句.
 dream:
   enable: true
+  showTitle: true
+  title: 我的梦想
   text: The best preparation for tomorrow is doing your best today.
+
+# Whether to display the musics.
+# 是否在首页显示音乐.
+music:
+  enable: true
+  showTitle: true
+  title: 听听音乐
+  fixed: false         # 开启吸底模式
+  autoplay: false      # 是否自动播放
+  theme: '#007aff'
+  loop: 'all'          # 音频循环播放, 可选值: 'all', 'one', 'none'
+  order: 'list'        # 音频循环顺序, 可选值: 'list', 'random'
+  preload: 'none'      # 预加载，可选值: 'none', 'metadata', 'auto'
+  volume: 0.7          # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
+  listFolded: true     # 列表默认折叠
+  listMaxHeight:       # 列表最大高度
+
+# Whether to display the videos.
+# 是否在首页显示视频.
+video:
+  enable: false
+  showTitle: true
+  title: 精彩视频
+  url: https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4  # 必填
+  pic:
+  thumbnails:
+  height:              # 如：400
+  autoplay: false      # 是否自动播放
+  theme: '#007aff'
+  loop: false          # 是否循环播放
+  preload: 'auto'      # 预加载，可选值: 'none', 'metadata', 'auto'
+  volume: 0.7
 
 # Whether to display the title of the recommended posts
 # 是否显示推荐文章的标题
@@ -45,7 +88,7 @@ indexbtn:
   icon: fa-github-alt
   url: https://github.com/lyl873825813
 
-# The configurations of the social link
+# The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
@@ -54,10 +97,18 @@ socialLink:
   github: https://github.com/lyl873825813
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
-# 是否激活文章 TOC 功能，并配置TOC支持选中哪些标题类型.
+# You can add `toc: false` to the Front-matter of a post to turn off the TOC.
+# 是否激活文章 TOC 功能，并配置TOC支持选中哪些标题类型，这是全局配置。
+# 可以在某篇文章的 Front-matter 中再加上`toc: false`，使该篇文章关闭TOC目录功能
 toc:
   enable: true
   heading: h2, h3, h4, h5
+  showToggleBtn: true # 是否显示切换TOC目录展开收缩的按钮
+
+# Whether the code is broken.
+# 代码是否折行
+code:
+  break: true
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
@@ -257,12 +308,37 @@ googleAnalytics:
   enable: false
   id:
 
-# Show number of visitors to each article.
-# You can visit LeanCloud get AppID and AppKey.
-leancloud_visitors:
-  enable: true
-  app_id: df95ecDckjvORDCh8EG5yruO-gzGzoHsz
-  app_key: bLtDdGCmo4pQOJ6h3q1eWLlK
+# The used front-end library can be replaced with the corresponding CDN address as needed,
+# If the specific version is not specified below, you can use the latest version.
+# 使用到的前端库，可按需替换成对应的CDN地址，如果下面未指定具体的版本号，使用最新的版本即可.
+libs:
+  css:
+    fontAwesome: /libs/awesome/css/font-awesome.min.css              # V4.7.0
+    materialize: /libs/materialize/materialize.min.css               # 1.0.0
+    aos: /libs/aos/aos.css
+    animate: /libs/animate/animate.min.css                           # V3.5.1
+    lightgallery: /libs/lightGallery/css/lightgallery.min.css        # V1.6.11
+    aplayer: /libs/aplayer/APlayer.min.css
+    dplayer: /libs/dplayer/DPlayer.min.css
+    gitalk: /libs/gitalk/gitalk.css
+    jqcloud: /libs/jqcloud/jqcloud.css
+    tocbot: /libs/tocbot/tocbot.css
+  js:
+    jquery: /libs/jquery/jquery-2.2.0.min.js
+    materialize: /libs/materialize/materialize.min.js                # 1.0.0
+    masonry: /libs/masonry/masonry.pkgd.min.js                       # v4.0.0
+    aos: /libs/aos/aos.js
+    scrollProgress: /libs/scrollprogress/scrollProgress.min.js
+    lightgallery: /libs/lightGallery/js/lightgallery-all.min.js      # V1.6.11
+    clicklove: /libs/others/clicklove.js
+    busuanzi: /libs/others/busuanzi.pure.mini.js
+    aplayer: /libs/aplayer/APlayer.min.js
+    dplayer: /libs/dplayer/DPlayer.min.js
+    crypto: /libs/cryptojs/crypto-js.min.js
+    echarts: /libs/echarts/echarts.min.js
+    gitalk: /libs/gitalk/gitalk.min.js
+    jqcloud: /libs/jqcloud/jqcloud-1.0.4.min.js
+    tocbot: /libs/tocbot/tocbot.min.js
 
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
