@@ -1,8 +1,8 @@
 ---
 title: TCP 和 UDP 协议的区别
-categories: Java
+categories: 学习笔记
 tags:
-  - Java
+  - 学习笔记
 abbrlink: 771dd6d2
 date: 2019-03-09 10:32:35
 ---

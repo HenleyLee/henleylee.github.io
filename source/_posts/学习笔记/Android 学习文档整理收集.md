@@ -1,9 +1,9 @@
 ---
 title: Android 学习文档整理收集
-categories: 学习
+categories: 学习笔记
 tags:
   - Android
-  - 学习
+  - 学习笔记
 abbrlink: 902f4e00
 date: 2018-06-15 18:45:35
 ---

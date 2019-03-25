@@ -97,7 +97,7 @@ $(function () {
                 captionEle.className = 'center-caption';
                 captionEle.innerText = captionText;
                 captionDiv.appendChild(captionEle);
-                // this.insertAdjacentElement('afterend', captionDiv)
+                this.insertAdjacentElement('afterend', captionDiv)
             }
         });
         $('#articleContent, #myGallery').lightGallery({
