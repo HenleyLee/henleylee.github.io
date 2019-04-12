@@ -1,0 +1,1279 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Kotlin 1.1 的新特性, Android, Google, Blog">
+    <meta name="description" content="Kotlin 1.1 新特性Kotlin 1.1 新特性包含以下几个方面：
+
+协程
+其它语言特性
+标准库
+JVM 后端
+JavaScript 后端
+
+协程Kotlin 1.1 的关键新特性就是协程，它带来了 async/wait、yield">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Kotlin 1.1 的新特性 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Kotlin 1.1 的新特性
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kotlin/" target="_blank">
+                                <span class="chip tag-bg-color">Kotlin</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kotlin/" class="post-category" target="_blank">
+                                Kotlin
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-12-10
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        15 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Kotlin-1-1-新特性"><a href="#Kotlin-1-1-新特性" class="headerlink" title="Kotlin 1.1 新特性"></a>Kotlin 1.1 新特性</h2><p>Kotlin 1.1 新特性包含以下几个方面：</p>
+<ul>
+<li>协程</li>
+<li>其它语言特性</li>
+<li>标准库</li>
+<li>JVM 后端</li>
+<li>JavaScript 后端</li>
+</ul>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p>Kotlin 1.1 的关键新特性就是<strong><code>协程</code></strong>，它带来了 <code>async/wait</code>、<code>yield</code> 以及类似的编程模式的支持。Kotlin 设计的关键特性是所有协程都是由库实现的，而不是语言。所以开发者不需要与任何特定的编程范例或者并行库进行绑定。</p>
+<p>协程是一个高效且轻量级的线程，可以挂起并稍后恢复执行。协程是又挂起函数支持的：调用这个函数可能会挂起一个协程，并开启一个新的协程，大多数情况下采用匿名挂起函数(也就是可挂起 lambda 表达式)。</p>
+<p>让我们看一下在 <a href="https://github.com/kotlin/kotlinx.coroutines" target="_blank" rel="noopener">kotlinx.coroutines</a> 库中实现的 <code>async/await</code>:</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token comment" spellcheck="true">// 在后台线程池中运行该代码</span>
+<span class="token keyword">fun</span> <span class="token function">asyncOverlay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">async</span><span class="token punctuation">(</span>CommonPool<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 启动两个异步操作</span>
+    <span class="token keyword">val</span> original <span class="token operator">=</span> <span class="token function">asyncLoadImage</span><span class="token punctuation">(</span><span class="token string">"original"</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> overlay <span class="token operator">=</span> <span class="token function">asyncLoadImage</span><span class="token punctuation">(</span><span class="token string">"overlay"</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 然后应用叠加到两个结果</span>
+    <span class="token function">applyOverlay</span><span class="token punctuation">(</span>original<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> overlay<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 在 UI 上下文中启动新的协程</span>
+<span class="token function">launch</span><span class="token punctuation">(</span>UI<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 等待异步叠加完成</span>
+    <span class="token keyword">val</span> image <span class="token operator">=</span> <span class="token function">asyncOverlay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 然后在 UI 中显示</span>
+    <span class="token function">showImage</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>async { …… }</code> 启动一个协程，当使用 <code>await()</code> 时，协程被挂起，而执行正在等待的操作，并且在等待的操作完成时恢复执行(可能在不同的线程上)。</p>
+<p>标准库通过 <code>yield</code> 和 <code>yieldAll</code> 函数使用协程来支持 <code>lazily generated sequences</code> 惰性生成序列。在这样的序列中，在取回每个元素之后挂起返回序列元素的代码块， 并在请求下一个元素时恢复。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> seq <span class="token operator">=</span> buildSequence <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 产生一个 i 的平方</span>
+        <span class="token function">yield</span><span class="token punctuation">(</span>i <span class="token operator">*</span> i<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 产生一个区间</span>
+    <span class="token function">yieldAll</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token operator">..</span><span class="token number">28</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 输出该序列</span>
+<span class="token function">println</span><span class="token punctuation">(</span>seq<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://kotlinlang.org/docs/reference/coroutines.html" target="_blank" rel="noopener">Coroutines</a> 和 <a href="https://kotlinlang.org/docs/tutorials/coroutines-basic-jvm.html" target="_blank" rel="noopener">Tutorials</a>。</p>
+<blockquote>
+<p>请注意，协程目前还是一个<strong><code>实验性的特性</code></strong>，这意味着 Kotlin 团队不承诺在最终的 1.1 版本时保持该功能的向后兼容性。</p>
+</blockquote>
+<h2 id="其它语言特性"><a href="#其它语言特性" class="headerlink" title="其它语言特性"></a>其它语言特性</h2><h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>类型别名允许给现有的类型定义别名。主要在泛型类型（如集合）以及函数类型中很常用。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">typealias OscarWinners <span class="token operator">=</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span>
+
+<span class="token keyword">fun</span> <span class="token function">countLaLaLand</span><span class="token punctuation">(</span>oscarWinners<span class="token operator">:</span> OscarWinners<span class="token punctuation">)</span> <span class="token operator">=</span>
+        oscarWinners<span class="token punctuation">.</span><span class="token function">count</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"La La Land"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 请注意，类型名称（初始名和类型别名）是可互换的：</span>
+<span class="token keyword">fun</span> <span class="token function">checkLaLaLandIsTheBestMovie</span><span class="token punctuation">(</span>oscarWinners<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">=</span>
+        oscarWinners<span class="token punctuation">[</span><span class="token string">"Best picture"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"La La Land"</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/type-aliases.md" target="_blank" rel="noopener">KEEP</a> 或 <a href="https://kotlinlang.org/docs/reference/type-aliases.html" target="_blank" rel="noopener">Type aliases</a>。</p>
+<h3 id="已绑定的可调用引用"><a href="#已绑定的可调用引用" class="headerlink" title="已绑定的可调用引用"></a>已绑定的可调用引用</h3><p>使用 <code>::</code> 操作符可以获取一个指向特定对象实例的方法或属性的成员引用。之前这只能用在 lambda 表达式上。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> numberRegex <span class="token operator">=</span> <span class="token string">"\\d+"</span><span class="token punctuation">.</span><span class="token function">toRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> numbers <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">,</span> <span class="token string">"123"</span><span class="token punctuation">,</span> <span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>numberRegex<span class="token operator">::</span>matches<span class="token punctuation">)</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/bound-callable-references.md" target="_blank" rel="noopener">KEEP</a> 或 <a href="https://kotlinlang.org/docs/reference/reflection.html#bound-function-and-property-references-since-11" target="_blank" rel="noopener">Bound Function and Property References</a>。</p>
+<h3 id="密封类和数据类"><a href="#密封类和数据类" class="headerlink" title="密封类和数据类"></a>密封类和数据类</h3><p>Kotlin 1.1 移除了一些对 Kotlin 1.0 中已存在的密封类和数据类的限制。现在可以在同一个文件中的任何地方定义一个密封类的子类，而不只是以作为密封类嵌套类的方式。数据类现在可以扩展其它类，这样可以更优雅简洁的定义表达式类的层次结构。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">sealed</span> <span class="token keyword">class</span> Expr
+
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Const</span><span class="token punctuation">(</span><span class="token keyword">val</span> number<span class="token operator">:</span> Double<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Sum</span><span class="token punctuation">(</span><span class="token keyword">val</span> e1<span class="token operator">:</span> Expr<span class="token punctuation">,</span> <span class="token keyword">val</span> e2<span class="token operator">:</span> Expr<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">object</span> NotANumber <span class="token operator">:</span> <span class="token function">Expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">fun</span> <span class="token function">eval</span><span class="token punctuation">(</span>expr<span class="token operator">:</span> Expr<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token operator">=</span> <span class="token keyword">when</span> <span class="token punctuation">(</span>expr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">is</span> Const <span class="token operator">-></span> expr<span class="token punctuation">.</span>number
+    <span class="token keyword">is</span> Sum <span class="token operator">-></span> <span class="token function">eval</span><span class="token punctuation">(</span>expr<span class="token punctuation">.</span>e1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">eval</span><span class="token punctuation">(</span>expr<span class="token punctuation">.</span>e2<span class="token punctuation">)</span>
+    NotANumber <span class="token operator">-></span> Double<span class="token punctuation">.</span>NaN
+<span class="token punctuation">}</span>
+<span class="token keyword">val</span> e <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token function">Sum</span><span class="token punctuation">(</span><span class="token function">Const</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Const</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>密封类更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/sealed-class-inheritance.md" target="_blank" rel="noopener">KEEP</a>、<a href="https://kotlinlang.org/docs/reference/sealed-classes.html#relaxed-rules-for-sealed-classes-since-11" target="_blank" rel="noopener">Sealed Classes</a>。<br>数据类更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/data-class-inheritance.md" target="_blank" rel="noopener">KEEP</a> 或 <a href="https://kotlinlang.org/docs/reference/data-classes.html" target="_blank" rel="noopener">Data Classes</a>。</p>
+<h3 id="lambda-表达式中的解构"><a href="#lambda-表达式中的解构" class="headerlink" title="lambda 表达式中的解构"></a>lambda 表达式中的解构</h3><p>现在可以使用 <a href="https://kotlinlang.org/docs/reference/multi-declarations.html" target="_blank" rel="noopener">解构声明</a> 语法取出 lambda 中的参数。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> map <span class="token operator">=</span> <span class="token function">mapOf</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">to</span> <span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token keyword">to</span> <span class="token string">"two"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 之前</span>
+<span class="token function">println</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">mapValues</span> <span class="token punctuation">{</span> entry <span class="token operator">-></span>
+    <span class="token keyword">val</span> <span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">=</span> entry
+  <span class="token string">"<span class="token interpolation variable">$key</span> -> <span class="token interpolation variable">$value</span>!"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 现在</span>
+<span class="token function">println</span><span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">mapValues</span> <span class="token punctuation">{</span> <span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token string">"<span class="token interpolation variable">$key</span> -> <span class="token interpolation variable">$value</span>!"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/destructuring-in-parameters.md" target="_blank" rel="noopener">KEEP</a> 或 <a href="https://kotlinlang.org/docs/reference/multi-declarations.html#destructuring-in-lambdas-since-11" target="_blank" rel="noopener">Destructuring in Lambdas</a>。</p>
+<h3 id="用下划线表示未使用的参数"><a href="#用下划线表示未使用的参数" class="headerlink" title="用下划线表示未使用的参数"></a>用下划线表示未使用的参数</h3><p>对于具有多个参数的 lambda 表达式，可以使用 <code>_</code> 字符替换不使用的参数的名称。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">map<span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">{</span> _<span class="token punctuation">,</span> value <span class="token operator">-></span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"<span class="token interpolation variable">$value</span>!"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>这也适用于 <a href="https://kotlinlang.org/docs/reference/multi-declarations.html" target="_blank" rel="noopener">解构声明</a>。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> <span class="token punctuation">(</span>_<span class="token punctuation">,</span> status<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">getResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/underscore-for-unused-parameters.md" target="_blank" rel="noopener">KEEP</a>。</p>
+<h3 id="数字字面值中的下划线"><a href="#数字字面值中的下划线" class="headerlink" title="数字字面值中的下划线"></a>数字字面值中的下划线</h3><p>正如在 Java 8 中一样，Kotlin 现在支持在数字字面值中使用下划线来划分组。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> oneMillion <span class="token operator">=</span> 1_000_000
+<span class="token keyword">val</span> hexBytes <span class="token operator">=</span> 0xFF_EC_DE_5E
+<span class="token keyword">val</span> bytes <span class="token operator">=</span> 0b11010010_01101001_10010100_10010010
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/underscores-in-numeric-literals.md" target="_blank" rel="noopener">KEEP</a>。</p>
+<h3 id="属性简写"><a href="#属性简写" class="headerlink" title="属性简写"></a>属性简写</h3><p>对于没有自定义访问器、或者将 getter 定义为表达式主体的属性，现在可以省略属性的类型。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> age<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> isAdult <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> age <span class="token operator">>=</span> <span class="token number">20</span> <span class="token comment" spellcheck="true">// 属性类型推断为 “Boolean”</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="内联属性访问器"><a href="#内联属性访问器" class="headerlink" title="内联属性访问器"></a>内联属性访问器</h3><p>如果属性没有幕后字段，可以使用 inline 修饰符来标记该属性访问器。这些属性访问器的编译方式与<a href="http://kotlinlang.org/docs/reference/inline-functions.html" target="_blank" rel="noopener">内联函数</a>相同。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">public</span> <span class="token keyword">val</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> List<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">.</span>lastIndex<span class="token operator">:</span> Int
+    <span class="token keyword">inline</span> <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>size <span class="token operator">-</span> <span class="token number">1</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/inline-properties.md" target="_blank" rel="noopener">KEEP</a> 或 <a href="http://kotlinlang.org/docs/reference/inline-functions.html#inline-properties-since-11" target="_blank" rel="noopener">Inline properties</a>。</p>
+<h3 id="局部委托属性"><a href="#局部委托属性" class="headerlink" title="局部委托属性"></a>局部委托属性</h3><p>现在可以对局部变量使用<a href="http://kotlinlang.org/docs/reference/delegated-properties.html" target="_blank" rel="noopener">委托属性</a>语法。一个应用场景就是定义一个延迟求值的局部变量。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> answer <span class="token keyword">by</span> lazy <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Calculating the answer..."</span><span class="token punctuation">)</span>
+    <span class="token number">42</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">needAnswer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                     <span class="token comment" spellcheck="true">// 返回随机值</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"The answer is <span class="token interpolation variable">$answer</span>."</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 此时计算出答案</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Sometimes no answer is the answer..."</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>更多信息请参考 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/local-delegated-properties.md" target="_blank" rel="noopener">KEEP</a> 或 <a href="http://kotlinlang.org/docs/reference/delegated-properties.html#local-delegated-properties-since-11" target="_blank" rel="noopener">Local Delegated Properties</a>。</p>
+<h3 id="拦截委托属性的绑定"><a href="#拦截委托属性的绑定" class="headerlink" title="拦截委托属性的绑定"></a>拦截委托属性的绑定</h3><p>对于<a href="http://kotlinlang.org/docs/reference/delegated-properties.html" target="_blank" rel="noopener">委托属性</a>，现在可以使用 <code>provideDelegate</code> 操作符拦截委托到属性之间的绑定。例如，如果我们想要在绑定之前检查属性名称，我们可以这样写：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> ResourceLoader<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span>id<span class="token operator">:</span> ResourceID<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    operator <span class="token keyword">fun</span> <span class="token function">provideDelegate</span><span class="token punctuation">(</span>thisRef<span class="token operator">:</span> MyUI<span class="token punctuation">,</span> property<span class="token operator">:</span> KProperty<span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> ReadOnlyProperty<span class="token operator">&lt;</span>MyUI<span class="token punctuation">,</span> T<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">checkProperty</span><span class="token punctuation">(</span>thisRef<span class="token punctuation">,</span> property<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+        …… <span class="token comment" spellcheck="true">// 属性创建</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">fun</span> <span class="token function">checkProperty</span><span class="token punctuation">(</span>thisRef<span class="token operator">:</span> MyUI<span class="token punctuation">,</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fun</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">bindResource</span><span class="token punctuation">(</span>id<span class="token operator">:</span> ResourceID<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span><span class="token operator">:</span> ResourceLoader<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span> …… <span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> MyUI <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> image <span class="token keyword">by</span> <span class="token function">bindResource</span><span class="token punctuation">(</span>ResourceID<span class="token punctuation">.</span>image_id<span class="token punctuation">)</span>
+    <span class="token keyword">val</span> text <span class="token keyword">by</span> <span class="token function">bindResource</span><span class="token punctuation">(</span>ResourceID<span class="token punctuation">.</span>text_id<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>provideDelegate</code> 方法可以可以在创建 MyUI 实例的每个属性时调用，并做相应的验证检查。</p>
+<p>更多信息请参考 <a href="http://kotlinlang.org/docs/reference/delegated-properties.html#providing-a-delegate-since-11" target="_blank" rel="noopener">Providing a delegate</a>。</p>
+<h3 id="泛型枚举值的访问"><a href="#泛型枚举值的访问" class="headerlink" title="泛型枚举值的访问"></a>泛型枚举值的访问</h3><p>现在可以用泛型的方式来对枚举类的值进行枚举。代码示例如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">enum</span> <span class="token keyword">class</span> RGB <span class="token punctuation">{</span> RED<span class="token punctuation">,</span> GREEN<span class="token punctuation">,</span> BLUE <span class="token punctuation">}</span>
+
+<span class="token keyword">inline</span> <span class="token keyword">fun</span> <span class="token operator">&lt;</span><span class="token keyword">reified</span> T <span class="token operator">:</span> Enum<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">></span> <span class="token function">printAllValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>enumValues<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">joinToString</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="对于-DSL-中隐式接收者的作用域控制"><a href="#对于-DSL-中隐式接收者的作用域控制" class="headerlink" title="对于 DSL 中隐式接收者的作用域控制"></a>对于 DSL 中隐式接收者的作用域控制</h3><p><code>@DslMarker</code> 注解允许限制来自 DSL 上下文中的外部作用域的接收者的使用。考虑那个典型的 <a href="http://kotlinlang.org/docs/reference/type-safe-builders.html" target="_blank" rel="noopener">HTML 构建器示例</a>：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">table <span class="token punctuation">{</span>
+    tr <span class="token punctuation">{</span>
+        td <span class="token punctuation">{</span> <span class="token operator">+</span> <span class="token string">"Text"</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在 Kotlin 1.0 中，传递给 <code>td</code> 的 lambda 表达式中的代码可以访问三个隐式接收者：传递给 <code>table</code>、<code>tr</code> 和 <code>td</code> 的。这允许调用在上下文中没有意义的方法——例如在 <code>td</code> 里面调用 <code>tr</code>，从而在 <code>&lt;td&gt;</code> 中放置一个 <code>&lt;tr&gt;</code> 标签。</p>
+<p>在 Kotlin 1.1 中，可以限制这种情况，以使只有在 <code>td</code> 的隐式接收者上定义的方法会在传给 <code>td</code> 的 lambda 表达式中可用。可以通过定义标记有 <code>@DslMarker</code> 元注解的注解并将其应用于标记类的基类。</p>
+<h3 id="rem-操作符"><a href="#rem-操作符" class="headerlink" title="rem 操作符"></a>rem 操作符</h3><p><code>mod</code> 操作符现已弃用，而使用 <code>rem</code> 取代。动机参见这个 <a href="https://youtrack.jetbrains.com/issue/KT-14650" target="_blank" rel="noopener">issue</a>。</p>
+<h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><h3 id="字符串到数字的转换"><a href="#字符串到数字的转换" class="headerlink" title="字符串到数字的转换"></a>字符串到数字的转换</h3><p>在 String 类中有一些新的扩展，用来将它转换为数字，而不会在无效数字上抛出异常： <code>String.toIntOrNull(): Int?</code>、 <code>String.toDoubleOrNull(): Double?</code> 等。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> port <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">getenv</span><span class="token punctuation">(</span><span class="token string">"PORT"</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">toIntOrNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?:</span> <span class="token number">80</span>
+</code></pre>
+<p>还有整数转换函数，如 <code>Int.toString()</code>、<code>String.toInt()</code>、<code>String.toIntOrNull()</code>，每个都有一个带有 <code>radix</code> 参数的重载，它允许指定转换的基数(2~36)。</p>
+<h3 id="onEach"><a href="#onEach" class="headerlink" title="onEach()"></a>onEach()</h3><p><code>onEach</code> 是一个小、但对于集合和序列很有用的扩展函数，它允许对操作链中的集合/序列的每个元素执行一些操作，可能带有副作用。对于迭代其行为像 <code>forEach</code> 但是也进一步返回可迭代实例。对于序列它返回一个包装序列，它在元素迭代时延迟应用给定的动作。</p>
+<pre class=" language-kotlin"><code class="language-kotlin">inputDir<span class="token punctuation">.</span><span class="token function">walk</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span>isFile <span class="token operator">&amp;&amp;</span> it<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">".txt"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token function">onEach</span> <span class="token punctuation">{</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Moving <span class="token interpolation variable">$it</span> to <span class="token interpolation variable">$outputDir</span>"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">{</span> <span class="token function">moveFile</span><span class="token punctuation">(</span>it<span class="token punctuation">,</span> <span class="token function">File</span><span class="token punctuation">(</span>outputDir<span class="token punctuation">,</span> it<span class="token punctuation">.</span><span class="token function">toRelativeString</span><span class="token punctuation">(</span>inputDir<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="also-、takeIf-和-takeUnless"><a href="#also-、takeIf-和-takeUnless" class="headerlink" title="also()、takeIf() 和 takeUnless()"></a>also()、takeIf() 和 takeUnless()</h3><p><code>also()</code>、<code>takeIf()</code> 和 <code>takeUnless()</code> 是适用于任何接收者的三个通用扩展函数。</p>
+<p><code>also</code> 就像 <code>apply</code>：它接受接收者、做一些动作、并返回该接收者。二者区别是在 <code>apply</code> 内部的代码块中接收者是 <code>this</code>， 而在 <code>also</code> 内部的代码块中是 <code>it</code> (并且如果你想的话，你可以给它另一个名字)。当你不想掩盖来自外部作用域的 <code>this</code> 时这很方便：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> Block<span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">Block</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span>
+    it<span class="token punctuation">.</span>content <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>content
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>takeIf</code> 就像单个值的 <code>filter</code>。它检查接收者是否满足该谓词，并在满足时返回该接收者否则不满足时返回 <code>null</code>。结合 elvis-操作符和及早返回，它允许编写如下结构：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> outDirFile <span class="token operator">=</span> <span class="token function">File</span><span class="token punctuation">(</span>outputDir<span class="token punctuation">.</span>path<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">takeIf</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token operator">?:</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token comment" spellcheck="true">// 对现有的 outDirFile 做些事情</span>
+</code></pre>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> index <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>keyword<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">takeIf</span> <span class="token punctuation">{</span> it <span class="token operator">>=</span> <span class="token number">0</span> <span class="token punctuation">}</span> <span class="token operator">?:</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"keyword not found"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 对输入字符串中的关键字索引做些事情，鉴于它已找到</span>
+</code></pre>
+<p><code>takeUnless</code> 与 <code>takeIf</code> 相同，只是它采用了反向谓词。当它不满足谓词时返回接收者，否则返回 <code>null</code>。因此，上面的示例之一可以用 <code>takeUnless</code> 重写如下：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> index <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>keyword<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">takeUnless</span> <span class="token punctuation">{</span> it <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">}</span> <span class="token operator">?:</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"keyword not found"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>当你有一个可调用的引用而不是 lambda 时，使用也很方便：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> result <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">takeUnless</span><span class="token punctuation">(</span>String<span class="token operator">::</span>isEmpty<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="groupingBy"><a href="#groupingBy" class="headerlink" title="groupingBy()"></a>groupingBy()</h3><p>此 API 可以用于按照键对集合进行分组，并同时折叠每个组。例如，它可以用于计算文本中字符的频率：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> frequencies <span class="token operator">=</span> words<span class="token punctuation">.</span><span class="token function">groupingBy</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">eachCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="Map-toMap-和-Map-toMutableMap"><a href="#Map-toMap-和-Map-toMutableMap" class="headerlink" title="Map.toMap() 和 Map.toMutableMap()"></a>Map.toMap() 和 Map.toMutableMap()</h3><p><code>Map.toMap()</code> 和 <code>Map.toMutableMap()</code> 函数可以用来简易复制映射：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">class</span> <span class="token function">ImmutablePropertyBag</span><span class="token punctuation">(</span>map<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Any<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">val</span> mapCopy <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">toMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="Map-minus-key"><a href="#Map-minus-key" class="headerlink" title="Map.minus(key)"></a>Map.minus(key)</h3><p>运算符 <code>plus</code> 提供了一种将键值对添加到只读映射中以生成新映射的方法，但是没有一种简单的方法来做相反的操作：从映射中删除一个键采用不那么直接的方式如 <code>Map.filter()</code> 或 <code>Map.filterKeys()</code>。现在运算符 <code>minus</code> 填补了这个空白。有 4 个可用的重载：用于删除单个键、键的集合、键的序列和键的数组。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> map <span class="token operator">=</span> <span class="token function">mapOf</span><span class="token punctuation">(</span><span class="token string">"key"</span> <span class="token keyword">to</span> <span class="token number">42</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> emptyMap <span class="token operator">=</span> map <span class="token operator">-</span> <span class="token string">"key"</span>
+</code></pre>
+<h3 id="Map-getValue"><a href="#Map-getValue" class="headerlink" title="Map.getValue()"></a>Map.getValue()</h3><p><code>Map</code> 上的这个扩展函数返回一个与给定键相对应的现有值，或者抛出一个异常，提示找不到该键。如果该映射是用 <code>withDefault</code> 生成的，这个函数将返回默认值，而不是抛异常。</p>
+<pre class=" language-kotlin​"><code class="language-kotlin​">val map = mapOf("key" to 42)
+// 返回不可空 Int 值 42
+val value: Int = map.getValue("key")
+​
+val mapWithDefault = map.withDefault { k -> k.length }
+// 返回 4
+val value2 = mapWithDefault.getValue("key2")
+​
+// map.getValue("anotherKey") // <- 这将抛出="" nosuchelementexception="" <="" code=""></-></code></pre>
+<h3 id="minOf-和-maxOf"><a href="#minOf-和-maxOf" class="headerlink" title="minOf() 和 maxOf()"></a>minOf() 和 maxOf()</h3><p><code>minOf()</code> 和 <code>maxOf()</code> 函数可用于查找两个或三个给定值中的最小和最大值，其中值是原生数字或 <code>Comparable</code> 对象。每个函数还有一个重载，它接受一个额外的 <code>Comparator</code> 实例，如果你想比较自身不可比的对象的话。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> list1 <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> list2 <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">,</span> <span class="token string">"y"</span><span class="token punctuation">,</span> <span class="token string">"z"</span><span class="token punctuation">)</span>
+<span class="token keyword">val</span> minSize <span class="token operator">=</span> <span class="token function">minOf</span><span class="token punctuation">(</span>list1<span class="token punctuation">.</span>size<span class="token punctuation">,</span> list2<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
+<span class="token keyword">val</span> longestList <span class="token operator">=</span> <span class="token function">maxOf</span><span class="token punctuation">(</span>list1<span class="token punctuation">,</span> list2<span class="token punctuation">,</span> compareBy <span class="token punctuation">{</span> it<span class="token punctuation">.</span>size <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="类似数组的列表实例化函数"><a href="#类似数组的列表实例化函数" class="headerlink" title="类似数组的列表实例化函数"></a>类似数组的列表实例化函数</h3><p>类似于 <code>Array</code> 构造函数，现在有创建 <code>List</code> 和 <code>MutableList</code> 实例的函数，并通过调用 lambda 表达式来初始化每个元素：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> squares <span class="token operator">=</span> <span class="token function">List</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> index <span class="token operator">-></span> index <span class="token operator">*</span> index <span class="token punctuation">}</span>
+<span class="token keyword">val</span> mutable <span class="token operator">=</span> <span class="token function">MutableList</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="抽象集合"><a href="#抽象集合" class="headerlink" title="抽象集合"></a>抽象集合</h3><p>这些抽象类可以在实现 Kotlin 集合类时用作基类。对于实现只读集合，有 <code>AbstractCollection</code>、<code>AbstractList</code>、<code>AbstractSet</code> 和 <code>AbstractMap</code>，而对于可变集合，有 <code>AbstractMutableCollection</code>、<code>AbstractMutableList</code>、<code>AbstractMutableSet</code> 和 <code>AbstractMutableMap</code>。在 JVM 上，这些抽象可变集合从 JDK 的抽象集合继承了大部分的功能。</p>
+<h3 id="数组处理函数"><a href="#数组处理函数" class="headerlink" title="数组处理函数"></a>数组处理函数</h3><p>标准库现在提供了一组用于逐个元素操作数组的函数：比较(<code>contentEquals</code> 和 <code>contentDeepEquals</code>)、哈希码计算(<code>contentHashCode</code> 和 <code>contentDeepHashCode</code>)、以及转换成一个字符串(<code>contentToString</code> 和 <code>contentDeepToString</code>)。它们都支持 JVM(它们作为 <code>java.util.Arrays</code> 中的相应函数的别名)和 JS(在 Kotlin 标准库中提供实现)。</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> array <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span>array<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// JVM 实现：类型及哈希乱码</span>
+<span class="token function">println</span><span class="token punctuation">(</span>array<span class="token punctuation">.</span><span class="token function">contentToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 良好格式化为列表</span>
+</code></pre>
+<h2 id="JVM-后端"><a href="#JVM-后端" class="headerlink" title="JVM 后端"></a>JVM 后端</h2><h3 id="Java-8-字节码支持"><a href="#Java-8-字节码支持" class="headerlink" title="Java 8 字节码支持"></a>Java 8 字节码支持</h3><p>Kotlin 现在可以选择生成 Java 8 字节码(命令行选项 <code>-jvm-target 1.8</code> 或者 Ant/Maven/Gradle 中的相应选项)。目前这并不改变字节码的语义(特别是，接口和 lambda 表达式中的默认方法的生成与 Kotlin 1.0 中完全一样)，但我们计划在以后进一步使用它。</p>
+<h3 id="Java-8-标准库支持"><a href="#Java-8-标准库支持" class="headerlink" title="Java 8 标准库支持"></a>Java 8 标准库支持</h3><p>现在有支持在 Java 7 和 8 中新添加的 JDK API 的标准库的独立版本。如果你需要访问新的 API，请使用 <code>kotlin-stdlib-jre7</code> 和 <code>kotlin-stdlib-jre8</code> Maven 构件，而不是标准的 <code>kotlin-stdlib</code>。这些构件是在 <code>kotlin-stdlib</code> 之上的微小扩展，它们将它作为传递依赖项带到项目中。</p>
+<h3 id="字节码中的参数名"><a href="#字节码中的参数名" class="headerlink" title="字节码中的参数名"></a>字节码中的参数名</h3><p>Kotlin 现在支持在字节码中存储参数名。这可以使用命令行选项 <code>-java-parameters</code> 启用。</p>
+<h3 id="常量内联"><a href="#常量内联" class="headerlink" title="常量内联"></a>常量内联</h3><p>编译器现在将 <code>const val</code> 属性的值内联到使用它们的位置。</p>
+<h3 id="可变闭包变量"><a href="#可变闭包变量" class="headerlink" title="可变闭包变量"></a>可变闭包变量</h3><p>用于在 lambda 表达式中捕获可变闭包变量的装箱类不再具有 <code>volatile</code> 字段。此更改提高了性能，但在一些罕见的使用情况下可能导致新的竞争条件。如果受此影响，你需要提供自己的同步机制来访问变量。</p>
+<h3 id="javax-scripting-支持"><a href="#javax-scripting-支持" class="headerlink" title="javax.scripting 支持"></a>javax.scripting 支持</h3><p>Kotlin 现在与 <a href="https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html" target="_blank" rel="noopener"><code>javax.script</code></a> API(JSR-223)集成。其 API 允许在运行时求值代码段：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">val</span> engine <span class="token operator">=</span> <span class="token function">ScriptEngineManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getEngineByExtension</span><span class="token punctuation">(</span><span class="token string">"kts"</span><span class="token punctuation">)</span><span class="token operator">!!</span>
+engine<span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"val x = 3"</span><span class="token punctuation">)</span>
+<span class="token function">println</span><span class="token punctuation">(</span>engine<span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"x + 2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 输出 5</span>
+</code></pre>
+<p>关于使用 API 的示例项目参见 <a href="https://github.com/JetBrains/kotlin/tree/master/libraries/examples/kotlin-jsr223-local-example" target="_blank" rel="noopener">kotlin-jsr223-local-example</a> 。</p>
+<h3 id="kotlin-reflect-full"><a href="#kotlin-reflect-full" class="headerlink" title="kotlin.reflect.full"></a>kotlin.reflect.full</h3><p><a href="https://blog.jetbrains.com/kotlin/2017/01/kotlin-1-1-whats-coming-in-the-standard-library/" target="_blank" rel="noopener">为 Java 9 支持准备</a>，在 <code>kotlin-reflect.jar</code> 库中的扩展函数和属性已移动到 <code>kotlin.reflect.full</code> 包中。旧包(<code>kotlin.reflect</code>)中的名称已弃用，将在 Kotlin 1.2 中删除。请注意，核心反射接口(如 <code>KClass</code>)是 Kotlin 标准库(而不是 <code>kotlin-reflect</code>)的一部分，不受移动影响。</p>
+<h2 id="JavaScript-后端"><a href="#JavaScript-后端" class="headerlink" title="JavaScript 后端"></a>JavaScript 后端</h2><p>从 Kotlin 1.1 开始，JavaScript 目标平台不再当是实验性的。所有语言功能都支持， 并且有许多新的工具用于与前端开发环境集成。</p>
+<h3 id="统一的标准库"><a href="#统一的标准库" class="headerlink" title="统一的标准库"></a>统一的标准库</h3><p>Kotlin 标准库的大部分目前可以从代码编译成 JavaScript 来使用。 特别是，关键类如集合(<code>ArrayList</code>、<code>HashMap</code> 等)、异常(<code>IllegalArgumentException</code> 等)以及其他几个关键类(<code>StringBuilder</code>、<code>Comparator</code>)现在都定义在 <code>kotlin</code> 包下。在 JVM 平台上，一些名称是相应 JDK 类的类型别名，而在 JS 平台上，这些类在 Kotlin 标准库中实现。</p>
+<h3 id="更好的代码生成"><a href="#更好的代码生成" class="headerlink" title="更好的代码生成"></a>更好的代码生成</h3><p>JavaScript 后端现在生成更加可静态检查的代码，这对 JS 代码处理工具(如 minifiers、optimisers、linters 等)更加友好。</p>
+<h3 id="external-修饰符"><a href="#external-修饰符" class="headerlink" title="external 修饰符"></a>external 修饰符</h3><p>如果你需要以类型安全的方式在 Kotlin 中访问 JavaScript 实现的类， 你可以使用 <code>external</code> 修饰符写一个 Kotlin 声明。在 Kotlin 1.0 中，使用了 <code>@native</code> 注解。与 JVM 目标平台不同，JS 平台允许对类和属性使用 <code>external</code> 修饰符。例如，可以按以下方式声明 DOM Node 类：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">external <span class="token keyword">class</span> Node <span class="token punctuation">{</span>
+    <span class="token keyword">val</span> firstChild<span class="token operator">:</span> Node
+​
+    <span class="token keyword">fun</span> <span class="token function">appendChild</span><span class="token punctuation">(</span>child<span class="token operator">:</span> Node<span class="token punctuation">)</span><span class="token operator">:</span> Node
+​
+    <span class="token keyword">fun</span> <span class="token function">removeChild</span><span class="token punctuation">(</span>child<span class="token operator">:</span> Node<span class="token punctuation">)</span><span class="token operator">:</span> Node
+​
+    <span class="token comment" spellcheck="true">// 等等</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="改进的导入处理"><a href="#改进的导入处理" class="headerlink" title="改进的导入处理"></a>改进的导入处理</h3><p>现在可以更精确地描述应该从 JavaScript 模块导入的声明。 如果在外部声明上添加 <code>@JsModule(&quot;＜模块名＞&quot;)</code> 注解，它会在编译期间正确导入到模块系统(CommonJS 或 AMD)。例如，使用 CommonJS，该声明会通过 <code>require(……)</code> 函数导入。 此外，如果要将声明作为模块或全局 JavaScript 对象导入， 可以使用 <code>@JsNonModule</code> 注解。</p>
+<p>例如，以下是将 JQuery 导入 Kotlin 模块的方法：</p>
+<pre class=" language-kotlin"><code class="language-kotlin">external <span class="token keyword">interface</span> JQuery <span class="token punctuation">{</span>
+    <span class="token keyword">fun</span> <span class="token function">toggle</span><span class="token punctuation">(</span>duration<span class="token operator">:</span> Int <span class="token operator">=</span> definedExternally<span class="token punctuation">)</span><span class="token operator">:</span> JQuery
+    <span class="token keyword">fun</span> <span class="token function">click</span><span class="token punctuation">(</span>handler<span class="token operator">:</span> <span class="token punctuation">(</span>Event<span class="token punctuation">)</span> <span class="token operator">-></span> Unit<span class="token punctuation">)</span><span class="token operator">:</span> JQuery
+<span class="token punctuation">}</span>
+​
+<span class="token annotation builtin">@JsModule</span><span class="token punctuation">(</span><span class="token string">"jquery"</span><span class="token punctuation">)</span>
+<span class="token annotation builtin">@JsNonModule</span>
+<span class="token annotation builtin">@JsName</span><span class="token punctuation">(</span><span class="token string">"$"</span><span class="token punctuation">)</span>
+external <span class="token keyword">fun</span> <span class="token function">jquery</span><span class="token punctuation">(</span>selector<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> JQuery
+</code></pre>
+<p>在这种情况下，JQuery 将作为名为 <code>jquery</code> 的模块导入。或者，它可以用作 $-对象， 这取决于Kotlin编译器配置使用哪个模块系统。</p>
+<p>你可以在应用程序中使用如下所示的这些声明：</p>
+<pre class=" language-kotlin"><code class="language-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">jquery</span><span class="token punctuation">(</span><span class="token string">".toggle-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span> <span class="token punctuation">{</span>
+        <span class="token function">jquery</span><span class="token punctuation">(</span><span class="token string">".toggle-panel"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">jquery</span><span class="token punctuation">(</span><span class="token string">".toggle-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span> <span class="token punctuation">{</span>
+        <span class="token function">jquery</span><span class="token punctuation">(</span><span class="token string">".toggle-panel"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://kotlinlang.org/docs/reference/whatsnew11.html" target="_blank" rel="noopener">What’s New in Kotlin 1.1</a></p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/e2eeb46f.html" class="b-link-green">Kotlin 1.1 的新特性</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-12-10T18-36-25',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/9e8f91b4.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Kotlin 1.2 的新特性">
+                        
+                        <span class="card-title">Kotlin 1.2 的新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Kotlin 1.2 新特性Kotlin 1.2 新特性包含以下几个方面：
+
+多平台项目
+其他语言特性
+标准库
+JVM 后端
+JavaScript 后端
+
+多平台项目多平台项目是 Kotlin 1.2 中的一个新的实验性的特性，允许你在支持</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-12-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kotlin/" class="post-category" target="_blank">
+                                    Kotlin
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kotlin/" target="_blank">
+                        <span class="chip tag-bg-color">Kotlin</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/7ebad28b.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java 8 之 Stream">
+                        
+                        <span class="card-title">Java 8 之 Stream</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">概述Java 8 引入了全新的 Stream API，此 Stream 与 java I/O 包里的 InputStream 和 OutputStream 是完全不同的概念，它不同于 StAX 对 XML 解析的 Stream，也不同于 A</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-12-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,3039 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="ADB 操作命令详解及用法大全, Android, Google, Blog">
+    <meta name="description" content="
+一、ADB是什么？ADB，即 Android Debug Bridge 是一种允许模拟器或已连接的 Android 设备进行通信的命令行工具，它可为各种设备操作提供便利，如安装和调试应用，并提供对 Unix shell（可用来在模拟器或连">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>ADB 操作命令详解及用法大全 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        ADB 操作命令详解及用法大全
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/工具/" target="_blank">
+                                <span class="chip tag-bg-color">工具</span>
+                            </a>
+                        
+                            <a href="/tags/ADB/" target="_blank">
+                                <span class="chip tag-bg-color">ADB</span>
+                            </a>
+                        
+                            <a href="/tags/命令行/" target="_blank">
+                                <span class="chip tag-bg-color">命令行</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-08-06
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        10.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        45 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://user-gold-cdn.xitu.io/2018/8/10/16522b67d2e66dfc?w=287&amp;h=138&amp;f=jpeg&amp;s=10250" alt="ADB"></p>
+<h2 id="一、ADB是什么？"><a href="#一、ADB是什么？" class="headerlink" title="一、ADB是什么？"></a>一、ADB是什么？</h2><p>ADB，即 <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">Android Debug Bridge</a> 是一种允许模拟器或已连接的 Android 设备进行通信的命令行工具，它可为各种设备操作提供便利，如安装和调试应用，并提供对 <code>Unix shell</code>（可用来在模拟器或连接的设备上运行各种命令）的访问。可以在<code>Android SDK/platform-tools</code>中找到 <code>adb</code> 工具或下载 <a href="http://adbshell.com/downloads" target="_blank" rel="noopener">ADB Kits</a> 。</p>
+<p><strong>注：</strong> 有部分命令的支持情况可能与 Android 系统版本及定制 ROM 的实现有关。</p>
+<h2 id="二、ADB有什么作用？"><a href="#二、ADB有什么作用？" class="headerlink" title="二、ADB有什么作用？"></a>二、ADB有什么作用？</h2><p><code>ADB</code> 是 <code>Android SDK</code> 里的一个工具, 用这个工具可以直接操作管理Android模拟器或者真实的Android设备。它的主要功能有:</p>
+<ul>
+<li>在设备上运行Shell命令；</li>
+<li>将本地APK软件安装至模拟器或Android设备；</li>
+<li>管理设备或手机模拟器上的预定端口；</li>
+<li>在设备或手机模拟器上复制或粘贴文件。</li>
+</ul>
+<p><code>ADB</code> 是一个<code>客户端-服务器程序</code>程序，包括三个组件：</p>
+<ul>
+<li><strong>客户端</strong>：该组件发送命令。客户端在开发计算机上运行。您可以通过发出 adb 命令从命令行终端调用客户端。</li>
+<li><strong>后台程序</strong>：该组件在设备上运行命令。后台程序在每个模拟器或设备实例上作为后台进程运行。</li>
+<li><strong>服务器</strong>：该组件管理客户端和后台程序之间的通信。服务器在开发计算机上作为后台进程运行。</li>
+</ul>
+<h2 id="三、ADB命令语法"><a href="#三、ADB命令语法" class="headerlink" title="三、ADB命令语法"></a>三、ADB命令语法</h2><p>adb 命令的基本语法如下：</p>
+<pre class=" language-shell"><code class="language-shell">adb [-d|-e|-s <serial-number>] <command>
+</serial-number></code></pre>
+<h3 id="单一设备-模拟器连接"><a href="#单一设备-模拟器连接" class="headerlink" title="单一设备/模拟器连接"></a>单一设备/模拟器连接</h3><p>如果只有一个设备/模拟器连接时，可以省略掉 <code>[-d|-e|-s &lt;serial-number&gt;]</code> 这一部分，直接使用 <code>adb &lt;command&gt;</code>。</p>
+<h3 id="多个设备-模拟器连接"><a href="#多个设备-模拟器连接" class="headerlink" title="多个设备/模拟器连接"></a>多个设备/模拟器连接</h3><p>如果有多个设备/模拟器连接，则需要为命令指定目标设备，下表是指定目标设备的命令选项：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>指定当前唯一通过 USB 连接的 Android 设备为命令目标</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>指定当前唯一运行的模拟器为命令目标</td>
+</tr>
+<tr>
+<td><code>-s &lt;serial-number&gt;</code></td>
+<td>指定相应设备序列号的设备/模拟器为命令目标</td>
+</tr>
+</tbody>
+</table>
+<p>在多个设备/模拟器连接的情况下较常用的是 <code>-s &lt;serial-number&gt;</code> 参数，<code>serial-number</code>是指设备的设备序列号，可以通过 <code>adb devices</code> 命令获取。</p>
+<h2 id="四、ADB常用命令"><a href="#四、ADB常用命令" class="headerlink" title="四、ADB常用命令"></a>四、ADB常用命令</h2><h3 id="4-1-基本命令"><a href="#4-1-基本命令" class="headerlink" title="4.1 基本命令"></a>4.1 基本命令</h3><h4 id="4-1-1-查看adb的版本信息"><a href="#4-1-1-查看adb的版本信息" class="headerlink" title="4.1.1 查看adb的版本信息"></a>4.1.1 查看adb的版本信息</h4><pre class=" language-shell"><code class="language-shell">adb version
+</code></pre>
+<h4 id="4-1-2-启动adb"><a href="#4-1-2-启动adb" class="headerlink" title="4.1.2 启动adb"></a>4.1.2 启动adb</h4><pre class=" language-shell"><code class="language-shell">adb start-server
+</code></pre>
+<p>一般无需手动执行此命令，在运行 adb 命令时若发现 adb server 没有启动会自动调起。</p>
+<h4 id="4-1-3-停止adb"><a href="#4-1-3-停止adb" class="headerlink" title="4.1.3 停止adb"></a>4.1.3 停止adb</h4><pre class=" language-shell"><code class="language-shell">adb kill-server
+</code></pre>
+<h4 id="4-1-4-以-root-权限运行-adbd"><a href="#4-1-4-以-root-权限运行-adbd" class="headerlink" title="4.1.4 以 root 权限运行 adbd"></a>4.1.4 以 root 权限运行 adbd</h4><pre class=" language-shell"><code class="language-shell">adb root
+</code></pre>
+<h4 id="4-1-5-指定-adb-server-的网络端口"><a href="#4-1-5-指定-adb-server-的网络端口" class="headerlink" title="4.1.5 指定 adb server 的网络端口"></a>4.1.5 指定 adb server 的网络端口</h4><pre class=" language-shell"><code class="language-shell">adb -P <port> start-server
+</port></code></pre>
+<p>ADB的默认端口为 5037。</p>
+<h4 id="4-1-5-查询已连接的设备-模拟器列表"><a href="#4-1-5-查询已连接的设备-模拟器列表" class="headerlink" title="4.1.5 查询已连接的设备/模拟器列表"></a>4.1.5 查询已连接的设备/模拟器列表</h4><pre class=" language-shell"><code class="language-shell">adb devices
+</code></pre>
+<h3 id="4-2-设备连接管理"><a href="#4-2-设备连接管理" class="headerlink" title="4.2 设备连接管理"></a>4.2 设备连接管理</h3><h4 id="4-2-1-USB-连接"><a href="#4-2-1-USB-连接" class="headerlink" title="4.2.1 USB 连接"></a>4.2.1 USB 连接</h4><p>通过 USB 连接来正常使用 adb 需要以下步骤：</p>
+<ol>
+<li>确认硬件状态正常(包括 Android 设备处于正常开机状态，USB 连接线和各种接口完好)。</li>
+<li>Android 设备的开发者选项和 USB 调试模式已开启(可以在「设置」-「开发者选项」-「USB调试」打开USB调试)。</li>
+<li>确认设备驱动状态正常(安装ADB驱动程序)。</li>
+<li>通过 USB 线连接好电脑和设备后确认状态。</li>
+<li>通过 <code>adb devices</code> 命令查看设备连接情况。</li>
+</ol>
+<h4 id="4-2-2-WLAN-连接（需要-USB-线）"><a href="#4-2-2-WLAN-连接（需要-USB-线）" class="headerlink" title="4.2.2 WLAN 连接（需要 USB 线）"></a>4.2.2 WLAN 连接（需要 USB 线）</h4><p>借助 USB 通过 WiFi 连接来正常使用 adb 需要以下步骤：<br>操作步骤：</p>
+<ol>
+<li>将 Android 设备与要运行 adb 的电脑连接到同一个 WiFi。</li>
+<li>将设备与电脑通过 USB 线连接(可通过 <code>adb devices</code> 命令查看设备连接情况)。</li>
+<li>通过 <code>adb tcpip 5555</code> 命令让设备在 5555 端口监听 TCP/IP 连接。</li>
+<li>断开 USB 连接。</li>
+<li>找到设备的 IP 地址(可以在「设置」-「关于手机」-「状态信息」-「IP地址」查看 IP 地址)。</li>
+<li>通过 <code>adb connect &lt;device-ip-address&gt;</code> 命令使用 IP 地址将 Android 设备与电脑连接。</li>
+<li>通过 <code>adb devices</code> 命令查看设备连接情况。</li>
+<li>使用完毕后可通过 <code>adb disconnect &lt;device-ip-address&gt;</code> 命令断开无线连接。</li>
+</ol>
+<h4 id="4-2-3-WLAN-连接（无需借助-USB-线）"><a href="#4-2-3-WLAN-连接（无需借助-USB-线）" class="headerlink" title="4.2.3 WLAN 连接（无需借助 USB 线）"></a>4.2.3 WLAN 连接（无需借助 USB 线）</h4><p><strong>注：需要 root 权限。</strong><br>不借助 USB 通过 WiFi 连接来正常使用 adb 需要以下步骤：</p>
+<ol>
+<li>在 Android 设备上安装一个终端模拟器(可通过<a href="https://jackpal.github.io/Android-Terminal-Emulator/" target="_blank" rel="noopener">Terminal Emulator for Android Downloads</a>下载)。</li>
+<li>将 Android 设备与要运行 adb 的电脑连接到同一个 WiFi。</li>
+<li>打开 Android 设备上的终端模拟器，在里面依次运行命令：<pre class=" language-shell"><code class="language-shell">su
+setprop service.adb.tcp.port 5555
+</code></pre>
+</li>
+<li>找到设备的 IP 地址(可以在「设置」-「关于手机」-「状态信息」-「IP地址」查看 IP 地址)。</li>
+<li>通过 <code>adb connect &lt;device-ip-address&gt;</code> 命令使用 IP 地址将 Android 设备与电脑连接。</li>
+<li>通过 <code>adb devices</code> 命令查看设备连接情况。</li>
+</ol>
+<h4 id="4-2-4-WiFi-连接转为-USB-连接"><a href="#4-2-4-WiFi-连接转为-USB-连接" class="headerlink" title="4.2.4 WiFi 连接转为 USB 连接"></a>4.2.4 WiFi 连接转为 USB 连接</h4><p>通过<code>adb usb</code>命令以USB模式重新启动ADB：</p>
+<pre class=" language-shell"><code class="language-shell">adb usb
+</code></pre>
+<h3 id="4-3-应用管理"><a href="#4-3-应用管理" class="headerlink" title="4.3 应用管理"></a>4.3 应用管理</h3><h4 id="4-3-1-查看应用列表"><a href="#4-3-1-查看应用列表" class="headerlink" title="4.3.1 查看应用列表"></a>4.3.1 查看应用列表</h4><p>查看应用列表的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell pm list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]
+</code></pre>
+<p><code>adb shell pm list packages</code> 后面可以跟一些可选参数进行过滤查看不同的列表，可用参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>显示列表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>所有应用</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>显示应用关联的 apk 文件</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>只显示 disabled 的应用</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>只显示 enabled 的应用</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>只显示系统应用</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>只显示第三方应用</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>显示应用的 installer</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>包含已卸载应用</td>
+</tr>
+<tr>
+<td><code>&lt;filter&gt;</code></td>
+<td>包名包含 <code>&lt;filter&gt;</code> 字符串</td>
+</tr>
+</tbody>
+</table>
+<h5 id="4-3-1-1-查看所有应用"><a href="#4-3-1-1-查看所有应用" class="headerlink" title="4.3.1.1 查看所有应用"></a>4.3.1.1 查看所有应用</h5><pre class=" language-shell"><code class="language-shell">adb shell pm list packages
+</code></pre>
+<h5 id="4-3-1-2-查看系统应用"><a href="#4-3-1-2-查看系统应用" class="headerlink" title="4.3.1.2 查看系统应用"></a>4.3.1.2 查看系统应用</h5><pre class=" language-shell"><code class="language-shell">adb shell pm list packages -s
+</code></pre>
+<h5 id="4-3-1-3-查看第三方应用"><a href="#4-3-1-3-查看第三方应用" class="headerlink" title="4.3.1.3 查看第三方应用"></a>4.3.1.3 查看第三方应用</h5><pre class=" language-shell"><code class="language-shell">adb shell pm list packages -3
+</code></pre>
+<h5 id="4-3-1-4-包名包含某字符串的应用"><a href="#4-3-1-4-包名包含某字符串的应用" class="headerlink" title="4.3.1.4 包名包含某字符串的应用"></a>4.3.1.4 包名包含某字符串的应用</h5><p>比如要查看包名包含字符串 <code>huawei</code> 的应用列表，命令：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell pm list packages huawei
+</code></pre>
+<h4 id="4-3-2-安装应用"><a href="#4-3-2-安装应用" class="headerlink" title="4.3.2 安装应用"></a>4.3.2 安装应用</h4><p>安装应用的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb install [-l] [-r] [-t] [-s] [-d] [-g] <apk-file>
+</apk-file></code></pre>
+<p><code>adb install</code> 后面可以跟一些可选参数来控制安装 APK 的行为，可用参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>将应用安装到保护目录 /mnt/asec</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>允许覆盖安装</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>允许安装 AndroidManifest.xml 里 application 指定 <code>android:testOnly=&quot;true&quot;</code> 的应用</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>将应用安装到 sdcard</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>允许降级覆盖安装</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>授予所有运行时权限</td>
+</tr>
+</tbody>
+</table>
+<p>运行命令后可以看到输出内容，包含安装进度和状态，安装状态如下：</p>
+<ul>
+<li><code>Success</code>：代表安装成功。</li>
+<li><code>Failure</code>：代表安装失败。<br>APK 安装失败的情况有很多，<code>Failure</code>状态之后有安装失败输出代码。常见安装失败输出代码、含义及可能的解决办法如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>输出代码</th>
+<th>含义</th>
+<th>解决办法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INSTALL_FAILED_ALREADY_EXISTS</td>
+<td>应用已经存在，或卸载了但没卸载干净</td>
+<td><code>adb install</code> 时使用 <code>-r</code> 参数，或者先 <code>adb uninstall &lt;packagename&gt;</code> 再安装</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_INVALID_APK</td>
+<td>无效的 APK 文件</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_INVALID_URI</td>
+<td>无效的 APK 文件名</td>
+<td>确保 APK 文件名里无中文</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_INSUFFICIENT_STORAGE</td>
+<td>空间不足</td>
+<td>清理空间</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_DUPLICATE_PACKAGE</td>
+<td>已经存在同名程序</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_NO_SHARED_USER</td>
+<td>请求的共享用户不存在</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_UPDATE_INCOMPATIBLE</td>
+<td>以前安装过同名应用，但卸载时数据没有移除；或者已安装该应用，但签名不一致</td>
+<td>先 <code>adb uninstall &lt;packagename&gt;</code> 再安装</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_SHARED_USER_INCOMPATIBLE</td>
+<td>请求的共享用户存在但签名不一致</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_MISSING_SHARED_LIBRARY</td>
+<td>安装包使用了设备上不可用的共享库</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_REPLACE_COULDNT_DELETE</td>
+<td>替换时无法删除</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_DEXOPT</td>
+<td>dex 优化验证失败或空间不足</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_OLDER_SDK</td>
+<td>设备系统版本低于应用要求</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_CONFLICTING_PROVIDER</td>
+<td>设备里已经存在与应用里同名的 content provider</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_NEWER_SDK</td>
+<td>设备系统版本高于应用要求</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_TEST_ONLY</td>
+<td>应用是 test-only 的，但安装时没有指定 <code>-t</code> 参数</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_CPU_ABI_INCOMPATIBLE</td>
+<td>包含不兼容设备 CPU 应用程序二进制接口的 native code</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_MISSING_FEATURE</td>
+<td>应用使用了设备不可用的功能</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_CONTAINER_ERROR</td>
+<td>1. sdcard 访问失败;<br>2. 应用签名与 ROM 签名一致，被当作内置应用。</td>
+<td>1. 确认 sdcard 可用，或者安装到内置存储;<br>2. 打包时不与 ROM 使用相同签名。</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_INVALID_INSTALL_LOCATION</td>
+<td>1. 不能安装到指定位置;<br>2. 应用签名与 ROM 签名一致，被当作内置应用。</td>
+<td>1. 切换安装位置，添加或删除 <code>-s</code> 参数;<br>2. 打包时不与 ROM 使用相同签名。</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_MEDIA_UNAVAILABLE</td>
+<td>安装位置不可用</td>
+<td>一般为 sdcard，确认 sdcard 可用或安装到内置存储</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_VERIFICATION_TIMEOUT</td>
+<td>验证安装包超时</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_VERIFICATION_FAILURE</td>
+<td>验证安装包失败</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_PACKAGE_CHANGED</td>
+<td>应用与调用程序期望的不一致</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_UID_CHANGED</td>
+<td>以前安装过该应用，与本次分配的 UID 不一致</td>
+<td>清除以前安装过的残留文件</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_VERSION_DOWNGRADE</td>
+<td>已经安装了该应用更高版本</td>
+<td>使用 <code>-d</code> 参数</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_PERMISSION_MODEL_DOWNGRADE</td>
+<td>已安装 target SDK 支持运行时权限的同名应用，要安装的版本不支持运行时权限</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_NOT_APK</td>
+<td>指定路径不是文件，或不是以 <code>.apk</code> 结尾</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_BAD_MANIFEST</td>
+<td>无法解析的 AndroidManifest.xml 文件</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION</td>
+<td>解析器遇到异常</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_NO_CERTIFICATES</td>
+<td>安装包没有签名</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES</td>
+<td>已安装该应用，且签名与 APK 文件不一致</td>
+<td>先卸载设备上的该应用，再安装</td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING</td>
+<td>解析 APK 文件时遇到 <code>CertificateEncodingException</code></td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME</td>
+<td>manifest 文件里没有或者使用了无效的包名</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_BAD_SHARED_USER_ID</td>
+<td>manifest 文件里指定了无效的共享用户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_MANIFEST_MALFORMED</td>
+<td>解析 manifest 文件时遇到结构性错误</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_PARSE_FAILED_MANIFEST_EMPTY</td>
+<td>在 manifest 文件里找不到找可操作标签（instrumentation 或 application）</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_INTERNAL_ERROR</td>
+<td>因系统问题安装失败</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_USER_RESTRICTED</td>
+<td>用户被限制安装应用</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_DUPLICATE_PERMISSION</td>
+<td>应用尝试定义一个已经存在的权限名称</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_NO_MATCHING_ABIS</td>
+<td>应用包含设备的应用程序二进制接口不支持的 native code</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_CANCELED_BY_USER</td>
+<td>应用安装需要在设备上确认，但未操作设备或点了取消</td>
+<td>在设备上同意安装</td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_ACWF_INCOMPATIBLE</td>
+<td>应用程序与设备不兼容</td>
+<td></td>
+</tr>
+<tr>
+<td>INSTALL_FAILED_TEST_ONLY</td>
+<td>APK 文件是使用 Android Studio 直接 RUN 编译出来的文件</td>
+<td>通过 Gradle 的 assembleDebug 或 assembleRelease 重新编译，或者 Generate Signed APK</td>
+</tr>
+<tr>
+<td>does not contain AndroidManifest.xml</td>
+<td>无效的 APK 文件</td>
+<td></td>
+</tr>
+<tr>
+<td>is not a valid zip file</td>
+<td>无效的 APK 文件</td>
+<td></td>
+</tr>
+<tr>
+<td>Offline</td>
+<td>设备未连接成功</td>
+<td>先将设备与 adb 连接成功</td>
+</tr>
+<tr>
+<td>unauthorized</td>
+<td>设备未授权允许调试</td>
+<td></td>
+</tr>
+<tr>
+<td>error: device not found</td>
+<td>没有连接成功的设备</td>
+<td>先将设备与 adb 连接成功</td>
+</tr>
+<tr>
+<td>protocol failure</td>
+<td>设备已断开连接</td>
+<td>先将设备与 adb 连接成功</td>
+</tr>
+<tr>
+<td>Unknown option: -s</td>
+<td>Android 2.2 以下不支持安装到 sdcard</td>
+<td>不使用 <code>-s</code> 参数</td>
+</tr>
+<tr>
+<td>No space left on device</td>
+<td>空间不足</td>
+<td>清理空间</td>
+</tr>
+<tr>
+<td>Permission denied … sdcard …</td>
+<td>sdcard 不可用</td>
+<td></td>
+</tr>
+<tr>
+<td>signatures do not match the previously installed version; ignoring!</td>
+<td>已安装该应用且签名不一致</td>
+<td>先卸载设备上的该应用，再安装</td>
+</tr>
+</tbody>
+</table>
+<p>参考：<a href="https://github.com/android/platform_frameworks_base/blob/master/core%2Fjava%2Fandroid%2Fcontent%2Fpm%2FPackageManager.java" target="_blank" rel="noopener">PackageManager.java</a></p>
+<p><code>adb install</code> 实际是分三步完成：</p>
+<ol>
+<li>push apk 文件到 /data/local/tmp。</li>
+<li>调用 pm install 安装。</li>
+<li>删除 /data/local/tmp 下的对应 apk 文件。</li>
+</ol>
+<h4 id="4-3-3-卸载应用"><a href="#4-3-3-卸载应用" class="headerlink" title="4.3.3 卸载应用"></a>4.3.3 卸载应用</h4><p>卸载应用的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb uninstall [-k] <package-name>
+</package-name></code></pre>
+<p><code>&lt;package-name&gt;</code> 表示应用的包名，<code>-k</code> 参数可选，表示卸载应用但保留数据和缓存目录。</p>
+<h4 id="4-3-4-清除应用数据与缓存"><a href="#4-3-4-清除应用数据与缓存" class="headerlink" title="4.3.4 清除应用数据与缓存"></a>4.3.4 清除应用数据与缓存</h4><pre class=" language-shell"><code class="language-shell">adb shell pm clear <package-name>
+</package-name></code></pre>
+<p><code>&lt;package-name&gt;</code> 表示应用名包，这条命令的效果相当于在设置里的应用信息界面点击了「清除缓存」和「清除数据」。</p>
+<h4 id="4-3-5-查看前台-Activity"><a href="#4-3-5-查看前台-Activity" class="headerlink" title="4.3.5 查看前台 Activity"></a>4.3.5 查看前台 Activity</h4><pre class=" language-shell"><code class="language-shell">adb shell dumpsys activity activities | grep mFocusedActivity
+</code></pre>
+<h4 id="4-3-6-查看正在运行的-Services"><a href="#4-3-6-查看正在运行的-Services" class="headerlink" title="4.3.6 查看正在运行的 Services"></a>4.3.6 查看正在运行的 Services</h4><pre class=" language-shell"><code class="language-shell">adb shell dumpsys activity services [<package-name>]
+</package-name></code></pre>
+<p><code>&lt;package-name&gt;</code> 参数不是必须的，指定 <code>&lt;package-name&gt;</code> 表示查看与某个包名相关的 Services，不指定表示查看所有 Services。<code>&lt;package-name&gt;</code> 不一定要给出完整的包名，可以只给一部分，那么所给包名相关的 Services 都会列出来。</p>
+<h4 id="4-3-7-查看应用详细信息"><a href="#4-3-7-查看应用详细信息" class="headerlink" title="4.3.7 查看应用详细信息"></a>4.3.7 查看应用详细信息</h4><pre class=" language-shell"><code class="language-shell">adb shell dumpsys package <package-name>
+</package-name></code></pre>
+<p><code>&lt;package-name&gt;</code> 表示应用包名。运行次命令的输出中包含很多信息，包括 Activity Resolver Table、Registered ContentProviders、包名、userId、安装后的文件资源代码等路径、版本信息、权限信息和授予状态、签名版本信息等。</p>
+<h4 id="4-3-7-查看应用安装路径"><a href="#4-3-7-查看应用安装路径" class="headerlink" title="4.3.7 查看应用安装路径"></a>4.3.7 查看应用安装路径</h4><pre><code>adb shell pm path &lt;package-name&gt;
+</code></pre><h3 id="4-4-与应用交互"><a href="#4-4-与应用交互" class="headerlink" title="4.4 与应用交互"></a>4.4 与应用交互</h3><p>与应用交互主要是使用 <code>am &lt;command&gt;</code> 命令，常用的 <code>&lt;command&gt;</code> 如下：</p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start [options] &lt;intent&gt;</code></td>
+<td>启动 <code>&lt;intent&gt;</code> 指定的 Activity</td>
+</tr>
+<tr>
+<td><code>startservice [options] &lt;intent&gt;</code></td>
+<td>启动 <code>&lt;intent&gt;</code> 指定的 Service</td>
+</tr>
+<tr>
+<td><code>broadcast [options] &lt;intent&gt;</code></td>
+<td>发送 <code>&lt;intent&gt;</code> 指定的广播</td>
+</tr>
+<tr>
+<td><code>force-stop &lt;package-name&gt;</code></td>
+<td>停止 <code>&lt;package-name&gt;</code> 相关的进程</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;intent&gt;</code> 参数很灵活，和写 Android 程序时代码里的 Intent 相对应。</p>
+<p>用于决定 intent 对象的选项如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-a &lt;action&gt;</code></td>
+<td>指定 action，比如 <code>android.intent.action.VIEW</code></td>
+</tr>
+<tr>
+<td><code>-c &lt;category&gt;</code></td>
+<td>指定 category，比如 <code>android.intent.category.APP_CONTACTS</code></td>
+</tr>
+<tr>
+<td><code>-n &lt;component&gt;</code></td>
+<td>指定完整 component 名，用于明确指定启动哪个 Activity</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;intent&gt;</code> 里还能带数据，就像写代码时的 Bundle 一样：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--esn &lt;extra-key&gt;</code></td>
+<td>null 值(只有 key 名)</td>
+</tr>
+<tr>
+<td><code>--es &lt;extra-key&gt; &lt;extra-string-value&gt;</code></td>
+<td>string 值</td>
+</tr>
+<tr>
+<td><code>--ez &lt;extra-key&gt; &lt;extra-boolean-value&gt;</code></td>
+<td>boolean 值</td>
+</tr>
+<tr>
+<td><code>--ei &lt;extra-key&gt; &lt;extra-int-value&gt;</code></td>
+<td>integer 值</td>
+</tr>
+<tr>
+<td><code>--el &lt;extra-key&gt; &lt;extra-long-value&gt;</code></td>
+<td>long 值</td>
+</tr>
+<tr>
+<td><code>--ef &lt;extra-key&gt; &lt;extra-float-value&gt;</code></td>
+<td>float 值</td>
+</tr>
+<tr>
+<td><code>--eu &lt;extra-key&gt; &lt;extra-uri-value&gt;</code></td>
+<td>URI</td>
+</tr>
+<tr>
+<td><code>--ecn &lt;extra-key&gt; &lt;extra-component-name-value&gt;</code></td>
+<td>component name</td>
+</tr>
+<tr>
+<td><code>--eia &lt;extra-key&gt; &lt;extra-int-value&gt;[,&lt;extra-int-value...]</code></td>
+<td>integer 数组</td>
+</tr>
+<tr>
+<td><code>--ela &lt;extra-key&gt; &lt;extra-long-value&gt;[,&lt;extra-long-value...]</code></td>
+<td>long 数组</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-4-1-启动应用-调起-Activity"><a href="#4-4-1-启动应用-调起-Activity" class="headerlink" title="4.4.1 启动应用/ 调起 Activity"></a>4.4.1 启动应用/ 调起 Activity</h4><pre class=" language-shell"><code class="language-shell">adb shell am start [options] <intent>
+</intent></code></pre>
+<p>例如：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell am start -a android.settings.SETTINGS                   # 打开系统设置页面
+adb shell am start -a android.intent.action.DIAL -d tel:10086     # 打开拨号页面
+adb shell am start -n com.android.mms/.ui.ConversationList        # 打开短信会话列表
+</code></pre>
+<p>options 是一些改变其行为的选项，支持的可选参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-D</td>
+<td>启用调试</td>
+</tr>
+<tr>
+<td>-W</td>
+<td>等待启动完成</td>
+</tr>
+<tr>
+<td>–start-profiler <code>file</code></td>
+<td>启动分析器并将结果发送到 <code>file</code></td>
+</tr>
+<tr>
+<td>-P <code>file</code></td>
+<td>类似于 –start-profiler，但当应用进入空闲状态时分析停止</td>
+</tr>
+<tr>
+<td>-R <code>count</code></td>
+<td>重复 Activity 启动次数</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>启动 Activity 前强行停止目标应用</td>
+</tr>
+<tr>
+<td>–opengl-trace</td>
+<td>启用 OpenGL 函数的跟踪</td>
+</tr>
+<tr>
+<td>–user <code>user_id</code> &#124; current</td>
+<td>指定要作为哪个用户运行；如果未指定，则作为当前用户运行</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-4-2-调起-Service"><a href="#4-4-2-调起-Service" class="headerlink" title="4.4.2 调起 Service"></a>4.4.2 调起 Service</h4><pre class=" language-shell"><code class="language-shell">adb shell am startservice [options] <intent>
+</intent></code></pre>
+<p>一个典型的用例是如果设备上原本应该显示虚拟按键但是没有显示，可以试试这个：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell am startservice -n com.android.systemui/.SystemUIService
+</code></pre>
+<h4 id="4-4-3-停止-Service"><a href="#4-4-3-停止-Service" class="headerlink" title="4.4.3 停止 Service"></a>4.4.3 停止 Service</h4><pre class=" language-shell"><code class="language-shell">adb shell am stopservice [options] <intent>
+</intent></code></pre>
+<h4 id="4-4-4-发送广播"><a href="#4-4-4-发送广播" class="headerlink" title="4.4.4 发送广播"></a>4.4.4 发送广播</h4><pre class=" language-shell"><code class="language-shell">adb shell am broadcast [options] <intent>
+</intent></code></pre>
+<p>可以向所有组件广播，也可以只向指定组件广播。</p>
+<p>例如，向所有组件广播 <code>BOOT_COMPLETED</code>：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell am broadcast -a android.intent.action.BOOT_COMPLETED
+</code></pre>
+<p>又例如，只向 <code>com.android.receiver.test/.BootCompletedReceiver</code> 广播 <code>BOOT_COMPLETED</code>：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell am broadcast -a android.intent.action.BOOT_COMPLETED -n com.android.receiver.test/.BootCompletedReceiver
+</code></pre>
+<p>这类用法在测试的时候很实用，比如某个广播的场景很难制造，可以考虑通过这种方式来发送广播。</p>
+<p>既能发送系统预定义的广播，也能发送自定义广播。如下是部分系统预定义广播及正常触发时机：</p>
+<table>
+<thead>
+<tr>
+<th>action</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android.net.conn.CONNECTIVITY_CHANGE</td>
+<td>网络连接发生变化</td>
+</tr>
+<tr>
+<td>android.intent.action.SCREEN_ON</td>
+<td>屏幕点亮</td>
+</tr>
+<tr>
+<td>android.intent.action.SCREEN_OFF</td>
+<td>屏幕熄灭</td>
+</tr>
+<tr>
+<td>android.intent.action.BATTERY_LOW</td>
+<td>电量低，会弹出电量低提示框</td>
+</tr>
+<tr>
+<td>android.intent.action.BATTERY_OKAY</td>
+<td>电量恢复了</td>
+</tr>
+<tr>
+<td>android.intent.action.BOOT_COMPLETED</td>
+<td>设备启动完毕</td>
+</tr>
+<tr>
+<td>android.intent.action.DEVICE_STORAGE_LOW</td>
+<td>存储空间过低</td>
+</tr>
+<tr>
+<td>android.intent.action.DEVICE_STORAGE_OK</td>
+<td>存储空间恢复</td>
+</tr>
+<tr>
+<td>android.intent.action.PACKAGE_ADDED</td>
+<td>安装了新的应用</td>
+</tr>
+<tr>
+<td>android.net.wifi.STATE_CHANGE</td>
+<td>WiFi连接状态发生变化</td>
+</tr>
+<tr>
+<td>android.net.wifi.WIFI_STATE_CHANGED</td>
+<td>WiFi状态变为启用/关闭/正在启动/正在关闭/未知</td>
+</tr>
+<tr>
+<td>android.intent.action.BATTERY_CHANGED</td>
+<td>电池电量发生变化</td>
+</tr>
+<tr>
+<td>android.intent.action.INPUT_METHOD_CHANGED</td>
+<td>系统输入法发生变化</td>
+</tr>
+<tr>
+<td>android.intent.action.ACTION_POWER_CONNECTED</td>
+<td>外部电源连接</td>
+</tr>
+<tr>
+<td>android.intent.action.ACTION_POWER_DISCONNECTED</td>
+<td>外部电源断开连接</td>
+</tr>
+<tr>
+<td>android.intent.action.DREAMING_STARTED</td>
+<td>系统开始休眠</td>
+</tr>
+<tr>
+<td>android.intent.action.DREAMING_STOPPED</td>
+<td>系统停止休眠</td>
+</tr>
+<tr>
+<td>android.intent.action.WALLPAPER_CHANGED</td>
+<td>壁纸发生变化</td>
+</tr>
+<tr>
+<td>android.intent.action.HEADSET_PLUG</td>
+<td>插入耳机</td>
+</tr>
+<tr>
+<td>android.intent.action.MEDIA_UNMOUNTED</td>
+<td>卸载外部介质</td>
+</tr>
+<tr>
+<td>android.intent.action.MEDIA_MOUNTED</td>
+<td>挂载外部介质</td>
+</tr>
+<tr>
+<td>android.os.action.POWER_SAVE_MODE_CHANGED</td>
+<td>省电模式开启</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>以上广播均可使用 adb 触发</p>
+</blockquote>
+<h4 id="4-4-5-强制停止应用"><a href="#4-4-5-强制停止应用" class="headerlink" title="4.4.5 强制停止应用"></a>4.4.5 强制停止应用</h4><pre class=" language-shell"><code class="language-shell">adb shell am force-stop <packagename>
+</packagename></code></pre>
+<h4 id="4-4-6-收紧内存"><a href="#4-4-6-收紧内存" class="headerlink" title="4.4.6 收紧内存"></a>4.4.6 收紧内存</h4><pre class=" language-shell"><code class="language-shell">adb shell am send-trim-memory  <pid> <level>
+</level></pid></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>pid</code>: 进程 ID</li>
+<li><code>level</code>:HIDDEN、RUNNING_MODERATE、BACKGROUND、RUNNING_LOW、MODERATE、RUNNING_CRITICAL、COMPLETE</li>
+</ul>
+<h3 id="4-5-文件管理"><a href="#4-5-文件管理" class="headerlink" title="4.5 文件管理"></a>4.5 文件管理</h3><h4 id="4-5-1-从模拟器-设备下载指定的文件到计算机"><a href="#4-5-1-从模拟器-设备下载指定的文件到计算机" class="headerlink" title="4.5.1 从模拟器/设备下载指定的文件到计算机"></a>4.5.1 从模拟器/设备下载指定的文件到计算机</h4><p>从模拟器/设备下载指定的文件到计算机的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb pull <remote> [local]
+</remote></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>remote</code>: 模拟器/设备里的文件路径</li>
+<li><code>local</code>:计算机上的目录，参数可以省略，默认复制到当前目录</li>
+</ul>
+<p>例如，将 /sdcard/music.mp4 下载到计算机的当前目录：</p>
+<pre class=" language-shell"><code class="language-shell">adb pull /sdcard/music.mp4
+</code></pre>
+<p>将 /sdcard/music.mp4 下载到计算机的当前目录(目录需存在)：</p>
+<pre class=" language-shell"><code class="language-shell">adb pull /sdcard/music.mp4 D:\Download
+</code></pre>
+<h4 id="4-5-2-将指定的文件从计算机上传到模拟器-设备"><a href="#4-5-2-将指定的文件从计算机上传到模拟器-设备" class="headerlink" title="4.5.2 将指定的文件从计算机上传到模拟器/设备"></a>4.5.2 将指定的文件从计算机上传到模拟器/设备</h4><p>将指定的文件从计算机上传到模拟器/设备的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb push <local> <remote>
+</remote></local></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>local</code>:计算机上的文件路径</li>
+<li><code>remote</code>: 模拟器/设备里的目录</li>
+</ul>
+<p>例如，将 D:\Download\music.mp4 下载到设备的/sdcard/music/目录：</p>
+<pre class=" language-shell"><code class="language-shell">adb push D:\Download\music.mp4 /sdcard/music/
+</code></pre>
+<h4 id="4-5-4-列出指定目录的内容"><a href="#4-5-4-列出指定目录的内容" class="headerlink" title="4.5.4 列出指定目录的内容"></a>4.5.4 列出指定目录的内容</h4><p>列出模拟器/设备上指定目录的内容的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ls [options] <directory>
+</directory></code></pre>
+<p><code>&lt;directory&gt;</code> 表示指定目录，可以省略，表示列出根目录下的所有文件和目录。<br><code>adb shell ls</code> 后面可以跟一些可选参数进行过滤查看不同的列表，可用参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>显示列表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>列出目录下的所有文件和目录</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>列出目录下的所有文件(包括隐藏的)</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>列出目录下的所有文件和索引编号</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>列出目录下的所有文件和文件大小</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>列出目录下的所有文件及其 UID和 GID</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>列出目录下的所有子目录中的文件</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-5-5-切换到目标目录"><a href="#4-5-5-切换到目标目录" class="headerlink" title="4.5.5 切换到目标目录"></a>4.5.5 切换到目标目录</h4><pre class=" language-shell"><code class="language-shell">adb shell cd <directory>
+</directory></code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>cd &lt;directory&gt;</code>命令切换到目标目录。</p>
+<h4 id="4-5-6-删除文件或目录"><a href="#4-5-6-删除文件或目录" class="headerlink" title="4.5.6 删除文件或目录"></a>4.5.6 删除文件或目录</h4><pre class=" language-shell"><code class="language-shell">adb shell rm [options] <files or="" directory="">
+</files></code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>rm [options] &lt;files or directory&gt;</code>命令删除文件或目录。</p>
+<p><code>rm</code> 后面可以跟一些可选参数进行不同的操作，可用参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>强制删除文件，系统不提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>强制删除指定目录中的所有文件和子目录</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>删除指定目录，即使它是一个非空目录</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>交互式删除，删除前提示</td>
+</tr>
+</tbody>
+</table>
+<p><code>rm -d</code> 等同于 <code>rmdir</code> 命令，有些版本不包含<code>-d</code> 参数。</p>
+<h4 id="4-5-7-创建目录"><a href="#4-5-7-创建目录" class="headerlink" title="4.5.7 创建目录"></a>4.5.7 创建目录</h4><pre class=" language-shell"><code class="language-shell">adb shell mkdir [options] <directory-name>
+</directory-name></code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>mkdir [options] &lt;directory-name&gt;</code>命令创建目录。<br><code>mkdir</code> 后面可以跟一些可选参数进行不同的操作，可用参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>创建指定目录</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>创建指定目录并赋予读写权限</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>创建指定目录及其父目录</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-5-8-创建空文件或改变文件时间戳"><a href="#4-5-8-创建空文件或改变文件时间戳" class="headerlink" title="4.5.8 创建空文件或改变文件时间戳"></a>4.5.8 创建空文件或改变文件时间戳</h4><pre class=" language-shell"><code class="language-shell">adb shell touch [options] <file>
+</file></code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>touch [options] &lt;file&gt;</code>命令创建空文件或改变文件时间戳。</p>
+<p>可通过<code>ls -n &lt;directory&gt;</code> 命令查看文件的时间。</p>
+<h4 id="4-5-9-输出当前目录路径"><a href="#4-5-9-输出当前目录路径" class="headerlink" title="4.5.9 输出当前目录路径"></a>4.5.9 输出当前目录路径</h4><pre class=" language-shell"><code class="language-shell">adb shell pwd
+</code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>pwd</code>命令输出当前目录路径。</p>
+<h4 id="4-5-10-复制文件和目录"><a href="#4-5-10-复制文件和目录" class="headerlink" title="4.5.10 复制文件和目录"></a>4.5.10 复制文件和目录</h4><pre class=" language-shell"><code class="language-shell">adb shell cp [options] <source> <dest>
+</dest></code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>cp [options] &lt;source&gt; &lt;dest&gt;</code>命令复制文件和目录。<br>参数说明：</p>
+<ul>
+<li><code>source</code>:源文件路径</li>
+<li><code>dest</code>: 目标文件路径</li>
+</ul>
+<h4 id="4-5-11-移动或重命名文件"><a href="#4-5-11-移动或重命名文件" class="headerlink" title="4.5.11 移动或重命名文件"></a>4.5.11 移动或重命名文件</h4><pre class=" language-shell"><code class="language-shell">adb shell mv [options] <source> <dest>
+</dest></code></pre>
+<p>第一步：执行<code>adb shell</code>命令；<br>第二步：执行<code>mv [options] &lt;source&gt; &lt;dest&gt;</code>命令移动或重命名文件。<br>参数说明：</p>
+<ul>
+<li><code>source</code>:源文件路径</li>
+<li><code>dest</code>: 目标文件路径</li>
+</ul>
+<h3 id="4-6-网络管理"><a href="#4-6-网络管理" class="headerlink" title="4.6 网络管理"></a>4.6 网络管理</h3><h4 id="4-6-1-查看网络统计信息"><a href="#4-6-1-查看网络统计信息" class="headerlink" title="4.6.1 查看网络统计信息"></a>4.6.1 查看网络统计信息</h4><pre class=" language-shell"><code class="language-shell">adb shell netstat
+</code></pre>
+<p>也可以将网络统计信息输出到指定文件：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell netstat><file-path>
+</file-path></code></pre>
+<p>例如，可以通过 <code>adb shell netstat&gt;D:\netstat.log</code> 将日志输出到 <code>D:\netstat.log</code> 中。</p>
+<h4 id="4-6-2-测试两个网络间的连接和延迟"><a href="#4-6-2-测试两个网络间的连接和延迟" class="headerlink" title="4.6.2 测试两个网络间的连接和延迟"></a>4.6.2 测试两个网络间的连接和延迟</h4><p><code>ping</code> 命令的格式如下：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ping [-aAbBdDfhLnOqrRUvV] [-c count] [-i interval] [-I interface]
+[-m mark] [-M pmtudisc_option] [-l preload] [-p pattern] [-Q tos]
+[-s packetsize] [-S sndbuf] [-t ttl] [-T timestamp_option]
+[-w deadline] [-W timeout] [hop1 ...] destination
+</code></pre>
+<p>例如，ping一个域名：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ping www.google.com
+</code></pre>
+<p>不结束的话会一直ping下去，可以按 <code>Ctrl + C</code> 停止ping操作。</p>
+<p>也可以指定ping的次数：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ping -c 4 www.google.com
+</code></pre>
+<h4 id="4-6-3-通过配置文件配置和管理网络连接"><a href="#4-6-3-通过配置文件配置和管理网络连接" class="headerlink" title="4.6.3 通过配置文件配置和管理网络连接"></a>4.6.3 通过配置文件配置和管理网络连接</h4><p><code>netcfg</code> 命令的格式如下：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell netcfg [<interface> {dhcp|up|down}]
+</interface></code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">rmnet_ims10 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_ims00 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun04 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun03 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun02 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun01 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun00 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun14 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun13 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun12 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun11 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_tun10 DOWN                                   0.0.0.0/0   0x00001002
+rmnet1   DOWN                                   0.0.0.0/0   0x00001002
+rmnet0   DOWN                                   0.0.0.0/0   0x00001002
+rmnet4   DOWN                                   0.0.0.0/0   0x00001002
+rmnet3   DOWN                                   0.0.0.0/0   0x00001002
+rmnet2   DOWN                                   0.0.0.0/0   0x00001002
+rmnet6   DOWN                                   0.0.0.0/0   0x00001002
+rmnet5   DOWN                                   0.0.0.0/0   0x00001002
+dummy0   UP                                     0.0.0.0/0   0x000000c3
+rmnet_r_ims10 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_r_ims00 DOWN                                   0.0.0.0/0   0x00001002
+rmnet_emc0 DOWN                                   0.0.0.0/0   0x00001002
+lo       UP                                   127.0.0.1/8   0x00000049
+sit0     DOWN                                   0.0.0.0/0   0x00000080
+wlan0    UP                                 10.0.38.176/23  0x00001043
+</code></pre>
+<h4 id="4-6-4-显示、操作路由、设备、策略路由和隧道"><a href="#4-6-4-显示、操作路由、设备、策略路由和隧道" class="headerlink" title="4.6.4 显示、操作路由、设备、策略路由和隧道"></a>4.6.4 显示、操作路由、设备、策略路由和隧道</h4><p><code>ip</code> 命令的格式如下：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ip [ options ] object
+</code></pre>
+<ul>
+<li><p>options := { -V[ersion] | -s[tatistics] | -d[etails] | -r[esolve] |-f[amily] { inet | inet6 | ipx | dnet | link } |-l[oops] { maximum-addr-flush-attempts } |-o[neline] | -t[imestamp] | -b[atch] [filename] |-rc[vbuf] [size]}</p>
+</li>
+<li><p>object := { link | addr | addrlabel | route | rule | neigh | ntable |tunnel | tuntap | maddr | mroute | mrule | monitor | xfrm |netns | l2tp }</p>
+</li>
+</ul>
+<p><code>options</code> 是一些修改ip行为或者改变其输出的选项。所有的选项都是以-字符开头，分为长、短两种形式，支持的可选参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-V,-Version</td>
+<td>打印ip的版本并退出</td>
+</tr>
+<tr>
+<td>-s,-stats,-statistics</td>
+<td>输出更为详尽的信息(如果这个选项出现两次或者多次，输出的信息将更为详尽)</td>
+</tr>
+<tr>
+<td>-f,-family</td>
+<td>强调使用的协议种类(包括：inet、inet6或者link)</td>
+</tr>
+<tr>
+<td>-4</td>
+<td>是-family inet的简写</td>
+</tr>
+<tr>
+<td>-6</td>
+<td>是-family inet6的简写</td>
+</tr>
+<tr>
+<td>-0</td>
+<td>是-family link的简写</td>
+</tr>
+<tr>
+<td>-o,-oneline</td>
+<td>对每行记录都使用单行输出，回行用字符代替</td>
+</tr>
+<tr>
+<td>-r,-resolve</td>
+<td>查询域名解析系统，用获得的主机名代替主机IP地址</td>
+</tr>
+</tbody>
+</table>
+<p><code>object</code> 是你要管理或者获取信息的对象。目前ip认识的对象包括：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>显示列表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>link</td>
+<td>网络设备</td>
+</tr>
+<tr>
+<td>address</td>
+<td>一个设备的协议(IP或者IPV6)地址</td>
+</tr>
+<tr>
+<td>neighbour</td>
+<td>ARP或者NDISC缓冲区条目</td>
+</tr>
+<tr>
+<td>route</td>
+<td>路由表条目</td>
+</tr>
+<tr>
+<td>rule</td>
+<td>路由策略数据库中的规则</td>
+</tr>
+<tr>
+<td>maddress</td>
+<td>多播地址</td>
+</tr>
+<tr>
+<td>mroute</td>
+<td>多播路由缓冲区条目</td>
+</tr>
+<tr>
+<td>tuntap</td>
+<td>管理 TUN/TAP 设备</td>
+</tr>
+<tr>
+<td>netns</td>
+<td>管理网络空间</td>
+</tr>
+</tbody>
+</table>
+<p>例如，查看 <code>WiFi IP</code> 地址：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ip -f inet addr show wlan0
+</code></pre>
+<h3 id="4-7-模拟按键-输入"><a href="#4-7-模拟按键-输入" class="headerlink" title="4.7 模拟按键/输入"></a>4.7 模拟按键/输入</h3><p>在 <code>adb shell</code> 里有个很实用的命令叫 <code>input</code>，通过它可以做一些有趣的事情。<br>可以执行<code>adb shell input</code>命令查看完整 help 信息如下：</p>
+<pre class=" language-shell"><code class="language-shell">Usage: input [<source>] <command> [<arg>...]
+
+The sources are:
+      dpad
+      keyboard
+      mouse
+      touchpad
+      gamepad
+      touchnavigation
+      joystick
+      touchscreen
+      stylus
+      trackball
+
+The commands and default sources are:
+      text <string> (Default: touchscreen)
+      keyevent [--longpress] <key code="" number="" or="" name=""> ... (Default: keyboard)
+      tap <x> <y> (Default: touchscreen)
+      swipe <x1> <y1> <x2> <y2> [duration(ms)] (Default: touchscreen)
+      draganddrop <x1> <y1> <x2> <y2> [duration(ms)] (Default: touchscreen)
+      press (Default: trackball)
+      roll <dx> <dy> (Default: trackball)
+</dy></dx></y2></x2></y1></x1></y2></x2></y1></x1></y></x></key></string></arg></code></pre>
+<p>比如使用 <code>adb shell input keyevent &lt;keycode&gt;</code> 命令，不同的 keycode 能实现不同的功能，完整的 keycode 列表详见 <a href="https://developer.android.com/reference/android/view/KeyEvent.html" target="_blank" rel="noopener">KeyEvent</a>，摘引部分我觉得有意思的如下：</p>
+<table>
+<thead>
+<tr>
+<th>KeyCode</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>HOME 键</td>
+</tr>
+<tr>
+<td>4</td>
+<td>返回键</td>
+</tr>
+<tr>
+<td>5</td>
+<td>打开拨号应用</td>
+</tr>
+<tr>
+<td>6</td>
+<td>挂断电话</td>
+</tr>
+<tr>
+<td>24</td>
+<td>增加音量</td>
+</tr>
+<tr>
+<td>25</td>
+<td>降低音量</td>
+</tr>
+<tr>
+<td>26</td>
+<td>电源键</td>
+</tr>
+<tr>
+<td>27</td>
+<td>拍照（需要在相机应用里）</td>
+</tr>
+<tr>
+<td>64</td>
+<td>打开浏览器</td>
+</tr>
+<tr>
+<td>82</td>
+<td>菜单键</td>
+</tr>
+<tr>
+<td>85</td>
+<td>播放/暂停</td>
+</tr>
+<tr>
+<td>86</td>
+<td>停止播放</td>
+</tr>
+<tr>
+<td>87</td>
+<td>播放下一首</td>
+</tr>
+<tr>
+<td>88</td>
+<td>播放上一首</td>
+</tr>
+<tr>
+<td>122</td>
+<td>移动光标到行首或列表顶部</td>
+</tr>
+<tr>
+<td>123</td>
+<td>移动光标到行末或列表底部</td>
+</tr>
+<tr>
+<td>126</td>
+<td>恢复播放</td>
+</tr>
+<tr>
+<td>127</td>
+<td>暂停播放</td>
+</tr>
+<tr>
+<td>164</td>
+<td>静音</td>
+</tr>
+<tr>
+<td>176</td>
+<td>打开系统设置</td>
+</tr>
+<tr>
+<td>187</td>
+<td>切换应用</td>
+</tr>
+<tr>
+<td>207</td>
+<td>打开联系人</td>
+</tr>
+<tr>
+<td>208</td>
+<td>打开日历</td>
+</tr>
+<tr>
+<td>209</td>
+<td>打开音乐</td>
+</tr>
+<tr>
+<td>210</td>
+<td>打开计算器</td>
+</tr>
+<tr>
+<td>220</td>
+<td>降低屏幕亮度</td>
+</tr>
+<tr>
+<td>221</td>
+<td>提高屏幕亮度</td>
+</tr>
+<tr>
+<td>223</td>
+<td>系统休眠</td>
+</tr>
+<tr>
+<td>224</td>
+<td>点亮屏幕</td>
+</tr>
+<tr>
+<td>231</td>
+<td>打开语音助手</td>
+</tr>
+<tr>
+<td>276</td>
+<td>如果没有 wakelock 则让系统休眠</td>
+</tr>
+</tbody>
+</table>
+<p>下面是 <code>input</code> 命令的一些用法举例。</p>
+<h4 id="4-7-1-电源键"><a href="#4-7-1-电源键" class="headerlink" title="4.7.1 电源键"></a>4.7.1 电源键</h4><pre class=" language-shell"><code class="language-shell">adb shell input keyevent 26
+</code></pre>
+<p>执行效果相当于按电源键。</p>
+<h4 id="4-7-2-菜单键"><a href="#4-7-2-菜单键" class="headerlink" title="4.7.2 菜单键"></a>4.7.2 菜单键</h4><pre class=" language-shell"><code class="language-shell">adb shell input keyevent 82
+</code></pre>
+<h4 id="4-7-3-HOME-键"><a href="#4-7-3-HOME-键" class="headerlink" title="4.7.3 HOME 键"></a>4.7.3 HOME 键</h4><pre class=" language-shell"><code class="language-shell">adb shell input keyevent 3
+</code></pre>
+<h4 id="4-7-4-返回键"><a href="#4-7-4-返回键" class="headerlink" title="4.7.4 返回键"></a>4.7.4 返回键</h4><pre class=" language-shell"><code class="language-shell">adb shell input keyevent 4
+</code></pre>
+<h4 id="4-7-5-音量控制"><a href="#4-7-5-音量控制" class="headerlink" title="4.7.5 音量控制"></a>4.7.5 音量控制</h4><ul>
+<li><p>增加音量：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 24
+</code></pre>
+</li>
+<li><p>降低音量：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 25
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>静音：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 164
+</code></pre>
+<h4 id="4-7-6-媒体控制"><a href="#4-7-6-媒体控制" class="headerlink" title="4.7.6 媒体控制"></a>4.7.6 媒体控制</h4><ul>
+<li><p>播放/暂停：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 85
+</code></pre>
+</li>
+<li><p>停止播放：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 86
+</code></pre>
+</li>
+<li><p>播放下一首：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 87
+</code></pre>
+</li>
+<li><p>播放上一首：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 88
+</code></pre>
+</li>
+<li><p>恢复播放：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 126
+</code></pre>
+</li>
+<li><p>暂停播放：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 127
+</code></pre>
+</li>
+</ul>
+<h4 id="4-7-7-点亮-熄灭屏幕"><a href="#4-7-7-点亮-熄灭屏幕" class="headerlink" title="4.7.7 点亮/熄灭屏幕"></a>4.7.7 点亮/熄灭屏幕</h4><ul>
+<li><p>点亮屏幕：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 224
+</code></pre>
+</li>
+<li><p>熄灭屏幕：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input keyevent 223
+</code></pre>
+</li>
+</ul>
+<h4 id="4-7-8-滑动解锁"><a href="#4-7-8-滑动解锁" class="headerlink" title="4.7.8 滑动解锁"></a>4.7.8 滑动解锁</h4><p>如果锁屏没有密码，是通过滑动手势解锁，那么可以通过 <code>input swipe</code> 来解锁。<br>命令（参数以机型 Nexus 5，向上滑动手势解锁举例）：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input swipe 300 1000 300 500
+</code></pre>
+<p>参数 <code>300 1000 300 500</code> 分别表示<code>起始点x坐标 起始点y坐标 结束点x坐标 结束点y坐标</code>。</p>
+<h4 id="4-7-9-输入文本"><a href="#4-7-9-输入文本" class="headerlink" title="4.7.9 输入文本"></a>4.7.9 输入文本</h4><p>在焦点处于某文本框时，可以通过 <code>input</code> 命令来输入文本。</p>
+<pre class=" language-shell"><code class="language-shell">adb shell input text hello
+</code></pre>
+<h3 id="4-8-日志打印"><a href="#4-8-日志打印" class="headerlink" title="4.8 日志打印"></a>4.8 日志打印</h3><p>Android 系统的日志分为两部分，底层的 Linux 内核日志输出到 /proc/kmsg，Android 的日志输出到 /dev/log。</p>
+<h4 id="4-8-1-Android-日志"><a href="#4-8-1-Android-日志" class="headerlink" title="4.8.1 Android 日志"></a>4.8.1 Android 日志</h4><p>查看 Android 设备系统属性的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb logcat [option] [filter-specs]
+</code></pre>
+<p>如果需要停止 <code>logcat</code> 日志打印，可以按 <code>Ctrl + C</code> 停止日志监控。</p>
+<h5 id="4-8-1-1-按级别过滤日志"><a href="#4-8-1-1-按级别过滤日志" class="headerlink" title="4.8.1.1 按级别过滤日志"></a>4.8.1.1 按级别过滤日志</h5><p>按级别过滤日志的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb logcat [filter-specs]
+</code></pre>
+<p>Android 的日志分为如下几个优先级（priority）：</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*:V</td>
+<td>过滤只显示 Verbose 及以上级别(优先级最低)</td>
+</tr>
+<tr>
+<td>*:D</td>
+<td>过滤只显示 Debug 及以上级别</td>
+</tr>
+<tr>
+<td>*:I</td>
+<td>过滤只显示 Info 及以上级别</td>
+</tr>
+<tr>
+<td>*:W</td>
+<td>过滤只显示 Warning 及以上级别</td>
+</tr>
+<tr>
+<td>*:E</td>
+<td>过滤只显示 Error 及以上级别</td>
+</tr>
+<tr>
+<td>*:F</td>
+<td>过滤只显示 Fatal 及以上级别</td>
+</tr>
+<tr>
+<td>*:S</td>
+<td>过滤只显示 Silent 及以上级别(优先级最高，什么也不输出)</td>
+</tr>
+</tbody>
+</table>
+<p>按某级别过滤日志则会将该级别及以上的日志输出。</p>
+<p>比如，命令：</p>
+<pre class=" language-shell"><code class="language-shell">adb logcat *:W
+</code></pre>
+<p>会将 Warning、Error、Fatal 和 Silent 日志输出。</p>
+<p>（<strong>注：</strong> 在 macOS 下需要给 <code>*:W</code> 这样以 <code>*</code> 作为 tag 的参数加双引号，如 <code>adb logcat &quot;*:W&quot;</code>，不然会报错 <code>no matches found: *:W</code>。）</p>
+<h5 id="4-8-1-2-按-tag-和级别过滤日志"><a href="#4-8-1-2-按-tag-和级别过滤日志" class="headerlink" title="4.8.1.2 按 tag 和级别过滤日志"></a>4.8.1.2 按 tag 和级别过滤日志</h5><p>按 tag 和级别过滤日志的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb logcat [tag:level] [tag:level] ...
+</code></pre>
+<p>比如，命令：</p>
+<pre class=" language-shell"><code class="language-shell">adb logcat ActivityManager:I MyApp:D *:S
+</code></pre>
+<p>表示输出 tag <code>ActivityManager</code> 的 Info 以上级别日志，输出 tag <code>MyApp</code> 的 Debug 以上级别日志，及其它 tag 的 Silent 级别日志（即屏蔽其它 tag 日志）。</p>
+<h5 id="4-8-1-3-将日志格式化输出"><a href="#4-8-1-3-将日志格式化输出" class="headerlink" title="4.8.1.3 将日志格式化输出"></a>4.8.1.3 将日志格式化输出</h5><p>可以用 <code>adb logcat -v &lt;format&gt;</code> 选项指定日志输出格式。</p>
+<p>日志支持按以下几种 <code>&lt;format&gt;</code>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>显示格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>brief</td>
+<td><code>&lt;priority&gt;/&lt;tag&gt;(&lt;pid&gt;): &lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>process</td>
+<td><code>&lt;priority&gt;(&lt;pid&gt;) &lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>tag</td>
+<td><code>&lt;priority&gt;/&lt;tag&gt;: &lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>raw</td>
+<td><code>&lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>time</td>
+<td><code>&lt;datetime&gt; &lt;priority&gt;/&lt;tag&gt;(&lt;pid&gt;): &lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>threadtime</td>
+<td><code>&lt;datetime&gt; &lt;pid&gt; &lt;tid&gt; &lt;priority&gt; &lt;tag&gt;: &lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>long</td>
+<td><code>[ &lt;datetime&gt; &lt;pid&gt;:&lt;tid&gt; &lt;priority&gt;/&lt;tag&gt; ] &lt;message&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>日志格式默认为 <code>brief</code>，指定格式可与上面的过滤同时使用。比如：</p>
+<pre class=" language-shell"><code class="language-shell">adb logcat -v long ActivityManager:I *:S
+</code></pre>
+<h5 id="4-8-1-3-清空已存在的日志"><a href="#4-8-1-3-清空已存在的日志" class="headerlink" title="4.8.1.3 清空已存在的日志"></a>4.8.1.3 清空已存在的日志</h5><pre class=" language-shell"><code class="language-shell">adb logcat -c
+</code></pre>
+<h5 id="4-8-1-4-将日志显示在控制台"><a href="#4-8-1-4-将日志显示在控制台" class="headerlink" title="4.8.1.4 将日志显示在控制台"></a>4.8.1.4 将日志显示在控制台</h5><pre class=" language-shell"><code class="language-shell">adb logcat -d
+</code></pre>
+<h5 id="4-8-1-5-将日志输出到文件"><a href="#4-8-1-5-将日志输出到文件" class="headerlink" title="4.8.1.5 将日志输出到文件"></a>4.8.1.5 将日志输出到文件</h5><pre class=" language-shell"><code class="language-shell">adb logcat -f <file-path>
+</file-path></code></pre>
+<h5 id="4-8-1-6-加载一个可使用的日志缓冲区供查看"><a href="#4-8-1-6-加载一个可使用的日志缓冲区供查看" class="headerlink" title="4.8.1.6 加载一个可使用的日志缓冲区供查看"></a>4.8.1.6 加载一个可使用的日志缓冲区供查看</h5><pre class=" language-shell"><code class="language-shell">adb logcat -b <buffer>
+</buffer></code></pre>
+<p><code>Android log</code> 输出量巨大，特别是通信系统的log，因此，Android把log输出到不同的缓冲区中，目前定义了四个log缓冲区：</p>
+<table>
+<thead>
+<tr>
+<th>缓冲区</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio</td>
+<td>输出通信系统的 log</td>
+</tr>
+<tr>
+<td>System</td>
+<td>输出系统组件的 log</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>输出 event 模块的 log</td>
+</tr>
+<tr>
+<td>Main</td>
+<td>所有 java 层的 log 以及不属于上面3层的 log</td>
+</tr>
+</tbody>
+</table>
+<p>缓冲区主要给系统组件使用，一般的应用不需要关心，应用的log都输出到main缓冲区中。默认log输出（不指定缓冲区的情况下）是输出System和Main缓冲区的log。</p>
+<h5 id="4-8-1-7-打印指定日志缓冲区的大小"><a href="#4-8-1-7-打印指定日志缓冲区的大小" class="headerlink" title="4.8.1.7 打印指定日志缓冲区的大小"></a>4.8.1.7 打印指定日志缓冲区的大小</h5><pre class=" language-shell"><code class="language-shell">adb logcat -g
+</code></pre>
+<h4 id="4-8-2-内核日志"><a href="#4-8-2-内核日志" class="headerlink" title="4.8.2 内核日志"></a>4.8.2 内核日志</h4><pre class=" language-shell"><code class="language-shell">adb shell dmesg
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell"><6>[14201.684016] PM: noirq resume of devices complete after 0.982 msecs
+<6>[14201.685525] PM: early resume of devices complete after 0.838 msecs
+<6>[14201.753642] PM: resume of devices complete after 68.106 msecs
+<4>[14201.755954] Restarting tasks ... done.
+<6>[14201.771229] PM: suspend exit 2016-08-28 13:31:32.679217193 UTC
+<6>[14201.872373] PM: suspend entry 2016-08-28 13:31:32.780363596 UTC
+<6>[14201.872498] PM: Syncing filesystems ... done.
+</6></6></6></4></6></6></6></code></pre>
+<p>中括号里的 <code>[14201.684016]</code> 代表内核开始启动后的时间，单位为秒。</p>
+<p>通过内核日志我们可以做一些事情，比如衡量内核启动时间，在系统启动完毕后的内核日志里找到 <code>Freeing init memory</code> 那一行前面的时间就是。</p>
+<h3 id="4-9-查看-Android-设备系统属性"><a href="#4-9-查看-Android-设备系统属性" class="headerlink" title="4.9 查看 Android 设备系统属性"></a>4.9 查看 Android 设备系统属性</h3><p>查看 Android 设备系统属性的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell getprop [options]
+</code></pre>
+<p>除了可以查看 Android 设备系统属性之外，还可以设置系统属性，设置系统属性的基本命令格式是：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell setprop <key> <value>
+</value></key></code></pre>
+<h4 id="4-9-1-查看设备型号"><a href="#4-9-1-查看设备型号" class="headerlink" title="4.9.1 查看设备型号"></a>4.9.1 查看设备型号</h4><pre class=" language-shell"><code class="language-shell">adb shell getprop ro.product.model
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">Nexus 5
+</code></pre>
+<h4 id="4-9-2-查看设备电池状况"><a href="#4-9-2-查看设备电池状况" class="headerlink" title="4.9.2 查看设备电池状况"></a>4.9.2 查看设备电池状况</h4><pre class=" language-shell"><code class="language-shell">adb shell dumpsys battery
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">Current Battery Service state:
+  AC powered: false
+  USB powered: true
+  Wireless powered: false
+  status: 2
+  health: 2
+  present: true
+  level: 44
+  scale: 100
+  voltage: 3872
+  temperature: 280
+  technology: Li-poly
+</code></pre>
+<p>其中 <code>scale</code> 代表最大电量，<code>level</code> 代表当前电量。上面的输出表示还剩下 44% 的电量。</p>
+<h4 id="4-9-3-查看设备屏幕分辨率"><a href="#4-9-3-查看设备屏幕分辨率" class="headerlink" title="4.9.3 查看设备屏幕分辨率"></a>4.9.3 查看设备屏幕分辨率</h4><pre class=" language-shell"><code class="language-shell">adb shell wm size
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">Physical size: 1080x1920
+</code></pre>
+<p>该设备屏幕分辨率为 1080px * 1920px。</p>
+<p>如果使用命令修改过，那输出可能是：</p>
+<pre class=" language-shell"><code class="language-shell">Physical size: 1080x1920
+Override size: 480x1024
+</code></pre>
+<p>表明设备的屏幕分辨率原本是 1080px <em> 1920px，当前被修改为 480px </em> 1024px。</p>
+<h4 id="4-9-4-查看设备屏幕密度"><a href="#4-9-4-查看设备屏幕密度" class="headerlink" title="4.9.4 查看设备屏幕密度"></a>4.9.4 查看设备屏幕密度</h4><pre class=" language-shell"><code class="language-shell">adb shell wm density
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">Physical density: 420
+</code></pre>
+<p>该设备屏幕密度为 420dpi。</p>
+<p>如果使用命令修改过，那输出可能是：</p>
+<pre class=" language-shell"><code class="language-shell">Physical density: 480
+Override density: 160
+</code></pre>
+<p>表明设备的屏幕密度原来是 480dpi，当前被修改为 160dpi。</p>
+<h4 id="4-9-5-查看设备显示屏参数"><a href="#4-9-5-查看设备显示屏参数" class="headerlink" title="4.9.5 查看设备显示屏参数"></a>4.9.5 查看设备显示屏参数</h4><pre class=" language-shell"><code class="language-shell">adb shell dumpsys window displays
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">WINDOW MANAGER DISPLAY CONTENTS (dumpsys window displays)
+  Display: mDisplayId=0
+    init=1080x1920 420dpi cur=1080x1920 app=1080x1794 rng=1080x1017-1810x1731
+    deferred=false layoutNeeded=false
+</code></pre>
+<p>其中 <code>mDisplayId</code> 为 显示屏编号，<code>init</code> 是初始分辨率和屏幕密度，<code>app</code> 的高度比 <code>init</code> 里的要小，表示屏幕底部有虚拟按键，高度为 1920 - 1794 = 126px 合 42dp。</p>
+<h4 id="4-9-6-查看设备-android-id"><a href="#4-9-6-查看设备-android-id" class="headerlink" title="4.9.6 查看设备 android_id"></a>4.9.6 查看设备 android_id</h4><pre class=" language-shell"><code class="language-shell">adb shell settings get secure android_id
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">51b6be48bac8c569
+</code></pre>
+<h4 id="4-9-7-查看设备IMEI"><a href="#4-9-7-查看设备IMEI" class="headerlink" title="4.9.7 查看设备IMEI"></a>4.9.7 查看设备IMEI</h4><p>在 Android 4.4 及以下版本可通过如下命令获取 IMEI：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell dumpsys iphonesubinfo
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">Phone Subscriber Info:
+  Phone Type = GSM
+  Device ID = 860955027785041
+</code></pre>
+<p>其中的 <code>Device ID</code> 就是 IMEI。</p>
+<p>而在 Android 5.0 及以上版本里这个命令输出为空，得通过其它方式获取了（需要 root 权限）：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell
+su
+service call iphonesubinfo 1
+</code></pre>
+<p>把里面的有效内容提取出来就是 IMEI 了，比如这里的是 <code>860955027785041</code>。</p>
+<p>参考：<a href="http://stackoverflow.com/questions/27002663/adb-shell-dumpsys-iphonesubinfo-not-working-since-android-5-0-lollipop" target="_blank" rel="noopener">adb shell dumpsys iphonesubinfo not working since Android 5.0 Lollipop</a></p>
+<h4 id="4-9-8-查看设备-Android-系统版本"><a href="#4-9-8-查看设备-Android-系统版本" class="headerlink" title="4.9.8 查看设备 Android 系统版本"></a>4.9.8 查看设备 Android 系统版本</h4><pre class=" language-shell"><code class="language-shell">adb shell getprop ro.build.version.release
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">5.0.2
+</code></pre>
+<h4 id="4-9-9-查看设备-IP-地址"><a href="#4-9-9-查看设备-IP-地址" class="headerlink" title="4.9.9 查看设备 IP 地址"></a>4.9.9 查看设备 IP 地址</h4><pre class=" language-shell"><code class="language-shell">adb shell ifconfig | grep Mask
+</code></pre>
+<p>在有的设备上这个命令没有输出，如果设备连着 WiFi，可以使用如下命令来查看局域网 IP：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell ifconfig wlan0
+</code></pre>
+<p>如果以上命令仍然不能得到期望的信息，那可以试试以下命令（部分系统版本里可用）：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell netcfg
+</code></pre>
+<h4 id="4-9-10-查看设备-Mac-地址"><a href="#4-9-10-查看设备-Mac-地址" class="headerlink" title="4.9.10 查看设备 Mac 地址"></a>4.9.10 查看设备 Mac 地址</h4><pre class=" language-shell"><code class="language-shell">adb shell cat /sys/class/net/wlan0/address
+</code></pre>
+<p>输出示例：</p>
+<pre class=" language-shell"><code class="language-shell">f8:a9:d0:17:42:4d
+</code></pre>
+<p>这查看的是局域网 Mac 地址，移动网络或其它连接的信息可以通过前面的小节「IP 地址」里提到的 <code>adb shell netcfg</code> 命令来查看。</p>
+<h4 id="4-9-11-查看设备-CPU-信息"><a href="#4-9-11-查看设备-CPU-信息" class="headerlink" title="4.9.11 查看设备 CPU 信息"></a>4.9.11 查看设备 CPU 信息</h4><pre class=" language-shell"><code class="language-shell">adb shell cat /proc/cpuinfo
+</code></pre>
+<h4 id="4-9-12-查看设备内存信息"><a href="#4-9-12-查看设备内存信息" class="headerlink" title="4.9.12 查看设备内存信息"></a>4.9.12 查看设备内存信息</h4><pre class=" language-shell"><code class="language-shell">adb shell cat /proc/meminfo
+</code></pre>
+<h4 id="4-9-13-查看设备更多硬件与系统属性"><a href="#4-9-13-查看设备更多硬件与系统属性" class="headerlink" title="4.9.13 查看设备更多硬件与系统属性"></a>4.9.13 查看设备更多硬件与系统属性</h4><p>设备的更多硬件与系统属性可以通过如下命令查看：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell cat /system/build.prop
+</code></pre>
+<p>这会输出很多信息，包括前面几个小节提到的「型号」和「Android 系统版本」等。</p>
+<p>输出里还包括一些其它有用的信息，它们也可通过 <code>adb shell getprop &lt;属性名&gt;</code> 命令单独查看，列举一部分属性如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ro.build.version.sdk</td>
+<td>SDK 版本</td>
+</tr>
+<tr>
+<td>ro.build.version.release</td>
+<td>Android 系统版本</td>
+</tr>
+<tr>
+<td>ro.build.version.security_patch</td>
+<td>Android 安全补丁程序级别</td>
+</tr>
+<tr>
+<td>ro.product.model</td>
+<td>型号</td>
+</tr>
+<tr>
+<td>ro.product.brand</td>
+<td>品牌</td>
+</tr>
+<tr>
+<td>ro.product.name</td>
+<td>设备名</td>
+</tr>
+<tr>
+<td>ro.product.board</td>
+<td>处理器型号</td>
+</tr>
+<tr>
+<td>ro.product.cpu.abilist</td>
+<td>CPU 支持的 abi 列表</td>
+</tr>
+<tr>
+<td>persist.sys.isUsbOtgEnabled</td>
+<td>是否支持 OTG</td>
+</tr>
+<tr>
+<td>dalvik.vm.heapsize</td>
+<td>每个应用程序的内存上限</td>
+</tr>
+<tr>
+<td>ro.sf.lcd_density</td>
+<td>屏幕密度</td>
+</tr>
+</tbody>
+</table>
+<p><em>节注一：</em></p>
+<p>一些小厂定制的 ROM 可能修改过 CPU 支持的 abi 列表的属性名，如果用 <code>ro.product.cpu.abilist</code> 属性名查找不到，可以这样试试：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell cat /system/build.prop | grep ro.product.cpu.abi
+</code></pre>
+<p>示例输出：</p>
+<pre class=" language-shell"><code class="language-shell">ro.product.cpu.abi=armeabi-v7a
+ro.product.cpu.abi2=armeabi
+</code></pre>
+<h3 id="4-10-修改设置"><a href="#4-10-修改设置" class="headerlink" title="4.10 修改设置"></a>4.10 修改设置</h3><p><strong>注：</strong> 修改设置之后，运行恢复命令有可能显示仍然不太正常，可以运行 <code>adb reboot</code> 重启设备，或手动重启。</p>
+<p>修改设置的原理主要是通过 settings 命令修改 /data/data/com.android.providers.settings/databases/settings.db 里存放的设置值。</p>
+<h4 id="4-10-1-修改分辨率"><a href="#4-10-1-修改分辨率" class="headerlink" title="4.10.1 修改分辨率"></a>4.10.1 修改分辨率</h4><pre class=" language-shell"><code class="language-shell">adb shell wm size 480x1024
+</code></pre>
+<p>表示将分辨率修改为 480px * 1024px。</p>
+<p>恢复原分辨率命令：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell wm size reset
+</code></pre>
+<h4 id="4-10-2-修改屏幕密度"><a href="#4-10-2-修改屏幕密度" class="headerlink" title="4.10.2 修改屏幕密度"></a>4.10.2 修改屏幕密度</h4><pre class=" language-shell"><code class="language-shell">adb shell wm density 160
+</code></pre>
+<p>表示将屏幕密度修改为 160dpi。</p>
+<p>恢复原屏幕密度命令：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell wm density reset
+</code></pre>
+<h4 id="4-10-3-修改显示区域"><a href="#4-10-3-修改显示区域" class="headerlink" title="4.10.3 修改显示区域"></a>4.10.3 修改显示区域</h4><pre class=" language-shell"><code class="language-shell">adb shell wm overscan 0,0,0,200
+</code></pre>
+<p>四个数字分别表示距离左、上、右、下边缘的留白像素，以上命令表示将屏幕底部 200px 留白。</p>
+<p>恢复原显示区域命令：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell wm overscan reset
+</code></pre>
+<h4 id="4-10-4-修改关闭-USB-调试模式"><a href="#4-10-4-修改关闭-USB-调试模式" class="headerlink" title="4.10.4 修改关闭 USB 调试模式"></a>4.10.4 修改关闭 USB 调试模式</h4><pre class=" language-shell"><code class="language-shell">adb shell settings put global adb_enabled 0
+</code></pre>
+<p>用命令恢复不了了，毕竟关闭了 USB 调试 adb 就连接不上 Android 设备了。<br>去设备上手动恢复吧：「设置」-「开发者选项」-「Android 调试」。</p>
+<h4 id="4-10-5-修改允许-禁止访问非-SDK-API"><a href="#4-10-5-修改允许-禁止访问非-SDK-API" class="headerlink" title="4.10.5 修改允许/禁止访问非 SDK API"></a>4.10.5 修改允许/禁止访问非 SDK API</h4><p>允许访问非 SDK API：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell settings put global hidden_api_policy_pre_p_apps 1
+adb shell settings put global hidden_api_policy_p_apps 1
+</code></pre>
+<p>禁止访问非 SDK API：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell settings delete global hidden_api_policy_pre_p_apps
+adb shell settings delete global hidden_api_policy_p_apps
+</code></pre>
+<p>不需要设备获得 Root 权限。</p>
+<p>命令最后的数字的含义：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>禁止检测非 SDK 接口的调用。该情况下，日志记录功能被禁用，并且令 strict mode API，即 detectNonSdkApiUsage() 无效。不推荐。</td>
+</tr>
+<tr>
+<td>1</td>
+<td>仅警告——允许访问所有非 SDK 接口，但保留日志中的警告信息，可继续使用 strick mode API。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>禁止调用深灰名单和黑名单中的接口。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>禁止调用黑名单中的接口，但允许调用深灰名单中的接口。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-10-6-修改状态栏和导航栏的显示隐藏"><a href="#4-10-6-修改状态栏和导航栏的显示隐藏" class="headerlink" title="4.10.6 修改状态栏和导航栏的显示隐藏"></a>4.10.6 修改状态栏和导航栏的显示隐藏</h4><pre class=" language-shell"><code class="language-shell">adb shell settings put global policy_control <key-values>
+</key-values></code></pre>
+<p><code>&lt;key-values&gt;</code> 可由如下几种键及其对应的值组成，格式为 <code>&lt;key1&gt;=&lt;value1&gt;:&lt;key2&gt;=&lt;value2&gt;</code>。</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>immersive.full</td>
+<td>同时隐藏</td>
+</tr>
+<tr>
+<td>immersive.status</td>
+<td>隐藏状态栏</td>
+</tr>
+<tr>
+<td>immersive.navigation</td>
+<td>隐藏导航栏</td>
+</tr>
+<tr>
+<td>immersive.preconfirms</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>这些键对应的值可则如下值用逗号组合：</p>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apps</code></td>
+<td>所有应用</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>所有界面</td>
+</tr>
+<tr>
+<td><code>package-name</code></td>
+<td>指定应用</td>
+</tr>
+<tr>
+<td><code>-package-name</code></td>
+<td>排除指定应用</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell settings put global policy_control immersive.full=*
+</code></pre>
+<p>表示设置在所有界面下都同时隐藏状态栏和导航栏。</p>
+<pre class=" language-shell"><code class="language-shell">adb shell settings put global policy_control immersive.status=com.package1,com.package2:immersive.navigation=apps,-com.package3
+</code></pre>
+<p>表示设置在包名为 <code>com.package1</code> 和 <code>com.package2</code> 的应用里隐藏状态栏，在除了包名为 <code>com.package3</code> 的所有应用里隐藏导航栏。</p>
+<h3 id="4-11-实用功能"><a href="#4-11-实用功能" class="headerlink" title="4.11 实用功能"></a>4.11 实用功能</h3><h4 id="4-11-1-屏幕截图"><a href="#4-11-1-屏幕截图" class="headerlink" title="4.11.1 屏幕截图"></a>4.11.1 屏幕截图</h4><p>截图保存到电脑：</p>
+<pre class=" language-shell"><code class="language-shell">adb exec-out screencap -p > sc.png
+</code></pre>
+<p>如果 adb 版本较老，无法使用 <code>exec-out</code> 命令，这时候建议更新 adb 版本。无法更新的话可以使用以下麻烦点的办法：</p>
+<p>先截图保存到设备里：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell screencap -p /sdcard/sc.png
+</code></pre>
+<p>然后将 png 文件导出到电脑：</p>
+<pre class=" language-shell"><code class="language-shell">adb pull /sdcard/sc.png
+</code></pre>
+<p>可以使用 <code>adb shell screencap -h</code> 查看 <code>screencap</code> 命令的帮助信息，下面是两个有意义的参数及含义：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p</td>
+<td>指定保存文件为 png 格式</td>
+</tr>
+<tr>
+<td>-d display-id</td>
+<td>指定截图的显示屏编号(有多显示屏的情况下)</td>
+</tr>
+</tbody>
+</table>
+<p>实测如果指定文件名以 <code>.png</code> 结尾时可以省略 -p 参数；否则需要使用 -p 参数。如果不指定文件名，截图文件的内容将直接输出到 stdout。</p>
+<p>另外一种一行命令截图并保存到电脑的方法：<br><em>Linux 和 Windows</em></p>
+<pre class=" language-shell"><code class="language-shell">adb shell screencap -p | sed "s/\r$//" > sc.png
+</code></pre>
+<p><em>Mac OS X</em></p>
+<pre class=" language-shell"><code class="language-shell">adb shell screencap -p | gsed "s/\r$//" > sc.png
+</code></pre>
+<p>这个方法需要用到 gnu sed 命令，在 Linux 下直接就有，在 Windows 下 Git 安装目录的 bin 文件夹下也有。如果确实找不到该命令，可以下载 <a href="http://gnuwin32.sourceforge.net/packages/sed.htm" target="_blank" rel="noopener">sed for Windows</a> 并将 sed.exe 所在文件夹添加到 PATH 环境变量里。</p>
+<p>而在 Mac 下使用系统自带的 sed 命令会报错：</p>
+<pre class=" language-shell"><code class="language-shell">sed: RE error: illegal byte sequence
+</code></pre>
+<p>需要安装 gnu-sed，然后使用 gsed 命令：</p>
+<pre class=" language-shell"><code class="language-shell">brew install gnu-sed
+</code></pre>
+<h4 id="4-11-2-录制屏幕"><a href="#4-11-2-录制屏幕" class="headerlink" title="4.11.2 录制屏幕"></a>4.11.2 录制屏幕</h4><p>录制屏幕以 mp4 格式保存到 /sdcard：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell screenrecord /sdcard/filename.mp4
+</code></pre>
+<p>需要停止时按 <kbd>Ctrl-C</kbd>，默认录制时间和最长录制时间都是 180 秒。</p>
+<p>如果需要导出到电脑：</p>
+<pre class=" language-shell"><code class="language-shell">adb pull /sdcard/filename.mp4
+</code></pre>
+<p>可以使用 <code>adb shell screenrecord --help</code> 查看 <code>screenrecord</code> 命令的帮助信息，下面是常见参数及含义：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–size WIDTHxHEIGHT</td>
+<td>视频的尺寸，比如 <code>1280x720</code>，默认是屏幕分辨率。</td>
+</tr>
+<tr>
+<td>–bit-rate RATE</td>
+<td>视频的比特率，默认是 4Mbps。</td>
+</tr>
+<tr>
+<td>–time-limit TIME</td>
+<td>录制时长，单位秒。</td>
+</tr>
+<tr>
+<td>–verbose</td>
+<td>输出更多信息。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-11-3-查看连接过的-WiFi-密码"><a href="#4-11-3-查看连接过的-WiFi-密码" class="headerlink" title="4.11.3 查看连接过的 WiFi 密码"></a>4.11.3 查看连接过的 WiFi 密码</h4><p><strong>注：需要 root 权限。</strong></p>
+<pre class=" language-shell"><code class="language-shell">adb shell
+su
+cat /data/misc/wifi/*.conf
+</code></pre>
+<h4 id="4-11-4-设置系统日期和时间"><a href="#4-11-4-设置系统日期和时间" class="headerlink" title="4.11.4 设置系统日期和时间"></a>4.11.4 设置系统日期和时间</h4><p><strong>注：需要 root 权限。</strong></p>
+<pre class=" language-shell"><code class="language-shell">adb shell
+su
+date -s 20160823.131500
+</code></pre>
+<p>表示将系统日期和时间更改为 2016 年 08 月 23 日 13 点 15 分 00 秒。</p>
+<h4 id="4-11-5-重启手机"><a href="#4-11-5-重启手机" class="headerlink" title="4.11.5 重启手机"></a>4.11.5 重启手机</h4><pre class=" language-shell"><code class="language-shell">adb reboot
+</code></pre>
+<h4 id="4-11-6-检测设备是否已-root"><a href="#4-11-6-检测设备是否已-root" class="headerlink" title="4.11.6 检测设备是否已 root"></a>4.11.6 检测设备是否已 root</h4><pre class=" language-shell"><code class="language-shell">adb shell
+su
+</code></pre>
+<p>此时命令行提示符是 <code>$</code> 则表示没有 root 权限，是 <code>#</code> 则表示已 root。</p>
+<h4 id="4-11-7-使用-Monkey-进行压力测试"><a href="#4-11-7-使用-Monkey-进行压力测试" class="headerlink" title="4.11.7 使用 Monkey 进行压力测试"></a>4.11.7 使用 Monkey 进行压力测试</h4><p>Monkey 可以生成伪随机用户事件来模拟单击、触摸、手势等操作，可以对正在开发中的程序进行随机压力测试。</p>
+<p>简单用法：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell monkey -p <packagename> -v 500
+</packagename></code></pre>
+<p>表示向 <code>&lt;packagename&gt;</code> 指定的应用程序发送 500 个伪随机事件。<br>Monkey 的详细用法参考 <a href="https://developer.android.com/studio/test/monkey.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="4-11-8-开启-关闭-WiFi"><a href="#4-11-8-开启-关闭-WiFi" class="headerlink" title="4.11.8 开启/关闭 WiFi"></a>4.11.8 开启/关闭 WiFi</h4><p><strong>注：需要 root 权限。</strong></p>
+<ul>
+<li><p>开启 WiFi：</p>
+<pre class=" language-shell"><code class="language-shell">adb root
+adb shell svc wifi enable
+</code></pre>
+</li>
+<li><p>关闭 WiFi：</p>
+<pre class=" language-shell"><code class="language-shell">adb root
+adb shell svc wifi disable
+</code></pre>
+<p>若执行成功，输出为空；若未取得 root 权限执行此命令，将执行失败，输出 <code>Killed</code>。</p>
+</li>
+</ul>
+<h3 id="4-12-刷机相关命令"><a href="#4-12-刷机相关命令" class="headerlink" title="4.12 刷机相关命令"></a>4.12 刷机相关命令</h3><h4 id="4-12-1-重启到-Recovery-模式"><a href="#4-12-1-重启到-Recovery-模式" class="headerlink" title="4.12.1 重启到 Recovery 模式"></a>4.12.1 重启到 Recovery 模式</h4><pre class=" language-shell"><code class="language-shell">adb reboot recovery
+</code></pre>
+<h4 id="4-12-2-从-Recovery-重启到-Android"><a href="#4-12-2-从-Recovery-重启到-Android" class="headerlink" title="4.12.2 从 Recovery 重启到 Android"></a>4.12.2 从 Recovery 重启到 Android</h4><pre class=" language-shell"><code class="language-shell">adb reboot
+</code></pre>
+<h4 id="4-12-2-重启到-Fastboot-模式"><a href="#4-12-2-重启到-Fastboot-模式" class="headerlink" title="4.12.2 重启到 Fastboot 模式"></a>4.12.2 重启到 Fastboot 模式</h4><pre class=" language-shell"><code class="language-shell">adb reboot bootloader
+</code></pre>
+<h4 id="4-12-4-通过-sideload-更新系统"><a href="#4-12-4-通过-sideload-更新系统" class="headerlink" title="4.12.4 通过 sideload 更新系统"></a>4.12.4 通过 sideload 更新系统</h4><p>如果我们下载了 Android 设备对应的系统更新包到电脑上，那么也可以通过 adb 来完成更新。</p>
+<p>以 Recovery 模式下更新为例：</p>
+<ol>
+<li><p>重启到 Recovery 模式。</p>
+<pre class=" language-shell"><code class="language-shell">adb reboot recovery
+</code></pre>
+</li>
+<li><p>在设备的 Recovery 界面上操作进入 <code>Apply update</code>-<code>Apply from ADB</code>。<br>注：不同的 Recovery 菜单可能与此有差异，有的是一级菜单就有 <code>Apply update from ADB</code>。</p>
+</li>
+<li><p>通过 adb 上传和更新系统。</p>
+<pre class=" language-shell"><code class="language-shell">adb sideload <path-to-update.zip>
+</path-to-update.zip></code></pre>
+</li>
+</ol>
+<h3 id="4-13-安全相关命令"><a href="#4-13-安全相关命令" class="headerlink" title="4.13 安全相关命令"></a>4.13 安全相关命令</h3><h4 id="4-13-1-启用-禁用-SELinux"><a href="#4-13-1-启用-禁用-SELinux" class="headerlink" title="4.13.1 启用/禁用 SELinux"></a>4.13.1 启用/禁用 SELinux</h4><p>启用 SELinux</p>
+<pre class=" language-shell"><code class="language-shell">adb root
+adb shell setenforce 1
+</code></pre>
+<p>禁用 SELinux</p>
+<pre class=" language-shell"><code class="language-shell">adb root
+adb shell setenforce 0
+</code></pre>
+<h4 id="4-13-2-启用-禁用-dm-verity"><a href="#4-13-2-启用-禁用-dm-verity" class="headerlink" title="4.13.2 启用/禁用 dm_verity"></a>4.13.2 启用/禁用 dm_verity</h4><p>启用 dm_verity</p>
+<pre class=" language-shell"><code class="language-shell">adb root
+adb enable-verity
+</code></pre>
+<p>禁用 dm_verity</p>
+<pre class=" language-shell"><code class="language-shell">adb root
+adb disable-verity
+</code></pre>
+<h3 id="4-14-更多-adb-shell-命令"><a href="#4-14-更多-adb-shell-命令" class="headerlink" title="4.14 更多 adb shell 命令"></a>4.14 更多 adb shell 命令</h3><p>Android 系统是基于 Linux 内核的，所以 Linux 里的很多命令在 Android 里也有相同或类似的实现，在 <code>adb shell</code> 里可以调用。本文档前面的部分内容已经用到了 <code>adb shell</code> 命令。</p>
+<h4 id="4-14-1-查看进程状态"><a href="#4-14-1-查看进程状态" class="headerlink" title="4.14.1 查看进程状态"></a>4.14.1 查看进程状态</h4><pre class=" language-shell"><code class="language-shell">adb shell ps
+</code></pre>
+<p>输出信息各列含义：</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USER</td>
+<td>所属用户</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>进程 ID</td>
+</tr>
+<tr>
+<td>PPID</td>
+<td>父进程 ID</td>
+</tr>
+<tr>
+<td>NAME</td>
+<td>进程名</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-14-2-查看处理器实时状态"><a href="#4-14-2-查看处理器实时状态" class="headerlink" title="4.14.2 查看处理器实时状态"></a>4.14.2 查看处理器实时状态</h4><pre class=" language-shell"><code class="language-shell">adb shell top [-m max_procs] [-n iterations] [-d delay] [-s sort_column] [-t] [-h]
+</code></pre>
+<p><code>adb shell top</code> 后面可以跟一些可选参数进行过滤查看不同的列表，可用参数及含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-m</td>
+<td>最多显示多少个进程</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>刷新多少次后退出</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>刷新时间间隔(单位秒，默认值5)</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>按某列排序(可用col值：cpu, vss, rss, thr)</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>显示线程信息</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>显示帮助文档</td>
+</tr>
+</tbody>
+</table>
+<p>输出信息各列含义：</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PID</td>
+<td>进程 ID</td>
+</tr>
+<tr>
+<td>PR</td>
+<td>优先级</td>
+</tr>
+<tr>
+<td>CPU%</td>
+<td>当前瞬间占用 CPU 百分比</td>
+</tr>
+<tr>
+<td>S</td>
+<td>进程状态（R=运行，S=睡眠，T=跟踪/停止，Z=僵尸进程）</td>
+</tr>
+<tr>
+<td>#THR</td>
+<td>线程数</td>
+</tr>
+<tr>
+<td>VSS</td>
+<td>Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>Resident Set Size 实际使用物理内存（包含共享库占用的内存）</td>
+</tr>
+<tr>
+<td>PCY</td>
+<td>调度策略优先级，SP_BACKGROUND/SPFOREGROUND</td>
+</tr>
+<tr>
+<td>UID</td>
+<td>进程所有者的用户 ID</td>
+</tr>
+<tr>
+<td>NAME</td>
+<td>进程名</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-14-3-查看进程-UID"><a href="#4-14-3-查看进程-UID" class="headerlink" title="4.14.3 查看进程 UID"></a>4.14.3 查看进程 UID</h4><p>有两种方案：</p>
+<ol>
+<li><p><code>adb shell dumpsys package &lt;packagename&gt; | grep userId=</code><br>如：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell dumpsys package org.mazhuang.guanggoo | grep userId=
+userId=10394
+</code></pre>
+</li>
+<li><p>通过 ps 命令找到对应进程的 pid 之后 <code>adb shell cat /proc/&lt;pid&gt;/status | grep Uid</code><br>如：</p>
+<pre class=" language-shell"><code class="language-shell">adb shell
+gemini:/ $ ps | grep org.mazhuang.guanggoo
+u0_a394   28635 770   1795812 78736 SyS_epoll_ 0000000000 S org.mazhuang.guanggoo
+gemini:/ $ cat /proc/28635/status | grep Uid
+Uid:    10394   10394   10394   10394
+gemini:/ $
+</code></pre>
+</li>
+</ol>
+<h2 id="五、致谢"><a href="#五、致谢" class="headerlink" title="五、致谢"></a>五、致谢</h2><ol>
+<li><a href="http://adbshell.com/" target="_blank" rel="noopener">ADB Shell</a></li>
+<li><a href="https://github.com/mzlogin/awesome-adb" target="_blank" rel="noopener">Awesome Adb</a></li>
+<li><a href="https://developer.android.com/studio/command-line/adb" target="_blank" rel="noopener">Android Debug Bridge</a></li>
+</ol>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/a91f712a.html" class="b-link-green">ADB 操作命令详解及用法大全</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-08-06T13-15-45',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/515a2461.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Git 介绍与常用命令">
+                        
+                        <span class="card-title">Git 介绍与常用命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+一、Git 是什么？
+Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
+Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+Git 与常用的版本控</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-08-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/工具/" target="_blank">
+                        <span class="chip tag-bg-color">工具</span>
+                    </a>
+                    
+                    <a href="/tags/Git/" target="_blank">
+                        <span class="chip tag-bg-color">Git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/20774213.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Android 内存分配和内存泄漏">
+                        
+                        <span class="card-title">Android 内存分配和内存泄漏</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">1. 内存分配Java 虚拟机在执行 Java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途、创建和销毁的时间，有一些是随虚拟机的启动而创建，随虚拟机的退出而销毁，有些则是与线程一一对应，随线程的开始和结</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-07-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

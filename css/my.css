@@ -1,0 +1,10 @@
+/* Here is your custom css styles. */
+.foot-bg-color {
+    background: linear-gradient(to right, #141e30, #243b55);
+}
+.foot-titlt-bg {
+    color: #26a8ed !important;
+}
+.tag-bg-color {
+    background-color: #007AFF;
+}

@@ -1,0 +1,1408 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android 代码混淆规则, Android, Google, Blog">
+    <meta name="description" content="1. Proguard介绍Android SDK自带了混淆工具Proguard。它位于SDK根目录\tools\proguard下面。ProGuard是一个免费的Java类文件收缩，优化，混淆和预校验器。它可以检测并删除未使用的类，字段，方">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android 代码混淆规则 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android 代码混淆规则
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                            <a href="/tags/Proguard/" target="_blank">
+                                <span class="chip tag-bg-color">Proguard</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-07-07
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        4.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-Proguard介绍"><a href="#1-Proguard介绍" class="headerlink" title="1. Proguard介绍"></a>1. Proguard介绍</h2><p>Android SDK自带了混淆工具<code>Proguard</code>。它位于SDK根目录<code>\tools\proguard</code>下面。<br><code>ProGuard</code>是一个免费的Java类文件收缩，优化，混淆和预校验器。它可以检测并删除未使用的类，字段，方法和属性。它可以优化字节码，并删除未使用的指令。它可以将类、字段和方法使用短无意义的名称进行重命名。最后，预校验的Java6或针对Java MicroEdition的所述处理后的码。<br>如果开启了混淆，<code>Proguard</code>默认情况下会对所有代码，包括第三方包都进行混淆，可是有些代码或者第三方包是不能混淆的，这就需要我们手动编写混淆规则来保持不能被混淆的部分。</p>
+<h2 id="2-Proguard作用"><a href="#2-Proguard作用" class="headerlink" title="2. Proguard作用"></a>2. Proguard作用</h2><p>Android中的“混淆”可以分为两部分，一部分是 Java 代码的优化与混淆，依靠 <code>proguard</code> 混淆器来实现；另一部分是资源压缩，将移除项目及依赖的库中未被使用的资源(资源压缩严格意义上跟混淆没啥关系，但一般我们都会放一起讲)。</p>
+<h4 id="2-1-代码混淆"><a href="#2-1-代码混淆" class="headerlink" title="2.1 代码混淆"></a>2.1 代码混淆</h4><p><strong>压缩(Shrinking)</strong>：默认开启，用以减小应用体积，移除未被使用的类和成员，并且会在优化动作执行之后再次执行（因为优化后可能会再次暴露一些未被使用的类和成员）。</p>
+<pre><code>    -dontshrink 关闭压缩
+</code></pre><p><strong>优化(Optimization)</strong>：默认开启，在字节码级别执行优化，让应用运行的更快。</p>
+<pre><code>    -dontoptimize  关闭优化
+    -optimizationpasses n 表示proguard对代码进行迭代优化的次数，Android一般为5
+</code></pre><p><strong>混淆(Obfuscation)</strong>：默认开启，增大反编译难度，类、函数、变量名会被随机命名成无意义的代号形如：a,b,c…之类的，除非用keep保护。</p>
+<pre><code>    -dontobfuscate 关闭混淆
+</code></pre><p>上面这几个功能都是默认打开的，要关闭他们只需配置对应的规则即可。<br>混淆后默认会在工程目录<code>app/build/outputs/mapping/release</code>下生成一个<code>mapping.txt</code>文件，这就是混淆规则，我们可以根据这个文件把混淆后的代码反推回源本的代码，所以这个文件很重要，注意保护好。原则上，代码混淆后越乱越无规律越好，但有些地方我们是要避免混淆的，否则程序运行就会出错。</p>
+<h4 id="2-2-资源压缩"><a href="#2-2-资源压缩" class="headerlink" title="2.2 资源压缩"></a>2.2 资源压缩</h4><p>资源压缩将移除项目及依赖的库中未被使用的资源，这在减少 apk 包体积上会有不错的效果，一般建议开启。具体做法是在 <code>build.grade</code> 文件中，将 <code>shrinkResources</code> 属性设置为 <code>true</code>。需要注意的是，只有在用<code>minifyEnabled true</code>开启了代码压缩后，资源压缩才会生效。<br>资源压缩包含了“合并资源”和“移除资源”两个流程。<br>“合并资源”流程中，名称相同的资源被视为重复资源会被合并。需要注意的是，这一流程不受<code>shrinkResources</code>属性控制，也无法被禁止， gradle 必然会做这项工作，因为假如不同项目中存在相同名称的资源将导致错误。gradle 在四处地方寻找重复资源：</p>
+<ul>
+<li><code>src/main/res/</code> 路径</li>
+<li>不同的构建类型（debug、release等等）</li>
+<li>不同的构建渠道</li>
+<li>项目依赖的第三方库<br>合并资源时按照如下优先级顺序：<pre><code> 依赖 -&gt; main -&gt; 渠道 -&gt; 构建类型
+</code></pre>举个例子，假如重复资源同时存在于<code>main</code>文件夹和不同渠道中，gradle 会选择保留渠道中的资源。<br>同时，如果重复资源在同一层次出现，比如<code>src/main/res/</code> 和 <code>src/main/res2/</code>，则 <code>gradle</code> 无法完成资源合并，这时会报资源合并错误。<br>“移除资源”流程则见名知意，需要注意的是，类似代码，混淆资源移除也可以定义哪些资源需要被保留，这点在下文给出。</li>
+</ul>
+<h2 id="3-Proguard规则"><a href="#3-Proguard规则" class="headerlink" title="3. Proguard规则"></a>3. Proguard规则</h2><h4 id="3-1-基本指令"><a href="#3-1-基本指令" class="headerlink" title="3.1 基本指令"></a>3.1 基本指令</h4><ul>
+<li><strong>-ignorewarning</strong>：是否忽略警告</li>
+<li><strong>-optimizationpasses n</strong>：指定代码的压缩级别(在0~7之间，默认为5)</li>
+<li><strong>-dontusemixedcaseclassnames</strong>：是否使用大小写混合(windows大小写不敏感，建议加入)</li>
+<li><strong>-dontskipnonpubliclibraryclasses</strong>：是否混淆非公共的库的类</li>
+<li><strong>-dontskipnonpubliclibraryclassmembers</strong>：是否混淆非公共的库的类的成员</li>
+<li><strong>-dontpreverify</strong>：混淆时是否做预校验(Android不需要预校验，去掉可以加快混淆速度)</li>
+<li><strong>-verbose</strong>：混淆时是否记录日志(混淆后会生成映射文件)</li>
+<li><strong>-obfuscationdictionary dictionary_path</strong>：指定外部模糊字典</li>
+<li><strong>-classobfuscationdictionary dictionary_path</strong>：指定class模糊字典</li>
+<li><strong>-packageobfuscationdictionary dictionary_path</strong>：指定package模糊字典</li>
+<li><strong>-optimizations !code/simplification/arithmetic,!field/<em>,!class/merging/</em>,!code/allocation/variable</strong>：混淆时所采用的算法(谷歌推荐算法)</li>
+<li><strong>-libraryjars libs(*.jar;)</strong>:添加支持的jar(引入libs下的所有jar包)</li>
+<li><strong>-renamesourcefileattribute SourceFile</strong>：将文件来源重命名为“SourceFile”字符串</li>
+<li><strong>-keepattributes <em>Annotation</em></strong>：保持注解不被混淆</li>
+<li><strong>-keep class <em> extends java.lang.annotation.Annotation {</em>;}</strong>：保持注解不被混淆</li>
+<li><strong>-keep interface <em> extends java.lang.annotation.Annotation { </em>; }</strong>：保持注解不被混淆</li>
+<li><strong>-keepattributes Signature</strong>：保持泛型不被混淆</li>
+<li><strong>-keepattributes EnclosingMethod</strong>：保持反射不被混淆</li>
+<li><strong>-keepattributes Exceptions</strong>：保持异常不被混淆</li>
+<li><strong>-keepattributes InnerClasses</strong>：保持内部类不被混淆</li>
+<li><strong>-keepattributes SourceFile,LineNumberTable</strong>：抛出异常时保留代码行号<h4 id="3-2-保留选项"><a href="#3-2-保留选项" class="headerlink" title="3.2 保留选项"></a>3.2 保留选项</h4></li>
+<li><strong>-keep [,modifier，…] class_specification</strong>：指定需要保留的类和类成员（作为公共类库，应该保留所有可公开访问的public方法）</li>
+<li><strong>-keepclassmembers [,modifier，…] class_specification</strong>：指定需要保留的类成员:变量或者方法</li>
+<li><strong>-keepclasseswithmembers [,modifier，…] class_specification</strong>：指定保留的类和类成员，条件是所指定的类成员都存在（既在压缩阶段没有被删除的成员，效果和keep差不多）</li>
+<li><strong>-keepnames class_specification</strong>:指定要保留名称的类和类成员，前提是在压缩阶段未被删除，仅用于模糊处理。[-keep allowshrinking class_specification 的简写]</li>
+<li><strong>-keepclassmembernames class_specification</strong>：指定要保留名称的类成员，前提是在压缩阶段未被删除，仅用于模糊处理。[-keepclassmembers allowshrinking class_specification 的简写]</li>
+<li><strong>-keepclasseswithmembernames class_specification</strong>：指定要保留名称的类成员，前提是在压缩阶段后所指定的类成员都存在，仅用于模糊处理。[-keepclasseswithmembers allowshrinking class_specification 的简写]</li>
+<li><strong>-printseeds [filename]</strong>：指定详尽列出由各种-keep选项匹配的类和类成员。列表打印到标准输出或给定文件。 该列表可用于验证是否真的找到了预期的类成员，特别是如果您使用通配符。</li>
+</ul>
+<h2 id="4-Keep命令说明"><a href="#4-Keep命令说明" class="headerlink" title="4. Keep命令说明"></a>4. Keep命令说明</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-keep</td>
+<td>保持类和类成员，防止被移除或者被重命名</td>
+</tr>
+<tr>
+<td>-keepnames</td>
+<td>保持类和类成员，防止被重命名</td>
+</tr>
+<tr>
+<td>-keepclassmembers</td>
+<td>保持类成员，防止被移除或者被重命名</td>
+</tr>
+<tr>
+<td>-keepclassmembernames</td>
+<td>保持类成员，防止被重命名</td>
+</tr>
+<tr>
+<td>-keepclasseswithmembers</td>
+<td>保持拥有该成员的类和成员，防止被移除或者被重命名</td>
+</tr>
+<tr>
+<td>-keepclasseswithmembernames</td>
+<td>保持拥有该成员的类和成员，防止被重命名</td>
+</tr>
+</tbody>
+</table>
+<p>保持元素不参与混淆的规则的命令格式：</p>
+<pre><code>[保持命令] [类] {
+    [成员]
+}
+</code></pre><p>“类”代表类相关的限定条件，它将最终定位到某些符合该限定条件的类。它的内容可以使用：</p>
+<ul>
+<li>具体的类</li>
+<li>访问修饰符（<code>public、protected、private</code>）</li>
+<li>通配符<code>*</code>，匹配任意长度字符，但不含包名分隔符(.)</li>
+<li>通配符<code>**</code>，匹配任意长度字符，并且包含包名分隔符(.)</li>
+<li><code>extends</code>，即可以指定类的基类</li>
+<li><code>implement</code>，匹配实现了某接口的类</li>
+<li><code>$</code>，内部类<br>“成员”代表类成员相关的限定条件，它将最终定位到某些符合该限定条件的类成员。它的内容可以使用：</li>
+<li><code>&lt;init&gt;</code> 匹配所有构造器</li>
+<li><code>&lt;fields&gt;</code> 匹配所有域</li>
+<li><code>&lt;methods&gt;</code> 匹配所有方法</li>
+<li>通配符<code>*</code>，匹配任意长度字符，但不含包名分隔符(.)</li>
+<li>通配符<code>**</code>，匹配任意长度字符，并且包含包名分隔符(.)</li>
+<li>通配符<code>***</code>，匹配任意参数类型</li>
+<li><code>…</code>，匹配任意长度的任意类型参数。比如void test(…)就能匹配任意 void test(String a) 或者是 void test(int a, String b) 这些方法。</li>
+<li>访问修饰符（<code>public、protected、private</code>）</li>
+</ul>
+<h4 id="4-1-不混淆某个类"><a href="#4-1-不混淆某个类" class="headerlink" title="4.1 不混淆某个类"></a>4.1 不混淆某个类</h4><pre><code>    -keep public class com.android.proguard.example.Test { *; }
+</code></pre><h4 id="4-2-不混淆某个包所有的类"><a href="#4-2-不混淆某个包所有的类" class="headerlink" title="4.2 不混淆某个包所有的类"></a>4.2 不混淆某个包所有的类</h4><pre><code>    -keep class com.android.proguard.example.** { *; }
+</code></pre><h4 id="4-3-不混淆某个类的子类"><a href="#4-3-不混淆某个类的子类" class="headerlink" title="4.3 不混淆某个类的子类"></a>4.3 不混淆某个类的子类</h4><pre><code>    -keep public class * extends com.android.proguard.example.Test { *; }
+</code></pre><h4 id="4-4-不混淆所有类名中包含了“model”的类及其成员"><a href="#4-4-不混淆所有类名中包含了“model”的类及其成员" class="headerlink" title="4.4 不混淆所有类名中包含了“model”的类及其成员"></a>4.4 不混淆所有类名中包含了“model”的类及其成员</h4><pre><code>    -keep public class **.*model*.** {*;}
+</code></pre><h4 id="4-5-不混淆某个接口的实现"><a href="#4-5-不混淆某个接口的实现" class="headerlink" title="4.5 不混淆某个接口的实现"></a>4.5 不混淆某个接口的实现</h4><pre><code>    -keep class * implements com.android.proguard.example.TestInterface { *; }
+</code></pre><h4 id="4-6-不混淆某个类的构造方法"><a href="#4-6-不混淆某个类的构造方法" class="headerlink" title="4.6 不混淆某个类的构造方法"></a>4.6 不混淆某个类的构造方法</h4><pre><code>    -keepclassmembers class com.android.proguard.example.Test {
+        public &lt;init&gt;();
+    }
+</code></pre><h4 id="4-7-不混淆某个类的特定的方法"><a href="#4-7-不混淆某个类的特定的方法" class="headerlink" title="4.7 不混淆某个类的特定的方法"></a>4.7 不混淆某个类的特定的方法</h4><pre><code>    -keepclassmembers class com.android.proguard.example.Test {
+        public void test(java.lang.String);
+    }
+</code></pre><h4 id="4-8-不混淆某个类的内部类"><a href="#4-8-不混淆某个类的内部类" class="headerlink" title="4.8 不混淆某个类的内部类"></a>4.8 不混淆某个类的内部类</h4><pre><code>    -keep class com.android.proguard.example.Test$* {
+            *;
+     }
+</code></pre><h2 id="5-Proguard注意事项"><a href="#5-Proguard注意事项" class="headerlink" title="5. Proguard注意事项"></a>5. Proguard注意事项</h2><h4 id="5-1-保持基本组件不被混淆"><a href="#5-1-保持基本组件不被混淆" class="headerlink" title="5.1 保持基本组件不被混淆"></a>5.1 保持基本组件不被混淆</h4><pre><code>    -keep public class * extends android.app.Fragment
+    -keep public class * extends android.app.Activity
+    -keep public class * extends android.app.Application
+    -keep public class * extends android.app.Service
+    -keep public class * extends android.content.BroadcastReceiver
+    -keep public class * extends android.content.ContentProvider
+    -keep public class * extends android.app.backup.BackupAgentHelper
+    -keep public class * extends android.preference.Preference
+</code></pre><h4 id="5-2-保持-Google-原生服务需要的类不被混淆"><a href="#5-2-保持-Google-原生服务需要的类不被混淆" class="headerlink" title="5.2 保持 Google 原生服务需要的类不被混淆"></a>5.2 保持 Google 原生服务需要的类不被混淆</h4><pre><code>    -keep public class com.google.vending.licensing.ILicensingService
+    -keep public class com.android.vending.licensing.ILicensingService
+</code></pre><h4 id="5-3-Support包规则"><a href="#5-3-Support包规则" class="headerlink" title="5.3 Support包规则"></a>5.3 Support包规则</h4><pre><code>    -dontwarn android.support.**
+    -keep public class * extends android.support.v4.**
+    -keep public class * extends android.support.v7.**
+    -keep public class * extends android.support.annotation.**
+</code></pre><h4 id="5-4-保持-native-方法不被混淆"><a href="#5-4-保持-native-方法不被混淆" class="headerlink" title="5.4 保持 native 方法不被混淆"></a>5.4 保持 native 方法不被混淆</h4><pre><code>    -keepclasseswithmembernames class * { ####
+        native &lt;methods&gt;;
+    }
+</code></pre><h4 id="5-5-保留自定义控件-继承自View-不被混淆"><a href="#5-5-保留自定义控件-继承自View-不被混淆" class="headerlink" title="5.5 保留自定义控件(继承自View)不被混淆"></a>5.5 保留自定义控件(继承自View)不被混淆</h4><pre><code>    -keep public class * extends android.view.View { ####
+        *** get*();
+        void set*(***);
+        public &lt;init&gt;(android.content.Context);
+        public &lt;init&gt;(android.content.Context, android.util.AttributeSet);
+        public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);
+    }
+</code></pre><h4 id="5-6-保留指定格式的构造方法不被混淆"><a href="#5-6-保留指定格式的构造方法不被混淆" class="headerlink" title="5.6 保留指定格式的构造方法不被混淆"></a>5.6 保留指定格式的构造方法不被混淆</h4><pre><code>    -keepclasseswithmembers class * {
+        public &lt;init&gt;(android.content.Context, android.util.AttributeSet);
+        public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);
+    }
+</code></pre><h4 id="5-7-保留在Activity中的方法参数是view的方法-避免布局文件里面onClick被影响"><a href="#5-7-保留在Activity中的方法参数是view的方法-避免布局文件里面onClick被影响" class="headerlink" title="5.7 保留在Activity中的方法参数是view的方法(避免布局文件里面onClick被影响)"></a>5.7 保留在Activity中的方法参数是view的方法(避免布局文件里面onClick被影响)</h4><pre><code>    -keepclassmembers class * extends android.app.Activity {
+        public void *(android.view.View);
+    }
+</code></pre><h4 id="5-8-保持枚举-enum-类不被混淆"><a href="#5-8-保持枚举-enum-类不被混淆" class="headerlink" title="5.8 保持枚举 enum 类不被混淆"></a>5.8 保持枚举 enum 类不被混淆</h4><pre><code>    -keepclassmembers enum * {
+        public static **[] values();
+        public static ** valueOf(java.lang.String);
+    }
+</code></pre><h4 id="5-9-保持R-资源-下的所有类及其方法不能被混淆"><a href="#5-9-保持R-资源-下的所有类及其方法不能被混淆" class="headerlink" title="5.9 保持R(资源)下的所有类及其方法不能被混淆"></a>5.9 保持R(资源)下的所有类及其方法不能被混淆</h4><pre><code>    -keep class **.R$* { *; }
+</code></pre><h4 id="5-10-保持-Parcelable-序列化的类不被混淆-注：aidl文件不能去混淆"><a href="#5-10-保持-Parcelable-序列化的类不被混淆-注：aidl文件不能去混淆" class="headerlink" title="5.10 保持 Parcelable 序列化的类不被混淆(注：aidl文件不能去混淆)"></a>5.10 保持 Parcelable 序列化的类不被混淆(注：aidl文件不能去混淆)</h4><pre><code>    -keep class * implements android.os.Parcelable {
+        public static final android.os.Parcelable$Creator *;
+    }
+</code></pre><h4 id="5-11-需要序列化和反序列化的类不能被混淆-注：Java反射用到的类也不能被混淆"><a href="#5-11-需要序列化和反序列化的类不能被混淆-注：Java反射用到的类也不能被混淆" class="headerlink" title="5.11 需要序列化和反序列化的类不能被混淆(注：Java反射用到的类也不能被混淆)"></a>5.11 需要序列化和反序列化的类不能被混淆(注：Java反射用到的类也不能被混淆)</h4><pre><code>    -keepnames class * implements java.io.Serializable
+</code></pre><h4 id="5-12-保持-Serializable-序列化的类成员不被混淆"><a href="#5-12-保持-Serializable-序列化的类成员不被混淆" class="headerlink" title="5.12 保持 Serializable 序列化的类成员不被混淆"></a>5.12 保持 Serializable 序列化的类成员不被混淆</h4><pre><code>    -keepclassmembers class * implements java.io.Serializable {
+        static final long serialVersionUID;
+        private static final java.io.ObjectStreamField[] serialPersistentFields;
+        !static !transient &lt;fields&gt;;
+        !private &lt;fields&gt;;
+        !private &lt;methods&gt;;
+        private void writeObject(java.io.ObjectOutputStream);
+        private void readObject(java.io.ObjectInputStream);
+        java.lang.Object writeReplace();
+        java.lang.Object readResolve();
+    }
+</code></pre><h4 id="5-13-保持-BaseAdapter-类不被混淆"><a href="#5-13-保持-BaseAdapter-类不被混淆" class="headerlink" title="5.13 保持 BaseAdapter 类不被混淆"></a>5.13 保持 BaseAdapter 类不被混淆</h4><pre><code>    -keep public class * extends android.widget.BaseAdapter { *; }
+</code></pre><h4 id="5-14-保持-CusorAdapter-类不被混淆"><a href="#5-14-保持-CusorAdapter-类不被混淆" class="headerlink" title="5.14 保持 CusorAdapter 类不被混淆"></a>5.14 保持 CusorAdapter 类不被混淆</h4><pre><code>    -keep public class * extends android.widget.CusorAdapter{ *; }
+</code></pre><h4 id="5-15-保持反射用到的类和与JavaScript进行交互的类不被混淆"><a href="#5-15-保持反射用到的类和与JavaScript进行交互的类不被混淆" class="headerlink" title="5.15 保持反射用到的类和与JavaScript进行交互的类不被混淆"></a>5.15 保持反射用到的类和与JavaScript进行交互的类不被混淆</h4><h2 id="6-自定义资源保持规则"><a href="#6-自定义资源保持规则" class="headerlink" title="6. 自定义资源保持规则"></a>6. 自定义资源保持规则</h2><h4 id="6-1-keep-xml"><a href="#6-1-keep-xml" class="headerlink" title="6.1 keep.xml"></a>6.1 keep.xml</h4><p>用<code>shrinkResources true</code>开启资源压缩后，所有未被使用的资源默认被移除。假如你需要定义哪些资源必须被保留，在<code>res/raw/</code>路径下创建一个xml文件，例如<code>keep.xml</code>。<br>通过一些属性的设置可以实现定义资源保持的需求，可配置的属性有：</p>
+<ul>
+<li><code>tools:keep</code> 定义哪些资源需要被保留（资源之间用“,”隔开）</li>
+<li><code>tools:discard</code> 定义哪些资源需要被移除（资源之间用“,”隔开）</li>
+<li><code>tools:shrinkMode</code> 开启严格模式<br>当代码中通过 <code>Resources.getIdentifier()</code> 用动态的字符串来获取并使用资源时，普通的资源引用检查就可能会有问题。例如，如下代码会导致所有以“img_”开头的资源都被标记为已使用。<pre class=" language-java"><code class="language-java"> String name <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"img_%1d"</span><span class="token punctuation">,</span> angle <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ res <span class="token operator">=</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getIdentifier</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token string">"drawable"</span><span class="token punctuation">,</span> <span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+我们可以设置 <code>tools:shrinkMode</code> 为 <code>strict</code> 来开启严格模式，使只有确实被使用的资源被保留。<br>以上就是自定义资源保持规则相关的配置，举个例子：<pre class=" language-xml"><code class="language-xml"> <span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resources</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>tools</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/tools<span class="token punctuation">"</span></span>
+     <span class="token attr-name"><span class="token namespace">tools:</span>keep</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@drawable/img_*,@drawable/ic_launcher,@layout/layout_used*<span class="token punctuation">"</span></span>
+     <span class="token attr-name"><span class="token namespace">tools:</span>discard</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@layout/layout_unused<span class="token punctuation">"</span></span>
+     <span class="token attr-name"><span class="token namespace">tools:</span>shrinkMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>strict<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</code></pre>
+</li>
+</ul>
+<h4 id="6-2-移除替代资源"><a href="#6-2-移除替代资源" class="headerlink" title="6.2 移除替代资源"></a>6.2 移除替代资源</h4><p>一些替代资源，例如多语言支持的 <code>strings.xml</code>，多分辨率支持的 <code>layout.xml</code> 等，在我们不需要使用又不想删除掉时，可以使用资源压缩将它们移除。<br>我们使用 <code>resConfig</code> 属性来指定需要支持的属性，例如</p>
+<pre class=" language-gradle"><code class="language-gradle">    android {
+        defaultConfig {
+            ...
+            resConfigs "en", "zh"
+        }
+    }
+</code></pre>
+<p>其他未显式声明的语言资源将被移除。</p>
+<h2 id="7-Proguard使用"><a href="#7-Proguard使用" class="headerlink" title="7. Proguard使用"></a>7. Proguard使用</h2><h4 id="7-1-开启混淆"><a href="#7-1-开启混淆" class="headerlink" title="7.1 开启混淆"></a>7.1 开启混淆</h4><p>在项目的可执行工程Module中打开<code>build.gradle</code>文件进行编辑：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+    ......
+    defaultConfig {
+        ......
+    }
+    buildTypes {
+        release {
+            minifyEnabled true      // 开启代码混淆
+            zipAlignEnabled true    // 开启Zip压缩优化
+            shrinkResources true    // 移除未被使用的资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    ......
+}
+</code></pre>
+<ul>
+<li>minifyEnabled：是否进行代码混淆</li>
+<li>zipAlignEnabled：是否进行Zip压缩优化</li>
+<li>shrinkResources：是否移除未被使用的资源</li>
+<li>proguardFiles：混淆规则配置文件<ul>
+<li>proguard-android.txt：AndroidStudio默认自动导入的规则，这个文件位于Android SDK根目录\tools\proguard\proguard-android.txt。这里面是一些比较常规的不能被混淆的代码规则。</li>
+<li>proguard-rules.pro：针对自己的项目需要特别定义的混淆规则，它位于项目每个Module的根目录下面，里面的内容需要我们自己编写。</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-2-编写混淆规则"><a href="#7-2-编写混淆规则" class="headerlink" title="7.2 编写混淆规则"></a>7.2 编写混淆规则</h4><pre class=" language-pro"><code class="language-pro"># --------------------------------------------基本指令区--------------------------------------------#
+-ignorewarning                                      # 是否忽略警告
+-optimizationpasses 5                               # 指定代码的压缩级别(在0~7之间，默认为5)
+-dontusemixedcaseclassnames                         # 是否使用大小写混合(windows大小写不敏感，建议加入)
+-dontskipnonpubliclibraryclasses                    # 是否混淆非公共的库的类
+-dontskipnonpubliclibraryclassmembers               # 是否混淆非公共的库的类的成员
+-dontpreverify                                      # 混淆时是否做预校验(Android不需要预校验，去掉可以加快混淆速度)
+-verbose                                            # 混淆时是否记录日志(混淆后会生成映射文件)
+
+#指定外部模糊字典
+-obfuscationdictionary dictionary1.txt
+#指定class模糊字典
+-classobfuscationdictionary dictionary1.txt
+#指定package模糊字典
+-packageobfuscationdictionary dictionary2.txt
+
+# 混淆时所采用的算法(谷歌推荐算法)
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
+
+# 添加支持的jar(引入libs下的所有jar包)
+-libraryjars libs(*.jar;)
+
+# 将文件来源重命名为“SourceFile”字符串
+-renamesourcefileattribute SourceFile
+
+# 保持注解不被混淆
+-keepattributes *Annotation*
+-keep class * extends java.lang.annotation.Annotation {*;}
+
+# 保持泛型不被混淆
+-keepattributes Signature
+# 保持反射不被混淆
+-keepattributes EnclosingMethod
+# 保持异常不被混淆
+-keepattributes Exceptions
+# 保持内部类不被混淆
+-keepattributes Exceptions,InnerClasses
+# 抛出异常时保留代码行号
+-keepattributes SourceFile,LineNumberTable
+
+# --------------------------------------------默认保留区--------------------------------------------#
+# 保持基本组件不被混淆
+-keep public class * extends android.app.Fragment
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+
+# 保持 Google 原生服务需要的类不被混淆
+-keep public class com.google.vending.licensing.ILicensingService
+-keep public class com.android.vending.licensing.ILicensingService
+
+# Support包规则
+-dontwarn android.support.**
+-keep public class * extends android.support.v4.**
+-keep public class * extends android.support.v7.**
+-keep public class * extends android.support.annotation.**
+
+# 保持 native 方法不被混淆
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# 保留自定义控件(继承自View)不被混淆
+-keep public class * extends android.view.View {
+    *** get*();
+    void set*(***);
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+# 保留指定格式的构造方法不被混淆
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+# 保留在Activity中的方法参数是view的方法(避免布局文件里面onClick被影响)
+-keepclassmembers class * extends android.app.Activity {
+    public void *(android.view.View);
+}
+
+# 保持枚举 enum 类不被混淆
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# 保持R(资源)下的所有类及其方法不能被混淆
+-keep class **.R$* { *; }
+
+# 保持 Parcelable 序列化的类不被混淆(注：aidl文件不能去混淆)
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# 需要序列化和反序列化的类不能被混淆(注：Java反射用到的类也不能被混淆)
+-keepnames class * implements java.io.Serializable
+
+# 保持 Serializable 序列化的类成员不被混淆
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# 保持 BaseAdapter 类不被混淆
+-keep public class * extends android.widget.BaseAdapter { *; }
+# 保持 CusorAdapter 类不被混淆
+-keep public class * extends android.widget.CusorAdapter{ *; }
+
+# --------------------------------------------webView区--------------------------------------------#
+# WebView处理，项目中没有使用到webView忽略即可
+# 保持Android与JavaScript进行交互的类不被混淆
+-keep class **.AndroidJavaScript { *; }
+-keepclassmembers class * extends android.webkit.WebViewClient {
+     public void *(android.webkit.WebView,java.lang.String,android.graphics.Bitmap);
+     public boolean *(android.webkit.WebView,java.lang.String);
+}
+-keepclassmembers class * extends android.webkit.WebChromeClient {
+     public void *(android.webkit.WebView,java.lang.String);
+}
+
+# 网络请求相关
+-keep public class android.net.http.SslError
+
+# --------------------------------------------删除代码区--------------------------------------------#
+# 删除代码中Log相关的代码
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+    public static int i(...);
+    public static int w(...);
+    public static int d(...);
+    public static int e(...);
+}
+
+
+# --------------------------------------------可定制化区--------------------------------------------#
+#---------------------------------1.实体类---------------------------------
+
+
+
+#--------------------------------------------------------------------------
+
+#---------------------------------2.与JS交互的类-----------------------------
+
+
+
+#--------------------------------------------------------------------------
+
+#---------------------------------3.反射相关的类和方法-----------------------
+
+
+
+#--------------------------------------------------------------------------
+
+#---------------------------------2.第三方依赖--------------------------------
+
+
+
+#--------------------------------------------------------------------------
+
+
+</methods></fields></fields></init></init></init></init></init></methods></code></pre>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/64dda27b.html" class="b-link-green">Android 代码混淆规则</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-07-07T18-23-45',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/dd9cc5eb.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Android 自动化测试之 Monkey">
+                        
+                        <span class="card-title">Android 自动化测试之 Monkey</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Monkey 简介Monkey 介绍Monkey 是一个命令行工具，可以运行在模拟器里或实际设备中。它向系统发送伪随机的用户事件流，实现对正在开发的应用程序进行压力测试。
+Monkey 测试也有人叫做搞怪测试。就是用一些稀奇古怪的操作方式去</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-07-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Monkey/" target="_blank">
+                        <span class="chip tag-bg-color">Monkey</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/b36d7096.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="国内各大互联网公司技术团队站点">
+                        
+                        <span class="card-title">国内各大互联网公司技术团队站点</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">利用闲暇时间整理了一份国内各大互联网公司的相关技术站点，希望能够对大家有所帮助，也欢迎各位帮忙补充。
+1.腾讯系列
+
+
+名称
+地址
+
+
+
+
+财付通设计中心TID
+地址：http://fitdesign.tencent.com/
+
+
+QQ邮箱</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-06-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip tag-bg-color">学习笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

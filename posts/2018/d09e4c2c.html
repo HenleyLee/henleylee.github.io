@@ -1,0 +1,1059 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android Studio 让开发效率事半功倍的插件整理, Android, Google, Blog">
+    <meta name="description" content="Google 在2013年5月的 I/O 开发者大会推出了基于 IntelliJ IDEA Java IDE 上的 Android Studio。Android Studio 是一个功能齐全的开发工具，还提供了对第三方插件的支持，让开发人员">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android Studio 让开发效率事半功倍的插件整理 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android Studio 让开发效率事半功倍的插件整理
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                            <a href="/tags/Android-Studio/" target="_blank">
+                                <span class="chip tag-bg-color">Android Studio</span>
+                            </a>
+                        
+                            <a href="/tags/IntelliJ-IDEA/" target="_blank">
+                                <span class="chip tag-bg-color">IntelliJ IDEA</span>
+                            </a>
+                        
+                            <a href="/tags/Plugins/" target="_blank">
+                                <span class="chip tag-bg-color">Plugins</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-08-19
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        1.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        5 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Google 在2013年5月的 I/O 开发者大会推出了基于 IntelliJ IDEA Java IDE 上的 Android Studio。Android Studio 是一个功能齐全的开发工具，还提供了对第三方插件的支持，让开发人员更快速更好的开发应用程序。</p>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>首先通过导航栏 <strong>File | Settings</strong> 或是直接 <strong>Ctrl+Alt+S</strong> 打开设置对话框，选择 <strong>Plugins</strong>。找到需要的插件后点击右侧的 <strong>Install</strong> 按钮进行下载安装，安装完成后 <strong>Install</strong> 按钮会变成 <strong>Restart Android Studio</strong>，点击 <strong>Restart</strong> 重启 Android Studio 即可。</p>
+<p>Android Studio 支持三种安装插件的方法：</p>
+<ol>
+<li><strong>Install JetBrains Plugins：</strong> 安装 JetBrains 的官方插件。官方插件种类非常丰富，包含辅助用户体验、语言支持等，稳定可靠，勤于更新。</li>
+<li><strong>Browse repositories：</strong> 浏览官方仓库。官方仓库不仅有官方插件，还有来自社区的插件的第三方插件。</li>
+<li><strong>Install plugin from disk：</strong> 从本地安装插件。IDEA 的插件打包之后，用此功能就可以安装，方便了小团体之间的插件开发和共享。</li>
+</ol>
+<h2 id="插件汇总"><a href="#插件汇总" class="headerlink" title="插件汇总"></a>插件汇总</h2><h3 id="ignore"><a href="#ignore" class="headerlink" title=".ignore"></a>.ignore</h3><p><a href="https://plugins.jetbrains.com/plugin/7495" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/hsz/idea-gitignore" target="_blank" rel="noopener">GitHub</a></p>
+<p>.ignore 是一个快速生成 <code>.gitignore</code> (Git)、<code>.hgignore</code> (Mercurial)、<code>.npmignore</code> (NPM)、<code>.dockerignore</code> (Docker)、<code>.chefignore</code> (Chef)、<code>.cvsignore</code> (CVS)、<code>.bzrignore</code> (Bazaar)、<code>.boringignore</code> (Darcs)、<code>.mtn-ignore</code> (Monotone)、<code>ignore-glob</code> (Fossil)、<code>.jshintignore</code> (JSHint)、<code>.tfignore</code> (Team Foundation)、<code>.p4ignore</code> (Perforce)、<code>.flooignore</code> (Floobits)、<code>.eslintignore</code> (ESLint)、<code>.cfignore</code> (Cloud Foundry)、<code>.jpmignore</code> (Jetpack)、<code>.stylelintignore</code> (StyleLint)、<code>.stylintignore</code> (Stylint)、<code>.swagger-codegen-ignore</code> (Swagger Codegen)、<code>.helmignore</code> (Kubernetes Helm)、<code>.upignore</code> (Up)、<code>.prettierignore</code> (Prettier)、<code>.ebignore</code> (ElasticBeanstalk) 文件的插件。 它支持的 JetBrains IDE 有 <code>Android Studio</code>、<code>AppCode</code>、<code>CLion、IntelliJ IDEA</code>、<code>PhpStorm</code>、<code>PyCharm</code>、<code>RubyMine</code>、<code>WebStorm、DataGrip</code>。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665cd65b27f795c?w=1200&amp;h=887&amp;f=png&amp;s=468405" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665cd681bbde5c0?w=800&amp;h=594&amp;f=png&amp;s=180564" alt=""></p>
+<h3 id="360-FireLine"><a href="#360-FireLine" class="headerlink" title="360 FireLine"></a>360 FireLine</h3><p><a href="https://plugins.jetbrains.com/plugin/9292" target="_blank" rel="noopener">Download</a> | <a href="http://magic.360.cn/" target="_blank" rel="noopener">WebSite</a></p>
+<p>360 FireLine 是一款是免费的适用于 Android 和 Java 代码的代码静态分析插件。主打的安全检查规则是根据360业务多年技术沉淀而来。内存类检查的精确度业内领先。<br><img src="https://user-gold-cdn.xitu.io/2018/10/12/16666499c50c29e6?w=1038&amp;h=701&amp;f=png&amp;s=38265" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/12/1666649b61e69e9d?w=457&amp;h=764&amp;f=png&amp;s=54499" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/12/1666649cf43676ca?w=881&amp;h=389&amp;f=jpeg&amp;s=32588" alt=""></p>
+<h3 id="ADB-Idea"><a href="#ADB-Idea" class="headerlink" title="ADB Idea"></a>ADB Idea</h3><p><a href="https://plugins.jetbrains.com/plugin/7380" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/pbreault/adb-idea" target="_blank" rel="noopener">GitHub</a></p>
+<p>ADB Idea 是一款 ADB 调试工具，支持 Uninstall App、Kill App、Start App、Restart App、Clear App Data、Clear App Data and Restart 等操作的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665cdf93e7be9dd?w=651&amp;h=410&amp;f=png&amp;s=44841" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665cdf47adb5048?w=316&amp;h=300&amp;f=png&amp;s=18753" alt=""></p>
+<h3 id="ADB-WIFI"><a href="#ADB-WIFI" class="headerlink" title="ADB WIFI"></a>ADB WIFI</h3><p><a href="https://plugins.jetbrains.com/plugin/7856" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/layerlre/ADBWIFI" target="_blank" rel="noopener">GitHub</a></p>
+<p>ADB WIFI 是一款无需 root 就可以通过 WiFi 调试 Android APP 的 Android Studio 插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665ce32d2ca1668?w=598&amp;h=92&amp;f=png&amp;s=10422" alt=""></p>
+<h3 id="Alibaba-Java-Coding-Guidelines"><a href="#Alibaba-Java-Coding-Guidelines" class="headerlink" title="Alibaba Java Coding Guidelines"></a>Alibaba Java Coding Guidelines</h3><p><a href="https://plugins.jetbrains.com/plugin/10046" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/alibaba/p3c" target="_blank" rel="noopener">GitHub</a></p>
+<p>Alibaba Java Coding Guidelines 是一款 Java 代码规约扫描插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665ceeb46a11f8c?w=469&amp;h=1133&amp;f=png&amp;s=75360" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665ceed24d82cd1?w=1082&amp;h=342&amp;f=png&amp;s=52811" alt=""></p>
+<h3 id="Android-ButterKnife-Zelezny"><a href="#Android-ButterKnife-Zelezny" class="headerlink" title="Android ButterKnife Zelezny"></a>Android ButterKnife Zelezny</h3><p><a href="https://plugins.jetbrains.com/plugin/7369" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="noopener">GitHub</a></p>
+<p>Android ButterKnife Zelezny 是一款用于根据 activities/fragments/adapters 选中的 xml 布局生成 ButterKnife 注入的插件。选中 activities/fragments/adapters 中引用的 xml 布局，点击 <strong>Generate</strong> 菜单或使用快捷键 <strong>Alt + Insert</strong>，然后选择 <strong>Generate ButterKnife Injections</strong> 即可。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665cf3ca52dd542?w=712&amp;h=591&amp;f=gif&amp;s=224045" alt=""></p>
+<h3 id="Android-Code-Generator"><a href="#Android-Code-Generator" class="headerlink" title="Android Code Generator"></a>Android Code Generator</h3><p><a href="https://plugins.jetbrains.com/plugin/7595" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/tmorcinek/android-codegenerator-plugin-intellij" target="_blank" rel="noopener">GitHub</a></p>
+<p>Android Code Generator 是一款根据布局文件快速生成对应的Activity、Fragment、Adapter、Menu 的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d579274807b3?w=1152&amp;h=720&amp;f=gif&amp;s=1314525" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d58067ae589a?w=1152&amp;h=720&amp;f=gif&amp;s=1036291" alt=""></p>
+<h3 id="Android-Methods-Count"><a href="#Android-Methods-Count" class="headerlink" title="Android Methods Count"></a>Android Methods Count</h3><p><a href="https://plugins.jetbrains.com/plugin/8076" target="_blank" rel="noopener">Download</a></p>
+<p>Android Methods Count 是一款统计 Android 依赖库中方法的总个数的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d0566e9e6342?w=650&amp;h=222&amp;f=gif&amp;s=196419" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d05853f75575?w=530&amp;h=81&amp;f=png&amp;s=19180" alt=""></p>
+<h3 id="Android-Parcelable-code-generator"><a href="#Android-Parcelable-code-generator" class="headerlink" title="Android Parcelable code generator"></a>Android Parcelable code generator</h3><p><a href="https://plugins.jetbrains.com/plugin/7332" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/mcharmas/android-parcelable-intellij-plugin/" target="_blank" rel="noopener">GitHub</a></p>
+<p>Android Parcelable code generator 是一款基于数据类中的字段快速实现 Parcelable 接口的插件。在编辑器中点击 <strong>Generate</strong> 菜单或使用快捷键 <strong>Alt + Insert</strong>，然后选择 <strong>Parcelable</strong> 即可。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d0eecd18e5e3?w=600&amp;h=601&amp;f=png&amp;s=85375" alt=""></p>
+<h3 id="AndroidSourceViewer"><a href="#AndroidSourceViewer" class="headerlink" title="AndroidSourceViewer"></a>AndroidSourceViewer</h3><p><a href="https://plugins.jetbrains.com/plugin/10187" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/pengwei1024/AndroidSourceViewer" target="_blank" rel="noopener">GitHub</a></p>
+<p>AndroidSourceViewer 是一款在 Android Studio 中在线查看 Android 和 Java 指定版本源码插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/12/16667115154a6478?w=310&amp;h=254&amp;f=png&amp;s=27812" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/12/1666711857bb2332?w=636&amp;h=512&amp;f=png&amp;s=134796" alt=""></p>
+<h3 id="CheckStyle-IDEA"><a href="#CheckStyle-IDEA" class="headerlink" title="CheckStyle-IDEA"></a>CheckStyle-IDEA</h3><p><a href="https://plugins.jetbrains.com/plugin/1065" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/jshiell/checkstyle-idea" target="_blank" rel="noopener">GitHub</a></p>
+<p>CheckStyle-IDEA 是一款帮助程序员编写符合编码标准的 Java 代码的插件。它可以自动执行检查 Java 代码的过程，从而使人类免于这项无聊但重要的任务，这使其成为希望实施编码标准的项目的理想选择。Checkstyle 具有高度可配置性，可以支持几乎任何编码标准。Checkstyle 提供了一个示例配置文件，支持 Sun Code Conventions 和 Google Java Style。<br><img src="https://user-gold-cdn.xitu.io/2018/10/12/16666ffdb6617ec3?w=1163&amp;h=935&amp;f=png&amp;s=79634" alt=""></p>
+<h3 id="CodeGlance"><a href="#CodeGlance" class="headerlink" title="CodeGlance"></a>CodeGlance</h3><p><a href="https://plugins.jetbrains.com/plugin/7275" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/Vektah/CodeGlance" target="_blank" rel="noopener">GitHub</a></p>
+<p>CodeGlance 是一款显示类似于 Sublime 中的代码小地图用于快速定位代码的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d6137c651035?w=1282&amp;h=697&amp;f=png&amp;s=651937" alt=""></p>
+<h3 id="EventBus3-Intellij-Plugin"><a href="#EventBus3-Intellij-Plugin" class="headerlink" title="EventBus3 Intellij Plugin"></a>EventBus3 Intellij Plugin</h3><p><a href="https://plugins.jetbrains.com/plugin/8603" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/likfe/eventbus3-intellij-plugin" target="_blank" rel="noopener">GitHub</a></p>
+<p>EventBus3 Intellij Plugin 是一款为 EventBus 提供快速索引和跳转的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/12/16666e36dbcea911?w=600&amp;h=400&amp;f=gif&amp;s=432363" alt=""></p>
+<h3 id="FindBugs-IDEA"><a href="#FindBugs-IDEA" class="headerlink" title="FindBugs-IDEA"></a>FindBugs-IDEA</h3><p><a href="https://plugins.jetbrains.com/plugin/3847" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/andrepdo/findbugs-idea" target="_blank" rel="noopener">GitHub</a></p>
+<p>FindBugs-IDEA 是一款通过提供静态字节码分析以从 IntelliJ IDEA 中查找 Java 代码中的 bug 的插件。FindBugs 是一个 Java 缺陷检测工具，它使用静态分析来查找超过200个错误模式，比如空指针取消引用、无限的递归循环、Java 库的糟糕使用和死锁。FindBugs 可以在大型应用程序中识别数百个严重缺陷(通常每1000-2000行非注释源语句中约有1个缺陷)。<br><img src="https://user-gold-cdn.xitu.io/2018/10/12/16666fa3883acb3e?w=1140&amp;h=534&amp;f=png&amp;s=98882" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/10/12/16666fa739970eae?w=1736&amp;h=1144&amp;f=png&amp;s=340743" alt=""></p>
+<h3 id="GsonFormat"><a href="#GsonFormat" class="headerlink" title="GsonFormat"></a>GsonFormat</h3><p><a href="https://plugins.jetbrains.com/plugin/7654" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/zzz40500/GsonFormat" target="_blank" rel="noopener">GitHub</a></p>
+<p>GsonFormat 是一款快速格式化 json 数据并自动生成实体类参数的插件。新建实体类并在编辑器中点击 <strong>Generate</strong> 菜单或使用快捷键 <strong>Alt + Insert</strong>，然后选择 <strong>GsonFormat</strong> 即可。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d1cf88706283?w=819&amp;h=652&amp;f=gif&amp;s=388525" alt=""></p>
+<h3 id="Lifecycle-Sorter"><a href="#Lifecycle-Sorter" class="headerlink" title="Lifecycle Sorter"></a>Lifecycle Sorter</h3><p><a href="https://plugins.jetbrains.com/plugin/7742" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/armandAkop/Lifecycle-Sorter" target="_blank" rel="noopener">GitHub</a></p>
+<p>Lifecycle Sorter 是一款可以对 Activity 或 Fragment 的生命周期方法按照它们在应用程序中的调用顺序进行排序的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d28b507a852d?w=2080&amp;h=1613&amp;f=png&amp;s=555296" alt=""></p>
+<h3 id="Markdown-Navigator"><a href="#Markdown-Navigator" class="headerlink" title="Markdown Navigator"></a>Markdown Navigator</h3><p><a href="https://plugins.jetbrains.com/plugin/7896" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/vsch/idea-multimarkdown" target="_blank" rel="noopener">GitHub</a></p>
+<p>Markdown Navigator 是一款带有 GFM 和匹配的预览样式的的 Markdown 插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d3006d96b10b?w=1102&amp;h=596&amp;f=gif&amp;s=2159593" alt=""></p>
+<h3 id="MVPHelper"><a href="#MVPHelper" class="headerlink" title="MVPHelper"></a>MVPHelper</h3><p><a href="https://plugins.jetbrains.com/plugin/8507" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/githubwing/MVPHelper" target="_blank" rel="noopener">GitHub</a></p>
+<p>MVPHelper 是一款 Intellj IDEA 和 Android Studio 自动生成 MVP 模式所需接口以及实现类的插件。在 Contract 类或者 Presenter 类内部，点击 <strong>Generate</strong> 菜单或使用快捷键 <strong>Alt + Insert</strong>, 然后选择 <strong>Mvp Helper</strong> 即可生成对应文件.<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d351ee1a16df?w=958&amp;h=518&amp;f=gif&amp;s=286497" alt=""></p>
+<h3 id="Remove-ButterKnife"><a href="#Remove-ButterKnife" class="headerlink" title="Remove ButterKnife"></a>Remove ButterKnife</h3><p><a href="https://plugins.jetbrains.com/plugin/8432" target="_blank" rel="noopener">Download</a> | <a href="https://github.com/u3shadow/RemoveButterKnife" target="_blank" rel="noopener">GitHub</a></p>
+<p>Remove ButterKnife 是一款用于移除代码中对 ButterKnife 使用的插件。<br><img src="https://user-gold-cdn.xitu.io/2018/10/10/1665d384560cf98f?w=1452&amp;h=674&amp;f=gif&amp;s=458990" alt=""></p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/d09e4c2c.html" class="b-link-green">Android Studio 让开发效率事半功倍的插件整理</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-08-19T14-26-35',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/238b7a36.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Lottie - 轻松实现复杂的动画效果">
+                        
+                        <span class="card-title">Lottie - 轻松实现复杂的动画效果</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">1. Lottie 介绍Lottie 是 Airbnb 开源的一套跨平台的完整的动画效果解决方案，设计师可以使用 Adobe After Effects 设计出漂亮的动画之后，使用 Lottic 提供的 Bodymovin 插件将设计好的动</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-08-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Lottie/" target="_blank">
+                        <span class="chip tag-bg-color">Lottie</span>
+                    </a>
+                    
+                    <a href="/tags/动画/" target="_blank">
+                        <span class="chip tag-bg-color">动画</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/26cb225c.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Android Studio 3.0 利用 Android Profiler 测量应用性能">
+                        
+                        <span class="card-title">Android Studio 3.0 利用 Android Profiler 测量应用性能</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Android Studio 3.0 采用全新的 Android Profiler 窗口取代 Android Monitor 工具。 这些全新的分析工具能够提供关于应用 CPU、内存和网络活动的实时数据。 
+您可以执行基于样本的函数跟踪来记</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-08-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Android-Studio/" target="_blank">
+                        <span class="chip tag-bg-color">Android Studio</span>
+                    </a>
+                    
+                    <a href="/tags/Android-Profiler/" target="_blank">
+                        <span class="chip tag-bg-color">Android Profiler</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

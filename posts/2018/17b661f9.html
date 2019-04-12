@@ -1,0 +1,1075 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java 11 新特性, Android, Google, Blog">
+    <meta name="description" content="自从 2017 年 9 月 21 日 Java 9 正式发布之时，Oracle 就宣布今后会按照每六个月一次的节奏进行更新，JDK 11 已于 2018 年 9 月发布。与 JDK 10 不同，JDK 11 将提供长期支持，还将作为 Jav">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java 11 新特性 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java 11 新特性
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip tag-bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JDK/" target="_blank">
+                                <span class="chip tag-bg-color">JDK</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-11-18
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        2.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        9 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>自从 2017 年 9 月 21 日 Java 9 正式发布之时，Oracle 就宣布今后会按照每六个月一次的节奏进行更新，JDK 11 已于 2018 年 9 月发布。与 JDK 10 不同，JDK 11 将提供长期支持，还将作为 Java 平台的参考实现以及标准版（Java SE）11。Oracle 直到 2023 年 9 月都会为 JDK 11 提供一级支持，而补丁和安全警告等扩展支持将延续到 2026 年。新的长期支持版本每三年发布一次，根据后续的发行计划，JDK 17 将于 2021 年发布。</p>
+<h2 id="Java-11-的新特性"><a href="#Java-11-的新特性" class="headerlink" title="Java 11 的新特性"></a>Java 11 的新特性</h2><p>Java 11 新增了非常多的特性，主要特性包含以下几个：</p>
+<ul>
+<li><strong><code>基于嵌套的访问控制</code></strong> − 嵌套是一种访问控制上下文，与 Java 编程语言中现有的嵌套类型概念一致。 嵌套允许逻辑上属于同一代码实体，但被编译为不同类文件的类，无需编译器插入可访问性扩展桥接方法，即可访问彼此的私有成员。</li>
+<li><strong><code>动态类文件常量</code></strong> − 扩展 Java 类文件格式以支持新的常量池形式，CONSTANT_Dynamic。 加载CONSTANT_Dynamic 会将创建委托给 bootstrap 方法，就像链接 invokedynamic 调用站点将链接委托给 bootstrap 方法一样。</li>
+<li><strong><code>改进 Aarch64 内联函数</code></strong> − 改进现有的字符串和数组内联函数，并在 AArch64 处理器上为 java.lang.Math sin，cos 和 log 函数实现新的内联函数。</li>
+<li><strong><code>Epsilon：No-Op 垃圾回收器</code></strong> − 开发一个处理内存分配但不实现任何实际内存回收机制的 GC。 一旦可用的 Java 堆耗尽，JVM 将关闭。</li>
+<li><strong><code>HTTP 客户端（标准）</code></strong> − 通过 JEP 110 标准化 JDK 9 中引入的孵化 HTTP 客户端 API，并在 JDK 10 中进行更新。</li>
+<li><strong><code>Lambda 参数的局部变量语法</code></strong> − 在声明隐式类型的 lambda 表达式的形式参数时允许使用 var。</li>
+<li><strong><code>采用 Curve25519 和 Curve448 加密的密钥协议</code></strong> − 使用 RFC 7748 中描述的 Curve25519 和 Curve448 实现密钥协议。</li>
+<li><strong><code>支持 Unicode 10.0</code></strong> − 升级现有平台 API 以支持 Unicode 标准 v10.0。</li>
+<li><strong><code>飞行记录仪</code></strong> − 提供低开销的数据收集框架，用于对 Java 应用程序和 HotSpot JVM 进行故障排除。</li>
+<li><strong><code>实现 ChaCha20 和 Poly1305 加密算法</code></strong> − 实现 RFC 7539 中指定的 ChaCha20 和 ChaCha20-Poly1305 加密。ChaCha20 是一种相对较新的流加密，可以替代旧的、不安全的 RC4 流加密。</li>
+<li><strong><code>增强 Java 启动器</code></strong> − 增强 java 启动程序以运行作为 Java 源代码的单个文件提供的程序，包括通过“shebang”文件和相关技术从脚本中使用。</li>
+<li><strong><code>低开销堆分析</code></strong> − 提供一种低开销的 Java 堆分配采样方法，可通过 JVMTI 访问。</li>
+<li><strong><code>传输层安全性(TLS) 1.3</code></strong> − 实现传输层安全性（TLS）协议 RFC 8446 的 1.3 版。</li>
+<li><strong><code>ZGC：可扩展的低延迟垃圾收集器</code></strong> − Z 垃圾收集器，也称为 ZGC，是一个可扩展的低延迟垃圾收集器。</li>
+<li><strong><code>弃用 Nashorn JavaScript 引擎</code></strong> − 弃用 Nashorn JavaScript 脚本引擎和 API 以及 jjs 工具，意图在将来的版本中删除它们。</li>
+<li><strong><code>弃用 Pack200 工具和 API</code></strong> − 在 java.util.jar 中弃用 pack200 和 unpack200 工具以及 Pack200 API。</li>
+<li><strong><code>删除 Java EE 和 CORBA 模块</code></strong> − 从 Java SE Platform 和 JDK 中删除 Java EE 和 CORBA 模块。这些模块在 Java SE 9 中已弃用，声明的目的是为了在将来的版本中删除它们。</li>
+<li><strong><code>删除 JavaFX</code></strong> − JavaFX 模块已从 JDK 11 发行版中删除。这些模块包含在早期版本的 Oracle JDK 中，但不包含在 OpenJDK 版本中。JavaFX 模块将作为 JDK 之外的单独模块集提供。</li>
+</ul>
+<p>更多的新特性可以参阅官网：<a href="https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#NewFeature" target="_blank" rel="noopener">What’s New in JDK 11</a><br>JDK 11 下载地址：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html" target="_blank" rel="noopener">Java 11 Downloads</a></p>
+<h3 id="HTTP客户端（标准）"><a href="#HTTP客户端（标准）" class="headerlink" title="HTTP客户端（标准）"></a>HTTP客户端（标准）</h3><p>这个功能于 JDK 9 中引入并在 JDK 10 中得到了更新，现在终于转正了。该 API 通过 <code>CompleteableFutures</code> 提供非阻塞请求和响应语义，可以联合使用以触发相应的动作。自从 JDK 9 和 10 中引入该功能后，JDK 11 完全重写了该功能，现在其实现完全是异步的。<code>RX Flow</code> 的概念也得到了实现，这样就无需为了支持 HTTP/2 而创造许多概念了。现在，在用户层请求发布者和响应发布者与底层套接字之间追踪数据流更容易了。这降低了复杂性，并最大程度上提高了 HTTP/1 和 HTTP/2 之间的重用的可能性。</p>
+<h3 id="Epsilon-垃圾回收器"><a href="#Epsilon-垃圾回收器" class="headerlink" title="Epsilon 垃圾回收器"></a>Epsilon 垃圾回收器</h3><p>Epsilon 垃圾回收器又被称为 <code>no-op</code> 回收器，它是新的实验性无操作垃圾收集器。Epsilon GC 仅处理内存分配，并且不实现任何内存回收机制。它对性能测试非常有用，可以与其他 GC 的成本/收益进行对比。它可用于在测试中方便地断言内存占用和内存压力。在极端情况下，它可能对非常短暂的作业很有用，其中内存回收将在 JVM 终止时发生，或者在低垃圾应用程序中获得最后一次延迟改进。</p>
+<h3 id="Lambda-参数的局部变量语法"><a href="#Lambda-参数的局部变量语法" class="headerlink" title="Lambda 参数的局部变量语法"></a>Lambda 参数的局部变量语法</h3><p>可以消除隐含类型表达式中正式参数定义的语法与局部变量定义语法的不一致。这样就能在隐含类型的 <code>lambda</code> 表达式中定义正式参数时使用 <code>var</code> 了。</p>
+<h3 id="Java的类文件格式将被扩展"><a href="#Java的类文件格式将被扩展" class="headerlink" title="Java的类文件格式将被扩展"></a>Java的类文件格式将被扩展</h3><p>以支持新的常量池，<code>CONSTANT_Dynamic</code>。其目标是降低开发新形式的可实现类文件约束带来的成本和干扰。</p>
+<h3 id="采用-Curve25519-和-Curve448-加密的密钥协议"><a href="#采用-Curve25519-和-Curve448-加密的密钥协议" class="headerlink" title="采用 Curve25519 和 Curve448 加密的密钥协议"></a>采用 Curve25519 和 Curve448 加密的密钥协议</h3><p>比现有的 <code>Diffie-Hellman</code> 椭圆曲线密钥交换方式更有效、更安全。根据 IETF 的资料，<code>Curve25519</code> 和 <code>Curve448</code> 两种椭圆曲线采用常量时间的实现方式，以及不会发生异常的数乘实现，能更好地抵抗各种旁路，包括时序、缓存等。该提案的目标是为密钥交换方法提供一个 API 和实现，同时开发一个平台无关、纯 Java 的的实现。由于该提案采用了复杂且精密的模算数，因此还是有风险的。</p>
+<h3 id="飞行记录仪（Flight-Recorder）"><a href="#飞行记录仪（Flight-Recorder）" class="headerlink" title="飞行记录仪（Flight Recorder）"></a>飞行记录仪（Flight Recorder）</h3><p>将提供<code>低开销</code>的数据收集框架，用来调试 <code>Java 应用程序</code>和 <code>HotSpot JVM</code>。飞行记录仪是 Oracle 的商业版 JDK 的功能，但在 JDK 11 中，其代码将移动到公开代码库中，这样所有人都能使用该功能了。<code>Iclouded</code> 将作为 API，以事件的形式产生或消耗数据，同时提供缓存机制、二进制数据工具，同时支持配置和事件过滤。该提案还提议为 OS、HotSpot 和 JDK 库提供事件。</p>
+<h3 id="支持-Unicode-10-0"><a href="#支持-Unicode-10-0" class="headerlink" title="支持 Unicode 10.0"></a>支持 Unicode 10.0</h3><p>升级现有平台 API 以支持 <code>Unicode</code> 标准 <code>v10.0</code>，从而使 Java 跟上潮流。<br>JDK 11 版本包括对 <code>Unicode 10.0.0</code> 的支持。自从支持 Unicode 8.0.0 的 JDK 10 发布以来，JDK 11 结合了 Unicode 9.0.0 和 10.0.0 版本，包括：</p>
+<ul>
+<li>16018 个新字符</li>
+<li>18 个新区块</li>
+<li>10 个新脚本</li>
+</ul>
+<h3 id="实现-ChaCha20-和-Poly1305-加密算法"><a href="#实现-ChaCha20-和-Poly1305-加密算法" class="headerlink" title="实现 ChaCha20 和 Poly1305 加密算法"></a>实现 ChaCha20 和 Poly1305 加密算法</h3><p><code>ChaCha20</code> 是种相对较新的流加密算法，能代替旧的、不安全的R4流加密。<code>ChaCha20</code> 将与 <code>Poly1305</code> 认证算法配对使用。<code>ChaCha20</code> 和 <code>ChaCha20-Poly1305</code> 加密实现将通过 <code>crypto.CipherSpi</code> API 于 SunJCE（Java加密扩展）中提供。</p>
+<h3 id="增强Java启动器"><a href="#增强Java启动器" class="headerlink" title="增强Java启动器"></a>增强Java启动器</h3><p>使之能够运行单一文件的 Java 源代码，使得应用程序可以直接从源代码运行。单文件程序常见于小型工具，或开发者初学 Java 时使用。而且，单一源代码文件有可能会编译成多个类文件，这会增加打包开销。由于这些原因，在运行程序之前进行编译，已成为了不必要的步骤。</p>
+<h3 id="低开销堆分析"><a href="#低开销堆分析" class="headerlink" title="低开销堆分析"></a>低开销堆分析</h3><p>提供一种<code>低开销</code>的 Java 堆分配采样方法，可通过 <code>JVMTI</code> 访问。它旨在实现以下目标：</p>
+<ul>
+<li>低开销足以在默认情况下持续启用；</li>
+<li>可通过定义明确的编程接口（JVMTI）访问；</li>
+<li>可以对所有分配进行采样（即，不限于在一个特定堆区域中的分配或以特定方式分配的分配）；</li>
+<li>可以以独立于实现的方式定义（即，不依赖于任何特定的 GC 算法或 VM 实现）；</li>
+<li>可以提供有关实时和死 Java 对象的信息。</li>
+</ul>
+<h3 id="ZGC：可扩展的低延迟垃圾收集器-试验"><a href="#ZGC：可扩展的低延迟垃圾收集器-试验" class="headerlink" title="ZGC：可扩展的低延迟垃圾收集器(试验)"></a>ZGC：可扩展的低延迟垃圾收集器(试验)</h3><p><code>Z 垃圾收集器</code>，也称为 <code>ZGC</code>，是一个可扩展的低延迟垃圾收集器（JEP 333）。它旨在实现以下目标：</p>
+<ul>
+<li>暂停时间不超过10毫秒；</li>
+<li>暂停时间不会随堆或实时设置大小而增加；</li>
+<li>处理大小从几百兆到几千兆字节不等的堆；</li>
+<li>ZGC 的核心是并发垃圾收集器，这意味着在 Java 线程继续执行时，所有繁重的工作（标记，压缩，引用处理，字符串表清理等）都已完成。这极大地限制了垃圾收集对应用程序响应时间的负面影响。</li>
+</ul>
+<p>ZGC 作为实验性功能包含在内。要启用它，需要 <code>-XX:+UnlockExperimentalVMOptions</code> 选项与 <code>-XX:+UseZGC</code> 选项结合使用。ZGC 的这个实验版具有以下限制：</p>
+<ul>
+<li>它仅适用于Linux / x64。</li>
+<li>不支持使用压缩的 oops 和/或压缩的类点。在 -XX:+UseCompressedOops 和 -XX:+UseCompressedClassPointers 选项默认情况下禁用。启用它们将不起作用。</li>
+<li>不支持类卸载。在 -XX:+ClassUnloading 和 -XX:+ClassUnloadingWithConcurrentMark 选项默认情况下禁用。启用它们将不起作用。</li>
+<li>不支持将 ZGC 与 Graal 结合使用。</li>
+</ul>
+<h3 id="传输层安全-TLS-1-3"><a href="#传输层安全-TLS-1-3" class="headerlink" title="传输层安全(TLS) 1.3"></a>传输层安全(TLS) 1.3</h3><p>JDK 11 版本包括传输层安全性(TLS) 1.3规范（RFC 8446）的实现。对于 <code>TLS 1.3</code>，定义了以下新标准算法名称：</p>
+<ul>
+<li>TLS 协议版本名称：TLSv1.3 </li>
+<li>SSLContext 算法名称：TLSv1.3 </li>
+<li>TLS 1.3 的 TLS 密码套件名称：TLS_AES_128_GCM_SHA256，TLS_AES_256_GCM_SHA384 </li>
+<li>X509KeyManager 的密钥类型：RSASSA-PSS </li>
+<li>X509TrustManager 的 authType：RSASSA-PSS</li>
+</ul>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li>参考 <a href="https://docs.oracle.com/javase/11/" target="_blank" rel="noopener">Java 11 官方文档</a>，了解 Java 11 的更多内容。</li>
+<li>参考 <a href="https://docs.oracle.com/en/java/javase/11/docs/api/index.html" target="_blank" rel="noopener">Java 11 API 文档</a>，了解 Java 11 API 的细节。 </li>
+<li>参考 <a href="https://www.oracle.com/technetwork/java/javase/11-relnote-issues-5012449.html#NewFeature" target="_blank" rel="noopener">What’s New in JDK 11</a>，了解 Java 11 的新特性。</li>
+<li>参考 <a href="https://www.oracle.com/technetwork/java/javase/11u-relnotes-5093844.html" target="_blank" rel="noopener">Java 11 Release Notes</a>，了解 Java 11 的更新说明。</li>
+</ul>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/17b661f9.html" class="b-link-green">Java 11 新特性</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-11-18T10-25-18',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/8359917f.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java 数据结构与算法概述">
+                        
+                        <span class="card-title">Java 数据结构与算法概述</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">数据结构数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。
+数据结构的基本功能不同的数</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/数据结构/" target="_blank">
+                        <span class="chip tag-bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip tag-bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/81153f7d.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Java 9 新特性">
+                        
+                        <span class="card-title">Java 9 新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Java 9 正式发布于 2017 年 9 月 21 日。作为 Java 8 之后 3 年半才发布的新版本，Java 9 带来了很多重大的变化。其中最主要的变化是 Java 平台模块系统的引入。除此之外，还有一些新的特性。
+Java 9 的</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JDK/" target="_blank">
+                        <span class="chip tag-bg-color">JDK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

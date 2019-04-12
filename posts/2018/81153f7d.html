@@ -1,0 +1,1243 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java 9 新特性, Android, Google, Blog">
+    <meta name="description" content="Java 9 正式发布于 2017 年 9 月 21 日。作为 Java 8 之后 3 年半才发布的新版本，Java 9 带来了很多重大的变化。其中最主要的变化是 Java 平台模块系统的引入。除此之外，还有一些新的特性。
+Java 9 的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java 9 新特性 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java 9 新特性
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip tag-bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JDK/" target="_blank">
+                                <span class="chip tag-bg-color">JDK</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-11-17
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        6.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        24 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Java 9 正式发布于 2017 年 9 月 21 日。作为 Java 8 之后 3 年半才发布的新版本，Java 9 带来了很多重大的变化。其中最主要的变化是 Java 平台模块系统的引入。除此之外，还有一些新的特性。</p>
+<h2 id="Java-9-的新特性"><a href="#Java-9-的新特性" class="headerlink" title="Java 9 的新特性"></a>Java 9 的新特性</h2><p>Java 9 新增了非常多的特性，主要特性包含以下几个：</p>
+<ul>
+<li><strong><code>模块系统</code></strong> - 模块是一个包的容器，Java 9 最大的变化之一是引入了模块系统(Jigsaw 项目)。</li>
+<li><strong><code>REPL (JShell)</code></strong> - 交互式编程环境。</li>
+<li><strong><code>HTTP/2 客户端</code></strong> - HTTP/2 标准是 HTTP 协议的最新版本，新的 HTTPClient API 支持 WebSocket 和 HTTP2 流以及服务器推送特性。</li>
+<li><strong><code>多版本兼容 JAR 包</code></strong> - 多版本兼容 JAR 功能能让你创建仅在特定版本的 Java 环境中运行库程序时选择使用的 class 版本。</li>
+<li><strong><code>集合工厂方法</code></strong> - List，Set 和 Map 接口中，新的静态工厂方法可以创建这些集合的不可变实例。</li>
+<li><strong><code>私有接口方法</code></strong> - 在接口中使用 private 私有方法。我们可以使用 private 访问修饰符在接口中编写私有方法。</li>
+<li><strong><code>改进的 Javadoc</code></strong> - Javadoc 现在支持在 API 文档中的进行搜索。另外，Javadoc 的输出现在符合兼容 HTML5 标准。</li>
+<li><strong><code>改进的 Optional 类</code></strong> - java.util.Optional 添加了很多新的有用方法，Optional 可以直接转为 stream。</li>
+<li><strong><code>改进的 Stream API</code></strong> - 改进的 Stream API 添加了一些便利的方法，使流处理更容易，并使用收集器编写复杂的查询。</li>
+<li><strong><code>改进的 try-with-resources</code></strong> - 如果你已经有一个资源是 final 或等效于 final 变量，您可以在 try-with-resources 语句中使用该变量，而无需在 try-with-resources 语句中声明一个新变量。</li>
+<li><strong><code>改进的进程 API</code></strong> - 改进的 API 来控制和管理操作系统进程。引进 java.lang.ProcessHandle 及其嵌套接口 Info 来让开发者逃离时常因为要获取一个本地进程的 PID 而不得不使用本地代码的窘境。</li>
+<li><strong><code>改进的弃用注解 @Deprecated</code></strong> - 注解 @Deprecated 可以标记 Java API 状态，可以表示被标记的 API 将会被移除，或者已经破坏。</li>
+<li><strong><code>改进钻石操作符(Diamond Operator)</code></strong> - 匿名类可以使用钻石操作符(Diamond Operator)。</li>
+<li><strong><code>改进的 CompletableFuture API</code></strong> - CompletableFuture 类的异步机制可以在 ProcessHandle.onExit 方法退出时执行操作。</li>
+<li><strong><code>轻量级的 JSON API</code></strong> - 内置了一个轻量级的 JSON API。</li>
+<li><strong><code>多分辨率图像 API</code></strong> - 定义多分辨率图像API，开发者可以很容易的操作和展示不同分辨率的图像了。</li>
+<li><strong><code>响应式流(Reactive Streams) API</code></strong> - Java 9 中引入了新的响应式流 API 来支持 Java 9 中的响应式编程。</li>
+</ul>
+<p>更多的新特性可以参阅官网：<a href="https://docs.oracle.com/javase/9/whatsnew/toc.htm" target="_blank" rel="noopener">What’s New in JDK 9</a><br>JDK 9 下载地址：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk9-doc-downloads-3850606.html" target="_blank" rel="noopener">Java 9 Downloads</a></p>
+<h3 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h3><p>Java 9 最大的变化之一是引入了模块系统（Jigsaw 项目）。</p>
+<p>Java 平台模块系统(Modular System)，把模块化开发实践引入到了 Java 平台中。在引入了模块系统之后，JDK 被重新组织成 94 个模块。Java 应用可以通过新增的 jlink 工具，创建出只包含所依赖的 JDK 模块的自定义运行时镜像。这样可以极大的减少 Java 运行时环境的大小。这对于目前流行的不可变基础设施的实践来说，镜像的大小的减少可以节省很多存储空间和带宽资源 。 </p>
+<p> 模块化开发的实践在软件开发领域并不是一个新的概念。Java 开发社区已经使用这样的模块化实践有相当长的一段时间。主流的构建工具，包括 Apache Maven 和 Gradle 都支持把一个大的项目划分成若干个子项目。子项目之间通过不同的依赖关系组织在一起。每个子项目在构建之后都会产生对应的 JAR 文件。 在 Java9 中 ，已有的这些项目可以很容易的升级转换为 Java 9 模块 ，并保持原有的组织结构不变。</p>
+<p>Java 9 模块的重要特征是在其工件（artifact）的根目录中包含了一个描述模块的 <code>module-info.class</code> 文件。工件的格式可以是传统的 JAR 文件或是 Java 9 新增的 JMOD 文件。这个文件由根目录中的源代码文件 <code>module-info.java</code> 编译而来。该模块声明文件可以描述模块的不同特征。模块声明文件中可以包含的内容如下：</p>
+<ul>
+<li><code>模块导出的包：</code>使用 <code>exports</code> 可以声明模块对其他模块所导出的包。包中的 <code>public</code> 和 <code>protected</code> 类型，以及这些类型的 <code>public</code> 和 <code>protected</code> 成员可以被其他模块所访问。没有声明为导出的包相当于模块中的私有成员，不能被其他模块使用。</li>
+<li><code>模块的依赖关系：</code>使用 <code>requires</code> 可以声明模块对其他模块的依赖关系。使用 requires transitive 可 以把一个模块依赖声明为传递的。传递的模块依赖可以被依赖当前模块的其他模块所读取。如果一个模块所导出的类型的型构中包含了来自它所依赖的模块的类型，那么对该模块的依赖应该声明为传递的。</li>
+<li><code>服务的提供和使用：</code>如果一个模块中包含了可以被 <code>ServiceLocator</code> 发现的服务接口的实现，需要使用 provides with 语句来声明具体的实现类；如果一个模块需要使用服务接口，可以使用 <code>uses</code> 语句来声明。 </li>
+</ul>
+<p>下面给出了一个模块 com.mycompany.sample 的最基本的模块声明：</p>
+<pre class=" language-java"><code class="language-java">module com<span class="token punctuation">.</span>mycompany<span class="token punctuation">.</span>sample <span class="token punctuation">{</span> 
+    exports com<span class="token punctuation">.</span>mycompany<span class="token punctuation">.</span>sample<span class="token punctuation">;</span> 
+    requires com<span class="token punctuation">.</span>mycompany<span class="token punctuation">.</span>common<span class="token punctuation">;</span> 
+    provides com<span class="token punctuation">.</span>mycompany<span class="token punctuation">.</span>common<span class="token punctuation">.</span>DemoService with
+        com<span class="token punctuation">.</span>mycompany<span class="token punctuation">.</span>sample<span class="token punctuation">.</span>DemoServiceImpl<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<p>模块系统中增加了模块路径的概念。模块系统在解析模块时，会从模块路径中进行查找。为了保持与之前 Java 版本的兼容性，CLASSPATH 依然被保留。所有的类型在运行时都属于某个特定的模块。对于从 CLASSPATH 中加载的类型，它们属于加载它们的类加载器对应的未命名模块。可以通过 Class 的 getModule()方法来获取到表示其所在模块的 Module 对象。</p>
+<p>在 JVM 启动时，会从应用的根模块开始，根据依赖关系递归的进行解析，直到得到一个表示依赖关系的图。如果解析过程中出现找不到模块的情况，或是在模块路径的同一个地方找到了名称相同的模块，模块解析过程会终止，JVM 也会退出。Java 也提供了相应的 API 与模块系统进行交互。</p>
+<p>如果想了解和学习更详细的内容，可以参考<a href="http://openjdk.java.net/projects/jigsaw/quick-start" target="_blank" rel="noopener">官方文档</a>。</p>
+<h3 id="REPL-JShell"><a href="#REPL-JShell" class="headerlink" title="REPL (JShell)"></a>REPL (JShell)</h3><p>REPL(Read Eval Print Loop)意为交互式的编程环境。</p>
+<p>JShell 是 Java 9 新增的一个<code>交互式的编程环境工具</code>。JShell 为 Java 增加了类似 NodeJS 和 Python 中的读取-求值-打印循环(Read-Evaluation-Print Loop)。在 JShell 中可以<code>直接输入表达式并查看其执行结果</code>。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，JShell 都非常实用。只需要通过 JShell 命令启动 jshell，然后直接输入表达式即可。</p>
+<p>执行 JShell：</p>
+<pre class=" language-shell"><code class="language-shell">$ jshell
+|  Welcome to JShell -- Version 9-ea
+|  For an introduction type: /help intro
+jshell>
+</code></pre>
+<p>执行 JShell 简单计算：</p>
+<pre class=" language-shell"><code class="language-shell">jshell> 3+1
+$1 ==> 4
+jshell> 13%7
+$2 ==> 6
+jshell> $2
+$2 ==> 6
+jshell>
+</code></pre>
+<p>JShell 创建与使用函数：</p>
+<pre class=" language-shell"><code class="language-shell">jshell> int doubled(int i){ return i*2;}
+|  created method doubled(int)
+jshell> doubled(6)
+$3 ==> 12
+jshell>
+</code></pre>
+<p>退出 JShell：</p>
+<pre class=" language-shell"><code class="language-shell">jshell> /exit
+| Goodbye 
+</code></pre>
+<h3 id="HTTP-2-客户端"><a href="#HTTP-2-客户端" class="headerlink" title="HTTP/2 客户端"></a>HTTP/2 客户端</h3><p>在此之前，JDK 提供的 Http 访问功能，几乎都需要依赖于 HttpURLConnection，但是这个类大家在写代码的时候很少使用，此次在Java 9的版本中引入了一个新的 package：<code>java.net.http</code>，里面提供了对 Http 访问很好的支持，不仅支持 Http/1.1 而且还支持 HTTP/2，以及 WebSocket，据说性能可以超过 Apache HttpClient，Netty，Jetty。<br>下面是一个简单的使用例子：</p>
+<pre class=" language-java"><code class="language-java">URI httpURI <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URI</span><span class="token punctuation">(</span><span class="token string">"http://www.baidu.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+HttpRequest request <span class="token operator">=</span> HttpRequest<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>httpURI<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GET</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+HttpResponse response <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">response</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+String responseBody <span class="token operator">=</span> response<span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>HttpResponse<span class="token punctuation">.</span><span class="token function">asString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="集合工厂方法"><a href="#集合工厂方法" class="headerlink" title="集合工厂方法"></a>集合工厂方法</h3><p>Java 9 在 <code>List</code>，<code>Set</code> 和 <code>Map</code> 接口中，添加了可以创建这些集合的不可变实例新的静态工厂方法。</p>
+<p>在 Java 9 之前，Java 只能利用一些实用方法（例如：Collections.unmodifiableCollection(Collection&lt;? extends T&gt; c)）创建一个不可修改视图的集合。现在，Java 9 引入了一些有用的工厂方法来创建不可修改的集合。</p>
+<p>Java 9 中，以下方法被添加到 List、Set 和 Map 接口以及它们的重载对象。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token operator">&lt;</span>E<span class="token operator">></span> List<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">of</span><span class="token punctuation">(</span>E e1<span class="token punctuation">,</span> E e2<span class="token punctuation">,</span> E e3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token operator">&lt;</span>E<span class="token operator">></span> Set<span class="token operator">&lt;</span>E<span class="token operator">></span>  <span class="token function">of</span><span class="token punctuation">(</span>E e1<span class="token punctuation">,</span> E e2<span class="token punctuation">,</span> E e3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span> Map<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span> <span class="token function">of</span><span class="token punctuation">(</span>K k1<span class="token punctuation">,</span> V v1<span class="token punctuation">,</span> K k2<span class="token punctuation">,</span> V v2<span class="token punctuation">,</span> K k3<span class="token punctuation">,</span> V v3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span> Map<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">></span> <span class="token function">ofEntries</span><span class="token punctuation">(</span>Map<span class="token punctuation">.</span>Entry<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">K</span><span class="token punctuation">,</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">V</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> entries<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>List 和 Set 接口：of(…) 方法重载了 0 ~ 10 个参数的不同方法。</li>
+<li>Map 接口：of(…) 方法重载了 0 ~ 10 个参数的不同方法。</li>
+<li>Map 接口：如果超过 10 个参数, 可以使用 ofEntries(…) 方法。</li>
+</ul>
+<h3 id="私有接口方法"><a href="#私有接口方法" class="headerlink" title="私有接口方法"></a>私有接口方法</h3><p>在 Java 8 之前，接口可以有<code>常量变量</code>和<code>抽象方法</code>。我们不能在接口中提供方法实现，如果我们要提供抽象方法和非抽象方法（方法与实现）的组合，那么我们就得使用抽象类。</p>
+<p>在 Java 8 接口引入了<code>默认方法</code>和<code>静态方法</code>。我们可以在 Java 8 的接口中编写方法实现，仅仅需要使用 <code>default</code> 关键字来定义它们。在 Java 8 中，一个接口中能定义如下几种变量/方法：常量、抽象方法、默认方法、静态方法。</p>
+<p>Java 9 不仅像 Java 8 一样支持接口默认方法，同时还支持<code>私有方法</code>。在 Java 9 中，一个接口中能定义如下几种变量/方法：常量、抽象方法、默认方法、静态方法、私有方法、私有静态方法</p>
+<p>默认方法和静态方法可以共享接口中的私有方法，因此避免了代码冗余，这也使代码更加清晰。如果私有方法是静态的，那这个方法就属于这个接口的，并且没有 <code>static</code> 修饰的私有方法只能被在接口中的实例调用。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">InterfaceWithPrivateMethods</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> String <span class="token function">staticPrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"static private"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> String <span class="token function">instancePrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"instance private"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String result <span class="token operator">=</span> <span class="token function">staticPrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        InterfaceWithPrivateMethods methods <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InterfaceWithPrivateMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// anonymous class 匿名类</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        result <span class="token operator">=</span> methods<span class="token punctuation">.</span><span class="token function">instancePrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="改进的-Javadoc"><a href="#改进的-Javadoc" class="headerlink" title="改进的 Javadoc"></a>改进的 Javadoc</h3><p>javadoc 工具可以生成 Java 文档。Javadoc 现在支持在 API 文档中的进行搜索。另外， Java 9 的 javadoc 的输出现在符合兼容 HTML5 标准。使用 Java 9 javadoc 命令中的 <code>-html5</code> 参数可以让生成的文档支持 HTML5 标准。</p>
+<h3 id="改进-Optional-类"><a href="#改进-Optional-类" class="headerlink" title="改进 Optional 类"></a>改进 Optional 类</h3><p>Optional 类在 Java 8 中引入，Optional 类的引入很好的解决空指针异常。在 java 9 中, 添加了三个方法来改进它的功能：</p>
+<ul>
+<li><strong><code>stream()：</code></strong>将 Optional 转为一个 <code>Stream</code>，如果该 Optional 中包含值，那么就返回包含这个值的 Stream，否则返回一个空的 Stream（<code>Stream.empty()</code>）。</li>
+<li><strong><code>ifPresentOrElse()：</code></strong>如果一个 Optional 包含值，则对其包含的值调用函数 <code>action</code>，即 <code>action.accept(value)</code>，这与 ifPresent 一致；与 ifPresent 方法的区别在于，ifPresentOrElse 还有第二个参数 <code>emptyAction</code> —— 如果 Optional 不包含值，那么 ifPresentOrElse 便会调用 <code>emptyAction</code>，即 <code>emptyAction.run()</code>。</li>
+<li><strong><code>or()：</code></strong>如果值存在，返回 Optional 指定的值，否则返回一个预设的值。</li>
+</ul>
+<h3 id="改进的-Stream-API"><a href="#改进的-Stream-API" class="headerlink" title="改进的 Stream API"></a>改进的 Stream API</h3><p>Java 9 改进的 Stream API 添加了一些便利的方法，使流处理更容易，并使用收集器编写复杂的查询。Java 9 为 Stream 新增了几个方法：<code>dropWhile</code>、<code>takeWhile</code>、<code>ofNullable</code>，为 <code>iterate</code> 方法新增了一个重载方法。</p>
+<ul>
+<li><strong><code>takeWhile()：</code></strong>使用一个断言作为参数，返回给定 Stream 的子集直到断言语句第一次返回 false。如果第一个值不满足断言条件，将返回一个空的 Stream。</li>
+<li><strong><code>dropWhile()：</code></strong>和 takeWhile 作用相反的，使用一个断言作为参数，直到断言语句第一次返回 true 才返回给定 Stream 的子集。</li>
+<li><strong><code>ofNullable()：</code></strong>可以预防 NullPointerExceptions 异常， 可以通过检查流来避免 null 值。</li>
+<li><strong><code>iterate()：</code></strong>允许使用初始种子值创建顺序（可能是无限）流，并迭代应用指定的下一个方法。 当指定的 hasNext 的 predicate 返回 false 时，迭代停止。</li>
+</ul>
+<h3 id="改进的-try-with-resources"><a href="#改进的-try-with-resources" class="headerlink" title="改进的 try-with-resources"></a>改进的 try-with-resources</h3><p>try-with-resources 是 JDK 7 中一个新的异常处理机制，它能够很容易地关闭在 try-catch 语句块中使用的资源。所谓的资源（resource）是指在程序完成后，必须关闭的对象。try-with-resources 语句确保了每个资源在语句结束时关闭。所有实现了 java.lang.AutoCloseable 接口（其中，它包括实现了 java.io.Closeable 的所有对象），可以使用作为资源。</p>
+<p>try-with-resources 声明在 JDK 9 已得到改进。如果你已经有一个资源是 <code>final</code> 或<code>等效于 final 变量</code>，您可以在 try-with-resources 语句中使用该变量，而无需在 try-with-resources 语句中声明一个新变量。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> String <span class="token function">readData</span><span class="token punctuation">(</span>String message<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+    Reader inputString <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringReader</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    BufferedReader br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span>inputString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">(</span>br<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在处理必须关闭的资源时，使用 try-with-resources 语句替代 try-finally 语句。 生成的代码更简洁，更清晰，并且生成的异常更有用。try-with-resources 语句在编写必须关闭资源的代码时会更容易，也不会出错，而使用 try-finally 语句实际上是不可能的。</p>
+<h3 id="改进的进程-API"><a href="#改进的进程-API" class="headerlink" title="改进的进程 API"></a>改进的进程 API</h3><p>在 Java 9 之前，Process API 仍然缺乏对使用本地进程的基本支持，例如获取进程的 PID 和所有者，进程的开始时间，进程使用了多少 CPU 时间，多少本地进程正在运行等。</p>
+<p>Java 9 向 Process API 添加了一个名为 <code>ProcessHandle</code> 的接口来增强 <code>java.lang.Process</code> 类，可以对原生进程进行管理，尤其适合于管理长时间运行的进程。</p>
+<p>在使用 <code>ProcessBuilder</code> 来启动一个进程之后，可以通过 <code>Process.toHandle()</code> 方法来得到一个 <code>ProcessHandle</code> 对象的实例。通过 <code>ProcessHandle</code> 可以获取到由 <code>ProcessHandle.Info</code> 表示的进程的基本信息，如命令行参数、可执行文件路径和启动时间等。<code>ProcessHandle</code> 的 <code>onExit()</code> 方法返回一个 <code>CompletableFuture&lt;ProcessHandle&gt;</code> 对象，可以在进程结束时执行自定义的动作。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> ProcessBuilder processBuilder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProcessBuilder</span><span class="token punctuation">(</span><span class="token string">"top"</span><span class="token punctuation">)</span> 
+    <span class="token punctuation">.</span><span class="token function">inheritIO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">final</span> ProcessHandle processHandle <span class="token operator">=</span> processBuilder<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+processHandle<span class="token punctuation">.</span><span class="token function">onExit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">whenCompleteAsync</span><span class="token punctuation">(</span><span class="token punctuation">(</span>handle<span class="token punctuation">,</span> throwable<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>throwable <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>handle<span class="token punctuation">.</span><span class="token function">pid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+        throwable<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="改进的弃用注解-Deprecated"><a href="#改进的弃用注解-Deprecated" class="headerlink" title="改进的弃用注解 @Deprecated"></a>改进的弃用注解 @Deprecated</h3><p>注解 <code>@Deprecated</code> 可以标记 Java API 状态，可以是以下几种：</p>
+<ul>
+<li>使用它存在风险，可能导致错误；</li>
+<li>可能在未来版本中不兼容；</li>
+<li>可能在未来版本中删除；</li>
+<li>一个更好和更高效的方案已经取代它。</li>
+</ul>
+<p>Java 9 中注解增加了两个新元素：<code>since</code> 和 <code>forRemoval</code>。</p>
+<ul>
+<li><strong><code>since：</code></strong>元素指定已注解的 API 元素已被弃用的版本。</li>
+<li><strong><code>forRemoval：</code></strong>元素表示注解的 API 元素在将来的版本中被删除，应该迁移 API。 </li>
+</ul>
+<p>Java 9 中也提供了扫描 jar 文件的工具 <code>jdeprscan</code>。这款工具也可以扫描一个聚合类，这个类使用了 Java SE 中的已废弃的 API 元素。这个工具将会对使用已经编译好的库的应用程序有帮助，这样使用者就不知道这个已经编译好的库中使用了那些已废弃的 API。</p>
+<h3 id="改进钻石操作符-Diamond-Operator"><a href="#改进钻石操作符-Diamond-Operator" class="headerlink" title="改进钻石操作符(Diamond Operator)"></a>改进钻石操作符(Diamond Operator)</h3><p>钻石操作符是在 Java 7 中引入的，可以让代码更易读，但它不能用于匿名的内部类。</p>
+<p>在 Java 9 中，它可以与匿名的内部类一起使用，从而提高代码的可读性。在 Java 9 中，我们可以在匿名类中使用 <code>&lt;&gt;</code> 操作符。</p>
+<h3 id="轻量级的-JSON-API"><a href="#轻量级的-JSON-API" class="headerlink" title="轻量级的 JSON API"></a>轻量级的 JSON API</h3><p>Java 9 带来一个轻量级的 API，用于通过 JSON(JavaScriopt 对象符号) 数据交换格式处理和生成文件以及数据流，JSON 是基于 JavaScript 的子集，用来代替 XML。</p>
+<p>这个 API 的主要目标如下：</p>
+<ul>
+<li>解析和生成 JSON。</li>
+<li>满足 Java 开发者使用 JSON 的功能性需求。</li>
+<li>解析 API 可以选择标记流，事件(包括文件层次结构)流，或不可变树的方式来呈现文档或数据流视图。</li>
+<li>用于紧凑配置和 Java ME 的 API 子集。</li>
+<li>使用创建者模式 API 构造不可变的树型结构。</li>
+<li>生成器风格 API，用于输出 JSON 数组流和 JSON “文本”。</li>
+<li>一个转换 API，将已有的树形值输入转换成另一个树形值输出。</li>
+</ul>
+<p>预计 JEP 会把它作为 java.util 的子包交付，至少包含 4 个模块：事件、流、树和生成器。预期不会修改现有的模块、包或类。预计 JSON API 不会依赖 Java 基础模块之外的模块。</p>
+<h3 id="多分辨率图像-API"><a href="#多分辨率图像-API" class="headerlink" title="多分辨率图像 API"></a>多分辨率图像 API</h3><p>Java 9 定义了多分辨率图像 API，开发者可以很容易的操作和展示不同分辨率的图像。</p>
+<p>以下是多分辨率图像的主要操作方法：</p>
+<ul>
+<li><strong><code>Image getResolutionVariant(double destImageWidth, double destImageHeight)：</code></strong>获取特定分辨率的图像变体-表示一张已知分辨率单位为DPI的特定尺寸大小的逻辑图像，并且这张图像是最佳的变体。</li>
+<li><strong><code>List&lt;Image&gt; getResolutionVariants()：</code></strong>返回可读的分辨率的图像变体列表。</li>
+</ul>
+<p>基于当前屏幕分辨率大小和运用的图像转换算法，<code>java.awt.Graphics</code> 类可以从 <code>MultiResolutionImage</code> 接口获取所需的变体。<code>java.awt.image.AbstractMultiResolutionImage</code> 类提供了 <code>java.awt.image.AbstractMultiResolutionImage</code> 默认实现。<code>AbstractMultiResolutionImage</code> 的基础实现是 <code>java.awt.image.BaseMultiResolutionImage</code>。</p>
+<h3 id="改进的-CompletableFuture-API"><a href="#改进的-CompletableFuture-API" class="headerlink" title="改进的 CompletableFuture API"></a>改进的 CompletableFuture API</h3><p>Java 8 引入了 <code>CompletableFuture&lt;T&gt;</code> 类，可能是 <code>java.util.concurrent.Future&lt;T&gt;</code> 明确的完成版（设置了它的值和状态），也可能被用作 <code>java.util.concurrent.CompleteStage</code>。支持 <code>future</code> 完成时触发一些依赖的函数和动作。Java 9 引入了一些 <code>CompletableFuture</code> 的改进：</p>
+<p>Java 9 对 CompletableFuture 做了改进：</p>
+<ol>
+<li><p>支持 delays 和 timeouts</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> CompletableFuture<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">completeOnTimeout</span><span class="token punctuation">(</span>T value<span class="token punctuation">,</span> <span class="token keyword">long</span> timeout<span class="token punctuation">,</span> TimeUnit unit<span class="token punctuation">)</span>
+</code></pre>
+<p>在 <code>timeout</code> 前以给定的 <code>value</code> 完成这个 CompletableFutrue，并返回这个 CompletableFutrue。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> CompletableFuture<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">orTimeout</span><span class="token punctuation">(</span><span class="token keyword">long</span> timeout<span class="token punctuation">,</span> TimeUnit unit<span class="token punctuation">)</span>
+</code></pre>
+<p>如果没有在给定的 <code>timeout</code> 内完成，就以 <code>java.util.concurrent.TimeoutException</code> 完成这个 CompletableFutrue，并返回这个 CompletableFutrue。</p>
+</li>
+<li><p>增强了对子类化的支持<br>做了许多改进使得 <code>CompletableFuture</code> 可以被更简单的继承。比如，你也许想重写新的 <code>public Executor defaultExecutor()</code> 方法来代替默认的 <code>executor</code>。<br>另一个新的使子类化更容易的方法是：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token operator">&lt;</span>U<span class="token operator">></span> CompletableFuture<span class="token operator">&lt;</span>U<span class="token operator">></span> <span class="token function">newIncompleteFuture</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>新的工厂方法<br>Java 8 引入了 <code>&lt;U&gt; CompletableFuture&lt;U&gt; completedFuture(U value)</code> 工厂方法来返回一个已经以给定 value 完成了的 <code>CompletableFuture</code>。Java 9 以 一个新的 <code>&lt;U&gt; CompletableFuture&lt;U&gt; failedFuture(Throwable ex)</code> 来补充了这个方法，可以返回一个以给定异常完成的 <code>CompletableFuture</code>。<br>除此以外，Java 9 引入了下面这对 stage-oriented 工厂方法，返回完成的或异常完成的 completion stages:</p>
+<ul>
+<li><strong><code>&lt;U&gt; CompletionStage&lt;U&gt; completedStage(U value)：</code></strong>返回一个新的以指定 value 完成的 <code>CompletionStage</code>，并且只支持 <code>CompletionStage</code> 里的接口。</li>
+<li><strong><code>&lt;U&gt; CompletionStage&lt;U&gt; failedStage(Throwable ex)：</code></strong>返回一个新的以指定异常完成的 <code>CompletionStage</code>，并且只支持 <code>CompletionStage</code> 里的接口。</li>
+</ul>
+</li>
+</ol>
+<h3 id="响应式流-Reactive-Streams-API"><a href="#响应式流-Reactive-Streams-API" class="headerlink" title="响应式流(Reactive Streams) API"></a>响应式流(Reactive Streams) API</h3><p>响应式编程的思想最近得到了广泛的流行。在 Java 平台上有流行的响应式库 <code>RxJava</code> 和 <code>Reactor</code>。反应式流规范的出发点是提供一个带非阻塞负压(non-blocking backpressure)的异步流处理规范。响应式流规范的核心接口已经添加到了 Java 9 中的 <code>java.util.concurrent.Flow</code> 类中。</p>
+<p><code>java.util.concurrent.Flow</code> 中包含以下 4 个核心接口：</p>
+<ul>
+<li><strong><code>Flow.Publisher：</code></strong>发布者</li>
+<li><strong><code>Flow.Subscriber：</code></strong>订阅者</li>
+<li><strong><code>Flow.Subscription：</code></strong>订阅管理器</li>
+<li><strong><code>Flow.Processor：</code></strong>处理器</li>
+</ul>
+<p>Java 9 还提供了 <code>SubmissionPublisher</code> 作为 <code>Flow.Publisher</code> 的一个实现。RxJava 2 和 Reactor 都可以很方便的与 Flow 类的核心接口进行互操作。 </p>
+<h3 id="I-O-流新特性"><a href="#I-O-流新特性" class="headerlink" title="I/O 流新特性"></a>I/O 流新特性</h3><p>类 <code>java.io.InputStream</code> 中增加了新的方法来读取和复制 <code>InputStream</code> 中包含的数据：</p>
+<ul>
+<li><strong><code>readAllBytes()：</code></strong>读取 InputStream 中的所有剩余字节。</li>
+<li><strong><code>readNBytes()：</code></strong>从 InputStream 中读取指定数量的字节到数组中。</li>
+<li><p><strong><code>transferTo()：</code></strong>读取 InputStream 中的全部字节并写入到指定的 OutputStream 中 。 </p>
+<p><code>ObjectInputFilter</code> 可以对 <code>ObjectInputStream</code> 中包含的内容进行检查，来确保其中包含的数据是合法的。可以使用 ObjectInputStream 的方法 <code>setObjectInputFilter</code> 来设置。<code>ObjectInputFilter</code> 在进行检查时，可以检查如对象图的最大深度、对象引用的最大数量、输入流中的最大字节数和数组的最大长度等限制，也可以对包含的类的名称进行限制。 </p>
+</li>
+</ul>
+<h3 id="改进应用安全性能"><a href="#改进应用安全性能" class="headerlink" title="改进应用安全性能"></a>改进应用安全性能</h3><p>Java 9 新增了 4 个 <code>SHA-3</code> 哈希算法，<code>SHA3-224</code>、<code>SHA3-256</code>、<code>SHA3-384</code> 和 <code>SHA3-512</code>。另外也增加了通过 <code>java.security.SecureRandom</code> 生成使用 <code>DRBG</code> 算法的强随机数。</p>
+<h3 id="变量句柄"><a href="#变量句柄" class="headerlink" title="变量句柄"></a>变量句柄</h3><p>变量句柄是一个变量或一组变量的引用，包括静态域，非静态域，数组元素和堆外数据结构中的组成部分等。变量句柄的含义类似于已有的方法句柄。变量句柄由 Java 类 <code>java.lang.invoke.VarHandle</code> 来表示。可以使用类 <code>java.lang.invoke.MethodHandles.Lookup</code> 中的静态工厂方法来创建 <code>VarHandle</code> 对象。通过变量句柄，可以在变量上进行各种操作。这些操作称为访问模式。不同的访问模式尤其在内存排序上的不同语义。目前一共有31种访问模式，而每种访问模式都在 <code>VarHandle</code> 中有对应的方法。这些方法可以对变量进行读取、写入、原子更新、数值原子更新和比特位原子操作等。<code>VarHandle</code> 还可以用来访问数组中的单个元素，以及把 <code>byte[]</code> 数组和 <code>ByteBuffer</code> 当成是不同原始类型的数组来访问。</p>
+<h3 id="改进方法句柄-Method-Handle"><a href="#改进方法句柄-Method-Handle" class="headerlink" title="改进方法句柄(Method Handle)"></a>改进方法句柄(Method Handle)</h3><p>类 <code>java.lang.invoke.MethodHandles</code> 增加了更多的静态方法来创建不同类型的方法句柄：</p>
+<ul>
+<li><strong><code>arrayConstructor：</code></strong>创建指定类型的数组。</li>
+<li><strong><code>arrayLength：</code></strong>获取指定类型的数组的大小。</li>
+<li><strong><code>varHandleInvoker 和 varHandleExactInvoker：</code></strong>调用 VarHandle 中的访问模式方法。</li>
+<li><strong><code>zero：</code></strong>返回一个类型的默认值。</li>
+<li><strong><code>empty：</code></strong>返 回 MethodType 的返回值类型的默认值。</li>
+<li><strong><code>loop、countedLoop、iteratedLoop、whileLoop 和 doWhileLoop：</code></strong>创建不同类型的循环，包括 for 循环、while 循环 和 do-while 循环。</li>
+<li><strong><code>tryFinally：</code></strong>把对方法句柄的调用封装在 try-finally 语句中。 </li>
+</ul>
+<h3 id="用户界面"><a href="#用户界面" class="headerlink" title="用户界面"></a>用户界面</h3><p>类 <code>java.awt.Desktop</code> 增加了新的与桌面进行互动的能力。可以使用 <code>addAppEventListener</code> 方法来添加不同应用事件的监听器，包括应用变为前台应用、应用隐藏或显示、屏幕和系统进入休眠与唤醒、以及用户会话的开始和终止等。还可以在显示关于窗口和配置窗口时，添加自定义的逻辑。在用户要求退出应用时，可以通过自定义处理器来接受或拒绝退出请求。在 AWT 图像支持方面，可以在应用中使用多分辨率图像。</p>
+<h3 id="统一-JVM-日志"><a href="#统一-JVM-日志" class="headerlink" title="统一 JVM 日志"></a>统一 JVM 日志</h3><p>Java 9 中，JVM 有了统一的日志记录系统，可以使用新的命令行选项 <code>-Xlog</code> 来控制 JVM 上 所有组件的日志记录。该日志记录系统可以设置输出的日志消息的标签、级别、修饰符和输出目标等。Java 9 移除了在 Java 8 中被废弃的垃圾回收器配置组合，同时把 G1 设为默认的垃圾回收器实现。另外，CMS 垃圾回收器已经被声明为废弃。Java 9 也增加了很多可以通过 <code>jcmd</code> 调用的诊断命令。 </p>
+<h3 id="平台日志-API-和-服务"><a href="#平台日志-API-和-服务" class="headerlink" title="平台日志 API 和 服务"></a>平台日志 API 和 服务</h3><p>Java 9 允许为 JDK 和应用配置同样的日志实现。新增的 <code>System.LoggerFinder</code> 用来管理 JDK 使用的日志记录器实现。JVM 在运行时只有一个系统范围的 <code>LoggerFinder</code> 实例。<code>LoggerFinder</code> 通过服务查找机制来加载日志记录器实现。默认情况下，JDK 使用 <code>java.logging</code> 模块中的 <code>java.util.logging</code> 实现。通过 <code>LoggerFinder</code> 的 <code>getLogger()</code> 方法就可以获取到表示日志记录器的<code>System.Logger</code> 实现。应用同样可以使用 <code>System.Logger</code> 来记录日志。这样就保证了 JDK 和应用使用同样的日志实现。我们也可以通过添加自己的 <code>System.LoggerFinder</code> 实现来让 JDK 和应用使用 SLF4J 等其他日志记录框架。</p>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li>参考 <a href="https://docs.oracle.com/javase/9/" target="_blank" rel="noopener">Java 9 官方文档</a>，了解 Java 9 的更多内容。</li>
+<li>参考 <a href="https://docs.oracle.com/javase/9/docs/api/index.html" target="_blank" rel="noopener">Java 9 API 文档</a>，了解 Java 9 API 的细节。 </li>
+<li>参考 <a href="https://docs.oracle.com/javase/9/whatsnew/toc.htm" target="_blank" rel="noopener">What’s New in JDK 9</a>，了解 Java 9 的新特性。</li>
+<li>参考 <a href="https://www.oracle.com/technetwork/java/javase/9-relnotes-3622618.html" target="_blank" rel="noopener">Java 9 Release Notes</a>，了解 Java 9 的更新说明。</li>
+</ul>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/81153f7d.html" class="b-link-green">Java 9 新特性</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-11-17T12-45-38',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/17b661f9.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java 11 新特性">
+                        
+                        <span class="card-title">Java 11 新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">自从 2017 年 9 月 21 日 Java 9 正式发布之时，Oracle 就宣布今后会按照每六个月一次的节奏进行更新，JDK 11 已于 2018 年 9 月发布。与 JDK 10 不同，JDK 11 将提供长期支持，还将作为 Jav</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JDK/" target="_blank">
+                        <span class="chip tag-bg-color">JDK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/409be0bd.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Java 8 新特性">
+                        
+                        <span class="card-title">Java 8 新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的 Strea</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JDK/" target="_blank">
+                        <span class="chip tag-bg-color">JDK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

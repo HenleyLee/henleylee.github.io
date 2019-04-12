@@ -1,0 +1,1311 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Lottie - 轻松实现复杂的动画效果, Android, Google, Blog">
+    <meta name="description" content="1. Lottie 介绍Lottie 是 Airbnb 开源的一套跨平台的完整的动画效果解决方案，设计师可以使用 Adobe After Effects 设计出漂亮的动画之后，使用 Lottic 提供的 Bodymovin 插件将设计好的动">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Lottie - 轻松实现复杂的动画效果 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Lottie - 轻松实现复杂的动画效果
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                            <a href="/tags/Lottie/" target="_blank">
+                                <span class="chip tag-bg-color">Lottie</span>
+                            </a>
+                        
+                            <a href="/tags/动画/" target="_blank">
+                                <span class="chip tag-bg-color">动画</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-08-23
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        2.7k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        10 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-Lottie-介绍"><a href="#1-Lottie-介绍" class="headerlink" title="1. Lottie 介绍"></a>1. Lottie 介绍</h2><p>Lottie 是 <a href="https://github.com/airbnb" target="_blank" rel="noopener">Airbnb</a> 开源的一套跨平台的完整的动画效果解决方案，设计师可以使用 <a href="https://www.adobe.com/cn/products/aftereffects.html" target="_blank" rel="noopener">Adobe After Effects</a> 设计出漂亮的动画之后，使用 <code>Lottic</code> 提供的 <a href="https://github.com/airbnb/lottie-web" target="_blank" rel="noopener">Bodymovin</a> 插件将设计好的动画导出成 JSON 格式，就可以直接运用在 <code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>之上，无需其他额外操作。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/3/1659ed59b2e5b3f2?w=1308&amp;h=358&amp;f=png&amp;s=42684" alt=""></p>
+<p>Lottie 相关网站：</p>
+<ul>
+<li><a href="http://airbnb.io/lottie/" target="_blank" rel="noopener">Lottie 官网</a></li>
+<li><a href="https://github.com/airbnb" target="_blank" rel="noopener">Lottie on Github</a></li>
+<li><a href="https://github.com/airbnb/lottie-android" target="_blank" rel="noopener">Lottie for Android</a></li>
+<li><a href="https://github.com/airbnb/lottie-ios" target="_blank" rel="noopener">Lottie for iOS</a></li>
+<li><a href="https://github.com/airbnb/lottie-web" target="_blank" rel="noopener">Lottie for Web</a></li>
+<li><a href="https://github.com/airbnb/lottie-react-native" target="_blank" rel="noopener">Lottie for React Native</a></li>
+</ul>
+<h2 id="2-Lottie-使用"><a href="#2-Lottie-使用" class="headerlink" title="2. Lottie 使用"></a>2. Lottie 使用</h2><p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164ff072f3b9c346?w=770&amp;h=385&amp;f=gif&amp;s=347496" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/8/3/164ff0758f7e8915?w=770&amp;h=385&amp;f=gif&amp;s=2132669" alt=""></p>
+<p>Lottie 支持 <code>Jellybean (API 16)</code> 及以上版本。最简单的使用方式是直接使用 <code>LottieAnimationView</code>， <code>LottieAnimationView</code> 直接继承自 <code>AppCompatImageView</code> 。</p>
+<h3 id="2-1-Lottie-依赖"><a href="#2-1-Lottie-依赖" class="headerlink" title="2.1 Lottie 依赖"></a>2.1 Lottie 依赖</h3><p><code>Gradle</code> 是唯一支持的构建配置，所以只需要在项目的 <code>build.gradle</code> 文件中添加依赖即可:</p>
+<pre class=" language-gradle"><code class="language-gradle">dependencies {
+  implementation "com.airbnb.android:lottie:$lottieVersion"
+}
+</code></pre>
+<p><span>最新版本是： </span><a href="https://search.maven.org/search?q=a:lottie" target="_blank" rel="noopener"><img src="https://user-gold-cdn.xitu.io/2018/8/20/165551befe8dc066" style="vertical-align:middle;"></a></p>
+<h3 id="2-2-Lottie-核心类"><a href="#2-2-Lottie-核心类" class="headerlink" title="2.2 Lottie 核心类"></a>2.2 Lottie 核心类</h3><ul>
+<li><strong>LottieAnimationView</strong>：继承自 <code>AppCompatImageView</code>，是加载 <code>Lottie</code> 动画的默认和最简单的方式。</li>
+<li><strong>LottieDrawable</strong>：具有大多数与 <code>LottieAnimationView</code> 相同的 <code>API</code>，因此可以在任何视图上使用它。</li>
+</ul>
+<h3 id="2-3-加载动画"><a href="#2-3-加载动画" class="headerlink" title="2.3 加载动画"></a>2.3 加载动画</h3><p>Lottie 支持 <code>Jellybean (API 16)</code> 及以上版本。Lottie 动画支持从以下位置加载动画：</p>
+<ul>
+<li><code>src/main/res/raw</code> 中的 json 动画。</li>
+<li><code>src/main/assets</code> 中的 json 文件。</li>
+<li><code>src/main/assets</code> 中的 zip 文件。有关详细信息，请参阅 <a href="http://airbnb.io/lottie/android/images.html" target="_blank" rel="noopener">images docs</a>。</li>
+<li>json 或 zip 文件的 <code>Url</code>。</li>
+<li><code>json 字符串</code>。源可以来自任何东西，包括自己的网络堆栈。</li>
+<li>json 文件或 zip 文件的 <code>InputStream</code>。</li>
+</ul>
+<h4 id="2-3-1-在-XML-中使用"><a href="#2-3-1-在-XML-中使用" class="headerlink" title="2.3.1 在 XML 中使用"></a>2.3.1 在 XML 中使用</h4><p>最简单的使用方法是使用 <code>LottieAnimationView</code>。Lottie 支持加载来自 <code>res/raw</code> 或 <code>assets/</code> 的动画资源。建议使用 <code>res/raw</code>，因为可以对动画通过 <code>R 文件</code>使用静态引用，而不只是使用字符串名称。这也可以帮助构建静态分析，因为它可以跟踪动画的使用。</p>
+<p><code>LottieAnimationView</code> 的常用属性及其功能如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lottie_fileName</td>
+<td>设置播放动画的 json 文件名称</td>
+</tr>
+<tr>
+<td>lottie_rawRes</td>
+<td>设置播放动画的 json 文件资源</td>
+</tr>
+<tr>
+<td>lottie_autoPlay</td>
+<td>设置动画是否自动播放(默认为false)</td>
+</tr>
+<tr>
+<td>lottie_loop</td>
+<td>设置动画是否循环(默认为false)</td>
+</tr>
+<tr>
+<td>lottie_repeatMode</td>
+<td>设置动画的重复模式(默认为restart)</td>
+</tr>
+<tr>
+<td>lottie_repeatCount</td>
+<td>设置动画的重复次数(默认为-1)</td>
+</tr>
+<tr>
+<td>lottie_cacheStrategy</td>
+<td>设置动画的缓存策略(默认为weak)</td>
+</tr>
+<tr>
+<td>lottie_colorFilter</td>
+<td>设置动画的着色颜色(优先级最低)</td>
+</tr>
+<tr>
+<td>lottie_scale</td>
+<td>设置动画的比例(默认为1f)</td>
+</tr>
+<tr>
+<td>lottie_progress</td>
+<td>设置动画的播放进度</td>
+</tr>
+<tr>
+<td>lottie_imageAssetsFolder</td>
+<td>设置动画依赖的图片资源文件地址</td>
+</tr>
+</tbody>
+</table>
+<p>在 <code>res/raw (lottie_rawRes)</code> 或 <code>assets/ (lottie_fileName)</code> 中存放动画的 JSON 文件，然后就可以在 xml 中直接使用，如下：</p>
+<pre class=" language-xml"><code class="language-xml">&lt;com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:lottie_rawRes="@raw/hello_world"
+        // or
+        app:lottie_fileName="hello_world.json"
+
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+</code></pre>
+<h4 id="2-3-2-在代码中使用"><a href="#2-3-2-在代码中使用" class="headerlink" title="2.3.2 在代码中使用"></a>2.3.2 在代码中使用</h4><p><code>LottieAnimationView</code> 的常用方法及其功能如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setAnimation(String)</td>
+<td>设置播放动画的 json 文件名称</td>
+</tr>
+<tr>
+<td>setAnimation(String, CacheStrategy)</td>
+<td>设置播放动画的 json 文件资源和缓存策略</td>
+</tr>
+<tr>
+<td>setAnimation(int)</td>
+<td>设置播放动画的 json 文件名称</td>
+</tr>
+<tr>
+<td>setAnimation(int, CacheStrategy)</td>
+<td>设置播放动画的 json 文件资源和缓存策略</td>
+</tr>
+<tr>
+<td>loop(boolean)</td>
+<td>设置动画是否循环(默认为false)</td>
+</tr>
+<tr>
+<td>setRepeatMode(int)</td>
+<td>设置动画的重复模式(默认为restart)</td>
+</tr>
+<tr>
+<td>setRepeatCount(int)</td>
+<td>设置动画的重复次数(默认为-1)</td>
+</tr>
+<tr>
+<td>lottie_cacheStrategy</td>
+<td>设置动画的缓存策略(默认为weak)</td>
+</tr>
+<tr>
+<td>lottie_colorFilter</td>
+<td>设置动画的着色颜色(优先级最低)</td>
+</tr>
+<tr>
+<td>setScale(float)</td>
+<td>设置动画的比例(默认为1f)</td>
+</tr>
+<tr>
+<td>setProgress(float)</td>
+<td>设置动画的播放进度</td>
+</tr>
+<tr>
+<td>setImageAssetsFolder(String)</td>
+<td>设置动画依赖的图片资源文件地址</td>
+</tr>
+<tr>
+<td>playAnimation()</td>
+<td>从头开始播放动画</td>
+</tr>
+<tr>
+<td>pauseAnimation()</td>
+<td>暂停播放动画</td>
+</tr>
+<tr>
+<td>resumeAnimation()</td>
+<td>继续从当前位置播放动画</td>
+</tr>
+<tr>
+<td>cancelAnimation()</td>
+<td>取消播放动画</td>
+</tr>
+</tbody>
+</table>
+<p>如果不想用 xml 实现，可以通过代码来实现，可以直接加载本地动画资源，也可以从网络请求加载动画。</p>
+<ul>
+<li>从 <code>res/raw</code> 或 <code>assets/</code> 加载动画资源：<br><code>`</code>java<br>LottieAnimationView animationView = …</li>
+</ul>
+<p>animationView.setAnimation(R.raw.hello_world);<br>// or<br>animationView.setAnimation(R.raw.hello_world.json);</p>
+<p>animationView.playAnimation();</p>
+<pre><code>该方法在后台加载文件并解析动画，并在完成后异步开始渲染。
+
+ - 从网络请求加载动画：
+Lottie 的一个优点是可以从网络请求加载动画。所以，应该将网络请求的响应内容转换为字符串格式。Lottie
+使用一个流化的 json 反序列化器来提高性能和内存使用率，所以不要将它转换成您自己的 JSONObject，这只会损害性能。
+```java
+LottieAnimationView animationView = ...
+// This allows lottie to use the streaming deserializer mentioned above.
+JsonReader jsonReader = new JsonReader(new StringReader(json.toString()));
+animationView.setAnimation(jsonReader);
+animationView.playAnimation();
+</code></pre><h3 id="2-4-Lottie-的缓存策略"><a href="#2-4-Lottie-的缓存策略" class="headerlink" title="2.4 Lottie 的缓存策略"></a>2.4 Lottie 的缓存策略</h3><p>你的应用程序中可能会有一些经常使用的动画，比如加载动画等等。为了避免每次加载文件和发序列化的开销，你可以在你的动画上设置一个缓存策略。上面所有的 <code>setAnimation</code> APIs都可以采用可选的第二个参数 <code>CacheStrategy</code>。在默认情况下，Lottie 将保存对动画的弱引用，这对于大多数情况来说应该足够了。但是，如果确定某个动画肯定会经常使用，那么请将其缓存策略更改为 <code>CacheStrategy.Strong</code>；或者如果确定某个动画很大而且不会经常使用，把缓存策略改成 <code>CacheStrategy.None</code>。</p>
+<p><code>CacheStrategy</code> 可以是<code>None</code>、<code>Weak</code> 和 <code>Strong</code> 三种形式来让 <code>LottieAnimationView</code> 对加载和解析动画的使用强或弱引用的方式。弱或强表示缓存中组合的 GC 引用强度。</p>
+<h3 id="2-5-直接使用-LottieDrawable"><a href="#2-5-直接使用-LottieDrawable" class="headerlink" title="2.5 直接使用 LottieDrawable"></a>2.5 直接使用 <code>LottieDrawable</code></h3><p>LottieAnimationView 是基于 <code>LottieDrawable</code> 的一个包装好的 <code>ImageView</code> 。LottieAnimationView 上的所有 API 都在 LottieDrawable 上进行镜像，因此可以创建自己的实例并在任何可以使用drawable的地方使用它，例如自定义 View 或菜单。</p>
+<h3 id="2-6-使用-LottieComposition-去预加载动画"><a href="#2-6-使用-LottieComposition-去预加载动画" class="headerlink" title="2.6 使用 LottieComposition 去预加载动画"></a>2.6 使用 <code>LottieComposition</code> 去预加载动画</h3><p>动画的支持模型是 <code>LottieComposition</code>。在大多数情况下，在 <code>LottieAnimationView</code> 或 <code>LottieDrawable</code> 上调用 <code>setAnimation(…)</code> 便足够了。但是，如果要预加载动画以使其立即可用，则可以使用 <code>LottieComposition.Factory</code> API返回可以直接在 <code>LottieAnimationView</code> 或 <code>LottieDrawable</code> 设置的 <code>LottieComposition</code> 对象。同样，通常不需要自己添加管理 compositions 的开销。<code>LottieAnimationView</code> 中的默认缓存足以满足大多数用例的需要。</p>
+<pre class=" language-java"><code class="language-java">LottieAnimationView animationView <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+ <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+ Cancellable compositionLoader <span class="token operator">=</span> LottieComposition<span class="token punctuation">.</span>Factory<span class="token punctuation">.</span><span class="token function">fromJsonString</span><span class="token punctuation">(</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> jsonString<span class="token punctuation">,</span> <span class="token punctuation">(</span>composition<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+     animationView<span class="token punctuation">.</span><span class="token function">setComposition</span><span class="token punctuation">(</span>composition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     animationView<span class="token punctuation">.</span><span class="token function">playAnimation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token comment" spellcheck="true">// Cancel to stop asynchronous loading of composition</span>
+ <span class="token comment" spellcheck="true">// compositionCancellable.cancel();</span>
+</code></pre>
+<h3 id="2-7-动画监听"><a href="#2-7-动画监听" class="headerlink" title="2.7 动画监听"></a>2.7 动画监听</h3><pre class=" language-java"><code class="language-java">animationView<span class="token punctuation">.</span><span class="token function">addAnimatorUpdateListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span>animation<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// do something.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+animationView<span class="token punctuation">.</span><span class="token function">playAnimation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>animationView<span class="token punctuation">.</span><span class="token function">isAnimating</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// do something.</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+animationView<span class="token punctuation">.</span><span class="token function">setProgress</span><span class="token punctuation">(</span><span class="token number">0.5f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<p>在更新侦听器回调中： </p>
+<ul>
+<li><code>animation.getAnimatedValue()</code> 将返回动画的播放进度，而不考虑当前设置的最小/最大帧[0,1]。</li>
+<li><code>animation.getAnimatedFraction()</code> 将返回动画的播放进度，同时考虑设置的最小/最大帧[minFrame，maxFrame]。</li>
+</ul>
+<h3 id="2-8-控制-Lottie-动画执行的速度和时长"><a href="#2-8-控制-Lottie-动画执行的速度和时长" class="headerlink" title="2.8 控制 Lottie 动画执行的速度和时长"></a>2.8 控制 Lottie 动画执行的速度和时长</h3><p>尽管 <code>playAnimation()</code> 对于绝大多数用例来说已足够，但可以在更新回调中调用 <code>setProgress(...)</code> 方法为自己的动画设置进度。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Custom animation speed or duration.</span>
+ValueAnimator animator <span class="token operator">=</span> ValueAnimator<span class="token punctuation">.</span><span class="token function">ofFloat</span><span class="token punctuation">(</span><span class="token number">0f</span><span class="token punctuation">,</span> <span class="token number">1f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+animator<span class="token punctuation">.</span><span class="token function">addUpdateListener</span><span class="token punctuation">(</span>animation <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    animationView<span class="token punctuation">.</span><span class="token function">setProgress</span><span class="token punctuation">(</span>animation<span class="token punctuation">.</span><span class="token function">getAnimatedValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+animator<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h3 id="2-9-循环播放"><a href="#2-9-循环播放" class="headerlink" title="2.9 循环播放"></a>2.9 循环播放</h3><p>可以像使用 <code>ValueAnimator</code> 一样通过 <code>setRepeatMode(...)</code> 或 <code>setRepeatCount(...)</code> 方法控制动画的循环播放，或者你直接在 <code>xml</code> 中使用 <code>lottie_loop=&quot;true&quot;</code> 开启循环播放。</p>
+<h3 id="2-10-动画尺寸（px-vs-dp）"><a href="#2-10-动画尺寸（px-vs-dp）" class="headerlink" title="2.10 动画尺寸（px vs dp）"></a>2.10 动画尺寸（px vs dp）</h3><p><code>Lottie</code> 将 <code>After Effects</code> 中的所有 <code>px</code> 值转换为设备上的 <code>dps</code>，以便在设备上以相同的大小呈现所有内容。这意味着它不是在 After Effects 中制作1920x1080的动画，而是在After Effects中更像411x731px，它大致对应于当今大多数手机的dp屏幕尺寸。</p>
+<p>但是，如果您的动画不是完美尺寸，则有两种选择：</p>
+<h4 id="2-10-1-ImageView-scaleType"><a href="#2-10-1-ImageView-scaleType" class="headerlink" title="2.10.1 ImageView scaleType"></a>2.10.1 ImageView scaleType</h4><p><code>LottieAnimationView</code> 是一个包装好的 <code>ImageView</code>，它支持 <code>centerCrop</code> 和 <code>centerInside</code>，所以可以像使用其他 image 一样使用这两个工具方法。</p>
+<h4 id="2-10-2-Lottie-setScale-…"><a href="#2-10-2-Lottie-setScale-…" class="headerlink" title="2.10.2 Lottie setScale(…)"></a>2.10.2 Lottie setScale(…)</h4><p><code>LottieAnimationView</code> 和 <code>LottieDrawable</code> 都有 <code>setScale(float)</code> API，可以使用它来手动放大或缩小动画。这很少有用，但可以在某些情况下使用。</p>
+<p>如果动画执行缓慢，请务必查看有关<a href="http://airbnb.io/lottie/android/performance.html" target="_blank" rel="noopener">性能</a>的文档。但是，可以尝试使用 <code>scaleType</code> 缩放动画，这将减少 Lottie 每帧渲染的数量。如果你有大的 mask 和 mattes，这将特别有用。</p>
+<h3 id="2-11-播放动画片段"><a href="#2-11-播放动画片段" class="headerlink" title="2.11 播放动画片段"></a>2.11 播放动画片段</h3><p>播放/循环动画的单个部分通常很方便。例如，动画的前半部分可能处于“开启”状态，下半部分处于“关闭”状态。LottieAnimationView 和 LottieDrawable 有用于控制当前段的 API：</p>
+<pre class=" language-java"><code class="language-java"><span class="token function">setMinFrame</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+<span class="token function">setMaxFrame</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+<span class="token function">setMinProgress</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+<span class="token function">setMaxProgress</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+<span class="token function">setMinAndMaxFrame</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+<span class="token function">setMinAndMaxProgress</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</code></pre>
+<p>循环API将遵循此处设置的最小/最大帧。</p>
+<h2 id="3-原理介绍"><a href="#3-原理介绍" class="headerlink" title="3. 原理介绍"></a>3. 原理介绍</h2><h3 id="3-1-Lottie-动画-Json-文件结构"><a href="#3-1-Lottie-动画-Json-文件结构" class="headerlink" title="3.1 Lottie 动画 Json 文件结构"></a>3.1 Lottie 动画 Json 文件结构</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/3/1659ede1389454a3?w=1065&amp;h=600&amp;f=png&amp;s=334910" alt=""><br>Lottie动画Json结构分为4层：</p>
+<ol>
+<li><code>结构层</code>：可以读取到动画画布的宽高，帧数，背景色，时间，起始关键帧，结束帧等信息。</li>
+<li><code>asset</code>：图片资源信息集合，这里放置的是 制作动画时引用的图片资源。</li>
+<li><code>layers</code>：图层集合，这里可以获取到多少图层，每个图层的开始帧 结束帧等。</li>
+<li><code>shapes</code>：元素集合，可以获取到每个图层都包含多个动画元素。</li>
+</ol>
+<h3 id="3-2-Lottie-分层渲染原理"><a href="#3-2-Lottie-分层渲染原理" class="headerlink" title="3.2 Lottie 分层渲染原理"></a>3.2 Lottie 分层渲染原理</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/3/1659edfff49e0778?w=1111&amp;h=500&amp;f=png&amp;s=98904" alt=""><br>LottieComposition 负责将 json 文件解析成数据对象， LottieDrawable 负责将 LottieComposition 解析的对象<br>绘制成 drawable 显示在 View 上。</p>
+<h3 id="3-3-Lottie-动画运行流程图"><a href="#3-3-Lottie-动画运行流程图" class="headerlink" title="3.3 Lottie 动画运行流程图"></a>3.3 Lottie 动画运行流程图</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/3/1659ee0fe5632dd1?w=1286&amp;h=500&amp;f=png&amp;s=163927" alt=""></p>
+<h2 id="4-使用准备"><a href="#4-使用准备" class="headerlink" title="4. 使用准备"></a>4. 使用准备</h2><h3 id="4-1-下载安装-After-Effects"><a href="#4-1-下载安装-After-Effects" class="headerlink" title="4.1 下载安装 After Effects"></a>4.1 下载安装 After Effects</h3><p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164fed05f09d92d4?w=642&amp;h=231&amp;f=png&amp;s=8448" alt="After Effects"><br>下载并安装最新版本的 Adobe After Effects。</p>
+<blockquote>
+<p>下载地址：<a href="https://www.adobe.com/cn/products/aftereffects.html" target="_blank" rel="noopener">https://www.adobe.com/cn/products/aftereffects.html</a></p>
+</blockquote>
+<h3 id="4-2-下载安装-Bodymovin"><a href="#4-2-下载安装-Bodymovin" class="headerlink" title="4.2 下载安装 Bodymovin"></a>4.2 下载安装 Bodymovin</h3><p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164fed1b660d93a9?w=642&amp;h=231&amp;f=png&amp;s=8448" alt="Bodymovin"><br>下载并安装最新版本的 After Effects Bodymovin Extension。</p>
+<ol>
+<li><p>如果打开，关闭 After Effects；</p>
+</li>
+<li><p>安装 ZXP Installer 安装程序；</p>
+<blockquote>
+<p>下载地址：<a href="http://aescripts.com/learn/zxp-installer/" target="_blank" rel="noopener">http://aescripts.com/learn/zxp-installer/</a></p>
+</blockquote>
+</li>
+<li><p>下载最新的 bodymovin 扩展；</p>
+<blockquote>
+<p>下载地址：<a href="https://github.com/airbnb/lottie-web/blob/master/build/extension/bodymovin.zxp" target="_blank" rel="noopener">https://github.com/airbnb/lottie-web/blob/master/build/extension</a></p>
+</blockquote>
+</li>
+</ol>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164feda80ec2fe7b?w=2012&amp;h=620&amp;f=png&amp;s=96918" alt="bodymovin"></p>
+<ol start="4">
+<li><p>打开 ZXP Installer 并将 bodymovin 扩展名拖到窗口中；</p>
+</li>
+<li><p>打开 After Effects。</p>
+<p>在“Window&gt; Extensions”菜单下，您应该看到“Bodymovin”</p>
+</li>
+</ol>
+<h3 id="4-3-Lottiefiles-示例应用程序"><a href="#4-3-Lottiefiles-示例应用程序" class="headerlink" title="4.3 Lottiefiles 示例应用程序"></a>4.3 Lottiefiles 示例应用程序</h3><p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164feda5074d00ef?w=642&amp;h=231&amp;f=png&amp;s=8448" alt="Lottiefiles"><br>可以自己构建示例应用程序，也可以从 <a href="https://play.google.com/store/apps/details?id=com.airbnb.lottie" target="_blank" rel="noopener">Google Play</a> 或 <a href="https://www.lottiefiles.com/ios" target="_blank" rel="noopener">App Store</a> 上下载 Lottie 示例应用程序。示例应用程序包含一些内置动画，但也允许您从内部存储或从 url 加载动画。 </p>
+<p>在完成这三件事之后，请在 <a href="http://airbnb.io/lottie/after-effects/artwork-to-lottie-walkthrough.html" target="_blank" rel="noopener">SVG / Sketch 到 Lottie 演练</a> 或 <a href="http://airbnb.io/lottie/after-effects/illustrator-to-lottie-walkthrough.html" target="_blank" rel="noopener">Illustrator 到 Lottie 演练</a> 中查看一些工作流程概述。</p>
+<h2 id="5-LottieFiles"><a href="#5-LottieFiles" class="headerlink" title="5 LottieFiles"></a>5 LottieFiles</h2><p> LottieFiles 提供了很多设计师上传的 Lottie 动画，并提供预览的效果，并且可以直接下载成 JSON ，或者生成二维码，可供 Lottie App 扫描看效果，非常的方便。</p>
+<blockquote>
+<p>LottieFiles：<a href="https://www.lottiefiles.com/" target="_blank" rel="noopener">https://www.lottiefiles.com/</a></p>
+<p>Lottie-editor：<a href="https://github.com/sonaye/lottie-editor" target="_blank" rel="noopener">https://github.com/sonaye/lottie-editor</a></p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164feed2344ab30f?w=1338&amp;h=561&amp;f=png&amp;s=337889" alt="LottieFiles"></p>
+<p><a href="https://www.lottiefiles.com/" target="_blank" rel="noopener">LottieFiles</a> 本身已经支持使用 <a href="https://editor.lottiefiles.com/" target="_blank" rel="noopener">Lottie-editor</a> 去编辑动画。如果需要对某个动画进行修改，只需要在动画的预览界面，点击右上角的 <strong>Customize with Bodymovin Editor</strong>，即可直接对该动画进行编辑。</p>
+<h2 id="6-致谢"><a href="#6-致谢" class="headerlink" title="6. 致谢"></a>6. 致谢</h2><ol>
+<li><a href="https://airbnb.io/lottie/" target="_blank" rel="noopener">airbnb.io/lottie</a></li>
+<li><a href="https://juejin.im/post/5acc4162f265da23826e4dc0" target="_blank" rel="noopener">程序员也想改 Lottie 动画？是的！</a></li>
+</ol>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/238b7a36.html" class="b-link-green">Lottie - 轻松实现复杂的动画效果</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-08-23T18-56-26',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/cd0e4ea6.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Google Java 编程规范">
+                        
+                        <span class="card-title">Google Java 编程规范</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">1 前言这份文档是 Google Java 编程风格规范的完整定义。当且仅当一个 Java 源文件符合此文档中的规则，我们才认为它符合 Google 的 Java 编程风格。
+与其它的编程风格指南一样，这里所讨论的不仅仅是编码格式美不美观的</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-09-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/编程之道/" class="post-category" target="_blank">
+                                    编程之道
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Google/" target="_blank">
+                        <span class="chip tag-bg-color">Google</span>
+                    </a>
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/d09e4c2c.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Android Studio 让开发效率事半功倍的插件整理">
+                        
+                        <span class="card-title">Android Studio 让开发效率事半功倍的插件整理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Google 在2013年5月的 I/O 开发者大会推出了基于 IntelliJ IDEA Java IDE 上的 Android Studio。Android Studio 是一个功能齐全的开发工具，还提供了对第三方插件的支持，让开发人员</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-08-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Android-Studio/" target="_blank">
+                        <span class="chip tag-bg-color">Android Studio</span>
+                    </a>
+                    
+                    <a href="/tags/IntelliJ-IDEA/" target="_blank">
+                        <span class="chip tag-bg-color">IntelliJ IDEA</span>
+                    </a>
+                    
+                    <a href="/tags/Plugins/" target="_blank">
+                        <span class="chip tag-bg-color">Plugins</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

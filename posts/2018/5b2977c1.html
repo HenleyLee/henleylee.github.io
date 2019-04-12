@@ -1,0 +1,1321 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Gradle 学习之 Android DSL 扩展, Android, Google, Blog">
+    <meta name="description" content="在 Android 项目的每个 Module 中的  build.gradle 配置文件中都有一个名称为 android 的函数，该函数接收闭包作为参数，然而其实在 Gradle API 文档中是不存在这个函数的。
+那么 android 函">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Gradle 学习之 Android DSL 扩展 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Gradle 学习之 Android DSL 扩展
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                            <a href="/tags/Gradle/" target="_blank">
+                                <span class="chip tag-bg-color">Gradle</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-12-29
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        4.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        15 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>在 Android 项目的每个 Module 中的  build.gradle 配置文件中都有一个名称为 <code>android</code> 的函数，该函数接收闭包作为参数，然而其实在 <a href="https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html" target="_blank" rel="noopener">Gradle API 文档</a>中是不存在这个函数的。</p>
+<p>那么 <code>android</code> 函数怎么会出现在这里呢？答案就是 <code>apply plugin: &#39;com.android.application&#39;</code>。这个插件提供了 Android 构建所需要的各种 script。 </p>
+<p><a href="http://google.github.io/android-gradle-dsl/" target="_blank" rel="noopener">Android Plugin DSL Reference</a>：Android 插件 DSL 扩展文档，各个版本的都有。 </p>
+<h2 id="Gradle-扩展类型"><a href="#Gradle-扩展类型" class="headerlink" title="Gradle 扩展类型"></a>Gradle 扩展类型</h2><p><code>BaseExtension</code> 是所有 Android 插件的基本扩展，使用过程中不直接使用此扩展，而是使用以下之一：</p>
+<ul>
+<li><strong><code>AppExtension：</code></strong>用于构建 <code>Android app module</code> 的 <code>com.android.application</code> 插件扩展。</li>
+<li><strong><code>LibraryExtension：</code></strong>用于构建 <code>Android library module</code> 的 <code>com.android.library</code> 插件扩展。</li>
+<li><strong><code>TestExtension：</code></strong>用于构建 <code>Android test module</code> 的 <code>com.android.test</code> 插件扩展。</li>
+<li><strong><code>FeatureExtension：</code></strong>用于构建 <code>Android Instant Apps</code> 的 <code>com.android.feature</code> 插件扩展。</li>
+</ul>
+<h2 id="Gradle-通用配置块"><a href="#Gradle-通用配置块" class="headerlink" title="Gradle 通用配置块"></a>Gradle 通用配置块</h2><p>Android Plugin 一些通用的 Script blocks，对于以上四种类型的扩展都支持。</p>
+<h3 id="defaultConfig"><a href="#defaultConfig" class="headerlink" title="defaultConfig"></a>defaultConfig</h3><p><strong><code>defaultConfig{}</code></strong> 闭包用于配置 Android 插件应用于所有构建变体的变体属性。DSL 对象为 <code>DefaultConfig</code>。</p>
+<p><code>DefaultConfig</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>applicationId：</code></strong>应用程序ID。</li>
+<li><strong><code>applicationIdSuffix：</code></strong>应用程序ID后缀。</li>
+<li><strong><code>consumerProguardFiles：</code></strong>包含在发布的 AAR 中的 ProGuard 规则文件。</li>
+<li><strong><code>dimension：</code></strong>指定 product flavor 所属的 flavor 维度。</li>
+<li><strong><code>externalNativeBuild：</code></strong>指定使用 CMake 或 ndk-build 的外部 native 构建选项。</li>
+<li><strong><code>javaCompileOptions：</code></strong>配置 Java 编译器选项。</li>
+<li><strong><code>manifestPlaceholders：</code></strong>清单占位符。</li>
+<li><strong><code>multiDexEnabled：</code></strong>是否为此变体启用 Multi-Dex。</li>
+<li><strong><code>multiDexKeepFile：</code></strong>文本文件，指定将编译到主 dex 文件中的其他类。</li>
+<li><strong><code>multiDexKeepProguard：</code></strong>带有其他 ProGuard 规则的文本文件，用于确定将哪些类编译到主 dex 文件中。</li>
+<li><strong><code>ndk：</code></strong>封装 NDK 的每个变体配置，例如 ABI 过滤器。</li>
+<li><strong><code>proguardFiles：</code></strong>指定插件应使用的 ProGuard 配置文件。</li>
+<li><strong><code>signingConfig：</code></strong>签署此产品风格使用的配置。</li>
+<li><strong><code>testApplicationId：</code></strong>测试应用程序 ID。</li>
+<li><strong><code>testInstrumentationRunner：</code></strong>测试仪器运行器类名称。</li>
+<li><strong><code>testInstrumentationRunnerArguments：</code></strong>测试仪器运行器自定义参数。</li>
+<li><strong><code>vectorDrawables：</code></strong>用于配置 VectorDrawable 的构建时支持的选项。</li>
+<li><strong><code>versionCode：</code></strong>版本号。</li>
+<li><strong><code>versionName：</code></strong>版本名称。</li>
+<li><strong><code>versionNameSuffix：</code></strong>版本名称后缀。</li>
+<li><strong><code>wearAppUnbundled：</code></strong>返回是否为嵌入式磨损应用启用非捆绑模式。如果为true，则可以使应用程序从嵌入式磨损应用程序转换为直接由Play商店分发的应用程序。</li>
+</ul>
+<h3 id="compileOptions"><a href="#compileOptions" class="headerlink" title="compileOptions"></a>compileOptions</h3><p><strong><code>compileOptions{}</code></strong> 闭包用于配置 Java 编译器选项。DSL 对象为 <code>CompileOptions</code>。</p>
+<p><code>CompileOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>encoding：</code></strong>Java 源文件编码。</li>
+<li><strong><code>incremental：</code></strong>Java 编译是否应该使用 Gradle 的新增量模型。</li>
+<li><strong><code>sourceCompatibility：</code></strong>Java 源代码的语言级别。</li>
+<li><strong><code>targetCompatibility：</code></strong>生成的 Java 字节码的版本。</li>
+</ul>
+<h3 id="dexOptions"><a href="#dexOptions" class="headerlink" title="dexOptions"></a>dexOptions</h3><p><strong><code>dexOptions{}</code></strong> 闭包用于配置 DEX 工具选项。DSL 对象为 <code>DexOptions</code>。</p>
+<p><code>DexOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>additionalParameters：</code></strong>要传递给 dx 的附加参数列表。</li>
+<li><strong><code>javaMaxHeapSize：</code></strong>指定调用 dx 时的 -Xmx 值。</li>
+<li><strong><code>jumboMode：</code></strong>是否在 dx(–force-jumbo) 中启用 jumbo 模式。</li>
+<li><strong><code>keepRuntimeAnnotatedClasses：</code></strong>在遗留 multidex 的主 dex 中保留所有具有运行时注解的类。</li>
+<li><strong><code>maxProcessCount：</code></strong>可用于 dex 的最大并发进程数(默认为 4)。</li>
+<li><strong><code>preDexLibraries：</code></strong>是否预先 dex 库。这可以改善增量构建，但是干净的构建可能会更慢。</li>
+<li><strong><code>threadCount：</code></strong>运行 dx 时要使用的线程数(默认为 4)。</li>
+</ul>
+<h3 id="aaptOptions"><a href="#aaptOptions" class="headerlink" title="aaptOptions"></a>aaptOptions</h3><p><strong><code>aaptOptions{}</code></strong> 闭包用于配置 Android Asset Packaging Tool(AAPT)的选项。DSL 对象为 <code>AaptOptions</code>。</p>
+<p><code>AaptOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>additionalParameters：</code></strong>要传递给 aapt 的参数列表。</li>
+<li><strong><code>cruncherEnabled：</code></strong>是否要处理 PNG(已弃用)。</li>
+<li><strong><code>cruncherProcesses：</code></strong>获得要使用的 cruncher 进程数(更多的 cruncher 进程会更快地处理文件，但需要更多的内存和CPU)。</li>
+<li><strong><code>failOnMissingConfigEntry：</code></strong>如果找不到配置条目，则强制 aapt 返回错误。</li>
+<li><strong><code>ignoreAssets：</code></strong>指定要忽略的资产的模式。</li>
+<li><strong><code>ignoreAssetsPattern：</code></strong>指定要忽略的资产的模式。</li>
+<li><strong><code>noCompress：</code></strong>不会在APK中压缩存储的文件的扩展名(添加空扩展名，即设置为<code>&#39;&#39;</code>将禁用所有文件的压缩)。</li>
+</ul>
+<h3 id="adbOptions"><a href="#adbOptions" class="headerlink" title="adbOptions"></a>adbOptions</h3><p><strong><code>adbOptions{}</code></strong> 闭包用于配置 Android Debug Bridge(ADB)的选项。DSL 对象为 <code>AdbOptions</code>。</p>
+<p><code>AdbOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>installOptions：</code></strong>配置 FULL_APK 安装选项列表。</li>
+<li><strong><code>timeOutInMs：</code></strong>配置用于所有 ADB 操作的超时时间。</li>
+</ul>
+<h3 id="dataBinding"><a href="#dataBinding" class="headerlink" title="dataBinding"></a>dataBinding</h3><p><strong><code>dataBinding{}</code></strong> 闭包用于配置数据绑定库的选项。DSL 对象为 <code>DataBindingOptions</code>。</p>
+<p><code>DataBindingOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>addDefaultAdapters：</code></strong>是否添加默认数据绑定适配器。</li>
+<li><strong><code>enabled：</code></strong>是否启用数据绑定。</li>
+<li><strong><code>enabledForTests：</code></strong>是否为测试项目运行数据绑定代码生成</li>
+<li><strong><code>version：</code></strong>要使用的数据绑定版本。</li>
+</ul>
+<h3 id="externalNativeBuild"><a href="#externalNativeBuild" class="headerlink" title="externalNativeBuild"></a>externalNativeBuild</h3><p><strong><code>externalNativeBuild{}</code></strong> 闭包用于配置使用 CMake 或 ndk-build 的外部 native 构建选项。DSL 对象为 <code>ExternalNativeBuild</code>。</p>
+<p><code>ExternalNativeBuild</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>cmake：</code></strong>配置 CMake 构建选项。</li>
+<li><strong><code>ndkBuild：</code></strong>配置 ndk-build 选项。</li>
+</ul>
+<h3 id="lintOptions"><a href="#lintOptions" class="headerlink" title="lintOptions"></a>lintOptions</h3><p><strong><code>lintOptions{}</code></strong> 闭包用于配置 lint 工具的选项。DSL 对象为 <code>LintOptions</code>。</p>
+<p><code>LintOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>abortOnError：</code></strong>lint 是否应该在发现错误时设置进程的退出代码</li>
+<li><strong><code>absolutePaths：</code></strong>lint 是否应在错误输出中显示完整路径(默认情况下，路径相对于从中调用 lint 的路径)。</li>
+<li><strong><code>check：</code></strong>要检查的确切问题集，或者为 null 以运行默认启用的问题以及通过 LintOptions.getEnable() 和不通过问题禁用的任何问题 LintOptions.getDisable()。如果为非 null，则允许调用者修改此集合。</li>
+<li><strong><code>checkAllWarnings：</code></strong>返回 lint 是否应检查所有警告，包括默认情况下关闭的警告。</li>
+<li><strong><code>checkReleaseBuilds：</code></strong>返回 lint 是否应在发布版本期间检查致命错误(默认为 true)。如果找到严重性为 fatal 的问题，则会中止发布版本。</li>
+<li><strong><code>disable：</code></strong>要解决的问题 ID 集。允许呼叫者修改此集合。</li>
+<li><strong><code>enable：</code></strong>要启用的问题 ID 集。允许呼叫者修改此集合。要启用给定问题，请将问题 ID 添加到返回的集。</li>
+<li><strong><code>explainIssues：</code></strong>返回 lint 是否应包含问题错误的解释(请注意，HTML 和 XML 报告有意无条件地执行此操作，忽略此设置)。</li>
+<li><strong><code>htmlOutput：</code></strong>指定写入 HTML 报告的可选路径。</li>
+<li><strong><code>htmlReport：</code></strong>是否应该编写 HTML 报告(默认为 true)。</li>
+<li><strong><code>ignoreWarnings：</code></strong>返回 lint 是否仅检查错误(忽略警告)。</li>
+<li><strong><code>lintConfig：</code></strong>用作回退的默认配置文件。</li>
+<li><strong><code>noLines：</code></strong>lint 是否应在输出中包含发生错误的源行(默认为 true)。</li>
+<li><strong><code>quiet：</code></strong>返回 lint 是否应该是安静的(例如，不写信息性消息，例如写入报告文件的路径)。</li>
+<li><strong><code>severityOverrides：</code></strong>严重性覆盖的可选映射。映射从问题 ID 映射到要使用的相应严重性，必须是 fatal、error、warning 或 ignore。</li>
+<li><strong><code>showAll：</code></strong>返回 lint 是否应包含所有输出(例如，包括所有备用位置，不截断长消息等)。</li>
+<li><strong><code>textOutput：</code></strong>指定写入文本报告的可选路径。特殊值 stdout 可用于指向标准输出。</li>
+<li><strong><code>textReport：</code></strong>我们是否应该撰写文本报告(默认为 false)。</li>
+<li><strong><code>warningsAsErrors：</code></strong>返回 lint 是否应将所有警告视为错误。</li>
+<li><strong><code>xmlOutput：</code></strong>指定写入 XML 报告的可选路径</li>
+<li><strong><code>xmlReport：</code></strong>我们是否应该编写XML报告(默认为 true)。</li>
+</ul>
+<h3 id="sourceSets"><a href="#sourceSets" class="headerlink" title="sourceSets"></a>sourceSets</h3><p><strong><code>sourceSets{}</code></strong> 闭包用于配置所有变体的源集。DSL 对象为 <code>NamedDomainObjectContainer&lt;AndroidSourceSet&gt;</code>。</p>
+<p><code>AndroidSourceSet</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>name：</code></strong>此源集的名称。</li>
+<li><strong><code>aidl：</code></strong>此源集的 Android AIDL 源目录。</li>
+<li><strong><code>assets：</code></strong>此源集的 Android Assets 目录。</li>
+<li><strong><code>java：</code></strong>将由 Java 编译器编译到类输出目录中的 Java 源代码。</li>
+<li><strong><code>jni：</code></strong>此源集的 Android JNI 源目录。</li>
+<li><strong><code>jniLibs：</code></strong>此源集的 Android JNI libs 目录。</li>
+<li><strong><code>manifest：</code></strong>此源集的 Android Manifest 文件。</li>
+<li><strong><code>renderscript：</code></strong>此源集的 Android RenderScript 源目录。</li>
+<li><strong><code>res：</code></strong>此源集的 Android 资源目录。</li>
+<li><strong><code>resources：</code></strong>要复制到 javaResources 输出目录中的 Java 资源。</li>
+<li><strong><code>compileConfigurationName：</code></strong>此源集的编译配置的名称(已弃用)。</li>
+<li><strong><code>packageConfigurationName：</code></strong>此源集的运行时配置的名称(已弃用)。</li>
+<li><strong><code>providedConfigurationName：</code></strong>此源集的仅编译配置的名称(已弃用)。</li>
+</ul>
+<h3 id="packagingOptions"><a href="#packagingOptions" class="headerlink" title="packagingOptions"></a>packagingOptions</h3><p><strong><code>packagingOptions{}</code></strong> 闭包用于配置 APK 打包选项。DSL 对象为 <code>PackagingOptions</code>。</p>
+<p><code>PackagingOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>doNotStrip：</code></strong>不应删除调试符号的 native 库模式列表。</li>
+<li><strong><code>excludes：</code></strong>排除路径列表。</li>
+<li><strong><code>merges：</code></strong>在 APK 中连接并打包所有出现的模式的列表。</li>
+<li><strong><code>pickFirsts：</code></strong>选择第一个出现在 APK 中的模式列表。第一个选择模式确实打包在 APK 中，但是只有第一个出现的模式被打包。</li>
+</ul>
+<h3 id="signingConfigs"><a href="#signingConfigs" class="headerlink" title="signingConfigs"></a>signingConfigs</h3><p><strong><code>signingConfigs{}</code></strong> 闭包用于配置可以应用于BuildType和ProductFlavor配置的签名信息。DSL 对象为 <code>NamedDomainObjectContainer&lt;SigningConfig&gt;</code>。</p>
+<p><code>SigningConfig</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>storeFile：</code></strong>存储签名时使用的文件。</li>
+<li><strong><code>storePassword：</code></strong>存储签名时使用的密码。</li>
+<li><strong><code>storeType：</code></strong>签名时使用的存储类型。</li>
+<li><strong><code>keyAlias：</code></strong>签名时使用的密钥别名。</li>
+<li><strong><code>keyPassword：</code></strong>签名时使用的密钥密码。</li>
+<li><strong><code>v1SigningEnabled：</code></strong>是否启用了使用 JAR 签名方案(即 V1签名)进行签名。</li>
+<li><strong><code>v2SigningEnabled：</code></strong>是否启用了使用 APK 签名方案(即 V2签名)进行签名。</li>
+</ul>
+<h3 id="buildTypes"><a href="#buildTypes" class="headerlink" title="buildTypes"></a>buildTypes</h3><p><strong><code>buildTypes{}</code></strong> 闭包用于配置项目的所有构建类型。DSL 对象为 <code>NamedDomainObjectContainer&lt;BuildType&gt;</code>。</p>
+<p><code>BuildType</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>applicationIdSuffix：</code></strong>应用程序 ID 后缀。</li>
+<li><strong><code>consumerProguardFiles：</code></strong>包含在发布的 AAR 中的 ProGuard 规则文件。</li>
+<li><strong><code>crunchPngs：</code></strong>是否要处理 PNG。</li>
+<li><strong><code>debuggable：</code></strong>此构建类型是否应生成可调试的 APK。</li>
+<li><strong><code>embedMicroApp：</code></strong>是否应使用此构建类型将链接的 Android Wear 应用程序嵌入到 Variant 中。</li>
+<li><strong><code>javaCompileOptions：</code></strong>配置 Java 编译器选项。</li>
+<li><strong><code>jniDebuggable：</code></strong>是否将此构建类型配置为生成具有可调试 JNI 代码的 APK。</li>
+<li><strong><code>manifestPlaceholders：</code></strong>清单占位符。</li>
+<li><strong><code>matchingFallbacks：</code></strong>指定当直接变体与本地模块依赖项不匹配时插件应尝试使用的构建类型的排序列表。</li>
+<li><strong><code>minifyEnabled：</code></strong>是否启用删除未使用的 Java 代码。</li>
+<li><strong><code>multiDexEnabled：</code></strong>是否为此变体启用了 Multi-Dex。</li>
+<li><strong><code>multiDexKeepFile：</code></strong>文本文件，指定将编译到主 dex 文件中的其他类。</li>
+<li><strong><code>multiDexKeepProguard：</code></strong>带有其他 ProGuard 规则的文本文件，用于确定将哪些类编译到主 dex 文件中。</li>
+<li><strong><code>name：</code></strong>此构建类型的名称。</li>
+<li><strong><code>proguardFiles：</code></strong>指定插件应使用的ProGuard配置文件。</li>
+<li><strong><code>pseudoLocalesEnabled：</code></strong>指定插件是否应为pseudolocales生成资源。</li>
+<li><strong><code>renderscriptDebuggable：</code></strong>是否将构建类型配置为生成具有可调试 RenderScript 代码的 APK。</li>
+<li><strong><code>renderscriptOptimLevel：</code></strong>renderscript编译器使用的优化级别。</li>
+<li><strong><code>shrinkResources：</code></strong>是否启用了未使用资源的缩减。默认为 false;</li>
+<li><strong><code>signingConfig：</code></strong>签名配置。</li>
+<li><strong><code>testCoverageEnabled：</code></strong>是否为此构建类型启用了测试覆盖率。</li>
+<li><strong><code>useProguard：</code></strong>指定是否始终使用 ProGuard 进行代码和资源收缩。</li>
+<li><strong><code>versionNameSuffix：</code></strong>版本名称后缀。</li>
+<li><strong><code>zipAlignEnabled：</code></strong>是否为此构建类型启用了 ZipAlign。</li>
+</ul>
+<h3 id="productFlavors"><a href="#productFlavors" class="headerlink" title="productFlavors"></a>productFlavors</h3><p><strong><code>productFlavors{}</code></strong> 闭包用于配置项目的所有产品风味。DSL 对象为 <code>NamedDomainObjectContainer&lt;ProductFlavor&gt;</code>。</p>
+<p><code>ProductFlavor</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>applicationId：</code></strong>应用程序 ID。</li>
+<li><strong><code>applicationIdSuffix：</code></strong>应用程序 ID 后缀。</li>
+<li><strong><code>consumerProguardFiles：</code></strong>包含在发布的 AAR 中的 ProGuard 规则文件。</li>
+<li><strong><code>dimension：</code></strong>指定 product flavor 所属的 flavor 维度。</li>
+<li><strong><code>externalNativeBuild：</code></strong>指定使用 CMake 或 ndk-build 的外部 native 构建选项。</li>
+<li><strong><code>javaCompileOptions：</code></strong>配置 Java 编译器选项。</li>
+<li><strong><code>manifestPlaceholders：</code></strong>清单占位符。</li>
+<li><strong><code>matchingFallbacks：</code></strong>指定当直接变体与本地模块依赖项不匹配时，插件应尝试使用的产品样式的排序列表。</li>
+<li><strong><code>multiDexEnabled：</code></strong>是否为此变体启用 Multi-Dex。</li>
+<li><strong><code>multiDexKeepFile：</code></strong>文本文件，指定将编译到主 dex 文件中的其他类。</li>
+<li><strong><code>multiDexKeepProguard：</code></strong>带有其他 ProGuard 规则的文本文件，用于确定将哪些类编译到主 dex 文件中。</li>
+<li><strong><code>ndk：</code></strong>封装 NDK 的每个变体配置，例如 ABI 过滤器。</li>
+<li><strong><code>proguardFiles：</code></strong>指定插件应使用的 ProGuard 配置文件。</li>
+<li><strong><code>signingConfig：</code></strong>签署此产品风格使用的配置。</li>
+<li><strong><code>testApplicationId：</code></strong>测试应用程序 ID。</li>
+<li><strong><code>testInstrumentationRunner：</code></strong>测试仪器运行器类名称。</li>
+<li><strong><code>testInstrumentationRunnerArguments：</code></strong>测试仪器运行器自定义参数。</li>
+<li><strong><code>vectorDrawables：</code></strong>用于配置 VectorDrawable 的构建时支持的选项。</li>
+<li><strong><code>versionCode：</code></strong>版本号。</li>
+<li><strong><code>versionName：</code></strong>版本名称。</li>
+<li><strong><code>versionNameSuffix：</code></strong>版本名称后缀。</li>
+<li><strong><code>wearAppUnbundled：</code></strong>返回是否为嵌入式磨损应用启用非捆绑模式。如果为 true，则可以使应用程序从嵌入式磨损应用程序转换为直接由 Play 商店分发的应用程序。</li>
+</ul>
+<h3 id="splits"><a href="#splits" class="headerlink" title="splits"></a>splits</h3><p><strong><code>splits{}</code></strong> 闭包用于配置构建多个APK或APK分割。DSL 对象为 <code>Splits</code>。</p>
+<p><code>Splits</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>abi：</code></strong>封装用于构建每个 ABI APK 的设置。</li>
+<li><strong><code>abiFilters：</code></strong>插件将为 ABI 列表生成单独的 APK。</li>
+<li><strong><code>density：</code></strong>封装用于构建每密度 APK 的设置。</li>
+<li><strong><code>densityFilters：</code></strong>该插件将为其生成单独 APK 的屏幕密度配置列表。</li>
+<li><strong><code>language：</code></strong>封装用于构建每个语言(或地区) APK 的设置。</li>
+<li><strong><code>languageFilters：</code></strong>插件将为其生成单独 APK 的语言(或地区)列表。</li>
+</ul>
+<h3 id="testOptions"><a href="#testOptions" class="headerlink" title="testOptions"></a>testOptions</h3><p><strong><code>testOptions{}</code></strong> 闭包用于配置构建多个APK或APK分割。DSL 对象为 <code>TestOptions</code>。</p>
+<p><code>TestOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>animationsDisabled：</code></strong>在从命令行运行的检测测试期间禁用动画。</li>
+<li><strong><code>execution：</code></strong>指定是否使用设备上的测试编制。</li>
+<li><strong><code>reportDir：</code></strong>报表目录的名称。</li>
+<li><strong><code>resultsDir：</code></strong>结果目录的名称。</li>
+<li><strong><code>unitTests：</code></strong>配置单元测试选项。</li>
+</ul>
+<h3 id="variantFilter"><a href="#variantFilter" class="headerlink" title="variantFilter"></a>variantFilter</h3><p><strong><code>variantFilter{}</code></strong> 闭包用于配置 Android 插件应包含或从 Gradle 项目中删除的变体。DSL 对象为 <code>Action&lt;VariantFilter&gt;</code>。</p>
+<p><code>VariantFilter</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>buildType：</code></strong>构建类型。</li>
+<li><strong><code>defaultConfig：</code></strong>表示默认配置的 ProductFlavor。</li>
+<li><strong><code>flavors：</code></strong>风味列表或空列表。</li>
+</ul>
+<h3 id="jacoco-已弃用"><a href="#jacoco-已弃用" class="headerlink" title="jacoco (已弃用)"></a>jacoco (已弃用)</h3><p><strong><code>jacoco{}</code></strong> 闭包用于配置用于脱机检测和覆盖报告的 JaCoCo 版本。DSL 对象为 <code>JacocoOptions</code>。</p>
+<p><code>JacocoOptions</code> 具有以下属性：</p>
+<ul>
+<li><strong><code>version：</code></strong>要使用的 JaCoCo 版本。</li>
+</ul>
+<h2 id="AppExtension"><a href="#AppExtension" class="headerlink" title="AppExtension"></a>AppExtension</h2><p><strong><code>AppExtension</code></strong> 就是应用程序插件的 Android 扩展。<code>com.android.build.gradle.AppExtension</code> 类继承自 <code>com.android.build.gradle.BaseExtension</code>。</p>
+<p><code>AppExtension</code> 除了继承自 <code>com.android.build.gradle.AppExtension</code> 的属性外，还有自有的属性。</p>
+<h3 id="applicationVariants"><a href="#applicationVariants" class="headerlink" title="applicationVariants"></a>applicationVariants</h3><p><strong><code>applicationVariants</code></strong> 用于返回应用程序项目包含的构建变体集合(<code>DomainObjectSet&lt;ApplicationVariant&gt;</code>)。</p>
+<blockquote>
+<p>要处理这个集合中的元素，应该使用 <code>all</code> 迭代器，这是因为插件只有在项目评估之后才填充这个集合。与 <code>each</code> 迭代器不同，在插件创建它们时使用 <code>all</code> 进程的未来元素。</p>
+</blockquote>
+<p>以下示例遍历所有 applicationVariants 元素，将构建变量注入清单文件中：</p>
+<pre class=" language-gradle"><code class="language-gradle">android.applicationVariants.all { variant ->
+    def mergedFlavor = variant.getMergedFlavor()
+    // Defines the value of a build variable you can use in the manifest.
+    mergedFlavor.manifestPlaceholders = [hostName:"www.example.com/${variant.versionName}"]
+}
+</code></pre>
+<h3 id="testBuildType"><a href="#testBuildType" class="headerlink" title="testBuildType"></a>testBuildType</h3><p><strong><code>testBuildType</code></strong> 指定插件用于测试模块的构建类型。</p>
+<p>默认情况下，Android 插件使用 <code>debug</code> 构建类型。这意味着当您使用 <code>gradlew connectedAndroidTest</code> 部署检测测试时，它会使用模块 <code>debug</code> 构建类型中的代码和资源来创建测试 APK。然后，该插件将模块的 APK 和测试 APK 的 <code>debug</code> 版本部署到连接的设备，并运行测试。</p>
+<p>要将测试构建类型更改为 <code>debug</code> 以外的其他类型，请按如下所示进行指定：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+    // Changes the test build type for instrumented tests to "stage".
+    testBuildType "stage"
+}
+</code></pre>
+<h3 id="testVariants"><a href="#testVariants" class="headerlink" title="testVariants"></a>testVariants</h3><p><strong><code>testVariants</code></strong> 用于返回 Android 测试构建变体的集合(<code>DomainObjectSet&lt;TestVariant&gt;</code>)。</p>
+<blockquote>
+<p>要处理这个集合中的元素，应该使用 <code>all</code> 迭代器，这是因为插件只有在项目评估之后才填充这个集合。与 <code>each</code> 迭代器不同，在插件创建它们时使用 <code>all</code> 进程的未来元素。</p>
+</blockquote>
+<h3 id="unitTestVariants"><a href="#unitTestVariants" class="headerlink" title="unitTestVariants"></a>unitTestVariants</h3><p><strong><code>unitTestVariants</code></strong> 用于返回 Android 单元测试构建变体的集合(<code>DomainObjectSet&lt;UnitTestVariant&gt;</code>)。</p>
+<blockquote>
+<p>要处理这个集合中的元素，应该使用 <code>all</code> 迭代器，这是因为插件只有在项目评估之后才填充这个集合。与 <code>each</code> 迭代器不同，在插件创建它们时使用 <code>all</code> 进程的未来元素。</p>
+</blockquote>
+<h3 id="flavorDimensions"><a href="#flavorDimensions" class="headerlink" title="flavorDimensions"></a>flavorDimensions</h3><p><strong><code>flavorDimensions</code></strong> 用于配置项目的产品风味维度的名称。</p>
+<p>使用 Android plugin 3.0.0 及更高版本配置产品 product flavors 时，必须使用 <code>flavorDimensions</code> 属性指定至少一个 flavor 维度，然后将每个 flavor 分配给维度。否则，您将收到以下构建错误：</p>
+<pre><code>Error:All flavors must now belong to a named flavor dimension.
+The flavor &#39;flavor_name&#39; is not assigned to a flavor dimension.
+</code></pre><p>默认情况下，当仅指定一个维度时，配置的所有 flavor 都将自动属于该维度。如果指定多个维度，则需要手动将每个 flavor 分配给维度，如下面的示例所示：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+    ...
+    // Specifies the flavor dimensions you want to use. The order in which you
+    // list each dimension determines its priority, from highest to lowest,
+    // when Gradle merges variant sources and configurations. You must assign
+    // each product flavor you configure to one of the flavor dimensions.
+    flavorDimensions 'api', 'version'
+
+    productFlavors {
+      demo {
+        // Assigns this product flavor to the 'version' flavor dimension.
+        dimension 'version'
+        ...
+    }
+
+      full {
+        dimension 'version'
+        ...
+      }
+
+      minApi24 {
+        // Assigns this flavor to the 'api' dimension.
+        dimension 'api'
+        minSdkVersion '24'
+        versionNameSuffix "-minApi24"
+        ...
+      }
+
+      minApi21 {
+        dimension "api"
+        minSdkVersion '21'
+        versionNameSuffix "-minApi21"
+        ...
+      }
+   }
+}
+</code></pre>
+<h3 id="useLibrary"><a href="#useLibrary" class="headerlink" title="useLibrary"></a>useLibrary</h3><p><strong><code>useLibrary</code></strong> 用于将指定的库包含到类路径中。</p>
+<p>通常使用此属性来支持随 Android SDK 一起提供的可选平台库。以下示例将 <code>Apache HTTP API</code> 库添加到项目类路径：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+    // Adds a platform library that ships with the Android SDK.
+    useLibrary 'org.apache.http.legacy'
+}
+</code></pre>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/5b2977c1.html" class="b-link-green">Gradle 学习之 Android DSL 扩展</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-12-29T12-36-55',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2019/55df9ec1.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Android 自定义 View 之基础">
+                        
+                        <span class="card-title">Android 自定义 View 之基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">View 的分类视图 View 主要分为两类：
+
+
+
+类别
+解释
+特点
+
+
+
+
+单一视图
+即一个View，如 TextView
+不包含子 View
+
+
+视图容器
+即多个 View 组成的 ViewGroup，如 LinearLayout
+包</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2019-01-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/2f48e782.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Android Plugin for Gradle 3.0.0">
+                        
+                        <span class="card-title">Android Plugin for Gradle 3.0.0</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Android Studio 升级到 3.0 之后，Gradle Plugin 和 Gradle 不升级也是可以继续使用的，但很多新的特性如：Java 8 支持、新的依赖匹配机制、AAPT2 等新功能都无法正常使用~ 所以长期看来，最后还是</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-12-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Gradle/" target="_blank">
+                        <span class="chip tag-bg-color">Gradle</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

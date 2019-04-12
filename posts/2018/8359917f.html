@@ -1,0 +1,1738 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java 数据结构与算法概述, Android, Google, Blog">
+    <meta name="description" content="数据结构数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。
+数据结构的基本功能不同的数">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java 数据结构与算法概述 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java 数据结构与算法概述
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip tag-bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/数据结构/" target="_blank">
+                                <span class="chip tag-bg-color">数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip tag-bg-color">算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-11-20
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        6.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        23 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。数据结构往往同高效的检索算法和索引技术有关。</p>
+<h3 id="数据结构的基本功能"><a href="#数据结构的基本功能" class="headerlink" title="数据结构的基本功能"></a>数据结构的基本功能</h3><p>不同的数据结构其操作集不同，但下列基本功能必不可缺：</p>
+<ul>
+<li>如何插入一条新的数据项；</li>
+<li>如何寻找某一特定的数据项；</li>
+<li>如何删除某一特定的数据项；</li>
+<li>如何迭代的访问各个数据项，以便进行显示或其他操作。</li>
+</ul>
+<h3 id="常见的数据结构"><a href="#常见的数据结构" class="headerlink" title="常见的数据结构"></a>常见的数据结构</h3><p>常见的数据结构包含：数组(Array)、栈(Stack)、队列(Queue)、链表(Linked List)、树(Tree)、哈希表(Hash)、堆(Heap)、图(Graph)。</p>
+<p>下表示常见的几种数据结构的特性：</p>
+<table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数组</td>
+<td>插入快，如果知道下标，可以非常快地存取</td>
+<td>查找慢，删除慢，大小固定，只能存储单一元素</td>
+</tr>
+<tr>
+<td>有序数组</td>
+<td>比无序的数据查找快</td>
+<td>插入慢，删除慢，大小固定，只能存储单一元素</td>
+</tr>
+<tr>
+<td>栈</td>
+<td>提供后进先出方式的存取</td>
+<td>存取其他项很慢</td>
+</tr>
+<tr>
+<td>队列</td>
+<td>提供先进先出方式的存取</td>
+<td>存取其他项很慢</td>
+</tr>
+<tr>
+<td>链表</td>
+<td>插入快，删除快</td>
+<td>查找慢</td>
+</tr>
+<tr>
+<td>二叉树</td>
+<td>如果树是平衡的，查找、插入、删除都快</td>
+<td>删除算法复杂</td>
+</tr>
+<tr>
+<td>红黑树</td>
+<td>查找、插入、删除都快。树总是平衡的</td>
+<td>算法复杂</td>
+</tr>
+<tr>
+<td>2-3-4树</td>
+<td>查找、插入、删除都快。树总是平衡的。类似的树对磁盘存储有用</td>
+<td>算法复杂</td>
+</tr>
+<tr>
+<td>哈希表</td>
+<td>如果关键字已知则存取极快。插入快</td>
+<td>删除慢，如果不知道关键字则存取很慢，对存储空间使用不充分</td>
+</tr>
+<tr>
+<td>堆</td>
+<td>插入、删除快，对最大数据项的存取很快</td>
+<td>对其他数据项存取慢</td>
+</tr>
+<tr>
+<td>图</td>
+<td>对现实世界建模</td>
+<td>有些算法且复杂</td>
+</tr>
+</tbody>
+</table>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>算法(Algorithm)是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。如果一个算法有缺陷，或不适合于某个问题，执行这个算法将不会解决这个问题。不同的算法可能用不同的时间、空间或效率来完成同样的任务。一个算法的优劣可以用空间复杂度与时间复杂度来衡量。</p>
+<p>在 Java 中，算法通常都是由类的方法来实现的。前面的数据结构，比如链表为啥插入、删除快，而查找慢，平衡的二叉树插入、删除、查找都快，这都是实现这些数据结构的算法所造成的。后面我们讲的各种排序实现也是算法范畴的重要领域。</p>
+<h3 id="算法的五个特征"><a href="#算法的五个特征" class="headerlink" title="算法的五个特征"></a>算法的五个特征</h3><p>一个算法应该具有以下五个重要的特征：</p>
+<ul>
+<li><strong><code>有穷性(Finiteness)：</code></strong>算法的有穷性是指算法必须能在执行有限个步骤之后终止。</li>
+<li><strong><code>确定性(Definiteness)：</code></strong>在每种情况下所应执行的操作，在算法中都有确切的规定，使算法的执行者或阅读者都能明确其含义及如何执行，并且在任何条件下，算法都只有一条执行路径。</li>
+<li><strong><code>可行性(Effectiveness)：</code></strong>算法中执行的任何计算步骤都是可以被分解为基本的可执行的操作步，即每个计算步都可以在有限时间内完成(也称之为有效性)。</li>
+<li><strong><code>有输入(Input)：</code></strong>一个算法有0个或多个输入，以刻画运算对象的初始情况，所谓0个输入是指算法本身定出了初始条件。</li>
+<li><strong><code>有输出(Output)：</code></strong>个算法有一个或多个输出，以反映对输入数据加工后的结果，没有输出的算法是毫无意义的。</li>
+</ul>
+<h3 id="算法的设计原则"><a href="#算法的设计原则" class="headerlink" title="算法的设计原则"></a>算法的设计原则</h3><p>一个算法应该具有以下四个重要的设计原则：</p>
+<ul>
+<li>正确性：算法至少应该具有输入、输出和加工处理无歧义性、能正确反映问题的需要、能够得到问题的正确答案。<blockquote>
+<p>算法的“正确”通常在用法上有很大的差别，大体分为以下4个层次：<br>① 算法程序没有语法错误；<br>② 算法程序能够根据正确的输入的值得到满足要求的输出结果；<br>③ 算法程序能够根据错误的输出的值满足规格说明的输出结果；<br>④ 算法程序对于精心设计、极其刁难的测试数据都能满足要求的输出结果。<br>对于这4层含义，层次 <code>①</code> 要求最低，因为仅仅没有语法错误实在谈不上是好的算法。而层次 <code>④</code> 是最困难的，人们几乎不可能逐一验证所有的输入都得到正确的结果。<br>因此，算法的正确性在大部分情况下都不可能用程序来证明，而是用数学方法证明的。证明一个复杂算法在所有层次上都是正确的，代价非常昂贵。所以一般情况下，人们把层次 <code>③</code> 作为一个算法是否正确的标准。</p>
+</blockquote>
+</li>
+<li>可读性：算法为了人的阅读与交流，其次才是计算机执行。因此算法应该易于人的理解；另一方面，晦涩难懂的程序易于隐藏较多的错误而难以调试。</li>
+<li>健壮性：当输入的数据非法时，算法应当恰当的做出反应或进行相应处理，而不是产生莫名其妙的输出结果。并且，处理出错的方法不应是中断程序执行，而是应当返回一个表示错误或错误性质的值，以便在更高的抽象层次上进行处理。</li>
+<li>高效与低存储：通常算法效率值得是算法执行时间；存储量是指算法执行过程中所需要的最大存储空间，两者都与问题的规模有关。<blockquote>
+<p>在满足以上几点以后，还可以考虑对算法进程进一步优化，尽量满足时间效率高和空间存储量低的需求。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="算法的设计步骤"><a href="#算法的设计步骤" class="headerlink" title="算法的设计步骤"></a>算法的设计步骤</h3><p>算法设计的一般过程可以归纳为以下几个步骤：</p>
+<ul>
+<li>建立数学模型；</li>
+<li>通过对问题进行详细的分析，抽象出相应的数学模型；</li>
+<li>确定数据结构与算法；</li>
+<li>确定使用的数据结构，并在此基础上设计对此数据结构实施各种操作的算法；</li>
+<li>选用语言；</li>
+<li>选用某种语言将算法转化成程序；</li>
+<li>调试并运行；</li>
+<li>调试并运行这些程序。</li>
+</ul>
+<h3 id="算法的基本思想"><a href="#算法的基本思想" class="headerlink" title="算法的基本思想"></a>算法的基本思想</h3><h4 id="穷举算法思想"><a href="#穷举算法思想" class="headerlink" title="穷举算法思想"></a>穷举算法思想</h4><p>穷举算法思想就是从所有的可能结果中一个一个的试验，知道试出正确的结果。具体的操作步骤如下：</p>
+<ol>
+<li>对每一种可能的结果，计算其结果；</li>
+<li>判断结果是否符合题目要求，如果符合则该结果正确，如果不符合则继续进行第1步骤。</li>
+</ol>
+<blockquote>
+<p>穷举算法思想的经典例子为鸡兔同笼为题（又称龟鹤同笼问题）。</p>
+</blockquote>
+<h4 id="递推算法思想"><a href="#递推算法思想" class="headerlink" title="递推算法思想"></a>递推算法思想</h4><p>递推算法算法就是根据已知条件，利用特定关系推导出中间推论，直到得到结果的算法。其执行过程如下：</p>
+<ol>
+<li>根据已知结果和关系，求解中间结果。</li>
+<li>判断是否达到要求，如果没有达到，则继续根据已知结果和关系求解中间结果。如果满足要求，则表示寻找到一个正确答案。</li>
+</ol>
+<blockquote>
+<p>递推算法思想最经典的例子是斐波那契数列 : 1,1,2,3,5,8,13……</p>
+</blockquote>
+<h4 id="递归算法思想"><a href="#递归算法思想" class="headerlink" title="递归算法思想"></a>递归算法思想</h4><p>递归算法思想是把大问题转换成同类问题的子问题，然后递归调用函数表示问题的解。在使用递归的时候一定要注意调回递归函数的终止条件。</p>
+<p>递归算法的分类：</p>
+<ul>
+<li>直接递归：在函数中调用自身。</li>
+<li>间接递归：在函数中调用另外一个函数，然后在另外一个函数中再调用该函数(用得不多)。</li>
+</ul>
+<blockquote>
+<p>递归算法比较经典的例子是求阶乘。</p>
+</blockquote>
+<h4 id="分治算法思想"><a href="#分治算法思想" class="headerlink" title="分治算法思想"></a>分治算法思想</h4><p>分治算法思想就是把一个大问题分解成若干个规模较小的子问题，且这些子问题的都是相互独立的、与原问题性质一致。逐个求出这些子问题的解就能够得到原问题的解了。其执行过程如下：</p>
+<ol>
+<li>对于一个规模为 N 的问题，若该问题可以容易地解决（比如说规模 N 较小），则直接解决，否则执行下面的步骤。</li>
+<li>将该问题分解为 M 个规模较小的子问题，这些子问题互相独立，并且与原问题形式相同。</li>
+<li>递归的解子问题。</li>
+<li>然后，将各子问题的解合并到原问题的解。</li>
+</ol>
+<blockquote>
+<p>分治算法思想有一个比较经典的例子就是查找假币问题。</p>
+</blockquote>
+<h4 id="概率算法思想"><a href="#概率算法思想" class="headerlink" title="概率算法思想"></a>概率算法思想</h4><p>概率算法主要包括四种算法：</p>
+<ul>
+<li>数值概率算法：数值问题的求解，最优化问题的近似解。</li>
+<li>蒙特卡罗算法：判定问题的准确解，不一定正确。</li>
+<li>拉斯维加斯算法：不一定会得到解，但得到的解一定是正确解。</li>
+<li>舍伍德算法：总能求得一个解，且一定是正确解。</li>
+</ul>
+<h2 id="Java-数据结构"><a href="#Java-数据结构" class="headerlink" title="Java 数据结构"></a>Java 数据结构</h2><p>Java 工具包提供了强大的数据结构。在 Java 中的数据结构主要包括以下几种接口和类：</p>
+<ul>
+<li><strong><code>枚举(Enumeration)：</code></strong>Enumeration 接口中定义了一些方法，通过这些方法可以枚举(一次获得一个)对象集合中的元素。</li>
+<li><strong><code>位集合(BitSet)：</code></strong>BitSet 实现了一组可以单独设置和清除的位或标志。</li>
+<li><strong><code>向量(Vector)：</code></strong>Vector 类实现了一个动态数组。</li>
+<li><strong><code>栈(Stack)：</code></strong>Stack 实现了一个后进先出(LIFO)的数据结构。</li>
+<li><strong><code>字典(Dictionary)：</code></strong>Dictionary 定义了键映射到值的数据结构。</li>
+<li><strong><code>哈希表(Hashtable)：</code></strong>Hashtable 提供了一种在用户定义键结构的基础上来组织数据的手段。</li>
+<li><strong><code>属性(Properties)：</code></strong>Properties 表示一个持久的属性集。</li>
+</ul>
+<h3 id="枚举-Enumeration"><a href="#枚举-Enumeration" class="headerlink" title="枚举(Enumeration)"></a>枚举(Enumeration)</h3><p><strong><code>枚举(Enumeration)</code></strong>接口虽然它本身不属于数据结构，但它在其他数据结构的范畴里应用很广。 枚举(Enumeration)接口中定义了一些方法，通过这些方法可以枚举(一次获得一个)对象集合中的元素。<br>这种传统接口已被迭代器取代，虽然 Enumeration 还未被遗弃，但在现代代码中已经被很少使用了。尽管如此，它还是使用在诸如 Vector 和 Properties 这些传统类所定义的方法中，除此之外，还用在一些 API 类，并且在应用程序中也广泛被使用。 下表总结了一些 Enumeration 声明的方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean hasMoreElements()</code></td>
+<td>判断此枚举是否包含更多的元素</td>
+</tr>
+<tr>
+<td><code>Object nextElement()</code></td>
+<td>如果此枚举对象至少还有一个可提供的元素，则返回下一个元素的枚举</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>枚举可用作<code>常量</code>、<code>swicth 语句</code>，枚举中也可以<code>添加参数和方法</code>，每个枚举对象可以用作一个带方法和属性的实例对象。</p>
+</blockquote>
+<h3 id="位集合-BitSet"><a href="#位集合-BitSet" class="headerlink" title="位集合(BitSet)"></a>位集合(BitSet)</h3><p><strong><code>位集合(BitSet)</code></strong>实现了一组可以单独设置和清除的位或标志。该类在处理一组布尔值的时候非常有用，只需要给每个值赋值一”位”，然后对位进行适当的设置或清除，就可以对布尔值进行操作了。</p>
+<p>一个 Bitset 类创建一种特殊类型的数组来保存位值。BitSet 中数组大小会随需要增加。</p>
+<p>BitSet 定义了两个构造方法：</p>
+<ul>
+<li><p>第一个构造方法创建一个默认的对象：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">BitSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第二个方法允许用户指定初始大小，所有位初始化为0：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">BitSet</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+<p>BitSet 中实现了 Cloneable 接口中定义的方法如下表所列：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void and(BitSet set)</code></td>
+<td>对此目标位 set 和参数位 set 执行逻辑与操作</td>
+</tr>
+<tr>
+<td><code>void andNot(BitSet set)</code></td>
+<td>清除此 BitSet 中所有的位，其相应的位在指定的 BitSet 中已设置</td>
+</tr>
+<tr>
+<td><code>int cardinality()</code></td>
+<td>返回此 BitSet 中设置为 true 的位数</td>
+</tr>
+<tr>
+<td><code>void clear()</code></td>
+<td>将此 BitSet 中的所有位设置为 false</td>
+</tr>
+<tr>
+<td><code>void clear(int index)</code></td>
+<td>将索引指定处的位设置为 false</td>
+</tr>
+<tr>
+<td><code>void clear(int startIndex, int endIndex)</code></td>
+<td>将指定的 fromIndex(包括)到指定的 toIndex(不包括)范围内的位设置为 false</td>
+</tr>
+<tr>
+<td><code>Object clone()</code></td>
+<td>复制此 BitSet，生成一个与之相等的新 BitSet</td>
+</tr>
+<tr>
+<td><code>boolean equals(Object bitSet)</code></td>
+<td>将此对象与指定的对象进行比较</td>
+</tr>
+<tr>
+<td><code>void flip(int index)</code></td>
+<td>将指定索引处的位设置为其当前值的补码</td>
+</tr>
+<tr>
+<td><code>void flip(int startIndex, int endIndex)</code></td>
+<td>将指定的 fromIndex(包括)到指定的 toIndex(不包括)范围内的每个位设置为其当前值的补码</td>
+</tr>
+<tr>
+<td><code>boolean get(int index)</code></td>
+<td>返回指定索引处的位值</td>
+</tr>
+<tr>
+<td><code>BitSet get(int startIndex, int endIndex)</code></td>
+<td>返回一个新的 BitSet，它由此 BitSet 中从 fromIndex(包括)到 toIndex(不包括)范围内的位组成</td>
+</tr>
+<tr>
+<td><code>boolean intersects(BitSet bitSet)</code></td>
+<td>如果指定的 BitSet 中有设置为 true 的位，并且在此 BitSet 中也将其设置为 true，则返回 true</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>如果此 BitSet 中没有包含任何设置为 true 的位，则返回 true</td>
+</tr>
+<tr>
+<td><code>int length()</code></td>
+<td>返回此 BitSet 的”逻辑大小”：BitSet 中最高设置位的索引加 1</td>
+</tr>
+<tr>
+<td><code>int nextClearBit(int startIndex)</code></td>
+<td>返回第一个设置为 false 的位的索引，这发生在指定的起始索引或之后的索引上</td>
+</tr>
+<tr>
+<td><code>int nextSetBit(int startIndex)</code></td>
+<td>返回第一个设置为 true 的位的索引，这发生在指定的起始索引或之后的索引上</td>
+</tr>
+<tr>
+<td><code>void or(BitSet bitSet)</code></td>
+<td>对此位 set 和位 set 参数执行逻辑或操作</td>
+</tr>
+<tr>
+<td><code>void set(int index)</code></td>
+<td>将指定索引处的位设置为 true</td>
+</tr>
+<tr>
+<td><code>void set(int index, boolean v)</code></td>
+<td>将指定索引处的位设置为指定的值</td>
+</tr>
+<tr>
+<td><code>void set(int startIndex, int endIndex)</code></td>
+<td>将指定的 fromIndex(包括)到指定的 toIndex(不包括)范围内的位设置为 true</td>
+</tr>
+<tr>
+<td><code>void set(int startIndex, int endIndex, boolean v)</code></td>
+<td>将指定的 fromIndex(包括)到指定的 toIndex(不包括)范围内的位设置为指定的值</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>返回此 BitSet 表示位值时实际使用空间的位数</td>
+</tr>
+<tr>
+<td><code>void xor(BitSet bitSet)</code></td>
+<td>对此位 set 和位 set 参数执行逻辑异或操作</td>
+</tr>
+<tr>
+<td><code>void xor(BitSet bitSet)</code></td>
+<td>对此位 set 和位 set 参数执行逻辑异或操作</td>
+</tr>
+<tr>
+<td><code>String toString()</code></td>
+<td>返回此位 set 的字符串表示形式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="向量-Vector"><a href="#向量-Vector" class="headerlink" title="向量(Vector)"></a>向量(Vector)</h3><p><strong><code>向量(Vector)</code></strong>类实现了一个动态数组。和ArrayList和相似，但是两者是不同的：</p>
+<ul>
+<li>Vector 是同步访问的。</li>
+<li>Vector 包含了许多传统的方法，这些方法不属于集合框架。</li>
+</ul>
+<p>Vector 主要用在事先不知道数组的大小，或者只是需要一个可以改变大小的数组的情况。</p>
+<p>Vector 类支持4种构造方法：</p>
+<ul>
+<li><p>第一种构造方法创建一个默认的向量，默认大小为10：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第二种构造方法创建指定大小的向量：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第三种构造方法创建指定大小的向量，并且增量用 incr 指定. 增量表示向量每次增加的元素数目：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">,</span><span class="token keyword">int</span> incr<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第四种构造方法创建一个包含集合 c 元素的向量：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Vector</span><span class="token punctuation">(</span>Collection c<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+<p>除了从父类继承的方法外 Vector 还定义了以下方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void add(int index, Object element)</code></td>
+<td>在此向量的指定位置插入指定的元素</td>
+</tr>
+<tr>
+<td><code>boolean add(Object o)</code></td>
+<td>将指定元素添加到此向量的末尾</td>
+</tr>
+<tr>
+<td><code>boolean addAll(Collection c)</code></td>
+<td>将指定 Collection 中的所有元素添加到此向量的末尾，按照指定 collection 的迭代器所返回的顺序添加这些元素</td>
+</tr>
+<tr>
+<td><code>boolean addAll(int index, Collection c)</code></td>
+<td>在指定位置将指定 Collection 中的所有元素插入到此向量中</td>
+</tr>
+<tr>
+<td><code>void addElement(Object obj)</code></td>
+<td>将指定的组件添加到此向量的末尾，将其大小增加 1</td>
+</tr>
+<tr>
+<td><code>int capacity()</code></td>
+<td>返回此向量的当前容量</td>
+</tr>
+<tr>
+<td><code>void clear()</code></td>
+<td>从此向量中移除所有元素</td>
+</tr>
+<tr>
+<td><code>Object clone()</code></td>
+<td>返回向量的一个副本</td>
+</tr>
+<tr>
+<td><code>boolean contains(Object elem)</code></td>
+<td>如果此向量包含指定的元素，则返回 true</td>
+</tr>
+<tr>
+<td><code>boolean containsAll(Collection c)</code></td>
+<td>如果此向量包含指定 Collection 中的所有元素，则返回 true</td>
+</tr>
+<tr>
+<td><code>void copyInto(Object[] anArray)</code></td>
+<td>将此向量的组件复制到指定的数组中</td>
+</tr>
+<tr>
+<td><code>Object elementAt(int index)</code></td>
+<td>返回指定索引处的组件</td>
+</tr>
+<tr>
+<td><code>Enumeration elements()</code></td>
+<td>返回此向量的组件的枚举</td>
+</tr>
+<tr>
+<td><code>void ensureCapacity(int minCapacity)</code></td>
+<td>增加此向量的容量(如有必要)，以确保其至少能够保存最小容量参数指定的组件数</td>
+</tr>
+<tr>
+<td><code>boolean equals(Object o)</code></td>
+<td>比较指定对象与此向量的相等性</td>
+</tr>
+<tr>
+<td><code>Object firstElement()</code></td>
+<td>返回此向量的第一个组件(位于索引 0) 处的项)</td>
+</tr>
+<tr>
+<td><code>Object get(int index)</code></td>
+<td>返回向量中指定位置的元素</td>
+</tr>
+<tr>
+<td><code>int hashCode()</code></td>
+<td>返回此向量的哈希码值</td>
+</tr>
+<tr>
+<td><code>int indexOf(Object elem)</code></td>
+<td>返回此向量中第一次出现的指定元素的索引，如果此向量不包含该元素，则返回 -1</td>
+</tr>
+<tr>
+<td><code>int indexOf(Object elem, int index)</code></td>
+<td>返回此向量中第一次出现的指定元素的索引，从 index 处正向搜索，如果未找到该元素，则返回 -1</td>
+</tr>
+<tr>
+<td><code>void insertElementAt(Object obj, int index)</code></td>
+<td>将指定对象作为此向量中的组件插入到指定的 index 处</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>测试此向量是否不包含组件</td>
+</tr>
+<tr>
+<td><code>Object lastElement()</code></td>
+<td>返回此向量的最后一个组件</td>
+</tr>
+<tr>
+<td><code>int lastIndexOf(Object elem)</code></td>
+<td>返回此向量中最后一次出现的指定元素的索引；如果此向量不包含该元素，则返回 -1</td>
+</tr>
+<tr>
+<td><code>int lastIndexOf(Object elem, int index)</code></td>
+<td>返回此向量中最后一次出现的指定元素的索引，从 index 处逆向搜索，如果未找到该元素，则返回 -1</td>
+</tr>
+<tr>
+<td><code>Object remove(int index)</code></td>
+<td>移除此向量中指定位置的元素</td>
+</tr>
+<tr>
+<td><code>boolean remove(Object o)</code></td>
+<td>移除此向量中指定元素的第一个匹配项，如果向量不包含该元素，则元素保持不变</td>
+</tr>
+<tr>
+<td><code>boolean removeAll(Collection c)</code></td>
+<td>从此向量中移除包含在指定 Collection 中的所有元素</td>
+</tr>
+<tr>
+<td><code>void removeAllElements()</code></td>
+<td>从此向量中移除全部组件，并将其大小设置为零</td>
+</tr>
+<tr>
+<td><code>boolean removeElement(Object obj)</code></td>
+<td>从此向量中移除变量的第一个(索引最小的)匹配项</td>
+</tr>
+<tr>
+<td><code>void removeElementAt(int index)</code></td>
+<td>删除指定索引处的组件</td>
+</tr>
+<tr>
+<td><code>protected void removeRange(int fromIndex, int toIndex)</code></td>
+<td>从此 List 中移除其索引位于 fromIndex(包括)与 toIndex(不包括)之间的所有元素</td>
+</tr>
+<tr>
+<td><code>boolean retainAll(Collection c)</code></td>
+<td>在此向量中仅保留包含在指定 Collection 中的元素</td>
+</tr>
+<tr>
+<td><code>Object set(int index, Object element)</code></td>
+<td>用指定的元素替换此向量中指定位置处的元素</td>
+</tr>
+<tr>
+<td><code>void setElementAt(Object obj, int index)</code></td>
+<td>将此向量指定 index 处的组件设置为指定的对象</td>
+</tr>
+<tr>
+<td><code>void setSize(int newSize)</code></td>
+<td>设置此向量的大小</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>返回此向量中的组件数</td>
+</tr>
+<tr>
+<td><code>List subList(int fromIndex, int toIndex)</code></td>
+<td>返回此 List 的部分视图，元素范围为从 fromIndex(包括)到 toIndex(不包括)</td>
+</tr>
+<tr>
+<td><code>Object[] toArray()</code></td>
+<td>返回一个数组，包含此向量中以恰当顺序存放的所有元素</td>
+</tr>
+<tr>
+<td><code>Object[] toArray(Object[] a)</code></td>
+<td>返回一个数组，包含此向量中以恰当顺序存放的所有元素；返回数组的运行时类型为指定数组的类型</td>
+</tr>
+<tr>
+<td><code>String toString()</code></td>
+<td>返回此向量的字符串表示形式，其中包含每个元素的 String 表示形式</td>
+</tr>
+<tr>
+<td><code>void trimToSize()</code></td>
+<td>对此向量的容量进行微调，使其等于向量的当前大小</td>
+</tr>
+</tbody>
+</table>
+<h3 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈(Stack)"></a>栈(Stack)</h3><p><strong><code>栈(Stack)</code></strong>是 Vector 的一个子类，实现了一个后进先出(LIFO)的数据结构。</p>
+<p>可以把栈理解为对象的垂直分布的栈，当添加一个新元素时，就将新元素放在其他元素的顶部。当从栈中取元素的时候，就从栈顶取一个元素。换句话说，最后进栈的元素最先被取出。</p>
+<p>堆栈只定义了默认构造函数，用来创建一个空栈：</p>
+<pre class=" language-java"><code class="language-java"><span class="token function">Stack</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>除了由 Vector 定义的所有方法，Stack 还定义了以下方法：：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean empty()</code></td>
+<td>测试堆栈是否为空</td>
+</tr>
+<tr>
+<td><code>Object peek()</code></td>
+<td>查看堆栈顶部的对象，但不从堆栈中移除它</td>
+</tr>
+<tr>
+<td><code>Object pop()</code></td>
+<td>移除堆栈顶部的对象，并作为此函数的值返回该对象</td>
+</tr>
+<tr>
+<td><code>Object push(Object element)</code></td>
+<td>把项压入堆栈顶部</td>
+</tr>
+<tr>
+<td><code>int search(Object element)</code></td>
+<td>返回对象在堆栈中的位置，以 1 为基数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字典-Dictionary"><a href="#字典-Dictionary" class="headerlink" title="字典(Dictionary)"></a>字典(Dictionary)</h3><p><strong><code>字典(Dictionary)</code></strong>类是一个抽象类，用来存储键/值对，作用和 Map 类相似。</p>
+<p>Dictionary 定义的抽象方法如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Enumeration elements()</code></td>
+<td>返回此 dictionary 中值的枚举</td>
+</tr>
+<tr>
+<td><code>Object get(Object key)</code></td>
+<td>返回此 dictionary 中该键所映射到的值</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>测试此 dictionary 是否不存在从键到值的映射</td>
+</tr>
+<tr>
+<td><code>Enumeration keys()</code></td>
+<td>返回此 dictionary 中的键的枚举</td>
+</tr>
+<tr>
+<td><code>Object put(Object key, Object value)</code></td>
+<td>将指定 key 映射到此 dictionary 中指定 value</td>
+</tr>
+<tr>
+<td><code>Object remove(Object key)</code></td>
+<td>从此 dictionary 中移除 key (及其相应的 value)</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>返回此 dictionary 中条目(不同键)的数量</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Dictionary 类已经过时了。在实际开发中，你可以实现 Map 接口来获取键/值的存储功能。</p>
+</blockquote>
+<h3 id="哈希表-Hashtable"><a href="#哈希表-Hashtable" class="headerlink" title="哈希表(Hashtable)"></a>哈希表(Hashtable)</h3><p><strong><code>哈希表(Hashtable)</code></strong>类提供了一种在用户定义键结构的基础上来组织数据的手段。Hashtable 是原始的 java.util 的一部分，是一个 Dictionary 具体的实现。</p>
+<p>哈希表键的具体含义完全取决于哈希表的使用情景和它包含的数据。Hashtable 现在集成到了集合框架中。它和 HashMap 类很相似，但是它支持同步。</p>
+<p>像 HashMap 一样，Hashtable 在哈希表中存储键/值对。当使用一个哈希表，要指定用作键的对象，以及要链接到该键的值。然后，该键经过哈希处理，所得到的散列码被用作存储在该表中值的索引。</p>
+<p>Hashtable 定义了四个构造方法：</p>
+<ul>
+<li><p>第一个是默认构造方法：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Hashtable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第二个构造函数创建指定大小的哈希表：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Hashtable</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第三个构造方法创建了一个指定大小的哈希表，并且通过 fillRatio 指定填充比例(填充比例必须介于0.0和1.0之间，它决定了哈希表在重新调整大小之前的充满程度)：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Hashtable</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">,</span><span class="token keyword">float</span> fillRatio<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p>第四个构造方法创建了一个以M中元素为初始化元素的哈希表(哈希表的容量被设置为M的两倍)：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token function">Hashtable</span><span class="token punctuation">(</span>Map m<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+<p>Hashtable 中除了从 Map 接口中定义的方法外，还定义了以下方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void clear()</code></td>
+<td>将此哈希表清空，使其不包含任何键</td>
+</tr>
+<tr>
+<td><code>Object clone()</code></td>
+<td>创建此哈希表的浅表副本</td>
+</tr>
+<tr>
+<td><code>boolean contains(Object value)</code></td>
+<td>测试此映射表中是否存在与指定值关联的键</td>
+</tr>
+<tr>
+<td><code>boolean containsKey(Object key)</code></td>
+<td>测试指定对象是否为此哈希表中的键</td>
+</tr>
+<tr>
+<td><code>boolean containsValue(Object value)</code></td>
+<td>如果此 Hashtable 将一个或多个键映射到此值，则返回 true</td>
+</tr>
+<tr>
+<td><code>Enumeration elements()</code></td>
+<td>返回此哈希表中的值的枚举</td>
+</tr>
+<tr>
+<td><code>Object get(Object key)</code></td>
+<td>返回指定键所映射到的值，如果此映射不包含此键的映射，则返回 null</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>测试此哈希表是否没有键映射到值</td>
+</tr>
+<tr>
+<td><code>Enumeration keys()</code></td>
+<td>返回此哈希表中的键的枚举</td>
+</tr>
+<tr>
+<td><code>Object put(Object key, Object value)</code></td>
+<td>将指定 key 映射到此哈希表中的指定 value</td>
+</tr>
+<tr>
+<td><code>void rehash()</code></td>
+<td>增加此哈希表的容量并在内部对其进行重组，以便更有效地容纳和访问其元素</td>
+</tr>
+<tr>
+<td><code>Object remove(Object key)</code></td>
+<td>从哈希表中移除该键及其相应的值</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>返回此哈希表中的键的数量</td>
+</tr>
+</tbody>
+</table>
+<h3 id="属性-Properties"><a href="#属性-Properties" class="headerlink" title="属性(Properties)"></a>属性(Properties)</h3><p><strong><code>属性(Properties)</code></strong>继承于 Hashtable。Properties 类表示了一个持久的属性集。属性列表中每个键及其对应值都是一个字符串。</p>
+<p>Properties 类被许多 Java 类使用。例如，在获取环境变量时它就作为 System.getProperties() 方法的返回值。</p>
+<p>Properties 定义如下实例变量，这个变量持有一个 Properties 对象相关的默认属性列表：</p>
+<pre class=" language-java"><code class="language-java">Properties defaults<span class="token punctuation">;</span>
+</code></pre>
+<p>Properties 类定义了两个构造方法：</p>
+<ul>
+<li>第一个构造方法没有默认值：<pre class=" language-java"><code class="language-java"> <span class="token function">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li>第二个构造方法使用propDefault 作为默认值：<pre class=" language-java"><code class="language-java"> <span class="token function">Properties</span><span class="token punctuation">(</span>Properties propDefault<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+<p>除了从 Hashtable 中所定义的方法，Properties 定义了以下方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>String getProperty(String key)</code></td>
+<td>用指定的键在此属性列表中搜索属性</td>
+</tr>
+<tr>
+<td><code>String getProperty(String key, String defaultProperty)</code></td>
+<td>用指定的键在属性列表中搜索属性</td>
+</tr>
+<tr>
+<td><code>void list(PrintStream streamOut)</code></td>
+<td>将属性列表输出到指定的输出流</td>
+</tr>
+<tr>
+<td><code>void list(PrintWriter streamOut)</code></td>
+<td>将属性列表输出到指定的输出流</td>
+</tr>
+<tr>
+<td><code>void load(InputStream streamIn)</code></td>
+<td>从输入流中读取属性列表(键和元素对)</td>
+</tr>
+<tr>
+<td><code>Enumeration propertyNames()</code></td>
+<td>按简单的面向行的格式从输入字符流中读取属性列表(键和元素对)</td>
+</tr>
+<tr>
+<td><code>Object setProperty(String key, String value)</code></td>
+<td>调用 Hashtable 的方法 put</td>
+</tr>
+<tr>
+<td><code>void store(OutputStream streamOut, String description)</code></td>
+<td>以适合使用  load(InputStream)方法加载到 Properties 表中的格式，将此 Properties 表中的属性列表(键和元素对)写入输出流</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/8359917f.html" class="b-link-green">Java 数据结构与算法概述</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-11-20T18-32-28',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/83599db7.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java 集合框架综述">
+                        
+                        <span class="card-title">Java 集合框架综述</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">早在 Java 2 中之前，Java 就提供了特设类。比如：Dictionary、Vector、Stack 和 Properties 这些类用来存储和操作对象组。虽然这些类都非常有用，但是它们缺少一个核心的，统一的主题。由于这个原因，使用 </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/集合/" target="_blank">
+                        <span class="chip tag-bg-color">集合</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/17b661f9.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java 11 新特性">
+                        
+                        <span class="card-title">Java 11 新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">自从 2017 年 9 月 21 日 Java 9 正式发布之时，Oracle 就宣布今后会按照每六个月一次的节奏进行更新，JDK 11 已于 2018 年 9 月发布。与 JDK 10 不同，JDK 11 将提供长期支持，还将作为 Jav</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JDK/" target="_blank">
+                        <span class="chip tag-bg-color">JDK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

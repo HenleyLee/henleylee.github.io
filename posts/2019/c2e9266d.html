@@ -1,0 +1,1395 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android 自定义 View 之速查表, Android, Google, Blog">
+    <meta name="description" content="Paint 常用操作android.graphics.Paint 表示画笔，要将图像绘制在画布上，就必须先调整画笔，画笔除了可以绘制点、线、面之外，还能通过画笔绘制文字等。
+
+
+
+作用描述
+相关 API
+备注
+
+
+
+
+重置画笔
+reset
+">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android 自定义 View 之速查表 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android 自定义 View 之速查表
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2019-01-04
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        1.9k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Paint-常用操作"><a href="#Paint-常用操作" class="headerlink" title="Paint 常用操作"></a>Paint 常用操作</h2><p><strong><code>android.graphics.Paint</code></strong> 表示画笔，要将图像绘制在画布上，就必须先调整画笔，画笔除了可以绘制点、线、面之外，还能通过画笔绘制文字等。</p>
+<table>
+<thead>
+<tr>
+<th>作用描述</th>
+<th>相关 API</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>重置画笔</td>
+<td>reset</td>
+<td>将画笔恢复到默认设置</td>
+</tr>
+<tr>
+<td>替换画笔</td>
+<td>set</td>
+<td>用新的画笔替换到当前画笔的所有属性</td>
+</tr>
+<tr>
+<td>设置标志</td>
+<td>setFlags</td>
+<td>设置定义好的一些标志，如抗锯齿、防抖动等</td>
+</tr>
+<tr>
+<td>隐藏模式</td>
+<td>setHinting</td>
+<td>设置画笔的隐藏模式</td>
+</tr>
+<tr>
+<td>抗锯齿</td>
+<td>setAntiAlias</td>
+<td>设置抗锯齿效果，设置 true 则边缘会将锯齿模糊化</td>
+</tr>
+<tr>
+<td>防抖动</td>
+<td>setDither</td>
+<td>设置防抖动，设置 true 则图片看上去会更柔和点</td>
+</tr>
+<tr>
+<td>画笔样式</td>
+<td>setStyle</td>
+<td>设置画笔的样式，FILL 表示填充，STROKE 表示描边，FILL_AND_STROKE 表示填充加描边</td>
+</tr>
+<tr>
+<td>画笔颜色</td>
+<td>setColor、setAlpha、setARGB</td>
+<td>设置画笔的颜色、Alpha 值、ARGB 值</td>
+</tr>
+<tr>
+<td>描边样式</td>
+<td>setStrokeWidth、setStrokeMiter、setStrokeCap、setStrokeJoin</td>
+<td>依次为描边的宽度、斜切值、笔帽、结合方式</td>
+</tr>
+<tr>
+<td>着色器</td>
+<td>setShader</td>
+<td>设置或清除着色器</td>
+</tr>
+<tr>
+<td>阴影层</td>
+<td>setShadowLayer、clearShadowLayer</td>
+<td>设置、清除阴影层</td>
+</tr>
+<tr>
+<td>颜色过滤器</td>
+<td>setColorFilter</td>
+<td>设置或清除颜料的颜色过滤器，并返回参数</td>
+</tr>
+<tr>
+<td>图像混合模式</td>
+<td>setXfermode</td>
+<td>设置图形重叠时的处理方式，如合并，取交集或并集</td>
+</tr>
+<tr>
+<td>路径效果</td>
+<td>setPathEffect</td>
+<td>设置绘制轮廓的路径效果，通常使用 PathEffect 的子类</td>
+</tr>
+<tr>
+<td>边缘效果</td>
+<td>setMaskFilter</td>
+<td>设置绘制图片的边缘效果，可以有模糊和浮雕，通常使用 MaskFilter 的子类</td>
+</tr>
+<tr>
+<td>字体样式</td>
+<td>setTypeface</td>
+<td>设置字体样式，包括粗体、斜体、衬线体、非衬线体等</td>
+</tr>
+<tr>
+<td>文本变换</td>
+<td>setTextScaleX、setTextSkewX</td>
+<td>设置文本的缩放比例、倾斜弧度</td>
+</tr>
+<tr>
+<td>文本对齐方式</td>
+<td>setTextAlign</td>
+<td>设置绘画的文本对齐方式</td>
+</tr>
+<tr>
+<td>文本特殊效果</td>
+<td>setUnderlineText、setStrikeThruText</td>
+<td>设置绘制下划线、删除线</td>
+</tr>
+<tr>
+<td>文本字间距</td>
+<td>setLetterSpacing、setWordSpacing</td>
+<td>设置文本字间距，默认为 0，前者单位为 em，后者单位为 px</td>
+</tr>
+<tr>
+<td>文本测量</td>
+<td>measureText、breakText</td>
+<td>测量文本的宽度、字符数(如果测量的宽度超过 maxWidth，则提前停止)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Canvas-常用操作"><a href="#Canvas-常用操作" class="headerlink" title="Canvas 常用操作"></a>Canvas 常用操作</h2><p><strong><code>android.graphics.Canvas</code></strong> 表示画布，用于完成在 View 上的绘图。</p>
+<table>
+<thead>
+<tr>
+<th>作用描述</th>
+<th>相关 API</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绘制颜色</td>
+<td>drawColor、drawRGB、drawARGB</td>
+<td>使用单一颜色填充整个画布</td>
+</tr>
+<tr>
+<td>绘制基本形状</td>
+<td>drawPoint、drawPoints、drawLine、drawLines、drawRect、drawRoundRect、drawOval、drawCircle、drawArc</td>
+<td>依次为点、线、矩形、圆角矩形、椭圆、圆、圆弧</td>
+</tr>
+<tr>
+<td>绘制图片</td>
+<td>drawBitmap、drawPicture</td>
+<td>绘制位图和图片</td>
+</tr>
+<tr>
+<td>绘制文本</td>
+<td>drawText、drawPosText、drawTextOnPath</td>
+<td>依次为绘制文字、绘制文字时指定每个文字位置、根据路径绘制文字</td>
+</tr>
+<tr>
+<td>绘制路径</td>
+<td>drawPath</td>
+<td>绘制路径，绘制贝塞尔曲线时也需要用到该函数</td>
+</tr>
+<tr>
+<td>顶点操作</td>
+<td>drawVertices、drawBitmapMesh</td>
+<td>通过对顶点操作可以使图像形变，drawVertices 直接对画布作用、drawBitmapMesh 只对绘制的 Bitmap 作用</td>
+</tr>
+<tr>
+<td>画布剪裁</td>
+<td>clipPath、clipRect</td>
+<td>设置画布的显示区域</td>
+</tr>
+<tr>
+<td>画布快照</td>
+<td>save、restore、saveLayerXxx、restoreToCount、getSaveCount</td>
+<td>依次为保存当前状态、回滚到上一次保存的状态、保存图层状态、会滚到指定状态、获取保存次数</td>
+</tr>
+<tr>
+<td>画布变换</td>
+<td>translate、scale、rotate、skew</td>
+<td>依次为位移、缩放、旋转、错切</td>
+</tr>
+<tr>
+<td>Matrix(矩阵)</td>
+<td>getMatrix、setMatrix、concat</td>
+<td>实际画布的位移，缩放等操作的都是图像矩阵 Matrix，只不过 Matrix 比较难以理解和使用，故封装了一些常用的方法</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Path-常用操作"><a href="#Path-常用操作" class="headerlink" title="Path 常用操作"></a>Path 常用操作</h2><p><strong><code>android.graphics.Path</code></strong> 表示路径，封装了一些复合的几何路径，其中包括直线、二次曲线、三次曲线等几何路径，它可以通过 <code>canvas.drawPath(path, paint)</code> 方法完成绘图。</p>
+<table>
+<thead>
+<tr>
+<th>作用描述</th>
+<th>相关 API</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>移动起点</td>
+<td>moveTo</td>
+<td>移动下一次操作的起点位置</td>
+</tr>
+<tr>
+<td>设置终点</td>
+<td>setLastPoint</td>
+<td>重置当前 Path 中最后一个点位置，如果在绘制之前调用，效果和 moveTo 相同</td>
+</tr>
+<tr>
+<td>连接直线</td>
+<td>lineTo</td>
+<td>添加上一个点到当前点之间的直线到 Path</td>
+</tr>
+<tr>
+<td>闭合路径</td>
+<td>close</td>
+<td>连接第一个点连接到最后一个点，形成一个闭合区域</td>
+</tr>
+<tr>
+<td>添加内容</td>
+<td>addRect、addRoundRect、addOval、addCircle、addPath、addArc、arcTo</td>
+<td>添加(矩形、圆角矩形、椭圆、圆、路径、圆弧)到当前 Path (注意 addArc 和 arcTo 的区别)</td>
+</tr>
+<tr>
+<td>是否为空</td>
+<td>isEmpty</td>
+<td>判断 Path 是否为空</td>
+</tr>
+<tr>
+<td>是否为矩形</td>
+<td>isRect</td>
+<td>判断 Path 是否是一个矩形</td>
+</tr>
+<tr>
+<td>替换路径</td>
+<td>set</td>
+<td>用新的路径替换到当前路径所有内容</td>
+</tr>
+<tr>
+<td>偏移路径</td>
+<td>offset</td>
+<td>对当前路径之前的操作进行偏移(不会影响之后的操作)</td>
+</tr>
+<tr>
+<td>贝塞尔曲线</td>
+<td>quadTo、cubicTo</td>
+<td>分别为二次和三次贝塞尔曲线的方法</td>
+</tr>
+<tr>
+<td>rXxx方法</td>
+<td>rMoveTo、rLineTo、rQuadTo、rCubicTo</td>
+<td>不带 r 的方法是基于原点的坐标系(偏移量)，rXxx 方法是基于当前点坐标系(偏移量)</td>
+</tr>
+<tr>
+<td>填充模式</td>
+<td>setFillType、getFillType、isInverseFillType、toggleInverseFillType</td>
+<td>设置、获取、判断和切换填充模式</td>
+</tr>
+<tr>
+<td>提示方法</td>
+<td>incReserve</td>
+<td>提示 Path 还有多少个点等待加入(这个方法貌似会让Path优化存储结构)</td>
+</tr>
+<tr>
+<td>布尔操作</td>
+<td>op</td>
+<td>对两个 Path 进行布尔运算(即取交集、并集等操作)</td>
+</tr>
+<tr>
+<td>计算边界</td>
+<td>computeBounds</td>
+<td>计算 Path 的边界</td>
+</tr>
+<tr>
+<td>重置路径</td>
+<td>reset、rewind</td>
+<td>清除 Path 中的内容 reset 不保留内部数据结构，但会保留 FillType；rewind 会保留内部的数据结构，但不保留 FillType</td>
+</tr>
+<tr>
+<td>矩阵操作</td>
+<td>transform</td>
+<td>矩阵变换</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Matrix-常用操作"><a href="#Matrix-常用操作" class="headerlink" title="Matrix 常用操作"></a>Matrix 常用操作</h2><p><strong><code>android.graphics.Matrix</code></strong> 表示矩阵，它本身不能对图像或 View 进行变换，但它可与其他 API 结合来控制图形、View 的变换，如 <code>Canvas</code>。</p>
+<table>
+<thead>
+<tr>
+<th>作用描述</th>
+<th>相关 API</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本方法</td>
+<td>equals、hashCode、toString、toShortString</td>
+<td>比较、获取哈希值、转换为字符串</td>
+</tr>
+<tr>
+<td>数值操作</td>
+<td>set、reset、setValues、getValues</td>
+<td>设置、重置、设置数值、获取数值</td>
+</tr>
+<tr>
+<td>数值计算</td>
+<td>mapPoints、mapRadius、mapRect、mapVectors</td>
+<td>计算变换后的数值</td>
+</tr>
+<tr>
+<td>设置(set)</td>
+<td>setConcat、setRotate、setScale、setSkew、setTranslate</td>
+<td>设置变换</td>
+</tr>
+<tr>
+<td>前乘(pre)</td>
+<td>preConcat、preRotate、preScale、preSkew、preTranslate</td>
+<td>前乘变换</td>
+</tr>
+<tr>
+<td>后乘(post)</td>
+<td>postConcat、postRotate、postScale、postSkew、postTranslate</td>
+<td>后乘变换</td>
+</tr>
+<tr>
+<td>特殊方法</td>
+<td>setPolyToPoly、setRectToRect、rectStaysRect、setSinCos</td>
+<td>一些特殊操作</td>
+</tr>
+<tr>
+<td>矩阵相关</td>
+<td>invert、isAffine(API21)、isIdentity</td>
+<td>求逆矩阵、是否为仿射矩阵、是否为单位矩阵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="贝塞尔曲线常用操作"><a href="#贝塞尔曲线常用操作" class="headerlink" title="贝塞尔曲线常用操作"></a>贝塞尔曲线常用操作</h2><p>贝塞尔曲线(<a href="https://en.wikipedia.org/wiki/B%c3%a9zier_curve" target="_blank" rel="noopener">Bézier curve</a>)，又称贝兹曲线或贝济埃曲线，是应用于二维图形应用程序的数学曲线。一般的矢量图形软件通过它来精确画出曲线，贝兹曲线由线段与节点组成，节点是可拖动的支点，线段像可伸缩的皮筋，我们在绘图工具上看到的钢笔工具就是来做这种矢量曲线的。</p>
+<p>曲线定义：起始点、终止点(也称锚点)、控制点。通过调整控制点，贝塞尔曲线的形状会发生变化。</p>
+<table>
+<thead>
+<tr>
+<th>贝塞尔曲线</th>
+<th>相关 API</th>
+<th style="text-align:center">演示动画</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一阶曲线</td>
+<td>lineTo</td>
+<td style="text-align:center"><img src="https://henleylee.github.io/medias/bezier/bezier_1.gif" alt=""></td>
+</tr>
+<tr>
+<td>二阶曲线</td>
+<td>quadTo</td>
+<td style="text-align:center"><img src="https://henleylee.github.io/medias/bezier/bezier_2.gif" alt=""></td>
+</tr>
+<tr>
+<td>三阶曲线</td>
+<td>cubicTo</td>
+<td style="text-align:center"><img src="https://henleylee.github.io/medias/bezier/bezier_3.gif" alt=""></td>
+</tr>
+<tr>
+<td>四阶曲线</td>
+<td>无</td>
+<td style="text-align:center"><img src="https://henleylee.github.io/medias/bezier/bezier_4.gif" alt=""></td>
+</tr>
+<tr>
+<td>五阶曲线</td>
+<td>无</td>
+<td style="text-align:center"><img src="https://henleylee.github.io/medias/bezier/bezier_5.gif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h3 id="原理和公式"><a href="#原理和公式" class="headerlink" title="原理和公式"></a>原理和公式</h3><p>下面介绍一下贝塞尔曲线的原理和公式：<br>以下公式中：<code>B(t)</code>为 <code>t</code> 时间下点的坐标；<code>P0</code> 为起点，<code>Pn</code> 为终点，<code>Pi</code> 为控制点。</p>
+<h4 id="一阶贝塞尔曲线-线段"><a href="#一阶贝塞尔曲线-线段" class="headerlink" title="一阶贝塞尔曲线(线段)"></a>一阶贝塞尔曲线(线段)</h4><p><img src="https://henleylee.github.io/medias/bezier/bezier_1.png" alt=""><br><img src="https://henleylee.github.io/medias/bezier/bezier_1.gif" alt=""><br>原理：由 P0 至 P1 的连续点， 描述的一条线段</p>
+<h4 id="二阶贝塞尔曲线-抛物线"><a href="#二阶贝塞尔曲线-抛物线" class="headerlink" title="二阶贝塞尔曲线(抛物线)"></a>二阶贝塞尔曲线(抛物线)</h4><p><img src="https://henleylee.github.io/medias/bezier/bezier_2.png" alt=""><br><img src="https://henleylee.github.io/medias/bezier/bezier_2.gif" alt=""><br>原理：由 P0 至 P1 的连续点 Q0，描述一条线段。<br>      由 P1 至 P2 的连续点 Q1，描述一条线段。<br>      由 Q0 至 Q1 的连续点 B(t)，描述一条二次贝塞尔曲线。</p>
+<p>经验：P1-P0为曲线在P0处的切线。</p>
+<h4 id="三阶贝塞尔曲线"><a href="#三阶贝塞尔曲线" class="headerlink" title="三阶贝塞尔曲线"></a>三阶贝塞尔曲线</h4><p><img src="https://henleylee.github.io/medias/bezier/bezier_3.png" alt=""><br><img src="https://henleylee.github.io/medias/bezier/bezier_3.gif" alt=""></p>
+<h4 id="四阶贝塞尔曲线"><a href="#四阶贝塞尔曲线" class="headerlink" title="四阶贝塞尔曲线"></a>四阶贝塞尔曲线</h4><p><img src="https://henleylee.github.io/medias/bezier/bezier_4.gif" alt=""></p>
+<h4 id="五阶贝塞尔曲线"><a href="#五阶贝塞尔曲线" class="headerlink" title="五阶贝塞尔曲线"></a>五阶贝塞尔曲线</h4><p><img src="https://henleylee.github.io/medias/bezier/bezier_5.gif" alt=""></p>
+<h4 id="通用公式"><a href="#通用公式" class="headerlink" title="通用公式"></a>通用公式</h4><p><img src="https://henleylee.github.io/medias/bezier/bezier_common.png" alt=""></p>
+<h3 id="工具网站"><a href="#工具网站" class="headerlink" title="工具网站"></a>工具网站</h3><ul>
+<li><a href="http://cubic-bezier.com/" target="_blank" rel="noopener">cubic-bezier</a></li>
+<li><a href="http://myst729.github.io/bezier-curve/" target="_blank" rel="noopener">bezier-curve</a></li>
+</ul>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2019/c2e9266d.html" class="b-link-green">Android 自定义 View 之速查表</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2019-01-04T18-56-25',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2019/48d8e111.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Android 自定义 View 之 Measure">
+                        
+                        <span class="card-title">Android 自定义 View 之 Measure</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">作用在自定义 View 过程中，Measure 的主要作用就是测量 View 的宽/高。
+
+在某些情况下，需要多次测量(measure)才能确定 View 最终的宽/高；该情况下，measure 过程后得到的宽/高可能不准确；此处建议：在 </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2019-01-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2019/55df9ec1.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Android 自定义 View 之基础">
+                        
+                        <span class="card-title">Android 自定义 View 之基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">View 的分类视图 View 主要分为两类：
+
+
+
+类别
+解释
+特点
+
+
+
+
+单一视图
+即一个View，如 TextView
+不包含子 View
+
+
+视图容器
+即多个 View 组成的 ViewGroup，如 LinearLayout
+包</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2019-01-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

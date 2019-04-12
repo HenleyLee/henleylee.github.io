@@ -1,0 +1,1604 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java 8 新特性, Android, Google, Blog">
+    <meta name="description" content="Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的 Strea">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Java 8 新特性 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Java 8 新特性
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip tag-bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/JDK/" target="_blank">
+                                <span class="chip tag-bg-color">JDK</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2018-11-12
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        7k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        29 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的 Stream API 等。</p>
+<h2 id="Java-8-的新特性"><a href="#Java-8-的新特性" class="headerlink" title="Java 8 的新特性"></a>Java 8 的新特性</h2><p>Java 8 新增了非常多的特性，主要特性包含以下几个：</p>
+<ul>
+<li><strong><code>Lambda 表达式</code></strong> − Lambda允许把函数作为一个方法的参数（函数作为参数传递进方法中。</li>
+<li><strong><code>方法引用</code></strong> − 方法引用提供了非常有用的语法，可以直接引用已有 Java 类或对象（实例）的方法或构造器。与 lambda 联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。</li>
+<li><strong><code>默认方法</code></strong> − 默认方法就是一个在接口里面有了一个实现的方法。</li>
+<li><strong><code>新工具</code></strong> − 新的编译工具，如：Nashorn 引擎 jjs、 类依赖分析器 jdeps。</li>
+<li><strong><code>Stream API</code></strong> −新添加的 Stream API（java.util.stream） 把真正的函数式编程风格引入到 Java 中。</li>
+<li><strong><code>Date Time API</code></strong> − 加强对日期与时间的处理。</li>
+<li><strong><code>Optional 类</code></strong> − Optional 类已经成为 Java 8 类库的一部分，用来解决空指针异常。</li>
+<li><strong><code>Nashorn, JavaScript 引擎</code></strong> − Java 8 提供了一个新的 Nashorn javascript 引擎，它允许我们在 JVM 上运行特定的 javascript 应用。</li>
+</ul>
+<p>Java 8 包含语言、编译器、库、工具和JVM等方面的十多个新特性。</p>
+<p>更多的新特性可以参阅官网：<a href="https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html" target="_blank" rel="noopener">What’s New in JDK 8</a><br>JDK 8 下载地址：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">Java 8 Downloads</a></p>
+<h3 id="Java语言的新特性"><a href="#Java语言的新特性" class="headerlink" title="Java语言的新特性"></a>Java语言的新特性</h3><h4 id="Lambda-表达式和函数式接口"><a href="#Lambda-表达式和函数式接口" class="headerlink" title="Lambda 表达式和函数式接口"></a>Lambda 表达式和函数式接口</h4><p>Lambda 表达式（也称为闭包）是 Java 8 中最大和最令人期待的语言改变。它允许我们将函数当成参数传递给某个方法，或者把代码本身当作数据处理：<a href="https://www.javacodegeeks.com/2014/03/functional-programming-with-java-8-lambda-expressions-monads.html" target="_blank" rel="noopener">函数式开发者</a>非常熟悉这些概念。</p>
+<p>很多 JVM 平台上的语言（<a href="https://www.javacodegeeks.com/category/jvm-languages/groovy" target="_blank" rel="noopener">Groovy</a>、<a href="https://www.javacodegeeks.com/category/jvm-languages/scala" target="_blank" rel="noopener">Scala</a>等）从诞生之日就支持 Lambda 表达式，但是 Java 开发者没有选择，只能使用匿名内部类代替 Lambda 表达式。</p>
+<p>Lambda 的设计耗费了很多时间和很大的社区力量，最终找到一种折中的实现方案，可以实现简洁而紧凑的语言结构。</p>
+<p>最简单的 Lambda 表达式可由<code>逗号分隔的参数列表</code>、<code>-&gt;符号</code>和<code>语句块</code>组成，例如：</p>
+<pre class=" language-java"><code class="language-java">Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>e <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>在上面这个代码中的参数 e 的类型是由编译器推理得出的，你也可以显式指定该参数的类型，例如：</p>
+<pre class=" language-java"><code class="language-java">Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>String e<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果 Lambda 表达式需要更复杂的语句块，则可以使用花括号将该语句块括起来，类似于 Java 中的函数体，例如：</p>
+<pre class=" language-java"><code class="language-java">Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>e <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Lambda 表达式可以引用类成员和局部变量（会将这些变量隐式得转换成 <code>final</code> 的），例如下列两个代码块的效果完全相同：</p>
+<pre class=" language-java"><code class="language-java">String separator <span class="token operator">=</span> <span class="token string">","</span><span class="token punctuation">;</span>
+Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+        <span class="token punctuation">(</span>String e<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>e <span class="token operator">+</span> separator<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>和</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> String separator <span class="token operator">=</span> <span class="token string">","</span><span class="token punctuation">;</span>
+Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+        <span class="token punctuation">(</span>String e<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>e <span class="token operator">+</span> separator<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Lambda 表达式有返回值，返回值的类型也由编译器推理得出。如果 Lambda 表达式中的语句块只有一行，则可以不用使用 <code>return</code> 语句，下列两个代码片段效果相同：</p>
+<pre class=" language-java"><code class="language-java">Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>e1<span class="token punctuation">,</span> e2<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> e1<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>e2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>和</p>
+<pre class=" language-java"><code class="language-java">Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>e1<span class="token punctuation">,</span> e2<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> result <span class="token operator">=</span> e1<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>e2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Lambda 的设计者们为了让现有的功能与 Lambda 表达式良好兼容，考虑了很多方法，于是产生了<a href="https://www.javacodegeeks.com/2013/03/introduction-to-functional-interfaces-a-concept-recreated-in-java-8.html" target="_blank" rel="noopener">函数接口</a>这个概念。函数接口指的是只有一个函数的接口，这样的接口可以隐式转换为 Lambda 表达式。<code>java.lang.Runnable</code> 和 <code>java.util.concurrent.Callable</code> 是函数式接口的最佳例子。在实践中，函数式接口非常脆弱：只要某个开发者在该接口中添加一个函数，则该接口就不再是函数式接口进而导致编译失败。为了克服这种代码层面的脆弱性，并显式说明某个接口是函数式接口，Java 8 提供了一个特殊的注解 <code>@FunctionalInterface</code>（Java 库中的所有相关接口都已经带有这个注解了），举个简单的函数式接口的定义：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FunctionalInterface</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Functional</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>不过有一点需要注意，默认方法和静态方法不会破坏函数式接口的定义，因此如下的代码是合法的。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FunctionalInterface</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">FunctionalDefaultMethods</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">defaultMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Lambda 表达式作为 Java 8 的最大卖点，它有潜力吸引更多的开发者加入到 JVM 平台，并在纯 Java 编程中使用函数式编程的概念。如果你需要了解更多 Lambda 表达式的细节，可以参考<a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="接口的默认方法和静态方法"><a href="#接口的默认方法和静态方法" class="headerlink" title="接口的默认方法和静态方法"></a>接口的默认方法和静态方法</h4><p>Java 8 使用两个新概念扩展了接口的含义：默认方法和静态方法。默认方法使得接口有点类似 traits，不过要实现的目标不一样。默认方法使得开发者可以在 不破坏二进制兼容性的前提下，往现存接口中添加新的方法，即不强制那些实现了该接口的类也同时实现这个新加的方法。</p>
+<p>默认方法和抽象方法之间的区别在于抽象方法需要实现，而默认方法不需要。接口提供的默认方法会被接口的实现类继承或者覆写，例子代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">interface</span> <span class="token class-name">Defaulable</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Interfaces now allow default methods, the implementer may or</span>
+    <span class="token comment" spellcheck="true">// may not implement (override) them.</span>
+    <span class="token keyword">default</span> String <span class="token function">notRequired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Default implementation"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DefaultableImpl</span> <span class="token keyword">implements</span> <span class="token class-name">Defaulable</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">OverridableImpl</span> <span class="token keyword">implements</span> <span class="token class-name">Defaulable</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">notRequired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Overridden implementation"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Defaulable</code> 接口使用关键字 <code>default</code> 定义了一个默认方法 <code>notRequired()</code>。<code>DefaultableImpl</code> 类实现了这个接口，同时默认继承了这个接口中的默认方法；<code>OverridableImpl</code> 类也实现了这个接口，但覆写了该接口的默认方法，并提供了一个不同的实现。</p>
+<p>Java 8 带来的另一个有趣的特性是在接口中可以定义静态方法，例子代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">interface</span> <span class="token class-name">DefaulableFactory</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Interfaces now allow static methods</span>
+    <span class="token keyword">static</span> Defaulable <span class="token function">create</span><span class="token punctuation">(</span>Supplier<span class="token operator">&lt;</span>Defaulable<span class="token operator">></span> supplier<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> supplier<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>下面的代码片段整合了默认方法和静态方法的使用场景：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Defaulable defaulable <span class="token operator">=</span> DefaulableFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>DefaultableImpl<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>defaulable<span class="token punctuation">.</span><span class="token function">notRequired</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    defaulable <span class="token operator">=</span> DefaulableFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>OverridableImpl<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>defaulable<span class="token punctuation">.</span><span class="token function">notRequired</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这段代码的输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">Default implementation
+Overridden implementation
+</code></pre>
+<p>由于 JVM 上的默认方法的实现在字节码层面提供了支持，因此效率非常高。默认方法允许在不打破现有继承体系的基础上改进接口。该特性在官方库中的应用是：给 <code>java.util.Collection</code> 接口添加新方法，如 <code>stream()</code>、<code>parallelStream()</code>、<code>forEach()</code> 和 <code>removeIf()</code> 等等。</p>
+<p>尽管默认方法有这么多好处，但在实际开发中应该谨慎使用：在复杂的继承体系中，默认方法可能引起歧义和编译错误。如果你想了解更多细节，可以参考<a href="https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h4><p>方法引用使得开发者可以直接引用现存的方法、Java 类的构造方法或者实例对象。方法引用和 Lambda 表达式配合使用，使得 Java 类的构造方法看起来紧凑而简洁，没有很多复杂的模板代码。</p>
+<p>西门的例子中，<strong>Car</strong> 类是不同方法引用的例子，可以帮助读者区分四种类型的方法引用：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Car <span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">final</span> Supplier<span class="token operator">&lt;</span>Car<span class="token operator">></span> supplier<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> supplier<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">collide</span><span class="token punctuation">(</span><span class="token keyword">final</span> Car car<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Collided "</span> <span class="token operator">+</span> car<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">follow</span><span class="token punctuation">(</span><span class="token keyword">final</span> Car another<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Following the "</span> <span class="token operator">+</span> another<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">repair</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Repaired "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>第一种方法引用的类型是构造器引用，语法是 <code>Class::new</code>，或者更一般的形式：<code>Class&lt;T&gt;::new</code>。注意：这个构造器没有参数。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> Car car <span class="token operator">=</span> Car<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Car<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> List<span class="token operator">&lt;</span>Car<span class="token operator">></span> cars <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>第二种方法引用的类型是静态方法引用，语法是 <code>Class::static_method</code>。注意：这个方法接受一个 Car 类型的参数。</p>
+<pre class=" language-java"><code class="language-java">cars<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>Car<span class="token operator">:</span><span class="token operator">:</span>collide<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>第三种方法引用的类型是某个类的成员方法的引用，语法是 <code>Class::method</code>，注意，这个方法没有定义入参：</p>
+<pre class=" language-java"><code class="language-java">cars<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>Car<span class="token operator">:</span><span class="token operator">:</span>repair<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>第四种方法引用的类型是某个实例对象的成员方法的引用，语法是 <code>instance::method</code>。注意：这个方法接受一个 Car 类型的参数：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> Car police <span class="token operator">=</span> Car<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Car<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cars<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>police<span class="token operator">:</span><span class="token operator">:</span>follow<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>运行上述例子，可以在控制台看到如下输出（Car实例可能不同）：</p>
+<pre class=" language-shell"><code class="language-shell">Collided com.javacodegeeks.java8.method.references.MethodReferences$Car@7a81197d
+Repaired com.javacodegeeks.java8.method.references.MethodReferences$Car@7a81197d
+Following the com.javacodegeeks.java8.method.references.MethodReferences$Car@7a81197d
+</code></pre>
+<p>如果想了解和学习更详细的内容，可以参考<a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="重复注解"><a href="#重复注解" class="headerlink" title="重复注解"></a>重复注解</h4><p>自从 Java 5 中引入<a href="https://www.javacodegeeks.com/2012/08/java-annotations-explored-explained.html" target="_blank" rel="noopener">注解</a>以来，这个特性开始变得非常流行，并在各个框架和项目中被广泛使用。不过，注解有一个很大的限制是：在同一个地方不能多次使用同一个注解。Java 8 打破了这个限制，引入了重复注解的概念，允许在同一个地方多次使用同一个注解。</p>
+<p>在 Java 8 中使用 <code>@Repeatable</code> 注解定义重复注解，实际上，这并不是语言层面的改进，而是编译器做的一个 trick，底层的技术仍然相同。可以利用下面的代码说明：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>repeatable<span class="token punctuation">.</span>annotations<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ElementType<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Repeatable<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Retention<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RetentionPolicy<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Target<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RepeatingAnnotations</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Filters</span> <span class="token punctuation">{</span>
+        Filter<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Repeatable</span><span class="token punctuation">(</span>Filters<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Filter</span> <span class="token punctuation">{</span>
+        String <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Filter</span><span class="token punctuation">(</span><span class="token string">"filter1"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Filter</span><span class="token punctuation">(</span><span class="token string">"filter2"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Filterable</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Filter filter <span class="token operator">:</span> Filterable<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getAnnotationsByType</span><span class="token punctuation">(</span>Filter<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>filter<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>正如我们所见，这里的 <code>Filter</code> 类使用 <code>@Repeatable(Filters.class)</code> 注解修饰，而 <code>Filters</code> 是存放 <code>Filter</code> 注解的容器，编译器尽量对开发者屏蔽这些细节。这样，<code>Filterable</code> 接口可以用两个 <code>Filter</code> 注解注释（这里并没有提到任何关于Filters的信息）。</p>
+<p>另外，反射 API 提供了一个新的方法：<code>getAnnotationsByType()</code>，可以返回某个类型的重复注解，例如 Filterable.class.getAnnoation(Filters.class) 将返回两个 Filter 实例，输出到控制台的内容如下所示：</p>
+<pre class=" language-shell"><code class="language-shell">filter1
+filter2
+</code></pre>
+<p>如果你希望了解更多内容，可以参考<a href="https://docs.oracle.com/javase/tutorial/java/annotations/repeating.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="更好的类型推断"><a href="#更好的类型推断" class="headerlink" title="更好的类型推断"></a>更好的类型推断</h4><p>Java 8 编译器在类型推断方面有很大的提升，在很多场景下编译器可以推导出某个参数的数据类型，从而使得代码更为简洁。例子代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>type<span class="token punctuation">.</span>inference<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Value</span><span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">defaultValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> T <span class="token function">getOrDefault</span><span class="token punctuation">(</span>T value<span class="token punctuation">,</span> T defaultValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>value <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> value <span class="token operator">:</span> defaultValue<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>下列代码是 <code>Value&lt;String&gt;</code> 类型的应用：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>type<span class="token punctuation">.</span>inference<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TypeInference</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> Value<span class="token operator">&lt;</span>String<span class="token operator">></span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Value</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        value<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span><span class="token string">"22"</span><span class="token punctuation">,</span> Value<span class="token punctuation">.</span><span class="token function">defaultValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>参数 <code>Value.defaultValue()</code> 的类型由编译器推导得出，不需要显式指明。在 Java 7 中这段代码会有编译错误，除非使用 <code>Value.&lt;String&gt;defaultValue()</code>。</p>
+<h4 id="拓宽注解的应用场景"><a href="#拓宽注解的应用场景" class="headerlink" title="拓宽注解的应用场景"></a>拓宽注解的应用场景</h4><p>Java 8 拓宽了注解的应用场景。现在，注解几乎可以使用在任何元素上：局部变量、接口类型、超类和接口实现类，甚至可以用在函数的异常定义上。下面是一些例子：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>annotations<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ElementType<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Retention<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RetentionPolicy<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Target<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Collection<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Annotations</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE_USE<span class="token punctuation">,</span> ElementType<span class="token punctuation">.</span>TYPE_PARAMETER<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">NonEmpty</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Holder</span><span class="token operator">&lt;</span><span class="token annotation punctuation">@NonEmpty</span> T<span class="token operator">></span> <span class="token keyword">extends</span> <span class="token annotation punctuation">@NonEmpty</span> Object <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token annotation punctuation">@NonEmpty</span> Exception <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unused"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> Holder<span class="token operator">&lt;</span>String<span class="token operator">></span> holder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token annotation punctuation">@NonEmpty</span> Holder<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token annotation punctuation">@NonEmpty</span> Collection<span class="token operator">&lt;</span><span class="token annotation punctuation">@NonEmpty</span> String<span class="token operator">></span> strings <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>ElementType.TYPE_USER</code> 和 <code>ElementType.TYPE_PARAMETER</code> 是 Java 8 新增的两个注解，用于描述注解的使用场景。Java 语言也做了对应的改变，以识别这些新增的注解。</p>
+<h3 id="Java-编译器的新特性"><a href="#Java-编译器的新特性" class="headerlink" title="Java 编译器的新特性"></a>Java 编译器的新特性</h3><h4 id="参数名称"><a href="#参数名称" class="headerlink" title="参数名称"></a>参数名称</h4><p>为了在运行时获得 Java 程序中方法的参数名称，老一辈的 Java 程序员必须使用不同方法，例如 <a href="https://github.com/paul-hammant/paranamer" target="_blank" rel="noopener">Paranamer liberary</a>。Java 8 终于将这个特性规范化，在语言层面（使用反射API和Parameter.getName()方法）和字节码层面（使用新的javac编译器以及-parameters参数）提供支持。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>parameter<span class="token punctuation">.</span>names<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Parameter<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ParameterNames</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        Method method <span class="token operator">=</span> ParameterNames<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"main"</span><span class="token punctuation">,</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">final</span> Parameter parameter <span class="token operator">:</span> method<span class="token punctuation">.</span><span class="token function">getParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Parameter: "</span> <span class="token operator">+</span> parameter<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在 Java 8 中这个特性是默认关闭的，因此如果不带 <code>-parameters</code> 参数编译上述代码并运行，则会输出如下结果：</p>
+<pre class=" language-shell"><code class="language-shell">Parameter: arg0
+</code></pre>
+<p>如果带 <code>-parameters</code> 参数，则会输出如下结果（正确的结果）：</p>
+<pre class=" language-shell"><code class="language-shell">Parameter: args
+</code></pre>
+<p>如果你使用 Maven 进行项目管理，则可以在 <code>maven-compiler-plugin</code> 编译器的配置项中配置 <code>-parameters</code> 参数：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>compilerArgument</span><span class="token punctuation">></span></span>-parameters<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>compilerArgument</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>source</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+</code></pre>
+<h3 id="Java-官方库的新特性"><a href="#Java-官方库的新特性" class="headerlink" title="Java 官方库的新特性"></a>Java 官方库的新特性</h3><p>Java 8 增加了很多新的工具类（date/time类），并扩展了现存的工具类，以支持现代的并发编程、函数式编程等。</p>
+<h4 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h4><p>Java 应用中最常见的 bug 就是<a href="https://examples.javacodegeeks.com/java-basics/exceptions/java-lang-nullpointerexception-how-to-handle-null-pointer-exception/" target="_blank" rel="noopener">空值异常</a>。在 Java 8 之前，<a href="https://github.com/google/guava" target="_blank" rel="noopener">Google Guava</a> 引入了 <code>Optionals</code> 类来解决 <code>NullPointerException</code>，从而避免源码被各种 <code>null</code> 检查污染，以便开发者写出更加整洁的代码。Java 8 也将 <code>Optional</code> 加入了官方库。</p>
+<p><code>Optional</code> 仅仅是一个容器：存放 <code>T</code> 类型的值或者 <code>null</code>，它提供了一些有用的方法来避免显式的 <code>null</code> 检查，可以参考 <a href="https://docs.oracle.com/javase/8/docs/api/" target="_blank" rel="noopener">Java 8 官方文档</a>了解更多细节。</p>
+<p>接下来看一点使用 <code>Optional</code> 的例子：可能为空的值或者某个类型的值：</p>
+<pre class=" language-java"><code class="language-java">Optional<span class="token operator">&lt;</span>String<span class="token operator">></span> fullName <span class="token operator">=</span> Optional<span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Full Name is set? "</span> <span class="token operator">+</span> fullName<span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Full Name: "</span> <span class="token operator">+</span> fullName<span class="token punctuation">.</span><span class="token function">orElseGet</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token string">"[none]"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>fullName<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>s <span class="token operator">-</span><span class="token operator">></span> <span class="token string">"Hey "</span> <span class="token operator">+</span> s <span class="token operator">+</span> <span class="token string">"!"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token string">"Hey Stranger!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果 <code>Optional</code> 实例持有一个非空值，则 <code>isPresent()</code> 方法返回 true，否则返回 false；<code>orElseGet()</code> 方法，<code>Optional</code> 实例持有 <code>null</code>，则可以接受一个 lambda 表达式生成的默认值；<code>map()</code> 方法可以将现有的 <code>Opetional</code> 实例的值转换成新的值；<code>orElse()</code> 方法与 <code>orElseGet()</code> 方法类似，但是在持有null的时候返回传入的默认值。</p>
+<p>上述代码的输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">Full Name is set? false
+Full Name: [none]
+Hey Stranger!
+</code></pre>
+<p>再看下另一个简单的例子：</p>
+<pre class=" language-java"><code class="language-java">Optional<span class="token operator">&lt;</span>String<span class="token operator">></span> firstName <span class="token operator">=</span> Optional<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"Tom"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"First Name is set? "</span> <span class="token operator">+</span> firstName<span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"First Name: "</span> <span class="token operator">+</span> firstName<span class="token punctuation">.</span><span class="token function">orElseGet</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token string">"[none]"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>firstName<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>s <span class="token operator">-</span><span class="token operator">></span> <span class="token string">"Hey "</span> <span class="token operator">+</span> s <span class="token operator">+</span> <span class="token string">"!"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElse</span><span class="token punctuation">(</span><span class="token string">"Hey Stranger!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这个例子的输出是：</p>
+<pre class=" language-shell"><code class="language-shell">First Name is set? true
+First Name: Tom
+Hey Tom!
+</code></pre>
+<p>如果想了解更多的细节，请参考<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="Streams-API"><a href="#Streams-API" class="headerlink" title="Streams API"></a>Streams API</h4><p>新增的 <a href="https://www.javacodegeeks.com/2014/05/the-effects-of-programming-with-java-8-streams-on-algorithm-performance.html" target="_blank" rel="noopener">Stream API</a>（java.util.stream）将生成环境的函数式编程引入了 Java 库中。这是目前为止最大的一次对 Java 库的完善，以便开发者能够写出更加有效、更加简洁和紧凑的代码。</p>
+<p>Steam API 极大得简化了集合操作（后面我们会看到不止是集合），首先看下这个叫 Task 的类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Streams</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">enum</span> Status <span class="token punctuation">{</span>
+        OPEN<span class="token punctuation">,</span> CLOSED
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> Status status<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> Integer points<span class="token punctuation">;</span>
+
+        <span class="token function">Task</span><span class="token punctuation">(</span><span class="token keyword">final</span> Status status<span class="token punctuation">,</span> <span class="token keyword">final</span> Integer points<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> status<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>points <span class="token operator">=</span> points<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> Integer <span class="token function">getPoints</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> points<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> Status <span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> status<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"[%s, %d]"</span><span class="token punctuation">,</span> status<span class="token punctuation">,</span> points<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Task 类有一个分数（或伪复杂度）的概念，另外还有两种状态：OPEN 或者 CLOSED。现在假设有一个 task 集合：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> Collection<span class="token operator">&lt;</span>Task<span class="token operator">></span> tasks <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>
+        <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>Status<span class="token punctuation">.</span>OPEN<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>Status<span class="token punctuation">.</span>OPEN<span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>Status<span class="token punctuation">.</span>CLOSED<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>首先看一个问题：在这个 task 集合中一共有多少个 OPEN 状态的点？在 Java 8 之前，要解决这个问题，则需要使用 <code>foreach</code> 循环遍历 task 集合；但是在 Java 8 中可以利用 <code>steams</code> 解决：包括一系列元素的列表，并且支持顺序和并行处理。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Calculate total points of all active tasks using sum()</span>
+<span class="token keyword">final</span> <span class="token keyword">long</span> totalPointsOfOpenTasks <span class="token operator">=</span> tasks
+        <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>task <span class="token operator">-</span><span class="token operator">></span> task<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> Status<span class="token punctuation">.</span>OPEN<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">mapToInt</span><span class="token punctuation">(</span>Task<span class="token operator">:</span><span class="token operator">:</span>getPoints<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Total points: "</span> <span class="token operator">+</span> totalPointsOfOpenTasks<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>运行这个方法的控制台输出是：</p>
+<pre class=" language-shell"><code class="language-shell">Total points: 18
+</code></pre>
+<p>这里有很多知识点值得说。首先，tasks 集合被转换成 <code>steam</code> 表示；其次，在 steam 上的 <code>filter</code> 操作会过滤掉所有 CLOSED 的 task；第三，<code>mapToInt</code> 操作基于每个 task 实例的 <code>Task::getPoints</code> 方法将 task 流转换成 Integer 集合；最后，通过 <code>sum</code> 方法计算总和，得出最后的结果。</p>
+<p>在学习下一个例子之前，还需要记住一些 steams（<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamOps" target="_blank" rel="noopener">点此更多细节</a>）的知识点。Steam 之上的操作可分为中间操作和晚期操作。</p>
+<p>中间操作会返回一个新的 steam —— 执行一个中间操作（例如filter）并不会执行实际的过滤操作，而是创建一个新的 steam，并将原 steam 中符合条件的元素放入新创建的 steam。</p>
+<p>晚期操作（例如 <code>forEach</code> 或者 <code>sum</code>），会遍历 steam 并得出结果或者附带结果；在执行晚期操作之后，steam 处理线已经处理完毕，就不能使用了。在几乎所有情况下，晚期操作都是立刻对 steam 进行遍历。</p>
+<p>steam 的另一个价值是创造性地支持并行处理（parallel processing）。对于上述的 tasks 集合，我们可以用下面的代码计算所有任务的点数之和：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Calculate total points of all tasks</span>
+<span class="token keyword">final</span> <span class="token keyword">double</span> totalPoints <span class="token operator">=</span> tasks
+        <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">parallel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>task <span class="token operator">-</span><span class="token operator">></span> task<span class="token punctuation">.</span><span class="token function">getPoints</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// or map( Task::getPoints )</span>
+        <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> Integer<span class="token operator">:</span><span class="token operator">:</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Total points (all tasks): "</span> <span class="token operator">+</span> totalPoints<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这里我们使用 <code>parallel</code> 方法并行处理所有的 task，并使用 <code>reduce</code> 方法计算最终的结果。控制台输出如下：</p>
+<pre class=" language-shell"><code class="language-shell">Total points（all tasks）: 26.0
+</code></pre>
+<p>对于一个集合，经常需要根据某些条件对其中的元素分组。利用 steam 提供的 API 可以很快完成这类任务，代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Group tasks by their status</span>
+<span class="token keyword">final</span> Map<span class="token operator">&lt;</span>Status<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>Task<span class="token operator">>></span> map <span class="token operator">=</span> tasks
+        <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">groupingBy</span><span class="token punctuation">(</span>Task<span class="token operator">:</span><span class="token operator">:</span>getStatus<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>控制台的输出如下：</p>
+<pre class=" language-shell"><code class="language-shell">{CLOSED=[[CLOSED, 8]], OPEN=[[OPEN, 5], [OPEN, 13]]}
+</code></pre>
+<p>最后一个关于 tasks 集合的例子问题是：如何计算集合中每个任务的点数在集合中所占的比重，具体处理的代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Calculate the weight of each tasks (as percent of total points) </span>
+<span class="token keyword">final</span> Collection<span class="token operator">&lt;</span>String<span class="token operator">></span> result <span class="token operator">=</span> tasks
+        <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                                      <span class="token comment" spellcheck="true">// Stream&lt; String ></span>
+        <span class="token punctuation">.</span><span class="token function">mapToInt</span><span class="token punctuation">(</span>Task<span class="token operator">:</span><span class="token operator">:</span>getPoints<span class="token punctuation">)</span>                     <span class="token comment" spellcheck="true">// IntStream</span>
+        <span class="token punctuation">.</span><span class="token function">asLongStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                                <span class="token comment" spellcheck="true">// LongStream</span>
+        <span class="token punctuation">.</span><span class="token function">mapToDouble</span><span class="token punctuation">(</span>points <span class="token operator">-</span><span class="token operator">></span> points <span class="token operator">/</span> totalPoints<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// DoubleStream</span>
+        <span class="token punctuation">.</span><span class="token function">boxed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                                       <span class="token comment" spellcheck="true">// Stream&lt; Double ></span>
+        <span class="token punctuation">.</span><span class="token function">mapToLong</span><span class="token punctuation">(</span>weigth <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>weigth <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">// LongStream</span>
+        <span class="token punctuation">.</span><span class="token function">mapToObj</span><span class="token punctuation">(</span>percentage <span class="token operator">-</span><span class="token operator">></span> percentage <span class="token operator">+</span> <span class="token string">"%"</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// Stream&lt; String></span>
+        <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment" spellcheck="true">// List&lt; String ></span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>控制台输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">[19%, 50%, 30%]
+</code></pre>
+<p>最后，正如之前所说，Steam API 不仅可以作用于 Java 集合，传统的 IO 操作（从文件或者网络一行一行得读取数据）可以受益于 steam 处理，这里有一个小例子：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> Path path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">(</span>Stream<span class="token operator">&lt;</span>String<span class="token operator">></span> lines <span class="token operator">=</span> Files<span class="token punctuation">.</span><span class="token function">lines</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> StandardCharsets<span class="token punctuation">.</span>UTF_8<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        lines<span class="token punctuation">.</span><span class="token function">onClose</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Done!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Stream 的方法 <code>onClose</code> 返回一个等价的有额外句柄的 Stream，当 Stream 的 <code>close()</code> 方法被调用的时候这个句柄会被执行。Stream API、Lambda 表达式还有接口默认方法和静态方法支持的方法引用，是 Java 8 对软件开发的现代范式的响应。</p>
+<h4 id="Date-Time-API"><a href="#Date-Time-API" class="headerlink" title="Date/Time API"></a>Date/Time API</h4><p>Java 8 引入了<a href="https://jcp.org/en/jsr/detail?id=310" target="_blank" rel="noopener">新的 Date-Time API(JSR 310)</a>来改进时间、日期的处理。时间和日期的管理一直是最令 Java 开发者痛苦的问题。<code>java.util.Date</code> 和后来的 <code>java.util.Calendar</code> 一直没有解决这个问题（甚至令开发者更加迷茫）。</p>
+<p>因为上面这些原因，诞生了第三方库 <a href="https://www.joda.org/joda-time/" target="_blank" rel="noopener">Joda-Time</a>，可以替代 Java 的时间管理 API。Java 8 中新的时间和日期管理 API 深受 Joda-Time 影响，并吸收了很多 Joda-Time 的精华。新的 java.time 包包含了所有关于日期、时间、时区、Instant（跟日期类似但是精确到纳秒）、duration（持续时间）和时钟操作的类。新设计的API认真考虑了这些类的不变性（从 java.util.Calendar 吸取的教训），如果某个实例需要修改，则返回一个新的对象。</p>
+<p>我们接下来看看 java.time 包中的关键类和各自的使用例子。<br>首先，<code>Clock</code> 类使用时区来返回当前的纳秒时间和日期。<code>Clock</code> 可以替代 <code>System.currentTimeMillis()</code> 和 <code>TimeZone.getDefault()</code>。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Get the system clock as UTC offset </span>
+<span class="token keyword">final</span> Clock clock <span class="token operator">=</span> Clock<span class="token punctuation">.</span><span class="token function">systemUTC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>clock<span class="token punctuation">.</span><span class="token function">instant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>clock<span class="token punctuation">.</span><span class="token function">millis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这个例子的输出结果是：</p>
+<pre class=" language-shell"><code class="language-shell">2014-04-12T15:19:29.282Z
+1397315969360
+</code></pre>
+<p>第二，关注下 <code>LocalDate</code> 和 <code>LocalTime</code> 类。<code>LocalDate</code> 仅仅包含 ISO-8601 日历系统中的日期部分；<code>LocalTime</code> 则仅仅包含该日历系统中的时间部分。这两个类的对象都可以使用 <code>Clock</code> 对象构建得到。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Get the local date and local time</span>
+<span class="token keyword">final</span> LocalDate date <span class="token operator">=</span> LocalDate<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> LocalDate dateFromClock <span class="token operator">=</span> LocalDate<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span>clock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>dateFromClock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Get the local date and local time</span>
+<span class="token keyword">final</span> LocalTime time <span class="token operator">=</span> LocalTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> LocalTime timeFromClock <span class="token operator">=</span> LocalTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span>clock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>timeFromClock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>上述例子的输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">2014-04-12
+2014-04-12
+11:25:54.568
+15:25:54.568
+</code></pre>
+<p><code>LocalDateTime</code> 类包含了 <code>LocalDate</code> 和 <code>LocalTime</code> 的信息，但是不包含 ISO-8601 日历系统中的时区信息。这里有一些<a href="https://www.javacodegeeks.com/2014/04/java-8-date-time-api-tutorial-localdatetime.html" target="_blank" rel="noopener">关于 LocalDate 和 LocalTime 的例子</a>：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Get the local date/time</span>
+<span class="token keyword">final</span> LocalDateTime datetime <span class="token operator">=</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> LocalDateTime datetimeFromClock <span class="token operator">=</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span>clock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>datetime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>datetimeFromClock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>上述这个例子的输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">2014-04-12T11:37:52.309
+2014-04-12T15:37:52.309
+</code></pre>
+<p>如果你需要特定时区的 data/time 信息，则可以使用 <code>ZoneDateTime</code>，它保存有 ISO-8601 日期系统的日期和时间，而且有时区信息。下面是一些使用不同时区的例子：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Get the zoned date/time</span>
+<span class="token keyword">final</span> ZonedDateTime zonedDatetime <span class="token operator">=</span> ZonedDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> ZonedDateTime zonedDatetimeFromClock <span class="token operator">=</span> ZonedDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span>clock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> ZonedDateTime zonedDatetimeFromZone <span class="token operator">=</span> ZonedDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span>ZoneId<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"America/Los_Angeles"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>zonedDatetime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>zonedDatetimeFromClock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>zonedDatetimeFromZone<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这个例子的输出结果是：</p>
+<pre class=" language-shell"><code class="language-shell">2014-04-12T11:47:01.017-04:00[America/New_York]
+2014-04-12T15:47:01.017Z
+2014-04-12T08:47:01.017-07:00[America/Los_Angeles]
+</code></pre>
+<p>最后看下 <code>Duration</code> 类，它持有的时间精确到秒和纳秒。这使得我们可以很容易得计算两个日期之间的不同，例子代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Get duration between two dates</span>
+<span class="token keyword">final</span> LocalDateTime from <span class="token operator">=</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">2014</span><span class="token punctuation">,</span> Month<span class="token punctuation">.</span>APRIL<span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> LocalDateTime to <span class="token operator">=</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> Month<span class="token punctuation">.</span>APRIL<span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">59</span><span class="token punctuation">,</span> <span class="token number">59</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> Duration duration <span class="token operator">=</span> Duration<span class="token punctuation">.</span><span class="token function">between</span><span class="token punctuation">(</span>from<span class="token punctuation">,</span> to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Duration in days: "</span> <span class="token operator">+</span> duration<span class="token punctuation">.</span><span class="token function">toDays</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Duration in hours: "</span> <span class="token operator">+</span> duration<span class="token punctuation">.</span><span class="token function">toHours</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这个例子用于计算2014年4月16日和2015年4月16日之间的天数和小时数，输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">Duration in days: 365
+Duration in hours: 8783
+</code></pre>
+<p>对于 Java 8 的新日期时间的总体印象还是比较积极的，一部分是因为 Joda-Time 的积极影响，另一部分是因为官方终于听取了开发人员的需求。如果希望了解更多细节，可以参考<a href="https://docs.oracle.com/javase/tutorial/datetime/index.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="Nashorn-JavaScript-引擎"><a href="#Nashorn-JavaScript-引擎" class="headerlink" title="Nashorn JavaScript 引擎"></a>Nashorn JavaScript 引擎</h4><p>Java 8 提供了新的 <a href="https://www.javacodegeeks.com/2014/02/java-8-compiling-lambda-expressions-in-the-new-nashorn-js-engine.html" target="_blank" rel="noopener">Nashorn JavaScript 引擎</a>，使得我们可以在 JVM 上开发和运行 JS 应用。Nashorn JavaScript 引擎是 javax.script.ScriptEngine 的另一个实现版本，这类 Script 引擎遵循相同的规则，允许 Java 和 JavaScript 交互使用，例子代码如下：</p>
+<pre class=" language-java"><code class="language-java">ScriptEngineManager manager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ScriptEngineManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ScriptEngine engine <span class="token operator">=</span> manager<span class="token punctuation">.</span><span class="token function">getEngineByName</span><span class="token punctuation">(</span><span class="token string">"JavaScript"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>engine<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Result:"</span> <span class="token operator">+</span> engine<span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"function f() { return 1; }; f() + 1;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这个代码的输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">jdk.nashorn.api.scripting.NashornScriptEngine
+Result: 2
+</code></pre>
+<h4 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h4><p><a href="https://www.javacodegeeks.com/2014/04/base64-in-java-8-its-not-too-late-to-join-in-the-fun.html" target="_blank" rel="noopener">对 Base64 编码的支持</a>已经被加入到 Java 8 官方库中，这样不需要使用第三方库就可以进行 Base64 编码，例子代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>base64<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>charset<span class="token punctuation">.</span>StandardCharsets<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Base64<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Base64s</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> String text <span class="token operator">=</span> <span class="token string">"Base64 finally in Java 8!"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> String encoded <span class="token operator">=</span> Base64
+                <span class="token punctuation">.</span><span class="token function">getEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">encodeToString</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span>StandardCharsets<span class="token punctuation">.</span>UTF_8<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>encoded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">final</span> String decoded <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>
+                Base64<span class="token punctuation">.</span><span class="token function">getDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>encoded<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                StandardCharsets<span class="token punctuation">.</span>UTF_8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>decoded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这个例子的输出结果如下：</p>
+<pre class=" language-shell"><code class="language-shell">QmFzZTY0IGZpbmFsbHkgaW4gSmF2YSA4IQ==
+Base64 finally in Java 8!
+</code></pre>
+<p>新的 Base64 API 也支持 URL 和 MINE 的编码解码(<code>Base64.getUrlEncoder()</code> / <code>Base64.getUrlDecoder()</code>, <code>Base64.getMimeEncoder()</code> / <code>Base64.getMimeDecoder()</code>)。</p>
+<p>BASE64不是用来加密的，是BASE64编码后的字符串，全部都是由标准键盘上面的常规字符组成，这样编码后的字符串在网关之间传递不会产生UNICODE字符串不能识别或者丢失的现象。你再仔细研究下EMAIL就会发现其实EMAIL就是用base64编码过后再发送的。然后接收的时候再还原。</p>
+<h4 id="并行数组"><a href="#并行数组" class="headerlink" title="并行数组"></a>并行数组</h4><p>Java 8 版本新增了很多新的方法，用于支持并行数组处理。最重要的方法是 <code>parallelSort()</code>，可以显著加快多核机器上的数组排序。下面的例子论证了 <code>parallexXxx</code> 系列的方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>javacodegeeks<span class="token punctuation">.</span>java8<span class="token punctuation">.</span>parallel<span class="token punctuation">.</span>arrays<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Arrays<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>ThreadLocalRandom<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ParallelArrays</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arrayOfLong <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">long</span><span class="token punctuation">[</span><span class="token number">20000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        Arrays<span class="token punctuation">.</span><span class="token function">parallelSetAll</span><span class="token punctuation">(</span>arrayOfLong<span class="token punctuation">,</span>
+                index <span class="token operator">-</span><span class="token operator">></span> ThreadLocalRandom<span class="token punctuation">.</span><span class="token function">current</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Arrays<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>arrayOfLong<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+                i <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Arrays<span class="token punctuation">.</span><span class="token function">parallelSort</span><span class="token punctuation">(</span>arrayOfLong<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Arrays<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>arrayOfLong<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+                i <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上述这些代码使用 <code>parallelSetAll()</code> 方法生成20000个随机数，然后使用 <code>parallelSort()</code> 方法进行排序。这个程序会输出乱序数组和排序数组的前10个元素。上述例子的代码输出的结果是：</p>
+<pre class=" language-shell"><code class="language-shell">Unsorted: 591217 891976 443951 424479 766825 351964 242997 642839 119108 552378 
+Sorted: 39 220 263 268 325 607 655 678 723 793
+</code></pre>
+<h4 id="并发性"><a href="#并发性" class="headerlink" title="并发性"></a>并发性</h4><p>基于新增的 lambda 表达式和 steam 特性，为 Java 8 中为 <code>java.util.concurrent.ConcurrentHashMap</code> 类添加了新的方法来支持聚焦操作；另外，也为 <code>java.util.concurrentForkJoinPool</code> 类添加了新的方法来支持通用线程池操作（更多内容可以参考我们的<a href="academy.javacodegeeks.com/course/java-concurrency-essentials/">并发编程课程</a>）。</p>
+<p>Java 8 还添加了新的 <code>java.util.concurrent.locks.StampedLock</code> 类，用于支持基于容量的锁——该锁有三个模型用于支持读写操作（可以把这个锁当做是 <code>java.util.concurrent.locks.ReadWriteLock</code> 的替代者）。</p>
+<p>在 <code>java.util.concurrent.atomic</code> 包中也新增了不少工具类，列举如下：</p>
+<ul>
+<li>DoubleAccumulator</li>
+<li>DoubleAdder</li>
+<li>LongAccumulator</li>
+<li>LongAdder</li>
+</ul>
+<h3 id="新的-Java-工具"><a href="#新的-Java-工具" class="headerlink" title="新的 Java 工具"></a>新的 Java 工具</h3><p>Java 8 提供了一些新的命令行工具，这部分会讲解一些对开发者最有用的工具。</p>
+<h4 id="Nashorn-引擎：jjs"><a href="#Nashorn-引擎：jjs" class="headerlink" title="Nashorn 引擎：jjs"></a>Nashorn 引擎：jjs</h4><p><code>jjs</code> 是一个基于标准 Nashorn 引擎的命令行工具，可以接受 js 源码并执行。例如，我们写一个 <code>func.js</code> 文件，内容如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>可以在命令行中执行这个命令：jjs func.js，控制台输出结果是：</p>
+<pre class=" language-shell"><code class="language-shell">2
+</code></pre>
+<p>如果需要了解细节，可以参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jjs.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h4 id="类依赖分析器：jdeps"><a href="#类依赖分析器：jdeps" class="headerlink" title="类依赖分析器：jdeps"></a>类依赖分析器：jdeps</h4><p><code>jdeps</code> 是一个相当棒的命令行工具，它可以展示包层级和类层级的 Java 类依赖关系，它以 <code>.class</code> 文件、目录或者 JAR 文件为输入，然后会把依赖关系输出到控制台。</p>
+<p>我们可以利用 jedps 分析下 Spring Framework 库，为了让结果少一点，仅仅分析一个 JAR 文件：<code>org.springframework.core-3.0.5.RELEASE.jar</code>。</p>
+<pre class=" language-shell"><code class="language-shell">jdeps org.springframework.core-3.0.5.RELEASE.jar
+</code></pre>
+<p>这个命令会输出很多结果，我们仅看下其中的一部分：依赖关系按照包分组，如果在 classpath 上找不到依赖，则显示 “not found”。</p>
+<pre class=" language-shell"><code class="language-shell">org.springframework.core-3.0.5.RELEASE.jar -> C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar
+   org.springframework.core (org.springframework.core-3.0.5.RELEASE.jar)
+      -> java.io                                            
+      -> java.lang                                          
+      -> java.lang.annotation                               
+      -> java.lang.ref                                      
+      -> java.lang.reflect                                  
+      -> java.util                                          
+      -> java.util.concurrent                               
+      -> org.apache.commons.logging                         not found
+      -> org.springframework.asm                            not found
+      -> org.springframework.asm.commons                    not found
+   org.springframework.core.annotation (org.springframework.core-3.0.5.RELEASE.jar)
+      -> java.lang                                          
+      -> java.lang.annotation                               
+      -> java.lang.reflect                                  
+      -> java.util
+</code></pre>
+<p>更多的细节可以参考<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jdeps.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h3 id="JVM的新特性"><a href="#JVM的新特性" class="headerlink" title="JVM的新特性"></a>JVM的新特性</h3><p>使用 <a href="https://www.javacodegeeks.com/2013/02/java-8-from-permgen-to-metaspace.html" target="_blank" rel="noopener">Metaspace</a>（<a href="http://openjdk.java.net/jeps/122" target="_blank" rel="noopener">JEP 122</a>）代替持久代（<code>PermGen space</code>）。在 JVM 参数方面，使用 <code>-XX:MetaSpaceSize</code> 和 <code>-XX:MaxMetaspaceSize</code> 代替原来的 <code>-XX:PermSize</code> 和 <code>-XX:MaxPermSize</code>。</p>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li>参考 <a href="https://docs.oracle.com/javase/8/" target="_blank" rel="noopener">Java 8 官方文档</a>，了解 Java 8 的更多内容。</li>
+<li>参考 <a href="https://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="noopener">Java 8 API 文档</a>，了解 Java 8 API 的细节。 </li>
+<li>参考 <a href="https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html" target="_blank" rel="noopener">What’s New in JDK 8</a>，了解 Java 8 的新特性。</li>
+<li>参考 <a href="https://www.oracle.com/technetwork/java/javase/8u-relnotes-2225394.html" target="_blank" rel="noopener">Java 8 Release Notes</a>，了解 Java 8 的更新说明。</li>
+</ul>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2018/409be0bd.html" class="b-link-green">Java 8 新特性</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2018-11-12T18-45-38',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2018/81153f7d.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Java 9 新特性">
+                        
+                        <span class="card-title">Java 9 新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Java 9 正式发布于 2017 年 9 月 21 日。作为 Java 8 之后 3 年半才发布的新版本，Java 9 带来了很多重大的变化。其中最主要的变化是 Java 平台模块系统的引入。除此之外，还有一些新的特性。
+Java 9 的</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JDK/" target="_blank">
+                        <span class="chip tag-bg-color">JDK</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2018/476deb33.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Android KTX 简介">
+                        
+                        <span class="card-title">Android KTX 简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">KTX 简介Android KTX 是一组 Kotlin 扩展程序，属于 Android Jetpack 系列。它优化了供 Kotlin 使用的 Jetpack 和 Android 平台 API。Android KTX 旨在让您利用 Kot</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-11-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kotlin/" class="post-category" target="_blank">
+                                    Kotlin
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/Kotlin/" target="_blank">
+                        <span class="chip tag-bg-color">Kotlin</span>
+                    </a>
+                    
+                    <a href="/tags/KTX/" target="_blank">
+                        <span class="chip tag-bg-color">KTX</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

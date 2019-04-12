@@ -1,0 +1,1165 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android 中的多线程通信机制, Android, Google, Blog">
+    <meta name="description" content="线程简介在 Java 中，线程会有那么几种状态：创建，就绪，运行，阻塞，死亡。当应用程序有组件在运行时，UI 线程是处于运行状态的。默认情况下，应用的所有组件的操作都是在 UI线程里完成的，包括响应用户的操作(触摸、点击等)、组件生命周期方">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android 中的多线程通信机制 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android 中的多线程通信机制
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2019-02-24
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        3.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        12 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="线程简介"><a href="#线程简介" class="headerlink" title="线程简介"></a>线程简介</h2><p>在 <code>Java</code> 中，线程会有那么几种状态：创建，就绪，运行，阻塞，死亡。当应用程序有组件在运行时，<code>UI 线程</code>是处于运行状态的。默认情况下，应用的所有组件的操作都是在 <code>UI线程</code>里完成的，包括响应用户的操作(触摸、点击等)、组件生命周期方法的调用、UI 的更新等。因此如果 <code>UI线程</code>处理阻塞状态时(在线程里做一些耗时的操作，如网络连接等)，就会不能响应各种操作，如果阻塞时间达到5秒，就会让程序处于 <code>ANR(application not response)</code> 状态，这时用户就可能退出甚至卸载你的应用，这是我们不能接受的。这时，有人就会说，我们在其他线程中更新 UI 不就可以了吗，就不会导致 UI 线程处于阻塞状态了。但答案是否定的。</p>
+<p>因为 Android 的 <code>UI线程</code>是非线程安全的，应用更新 UI，是调用 <code>invalidate()</code> 方法来实现界面的重绘，而 <code>invalidate()</code> 方法是非线程安全的，也就是说当我们在非 UI 线程来更新 UI 时，可能会有其他的线程或 UI 线程也在更新 UI，这就会导致界面更新的不同步。因此我们不能在非 UI 主线程中做更新 UI 的操作。也就是说在使用 Android 中的线程时，要保证：</p>
+<ul>
+<li>不能阻塞 UI 主线程，也就是不能在 UI 主线程中做耗时的操作(如网络连接、文件的 I/O 操作)；</li>
+<li>只能在 UI 主线程中做更新 UI 的操作。</li>
+</ul>
+<p>在 Android 中，把除主线程外的，其他所有的线程都叫做工作线程，也就是说 Android 只会存在两种线程：<strong><code>主线程(UI thread)</code></strong>和<strong><code>工作线程(work thread)</code></strong>。</p>
+<blockquote>
+<p>主线程主要负责处理和界面有关的事情，而工作线程则往往用于执行耗时操作。</p>
+</blockquote>
+<h2 id="Android-中的线程"><a href="#Android-中的线程" class="headerlink" title="Android 中的线程"></a>Android 中的线程</h2><p>在 Android 中除了 <code>Thread</code> 本身以外，可以扮演线程的角色还有很多，比如：<code>AnsyncTask</code> 和 <code>IntentService</code>，同时 <code>HandlerThread</code> 也是一种的特殊的线程，<code>AnsyncTask</code> 底层用到了线程池，对于 <code>IntentService</code> 和 <code>HandlerThread</code> 来说，他们的底层则直接使用了线程。</p>
+<h3 id="AsyncTask"><a href="#AsyncTask" class="headerlink" title="AsyncTask"></a>AsyncTask</h3><p><strong><code>AsyncTask</code></strong>是 Android 提供的一种轻量级的异步任务类，它可以在线程池中执行后台任务，然后把执行进度和最终结果传递给主线程并在主线程中更新 UI，其内部封装了 <code>Thread</code> 和 <code>Handler</code>，通过 <code>AsyncTask</code> 可以更加方便地执行后台任务，以及在主线程中访问 UI，但是不能执行可别耗时的后台任务，对于特别耗时的后台任务，建议使用线程池。</p>
+<p><code>AsyncTask</code> 是一个抽象的泛型类，它提供了 <code>Params</code>、<code>Progress</code>、<code>Result</code> 三个参数，<code>Params</code> 表示参数类型，<code>Progerss</code> 表示后台任务的执行进度的类型，而 <code>Result</code> 则表示后台任务的返回结果的类型，如果不需要传递具体的参数，那么这三个参数可以用 <code>Void</code> 来代替。</p>
+<p><code>AsyncTask</code> 还提供了四个核心方法：</p>
+<ul>
+<li><code>onPreExecute()：</code>在主线程中执行，在异步任务执行之前，此方法被调用，一般可以用于做一些初始化工作。</li>
+<li><code>doInBackground(Params... params)：</code>在线程池中执行，此方法用于执行异步任务，params 参数表示异步任务的输入参数，在此方法中可以通过 <code>publishProgress()</code> 方法来更新任务进度，<code>publishProgress()</code> 方法会调用 <code>onProgressUpdate()</code> 方法，另外此方法需要返回执行结果给 <code>onPostExecute()</code> 方法。</li>
+<li><code>onProgressUpdate(Progress... values)：</code>在主线程中执行，当后台任务的执行进度发生改变时此方法会被调用。</li>
+<li><code>onPostExecute(Result result)：</code>在主线程执行，在异步任务执行后此方法会被调用，其中 result 参数是后台任务的返回值，即 <code>doInBackground()</code> 方法的返回值。</li>
+</ul>
+<p>除了上述四个方法之外，<code>AsyncTask</code> 还提供了 <code>onCancelled()</code> 方法，它同样在主线程中执行，当异步任务被取消时，<code>onCancelled()</code> 方法会被调用，这个时候 <code>onPostExecute()</code> 方法则不会被调用。</p>
+<p>使用 <code>AsyncTask</code> 需要注意以下几点：</p>
+<ul>
+<li><code>AsyncTask</code> 类必须在主线程中加载，这就意味着第一次访问 <code>AsyncTask</code> 必须发生在主线程；</li>
+<li><code>AsyncTask</code> 的对象必须在 UI 线程中创建；</li>
+<li><code>execute()</code> 方法必须在 UI 线程调用；</li>
+<li>不要在程序中直接调用 <code>onPreExecute()</code>、<code>onPostExecute()</code>、<code>doInBackground()</code> 和 <code>onProgressUpdate()</code> 方法；</li>
+<li>一个 <code>AsyncTask</code> 对象只能执行一次，即只能调用一次 <code>execute()</code> 方法，否则会报运行时异常。</li>
+</ul>
+<blockquote>
+<p><code>AsyncTask</code> 为主线程与工作线程之间进行快速的切换提供一种简单便捷的机制。适用于当下立即需要启动，但是异步执行的生命周期短暂的使用场景。</p>
+</blockquote>
+<h3 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h3><p><strong><code>HandlerThread</code></strong>继承了 <code>Thread</code>，它是一种可以使用 <code>Handler</code> 的 <code>Thread</code>，它的实现很简单，就是在 <code>run()</code> 方法中通过 <code>Looper.prepare()</code> 来创建消息队列，并通过 <code>Looper.loop()</code> 来开启消息循环，这样在实际的使用中就允许在 <code>HandlerThread</code> 中创建 <code>Handler</code> 了。</p>
+<p><code>HandlerThread</code> 的 <code>run()</code> 方法实现如下所示：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mTid <span class="token operator">=</span> Process<span class="token punctuation">.</span><span class="token function">myTid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Looper<span class="token punctuation">.</span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mLooper <span class="token operator">=</span> Looper<span class="token punctuation">.</span><span class="token function">myLooper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">notifyAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    Process<span class="token punctuation">.</span><span class="token function">setThreadPriority</span><span class="token punctuation">(</span>mPriority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">onLooperPrepared</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Looper<span class="token punctuation">.</span><span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mTid <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>从 <code>HandlerThread</code> 的实现来看，它和普通 <code>Thread</code> 有显著的不同之处，普通 <code>Thread</code> 主要用于在 <code>run()</code> 方法中执行一个耗时的任务，而 <code>HandlerThread</code> 在内部创建了消息队列，外界需要通过 <code>Handler</code> 的消息方式来通知 <code>HandlerThread</code> 执行一个具体的任务。</p>
+<p>创建一个 <code>HandlerThread</code> 对象并调用 <code>HandlerThraed#start()</code> 方法启动线程，然后调用 <code>HandlerThread#getLooper()</code> 方法获取 <code>Looper</code> 对象作为参数创建 <code>Handler</code> 对象。</p>
+<p><code>HandlerThread</code> 是一个很有用的类，它在 Android 中的一个具体的使用场景是 <code>IntentService</code>，由于 <code>HandlerThread</code> 的 <code>run()</code> 方法是一个无限循环，因此当明确不需要再使用 <code>HandlerThread</code> 时，可以通过它的，<code>quit()</code> 或者 <code>quitSafely()</code> 方法来终止线程的执行，这就是一个良好的编程习惯。</p>
+<blockquote>
+<p><code>HandlerThread</code> 为某些回调方法或者等待某些任务的执行设置一个专属的线程，并提供线程任务的调度机制。</p>
+</blockquote>
+<h3 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h3><p><strong><code>IntentService</code></strong>是一个特殊的 <code>Service</code>，它集成了 <code>Service</code> 并且它是一个抽象类，因此必须创建它的子类才能使用 <code>IntentService</code>。<code>IntentService</code> 可用于执行后台耗时的任务，当任务执行后它会自动停止，同时由于 <code>IntentService</code> 是服务的原因，这导致了它的优先级比单纯的线程要高的多，所以 <code>IntentService</code> 比较适合执行一些高优先级的的后台任务，因为它优先级高不容易被系统杀死。</p>
+<p>在实现上，<code>IntentService</code> 封装了 <code>HandlerThread</code> 和 <code>Handler</code>，这一点可以从它的 <code>onCreate()</code> 方法中看出来：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    HandlerThread thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HandlerThread</span><span class="token punctuation">(</span><span class="token string">"IntentService["</span> <span class="token operator">+</span> mName <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    thread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    mServiceLooper <span class="token operator">=</span> thread<span class="token punctuation">.</span><span class="token function">getLooper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mServiceHandler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServiceHandler</span><span class="token punctuation">(</span>mServiceLooper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>第一次启动 <code>IntentService</code> 的时候，它的 <code>onCreate()</code> 方法会被调用，会创建一个 <code>HandlerThread</code>，然后使用它的 <code>Looper</code> 来构造一个 <code>Handler</code> 对象，这样通过 <code>mServiceHandler</code> 发送的消息最终都会在 <code>HandlerThread</code> 中执行，从这个角度来看，<code>IntentService</code> 也可以在后台执行任务，每次启动 <code>IntentService</code>，它的 <code>onStartCommand()</code> 都会调用一次，在这个方法中处理每个后台任务的<code>Intent</code>。下面来看一下 <code>onStartCommand()</code> 方法是如何处理外界的 <code>Intent</code>：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">onStartCommand</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Intent intent<span class="token punctuation">,</span> <span class="token keyword">int</span> flags<span class="token punctuation">,</span> <span class="token keyword">int</span> startId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">onStart</span><span class="token punctuation">(</span>intent<span class="token punctuation">,</span> startId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> mRedelivery <span class="token operator">?</span> START_REDELIVER_INTENT <span class="token operator">:</span> START_NOT_STICKY<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>可以看到 <code>onStartCommand()</code> 方法调用了 <code>onStart()</code> 方法，下面来看一下 <code>onStart()</code> 方法的具体实现：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onStart</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Intent intent<span class="token punctuation">,</span> <span class="token keyword">int</span> startId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Message msg <span class="token operator">=</span> mServiceHandler<span class="token punctuation">.</span><span class="token function">obtainMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    msg<span class="token punctuation">.</span>arg1 <span class="token operator">=</span> startId<span class="token punctuation">;</span>
+    msg<span class="token punctuation">.</span>obj <span class="token operator">=</span> intent<span class="token punctuation">;</span>
+    mServiceHandler<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>可以看到 <code>onStart()</code> 方法仅仅是通过 <code>mServiceHandler</code> 发送了一消息，这个消息会在 <code>HandlerThread</code> 中处理。下面来看一下 <code>ServiceHandler</code> 具体实现：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">ServiceHandler</span> <span class="token keyword">extends</span> <span class="token class-name">Handler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">ServiceHandler</span><span class="token punctuation">(</span>Looper looper<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>looper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleMessage</span><span class="token punctuation">(</span>Message msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">onHandleIntent</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Intent<span class="token punctuation">)</span> msg<span class="token punctuation">.</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">stopSelf</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>arg1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>通过上面的代码可以看到 <code>mServiceHandler</code> 收到消息以后，会将 <code>Intent</code> 对象传递给 <code>onHandleIntent()</code> 方法处理，注意这个 <code>Intent</code> 对象的内容和外界的 <code>startService(intent)</code> 中的 <code>intent</code> 的内容是完全一致的，<code>IntentService</code> 也是按顺序执行后台任务的。</p>
+<blockquote>
+<p><code>IntentService</code> 适合于执行由 <code>UI</code> 触发的后台 <code>Service</code> 任务，并可以把后台任务执行的情况通过一定的机制反馈给 <code>UI</code>。</p>
+</blockquote>
+<h2 id="Android-线程间通信方式"><a href="#Android-线程间通信方式" class="headerlink" title="Android 线程间通信方式"></a>Android 线程间通信方式</h2><p>Android 线程间通信的可以归纳为以下两种情况：</p>
+<ul>
+<li>将任务从主线程抛到工作线程</li>
+<li>将任务从工作线程抛到主线程</li>
+</ul>
+<p>将任务从主线程抛到工作线程可以使用前面提到的线程或线程池的方式实现。下面主要讲解一下将任务从工作线程抛到主线程的方式。</p>
+<h3 id="Activity-runOnUiThread"><a href="#Activity-runOnUiThread" class="headerlink" title="Activity.runOnUiThread()"></a>Activity.runOnUiThread()</h3><p><strong><code>Activity.runOnUiThread()</code></strong>是一种常用的将任务从工作线程抛到主线程的方式。下面看一下 <code>Activity.runOnUiThread()</code> 方法的具体实现：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">runOnUiThread</span><span class="token punctuation">(</span>Runnable action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> mUiThread<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mHandler<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        action<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>通过上面的代码可以看到如果当前线程是 UI 线程，直接运行该 <code>Runnable</code> 对象的 <code>run()</code> 方法，如果不在 UI 线程，则通过 <code>Activity</code> 持有的 <code>Handler</code> 对象调用 <code>post()</code> 方法。</p>
+<h3 id="View-post"><a href="#View-post" class="headerlink" title="View.post()"></a>View.post()</h3><p><strong><code>View.post()</code></strong>也是一种常用的将任务从工作线程抛到主线程的方式。下面看一下 <code>View.post()</code> 方法的具体实现：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">post</span><span class="token punctuation">(</span>Runnable action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> AttachInfo attachInfo <span class="token operator">=</span> mAttachInfo<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>attachInfo <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> attachInfo<span class="token punctuation">.</span>mHandler<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// Postpone the runnable until we know on which thread it needs to run.</span>
+    <span class="token comment" spellcheck="true">// Assume that the runnable will be successfully placed after attach.</span>
+    <span class="token function">getRunQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>通过上面的代码可以看到如果当前 <code>View</code> 已经关联到父窗口，直接通过 <code>AttachInfo</code> 持有的 <code>Handler</code> 对象调用 <code>post()</code> 方法，如果该视图还没有关联到父窗口，则将任务添加到待处理任务队列中等待该视图被关联到父窗口时通过 <code>AttachInfo</code> 持有的 <code>Handler</code> 对象执行。</p>
+<blockquote>
+<p><code>View.postDelayed()</code> 方法的执行过程和 <code>View.post()</code> 方法相同，<code>View.postDelayed()</code> 方法除了可以传递 <code>Runnable</code> 对象外，还可以传递一个 <code>delayMillis</code> 参数表示执行 <code>Runnable</code> 之前的延迟(以毫秒为单位)。</p>
+</blockquote>
+<h3 id="AsyncTask-1"><a href="#AsyncTask-1" class="headerlink" title="AsyncTask"></a>AsyncTask</h3><p><strong><code>AsyncTask</code></strong>是 Android 给我们提供的一个处理异步任务的类。通过此类，可以实现 UI 线程和工作线程进行通讯，工作线程执行异步任务并把结果返回给 UI 线程，其内部封装了 <code>Thread</code> 和 <code>Handler</code>。</p>
+<blockquote>
+<p>注意：<code>AsyncTask</code> 作为匿名内部类使用时，会隐式地持有外部类的引用，可能会导致内存泄露。比如：在 <code>Activity</code> 里声明且实例化一个匿名的 <code>AsyncTask</code> 对象，则可能会发生内存泄漏，如果这个线程在 <code>Activity</code> 销毁后还一直在后台执行，那这个线程会继续持有这个 <code>Activity</code> 的引用从而不会被 <code>GC</code> 回收，直到线程执行完成。</p>
+</blockquote>
+<h3 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h3><p><strong><code>Handler</code></strong>是 Android 中相当经典的异步消息机制，在 Android 发展的历史长河中扮演着很重要的角色，无论是我们直接面对的应用层还是 FrameWork 层，使用的场景还是相当的多。<code>Activity.runOnUiThread()</code>、<code>View.post()</code> 以及 <code>AsyncTask</code> 内部都是使用的 <code>Handler</code> 将任务从工作线程抛到主线程，所以 <code>Handler</code> 是一种最常用的将任务从工作线程抛到主线程的方式。</p>
+<p><code>Handler</code> 有以下两个主要用途：</p>
+<ul>
+<li>将未来某个时间点将要执行的 <code>Message</code> 或 <code>Runnable</code> 加入到消息队列；</li>
+<li>在子线程把需要在另一个线程执行的操作加入到消息队列中去。</li>
+</ul>
+<p><code>Handler</code> 常用的构造方法、将 <code>Message</code> 或 <code>Runnable</code> 加入到消息队列的方法如下所示：</p>
+<ul>
+<li><p><code>Handler</code> 的构造方法有以下几种：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span>Handler<span class="token punctuation">.</span>Callback callback<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span>Looper looper<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span>Looper looper<span class="token punctuation">,</span> Handler<span class="token punctuation">.</span>Callback callback<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> async<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span>Handler<span class="token punctuation">.</span>Callback callback<span class="token punctuation">,</span> <span class="token keyword">boolean</span> async<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span>Looper looper<span class="token punctuation">,</span> Handler<span class="token punctuation">.</span>Callback callback<span class="token punctuation">,</span> <span class="token keyword">boolean</span> async<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p><code>Handler</code> 将 <code>Message</code> 加入到消息队列的方法有以下几种：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span>Message msg<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendEmptyMessage</span><span class="token punctuation">(</span><span class="token keyword">int</span> what<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendEmptyMessageDelayed</span><span class="token punctuation">(</span><span class="token keyword">int</span> what<span class="token punctuation">,</span> <span class="token keyword">long</span> delayMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendEmptyMessageAtTime</span><span class="token punctuation">(</span><span class="token keyword">int</span> what<span class="token punctuation">,</span> <span class="token keyword">long</span> uptimeMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendMessageDelayed</span><span class="token punctuation">(</span>Message msg<span class="token punctuation">,</span> <span class="token keyword">long</span> delayMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendMessageAtTime</span><span class="token punctuation">(</span>Message msg<span class="token punctuation">,</span> <span class="token keyword">long</span> uptimeMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">sendMessageAtFrontOfQueue</span><span class="token punctuation">(</span>Message msg<span class="token punctuation">)</span>
+</code></pre>
+</li>
+<li><p><code>Handler</code> 将 <code>Runnable</code> 加入到消息队列的方法有以下几种：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">post</span><span class="token punctuation">(</span>Runnable r<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">postAtTime</span><span class="token punctuation">(</span>Runnable r<span class="token punctuation">,</span> <span class="token keyword">long</span> uptimeMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">postAtTime</span><span class="token punctuation">(</span>Runnable r<span class="token punctuation">,</span> Object token<span class="token punctuation">,</span> <span class="token keyword">long</span> uptimeMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">postDelayed</span><span class="token punctuation">(</span>Runnable r<span class="token punctuation">,</span> <span class="token keyword">long</span> delayMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">postDelayed</span><span class="token punctuation">(</span>Runnable r<span class="token punctuation">,</span> Object token<span class="token punctuation">,</span> <span class="token keyword">long</span> delayMillis<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">postAtFrontOfQueue</span><span class="token punctuation">(</span>Runnable r<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>无论 <code>Handler</code> 将 <code>Message</code> 还是 <code>Runnable</code> 加入 <code>MessageQueue</code>，最终都只是将 <code>Message</code> 加入到 <code>MessageQueue</code>。分析源码可以看到 <code>Handler</code> 将 <code>Runnable</code> 加入到消息队列的方法内部都是调用 <code>getPostMessage()</code> 方法把 <code>Runnable</code> 封装成 <code>Message</code> 对象的 <code>callback</code> 属性，然后再将得到的 <code>Message</code> 加入到消息队列的。</p>
+</blockquote>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2019/e116562b.html" class="b-link-green">Android 中的多线程通信机制</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2019-02-24T11-22-36',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2019/20c92935.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Android 中的多进程通信机制">
+                        
+                        <span class="card-title">Android 中的多进程通信机制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Android IPC 简介IPC是 Inter-Process Communication 的缩写，含义就是进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程。
+那么什么是进程，什么是线程，在操作系统中，进程和线程是两个截然不同</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2019-02-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2019/8d7d4236.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java HashMap 的实现原理">
+                        
+                        <span class="card-title">Java HashMap 的实现原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">数据结构中有数组和链表这两个结构来存储数据。
+
+数组存储区间连续，占用内存比较严重，故空间复杂的很大，但数组的二分查找时间复杂度小，为 O(1)。数组的特点是：寻址容易，插入和删除困难；
+链表存储区间离散，占用内存比较宽松，故空间复杂度很小</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2019-02-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://lyl873825813.github.io/" target="_blank">Liyunlong</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">300.9k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>
