@@ -10,7 +10,7 @@ abbrlink: 515a2461
 date: 2018-08-08 18:45:35
 ---
 
-![Git](https://henleylee.github.io/medias/git/git_header.jpg)
+![](https://henleylee.github.io/medias/git/git_header.jpg)
 
 ## 一、Git 是什么？ ##
  - Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。

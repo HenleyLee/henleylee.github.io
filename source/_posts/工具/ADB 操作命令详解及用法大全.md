@@ -11,7 +11,7 @@ abbrlink: a91f712a
 date: 2018-08-06 13:15:45
 ---
 
-![ADB](https://user-gold-cdn.xitu.io/2018/8/10/16522b67d2e66dfc?w=287&h=138&f=jpeg&s=10250)
+![](https://user-gold-cdn.xitu.io/2018/8/10/16522b67d2e66dfc?w=287&h=138&f=jpeg&s=10250)
 
 ## 一、ADB是什么？ ##
 ADB，即 [Android Debug Bridge](https://developer.android.com/studio/command-line/adb.html) 是一种允许模拟器或已连接的 Android 设备进行通信的命令行工具，它可为各种设备操作提供便利，如安装和调试应用，并提供对 `Unix shell`（可用来在模拟器或连接的设备上运行各种命令）的访问。可以在`Android SDK/platform-tools`中找到 `adb` 工具或下载 [ADB Kits](http://adbshell.com/downloads) 。

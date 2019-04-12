@@ -35,7 +35,7 @@ var isTag = is_tag();
                     <span class="chip center-align waves-effect waves-light
                             <% if (isTag && tag.name == page.tag) { %> chip-active <% } else { %> chip-default <% } %>"
                             data-tagname="<%- tag.name %>" style="background-color: <%- color %>;"><%- tag.name %>
-                        <span class="tag-length"><%- tag.length %></span>
+                        <span class="tag-length">(<%- tag.length %>)</span>
                     </span>
                 </a>
                 <% }); %>

@@ -36,7 +36,7 @@ var isCategory = is_category();
                     <span class="chip center-align waves-effect waves-light
                             <% if (isCategory && category.name == page.category) { %> chip-active <% } else { %> chip-default <% } %>"
                             style="background-color: <%- color %>;"><%- category.name %>
-                        <span class="tag-length"><%- category.length %></span>
+                        <span class="tag-length">(<%- category.length %>)</span>
                     </span>
                 </a>
                 <% }); %>
