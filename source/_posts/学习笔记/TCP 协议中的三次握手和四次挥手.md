@@ -15,7 +15,7 @@ TCP 在传输之前会进行三次沟通，一般称为**`三次握手`**；传�
 
 ## TCP 报文格式 ##
 `TCP` 报文是 TCP 层传输的数据单元，也叫报文段，分为`报头`和`数据`两部分。`TCP` 报文的格式如下图所示：
-![TCP报文格式](https://lyl873825813.github.io/medias/study/tcp_message_header.png)
+![TCP报文格式](https://henleylee.github.io/medias/study/tcp_message_header.png)
 
 `报头`包含以下信息：
  - `源端口(16位)：`源端口用来标识报文的返回地址。
@@ -54,7 +54,7 @@ TCP 报头信息中有6个标志比特，它们中的多个可同时被设置为
 ## TCP 连接的建立(三次握手) ##
 `TCP` 是面向连接的`传输层协议`，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。当主动方发出 `SYN` 连接请求后，等待对方回答 `SYN+ACK`，并最终对对方的 `SYN` 执行 `ACK` 确认。
 
-![TCP连接的建立(三次握手)](https://lyl873825813.github.io/medias/study/tcp_connection_establish.png)
+![TCP连接的建立(三次握手)](https://henleylee.github.io/medias/study/tcp_connection_establish.png)
 TCP 三次握手的过程如下：
  - 第一次握手：建立连接时，客户端发送 `SYN` 报文段，设置 `seq=x`；然后，客户端进入 `SYN_SEND` 状态，等待服务器的确认；
  - 第二次握手：服务器收到客户端的 `SYN` 报文段，需要确认客户端的 `SYN` 报文段，设置 `ack=x+1(seq+1)`，同时自己也发送一个 `SYN` 报文段，设置 `seq=y`(即 `SYN+ACK` 包)，此时服务器进入 `SYN_RECV` 状态；
@@ -67,7 +67,7 @@ TCP 三次握手的过程如下：
 ## TCP 连接的释放(四次挥手) ##
 `TCP` 连接是双向传输的对等的模式，就是说双方都可以同时向对方发送或接收数据。因此，每个方向都必须要单独进行关闭，这一原则是当一方完成数据发送任务后，发送一个 `FIN` 来终止这一方向的连接，收到一个 `FIN` 只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个 `TCP` 连接上仍然能够发送数据，直到这一方向也发送了 `FIN`。
 
-![TCP连接的释放(四次挥手)](https://lyl873825813.github.io/medias/study/tcp_connection_release.png)
+![TCP连接的释放(四次挥手)](https://henleylee.github.io/medias/study/tcp_connection_release.png)
 TCP 四次挥手的过程如下：
  - 第一次挥手：主机A(可以是客户端，也可以是服务端)发送一个 `FIN` 报文段，设置 `seq=x`，用来关闭主机A到主机B的数据传送，此时，主机A进入 `FIN_WAIT_1` 状态；
  - 第二次挥手：主机B收到主机A发送的 `FIN` 报文段，向主机A发回一个 `ACK`，设置 `seq=x+1`，主机A进入 `FIN_WAIT_2` 状态；
@@ -80,7 +80,7 @@ TCP 四次挥手的过程如下：
 
 ## 总结 ##
 `TCP` 连接从建立到释放的过程如下图所示：
-![ TCP的状态机](https://lyl873825813.github.io/medias/study/tcp_data_exchange.png)
+![ TCP的状态机](https://henleylee.github.io/medias/study/tcp_data_exchange.png)
 
  - 为什么建立连接是三次握手，关闭连接确是四次挥手呢？
 建立连接的时候， 服务器在 `LISTEN` 状态下，收到建立连接请求的 `SYN` 报文后，把 `ACK` 和 `SYN` 放在一个报文里发送给客户端。而关闭连接时，服务器收到对方的 `FIN` 报文时，仅仅表示对方不再发送数据了但是还能接收数据，而自己也未必全部数据都发送给对方了，所以己方可以立即关闭，也可以发送一些数据给对方后，再发送 `FIN` 报文给对方来表示同意现在关闭连接，因此，己方 `ACK` 和 `FIN` 一般都会分开发送，从而导致多了一次。

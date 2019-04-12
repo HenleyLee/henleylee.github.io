@@ -30,7 +30,7 @@ date: 2019-01-10 18:55:27
 2. 绘制装饰(滚动指示器、滚动条、和前景)。
 
 #### 绘制流程 ####
-![单一View的draw过程](https://lyl873825813.github.io//medias/view/view_draw_single.png)
+![单一View的draw过程](https://henleylee.github.io//medias/view/view_draw_single.png)
 
 下面将 `draw` 过程中的方法进行详细分析：`draw` 过程入口为 `draw()`
 ```java
@@ -220,7 +220,7 @@ date: 2019-01-10 18:55:27
 ```
 
 #### 总结 ####
-![单一View的draw过程总结](https://lyl873825813.github.io//medias/view/view_draw_single_all.png)
+![单一View的draw过程总结](https://henleylee.github.io//medias/view/view_draw_single_all.png)
 
 
 ### ViewGroup 的 draw 过程 ###
@@ -235,10 +235,10 @@ date: 2019-01-10 18:55:27
 1. ViewGroup 绘制自身(含背景、内容)；
 2. ViewGroup 遍历其所有子 View 并绘制其所有子 View。
 
-![ViewGroup自上而下遍历](https://lyl873825813.github.io//medias/view/view_group_tree.png)
+![ViewGroup自上而下遍历](https://henleylee.github.io//medias/view/view_group_tree.png)
 
 #### 绘制流程 ####
-![ViewGroup的draw过程](https://lyl873825813.github.io//medias/view/view_draw_group.png)
+![ViewGroup的draw过程](https://henleylee.github.io//medias/view/view_draw_group.png)
 `ViewGroup` 和 `View` 同样拥有 `draw()` 和 `ondraw()`，但二者不同的：
 
 下面将 `draw` 过程中的方法进行详细分析：`draw` 过程入口为 `draw()`
@@ -374,9 +374,9 @@ date: 2019-01-10 18:55:27
 ```
 
 #### 总结 ####
-![ViewGroup的draw过程总结](https://lyl873825813.github.io//medias/view/view_draw_group_all.png)
+![ViewGroup的draw过程总结](https://henleylee.github.io//medias/view/view_draw_group_all.png)
 
 
 ## 总结 ##
-![View的draw过程总结](https://lyl873825813.github.io//medias/view/view_draw_all.png)
+![View的draw过程总结](https://henleylee.github.io//medias/view/view_draw_all.png)
 

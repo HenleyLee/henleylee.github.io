@@ -53,7 +53,7 @@ $ adb shell setprop debug.hwui.overdraw false
 
 #### 过度绘制的表现形式 ####
 过度绘制会导致屏幕显示的色块不同，具体如下图所示：
-![过度绘制的表现形式](https://lyl873825813.github.io/medias/android/over_draw.png)
+![过度绘制的表现形式](https://henleylee.github.io/medias/android/over_draw.png)
 
 依据过度绘制的层度可以分成：
  - 无过度绘制：一个像素只被绘制了一次

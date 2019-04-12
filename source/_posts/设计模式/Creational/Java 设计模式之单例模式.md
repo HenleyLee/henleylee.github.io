@@ -34,10 +34,10 @@ date: 2018-09-07 08:55:35
  - **`Singleton(单例): `**在单例类的内部实现只生成一个实例，同时它提供一个静态的 getInstance() 工厂方法，让客户可以访问它的唯一实例；为了防止在外部对其实例化，将其构造函数设计为私有；在单例类内部定义了一个 Singleton 类型的静态对象，作为外部共享的唯一实例。
 
 ### 结构图 ###
-![单例模式结构图](https://lyl873825813.github.io/medias/design_pattern/singleton_uml.jpg)
+![单例模式结构图](https://henleylee.github.io/medias/design_pattern/singleton_uml.jpg)
 
 ### 时序图 ###
-![单例模式时序图](https://lyl873825813.github.io/medias/design_pattern/singleton_seq.jpg)
+![单例模式时序图](https://henleylee.github.io/medias/design_pattern/singleton_seq.jpg)
 
 ## 模式实现 ##
 ### 非线程安全懒汉式(不推荐使用) ###

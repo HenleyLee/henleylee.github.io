@@ -25,7 +25,7 @@ date: 2018-10-22 18:28:50
  - **`ConcreteAggregate(具体聚合类)：`**它实现了在抽象聚合类中声明的 createIterator() 方法，该方法返回一个与该具体聚合类对应的具体迭代器 ConcreteIterator 实例。
 
 ### 结构图 ###
-![迭代器模式结构图](https://lyl873825813.github.io/medias/design_pattern/iterator_uml.jpg)
+![迭代器模式结构图](https://henleylee.github.io/medias/design_pattern/iterator_uml.jpg)
 
 ## 示例代码 ##
 首先，是抽象迭代器和具体迭代器。Iterator 接口充当抽象迭代器，ConcreteIterator 类充当具体迭代器，完整代码如下所示：

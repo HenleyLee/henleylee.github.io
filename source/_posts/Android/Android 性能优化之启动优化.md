@@ -45,7 +45,7 @@ date: 2019-01-21 18:46:35
 应用程序进程完成第一次绘制后，系统进程会用 Main Activity 来替换之前已经生成的背景窗口。这个时候，用户就可以使用应用程序了。
 
 冷启动应用程序时，系统和应用程序处理彼此之间的工作的重要部分的直观表示，如下如所示：
-![冷启动应用程序重要部分的直观表示](https://lyl873825813.github.io/medias/android/cold_launch.png)
+![冷启动应用程序重要部分的直观表示](https://henleylee.github.io/medias/android/cold_launch.png)
 
 > 冷启动性能问题可能会出现在应用创建和 Main Activity 创建过程中。
 
@@ -110,7 +110,7 @@ ActivityManager：显示com.android.myexample / .StartupTiming：+ 3s534ms
 如果要从命令行或者终端中追踪 logcat 输出，那么很容易能够找到这个时间值。需要注意的是要在 Android Studio 中查找已用时间，必须在 logcat 视图中禁用过滤器。禁用过滤器是必须的，因为输出此日志的是系统，而不是应用程序本身。
 
 完成设置后，就可以很轻松地找到输出的时间值。下图显示了如何禁用过滤器，并在底部的 logcat 日志输出中显示了 `Displayed` 的值：
-![禁用过滤器并输出了 Displayed 的值](https://lyl873825813.github.io/medias/android/displayed_logcat.png)
+![禁用过滤器并输出了 Displayed 的值](https://henleylee.github.io/medias/android/displayed_logcat.png)
 
 Logcat 输出中显示的 Displayed 的值并不一定是所有资源都加载完成后显示的总耗时，它并不包括布局文件中没有引用的资源及初始化对象所引用的资源的加载时间，因为这个加载过程是一个内部过程，不阻塞应用初始内容的显示。
 

@@ -25,7 +25,7 @@ date: 2019-01-08 18:53:29
 继承自 `View`、`SurfaceView` 或 其他 `View`；`不包含子 View`。
 
 #### 计算流程 ####
-![单一View的layout过程](https://lyl873825813.github.io//medias/view/view_layout_single.png)
+![单一View的layout过程](https://henleylee.github.io//medias/view/view_layout_single.png)
 
 下面将 `layout` 过程中的方法进行详细分析：`layout` 过程入口为 `layout()`
 ```java
@@ -136,7 +136,7 @@ date: 2019-01-08 18:53:29
 ```
 
 #### 总结 ####
-![单一View的layout过程总结](https://lyl873825813.github.io//medias/view/view_layout_single_all.png)
+![单一View的layout过程总结](https://henleylee.github.io//medias/view/view_layout_single_all.png)
 
 
 ### ViewGroup 的 layout 过程 ###
@@ -151,10 +151,10 @@ date: 2019-01-08 18:53:29
 1. 计算自身 `ViewGroup` 的位置：`layout()`。
 2. 遍历所有子 `View` 并确定子 `View` 自身在 ViewGroup 中的位置(调用子 View 的 layout() 方法)：onLayout()。
 
-![ViewGroup自上而下遍历](https://lyl873825813.github.io//medias/view/view_group_tree.png)
+![ViewGroup自上而下遍历](https://henleylee.github.io//medias/view/view_group_tree.png)
 
 #### 计算流程 ####
-![ViewGroup的layout过程](https://lyl873825813.github.io//medias/view/view_layout_group.png)
+![ViewGroup的layout过程](https://henleylee.github.io//medias/view/view_layout_group.png)
 `ViewGroup` 和 `View` 同样拥有 `layout()` 和 `onLayout()`，但二者不同的：
  - 一开始计算 `ViewGroup` 位置时，调用的是 `ViewGroup`的 `layout()` 和 `onLayout()`；
  - 当开始遍历子 `View` 并计算子 `View` 位置时，调用的是子 `View` 的 `layout()` 和 `onLayout()`。
@@ -287,8 +287,8 @@ date: 2019-01-08 18:53:29
 ```
 
 #### 总结 ####
-![ViewGroup的layout过程总结](https://lyl873825813.github.io//medias/view/view_layout_group_all.png)
+![ViewGroup的layout过程总结](https://henleylee.github.io//medias/view/view_layout_group_all.png)
 
 ## 总结 ##
-![View的layout过程总结](https://lyl873825813.github.io//medias/view/view_layout_all.png)
+![View的layout过程总结](https://henleylee.github.io//medias/view/view_layout_all.png)
 

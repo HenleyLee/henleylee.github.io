@@ -28,7 +28,7 @@ Android 上的 View 是树形结构的，View 可能会重叠在一起，当我�
  - 特别说明：事件列
    从手指接触屏幕 至 手指离开屏幕，这个过程产生的一系列事件，就叫事件列。
   > 注意：一般情况下，事件列都是以 `DOWN` 事件开始、`UP` 事件结束，中间有无数的 `MOVE` 事件，如下图：
-  > ![事件列](https://lyl873825813.github.io/medias/touch/event_queue.png)
+  > ![事件列](https://henleylee.github.io/medias/touch/event_queue.png)
   即当一个 `MotionEvent` 产生后，系统需要把这个事件传递给一个具体的 `View` 去处理。
 
 ### 事件分发的本质是什么？ ###
@@ -49,79 +49,79 @@ Android 的 UI 界面是由 `Activity`、`ViewGroup`、`View` 及其派生类组
 
 ### 事件分发过程由哪些方法协作完成？ ###
 **答：dispatchTouchEvent() 、onInterceptTouchEvent() 和 onTouchEvent()**
-![事件分发过程的方法](https://lyl873825813.github.io/medias/touch/event_method.png)
+![事件分发过程的方法](https://henleylee.github.io/medias/touch/event_method.png)
 
 ### 总结 ###
-![事件分发基础认知总结](https://lyl873825813.github.io/medias/touch/event_base_summary.png)
+![事件分发基础认知总结](https://henleylee.github.io/medias/touch/event_base_summary.png)
 
 ## 事件分发机制核心方法 ##
 事件分发过程由 `dispatchTouchEvent()`、`onInterceptTouchEvent()` 和 `onTouchEvent()` 三个核心方法协助完成，如下图所示：
-![事件分发机制核心方法](https://lyl873825813.github.io/medias/touch/event_core_method.png)
+![事件分发机制核心方法](https://henleylee.github.io/medias/touch/event_core_method.png)
 
 ### dispatchTouchEvent() ###
 #### 简介 ####
-![dispatchTouchEvent()方法简介](https://lyl873825813.github.io/medias/touch/event_dispatch_intro.png)
+![dispatchTouchEvent()方法简介](https://henleylee.github.io/medias/touch/event_dispatch_intro.png)
 
-![dispatchTouchEvent()方法业务流程说明图](https://lyl873825813.github.io/medias/touch/event_dispatch_process.png)
+![dispatchTouchEvent()方法业务流程说明图](https://henleylee.github.io/medias/touch/event_dispatch_process.png)
 
 #### 返回情况：默认 ####
-![dispatchTouchEvent()方法返回情况(默认)](https://lyl873825813.github.io/medias/touch/event_dispatch_return_default.png)
+![dispatchTouchEvent()方法返回情况(默认)](https://henleylee.github.io/medias/touch/event_dispatch_return_default.png)
 
-![dispatchTouchEvent()方法返回情况(默认)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_dispatch_process_default.png)
+![dispatchTouchEvent()方法返回情况(默认)业务流程说明图](https://henleylee.github.io/medias/touch/event_dispatch_process_default.png)
 
 #### 返回情况：返回true ####
-![dispatchTouchEvent()方法返回情况(返回true)](https://lyl873825813.github.io/medias/touch/event_dispatch_return_true.png)
+![dispatchTouchEvent()方法返回情况(返回true)](https://henleylee.github.io/medias/touch/event_dispatch_return_true.png)
 
-![dispatchTouchEvent()方法返回情况(返回true)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_dispatch_process_true.png)
+![dispatchTouchEvent()方法返回情况(返回true)业务流程说明图](https://henleylee.github.io/medias/touch/event_dispatch_process_true.png)
 
 > 事件停止分发，逐层往上返回`(若无上层返回，则结束)`；后续事件会继续分发到该 View。
 
 #### 返回情况：返回false ####
-![dispatchTouchEvent()方法返回情况(返回false)](https://lyl873825813.github.io/medias/touch/event_dispatch_return_false.png)
+![dispatchTouchEvent()方法返回情况(返回false)](https://henleylee.github.io/medias/touch/event_dispatch_return_false.png)
 
-![dispatchTouchEvent()方法返回情况(返回false)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_dispatch_process_false.png)
+![dispatchTouchEvent()方法返回情况(返回false)业务流程说明图](https://henleylee.github.io/medias/touch/event_dispatch_process_false.png)
 
 > 将事件回传给上层的 `onTouchEvent()` 处理`(若无上层返回，则结束)`；当前 View 仍然接受此事件的其他事件`(与 onTouchEvent() 区别)`。
 
 ### onInterceptTouchEvent() ###
 #### 简介 ####
-![onInterceptTouchEvent()方法简介](https://lyl873825813.github.io/medias/touch/event_intercept_intro.png)
+![onInterceptTouchEvent()方法简介](https://henleylee.github.io/medias/touch/event_intercept_intro.png)
 > **注意：**`Activity`、`View` 都无该方法。
 
-![onInterceptTouchEvent()方法业务流程说明图](https://lyl873825813.github.io/medias/touch/event_intercept_process.png)
+![onInterceptTouchEvent()方法业务流程说明图](https://henleylee.github.io/medias/touch/event_intercept_process.png)
 
 #### 返回情况：返回true ####
-![onInterceptTouchEvent()方法返回情况(返回true)](https://lyl873825813.github.io/medias/touch/event_intercept_return_true.png)
+![onInterceptTouchEvent()方法返回情况(返回true)](https://henleylee.github.io/medias/touch/event_intercept_return_true.png)
 
-![onInterceptTouchEvent()方法返回情况(返回true)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_intercept_process_true.png)
+![onInterceptTouchEvent()方法返回情况(返回true)业务流程说明图](https://henleylee.github.io/medias/touch/event_intercept_process_true.png)
 
 > 拦截事件，事件停止往下传递，ViewGroup 自己处理事件，调用父类 super.dispatchTouchEvent()，最终执行自己的 onTouchEvent()；同一个事件的其他事件列都交由该 View 处理；在同一个事件列中该方法不会再次被调用。
 
 #### 返回情况：返回false(默认) ####
-![onInterceptTouchEvent()方法返回情况(返回false)](https://lyl873825813.github.io/medias/touch/event_intercept_return_false.png)
+![onInterceptTouchEvent()方法返回情况(返回false)](https://henleylee.github.io/medias/touch/event_intercept_return_false.png)
 
-![onInterceptTouchEvent()方法返回情况(返回false)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_intercept_process_false.png)
+![onInterceptTouchEvent()方法返回情况(返回false)业务流程说明图](https://henleylee.github.io/medias/touch/event_intercept_process_false.png)
 
 > 不拦截事件，事件继续往下传递，事件传递到子 View，调用父类 View.dispatchTouchEvent() 方法中去处理；当前 View 仍然接受此事件的其他事件`(与 onTouchEvent() 区别)`。
 
 ### onTouchEvent() ###
 #### 简介 ####
-![onTouchEvent()方法简介](https://lyl873825813.github.io/medias/touch/event_touch_intro.png)
+![onTouchEvent()方法简介](https://henleylee.github.io/medias/touch/event_touch_intro.png)
 > **注意：**`Activity`、`View` 都无该方法。
 
-![onTouchEvent()方法业务流程说明图](https://lyl873825813.github.io/medias/touch/event_touch_process.png)
+![onTouchEvent()方法业务流程说明图](https://henleylee.github.io/medias/touch/event_touch_process.png)
 
 #### 返回情况：返回true ####
-![onTouchEvent()方法返回情况(返回true)](https://lyl873825813.github.io/medias/touch/event_touch_return_true.png)
+![onTouchEvent()方法返回情况(返回true)](https://henleylee.github.io/medias/touch/event_touch_return_true.png)
 
-![onTouchEvent()方法返回情况(返回true)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_touch_process_true.png)
+![onTouchEvent()方法返回情况(返回true)业务流程说明图](https://henleylee.github.io/medias/touch/event_touch_process_true.png)
 
 > 事件停止分发，逐层往上返回`(若无上层返回，则结束)`；后续事件序列让其处理。
 
 #### 返回情况：返回false(默认) ####
-![onTouchEvent()方法返回情况(返回false)](https://lyl873825813.github.io/medias/touch/event_touch_return_false.png)
+![onTouchEvent()方法返回情况(返回false)](https://henleylee.github.io/medias/touch/event_touch_return_false.png)
 
-![onTouchEvent()方法返回情况(返回false)业务流程说明图](https://lyl873825813.github.io/medias/touch/event_touch_process_false.png)
+![onTouchEvent()方法返回情况(返回false)业务流程说明图](https://henleylee.github.io/medias/touch/event_touch_process_false.png)
 
 > 将事件向上传递给给上层的 `onTouchEvent()` 处理`(若无上层返回，则结束)`；当前 View 不再接受此事件的其他事件`(与 dispatchTouchEvent()onInterceptTouchEvent() 区别)`。
 
@@ -261,10 +261,10 @@ public boolean shouldCloseOnTouch(Context context, MotionEvent event) {
 
 #### 总结 ####
  - 过程：当一个点击事件发生时，从 Activity 的事件分发开始(Activity.dispatchTouchEvent())
-![Activity事件分发的过程](https://lyl873825813.github.io/medias/touch/event_activity_summary_process.png)
+![Activity事件分发的过程](https://henleylee.github.io/medias/touch/event_activity_summary_process.png)
 
  - 核心方法总结：
-![Activity事件分发的方法总结](https://lyl873825813.github.io/medias/touch/event_activity_summary_mathod.png)
+![Activity事件分发的方法总结](https://henleylee.github.io/medias/touch/event_activity_summary_mathod.png)
 
 ### ViewGroup 的事件分发机制 ###
 从 `Activity` 事件分发机制可知，`ViewGroup` 的事件分发机制从 `dispatchTouchEvent()` 开始。
@@ -367,10 +367,10 @@ public boolean onInterceptTouchEvent(MotionEvent ev) {
 #### 总结 ####
  - 结论：Android 事件分发总是先传递到 `ViewGroup`、再传递到 `View`。
  - 过程：当点击了某个控件时
-![ViewGroup事件分发的过程](https://lyl873825813.github.io/medias/touch/event_viewgroup_summary_process.png)
+![ViewGroup事件分发的过程](https://henleylee.github.io/medias/touch/event_viewgroup_summary_process.png)
 
  - 核心方法总结：
-![ViewGroup事件分发的方法总结](https://lyl873825813.github.io/medias/touch/event_viewgroup_summary_mathod.png)
+![ViewGroup事件分发的方法总结](https://henleylee.github.io/medias/touch/event_viewgroup_summary_mathod.png)
 
 ### View 的事件分发机制 ###
 从 `ViewGroup` 事件分发机制知道，`View` 事件分发机制从 `dispatchTouchEvent()` 开始。
@@ -509,20 +509,20 @@ public boolean performClick() {
 
 #### 总结 ####
  - 过程：每当控件被点击时
-![View事件分发的过程](https://lyl873825813.github.io/medias/touch/event_view_summary_process.png)
+![View事件分发的过程](https://henleylee.github.io/medias/touch/event_view_summary_process.png)
 
  - 核心方法总结：
-![View事件分发的方法总结](https://lyl873825813.github.io/medias/touch/event_view_summary_mathod.png)
+![View事件分发的方法总结](https://henleylee.github.io/medias/touch/event_view_summary_mathod.png)
 
 ## 事件分发工作流程总结 ##
-![事件分发工作流程总结](https://lyl873825813.github.io/medias/touch/event_process_summary.png)
+![事件分发工作流程总结](https://henleylee.github.io/medias/touch/event_process_summary.png)
 > 左侧虚线：具备相关性 & 逐层返回
 
 ### 以角色为核心的图解说明 ###
-![以角色为核心的事件分发工作流程图解说明](https://lyl873825813.github.io/medias/touch/event_process_summary_role.png)
+![以角色为核心的事件分发工作流程图解说明](https://henleylee.github.io/medias/touch/event_process_summary_role.png)
 
 ### 以方法为核心的图解说明 ###
-![以方法为核心的事件分发工作流程图解说明](https://lyl873825813.github.io/medias/touch/event_process_summary_method.png)
+![以方法为核心的事件分发工作流程图解说明](https://henleylee.github.io/medias/touch/event_process_summary_method.png)
 
 ## 事件分发额外知识 ##
 ### onTouch() 和 onTouchEvent() 的区别 ###
@@ -550,12 +550,12 @@ mOnTouchListener != null && (mViewFlags & ENABLED_MASK) == ENABLED && mOnTouchLi
 
 ACTION_MOVE 和 ACTION_UP 事件的传递结论：
  - 结论1：若对象(Activity、ViewGroup、View)的 `dispatchTouchEvent()` 方法分发事件后消费了事件(返回 true)，那么收到 ACTION_DOWN 的函数也能收到 ACTION_MOVE 和 ACTION_UP；
-> ![ACTION_MOVE和ACTION_UP事件的传递结论1](https://lyl873825813.github.io/medias/touch/event_action_conclusion_1.png)
+> ![ACTION_MOVE和ACTION_UP事件的传递结论1](https://henleylee.github.io/medias/touch/event_action_conclusion_1.png)
 > 黑线：ACTION_DOWN 事件传递方向
 > 红线：ACTION_MOVE、ACTION_UP 事件传递方向
 
  - 结论2：若对象(Activity、ViewGroup、View)的 `onTouchEvent()` 方法处理了事件(返回 true)，那么 ACTION_MOVE、ACTION_UP 的事件从上往下传到该 `View` 后就不再往下传递，而是直接传给自己的 `onTouchEvent()` 方法并结束本次事件传递过程。
-> ![ACTION_MOVE和ACTION_UP事件的传递结论2](https://lyl873825813.github.io/medias/touch/event_action_conclusion_2.png)
+> ![ACTION_MOVE和ACTION_UP事件的传递结论2](https://henleylee.github.io/medias/touch/event_action_conclusion_2.png)
 > 黑线：ACTION_DOWN 事件传递方向
 > 红线：ACTION_MOVE、ACTION_UP 事件传递方向
 

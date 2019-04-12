@@ -25,7 +25,7 @@ date: 2018-10-24 19:20:22
  - **`Context(环境类)：`**环境类又称为上下文类，它用于存储解释器之外的一些全局信息，通常它临时存储了需要解释的语句。
 
 ### 结构图 ###
-![解释器模式结构图](https://lyl873825813.github.io/medias/design_pattern/interpreter_uml.jpg)
+![解释器模式结构图](https://henleylee.github.io/medias/design_pattern/interpreter_uml.jpg)
 
 ## 示例代码 ##
 首先，是抽象表达式。AbstractExpression 抽象类充当抽象表达式，完整代码如下所示：

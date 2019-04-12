@@ -98,7 +98,7 @@ Java 8 的 `Stream API` 充分利用 `Lambda 表达式`的特性，极大的提�
 ### distinct() ###
 **`distinct()`** 方法对于 Stream 中包含的元素进行去重操作(去重逻辑依赖元素的 `equals()` 方法)，新生成的 Stream 中没有重复的元素。
 
-![distinct 方法示意图](https://lyl873825813.github.io/medias/java/stream_distinct.jpg)
+![distinct 方法示意图](https://henleylee.github.io/medias/java/stream_distinct.jpg)
 
 以下代码片段使用 distinct 方法去除重复的元素并排序后输出：
 ```java
@@ -112,7 +112,7 @@ letters.stream()
 ### filter() ###
 **`filter()`** 方法对于 Stream 中包含的元素使用给定的过滤函数进行过滤操作，新生成的 Stream 只包含符合条件的元素。
 
-![filter 方法示意图](https://lyl873825813.github.io/medias/java/stream_filter.jpg)
+![filter 方法示意图](https://henleylee.github.io/medias/java/stream_filter.jpg)
 
 以下代码片段使用 filter 方法过滤出长度小于5的语言个数：
 ```java
@@ -124,7 +124,7 @@ System.out.println(num);
 ### map() ###
 **`map()`** 方法对于 Stream 中包含的元素使用给定的转换函数进行转换操作，新生成的 Stream 只包含转换生成的元素。这个方法有三个对于原始类型的变种方法，分别是：`mapToInt`，`mapToLong` 和 `mapToDouble`。这三个方法也比较好理解，比如 `mapToInt` 就是把原始 Stream 转换成一个新的 Stream，这个新生成的 Stream 中的元素都是 int 类型。之所以会有这样三个变种方法，可以免除自动装箱/拆箱的额外消耗。
 
-![map 方法示意图](https://lyl873825813.github.io/medias/java/stream_map.jpg)
+![map 方法示意图](https://henleylee.github.io/medias/java/stream_map.jpg)
 
 以下代码片段使用 map 得到元素对应的平方数并去除重复元素后转换为集合：
 ```java
@@ -138,7 +138,7 @@ List<Integer> squaresList = numbers.stream()
 ### flatMap() ###
 **`flatMap()`** 方法和 map 类似，不同的是其每个元素转换得到的是 Stream 对象，会把子 Stream 中的元素压缩到重新生成的集合中。
 
-![flatMap 方法示意图](https://lyl873825813.github.io/medias/java/stream_flatMap.jpg)
+![flatMap 方法示意图](https://henleylee.github.io/medias/java/stream_flatMap.jpg)
 
 以下代码片段使用 flatMap 将多个 Stream 连接成一个 Stream 并转换为集合后输出：
 ```java
@@ -156,7 +156,7 @@ numbersStream
 ### peek() ###
 **`peek()`** 方法生成一个包含原 Stream 的所有元素的新 Stream，同时会提供一个消费函数(Consumer 实例)，新 Stream 每个元素被消费的时候都会执行给定的消费函数。
 
-![peek 方法示意图](https://lyl873825813.github.io/medias/java/stream_peek.jpg)
+![peek 方法示意图](https://henleylee.github.io/medias/java/stream_peek.jpg)
 
 以下代码片段使用 peek 消费了过滤后的元素和转换后的元素：
 ```java
@@ -172,7 +172,7 @@ System.out.println("Result value: " + peeks);
 ### limit() ###
 **`limit()`** 方法对一个 Stream 进行截断操作，获取其前 N 个元素，如果原 Stream 中包含的元素个数小于 N，那就获取其所有的元素。
 
-![limit 方法示意图](https://lyl873825813.github.io/medias/java/stream_limit.jpg)
+![limit 方法示意图](https://henleylee.github.io/medias/java/stream_limit.jpg)
 
 以下代码片段使用 limit 得到前2个元素并输出：
 ```java
@@ -186,7 +186,7 @@ numbers.stream()
 ### skip() ###
 **`skip()`** 方法返回一个丢弃原 Stream 的前 N 个元素后剩下元素组成的新 Stream，如果原 Stream 中包含的元素个数小于 N，那么返回空 Stream。
 
-![skip 方法示意图](https://lyl873825813.github.io/medias/java/stream_skip.jpg)
+![skip 方法示意图](https://henleylee.github.io/medias/java/stream_skip.jpg)
 
 以下代码片段使用 skip 得到前2个元素后剩下的元素并输出：
 ```java
@@ -199,7 +199,7 @@ numbers.stream()
 ### reduce() ###
 **`reduce()`** 方法用于从 Stream 中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，`count`、`min` 和 `max` 方法，因为常用而被纳入标准库中。事实上，这些方法都是 `reduce` 操作。
 
-![reduce 方法示意图](https://lyl873825813.github.io/medias/java/stream_reduce.jpg)
+![reduce 方法示意图](https://henleylee.github.io/medias/java/stream_reduce.jpg)
 
 `reduce()` 方法有三种变形：
 ```java

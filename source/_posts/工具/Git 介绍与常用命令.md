@@ -10,7 +10,7 @@ abbrlink: 515a2461
 date: 2018-08-08 18:45:35
 ---
 
-![Git](https://lyl873825813.github.io/medias/git/git_header.jpg)
+![Git](https://henleylee.github.io/medias/git/git_header.jpg)
 
 ## 一、Git 是什么？ ##
  - Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
@@ -45,7 +45,7 @@ Git 一般工作流程如下：
  - 在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。
 
 下图展示了 Git 的工作流程：
-![Git 工作流程](https://lyl873825813.github.io/medias/git/git_process.jpg)
+![Git 工作流程](https://henleylee.github.io/medias/git/git_process.jpg)
 
 ### 3.3 Git 工作空间 ###
 Git 工作空间分为：
@@ -54,7 +54,7 @@ Git 工作空间分为：
  - **`暂存区(Stage/Index)：`**一般存放在 `.git` 目录下的 `index` 文件(`.git/index`)中，所以我们把暂存区有时也叫作索引(index)。
 
 下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：
-![Git 工作空间](https://lyl873825813.github.io/medias/git/git_workspace.jpg)
+![Git 工作空间](https://henleylee.github.io/medias/git/git_workspace.jpg)
 图中左侧为工作区，右侧为版本库。在版本库中标记为 `index` 的区域是暂存区(stage/index)，标记为 `master` 的是 `master` 分支所代表的目录树。此时 `HEAD` 实际是指向 `master` 分支的一个“游标”，所以图示的命令中出现 `HEAD` 的地方可以用 `master` 来替换。图中的 `objects` 标识的区域为 git 的对象库，实际位于 `.git/objects` 目录下。 
  - 当对工作区修改（或新增）的文件执行 `git add` 命令时，暂存区的目录树会被更新，同时工作区修改（或新增）的文件内容会被写入到对象库中的一个新的对象中，而该对象的id被记录在暂存区的文件索引中。
  - 当执行提交操作 `git commit` 时，暂存区的目录树会写到版本库（对象库）中，master 分支会做相应的更新，即 master 最新指向的目录树就是提交时原暂存区的目录树。

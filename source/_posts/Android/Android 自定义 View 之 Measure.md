@@ -160,7 +160,7 @@ public class MeasureSpec {
 继承自 `View`、`SurfaceView` 或 其他 `View`；`不包含子 View`。
 
 #### 测量流程 ####
-![单一View的measure过程](https://lyl873825813.github.io/medias/view/view_measure_single.png)
+![单一View的measure过程](https://henleylee.github.io/medias/view/view_measure_single.png)
 
 下面将 `measure` 过程中的方法进行详细分析：`measure` 过程入口为 `measure()`
 ```java
@@ -284,7 +284,7 @@ public class MeasureSpec {
 ```
 
 #### 总结 ####
-![单一View的measure过程总结](https://lyl873825813.github.io/medias/view/view_measure_single_all.png)
+![单一View的measure过程总结](https://henleylee.github.io/medias/view/view_measure_single_all.png)
 
 ### ViewGroup 的 measure 过程 ###
 #### 应用场景 ####
@@ -298,10 +298,10 @@ public class MeasureSpec {
 1. 遍历测量所有子 `View` 的尺寸。
 2. 将所有子 `View` 的尺寸进行合并，最终得到 `ViewGroup` 父视图的测量值。
 
-![ViewGroup自上而下遍历](https://lyl873825813.github.io/medias/view/view_group_tree.png)
+![ViewGroup自上而下遍历](https://henleylee.github.io/medias/view/view_group_tree.png)
 
 #### 测量流程 ####
-![ViewGroup的measure过程](https://lyl873825813.github.io/medias/view/view_measure_group.png)
+![ViewGroup的measure过程](https://henleylee.github.io/medias/view/view_measure_group.png)
 
 下面将 `measure` 过程中的方法进行详细分析：`measure` 过程入口为 `measure()`
 ```java
@@ -510,8 +510,8 @@ public class MeasureSpec {
 ```
 
 #### 总结 ####
-![ViewGroup的measure过程总结](https://lyl873825813.github.io/medias/view/view_measure_group_all.png)
+![ViewGroup的measure过程总结](https://henleylee.github.io/medias/view/view_measure_group_all.png)
 
 ## 总结 ##
-![View的measure过程总结](https://lyl873825813.github.io/medias/view/view_measure_all.png)
+![View的measure过程总结](https://henleylee.github.io/medias/view/view_measure_all.png)
 

@@ -35,7 +35,7 @@ date: 2019-02-22 18:36:25
 ### JDK 1.7 的实现原理 ###
 #### 数据结构 ####
 在 JDK 1.7 及之前，`HashMap` 由**`数组+链表`**组成，也就是`链表散列`，**数组是 HashMap 的主体，链表实则是为了解决哈希冲突而存在的(拉链法解决哈希冲突)**。JDK 1.7 中 `HashMap` 的数据结构如下图所示：
-![JDK1.7中HashMap的数据结构](https://lyl873825813.github.io/medias/java/hashmap_jdk_1_7_structure.png)
+![JDK1.7中HashMap的数据结构](https://henleylee.github.io/medias/java/hashmap_jdk_1_7_structure.png)
 
 `HashMap` 通过 `key` 的 `hashCode` 经过扰动函数处理过后得到 `hash` 值，然后通过 `(n - 1) & hash` 判断当前元素存放的位置(这里的 n 指的是数组的长度)，如果当前位置存在元素的话，就判断该元素与要存入的元素的 `hash` 值以及 `key` 是否相同，如果相同的话，直接覆盖，不相同就通过拉链法解决冲突。
 
@@ -216,7 +216,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
 ```
 
 `put()` 方法图解如下图所示：
-![JDK1.7中HashMap的put()方法图解](https://lyl873825813.github.io/medias/java/hashmap_jdk_1_7_put.png)
+![JDK1.7中HashMap的put()方法图解](https://henleylee.github.io/medias/java/hashmap_jdk_1_7_put.png)
 
 > `put()` 方法会对 `key` 为 `null` 时进行特殊处理，`key` 为 `null` 的元素总是放到 `table[0]` 位置。
 
@@ -320,7 +320,7 @@ void transfer(Entry[] newTable, boolean rehash) {
 ### JDK 1.8 的实现原理 ###
 #### 数据结构 ####
 在 JDK 1.8 中，`HashMap` 由**`数组+链表+红黑树结构(当链表长度大于8，转为红黑树)`**组成，不过本质并未变。如果按照链表的方式存储，随着节点的增加数据会越来越多，这会导致查询节点的时间复杂度会逐渐增加，平均时间复杂度`O(n)`。为了提高查询效率，故在 JDK 1.8 中引入了改进方法红黑树。此数据结构的平均查询效率为 `O(long n)`。JDK 1.8 中 `HashMap` 的数据结构如下图所示：
-![JDK1.8中HashMap的数据结构](https://lyl873825813.github.io/medias/java/hashmap_jdk_1_8_structure.png)
+![JDK1.8中HashMap的数据结构](https://henleylee.github.io/medias/java/hashmap_jdk_1_8_structure.png)
 
 #### 类中常量 ####
 ```java
@@ -658,7 +658,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
 ```
 
 `put()` 方法图解如下图所示：
-![JDK1.8中HashMap的put()方法图解](https://lyl873825813.github.io/medias/java/hashmap_jdk_1_8_put.png)
+![JDK1.8中HashMap的put()方法图解](https://henleylee.github.io/medias/java/hashmap_jdk_1_8_put.png)
 
 > `put()` 方法没有对 `key` 为 `null` 时进行特殊处理，但是 `key` 为 `null` 时的 `hash` 值总为 0，所以 `key` 为 `null` 的元素还是放到 `table[0]` 位置。
 
@@ -823,33 +823,33 @@ JDK 1.8 相对于 1.7 在`初始化`上发生了一些改变，JDK 1.7 是**resi
 
 #### 数据结构 ####
 JDK 1.8 相对于 1.7 在`数据结构`上发生了一些改变，JDK 1.7 是**`数组+链表`**，1.8 则是**`数组+链表+红黑树结构(当链表的深度达到8的时候，也就是默认阈值，就会自动扩容把链表转成红黑树的数据结构来把时间复杂度从 O(n) 变成 O(logN) 提高了效率)`**。
-![HashMap数据结构的区别](https://lyl873825813.github.io/medias/java/hashmap_differ_structure.png)
+![HashMap数据结构的区别](https://henleylee.github.io/medias/java/hashmap_differ_structure.png)
 
 #### 数据存储 ####
 JDK 1.8 相对于 1.7 在`数据存储`上发生了一些改变，JDK 1.7 使用的是**`头插法`**，1.8 则使用的是**`尾插法`**。这样做的原因是因为 JDK 1.7 是用单链表进行的纵向延伸，当采用头插法时会容易出现逆序且环形链表死循环问题。但是在 JDK 1.8 之后是因为加入了红黑树使用尾插法，能够避免出现逆序且链表死循环的问题。
-![HashMap数据存储的区别](https://lyl873825813.github.io/medias/java/hashmap_differ_store.png)
+![HashMap数据存储的区别](https://henleylee.github.io/medias/java/hashmap_differ_store.png)
 
 #### 扩容机制 ####
 JDK 1.8 相对于 1.7 在`扩容后数据存储位置的计算方式`上发生了一些改变，JDK 1.7 是**`直接用 hash 值和需要扩容的二进制数进行 & 运算`**，1.8 则是**`直接使用扩容前的原始位置或加上扩容的大小值`**。
-![HashMap扩容后数据存储位置的计算方式的区别](https://lyl873825813.github.io/medias/java/hashmap_differ_resize_1.png)
+![HashMap扩容后数据存储位置的计算方式的区别](https://henleylee.github.io/medias/java/hashmap_differ_resize_1.png)
 > 在计算 hash 值的时候，JDK 1.7 用了9次扰动处理(4次位运算 + 5次异或)，而 JDK 1.8 只用了2次扰动处理(1次位运算 + 1次异或)。
 
 JDK 1.8 相对于 1.7 在`扩容流程`上也发生了一些改变：
-![HashMap扩容流程的区别](https://lyl873825813.github.io/medias/java/hashmap_differ_resize_2.png)
+![HashMap扩容流程的区别](https://henleylee.github.io/medias/java/hashmap_differ_resize_2.png)
 
 #### key 为 null 的处理 ####
 JDK 1.8 相对于 1.7 在 `key 为 null 的处理`上发生了一些改变，JDK 1.7 对 key 为 null 的情况单独处理，1.8 则没有单独处理。但是两个版本中如果 key 为null，那么调用 `hash()` 方法得到的都将是 0，所以 key 为 null 的元素都始终位于哈希表 `table[0]` 中。
 
 ## 额外补充 ##
 ### 哈希表如何解决 hash 冲突 ###
-![哈希表如何解决hash冲突](https://lyl873825813.github.io/medias/java/hashmap_extra_hash_conflict.png)
+![哈希表如何解决hash冲突](https://henleylee.github.io/medias/java/hashmap_extra_hash_conflict.png)
 
 ### HashMap 都具备哪些特点 ###
-![HashMap具备的特点](https://lyl873825813.github.io/medias/java/hashmap_extra_map_feature.png)
+![HashMap具备的特点](https://henleylee.github.io/medias/java/hashmap_extra_map_feature.png)
 
 ### HashMap 中的 key 若为 Object 类型需实现哪些方法 ###
-![HashMap中的key若为Object类型需实现的方法](https://lyl873825813.github.io/medias/java/hashmap_extra_key_method.png)
+![HashMap中的key若为Object类型需实现的方法](https://henleylee.github.io/medias/java/hashmap_extra_key_method.png)
 
 ### HashMap 中 String、Integer 这样的包装类为什么适合作为 key ###
-![HashMap中String、Integer这样的包装类适合作为key的原因](https://lyl873825813.github.io/medias/java/hashmap_extra_key_reason.png)
+![HashMap中String、Integer这样的包装类适合作为key的原因](https://henleylee.github.io/medias/java/hashmap_extra_key_reason.png)
 

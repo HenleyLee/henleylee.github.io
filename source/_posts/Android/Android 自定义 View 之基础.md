@@ -50,7 +50,7 @@ date: 2019-01-02 18:46:35
 
 ## View 视图结构 ##
 对于多 View 的视图，结构是**`树形结构`**：最顶层是 ViewGroup，ViewGroup 下可能有多个 ViewGroup 或 View，如下图：
-![View 视图结构](https://lyl873825813.github.io/medias/view/view_structure.png)
+![View 视图结构](https://henleylee.github.io/medias/view/view_structure.png)
 
 > 无论是 measure 过程、layout 过程还是 draw 过程，**永远都是从 View 树的根节点开始测量或计算（即从树的顶端开始），一层一层、一个分支一个分支地进行（即树形递归）**，最终计算整个 View 树中各个 View，最终确定整个 View 树的相关属性。
 
@@ -61,14 +61,14 @@ Android 的坐标系定义为：
  - 向下为 Y 轴增大方向。
 
 具体如下图： 
-![Android 坐标系](https://lyl873825813.github.io/medias/view/android_coordinate_system.png)
+![Android 坐标系](https://henleylee.github.io/medias/view/android_coordinate_system.png)
 
 区别于一般的数学坐标系：
-![其他坐标系](https://lyl873825813.github.io/medias/view/other_coordinate_system.png)
+![其他坐标系](https://henleylee.github.io/medias/view/other_coordinate_system.png)
 
 ### View 位置描述 ###
 View 的位置由4个顶点决定的（如下A、B、C、D）：
-![View 位置](https://lyl873825813.github.io/medias/view/view_location.png)
+![View 位置](https://henleylee.github.io/medias/view/view_location.png)
 
 4个顶点的位置描述分别由4个值决定：
  - Top：子 View 上边界到父 View 上边界的距离；
@@ -77,7 +77,7 @@ View 的位置由4个顶点决定的（如下A、B、C、D）：
  - Right：子 View 右边界到父 View 左边界的距离。
 
 如下图：
-![View 位置](https://lyl873825813.github.io/medias/view/view_location_get.png)
+![View 位置](https://henleylee.github.io/medias/view/view_location_get.png)
 可以按顶点位置来记忆：
  - Top：子 View 左上角距父 View 顶部的距离；
  - Left：子 View 左上角距父 View 左侧的距离；
@@ -106,16 +106,16 @@ View 的位置由4个顶点决定的（如下A、B、C、D）：
     event.getRawY();
     ```
 具体如下图所示：
-![MotionEvent 坐标](https://lyl873825813.github.io/medias/view/motion_event_location_get.png)
+![MotionEvent 坐标](https://henleylee.github.io/medias/view/motion_event_location_get.png)
 
 ## Android 的角度与弧度 ##
  - 自定义 View 实际上是将一些简单的形状通过计算，从而组合到一起形成的效果。
     > 这会涉及到画布的相关操作(旋转)、正余弦函数计算等，即会涉及到角度(angle)与弧度(radian)的相关知识。
  - 角度和弧度都是描述角的一种度量单位，区别如下图：
-![角度与弧度的区别](https://lyl873825813.github.io/medias/view/differ_angle_radian.png)
+![角度与弧度的区别](https://henleylee.github.io/medias/view/differ_angle_radian.png)
 
 在默认的屏幕坐标系中角度增大方向为顺时针。
-![角度增大方向](https://lyl873825813.github.io/medias/view/angle_increase_direction.png)
+![角度增大方向](https://henleylee.github.io/medias/view/angle_increase_direction.png)
 > 注：在常见的数学坐标系中角度增大方向为逆时针。
 
 ## Android 中的颜色 ##

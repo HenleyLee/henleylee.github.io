@@ -19,7 +19,7 @@ date: 2018-11-22 18:32:28
 
 ## 集合框架图 ##
 Java 集合框架图如下：
-![Java 集合框架图](https://lyl873825813.github.io/medias/java/java_collections_framework.png)
+![Java 集合框架图](https://henleylee.github.io/medias/java/java_collections_framework.png)
 
 从上面的集合框架图可以看到，Java 集合框架主要包括两种类型的容器：
  - **`集合(Collection)：`**存储一个`元素集合`。Collection 接口又有 3 种子类型，List、Set 和 Queue，再下面是一些抽象类，最后是具体实现类，常用的有 ArrayList、LinkedList、HashSet、LinkedHashSet、TreeSet 等。
@@ -34,10 +34,10 @@ Java 集合框架图如下：
 
 ## 集合关系图 ##
 Java Collection UML 类关系图如下：
-![Java Collection UML类关系图](https://lyl873825813.github.io/medias/java/java_collection_uml.png)
+![Java Collection UML类关系图](https://henleylee.github.io/medias/java/java_collection_uml.png)
 
 Java Map UML 类关系图如下：
-![Java Map UML类关系图](https://lyl873825813.github.io/medias/java/java_map_uml.png)
+![Java Map UML类关系图](https://henleylee.github.io/medias/java/java_map_uml.png)
 
 ## 集合接口、类的关系 ##
 ### Collection ###
@@ -145,7 +145,7 @@ Java Map UML 类关系图如下：
 
 ### 思维导图 ###
 Java 集合框架功能介绍思维导图如下：
-![Java 集合框架功能介绍思维导图](https://lyl873825813.github.io/medias/java/java_collections_mind.png)
+![Java 集合框架功能介绍思维导图](https://henleylee.github.io/medias/java/java_collections_mind.png)
 
 ## 集合接口、类的方法 ##
 ### Collection 接口中的抽象方法 ###

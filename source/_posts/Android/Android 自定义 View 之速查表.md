@@ -94,24 +94,24 @@ date: 2019-01-04 18:56:25
 
 | 贝塞尔曲线 | 相关 API | 演示动画                                              |
 |------------|----------|:-----------------------------------------------------:|
-| 一阶曲线   | lineTo 	| ![](https://lyl873825813.github.io/medias/bezier/bezier_1.gif) |
-| 二阶曲线   | quadTo 	| ![](https://lyl873825813.github.io/medias/bezier/bezier_2.gif) |
-| 三阶曲线   | cubicTo 	| ![](https://lyl873825813.github.io/medias/bezier/bezier_3.gif) |
-| 四阶曲线   | 无 	| ![](https://lyl873825813.github.io/medias/bezier/bezier_4.gif) |
-| 五阶曲线   | 无 	| ![](https://lyl873825813.github.io/medias/bezier/bezier_5.gif) |
+| 一阶曲线   | lineTo 	| ![](https://henleylee.github.io/medias/bezier/bezier_1.gif) |
+| 二阶曲线   | quadTo 	| ![](https://henleylee.github.io/medias/bezier/bezier_2.gif) |
+| 三阶曲线   | cubicTo 	| ![](https://henleylee.github.io/medias/bezier/bezier_3.gif) |
+| 四阶曲线   | 无 	| ![](https://henleylee.github.io/medias/bezier/bezier_4.gif) |
+| 五阶曲线   | 无 	| ![](https://henleylee.github.io/medias/bezier/bezier_5.gif) |
 
 ### 原理和公式 ###
 下面介绍一下贝塞尔曲线的原理和公式：
 以下公式中：`B(t)`为 `t` 时间下点的坐标；`P0` 为起点，`Pn` 为终点，`Pi` 为控制点。
 
 #### 一阶贝塞尔曲线(线段) ####
-![](https://lyl873825813.github.io/medias/bezier/bezier_1.png)
-![](https://lyl873825813.github.io/medias/bezier/bezier_1.gif)
+![](https://henleylee.github.io/medias/bezier/bezier_1.png)
+![](https://henleylee.github.io/medias/bezier/bezier_1.gif)
 原理：由 P0 至 P1 的连续点， 描述的一条线段
 
 #### 二阶贝塞尔曲线(抛物线) ####
-![](https://lyl873825813.github.io/medias/bezier/bezier_2.png)
-![](https://lyl873825813.github.io/medias/bezier/bezier_2.gif)
+![](https://henleylee.github.io/medias/bezier/bezier_2.png)
+![](https://henleylee.github.io/medias/bezier/bezier_2.gif)
 原理：由 P0 至 P1 的连续点 Q0，描述一条线段。 
       由 P1 至 P2 的连续点 Q1，描述一条线段。 
       由 Q0 至 Q1 的连续点 B(t)，描述一条二次贝塞尔曲线。
@@ -119,17 +119,17 @@ date: 2019-01-04 18:56:25
 经验：P1-P0为曲线在P0处的切线。
 
 #### 三阶贝塞尔曲线 ####
-![](https://lyl873825813.github.io/medias/bezier/bezier_3.png)
-![](https://lyl873825813.github.io/medias/bezier/bezier_3.gif)
+![](https://henleylee.github.io/medias/bezier/bezier_3.png)
+![](https://henleylee.github.io/medias/bezier/bezier_3.gif)
 
 #### 四阶贝塞尔曲线 ####
-![](https://lyl873825813.github.io/medias/bezier/bezier_4.gif)
+![](https://henleylee.github.io/medias/bezier/bezier_4.gif)
 
 #### 五阶贝塞尔曲线 ####
-![](https://lyl873825813.github.io/medias/bezier/bezier_5.gif)
+![](https://henleylee.github.io/medias/bezier/bezier_5.gif)
 
 #### 通用公式 ####
-![](https://lyl873825813.github.io/medias/bezier/bezier_common.png)
+![](https://henleylee.github.io/medias/bezier/bezier_common.png)
 
 ### 工具网站 ###
  - [cubic-bezier](http://cubic-bezier.com/)

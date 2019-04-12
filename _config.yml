@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Liyunlong
-subtitle: Liyunlong
+title: Henley
+subtitle: Henley
 description: 让信念坚持下去，梦想就会实现
 keywords: Android, Google, Blog
-author: Liyunlong
+author: HenleyLee
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://lyl873825813.github.io/
+url: https://henleylee.github.io/
 root: /
 # permalink: :year/:month/:day/:title/
 # permalink_defaults:
@@ -90,7 +90,7 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/lyl873825813/lyl873825813.github.io.git
+  repo: https://github.com/HenleyLee/henleylee.github.io.git
   branch: master
 
 search:

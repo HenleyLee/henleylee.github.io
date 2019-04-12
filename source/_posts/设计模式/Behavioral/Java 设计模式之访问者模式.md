@@ -26,7 +26,7 @@ date: 2018-10-08 18:29:25
  - **`ObjectStructure(对象结构)：`**对象结构是一个元素的集合，它用于存放元素对象，并且提供了遍历其内部元素的方法。它可以结合组合模式来实现，也可以是一个简单的集合对象，如一个 List 对象或一个 Set 对象。
 
 ### 结构图 ###
-![访问者模式结构图](https://lyl873825813.github.io/medias/design_pattern/visitor_uml.jpg)
+![访问者模式结构图](https://henleylee.github.io/medias/design_pattern/visitor_uml.jpg)
 
 ## 示例代码 ##
 首先，是抽象访问者和具体访问者。Visitor 抽象类充当抽象访问者，ConcreteVisitor 类充当具体访问者，完整代码如下所示：

@@ -39,7 +39,7 @@ date: 2018-09-05 13:05:25
  - **行为型模式(Behavioral Patterns)：**类和对象如何交互，及划分责任和算法。
 
 如下图所示：
-![设计模式的类型](https://lyl873825813.github.io/medias/design_pattern/design_pattern_category.jpg)
+![设计模式的类型](https://henleylee.github.io/medias/design_pattern/design_pattern_category.jpg)
 
 ### 各分类中模式的关键点 ###
 下面简单介绍一下各分类中模式的关键点：
@@ -73,7 +73,7 @@ date: 2018-09-05 13:05:25
     - 迭代器模式：提供一种方法顺序访问一个聚合对象中各个元素, 而又无须暴露该对象的内部表示。
 
 下面用一个图片来整体描述一下设计模式之间的关系：
-![设计模式的类型](https://lyl873825813.github.io/medias/design_pattern/design_pattern_relation.jpg)
+![设计模式的类型](https://henleylee.github.io/medias/design_pattern/design_pattern_relation.jpg)
 
 ## 设计模式的七大原则 ##
 ### 开闭原则(Open Close Principle,OCP) ###

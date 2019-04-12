@@ -29,16 +29,16 @@ Java IO 中包含了许多 `InputStream`、`OutputStream`、`Reader`、`Writer`�
 
 ## Java IO 关系图 ##
 Java InputStream UML 类关系图如下：
-![Java InputStream UML](https://lyl873825813.github.io/medias/java/io_inputstream_uml.png)
+![Java InputStream UML](https://henleylee.github.io/medias/java/io_inputstream_uml.png)
 
 Java OutputStream UML 类关系图如下：
-![Java OutputStream UML](https://lyl873825813.github.io/medias/java/io_outputstream_uml.png)
+![Java OutputStream UML](https://henleylee.github.io/medias/java/io_outputstream_uml.png)
 
 Java Reader UML 类关系图如下：
-![Java Reader UML](https://lyl873825813.github.io/medias/java/io_reader_uml.png)
+![Java Reader UML](https://henleylee.github.io/medias/java/io_reader_uml.png)
 
 Java Writer UML 类关系图如下：
-![Java Writer UML](https://lyl873825813.github.io/medias/java/io_writer_uml.png)
+![Java Writer UML](https://henleylee.github.io/medias/java/io_writer_uml.png)
 
 ## Java IO 类的关系 ##
 ### InputStream ###
@@ -107,7 +107,7 @@ OutputStream：Java IO 中的顶级的字节输出流的抽象类，定义了最
  - CharArrayWriter：继承自 `Writer` 的字符数组输出流类。
  - PrintWriter：继承自 `Writer` 的打印写入类，提供了 `PrintStream` 的所有打印方法，其方法也从不抛出 IOException。与 `PrintStream` 的区别：作为处理流使用时，`PrintStream` 只能封装 `OutputStream` 类型的字节流，而 `PrintWriter` 既可以封装 `OutputStream` 类型的字节流，还能够封装 `Writer` 类型的字符输出流并增强其功能。
 
-![Java IO Mind](https://lyl873825813.github.io/medias/java/io_mind_all.png)
+![Java IO Mind](https://henleylee.github.io/medias/java/io_mind_all.png)
 
 ## Java IO 的分类 ##
  - **`字节流和字符流`**：
@@ -123,10 +123,10 @@ OutputStream：Java IO 中的顶级的字节输出流的抽象类，定义了最
 > **注**：输入输出流中的入和出，都是相对于系统内存而言的。为什么要有处理流？直接使用节点流，读写不方便，为了更快的读写文件，才有了处理流。
 
 流按类型分类的结构图如下：
-![流按类型分类](https://lyl873825813.github.io/medias/java/io_mind_optype.png)
+![流按类型分类](https://henleylee.github.io/medias/java/io_mind_optype.png)
 
 流按用途分类的结构图如下：
-![流按用途分类](https://lyl873825813.github.io/medias/java/io_mind_object.png)
+![流按用途分类](https://henleylee.github.io/medias/java/io_mind_object.png)
 
 ## Java IO 的主要方法 ##
 ### InputStream 中的主要方法 ###

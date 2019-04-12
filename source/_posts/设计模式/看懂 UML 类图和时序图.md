@@ -12,7 +12,7 @@ date: 2018-09-03 09:21:35
 
 ## UML类关系图示例 ##
 请看以下这个类图，类之间的关系是我们需要关注的：
-![车的类图结构](https://lyl873825813.github.io/medias/design_pattern/uml_class_struct.jpg)
+![车的类图结构](https://henleylee.github.io/medias/design_pattern/uml_class_struct.jpg)
 
  - 车的类图结构为<<abstract>>，表示车是一个抽象类；
  - 它有两个继承类：小汽车和自行车；它们之间的关系为实现关系，使用带空心箭头的虚线表示；
@@ -30,13 +30,13 @@ date: 2018-09-03 09:21:35
 **继承关系为 `is-a` 的关系**，是类与类或者接口与接口之间最常见的关系之一。在 Java 中继承关系通过关键字 `extends` 明确标识，在设计时一般没有争议性。
 
 在 UML 类图设计中，**泛化关系**用一条**带空心箭头的直接**表示。如下图表示(A继承自B)：
-![A继承自B](https://lyl873825813.github.io/medias/design_pattern/uml_generalization.jpg)
+![A继承自B](https://henleylee.github.io/medias/design_pattern/uml_generalization.jpg)
 
 > **注**：表现在代码中，继承关系表现为一个类继承另一个类或者一个接口继承另一个接口。
 
 ### 实现关系(realization) ###
 在 UML 类图设计中，**实现关系**用一条**带空心箭头的虚线**表示。如下图所示(A实现B)：
-![A实现B](https://lyl873825813.github.io/medias/design_pattern/uml_realize.jpg)
+![A实现B](https://henleylee.github.io/medias/design_pattern/uml_realize.jpg)
 
 **实现**指的是一个 `class` 类实现 `interface` 接口（可以是多个）的功能。实现是类与接口之间最常见的关系之一，在 Java 中实现关系通过关键字 `implements` 来表示。
 
@@ -44,7 +44,7 @@ date: 2018-09-03 09:21:35
 
 ### 聚合关系(aggregation) ###
 在 UML 类图设计中，**聚合关系**用一条**带空心菱形箭头的直线**表示。如下图所示(A聚合到B上，或者说B由A组成)：
-![A聚合到B](https://lyl873825813.github.io/medias/design_pattern/uml_aggregation.jpg)
+![A聚合到B](https://henleylee.github.io/medias/design_pattern/uml_aggregation.jpg)
 
 **聚合关系**用于表示实体对象之间的关系，表示整体由部分构成的意思。
 **聚合是关联关系的一种特例，它体现的是整体与部分、拥有的关系，即 `has-a` 的关系**，此时整体与部分之间是**可分离**的，他们可以具有各自的生命周期，部分可以属于多个整体对象，也可以为多个整体对象共享。例如一个部门由多个员工组成。
@@ -53,7 +53,7 @@ date: 2018-09-03 09:21:35
 
 ### 组合关系(composition) ###
 在 UML 类图设计中，**组合关系**用一条**带实心菱形箭头的直线**表示。如下图表示(A组成B，或者B由A组成)：
-![A组合到B](https://lyl873825813.github.io/medias/design_pattern/uml_composition.jpg)
+![A组合到B](https://henleylee.github.io/medias/design_pattern/uml_composition.jpg)
 
 **组合**关系同样表示整体由部分组成的意思。与聚合关系一样，**组合也是关联关系的一种特例，它体现的是一种整体与部分不可分割的关系，即 `contains-a` 的关系，这种关系比聚合更强，也称为强聚合**。例如公司由多个部门组成组合，但此时整体与部分是**不可分离**的，整体的生命周期结束也就意味着部分的生命周期结束。
 
@@ -61,7 +61,7 @@ date: 2018-09-03 09:21:35
 
 ### 关联关系(association) ###
 在 UML 类图设计中，**关联**关系是用一条**可能会有方向的直线**表示的。关联关系默认不强调方向，表示对象间相互知道；如果特别强调方向，如下图所示(表示A关联B，但B不关联A)：
-![A关联B](https://lyl873825813.github.io/medias/design_pattern/uml_association.jpg)
+![A关联B](https://henleylee.github.io/medias/design_pattern/uml_association.jpg)
 
 **关联**关系体现的是两个类、或者类与接口之间语义级别的一种强依赖的结构关系，是一种长期的静态稳定的关系，通常与运行状态无关，一般由常识等因素决定的。
 
@@ -71,7 +71,7 @@ date: 2018-09-03 09:21:35
 
 ### 依赖关系(dependency) ###
 在 UML 类图设计中，**依赖关系**是用一套**带箭头的虚线**表示的。依赖关系描述一个对象在运行期间会用到另一个对象的关系，如下图所示(A依赖于B)。
-![A依赖于B](https://lyl873825813.github.io/medias/design_pattern/uml_dependency.jpg)
+![A依赖于B](https://henleylee.github.io/medias/design_pattern/uml_dependency.jpg)
 
 **依赖**关系是一个类A使用到了另一个类B，而这种使用关系是具有偶然性的、临时性的、非常弱的，但是B类的变化会影响到A，与关联关系不同的是，它是一种**临时性**的关系，通常在运行期间产生，并且随着运行时的变化依赖关系也可能发生变化。
 

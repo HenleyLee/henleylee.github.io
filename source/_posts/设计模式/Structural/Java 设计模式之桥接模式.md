@@ -29,10 +29,10 @@ date: 2018-09-19 13:25:46
  - **`ConcreteImplementor(具体实现类)：`**具体实现 Implementor 接口，在不同的 ConcreteImplementor 中提供基本操作的不同实现，在程序运行时，ConcreteImplementor 对象将替换其父类对象，提供给抽象类具体的业务操作方法。
 
 ### 结构图 ###
-![桥接模式结构图](https://lyl873825813.github.io/medias/design_pattern/bridge_uml.jpg)
+![桥接模式结构图](https://henleylee.github.io/medias/design_pattern/bridge_uml.jpg)
 
 ### 时序图 ###
-![桥接模式时序图](https://lyl873825813.github.io/medias/design_pattern/bridge_seq.jpg)
+![桥接模式时序图](https://henleylee.github.io/medias/design_pattern/bridge_seq.jpg)
 
 ## 模式实现 ##
 首先，是实现类接口和具体实现类。Implementor 接口充当实现类接口，ConcreteImplementorA 和 ConcreteImplementorB 类充当具体实现类，完整代码如下所示：

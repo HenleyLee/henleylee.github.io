@@ -86,7 +86,7 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github-alt
-  url: https://github.com/lyl873825813
+  url: https://github.com/HenleyLee
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
@@ -94,7 +94,7 @@ indexbtn:
 socialLink:
   qq: 873825813
   email: lyl873825813@gmail.com
-  github: https://github.com/lyl873825813
+  github: https://github.com/HenleyLee
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # You can add `toc: false` to the Front-matter of a post to turn off the TOC.
@@ -174,17 +174,17 @@ myProjects:
     StatusLayout:
       icon: fa-meetup
       iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: https://github.com/lyl873825813/StatusLayout
+      url: https://github.com/HenleyLee/StatusLayout
       desc: Activity/Fragment 中切换不同状态页：有数据、无数据、加载中、加载失败、网络异常、网络不佳。
     SmartAdapter:
         icon: fa-database
         iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/lyl873825813/SmartAdapter
+        url: https://github.com/HenleyLee/SmartAdapter
         desc: Android 万能的 Adapter for ListView、GridView、RecyclerView、ViewPager 等，支持多种Item类型的情况。
     PermissionHelper:
         icon: fa-file-text-o
         iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/lyl873825813/PermissionHelper
+        url: https://github.com/HenleyLee/PermissionHelper
         desc: Android 6.0 运行时权限管理。
 
 # config my skills informations in about page.
@@ -233,12 +233,12 @@ postCalendar: true
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
   enable: true
-  owner: lyl873825813
-  repo: lyl873825813.github.io
+  owner: HenleyLee
+  repo: henleylee.github.io
   oauth:
     clientId: b27d1ff57c26076f312f
     clientSecret: 813ecb40fe6f0fa06e02837facf17ecbbb037ad6
-  admin: lyl873825813
+  admin: HenleyLee
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
@@ -280,7 +280,7 @@ valine:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: true
-  url: https://github.com/lyl873825813
+  url: https://github.com/HenleyLee
   title: GitHub
   tooltip: false
 

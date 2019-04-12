@@ -33,13 +33,13 @@ Android 应用程序是通过消息来驱动的，Android 某种意义上也可�
 **`android.os.Handler`**是 Android 类库提供的用于接受、传递和处理 `Message`或 `Runnable`对象的处理类，它结合 `Looper`、`Message` 和 `MessageQueue` 以及当前线程实现了一个消息循环机制，用于实现任务的异步加载和处理。
 
 `Handler` 消息处理机制的流程图如下图所示：
-![Handler消息处理机制流程图](https://lyl873825813.github.io/medias/android/handler_process.png)
+![Handler消息处理机制流程图](https://henleylee.github.io/medias/android/handler_process.png)
 
 > `Handler` 消息机制是 Android 的两大消息机制之一，另一个是 `Binder IPC` 机制。
 
 ### 消息机制架构 ###
 `Handler` 消息机制的架构图如下图所示：
-![Handler消息机制架构图](https://lyl873825813.github.io/medias/android/handler_architecture.png)
+![Handler消息机制架构图](https://henleylee.github.io/medias/android/handler_architecture.png)
 
 从 `Handler` 消息机制的架构图中可以看到：
  - `Looper` 有一个 `MessageQueue` 消息队列；
@@ -54,7 +54,7 @@ Android 应用程序是通过消息来驱动的，Android 某种意义上也可�
  - **`Looper：`**循环器
 
 它们之间的关系如下图所示：
-![Handler消息机制核心类关系](https://lyl873825813.github.io/medias/android/handler_core_classes.png)
+![Handler消息机制核心类关系](https://henleylee.github.io/medias/android/handler_core_classes.png)
 
 ### 消息机制典型实例 ###
 下面展示一个典型的关于 `Handler/Looper` 的线程：
@@ -956,7 +956,7 @@ public final void removeCallbacksAndMessages(Object token) {
 
 ### 消息机制图解 ###
 最后用一张图，来表示整个消息机制：
-![Handler消息处理机制](https://lyl873825813.github.io/medias/android/handler_summary.png)
+![Handler消息处理机制](https://henleylee.github.io/medias/android/handler_summary.png)
 从上图中可以看出：
  - `Handler` 通过 `sendMessage()` 方法发送 `Message` 到 `MessageQueue` 队列；
  - `Looper` 通过 `loop()` 方法不断提取出达到触发条件的 `Message`，并将 `Message` 交给它的 `target` 来处理；
