@@ -378,7 +378,7 @@ public class CustomProcessor extends AbstractProcessor {
 #### 注册注解处理器 ####
 注册注解处理器有两种方法：
  - 在当前项目中的 `resources/META-INF/services` 目录需要新建一个特殊的文件 `javax.annotation.processing.Processor`，文件里的内容就是声明你的处理器。 `javax.annotation.processing.Processor` 文件的内容是合法全称，多个处理器之间换行。
- - Google 提供了一个注册处理器的库，添加 [`com.google.auto.service:auto-service:1.0-rc4`](https://github.com/google/auto/tree/master/service) 依赖并在自定义注解处理器上添加 `@AutoService(Processor.class)`， `AutoService` 注解会自动在 `META-INF` 文件夹下生成 `javax.annotation.processing.Processor` 配置信息文件，该文件里就是实现该服务接口的具体实现类。
+ - Google 提供了一个注册处理器的库，添加 [`com.google.auto.service:auto-service`](https://github.com/google/auto/tree/master/service) 依赖并在自定义注解处理器上添加 `@AutoService(Processor.class)`， `AutoService` 注解会自动在 `META-INF` 文件夹下生成 `javax.annotation.processing.Processor` 配置信息文件，该文件里就是实现该服务接口的具体实现类。
 
 ## 注解的使用场景 ##
 注解是一系列元数据，它提供数据用来解释程序代码，但是注解并非是所解释的代码本身的一部分。注解对于代码的运行效果没有直接影响。
