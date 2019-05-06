@@ -1,0 +1,1076 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="MVC、MVP 和 MVVM 之间的区别, Android, Google, Blog">
+    <meta name="description" content="MVC、MVP 和 MVVM 都是常见的软件架构设计模式(Architectural Pattern)，它通过分离关注点来改进代码的组织方式。不同于设计模式(Design Pattern)，只是为了解决一类问题而总结出的抽象方法，一种架构模">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>MVC、MVP 和 MVVM 之间的区别 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        MVC、MVP 和 MVVM 之间的区别
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/学习笔记/" target="_blank">
+                                <span class="chip tag-bg-color">学习笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                学习笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2019-04-03
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        2.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><code>MVC</code>、<code>MVP</code> 和 <code>MVVM</code> 都是常见的软件架构设计模式(Architectural Pattern)，它通过分离关注点来改进代码的组织方式。不同于设计模式(Design Pattern)，只是为了解决一类问题而总结出的抽象方法，一种架构模式往往使用了多种设计模式。</p>
+<p>要了解 <code>MVC</code>、<code>MVP</code> 和 <code>MVVM</code>，就要知道它们的相同点和不同点。不同部分是 <code>C(Controller)</code>、<code>P(Presenter)</code>、<code>VM(View-Model)</code>，而相同的部分则是 <code>MV(Model-View)</code>。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p><strong><code>MVC</code></strong>(Model-View-Controller 的缩写)模式是一种软件设计典范，用一种业务逻辑、数据、界面显示分离的方法组织代码，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。</p>
+<p><img src="https://henleylee.github.io/medias/study/architectural_pattern_mvc.png" alt="MVC模式"></p>
+<ul>
+<li><strong><code>Model(模型)：</code></strong>负责处理数据、状态和业务逻辑；</li>
+<li><strong><code>View(视图)：</code></strong>负责界面的布局和显示以及与用户的交互；</li>
+<li><strong><code>Controller(控制器)：</code></strong>作为 View 与 Model 交互的桥梁，用于控制应用程序的流程和页面的业务逻辑，以此来达到分离视图显示和业务逻辑层。</li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><code>MVC</code> 模式的特点在于实现关注点分离，即应用程序中的数据模型与业务和展示逻辑解耦。在客户端 Web 开发中，就是将模型(M-数据、操作数据)、视图(V-显示数据的 HTML 元素)之间实现代码分离，松散耦合，使之成为一个更容易开发、维护和测试的客户端应用程序。</p>
+<ol>
+<li>View 传送指令到 Controller；</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态；</li>
+<li>Model 将新的数据发送到 View，用户得到反馈。</li>
+</ol>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p><code>MVC</code> 模式的流程一共有两种，在日常开发中都会使用到：</p>
+<ul>
+<li>一种是通过 View 接受指令，传递给 Controller，然后对模型进行修改或者查找底层数据，最后把改动渲染在视图上。 </li>
+<li>另一种是通过 Controller 接受指令，然后对模型进行修改或者查找底层数据，最后把改动渲染在视图上。 </li>
+</ul>
+<blockquote>
+<p>不管哪种模式，MVC 的通信都是单向的。View 层会从 Model 层拿数据，因此 MVC 中的 View 层和 Model 层还是存在耦合的。</p>
+</blockquote>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p><code>MVC</code> 模式具有以下优点：</p>
+<ul>
+<li>重用性高，生命周期成本低，部署快；</li>
+<li>使开发和维护用户接口的技术含量降低；</li>
+<li>耦合性低，视图层和业务层分离，允许更改视图层代码而不用重新编译模型和控制器代码；</li>
+<li>可维护性高，分离视图层和业务逻辑层也使得 Web 应用更易于维护和修改。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p><code>MVC</code> 模式具有以下缺点：</p>
+<ul>
+<li>不适合小型，中等规模的应用程序，花费大量时间将 MVC 应用到规模并不是很大的应用程序通常会得不偿失；</li>
+<li>视图与控制器间过于紧密连接，视图与控制器是相互分离，但却是联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用；</li>
+<li>视图对模型数据的低效率访问，依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能；</li>
+</ul>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><p><strong><code>MVP</code></strong>(Model-View-Presenter 的缩写)模式是 MVC 的改良模式，由 IBM 的子公司 Taligent 提出。和 MVC 的相同之处在于：Controller/Presenter 负责业务逻辑，Model 管理数据，View 负责显示，只不过是将 Controller 改为了 Presenter，View 通过接口与 Presenter 进行交互，降低耦合，方便进行单元测试，同时改变了通信方向。</p>
+<p><img src="https://henleylee.github.io/medias/study/architectural_pattern_mvp.png" alt="MVP模式"></p>
+<ul>
+<li><strong><code>View(视图)：</code></strong>负责绘制 UI 元素、与用户进行交互(在 Android 中 Activity、Fragment、View都可以做为 View 层)</li>
+<li><strong><code>Model(模型)：</code></strong>负责处理数据、状态和业务逻辑(主要职责是存储、检索、操纵数据，也可以实现一个 Model interface 用来降低耦合)；</li>
+<li><strong><code>Presenter(控制器)：</code></strong>作为 View 与 Model 交互的中间纽带，负责完成 View 与 Model 间的交互。可以把 Presenter 理解为一个中间层的角色，它接受 Model 层的数据，并且处理之后传递给 View 层，还需要处理 View 层的用户交互等操作。</li>
+</ul>
+<blockquote>
+<p>开发中往往把 Android 中界面部分的实现也理解为采用了 MVC 框架，常常把 Activity 理解为 MVC 模式中的 Controller。</p>
+</blockquote>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p><code>MVP</code> 模式的特点在于 Presenter 完全把 Model 和 View 进行了分离，并且 Model、View 和 Presenter 之间双向通信。</p>
+<ul>
+<li>View 与 Model 不通信，都通过 Presenter 传递。Presenter 完全把 Model 和 View 进行了分离，主要的程序逻辑在 Presenter 里实现。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为“被动视图(Passive View)”，即没有任何主动性，而 Presenter 非常厚，所有逻辑都部署在那里。</li>
+<li>Presenter 与具体的 View 是没有直接关联的，而是通过定义好的接口进行交互，从而使得在变更 View 时候可以保持 Presenter 的不变，这样就可以重用。</li>
+<li>还可以编写测试用的 View，模拟用户的各种操作，从而实现对 Presenter 的测试而不需要使用自动化的测试工具。 </li>
+</ul>
+<blockquote>
+<p>在 MVP 中，View 并不直接使用 Model，它们之间的通信是通过 Presenter 来进行的，所有的交互都发生在 Presenter 内部。在 MVC 中，View 会直接从 Model 中读取数据而不是通过 Controller。</p>
+</blockquote>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><p><code>MVP</code> 模式具有以下优点：</p>
+<ul>
+<li>模型与视图完全分离，可以修改视图而不影响模型；</li>
+<li>可以更高效地使用模型，因为所有的交互都发生在一个地方 —— Presenter 内部；</li>
+<li>可以将一个 Presenter 用于多个视图，而不需要改变 Presenter 的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁；</li>
+<li>如果把逻辑放在 Presenter 中，那么就可以脱离用户接口来测试这些逻辑(单元测试)。</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p><code>MVP</code> 模式具有以下缺点：</p>
+<ul>
+<li>View 和 Presenter 的交互会过于频繁，使得他们的联系过于紧密。也就是说，一旦视图变更了，Presenter 也要变更。</li>
+</ul>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p><strong><code>MVVM</code></strong>(Model-View-ViewModel 的缩写)模式和 MVP 模式相比，MVVM 模式用 ViewModel 替换了 Presenter ，其他层基本上与 MVP 模式一致，ViewModel 可以理解成是 View 的数据模型和 Presenter 的合体。</p>
+<p><img src="https://henleylee.github.io/medias/study/architectural_pattern_mvvm.png" alt="MVVM模式"></p>
+<ul>
+<li><strong><code>View(视图)：</code></strong>负责绘制 UI 元素、与用户进行交互(在 Android 中 Activity、Fragment、View都可以做为 View 层)</li>
+<li><strong><code>Model(模型)：</code></strong>负责处理数据、状态和业务逻辑(主要职责是存储、检索、操纵数据)；</li>
+<li><strong><code>ViewModel(视图模型)：</code></strong>主要包括界面逻辑和模型数据封装，Behavior/Command 事件响应，绑定的属性定义等。</li>
+</ul>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p><code>MVVM</code> 模式采用双向绑定(data-binding)：View 的变动，自动反映在 ViewModel，反之亦然。这种模式实际上是框架替应用开发者做了一些工作(相当于 ViewModel 类是由库帮开发者生成的)，开发者只需要较少的代码就能实现比较复杂的交互。</p>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><p><code>MVVM</code> 模式具有以下优点：</p>
+<ul>
+<li>双向绑定技术，当 Model 变化时，ViewModel 会自动更新，View 也会自动变化，很好的做到数据的一致性；</li>
+<li>低耦合，视图(View)可以独立于 Model 变化和修改，一个 ViewModel 可以绑定到不同的 View 上，当 View 变化的时候 Model 可以不变，当 Model 变化的时候 View 也可以不变；</li>
+<li>独立开发，开发人员可以专注于业务逻辑和数据的开发(ViewModel)，设计人员可以专注于页面设计，使用 Expression Blend 可以很容易设计界面并生成 xml 代码；</li>
+<li>可测试，界面向来是比较难于测试的，而现在测试可以针对 ViewModel 来写。</li>
+</ul>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><p><code>MVVM</code> 模式具有以下缺点：</p>
+<ul>
+<li>数据绑定也使得 Bug 很难被调试，数据绑定使得一个位置的 Bug 被快速传递到别的位置，要定位原始出问题的地方就变得不那么容易了；</li>
+<li>数据双向绑定不利于代码重用。客户端开发最常用的是 View，但是数据双向绑定技术，让每一个 View 都绑定了一个 Model，不同的模块 Model 都不同；</li>
+<li>一个大的模块中 Model 也会很大，虽然使用方便了也很容易保证数据的一致性，但是长期持有，不释放内存就造成话费更多的内存。</li>
+</ul>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2019/de9d67a4.html" class="b-link-green">MVC、MVP 和 MVVM 之间的区别</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2019-04-03T10-26-35',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2019/cf2a801.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java 线程池详解">
+                        
+                        <span class="card-title">Java 线程池详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Java 中，使用线程来异步执行任务。Java 线程的创建与销毁需要一定的开销，如果为每一个任务创建一个新线程来执行，这些线程的创建和销毁将消耗大量的计算资源。针对这种情况，通常需要使用线程池来管理线程，使用线程池有以下几个好处：
+
+降低资</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2019-04-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2019/c55cd1a6.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="SQL 之高级操作">
+                        
+                        <span class="card-title">SQL 之高级操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">SQL 是用于访问和处理数据库的标准的计算机语言。
+SQL 约束SQL 约束用于规定表中的数据规则。如果存在违反约束的数据行为，行为会被约束终止。
+约束可以在创建表时规定(通过 CREATE TABLE 语句)，或者在表创建之后规定(通过 </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2019-03-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip tag-bg-color">学习笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io/" target="_blank">HenleyLee</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.8k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2019-04-12T01:50:09.544Z</updated>
+  <updated>2019-05-06T11:04:05.578Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -15,6 +15,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 刘海屏适配指南</title>
+    <link href="https://henleylee.github.io/posts/2019/430c6e50.html"/>
+    <id>https://henleylee.github.io/posts/2019/430c6e50.html</id>
+    <published>2019-04-15T10:46:56.000Z</published>
+    <updated>2019-05-06T11:04:05.578Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Apple 一直在引领设计的潮流，自从 iPhone X 发布之后，“刘海屏”就一直存在争议，本以为是一个美丽的错误，却造就了一时间“刘海屏”的模仿潮。目前，国内已经推出的刘海屏”手机有 OPPO R15 和 华为 P20，并且 Google 也在 I/O
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 全面屏适配指南</title>
+    <link href="https://henleylee.github.io/posts/2019/62291f67.html"/>
+    <id>https://henleylee.github.io/posts/2019/62291f67.html</id>
+    <published>2019-04-13T02:52:36.000Z</published>
+    <updated>2019-05-06T07:26:25.499Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;全面屏是手机业界对于超高屏占比手机设计的一个宽泛的定义。从字面上解释就是，手机的正面全部都是屏幕，四个边框位置都是采用无边框设计，追求接近 100% 的屏占比。但受限于目前的技术，还不能做到手机正面屏占比 100% 的手机。现在业内所说的全面屏手机是指真实屏占比可以达到
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 线程池详解</title>
+    <link href="https://henleylee.github.io/posts/2019/cf2a801.html"/>
+    <id>https://henleylee.github.io/posts/2019/cf2a801.html</id>
+    <published>2019-04-09T10:52:50.000Z</published>
+    <updated>2019-05-05T10:08:31.931Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Java 中，使用线程来异步执行任务。Java
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MVC、MVP 和 MVVM 之间的区别</title>
+    <link href="https://henleylee.github.io/posts/2019/de9d67a4.html"/>
+    <id>https://henleylee.github.io/posts/2019/de9d67a4.html</id>
+    <published>2019-04-03T02:26:35.000Z</published>
+    <updated>2019-05-05T05:07:09.666Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;MVC&lt;/code&gt;、&lt;code&gt;MVP&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 都是常见的软件架构设计模式(Architectural Pattern)，它通过分离关注点来改进代码的组织方式。不同于设计模式(Design
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL 之高级操作</title>
@@ -451,119 +555,6 @@
     
     
       <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java ThreadLocal 详解</title>
-    <link href="https://henleylee.github.io/posts/2019/27435a3e.html"/>
-    <id>https://henleylee.github.io/posts/2019/27435a3e.html</id>
-    <published>2019-01-31T04:36:25.000Z</published>
-    <updated>2019-04-12T01:50:09.538Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;java.lang.ThreadLocal&lt;/code&gt; 表示&lt;strong&gt;线程本地存储区(Thread Local
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 性能优化之绘制优化</title>
-    <link href="https://henleylee.github.io/posts/2019/2e33cf5d.html"/>
-    <id>https://henleylee.github.io/posts/2019/2e33cf5d.html</id>
-    <published>2019-01-25T10:32:50.000Z</published>
-    <updated>2019-04-12T02:04:35.886Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;绘制性能的好坏 主要影响 ：Android应用中的页面显示速度&lt;/p&gt;
-&lt;h2 id=&quot;优化思路&quot;&gt;&lt;a href=&quot;#优化思路&quot; class=&quot;headerlink&quot; title=&quot;优化思路&quot;&gt;&lt;/a&gt;优化思路&lt;/h2&gt;&lt;p&gt;绘制影响 Android
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-      <category term="性能优化" scheme="https://henleylee.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 性能优化之布局优化</title>
-    <link href="https://henleylee.github.io/posts/2019/d59595e2.html"/>
-    <id>https://henleylee.github.io/posts/2019/d59595e2.html</id>
-    <published>2019-01-23T10:36:40.000Z</published>
-    <updated>2019-04-12T01:50:09.530Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在 Android 中系统对 View 进行测量、布局和绘制时，都是通过对 View 树的遍历来进行操作的。如果一个 View 树的高度太高就会严重影响测量、布局和绘制的速度。Google 也在其 API 文档中建议 View 高度不宜超过10层。&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-      <category term="性能优化" scheme="https://henleylee.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 性能优化之启动优化</title>
-    <link href="https://henleylee.github.io/posts/2019/985e20fe.html"/>
-    <id>https://henleylee.github.io/posts/2019/985e20fe.html</id>
-    <published>2019-01-21T10:46:35.000Z</published>
-    <updated>2019-04-12T02:04:35.888Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;用户希望应用程序能够快速响应并加载。启动时间较慢的应用程序无法满足此预期，并且可能会令用户失望。这种糟糕的体验可能会导致用户在应用商店中对您的应用评分不佳，甚至卸载此应用。&lt;/p&gt;
-&lt;p&gt;因此想要优化应用程序的启动时间，需要以下几个步骤。首先，我们需要了解应用启动的内部原理
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-      <category term="性能优化" scheme="https://henleylee.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   

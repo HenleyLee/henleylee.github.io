@@ -837,7 +837,7 @@
 <h4 id="注册注解处理器"><a href="#注册注解处理器" class="headerlink" title="注册注解处理器"></a>注册注解处理器</h4><p>注册注解处理器有两种方法：</p>
 <ul>
 <li>在当前项目中的 <code>resources/META-INF/services</code> 目录需要新建一个特殊的文件 <code>javax.annotation.processing.Processor</code>，文件里的内容就是声明你的处理器。 <code>javax.annotation.processing.Processor</code> 文件的内容是合法全称，多个处理器之间换行。</li>
-<li>Google 提供了一个注册处理器的库，添加 <a href="https://github.com/google/auto/tree/master/service" target="_blank" rel="noopener"><code>com.google.auto.service:auto-service:1.0-rc4</code></a> 依赖并在自定义注解处理器上添加 <code>@AutoService(Processor.class)</code>， <code>AutoService</code> 注解会自动在 <code>META-INF</code> 文件夹下生成 <code>javax.annotation.processing.Processor</code> 配置信息文件，该文件里就是实现该服务接口的具体实现类。</li>
+<li>Google 提供了一个注册处理器的库，添加 <a href="https://github.com/google/auto/tree/master/service" target="_blank" rel="noopener"><code>com.google.auto.service:auto-service</code></a> 依赖并在自定义注解处理器上添加 <code>@AutoService(Processor.class)</code>， <code>AutoService</code> 注解会自动在 <code>META-INF</code> 文件夹下生成 <code>javax.annotation.processing.Processor</code> 配置信息文件，该文件里就是实现该服务接口的具体实现类。</li>
 </ul>
 <h2 id="注解的使用场景"><a href="#注解的使用场景" class="headerlink" title="注解的使用场景"></a>注解的使用场景</h2><p>注解是一系列元数据，它提供数据用来解释程序代码，但是注解并非是所解释的代码本身的一部分。注解对于代码的运行效果没有直接影响。</p>
 <p>注解有许多使用场景：</p>
@@ -1290,7 +1290,7 @@
             
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">300.9k</span>
+                <span class="white-color">310.8k</span>
             
 
 	    
@@ -1324,7 +1324,7 @@
 
 
 
-    <a href="mailto:lyl873825813@gmail.com" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+    <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
         <i class="fa fa-envelope-open"></i>
     </a>
 
