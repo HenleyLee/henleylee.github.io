@@ -62,7 +62,7 @@ date: 2019-04-13 10:52:36
 ## UI 适配 ##
 通过增加上面适配方案提到的配置，应用在全面屏手机上就能够默认全屏显示了，但是为了避免出现 UI 异常的问题，还是需要应用自己做一些额外的 UI 适配工作：
 1. 对于列表形式的应用，如：微信、网易新闻等，只是显示的内容变多，基本无影响。
-2. 对于整屏的应用，应用为了保证多种屏幕的适配，需遵循 Google 的适配建议，可以参考 [Google 官网](https://developer.android.com/guide/practices/screens_support.html)中的最佳做法章节进行修改适配。
+2. 对于整屏的应用，应用为了保证多种屏幕的适配，需遵循 Google 的适配建议，可以参考 [Google 官网](https://developer.android.com/guide/practices/screens_support.html)中的最佳做法章节进行适配。
 3. 对于使用整幅图片作为背景时需注意图片的填充方式，否则可能会无法填充整个屏幕。如：使用背景是用 ImageView 建议将其 scaleType 设置为 CENTER_CROP 或者使用 .9.png 图片。
 
 ## 虚拟导航键优化 ##
@@ -73,7 +73,7 @@ date: 2019-04-13 10:52:36
 
 > 由于一个应用内含有多种不同的页面，希望开发者能当前页面的情况，来选择合适的虚拟键样式，以保证视觉的统一美观。
 
-Android 有标准的实现方式，调用以下接口即可 [window.setNavigationBarColor(int color)][1]。在调用该接口时，还需要设置一些 flag，详见该接口的注释说明：
+Android 有标准的实现方式，调用 [window.setNavigationBarColor(int color)][1] 方法即可。在调用该接口时，还需要设置一些 `flag`，详见该接口的注释说明：
 ```java
 /**
  * Sets the color of the navigation bar to {@param color}.
@@ -94,7 +94,7 @@ Android 有标准的实现方式，调用以下接口即可 [window.setNavigatio
 public abstract void setNavigationBarColor(@ColorInt int color);
 ```
 
-除了调用该方法外，还可以通过在主题中添加 [android:navigationBarColor][2] 属性来实现：
+除了调用上述方法外，还可以通过在主题中添加 [android:navigationBarColor][2] 属性来实现：
 ```xml
 <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/colorPrimary</item>
@@ -105,7 +105,7 @@ public abstract void setNavigationBarColor(@ColorInt int color);
 ```
 
 ## 参考文档 ##
-[Android 官方文档](https://developer.android.com/guide/practices/screens-distribution)
+[Google 官方文档](https://developer.android.com/guide/practices/screens-distribution)
 [小米全面屏适配说明](https://dev.mi.com/console/doc/detail?pId=1160)
 [华为全面屏适配技术指导](https://developer.huawei.com/consumer/cn/devservice/doc/50111)
 
