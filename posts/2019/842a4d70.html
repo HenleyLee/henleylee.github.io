@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java 设计模式之代理模式, Android, Google, Blog">
-    <meta name="description" content="模式动机在某些情况下，一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现间接引用。代理对象可以在客户端和目标对象之间起到中介的作用，并且可以通过代理对象去掉客户不能看到 的内容和服务或者添加客户需要的额外服务">
+    <meta name="keywords" content="Java Atomic 类之 AtomicBoolean, Android, Google, Blog">
+    <meta name="description" content="在 java.util.concurrent.atomic 包下，有 AtomicBoolean、AtomicInteger、AtomicLong、AtomicReference 等原子类，它们的基本特性就是在多线程环境下，当有多个线程同时">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java 设计模式之代理模式 | Henley</title>
+    <title>Java Atomic 类之 AtomicBoolean | Henley</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -257,13 +257,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java 设计模式之代理模式
+                        Java Atomic 类之 AtomicBoolean
                     </div>
                 </div>
             </div>
@@ -378,10 +378,6 @@
                                 <span class="chip tag-bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/设计模式/" target="_blank">
-                                <span class="chip tag-bg-color">设计模式</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -390,8 +386,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/设计模式/" class="post-category" target="_blank">
-                                设计模式
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
                             </a>
                         
                     </div>
@@ -402,21 +398,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
-                    2018-09-29
+                    2019-04-19
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
-                        2.4k
+                        1.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
-                        8 分
+                        5 分
                     </div>
                     
                 
@@ -432,123 +428,164 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="模式动机"><a href="#模式动机" class="headerlink" title="模式动机"></a>模式动机</h2><p>在某些情况下，一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现间接引用。代理对象可以在客户端和目标对象之间起到中介的作用，并且可以通过代理对象去掉客户不能看到 的内容和服务或者添加客户需要的额外服务。</p>
-<p>通过引入一个新的对象来实现对真实对象的操作或者将新的对象作为真实对象的一个替身，这种实现机制即为代理模式，通过引入代理对象来间接访问一个对象，这就是代理模式的模式动机。</p>
-<h2 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h2><p><strong><code>代理模式(Proxy Pattern)</code></strong>给某一个对象提供一个代理，并由代理对象控制对原对象的引用。代理模式的英文叫做 <code>Proxy</code> 或 <code>Surrogate</code>。</p>
-<p>在代理模式中引入了一个新的代理对象，代理对象在客户端对象和目标对象之间起到中介的作用，它去掉客户不能看到的内容和服务或者增添客户需要的额外的新服务。</p>
-<blockquote>
-<p>代理模式是一种<strong><code>对象结构型模式</code></strong>。</p>
-</blockquote>
-<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><h3 id="角色组成"><a href="#角色组成" class="headerlink" title="角色组成"></a>角色组成</h3><p>代理模式包含如下角色：</p>
-<ul>
-<li><strong><code>Subject(抽象主题)</code></strong>它声明了真实主题和代理主题的共同接口，这样一来在任何使用真实主题的地方都可以使用代理主题，客户端通常需要针对抽象主题角色进行编程。</li>
-<li><strong><code>RealSubject(真实主题)</code></strong>它定义了代理角色所代表的真实对象，在真实主题角色中实现了真实的业务操作，客户端可以通过代理主题角色间接调用真实主题角色中定义的操作。</li>
-<li><strong><code>Proxy(代理主题)</code></strong>它包含了对真实主题的引用，从而可以在任何时候操作真实主题对象；在代理主题角色中提供一个与真实主题角色相同的接口，以便在任何时候都可以替代真实主题；代理主题角色还可以控制对真实主题的使用，负责在需要的时候创建和删除真实主题对象，并对真实主题对象的使用加以约束。通常，在代理主题角色中，客户端在调用所引用的真实主题操作之前或之后还需要执行其他操作，而不仅仅是单纯调用真实主题对象中的操作。</li>
-</ul>
-<h3 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h3><p><img src="https://henleylee.github.io/medias/design_pattern/proxy_uml.jpg" alt="代理模式结构图"></p>
-<h3 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h3><p><img src="https://henleylee.github.io/medias/design_pattern/proxy_seq.jpg" alt="代理模式时序图"></p>
-<h2 id="模式实现"><a href="#模式实现" class="headerlink" title="模式实现"></a>模式实现</h2><p>首先，是抽象主题和真实主题。Subject 抽象类充当抽象主题，RealSubject 类充当真实主题，完整代码如下所示：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * 抽象主题
- */</span>
-<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * 真实主题
- */</span>
-<span class="token keyword">class</span> <span class="token class-name">RealSubject</span> <span class="token keyword">extends</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 业务方法具体实现代码</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>然后，是代理主题。Proxy 类充当代理主题，完整代码如下所示：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Proxy</span> <span class="token keyword">extends</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+                <p>在 <code>java.util.concurrent.atomic</code> 包下，有 <code>AtomicBoolean</code>、<code>AtomicInteger</code>、<code>AtomicLong</code>、<code>AtomicReference</code> 等原子类，它们的基本特性就是在多线程环境下，当有多个线程同时执行这些类的实例包含的方法时，具有排他性，即当某个线程进入方法，执行其中的指令时，不会被其他线程打断，而别的线程就像自旋锁一样，一直等到该方法执行完成，才由 JVM 从等待队列中选择一个另一个线程进入，这只是一种逻辑上的理解。实际上是借助硬件的相关指令来实现的，不会阻塞线程(或者说只是在硬件级别上阻塞了)。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>java.util.concurrent.atomic.AtomicBoolean</code> 类提供了可以原子读取和写入的底层 <code>boolean</code> 的操作，并且还包含高级原子操作。<code>AtomicBoolean</code> 支持基础 <code>boolean</code> 变量上的原子操作。其底层是通过 <code>volatile</code> 和 <code>CAS</code> 实现的，其中 <code>volatile</code> 保证了内存可见性，<code>CAS</code> 算法保证了原子性。</p>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p><code>volatile</code> 是一种稍弱的同步机制，用来确保将变量的更新操作通知到其他线程。当把变量声明为 <code>volatile</code> 类型后，编译器与运行时都会注意到这个变量是共享的，因此不会将该变量上的操作与其他内存操作一起重排序。<code>volatile</code> 变量不会被缓存在寄存器或者对其他处理器不可见的地方，因此在读取 <code>volatile</code> 类型的变量时总返回最新写入的值。在访问 <code>volatile</code> 变量时不会执行加锁操作，因此也就不会使执行线程阻塞，因此 <code>volatile</code> 变量是一种比 <code>sychronized</code> 关键字更轻量级的同步机制。</p>
+<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p><code>CAS(Compare And Swap)</code> 即比较并交换，<code>CAS</code> 是乐观锁技术，当多个线程尝试使用 <code>CAS</code> 同时更新同一个变量时，只有其中一个线程能更新变量的值，而其它线程都失败，失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次尝试。它包含三个参数：内存值 V、预期值 A、要修改的新值 B。当且仅当预期值 A 和内存值 V 相同时，将内存值 V 修改为 B，否则什么都不做。原理如下图所示：<br><img src="https://henleylee.github.io/medias/java/atomic_cas_process.png" alt="CAS乐观锁原理"></p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p><code>AtomicBoolean</code> 类中常用的重要方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public boolean get()</code></td>
+<td>返回当前值</td>
+</tr>
+<tr>
+<td><code>public void set(boolean newValue)</code></td>
+<td>无条件地设置为给定值</td>
+</tr>
+<tr>
+<td><code>public void lazySet(boolean newValue)</code></td>
+<td>最终设置为给定值</td>
+</tr>
+<tr>
+<td><code>public boolean getAndSet(boolean newValue)</code></td>
+<td>以原子方式设置为给定值并返回之前的值</td>
+</tr>
+<tr>
+<td><code>public boolean compareAndSet(boolean expect, boolean update)</code></td>
+<td>如果当前值<code>==</code>期望值，则以原子方式将值设置为给定的更新值</td>
+</tr>
+<tr>
+<td><code>public boolean weakCompareAndSet(boolean expect, boolean update)</code></td>
+<td>如果当前值<code>==</code>期望值，则以原子方式将值设置为给定的更新值</td>
+</tr>
+<tr>
+<td><code>public String toString()</code></td>
+<td>返回当前值的 <code>String</code> 表示形式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p><code>AtomicBoolean</code> 类保证了一系列的操作都是原子操作，不会受到多线程环境下的并发不安全问题，原理则是依赖神奇的 <code>sun.misc.Unsafe</code> 支持。下面简单分析一下 <code>AtomicBoolean</code> 的源码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AtomicBoolean</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">private</span> Subject subject<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> 4654671469794556979L<span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token function">Proxy</span><span class="token punctuation">(</span>Subject subject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>subject <span class="token operator">=</span> subject<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Unsafe unsafe <span class="token operator">=</span> Unsafe<span class="token punctuation">.</span><span class="token function">getUnsafe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 调用指针类Unsafe</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> valueOffset<span class="token punctuation">;</span>                   <span class="token comment" spellcheck="true">// 变量value的内存偏移量</span>
+    <span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span>                              <span class="token comment" spellcheck="true">// volatile修饰的变量value</span>
 
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">preRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>subject<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">afterRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            valueOffset <span class="token operator">=</span> unsafe<span class="token punctuation">.</span><span class="token function">objectFieldOffset</span><span class="token punctuation">(</span>AtomicBoolean<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getDeclaredField</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
-     * 预处理
+     * 构造方法(使用初始值false创建一个新的AtomicBoolean)
      */</span>
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">preRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"执行前(before)的处理..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token function">AtomicBoolean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
-     * 善后处理
+     * 构造方法(使用给定的初始值创建新的AtomicBoolean)
+     *
+     * @param initialValue 初始值
      */</span>
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">afterRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"执行后(after)的处理..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token function">AtomicBoolean</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> initialValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        value <span class="token operator">=</span> initialValue <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 返回当前值
+     *
+     * @return 当前值
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> value <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 无条件地设置为给定值
+     *
+     * @param newValue 新值
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        value <span class="token operator">=</span> newValue <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 最终设置为给定值
+     *
+     * @param newValue 新值
+     * @since 1.6
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">lazySet</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        unsafe<span class="token punctuation">.</span><span class="token function">putOrderedInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> valueOffset<span class="token punctuation">,</span> <span class="token punctuation">(</span>newValue <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 以原子方式设置为给定值并返回之前的值
+     *
+     * @param newValue 新值
+     * @return 之前的值
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">getAndSet</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> prev<span class="token punctuation">;</span>
+        <span class="token keyword">do</span> <span class="token punctuation">{</span>
+            prev <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">compareAndSet</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> prev<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 如果当前值==期望值，则以原子方式将值设置为给定的更新值
+     *
+     * @param expect 期望值
+     * @param update 新值
+     * @return 如果成功，则返回true；实际值不等于预期值则返回 false
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">compareAndSet</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> expect<span class="token punctuation">,</span> <span class="token keyword">boolean</span> update<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> unsafe<span class="token punctuation">.</span><span class="token function">compareAndSwapInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> valueOffset<span class="token punctuation">,</span>
+                <span class="token punctuation">(</span>expect <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">(</span>update <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 如果当前值==期望值，则以原子方式将值设置为给定的更新值
+     *
+     * &lt;p>
+     * 可能意外失败并且不提供排序保证，因此几乎只是compareAndSet()方法的适当替代方法。
+     *
+     * @param expect 期望值
+     * @param update 新值
+     * @return 如果成功，则返回true
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">weakCompareAndSet</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> expect<span class="token punctuation">,</span> <span class="token keyword">boolean</span> update<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> unsafe<span class="token punctuation">.</span><span class="token function">compareAndSwapInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> valueOffset<span class="token punctuation">,</span>
+                <span class="token punctuation">(</span>expect <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">(</span>update <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 返回当前值的String表示形式
+     *
+     * @return 当前值的String表示形式
+     */</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Boolean<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>最后，是客户端场景类，完整代码如下所示：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProxyClient</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Subject subject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RealSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Proxy proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>subject<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        proxy<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="模式分类"><a href="#模式分类" class="headerlink" title="模式分类"></a>模式分类</h2><p>在实际开发过程中，代理类的实现比上述代码要复杂很多，代理模式根据其目的和实现方式不同可分为很多种类，其中常用的几种代理模式简要说明如下：</p>
-<ul>
-<li><strong><code>远程代理(Remote Proxy)：</code></strong>为一个位于不同的地址空间的对象提供一个本地的代理对象，这个不同的地址空间可以是在同一台主机中，也可是在另一台主机中，远程代理又称为大使(Ambassador)。</li>
-<li><strong><code>虚拟代理(Virtual Proxy)：</code></strong>如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建。</li>
-<li><strong><code>保护代理(Protect Proxy)：</code></strong>控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。</li>
-<li><strong><code>缓冲代理(Cache Proxy)：</code></strong>为某一个目标操作的结果提供临时的存储空间，以便多个客户端可以共享这些结果。</li>
-<li><strong><code>智能引用代理(Smart Reference Proxy)：</code></strong>当一个对象被引用时，提供一些额外的操作，例如将对象被调用的次数记录下来等。</li>
-</ul>
-<h2 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>代理模式的主要优点如下：</p>
-<ul>
-<li>能够协调调用者和被调用者，在一定程度上降低了系统的耦合度。</li>
-<li>客户端可以针对抽象主题角色进行编程，增加和更换代理类无须修改源代码，符合开闭原则，系统具有较好的灵活性和可扩展性。</li>
-</ul>
-<p>此外，不同类型的代理模式也具有独特的优点，例如：</p>
-<ul>
-<li>远程代理为位于两个不同地址空间对象的访问提供了一种实现机制，可以将一些消耗资源较多的对象和操作移至性能更好的计算机上，提高系统的整体运行效率。</li>
-<li>虚拟代理通过一个消耗资源较少的对象来代表一个消耗资源较多的对象，可以在一定程度上节省系统的运行开销。</li>
-<li>缓冲代理为某一个操作的结果提供临时的缓存存储空间，以便在后续使用中能够共享这些结果，优化系统性能，缩短执行时间。</li>
-<li>保护代理可以控制对一个对象的访问权限，为不同用户提供不同级别的使用权限。</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>代理模式的的主要缺点如下：</p>
-<ul>
-<li>由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢，例如保护代理。</li>
-<li>实现代理模式需要额外的工作，而且有些代理模式的实现过程较为复杂，例如远程代理。</li>
-</ul>
-<h3 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h3><p>代理模式的类型较多，不同类型的代理模式有不同的优缺点，它们应用于不同的场合：</p>
-<ul>
-<li>当客户端对象需要访问远程主机中的对象时可以使用远程代理。</li>
-<li>当需要用一个消耗资源较少的对象来代表一个消耗资源较多的对象，从而降低系统开销、缩短运行时间时可以使用虚拟代理，例如一个对象需要很长时间才能完成加载时。</li>
-<li>当需要为某一个被频繁访问的操作结果提供一个临时存储空间，以供多个客户端共享访问这些结果时可以使用缓冲代理。通过使用缓冲代理，系统无须在客户端每一次访问时都重新执行操作，只需直接从临时缓冲区获取操作结果即可。</li>
-<li>当需要控制对一个对象的访问，为不同用户提供不同级别的访问权限时可以使用保护代理。</li>
-<li>当需要为一个对象的访问（引用）提供一些额外的操作时可以使用智能引用代理。</li>
-</ul>
-<h2 id="模式总结"><a href="#模式总结" class="headerlink" title="模式总结"></a>模式总结</h2><ul>
-<li>在代理模式中，要求给某一个对象提供一个代理，并由代理对象控制对原对象的引用。代理模式的英文叫做 Proxy 或 Surrogate，它是一种对象结构型模式。</li>
-<li>代理模式包含三个角色：抽象主题角色声明了真实主题和代理主题的共同接口；代理主题角色内部包含对真实主题的引用，从而可以在任何时候操作真实主题对象；真实主题角色定义了代理角色所代表的真实对象，在真实主题角色中实现了真实的业务操作，客户端可以通过代理主题角色间接调用真实主题角色中定义的方法。</li>
-<li>代理模式的优点在于能够协调调用者和被调用者，在一定程度上降低了系统的耦合度；其缺点在于由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢，并且实现代理模式需要额外的工作，有些代理模式的实现非常复杂。远程代理为一个位于不同的地址空间的对象提供一个本地的代表对象，它使得客户端可以访问在远程机器上的对象，远程机器可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。</li>
-<li>如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建，这个小对象称为虚拟代理。虚拟代理通过使用一个小对象来代表一个大对象，可以减少系统资源的消耗，对系统进行优化并提高运行速度。</li>
-<li>保护代理可以控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。</li>
-</ul>
-<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p><a href="https://www.gitbook.com/book/quanke/design-pattern-java/" target="_blank" rel="noopener">Java Design Pattern</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用 <code>java.util.concurrent.atomic</code> 包下的原子类，最大的好处就是可以避免多线程的优先级倒置和死锁情况的发生，提升在高并发处理下的性能。</p>
 
             </div>
             <hr>
@@ -696,7 +733,7 @@
                     </span>
                     <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/posts/2018/ce93993e.html" class="b-link-green">Java 设计模式之代理模式</a>
+                    <a href="/posts/2019/842a4d70.html" class="b-link-green">Java Atomic 类之 AtomicBoolean</a>
                 </p>
             </div>
         </div>
@@ -718,7 +755,7 @@
         repo: 'henleylee.github.io',
         owner: 'HenleyLee',
         admin: "HenleyLee",
-        id: '2018-09-29T13-35-36',
+        id: '2019-04-19T18-32-36',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -743,27 +780,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2018/1d0ccac7.html">
+                <a href="/posts/2019/54a06e13.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java 设计模式之访问者模式">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java Atomic 类之 AtomicInteger">
                         
-                        <span class="card-title">Java 设计模式之访问者模式</span>
+                        <span class="card-title">Java Atomic 类之 AtomicInteger</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">模式动机访问者模式的目的是封装一些施加于某种数据结构元素之上的操作，一旦这些操作需要修改的话，接受这个操作的数据结构可以保持不变。为不同类型的元素提供多种访问操作方式，且可以在不修改原有系统的情况下增加新的操作方式，这就是访问者模式的模式动</div>
+                    <div class="summary">在 java.util.concurrent.atomic 包下，有 AtomicBoolean、AtomicInteger、AtomicLong、AtomicReference 等原子类，它们的基本特性就是在多线程环境下，当有多个线程同时</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-10-08
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2019-04-23
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/设计模式/" class="post-category" target="_blank">
-                                    设计模式
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                             
                             
@@ -775,10 +812,6 @@
                     
                     <a href="/tags/Java/" target="_blank">
                         <span class="chip tag-bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/设计模式/" target="_blank">
-                        <span class="chip tag-bg-color">设计模式</span>
                     </a>
                     
                 </div>
@@ -792,27 +825,27 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/2018/545f3e64.html">
+                <a href="/posts/2019/430c6e50.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java 设计模式之享元模式">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Android 刘海屏适配指南">
                         
-                        <span class="card-title">Java 设计模式之享元模式</span>
+                        <span class="card-title">Android 刘海屏适配指南</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">模式动机面向对象技术可以很好地解决一些灵活性或可扩展性问题，但在很多情况下需要在系统中增加类和对象的个数。当对象数量太多时，将导致运行代价过高，带来性能下降等问题。享元模式通过共享技术实现相同或相似对象的重用提高系统资源的利用率。本文首先阐</div>
+                    <div class="summary">Apple 一直在引领设计的潮流，自从 iPhone X 发布之后，“刘海屏”就一直存在争议，本以为是一个美丽的错误，却造就了一时间“刘海屏”的模仿潮。目前，国内已经推出的刘海屏”手机有 OPPO R15 和 华为 P20，并且 Googl</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-09-27
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2019-04-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/设计模式/" class="post-category" target="_blank">
-                                    设计模式
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
                                 </a>
                             
                             
@@ -822,12 +855,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/" target="_blank">
-                        <span class="chip tag-bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/设计模式/" target="_blank">
-                        <span class="chip tag-bg-color">设计模式</span>
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
                     </a>
                     
                 </div>

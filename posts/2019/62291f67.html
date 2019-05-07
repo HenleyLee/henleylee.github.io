@@ -480,7 +480,7 @@
 <h2 id="UI-适配"><a href="#UI-适配" class="headerlink" title="UI 适配"></a>UI 适配</h2><p>通过增加上面适配方案提到的配置，应用在全面屏手机上就能够默认全屏显示了，但是为了避免出现 UI 异常的问题，还是需要应用自己做一些额外的 UI 适配工作：</p>
 <ol>
 <li>对于列表形式的应用，如：微信、网易新闻等，只是显示的内容变多，基本无影响。</li>
-<li>对于整屏的应用，应用为了保证多种屏幕的适配，需遵循 Google 的适配建议，可以参考 <a href="https://developer.android.com/guide/practices/screens_support.html" target="_blank" rel="noopener">Google 官网</a>中的最佳做法章节进行修改适配。</li>
+<li>对于整屏的应用，应用为了保证多种屏幕的适配，需遵循 Google 的适配建议，可以参考 <a href="https://developer.android.com/guide/practices/screens_support.html" target="_blank" rel="noopener">Google 官网</a>中的最佳做法章节进行适配。</li>
 <li>对于使用整幅图片作为背景时需注意图片的填充方式，否则可能会无法填充整个屏幕。如：使用背景是用 ImageView 建议将其 scaleType 设置为 CENTER_CROP 或者使用 .9.png 图片。</li>
 </ol>
 <h2 id="虚拟导航键优化"><a href="#虚拟导航键优化" class="headerlink" title="虚拟导航键优化"></a>虚拟导航键优化</h2><p>为了实现更高的屏占比，屏幕内的虚拟导航键就成了标准功能，如何让其应用界面在视觉上统一，同样需要开发者的积极适配。Android 已经有相关接口允许开发者自定义虚拟键的样式。关于使用哪种样式，有以下建议:</p>
@@ -492,7 +492,7 @@
 <blockquote>
 <p>由于一个应用内含有多种不同的页面，希望开发者能当前页面的情况，来选择合适的虚拟键样式，以保证视觉的统一美观。</p>
 </blockquote>
-<p>Android 有标准的实现方式，调用以下接口即可 <a href="https://developer.android.com/reference/android/view/Window.html#setNavigationBarColor(int)" target="_blank" rel="noopener">window.setNavigationBarColor(int color)</a>。在调用该接口时，还需要设置一些 flag，详见该接口的注释说明：</p>
+<p>Android 有标准的实现方式，调用 <a href="https://developer.android.com/reference/android/view/Window.html#setNavigationBarColor(int)" target="_blank" rel="noopener">window.setNavigationBarColor(int color)</a> 方法即可。在调用该接口时，还需要设置一些 <code>flag</code>，详见该接口的注释说明：</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * Sets the color of the navigation bar to {@param color}.
  *
@@ -511,7 +511,7 @@
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">setNavigationBarColor</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ColorInt</span> <span class="token keyword">int</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>除了调用该方法外，还可以通过在主题中添加 <a href="https://developer.android.com/reference/android/view/Window.html#attr_android:navigationBarColor" target="_blank" rel="noopener">android:navigationBarColor</a> 属性来实现：</p>
+<p>除了调用上述方法外，还可以通过在主题中添加 <a href="https://developer.android.com/reference/android/view/Window.html#attr_android:navigationBarColor" target="_blank" rel="noopener">android:navigationBarColor</a> 属性来实现：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>AppTheme<span class="token punctuation">"</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Theme.AppCompat.Light.NoActionBar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token style language-css">
     &lt;item name=<span class="token string">"colorPrimary"</span>>@color/colorPrimary&lt;/item>
     &lt;item name=<span class="token string">"colorPrimaryDark"</span>>@color/colorPrimaryDark&lt;/item>
@@ -519,7 +519,7 @@
     &lt;item name=<span class="token string">"android:navigationBarColor"</span>>@color/navigationBarColor&lt;/item>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 </code></pre>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://developer.android.com/guide/practices/screens-distribution" target="_blank" rel="noopener">Android 官方文档</a><br><a href="https://dev.mi.com/console/doc/detail?pId=1160" target="_blank" rel="noopener">小米全面屏适配说明</a><br><a href="https://developer.huawei.com/consumer/cn/devservice/doc/50111" target="_blank" rel="noopener">华为全面屏适配技术指导</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://developer.android.com/guide/practices/screens-distribution" target="_blank" rel="noopener">Google 官方文档</a><br><a href="https://dev.mi.com/console/doc/detail?pId=1160" target="_blank" rel="noopener">小米全面屏适配说明</a><br><a href="https://developer.huawei.com/consumer/cn/devservice/doc/50111" target="_blank" rel="noopener">华为全面屏适配技术指导</a></p>
 
             </div>
             <hr>
@@ -948,7 +948,7 @@
             
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">310.8k</span>
+                <span class="white-color">314.3k</span>
             
 
 	    
@@ -957,13 +957,13 @@
                 
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-eye fa-fw"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                    本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
                 </span>
                 
                 
                 <span id="busuanzi_container_site_uv">
                     <i class="fa fa-user"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人&nbsp;
+                    访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
                 </span>
                 
             

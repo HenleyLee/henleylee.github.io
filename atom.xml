@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2019-05-06T11:04:05.578Z</updated>
+  <updated>2019-05-07T03:25:29.266Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -17,11 +17,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java Atomic 类之 AtomicInteger</title>
+    <link href="https://henleylee.github.io/posts/2019/54a06e13.html"/>
+    <id>https://henleylee.github.io/posts/2019/54a06e13.html</id>
+    <published>2019-04-23T10:50:55.000Z</published>
+    <updated>2019-05-07T03:25:29.266Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 &lt;code&gt;java.util.concurrent.atomic&lt;/code&gt; 包下，有
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Atomic 类之 AtomicBoolean</title>
+    <link href="https://henleylee.github.io/posts/2019/842a4d70.html"/>
+    <id>https://henleylee.github.io/posts/2019/842a4d70.html</id>
+    <published>2019-04-19T10:32:36.000Z</published>
+    <updated>2019-05-07T03:25:27.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 &lt;code&gt;java.util.concurrent.atomic&lt;/code&gt; 包下，有
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android 刘海屏适配指南</title>
     <link href="https://henleylee.github.io/posts/2019/430c6e50.html"/>
     <id>https://henleylee.github.io/posts/2019/430c6e50.html</id>
     <published>2019-04-15T10:46:56.000Z</published>
-    <updated>2019-05-06T11:04:05.578Z</updated>
+    <updated>2019-05-07T01:04:59.202Z</updated>
     
     <summary type="html">
     
@@ -47,7 +99,7 @@
     <link href="https://henleylee.github.io/posts/2019/62291f67.html"/>
     <id>https://henleylee.github.io/posts/2019/62291f67.html</id>
     <published>2019-04-13T02:52:36.000Z</published>
-    <updated>2019-05-06T07:26:25.499Z</updated>
+    <updated>2019-05-07T01:08:19.384Z</updated>
     
     <summary type="html">
     
@@ -494,58 +546,6 @@
         
         
           &lt;p&gt;&lt;code&gt;java.lang.Object&lt;/code&gt; 类中定义了 &lt;code&gt;equals()&lt;/code&gt; 和 &lt;code&gt;hashCode()&lt;/code&gt; 方法，&lt;code&gt;Object&lt;/code&gt; 类是所有 Java 类的基类，所以所有的 Java
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 中 ArrayList、LinkedList 和 Vector 的区别</title>
-    <link href="https://henleylee.github.io/posts/2019/4eec1027.html"/>
-    <id>https://henleylee.github.io/posts/2019/4eec1027.html</id>
-    <published>2019-02-16T02:22:15.000Z</published>
-    <updated>2019-04-12T01:50:09.538Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Java 中 &lt;code&gt;ArrayList&lt;/code&gt;、&lt;code&gt;LinkedList&lt;/code&gt;、&lt;code&gt;Vector&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 中 String、StringBuilder 和 StringBuffer 的区别</title>
-    <link href="https://henleylee.github.io/posts/2019/c54ca406.html"/>
-    <id>https://henleylee.github.io/posts/2019/c54ca406.html</id>
-    <published>2019-02-12T10:32:28.000Z</published>
-    <updated>2019-04-12T01:50:09.538Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Java 中 &lt;code&gt;String&lt;/code&gt;、&lt;code&gt;StringBuilder&lt;/code&gt;、&lt;code&gt;StringBuffer&lt;/code&gt;
         
       
     
