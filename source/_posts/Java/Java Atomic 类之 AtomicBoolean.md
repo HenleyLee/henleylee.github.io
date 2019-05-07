@@ -17,7 +17,7 @@ date: 2019-04-19 18:32:36
 
 ### CAS ###
 `CAS(Compare And Swap)` 即比较并交换，`CAS` 是乐观锁技术，当多个线程尝试使用 `CAS` 同时更新同一个变量时，只有其中一个线程能更新变量的值，而其它线程都失败，失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次尝试。它包含三个参数：内存值 V、预期值 A、要修改的新值 B。当且仅当预期值 A 和内存值 V 相同时，将内存值 V 修改为 B，否则什么都不做。原理如下图所示：
-![CAS乐观锁原理](https://henleylee.github.io/medias/java/atomic_boolean.png)
+![CAS乐观锁原理](https://henleylee.github.io/medias/java/atomic_cas_process.png)
 
 ## 常用方法 ##
 `AtomicBoolean` 类中常用的重要方法如下：
