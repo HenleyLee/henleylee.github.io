@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2019-05-07T03:25:29.266Z</updated>
+  <updated>2019-05-09T01:00:14.156Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>推荐十大经典排序算法</title>
+    <link href="https://henleylee.github.io/posts/2019/2ef6609b.html"/>
+    <id>https://henleylee.github.io/posts/2019/2ef6609b.html</id>
+    <published>2019-04-27T03:06:25.000Z</published>
+    <updated>2019-05-09T01:00:14.156Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;排序算法是《数据结构与算法》中最基本的算法之一。&lt;/p&gt;
+&lt;p&gt;排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的内部排序算法有：&lt;strong&gt;插入排序、希尔排
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Java Atomic 类之 AtomicInteger</title>
@@ -520,32 +547,6 @@
           &lt;p&gt;数据结构中有&lt;code&gt;数组&lt;/code&gt;和&lt;code&gt;链表&lt;/code&gt;这两个结构来存储数据。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;数组&lt;/code&gt;&lt;/strong&gt;存储区间连续，占用内存比较严重，故空间复杂的很大，但数组的二分查找时间复杂度小，为
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 中 equals() 和 hashCode() 的作用</title>
-    <link href="https://henleylee.github.io/posts/2019/cc1a57ba.html"/>
-    <id>https://henleylee.github.io/posts/2019/cc1a57ba.html</id>
-    <published>2019-02-18T10:32:46.000Z</published>
-    <updated>2019-04-12T01:50:09.538Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;java.lang.Object&lt;/code&gt; 类中定义了 &lt;code&gt;equals()&lt;/code&gt; 和 &lt;code&gt;hashCode()&lt;/code&gt; 方法，&lt;code&gt;Object&lt;/code&gt; 类是所有 Java 类的基类，所以所有的 Java
         
       
     
