@@ -405,14 +405,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
-                        6.2k
+                        6.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
-                        24 分
+                        26 分
                     </div>
                     
                 
@@ -457,9 +457,10 @@
 </ul>
 <h2 id="Stream-的创建"><a href="#Stream-的创建" class="headerlink" title="Stream 的创建"></a>Stream 的创建</h2><p>最常用的 Stream 的创建方式有以下几种途径：</p>
 <ul>
-<li>通过 Stream 接口的<code>静态工厂方法</code>；</li>
-<li>通过 Collection 接口的默认方法– <code>stream()</code>，把一个 Collection 对象转换成 Stream。</li>
-<li>通过 Arrays 类的<code>静态工厂方法</code>。</li>
+<li>通过 <strong><code>Stream</code></strong> 接口的<code>静态工厂方法</code>；</li>
+<li>通过 <strong><code>Collection</code></strong> 接口的默认方法– <code>stream()</code>，为集合创建<code>串行流</code>。</li>
+<li>通过 <strong><code>Collection</code></strong> 接口的默认方法– <code>parallelStream()</code>，为集合创建<code>并行流</code>。</li>
+<li>通过 <strong><code>Arrays</code></strong> 类的 <code>stream()</code> 静态工厂方法。</li>
 </ul>
 <blockquote>
 <p>需要注意的是，对于基本数值型，目前有三种对应的包装类型 Stream：<code>IntStream</code>、<code>LongStream</code>、<code>DoubleStream</code>。当然我们也可以用 <code>Stream&lt;Integer&gt;</code>、<code>Stream&lt;Long&gt;</code>、<code>Stream&lt;Double&gt;</code>，但是 <code>boxing</code> 和 <code>unboxing</code> 会很耗时，所以特别为这三种基本数值型提供了对应的 Stream。<br>Java 8 中还没有提供其它数值型 Stream，因为这将导致扩增的内容较多。而常规的数值型聚合运算可以通过上面三种 Stream 进行。</p>
@@ -570,38 +571,41 @@
 </table>
 <h2 id="Stream-的转换"><a href="#Stream-的转换" class="headerlink" title="Stream 的转换"></a>Stream 的转换</h2><p>当把一个数据结构包装成 Stream 后，就要开始对里面的元素进行各类操作了。常见的操作可以归类如下。</p>
 <ul>
-<li><strong><code>中间操作(Intermediate)：</code></strong>一个流可以后面跟随零个或多个 Intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用，这种操作也叫做惰性求值方法。如：map (mapToInt, flatMap 等)、filter、distinct、sorted、peek、limit、skip、parallel、sequential、unordered</li>
-<li><strong><code>终止操作(Terminal)：</code></strong>一个流只能有一个 Terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。如：forEach、forEachOrdered、toArray、reduce、collect、min、max、count、anyMatch、allMatch、noneMatch、findFirst、findAny、iterator</li>
+<li><strong><code>中间操作(Intermediate)：</code></strong>一个流可以后面跟随零个或多个 Intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用，这种操作也叫做惰性求值方法。如：map (mapToInt, flatMap 等)、filter、distinct、sorted、peek、limit、skip、parallel、sequential、unordered；</li>
+<li><strong><code>终止操作(Terminal)：</code></strong>一个流只能有一个 Terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。如：forEach、forEachOrdered、toArray、reduce、collect、min、max、count、anyMatch、allMatch、noneMatch、findFirst、findAny、iterator。</li>
 </ul>
 <p>我们下面看一下 Stream 的比较典型用法。</p>
 <h3 id="distinct"><a href="#distinct" class="headerlink" title="distinct()"></a>distinct()</h3><p><strong><code>distinct()</code></strong> 方法对于 Stream 中包含的元素进行去重操作(去重逻辑依赖元素的 <code>equals()</code> 方法)，新生成的 Stream 中没有重复的元素。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_distinct.jpg" alt="distinct 方法示意图"></p>
-<p>以下代码片段使用 distinct 方法去除重复的元素并排序后输出：</p>
+<p>以下代码片段使用 distinct() 方法去除重复的元素并排序后输出：</p>
 <pre class=" language-java"><code class="language-java">List<span class="token operator">&lt;</span>Character<span class="token operator">></span> letters <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">,</span> <span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 letters<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">distinct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<blockquote>
+<p>如果需要去重的元素是对象，则引用的对象要实现 <code>hashCode()</code> 方法和 <code>equal()</code> 方法，否则去重是无效的。</p>
+</blockquote>
 <h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><p><strong><code>filter()</code></strong> 方法对于 Stream 中包含的元素使用给定的过滤函数进行过滤操作，新生成的 Stream 只包含符合条件的元素。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_filter.jpg" alt="filter 方法示意图"></p>
-<p>以下代码片段使用 filter 方法过滤出长度小于5的语言个数：</p>
+<p>以下代码片段使用 filter() 方法过滤出长度小于5的语言个数：</p>
 <pre class=" language-java"><code class="language-java">List<span class="token operator">&lt;</span>String<span class="token operator">></span> languages <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"java"</span><span class="token punctuation">,</span> <span class="token string">"scala"</span><span class="token punctuation">,</span> <span class="token string">"python"</span><span class="token punctuation">,</span> <span class="token string">"shell"</span><span class="token punctuation">,</span> <span class="token string">"ruby"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">long</span> num <span class="token operator">=</span> languages<span class="token punctuation">.</span><span class="token function">parallelStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>s <span class="token operator">-</span><span class="token operator">></span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p><strong><code>map()</code></strong> 方法对于 Stream 中包含的元素使用给定的转换函数进行转换操作，新生成的 Stream 只包含转换生成的元素。这个方法有三个对于原始类型的变种方法，分别是：<code>mapToInt</code>，<code>mapToLong</code> 和 <code>mapToDouble</code>。这三个方法也比较好理解，比如 <code>mapToInt</code> 就是把原始 Stream 转换成一个新的 Stream，这个新生成的 Stream 中的元素都是 int 类型。之所以会有这样三个变种方法，可以免除自动装箱/拆箱的额外消耗。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_map.jpg" alt="map 方法示意图"></p>
-<p>以下代码片段使用 map 得到元素对应的平方数并去除重复元素后转换为集合：</p>
+<p>以下代码片段使用 map() 方法得到元素对应的平方数并去除重复元素后转换为集合：</p>
 <pre class=" language-java"><code class="language-java">List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> numbers <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> squaresList <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>i <span class="token operator">-</span><span class="token operator">></span> i <span class="token operator">*</span> i<span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">distinct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap()"></a>flatMap()</h3><p><strong><code>flatMap()</code></strong> 方法和 map 类似，不同的是其每个元素转换得到的是 Stream 对象，会把子 Stream 中的元素压缩到重新生成的集合中。</p>
+<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap()"></a>flatMap()</h3><p><strong><code>flatMap()</code></strong> 方法和 map() 方法类似，不同的是其每个元素转换得到的是 Stream 对象，会把子 Stream 中的元素压缩到重新生成的集合中。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_flatMap.jpg" alt="flatMap 方法示意图"></p>
-<p>以下代码片段使用 flatMap 将多个 Stream 连接成一个 Stream 并转换为集合后输出：</p>
+<p>以下代码片段使用 flatMap() 方法将多个 Stream 连接成一个 Stream 并转换为集合后输出：</p>
 <pre class=" language-java"><code class="language-java">Stream<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> numbersStream <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>
         Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -625,7 +629,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 </code></pre>
 <h3 id="limit"><a href="#limit" class="headerlink" title="limit()"></a>limit()</h3><p><strong><code>limit()</code></strong> 方法对一个 Stream 进行截断操作，获取其前 N 个元素，如果原 Stream 中包含的元素个数小于 N，那就获取其所有的元素。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_limit.jpg" alt="limit 方法示意图"></p>
-<p>以下代码片段使用 limit 得到前2个元素并输出：</p>
+<p>以下代码片段使用 limit() 方法得到前2个元素并输出：</p>
 <pre class=" language-java"><code class="language-java">List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> numbers <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"limit:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 numbers<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -634,20 +638,20 @@ numbers<span class="token punctuation">.</span><span class="token function">stre
 </code></pre>
 <h3 id="skip"><a href="#skip" class="headerlink" title="skip()"></a>skip()</h3><p><strong><code>skip()</code></strong> 方法返回一个丢弃原 Stream 的前 N 个元素后剩下元素组成的新 Stream，如果原 Stream 中包含的元素个数小于 N，那么返回空 Stream。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_skip.jpg" alt="skip 方法示意图"></p>
-<p>以下代码片段使用 skip 得到前2个元素后剩下的元素并输出：</p>
+<p>以下代码片段使用 skip() 方法得到前2个元素后剩下的元素并输出：</p>
 <pre class=" language-java"><code class="language-java">List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> numbers <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 numbers<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><p><strong><code>reduce()</code></strong> 方法用于从 Stream 中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，<code>count</code>、<code>min</code> 和 <code>max</code> 方法，因为常用而被纳入标准库中。事实上，这些方法都是 <code>reduce</code> 操作。</p>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><p><strong><code>reduce()</code></strong> 方法用于从 Stream 中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，<code>min()</code>、<code>max()</code> 和 <code>count()</code> 方法，因为常用而被纳入标准库中。事实上，这些方法都是 <code>reduce</code> 操作。</p>
 <p><img src="https://henleylee.github.io/medias/java/stream_reduce.jpg" alt="reduce 方法示意图"></p>
 <p><code>reduce()</code> 方法有三种变形：</p>
 <pre class=" language-java"><code class="language-java">T <span class="token function">reduce</span><span class="token punctuation">(</span>T identity<span class="token punctuation">,</span> BinaryOperator<span class="token operator">&lt;</span>T<span class="token operator">></span> accumulator<span class="token punctuation">)</span>
 Optional<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">reduce</span><span class="token punctuation">(</span>BinaryOperator<span class="token operator">&lt;</span>T<span class="token operator">></span> accumulator<span class="token punctuation">)</span>
 <span class="token operator">&lt;</span>U<span class="token operator">></span> U <span class="token function">reduce</span><span class="token punctuation">(</span>U identity<span class="token punctuation">,</span> BiFunction<span class="token operator">&lt;</span>U<span class="token punctuation">,</span> <span class="token operator">?</span> <span class="token keyword">super</span> T<span class="token punctuation">,</span> U<span class="token operator">></span> accumulator<span class="token punctuation">,</span> BinaryOperator<span class="token operator">&lt;</span>U<span class="token operator">></span> combiner<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>以下代码片段使用 reduce 得到所有元素的和并输出：</p>
+<p>以下代码片段使用 reduce() 方法得到所有元素的和并输出：</p>
 <pre class=" language-java"><code class="language-java">Optional<span class="token operator">&lt;</span>Integer<span class="token operator">></span> reduce1 <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>identity<span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> result <span class="token operator">=</span> identity <span class="token operator">+</span> item<span class="token punctuation">;</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"reduce1: identity = "</span> <span class="token operator">+</span> identity <span class="token operator">+</span> <span class="token string">",item = "</span> <span class="token operator">+</span> item <span class="token operator">+</span> <span class="token string">",result = "</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -667,6 +671,52 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <li>变形1：未定义初始值，从而第一次执行的时候第一个参数的值是 Stream 的第一个元素，第二个参数是 Stream 的第二个元素</li>
 <li>变形2：定义了初始值，从而第一次执行的时候第一个参数的值是初始值，第二个参数是 Stream 的第一个元素</li>
 </ul>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a>sorted()</h3><p><strong><code>sorted()</code></strong> 方法用于对 Stream 进行自然顺序排序或比较器规则排序，并返回排序后的新 Stream。</p>
+<p><code>sorted()</code> 方法有两种变形：</p>
+<pre class=" language-java"><code class="language-java">Stream<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+Stream<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token function">sorted</span><span class="token punctuation">(</span>Comparator<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> T<span class="token operator">></span> comparator<span class="token punctuation">)</span>
+</code></pre>
+<p>以下代码片段使用 sorted() 方法进行排序后得到所有元素并输出：</p>
+<pre class=" language-java"><code class="language-java">List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> values <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 1. 自然顺序排序</span>
+values<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 2. 比较器顺序排序(自然顺序排序)</span>
+values<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>Comparator<span class="token punctuation">.</span><span class="token function">naturalOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 3. 比较器顺序排序(自然顺序逆序排序)</span>
+values<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>Comparator<span class="token punctuation">.</span><span class="token function">reverseOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 4. 比较器顺序排序(自然顺序逆序排序)</span>
+values<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Comparator<span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">(</span>o1<span class="token punctuation">,</span> o2<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> o1<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch()"></a>anyMatch()</h3><p><strong><code>anyMatch()</code></strong> 方法对于 Stream 中包含的元素使用给定的过滤函数进行匹配操作，Stream 中任意一个元素符合传入的 predicate，返回 true。</p>
+<p>以下代码片段使用 anyMatch() 方法判断是否有大于1的元素：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">boolean</span> anyMatch <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">anyMatch</span><span class="token punctuation">(</span>value <span class="token operator">-</span><span class="token operator">></span> value <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>anyMatch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"有大于1的元素"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch()"></a>allMatch()</h3><p><strong><code>allMatch()</code></strong> 方法对于 Stream 中包含的元素使用给定的过滤函数进行匹配操作，Stream 中全部元素符合传入的 predicate，返回 true。</p>
+<p>以下代码片段使用 allMatch() 方法判断是否所有元素都大于0：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">boolean</span> allMatch <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">allMatch</span><span class="token punctuation">(</span>value <span class="token operator">-</span><span class="token operator">></span> value <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>allMatch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"所有元素都大于0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="noneMatch"><a href="#noneMatch" class="headerlink" title="noneMatch()"></a>noneMatch()</h3><p><strong><code>noneMatch()</code></strong> 方法对于 Stream 中包含的元素使用给定的过滤函数进行匹配操作，Stream 中没有一个元素符合传入的 predicate，返回 true。</p>
+<p>以下代码片段使用 noneMatch() 方法判断是否没有小于0的元素：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">boolean</span> noneMatch <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">noneMatch</span><span class="token punctuation">(</span>value <span class="token operator">-</span><span class="token operator">></span> value <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>noneMatch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"没有小于0的元素"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h2 id="Collector"><a href="#Collector" class="headerlink" title="Collector"></a>Collector</h2><p><code>Collector</code> 是 <code>Stream</code> 中对于 <code>Reduce</code> 操作的抽象，此接口中定义了常用的 <code>Reduce</code> 操作，包括：将元素累积到集合中，使用 StringBuilder连接字符串；计算元素相关的统计信息，例如 sum，min，max 或 average 等。<code>Collectors(类收集器)</code>提供了许多常见的可变减少操作的实现。</p>
 <p><code>Collector</code> 中定义的 <code>Reduce</code> 操作可以通过串行或者并行的方式进行实现。BaseStream 接口中的 <code>parallel()</code>、<code>sequential()</code>、<code>unordered()</code> 方法提供的高层 API 使并发程序设计变得非常简洁。</p>
 <p><code>Collector&lt;T, A, R&gt;</code> 接受三个泛型参数，对可变减少操作的数据类型作相应限制：</p>
@@ -685,7 +735,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <p>在 <code>Collector</code> 接口的 <code>characteristics()</code> 方法内，可以对 <code>Collector</code> 声明相关约束：</p>
 <pre class=" language-java"><code class="language-java">Set<span class="token operator">&lt;</span>Characteristics<span class="token operator">></span> <span class="token function">characteristics</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p>而 <code>Characteristics</code> 是 <code>Collector</code> 内的一个枚举类，声明了以下三个属性，用来约束Collector的属性：</p>
+<p>而 <code>Characteristics</code>是 <code>Collector</code> 内的一个枚举类，声明了以下三个属性，用来约束Collector的属性：</p>
 <ul>
 <li><code>CONCURRENT：</code>表示此收集器支持并发，意味着允许在多个线程中，累加器可以调用结果容器</li>
 <li><code>UNORDERED：</code>表示收集器并不按照 Stream 中的元素输入顺序执行</li>
@@ -719,17 +769,17 @@ Collector<span class="token operator">&lt;</span>T<span class="token punctuation
 </code></pre>
 <ul>
 <li>类型参数：<ul>
-<li>T：输入元素的类型</li>
-<li>K：Key 映射函数的输出类型</li>
-<li>U：Value 映射函数的输出类型</li>
-<li>M：生成的 Map 类型</li>
+<li><code>T：</code>输入元素的类型</li>
+<li><code>K：</code>Key 映射函数的输出类型</li>
+<li><code>U：</code>Value 映射函数的输出类型</li>
+<li><code>M：</code>生成的 Map 类型</li>
 </ul>
 </li>
 <li>参数：<ul>
-<li>keyMapper：用于生成 Key 的映射函数</li>
-<li>valueMapper：用于生成 Value 的映射函数</li>
-<li>mergeFunction：合并函数，用于解决与相同 Key 关联的 Value 之间的冲突</li>
-<li>mapSupplier：返回一个用于存储结果的新的空 Map 实例</li>
+<li><code>keyMapper：</code>用于生成 Key 的映射函数</li>
+<li><code>valueMapper：</code>用于生成 Value 的映射函数</li>
+<li><code>mergeFunction：</code>合并函数，用于解决与相同 Key 关联的 Value 之间的冲突</li>
+<li><code>mapSupplier：</code>返回一个用于存储结果的新的空 Map 实例</li>
 </ul>
 </li>
 </ul>
@@ -745,19 +795,19 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 </code></pre>
 <h3 id="转换成值"><a href="#转换成值" class="headerlink" title="转换成值"></a>转换成值</h3><p>使用 <code>collect()</code> 可以将 Stream 转换成值。</p>
 <ul>
-<li>averagingDouble：求平均值，Stream 的元素类型为 double</li>
-<li>averagingInt：求平均值，Stream 的元素类型为 int</li>
-<li>averagingLong：求平均值，Stream 的元素类型为 long</li>
-<li>counting：Stream 的元素个数</li>
-<li>maxBy：在指定条件下的，Stream 的最大元素</li>
-<li>minBy：在指定条件下的，Stream 的最小元素</li>
-<li>reducing：reduce 操作</li>
-<li>summarizingDouble：统计 Stream 的数据(double)状态，其中包括 count，min，max，sum 和平均。</li>
-<li>summarizingInt：统计 Stream 的数据(int)状态，其中包括 count，min，max，sum 和平均。</li>
-<li>summarizingLong：统计 Stream 的数据(long)状态，其中包括 count，min，max，sum 和平均。</li>
-<li>summingDouble：求和，Stream 的元素类型为 double</li>
-<li>summingInt：求和，Stream 的元素类型为 int</li>
-<li>summingLong：求和，Stream 的元素类型为 long</li>
+<li><code>averagingDouble()：</code>求平均值，Stream 的元素类型为 double</li>
+<li><code>averagingInt()：</code>求平均值，Stream 的元素类型为 int</li>
+<li><code>averagingLong()：</code>求平均值，Stream 的元素类型为 long</li>
+<li><code>counting()：</code>Stream 的元素个数</li>
+<li><code>maxBy()：</code>在指定条件下的，Stream 的最大元素</li>
+<li><code>minBy()：</code>在指定条件下的，Stream 的最小元素</li>
+<li><code>reducing()：</code>reduce 操作</li>
+<li><code>summarizingInt()：</code>统计 Stream 的数据(int)状态，其中包括 count，min，max，sum 和平均。</li>
+<li><code>summarizingLong()：</code>统计 Stream 的数据(long)状态，其中包括 count，min，max，sum 和平均。</li>
+<li><code>summarizingDouble()：</code>统计 Stream 的数据(double)状态，其中包括 count，min，max，sum 和平均。</li>
+<li><code>summingDouble()：</code>求和，Stream 的元素类型为 double</li>
+<li><code>summingInt()：</code>求和，Stream 的元素类型为 int</li>
+<li><code>summingLong()：</code>求和，Stream 的元素类型为 long</li>
 </ul>
 <p>代码示例如下：</p>
 <pre class=" language-java"><code class="language-java">Double collectAveragingDouble <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">averagingDouble</span><span class="token punctuation">(</span>value <span class="token operator">-</span><span class="token operator">></span> value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -788,7 +838,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"joining: "</span> <span class="token operator">+</span> joining<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="组合-Collector"><a href="#组合-Collector" class="headerlink" title="组合 Collector"></a>组合 Collector</h3><p><code>Collectors</code> 库中的 <code>partitioningBy()</code> 和 <code>groupingBy()</code> 方法还可以接收一个 <code>Collector</code>，用以收集最终结果的一个子集，这些 <code>Collector</code> 叫作下游收集器。收集器是生成最终结果的一剂配方，下游收集器则是生成部分结果的配方，主收集器中会用到下游收集器。这种组合使用收集器的方式， 使得它们在 Stream 类库中的作用更加强大。</p>
-<p>那些为基本类型特殊定制的函数，如 <code>averagingInt</code>、<code>summarizingLong</code> 等，事实上和调用特殊 Stream 上的方法是等价的，加上它们是为了将它们当作下游收集器来使用的。</p>
+<p>那些为基本类型特殊定制的函数，如 <code>averagingInt()</code>、<code>summarizingLong()</code> 等，事实上和调用特殊 Stream 上的方法是等价的，加上它们是为了将它们当作下游收集器来使用的。</p>
 <p>比如要收集各个分组的列表中的元素个数，代码示例如下：</p>
 <pre class=" language-java"><code class="language-java">Map<span class="token operator">&lt;</span>Boolean<span class="token punctuation">,</span> Long<span class="token operator">></span> collectPartitioningBy <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">groupingBy</span><span class="token punctuation">(</span>it <span class="token operator">-</span><span class="token operator">></span> it <span class="token operator">></span> <span class="token number">3</span><span class="token punctuation">,</span> Collectors<span class="token punctuation">.</span><span class="token function">counting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"collectPartitioningBy : "</span> <span class="token operator">+</span> collectPartitioningBy<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1255,7 +1305,7 @@ JavaScript 后端
             
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">346.8k</span>
+                <span class="white-color">354.3k</span>
             
 
 	    

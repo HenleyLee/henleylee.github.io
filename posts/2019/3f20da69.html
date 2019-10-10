@@ -1,0 +1,1261 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android Studio 提高 Gradle 构建速度的小技巧, Android, Google, Blog">
+    <meta name="description" content="长构建时间会减慢开发过程，因此本文将介绍一些可以帮助解决构建速度瓶颈的技巧。
+提高构建速度的一般过程如下所示：
+
+采取一些可以立即为大多数 Android Studio 项目带来好处的措施，优化构建配置。
+分析构建配置，识别并诊断一些对项目">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android Studio 提高 Gradle 构建速度的小技巧 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android Studio 提高 Gradle 构建速度的小技巧
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                            <a href="/tags/Android-Studio/" target="_blank">
+                                <span class="chip tag-bg-color">Android Studio</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2019-05-28
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        4.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>长构建时间会减慢开发过程，因此本文将介绍一些可以帮助解决构建速度瓶颈的技巧。</p>
+<p>提高构建速度的一般过程如下所示：</p>
+<ul>
+<li>采取一些可以立即为大多数 Android Studio 项目带来好处的措施，优化构建配置。</li>
+<li>分析构建配置，识别并诊断一些对项目或工作站来说比较棘手的瓶颈。</li>
+</ul>
+<p>在开发应用程序时，应尽可能将其部署到运行 Android 7.0 (API级别24)或更高的设备上。Android 平台的新版本实现了更好的机制来推送更新到您的应用程序，比如 <a href="https://source.android.google.cn/devices/tech/dalvik/" target="_blank" rel="noopener">Android Runtime (ART)</a> 和对 <a href="https://developer.android.google.cn/studio/build/multidex.html" target="_blank" rel="noopener">multiple DEX files</a> 的本机支持。</p>
+<blockquote>
+<p>注意：在第一次完全清理构建之后，您可能会注意到后续构建（清理和增量）的执行速度更快（即使不使用此页面中描述的任何优化）。 这是因为 Gradle 守护程序与其他 JVM 进程类似，具有提升性能的“预热”期。</p>
+</blockquote>
+<p>在开启速度提升调优之前，先了解三个性能指标的说明：</p>
+<ul>
+<li>全量构建，也就是重新开始编译整个工程的 debug 版；</li>
+<li>代码增量构建，指的是我们修改了工程的 Java / Kotlin 代码；</li>
+<li>资源增量构建，指的是我们对资源文件的修改，增加减少了图片和字符串资源等。</li>
+</ul>
+<h2 id="优化构建配置"><a href="#优化构建配置" class="headerlink" title="优化构建配置"></a>优化构建配置</h2><p>请遵循以下提示以提高 Android Studio 项目的构建速度。</p>
+<h3 id="使用最新版本的开发工具"><a href="#使用最新版本的开发工具" class="headerlink" title="使用最新版本的开发工具"></a>使用最新版本的开发工具</h3><p>Android 工具的每次更新都会修复大量的 bug 及提升性能等新特性，因此保持 Android 工具的最新版本有非常大的必要。要充分利用最新优化，请保持以下工具处于最新版本：</p>
+<ul>
+<li><a href="https://developer.android.google.cn/studio/intro/update.html" target="_blank" rel="noopener">Android Studio and SDK tools</a></li>
+<li><a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html" target="_blank" rel="noopener">The Android plugin for Gradle</a></li>
+</ul>
+<h3 id="为开发创建构建变体"><a href="#为开发创建构建变体" class="headerlink" title="为开发创建构建变体"></a>为开发创建构建变体</h3><p>准备发布应用时需要的许多配置在开发应用时都是不需要的。启用不必要的构建进程会减慢您的增量构建和清理构建速度，因此，在开发应用期间，配置一个 <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">build variant</a>，使之仅包含需要的构建配置。下面的示例将为您的发布版本配置创建一个 <em>dev</em> 变体和一个 <em>prod</em> 变体：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+  ...
+  defaultConfig {...}
+  buildTypes {...}
+  productFlavors {
+    // When building a variant that uses this flavor, the following configurations
+    // override those in the defaultConfig block.
+    dev {
+      // To avoid using legacy multidex when building from the command line,
+      // set minSdkVersion to 21 or higher. When using Android Studio 2.3 or higher,
+      // the build automatically avoids legacy multidex when deploying to a device running
+      // API level 21 or higher—regardless of what you set as your minSdkVersion.
+      minSdkVersion 21
+      versionNameSuffix "-dev"
+      applicationIdSuffix '.dev'
+    }
+
+    prod {
+      // If you've configured the defaultConfig block for the release version of
+      // your app, you can leave this block empty and Gradle uses configurations in
+      // the defaultConfig block instead. You still need to create this flavor.
+      // Otherwise, all variants use the "dev" flavor configurations.
+    }
+  }
+}
+</code></pre>
+<p>如果构建配置已使用产品风味来创建应用程序的不同版本，则可以使用 <a href="https://developer.android.com/studio/build/build-variants.html#flavor-dimensions" target="_blank" rel="noopener">flavor dimensions</a> 将 <em>dev</em> 和 <em>prod</em> 配置与这些风味组合。<br>例如，如果您已经配置了 <em>demo</em> 和 <em>full</em> 风味，则可以使用以下示例配置来创建组合风味，例如 <em>devDemo</em> 和 <em>prodFull</em>：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+  ...
+  defaultConfig {...}
+  buildTypes {...}
+
+  // Specifies the flavor dimensions you want to use. The order in which you
+  // list each dimension determines its priority, from highest to lowest,
+  // when Gradle merges variant sources and configurations. You must assign
+  // each product flavor you configure to one of the flavor dimensions.
+
+  flavorDimensions "stage", "mode"
+
+  productFlavors {
+    dev {
+      dimension "stage"
+      minSdkVersion 21
+      versionNameSuffix "-dev"
+      applicationIdSuffix '.dev'
+      ...
+    }
+
+    prod {
+      dimension "stage"
+      ...
+    }
+
+    demo {
+      dimension "mode"
+      ...
+    }
+
+    full {
+      dimension "mode"
+      ...
+    }
+  }
+}
+</code></pre>
+<h3 id="启用单一变体同步项目"><a href="#启用单一变体同步项目" class="headerlink" title="启用单一变体同步项目"></a>启用单一变体同步项目</h3><p>将项目与构建配置同步是让 Android Studio 了解项目结构的重要一步。但是，对于大型项目而言，此过程可能非常耗时。如果项目中使用多个构建变体，现在可以通过将项目同步限制为仅当前选择的变体来优化项目同步。</p>
+<p>需要使用 Android Studio 3.3 或更高版本和 Android Gradle Plugin 3.3.0 或更高版本来实现此优化。默认情况下，所有项目都启用了优化。</p>
+<p>要手动启用此优化，请单击 <strong><code>File &gt; Settings &gt; Experimental &gt; Gradle (Android Studio &gt; Preferences &gt; Experimental &gt; Gradle on a Mac)</code></strong>，并选择 <strong><code>Only sync the active variant</code></strong> 复选框。</p>
+<blockquote>
+<p>注意：此优化完全支持包含 <code>Java</code> 和 <code>C++</code> 语言的项目，并且对 <code>Kotlin</code> 有一些支持。 在为具有 <code>Kotlin</code> 内容的项目启用优化时，Gradle 同步将回退到内部使用完整变体。</p>
+</blockquote>
+<h3 id="避免编译不必要的资源"><a href="#避免编译不必要的资源" class="headerlink" title="避免编译不必要的资源"></a>避免编译不必要的资源</h3><p>避免编译和打包没有测试的资源（例如其他语言本地化和屏幕密度资源）。可以通过仅为 <em>dev</em> 风味指定一种语言资源和屏幕密度来实现，如下面的示例所示：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+  ...
+  productFlavors {
+    dev {
+      ...
+      // The following configuration limits the "dev" flavor to using
+      // English stringresources and xxhdpi screen-density resources.
+      resConfigs "en", "xxhdpi"
+    }
+    ...
+  }
+}
+</code></pre>
+<h3 id="为调试构建禁用-Crashlytics"><a href="#为调试构建禁用-Crashlytics" class="headerlink" title="为调试构建禁用 Crashlytics"></a>为调试构建禁用 Crashlytics</h3><p>如果不需要运行 <a href="https://docs.fabric.io/android/crashlytics/overview.html" target="_blank" rel="noopener">Crashlytics report</a>，请通过禁用插件来提高调试构建速度，如下所示：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+  ...
+  buildTypes {
+    debug {
+      ext.enableCrashlytics = false
+    }
+}
+</code></pre>
+<p>还需要在运行时为调试版本禁用 Crashlytics 工具包，方法是更改在应用程序中初始化 Fabric 支持的方式，如下所示：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Initializes Fabric for builds that don't use the debug build type.</span>
+Crashlytics crashlyticsKit <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Crashlytics<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">core</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CrashlyticsCore<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">disabled</span><span class="token punctuation">(</span>BuildConfig<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Fabric<span class="token punctuation">.</span><span class="token function">with</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> crashlyticsKit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果希望将 Crashlytics 与调试版本一起使用，仍然可以通过防止 Crashlytics 在每次构建期间使用自己的唯一构建 ID 更新应用程序资源来加速增量构建。要防止 Crashlytics 不断更新其构建 ID，请将以下内容添加到 <code>build.gradle</code> 文件中：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+  ...
+  buildTypes {
+    debug {
+      ext.alwaysUpdateBuildId = false
+    }
+}
+</code></pre>
+<p>有关在使用 <a href="https://docs.fabric.io/android/crashlytics/overview.html" target="_blank" rel="noopener">Crashlytics</a> 时优化构建的更多信息，请阅读<a href="https://docs.fabric.io/android/crashlytics/build-tools.html" target="_blank" rel="noopener">官方文档</a>。</p>
+<h3 id="在调试构建中使用静态构建配置"><a href="#在调试构建中使用静态构建配置" class="headerlink" title="在调试构建中使用静态构建配置"></a>在调试构建中使用静态构建配置</h3><p>始终对清单文件中的属性或调试构建类型的资源文件中的属性使用静态/硬编码值。如果清单文件或应用程序资源中的值需要在每次构建时更新，那么 <code>Instant Run</code> 就不能执行代码切换，它必须构建和安装新的 APK。</p>
+<p>例如，使用动态版本号、版本名称、资源或任何其他更改清单文件的构建逻辑，每次要运行更改时都需要完整的 APK 构建，即使实际更改可能只需要热交换。如果构建配置需要这样的动态属性，那么将它们隔离到您的发布版本变体并保持调试版本的静态值，如下面的 <code>build.gradle</code> 文件所示：</p>
+<pre class=" language-gradle"><code class="language-gradle">int MILLIS_IN_MINUTE = 1000 * 60
+int minutesSinceEpoch = System.currentTimeMillis() / MILLIS_IN_MINUTE
+
+android {
+    ...
+    defaultConfig {
+        // Making either of these two values dynamic in the defaultConfig will
+        // require a full APK build and reinstallation because the AndroidManifest.xml
+        // must be updated (which is not supported by Instant Run).
+        versionCode 1
+        versionName "1.0"
+        ...
+    }
+
+    // The defaultConfig values above are fixed, so your incremental builds don't
+    // need to rebuild the manifest (and therefore the whole APK, slowing build times).
+    // But for release builds, it's okay. So the following script iterates through
+    // all the known variants, finds those that are "release" build types, and
+    // changes those properties to something dynamic.
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.mergedFlavor.versionCode = minutesSinceEpoch;
+            variant.mergedFlavor.versionName = minutesSinceEpoch + "-" + variant.flavorName;
+        }
+    }
+}
+</code></pre>
+<h3 id="使用静态依赖版本"><a href="#使用静态依赖版本" class="headerlink" title="使用静态依赖版本"></a>使用静态依赖版本</h3><p>在 <code>build.gradle</code> 文件中声明依赖项时，您应当避免在结尾将版本号与加号一起使用，例如 <code>&#39;com.android.tools.build:gradle:2.+&#39;</code>。使用动态版本号可能会导致意外的版本更新，难以解决版本差异，并因 Gradle 检查有无更新而减慢构建速度，应改为使用静态/硬编码版本号。</p>
+<h3 id="启用离线模式"><a href="#启用离线模式" class="headerlink" title="启用离线模式"></a>启用离线模式</h3><p>如果网络连接速度比较慢，那么在 Gradle 尝试使用网络资源解析依赖项时，构建时间可能会受到影响。可以指定 Gradle 仅使用它已经缓存到本地的工件来避免使用网络资源。</p>
+<p>要在使用 Android Studio 构建时离线使用 Gradle，请执行以下操作：</p>
+<ul>
+<li>点击 <strong>File &gt; Settings</strong>（在 Mac 上，点击 <strong>Android Studio &gt; Preferences</strong>），打开 <strong>Preferences</strong> 窗口。</li>
+<li>在左侧窗格中，点击 <strong>Build, Execution, Deployment &gt; Gradle</strong>。</li>
+<li>勾选 <strong>Offline work</strong> 复选框。</li>
+<li>点击 <strong>Apply</strong> 或 <strong>OK</strong>。</li>
+</ul>
+<p>如果正在从命令行构建，请传递 <code>--offline</code> 选项。</p>
+<h3 id="创建库模块"><a href="#创建库模块" class="headerlink" title="创建库模块"></a>创建库模块</h3><p>在应用中查找可以转换为 <a href="https://developer.android.com/studio/projects/android-library.html" target="_blank" rel="noopener">Android library module</a> 的代码。通过这种方式将代码模块化可以让构建系统仅编译您修改的模块，并缓存这些输出以用于后面的构建。当启用<a href="https://docs.gradle.org/current/userguide/multi_project_builds.html#sec:parallel_execution" target="_blank" rel="noopener">并行项目执行</a>时，这种方式也会让并行项目执行更有效。要了解更多信息，请阅读 <a href="https://docs.gradle.org/current/userguide/more_about_tasks.html" target="_blank" rel="noopener">Gradle 官方文档</a>。</p>
+<h3 id="为自定义构建逻辑创建任务"><a href="#为自定义构建逻辑创建任务" class="headerlink" title="为自定义构建逻辑创建任务"></a>为自定义构建逻辑创建任务</h3><p>在创建构建分析后，如果分析显示构建时间中相当大的一部分用在了“配置项目”阶段，请检查 <code>build.gradle</code> 脚本并查找可以添加到自定义 Gradle 任务中的代码。将某个构建逻辑移动到任务中后，它仅会在需要时运行，可以为后续构建缓存结果，并且该构建逻辑将有资格并行运行（如果启用并行项目执行）。要了解更多信息，请阅读 <a href="https://docs.gradle.org/current/userguide/more_about_tasks.html" target="_blank" rel="noopener">Gradle 官方文档</a>。</p>
+<blockquote>
+<p>Tip：如果构建包含大量自定义任务，则可能需要通过<a href="https://docs.gradle.org/current/userguide/custom_tasks.html" target="_blank" rel="noopener">创建自定义任务类</a>来对 <code>build.gradle</code> 文件进行整理。 将类添加到 <code>project-root/buildSrc/src/main/groovy/</code> 目录中，Gradle 会自动将它们包含在项目中所有 <code>build.gradle</code> 文件的类路径中。</p>
+</blockquote>
+<h3 id="将图像转换成-WebP"><a href="#将图像转换成-WebP" class="headerlink" title="将图像转换成 WebP"></a>将图像转换成 WebP</h3><p><a href="https://developers.google.cn/speed/webp/" target="_blank" rel="noopener">WebP</a> 是一种既可以提供有损压缩(像 JPEG 一样)也可以提供透明度(像 PNG 一样)的图片文件格式，不过与 <code>JPEG</code> 或 <code>PNG</code> 相比，这种格式可以提供更好的压缩。降低图片文件大小可以加快构建的速度（无需执行构建时压缩），尤其是在应用使用大量图像资源时，更是如此。不过，在对 <code>WebP</code> 图像进行解压缩时，您可能会注意到设备的 <code>CPU</code> 使用率有小幅上升。使用 Android Studio 时，可以轻松地<a href="https://developer.android.google.cn/studio/write/convert-webp.html#convert_images_to_webp" target="_blank" rel="noopener">将图像转换成 WebP</a>。</p>
+<h3 id="禁用-PNG-处理"><a href="#禁用-PNG-处理" class="headerlink" title="禁用 PNG 处理"></a>禁用 PNG 处理</h3><p>如果不能(或不想)将 PNG 图像转换为 WebP，仍然可以通过在每次构建应用程序时禁用自动图像压缩来加速构建。如果使用的是 <a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html#3-0-0" target="_blank" rel="noopener">Android plugin 3.0.0</a> 或更高版本，则默认情况下仅对 <code>debug</code> 构建类型禁用 PNG 处理。要为其他构建类型禁用此优化，请将以下内容添加到 <code>build.gradle</code> 文件中：</p>
+<pre class=" language-gradle"><code class="language-gradle">android {
+    buildTypes {
+        release {
+            // Disables PNG crunching for the release build type.
+            crunchPngs false
+        }
+    }
+
+// If you're using an older version of the plugin, use the
+// following:
+//  aaptOptions {
+//      cruncherEnabled false
+//  }
+}
+</code></pre>
+<p>由于构建类型或产品风味不定义此属性，因此在构建应用程序的发行版本时，需要手动将此属性设置为 <code>true</code>。</p>
+<h3 id="启用-Instant-Run"><a href="#启用-Instant-Run" class="headerlink" title="启用 Instant Run"></a>启用 Instant Run</h3><p><a href="https://developer.android.google.cn/studio/run/index.html#instant-run" target="_blank" rel="noopener">Instant Run</a> 可以在不构建新 APK 的情况下（某些情况下，甚至不需要重启当前 Activity）推送特定代码和资源更改，从而显著缩短更新您的应用所需的时间。在对应用进行更改后，点击 <strong>Apply Changes</strong> 以使用 <code>Instant Run</code>，此功能会在执行以下操作时默认启用：</p>
+<ul>
+<li>使用 <code>debug</code> 构建变体构建应用。</li>
+<li>使用 <a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html" target="_blank" rel="noopener">Android Plugin for Gradle</a> 2.3.0 或更高版本。</li>
+<li>在应用的模块级 <code>build.gradle</code> 文件中将 <code>minSdkVersion</code> 设置为 15 或更高。</li>
+<li>点击 <code>Run</code>，将应用部署到运行 Android 5.0(API 级别 21)及更高版本的设备上。</li>
+</ul>
+<p>如果满足这些要求后在工具栏中没有看到 <strong>Apply Changes</strong> 按钮，请按以下步骤操作，确保未在 <code>IDE</code> 设置中停用 <code>Instant Run</code>：</p>
+<ul>
+<li>打开 <strong>Settings</strong> 或者 <strong>Preferences</strong> 对话框。</li>
+<li>导航至 <strong>Build, Execution, Deployment &gt; Instant Run</strong>。</li>
+<li>确保勾选 <strong>Enable Instant Run</strong>。</li>
+</ul>
+<h3 id="启用构建缓存"><a href="#启用构建缓存" class="headerlink" title="启用构建缓存"></a>启用构建缓存</h3><p>构建缓存可以存储 <code>Android Plugin for Gradle</code> 在构建项目时生成的特定输出（例如未打包的 AAR 和 pre-dexed 远程依赖项）。使用缓存时，清理构建将显著加快，因为构建系统在后续构建期间可以直接重用这些缓存文件，而不用重新创建它们。</p>
+<p>使用 <a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html#revisions" target="_blank" rel="noopener">Android plugin</a> 2.3.0 及更高版本的新项目在默认情况下会启用构建缓存（除非明确停用构建缓存）。要了解详情，请阅读 <a href="https://developer.android.google.cn/studio/build/build-cache.html" target="_blank" rel="noopener">Accelerate clean builds with the build cache</a>。</p>
+<h3 id="使用增量注解处理器"><a href="#使用增量注解处理器" class="headerlink" title="使用增量注解处理器"></a>使用增量注解处理器</h3><p>Android Gradle plugin 3.3.0 及更高版本在使用注释处理器时改进了对<a href="https://docs.gradle.org/4.10.1/userguide/java_plugin.html#sec:incremental_annotation_processing" target="_blank" rel="noopener">增量 Java 编译</a>的支持。因此，为了提高增量构建速度，应该更新 Android Gradle 插件，并尽可能仅使用增量注释处理器。</p>
+<blockquote>
+<p>注意：此功能与 Gradle 版本 4.10.1 及更高版本兼容，Gradle 5.1 除外（请参阅 <a href="https://github.com/gradle/gradle/issues/8194" target="_blank" rel="noopener">Gradle issue #8194</a>）。</p>
+</blockquote>
+<p>要开始使用，请参阅以下支持增量 Java 编译的常用注释处理器列表。要获得更完整的列表，请参阅 <a href="https://github.com/gradle/gradle/issues/5277" target="_blank" rel="noopener">GitHub issue #5277</a>。某些插件可能需要其他步骤才能启用优化，因此请务必阅读每个插件的文档。</p>
+<ul>
+<li><a href="https://github.com/bumptech/glide" target="_blank" rel="noopener">Glide 4.9.0 and higher</a>：Android 的媒体管理和图像加载框架，将媒体解码、内存和磁盘缓存以及资源池封装到一个简单易用的界面中。</li>
+<li><a href="https://github.com/google/dagger" target="_blank" rel="noopener">Dagger 2.18 and higher</a>：为依赖项注入提供了一种编译时方法。</li>
+<li><a href="https://github.com/google/auto" target="_blank" rel="noopener">Auto Service/Value 1.6.3 and higher</a>：Java 代码生成器的集合。</li>
+</ul>
+<p>请记住，如果使用一个或多个不支持增量构建的注释处理器，则不会启用增量 Java 编译。如果需要使用不支持此优化的注释处理器，请在 <code>gradle.properties</code> 文件中包含以下标志。执行此操作时，<code>Android Gradle plugin</code> 会在单独的任务中执行所有注释处理器，并允许 Java 编译任务以递增方式运行。</p>
+<pre class=" language-gradle"><code class="language-gradle">android.enableSeparateAnnotationProcessing = true
+</code></pre>
+<h2 id="分析构建配置"><a href="#分析构建配置" class="headerlink" title="分析构建配置"></a>分析构建配置</h2><p>较大的项目或者实现许多自定义构建逻辑的项目，可能需要更深入地研究构建过程才能找到瓶颈。可以通过分析 <code>Gradle</code> 执行构建生命周期的每个阶段和每个构建任务所需的时间来完成此操作。例如，如果构建分析显示 <code>Gradle</code> 在配置项目时花费了过多的时间，可能表明需要<a href="https://developer.android.google.cn/studio/build/optimize-your-build#optimize_configuration" target="_blank" rel="noopener">将自定义构建逻辑移出配置阶段</a>。此外，如果 <code>mergeDevDebugResources</code> 任务占用了大量构建时间，则表明还需要<a href="https://developer.android.google.cn/studio/build/optimize-your-build#use_webp" target="_blank" rel="noopener">将图像转换成 WebP</a> 或者<a href="https://developer.android.google.cn/studio/build/optimize-your-build#disable_crunching" target="_blank" rel="noopener">禁用 PNG 处理</a>。</p>
+<p>使用分析来提高构建速度通常包括在启用分析的情况下运行构建，对构建配置进行一些调整，并分析更多内容以观察更改的结果。</p>
+<p>要生成和查看构建分析，请执行以下步骤：</p>
+<ol>
+<li><p>在 Android Studio 中打开项目后，选择 <strong>View &gt; Tool Windows &gt; Terminal</strong> 以在项目的根目录下打开命令行。</p>
+</li>
+<li><p>输入以下命令执行清理构建。在对构建进行概要分析时，应当在分析的每个构建之间执行清理构建，因为当任务的输入（例如源代码）未发生变化时，Gradle 会跳过任务。因此，没有输入更改的第二次构建总会以更快的速度运行，因为没有重新运行任务。因此，在不同构建之间运行 <strong><code>clean</code></strong> 任务可以确保分析完整的构建进程。</p>
+<pre class=" language-gradle"><code class="language-gradle">// On Mac or Linux, run the Gradle wrapper using "./gradlew".
+gradlew clean
+</code></pre>
+</li>
+<li><p>使用以下标志执行某种产品风味的调试版本，例如 <em>dev</em> 风味：</p>
+<pre class=" language-gradle"><code class="language-gradle">gradlew --profile --offline --rerun-tasks assembleFlavorDebug
+</code></pre>
+<ul>
+<li><strong><code>--profile：</code></strong>启用分析。</li>
+<li><strong><code>--offline：</code></strong>禁止 Gradle 获取在线依赖项。这样可以确保 Gradle 在尝试更新依赖项时引起的任何延迟都不会干扰分析数据。应当已将项目构建一次，以便确保 Gradle 已经下载和缓存项目的依赖项。</li>
+<li><strong><code>--rerun-tasks：</code></strong>强制 Gradle 重新运行所有任务并忽略任何任务优化。</li>
+</ul>
+</li>
+<li><p>构建完成后，使用 <strong>Project</strong> 窗口导航到 <code>project-root/build/reports/profile/</code> 目录。如下图所示：<br><img src="https://developer.android.google.cn/studio/images/build/build-report_2X.png" alt="指示分析报告位置的Project视图"></p>
+</li>
+<li><p>右键点击 <strong>profile-<code>timestamp</code>.html</strong> 文件，然后选择 <strong>Open in Browser &gt; Default</strong>。可以检查报告中的每个标签来了解构建，例如，<strong>Task Execution</strong> 标签显示了 Gradle 执行每个构建任务所花费的时间。报告如下图所示：<br><img src="https://developer.android.google.cn/studio/images/build/build-report-before_2X.png" alt="在浏览器中查看报告"></p>
+</li>
+<li><p>可选：在对项目或构建配置进行任何更改之前，请重复第 3 步中的命令，但请忽略 <code>--rerun-tasks</code> 标志。由于 Gradle 会尝试通过不重复执行输入未发生变化的任务来节省时间（这些任务在报告的 <strong>Task Execution</strong> 标签中标记为 <code>UP-TO-DATE</code>，如下图所示），可以确定哪些任务在不必要的时间执行了工作。例如，如果 <code>:app:processDevUniversalDebugManifest</code> 未标记为 <code>UP-TO-DATE</code>，则可能说明构建配置会随着每个构建动态更新 <code>manifest</code>。不过，有些任务（例如 <code>:app:checkDevDebugManifest</code>）需要在每个构建期间始终运行。<br><img src="https://developer.android.google.cn/studio/images/build/build-report-tasks_2X.png" alt="查看任务执行结果"></p>
+</li>
+</ol>
+<p>现在，已经有了一个构建分析报告，可以通过检查报告每个标签中的信息来寻找优化机会。有些构建设置要求实验，因为它们的好处在项目与工作站之间可能有所不同。例如，包含大型代码库的项目可能会受益于使用 <a href="https://developer.android.google.cn/studio/build/shrink-code.html" target="_blank" rel="noopener">ProGuard</a> 移除未使用的代码和压缩 APK 大小。不过，较小的项目则可能从完全禁用 <code>ProGuard</code> 中受益。此外，增加 Gradle 堆大小（使用 <code>org.gradle.jvmargs</code>）可能会降低小内存机器的性能。</p>
+<p>在对构建配置进行更改后，请重复上述步骤并生成新的构建分析来观察更改的结果。例如，下图所示为相同示例应用在进行本页介绍的一些基本优化后的报告。<br><img src="https://developer.android.google.cn/studio/images/build/build-report-after_2X.png" alt="在优化构建速度后查看新报告"></p>
+<blockquote>
+<p>Tips：要获得更强大的分析工具，请考虑使用 <a href="https://github.com/gradle/gradle-profiler" target="_blank" rel="noopener">Gradle 开源分析器</a>。</p>
+</blockquote>
+<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p><a href="https://developer.android.com/studio/build/optimize-your-build" target="_blank" rel="noopener">Optimize your build speed</a></p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/posts/2019/3f20da69.html" class="b-link-green">Android Studio 提高 Gradle 构建速度的小技巧</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2019-05-28T12-20-15',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2019/7418a898.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Android 后台服务 JobIntentService 使用详解">
+                        
+                        <span class="card-title">Android 后台服务 JobIntentService 使用详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Android 8.0(API 26) 对系统资源的管控更加严格，添加了后台限制规则。
+如果满足以下任意条件，应用将被视为处于前台：
+
+具有可见 Activity(不管该 Activity 已启动还是已暂停)；
+具有前台服务；
+另一个前台应</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-calendar fa-fw icon-date"></i>2019-06-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2019/2a2d8ddb.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="LeakCanary 核心原理解析">
+                        
+                        <span class="card-title">LeakCanary 核心原理解析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">LeakCanary 是 Square 为 Android 应用提供的一个监测内存泄露的工具，可以大幅度地减少开发中遇到的内存泄露问题。
+
+Github
+官网
+
+使用依赖dependencies {
+    debugImplementat</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw icon-date"></i>2019-05-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/" target="_blank">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC ������ť. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* �޸����¿�Ƭ div �Ŀ���. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // �л�TOCĿ¼չ����������ز���.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io/" target="_blank">HenleyLee</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">354.3k</span>
+            
+
+	    
+                
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-eye fa-fw"></i>
+                    本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-user"></i>
+                    访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+                </span>
+                
+            
+
+	    
+                <span id="run-time">
+                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+                </span>
+	    
+	    
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<script src="/libs/device/current-device.js"></script>
+
+<!-- 谷歌分析 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+<!-- 页面点击小红心 -->
+
+    <script src="/libs/others/click-love.js"></script>
+
+
+<!-- 不蒜子统计 -->
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+<!-- 页面动态背景 -->
+
+    <script>
+        window.onload = function() {
+            console.log("device.mobile() === %s", device.mobile());
+            if(device.mobile()) {
+	        return;
+            }
+	    var script = document.createElement("script");
+	    script.setAttribute("type", "text/javascript");
+	    script.src = "/libs/others/canvas-nest.min.js";
+	    document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    </script>
+
+
+<!-- 本站运行时间 -->
+
+    <script src="/libs/others/run-time.js"></script>
+
+
+</body>
+</html>

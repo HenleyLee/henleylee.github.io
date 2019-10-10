@@ -374,10 +374,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Android/" target="_blank">
-                                <span class="chip tag-bg-color">Android</span>
-                            </a>
-                        
                             <a href="/tags/Lottie/" target="_blank">
                                 <span class="chip tag-bg-color">Lottie</span>
                             </a>
@@ -394,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Android/" class="post-category" target="_blank">
-                                Android
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                前端
                             </a>
                         
                     </div>
@@ -436,11 +432,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-Lottie-介绍"><a href="#1-Lottie-介绍" class="headerlink" title="1. Lottie 介绍"></a>1. Lottie 介绍</h2><p>Lottie 是 <a href="https://github.com/airbnb" target="_blank" rel="noopener">Airbnb</a> 开源的一套跨平台的完整的动画效果解决方案，设计师可以使用 <a href="https://www.adobe.com/cn/products/aftereffects.html" target="_blank" rel="noopener">Adobe After Effects</a> 设计出漂亮的动画之后，使用 <code>Lottic</code> 提供的 <a href="https://github.com/airbnb/lottie-web" target="_blank" rel="noopener">Bodymovin</a> 插件将设计好的动画导出成 JSON 格式，就可以直接运用在 <code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>之上，无需其他额外操作。</p>
+                <h2 id="1-Lottie-介绍"><a href="#1-Lottie-介绍" class="headerlink" title="1. Lottie 介绍"></a>1. Lottie 介绍</h2><p><a href="https://airbnb.io/lottie/" target="_blank" rel="noopener">Lottie</a> 是 <a href="https://github.com/airbnb" target="_blank" rel="noopener">Airbnb</a> 开源的一套跨平台的完整的动画效果解决方案，设计师可以使用 <a href="https://www.adobe.com/cn/products/aftereffects.html" target="_blank" rel="noopener">Adobe After Effects</a> 设计出漂亮的动画之后，使用 <code>Lottic</code> 提供的 <a href="https://github.com/airbnb/lottie-web" target="_blank" rel="noopener">Bodymovin</a> 插件将设计好的动画导出成 <code>JSON</code> 格式，就可以直接运用在 <code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>之上，无需其他额外操作。</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/9/3/1659ed59b2e5b3f2?w=1308&amp;h=358&amp;f=png&amp;s=42684" alt=""></p>
-<p>Lottie 相关网站：</p>
+<p><code>Lottie</code> 相关网站：</p>
 <ul>
-<li><a href="http://airbnb.io/lottie/" target="_blank" rel="noopener">Lottie 官网</a></li>
+<li><a href="https://airbnb.io/lottie/" target="_blank" rel="noopener">Lottie 官网</a></li>
 <li><a href="https://github.com/airbnb" target="_blank" rel="noopener">Lottie on Github</a></li>
 <li><a href="https://github.com/airbnb/lottie-android" target="_blank" rel="noopener">Lottie for Android</a></li>
 <li><a href="https://github.com/airbnb/lottie-ios" target="_blank" rel="noopener">Lottie for iOS</a></li>
@@ -448,18 +444,18 @@
 <li><a href="https://github.com/airbnb/lottie-react-native" target="_blank" rel="noopener">Lottie for React Native</a></li>
 </ul>
 <h2 id="2-Lottie-使用"><a href="#2-Lottie-使用" class="headerlink" title="2. Lottie 使用"></a>2. Lottie 使用</h2><p><img src="https://user-gold-cdn.xitu.io/2018/8/3/164ff072f3b9c346?w=770&amp;h=385&amp;f=gif&amp;s=347496" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/8/3/164ff0758f7e8915?w=770&amp;h=385&amp;f=gif&amp;s=2132669" alt=""></p>
-<p>Lottie 支持 <code>Jellybean (API 16)</code> 及以上版本。最简单的使用方式是直接使用 <code>LottieAnimationView</code>， <code>LottieAnimationView</code> 直接继承自 <code>AppCompatImageView</code> 。</p>
+<p><code>Lottie</code> 支持 <code>Jellybean (API 16)</code> 及以上版本。最简单的使用方式是直接使用 <code>LottieAnimationView</code>， <code>LottieAnimationView</code> 直接继承自 <code>AppCompatImageView</code> 。</p>
 <h3 id="2-1-Lottie-依赖"><a href="#2-1-Lottie-依赖" class="headerlink" title="2.1 Lottie 依赖"></a>2.1 Lottie 依赖</h3><p><code>Gradle</code> 是唯一支持的构建配置，所以只需要在项目的 <code>build.gradle</code> 文件中添加依赖即可:</p>
 <pre class=" language-gradle"><code class="language-gradle">dependencies {
   implementation "com.airbnb.android:lottie:$lottieVersion"
 }
 </code></pre>
-<p><span>最新版本是： </span><a href="https://search.maven.org/search?q=a:lottie" target="_blank" rel="noopener"><img src="https://user-gold-cdn.xitu.io/2018/8/20/165551befe8dc066" style="vertical-align:middle;"></a></p>
+<p><span>最新版本是： </span><a href="https://search.maven.org/search?q=g:com.airbnb.android" target="_blank" rel="noopener"><img src="https://maven-badges.herokuapp.com/maven-central/com.airbnb.android/lottie/badge.svg" style="vertical-align:middle;"></a></p>
 <h3 id="2-2-Lottie-核心类"><a href="#2-2-Lottie-核心类" class="headerlink" title="2.2 Lottie 核心类"></a>2.2 Lottie 核心类</h3><ul>
-<li><strong>LottieAnimationView</strong>：继承自 <code>AppCompatImageView</code>，是加载 <code>Lottie</code> 动画的默认和最简单的方式。</li>
-<li><strong>LottieDrawable</strong>：具有大多数与 <code>LottieAnimationView</code> 相同的 <code>API</code>，因此可以在任何视图上使用它。</li>
+<li><strong><code>LottieAnimationView：</code></strong>继承自 <code>AppCompatImageView</code>，是加载 <code>Lottie</code> 动画的默认和最简单的方式。</li>
+<li><strong><code>LottieDrawable：</code></strong>具有大多数与 <code>LottieAnimationView</code> 相同的 <code>API</code>，因此可以在任何视图上使用它。</li>
 </ul>
-<h3 id="2-3-加载动画"><a href="#2-3-加载动画" class="headerlink" title="2.3 加载动画"></a>2.3 加载动画</h3><p>Lottie 支持 <code>Jellybean (API 16)</code> 及以上版本。Lottie 动画支持从以下位置加载动画：</p>
+<h3 id="2-3-加载动画"><a href="#2-3-加载动画" class="headerlink" title="2.3 加载动画"></a>2.3 加载动画</h3><p><code>Lottie</code> 支持 <code>Jellybean (API 16)</code> 及以上版本。Lottie 动画支持从以下位置加载动画：</p>
 <ul>
 <li><code>src/main/res/raw</code> 中的 json 动画。</li>
 <li><code>src/main/assets</code> 中的 json 文件。</li>
@@ -468,8 +464,8 @@
 <li><code>json 字符串</code>。源可以来自任何东西，包括自己的网络堆栈。</li>
 <li>json 文件或 zip 文件的 <code>InputStream</code>。</li>
 </ul>
-<h4 id="2-3-1-在-XML-中使用"><a href="#2-3-1-在-XML-中使用" class="headerlink" title="2.3.1 在 XML 中使用"></a>2.3.1 在 XML 中使用</h4><p>最简单的使用方法是使用 <code>LottieAnimationView</code>。Lottie 支持加载来自 <code>res/raw</code> 或 <code>assets/</code> 的动画资源。建议使用 <code>res/raw</code>，因为可以对动画通过 <code>R 文件</code>使用静态引用，而不只是使用字符串名称。这也可以帮助构建静态分析，因为它可以跟踪动画的使用。</p>
-<p><code>LottieAnimationView</code> 的常用属性及其功能如下：</p>
+<h4 id="2-3-1-在-XML-中使用"><a href="#2-3-1-在-XML-中使用" class="headerlink" title="2.3.1 在 XML 中使用"></a>2.3.1 在 XML 中使用</h4><p>最简单的使用方法是使用 <code>LottieAnimationView</code>。<code>Lottie</code> 支持加载来自 <code>res/raw</code> 或 <code>assets/</code> 的动画资源。建议使用 <code>res/raw</code>，因为可以对动画通过 <code>R 文件</code>使用静态引用，而不只是使用字符串名称。这也可以帮助构建静态分析，因为它可以跟踪动画的使用。</p>
+<p><strong><code>LottieAnimationView</code></strong> 的常用属性及其功能如下：</p>
 <table>
 <thead>
 <tr>
@@ -479,47 +475,47 @@
 </thead>
 <tbody>
 <tr>
-<td>lottie_fileName</td>
+<td><code>lottie_fileName</code></td>
 <td>设置播放动画的 json 文件名称</td>
 </tr>
 <tr>
-<td>lottie_rawRes</td>
+<td><code>lottie_rawRes</code></td>
 <td>设置播放动画的 json 文件资源</td>
 </tr>
 <tr>
-<td>lottie_autoPlay</td>
+<td><code>lottie_autoPlay</code></td>
 <td>设置动画是否自动播放(默认为false)</td>
 </tr>
 <tr>
-<td>lottie_loop</td>
+<td><code>lottie_loop</code></td>
 <td>设置动画是否循环(默认为false)</td>
 </tr>
 <tr>
-<td>lottie_repeatMode</td>
+<td><code>lottie_repeatMode</code></td>
 <td>设置动画的重复模式(默认为restart)</td>
 </tr>
 <tr>
-<td>lottie_repeatCount</td>
+<td><code>lottie_repeatCount</code></td>
 <td>设置动画的重复次数(默认为-1)</td>
 </tr>
 <tr>
-<td>lottie_cacheStrategy</td>
+<td><code>lottie_cacheStrategy</code></td>
 <td>设置动画的缓存策略(默认为weak)</td>
 </tr>
 <tr>
-<td>lottie_colorFilter</td>
+<td><code>lottie_colorFilter</code></td>
 <td>设置动画的着色颜色(优先级最低)</td>
 </tr>
 <tr>
-<td>lottie_scale</td>
+<td><code>lottie_scale</code></td>
 <td>设置动画的比例(默认为1f)</td>
 </tr>
 <tr>
-<td>lottie_progress</td>
+<td><code>lottie_progress</code></td>
 <td>设置动画的播放进度</td>
 </tr>
 <tr>
-<td>lottie_imageAssetsFolder</td>
+<td><code>lottie_imageAssetsFolder</code></td>
 <td>设置动画依赖的图片资源文件地址</td>
 </tr>
 </tbody>
@@ -537,7 +533,7 @@
         app:lottie_loop="true"
         app:lottie_autoPlay="true" />
 </code></pre>
-<h4 id="2-3-2-在代码中使用"><a href="#2-3-2-在代码中使用" class="headerlink" title="2.3.2 在代码中使用"></a>2.3.2 在代码中使用</h4><p><code>LottieAnimationView</code> 的常用方法及其功能如下：</p>
+<h4 id="2-3-2-在代码中使用"><a href="#2-3-2-在代码中使用" class="headerlink" title="2.3.2 在代码中使用"></a>2.3.2 在代码中使用</h4><p><strong><code>LottieAnimationView</code></strong> 的常用方法及其功能如下：</p>
 <table>
 <thead>
 <tr>
@@ -547,92 +543,96 @@
 </thead>
 <tbody>
 <tr>
-<td>setAnimation(String)</td>
+<td><code>setAnimation(String)</code></td>
 <td>设置播放动画的 json 文件名称</td>
 </tr>
 <tr>
-<td>setAnimation(String, CacheStrategy)</td>
+<td><code>setAnimation(String, CacheStrategy)</code></td>
 <td>设置播放动画的 json 文件资源和缓存策略</td>
 </tr>
 <tr>
-<td>setAnimation(int)</td>
+<td><code>setAnimation(int)</code></td>
 <td>设置播放动画的 json 文件名称</td>
 </tr>
 <tr>
-<td>setAnimation(int, CacheStrategy)</td>
+<td><code>setAnimation(int, CacheStrategy)</code></td>
 <td>设置播放动画的 json 文件资源和缓存策略</td>
 </tr>
 <tr>
-<td>loop(boolean)</td>
+<td><code>loop(boolean)</code></td>
 <td>设置动画是否循环(默认为false)</td>
 </tr>
 <tr>
-<td>setRepeatMode(int)</td>
+<td><code>setRepeatMode(int)</code></td>
 <td>设置动画的重复模式(默认为restart)</td>
 </tr>
 <tr>
-<td>setRepeatCount(int)</td>
+<td><code>setRepeatCount(int)</code></td>
 <td>设置动画的重复次数(默认为-1)</td>
 </tr>
 <tr>
-<td>lottie_cacheStrategy</td>
+<td><code>lottie_cacheStrategy</code></td>
 <td>设置动画的缓存策略(默认为weak)</td>
 </tr>
 <tr>
-<td>lottie_colorFilter</td>
+<td><code>lottie_colorFilter</code></td>
 <td>设置动画的着色颜色(优先级最低)</td>
 </tr>
 <tr>
-<td>setScale(float)</td>
+<td><code>setScale(float)</code></td>
 <td>设置动画的比例(默认为1f)</td>
 </tr>
 <tr>
-<td>setProgress(float)</td>
+<td><code>setProgress(float)</code></td>
 <td>设置动画的播放进度</td>
 </tr>
 <tr>
-<td>setImageAssetsFolder(String)</td>
+<td><code>setImageAssetsFolder(String)</code></td>
 <td>设置动画依赖的图片资源文件地址</td>
 </tr>
 <tr>
-<td>playAnimation()</td>
+<td><code>playAnimation()</code></td>
 <td>从头开始播放动画</td>
 </tr>
 <tr>
-<td>pauseAnimation()</td>
+<td><code>pauseAnimation()</code></td>
 <td>暂停播放动画</td>
 </tr>
 <tr>
-<td>resumeAnimation()</td>
+<td><code>resumeAnimation()</code></td>
 <td>继续从当前位置播放动画</td>
 </tr>
 <tr>
-<td>cancelAnimation()</td>
+<td><code>cancelAnimation()</code></td>
 <td>取消播放动画</td>
 </tr>
 </tbody>
 </table>
-<p>如果不想用 xml 实现，可以通过代码来实现，可以直接加载本地动画资源，也可以从网络请求加载动画。</p>
+<p>如果不想用 <code>xml</code> 实现，可以通过代码来实现，可以直接加载本地动画资源，也可以从网络请求加载动画。</p>
 <ul>
-<li>从 <code>res/raw</code> 或 <code>assets/</code> 加载动画资源：<br><code>`</code>java<br>LottieAnimationView animationView = …</li>
-</ul>
-<p>animationView.setAnimation(R.raw.hello_world);<br>// or<br>animationView.setAnimation(R.raw.hello_world.json);</p>
-<p>animationView.playAnimation();</p>
-<pre><code>该方法在后台加载文件并解析动画，并在完成后异步开始渲染。
+<li><p>从 <code>res/raw</code> 或 <code>assets/</code> 加载动画资源：<br>该方法在后台加载文件并解析动画，并在完成后异步开始渲染。</p>
+<pre class=" language-java"><code class="language-java"> LottieAnimationView animationView <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
- - 从网络请求加载动画：
-Lottie 的一个优点是可以从网络请求加载动画。所以，应该将网络请求的响应内容转换为字符串格式。Lottie
-使用一个流化的 json 反序列化器来提高性能和内存使用率，所以不要将它转换成您自己的 JSONObject，这只会损害性能。
-```java
-LottieAnimationView animationView = ...
-// This allows lottie to use the streaming deserializer mentioned above.
-JsonReader jsonReader = new JsonReader(new StringReader(json.toString()));
-animationView.setAnimation(jsonReader);
-animationView.playAnimation();
-</code></pre><h3 id="2-4-Lottie-的缓存策略"><a href="#2-4-Lottie-的缓存策略" class="headerlink" title="2.4 Lottie 的缓存策略"></a>2.4 Lottie 的缓存策略</h3><p>你的应用程序中可能会有一些经常使用的动画，比如加载动画等等。为了避免每次加载文件和发序列化的开销，你可以在你的动画上设置一个缓存策略。上面所有的 <code>setAnimation</code> APIs都可以采用可选的第二个参数 <code>CacheStrategy</code>。在默认情况下，Lottie 将保存对动画的弱引用，这对于大多数情况来说应该足够了。但是，如果确定某个动画肯定会经常使用，那么请将其缓存策略更改为 <code>CacheStrategy.Strong</code>；或者如果确定某个动画很大而且不会经常使用，把缓存策略改成 <code>CacheStrategy.None</code>。</p>
+ animationView<span class="token punctuation">.</span><span class="token function">setAnimation</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>raw<span class="token punctuation">.</span>hello_world<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment" spellcheck="true">// or</span>
+ animationView<span class="token punctuation">.</span><span class="token function">setAnimation</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>raw<span class="token punctuation">.</span>hello_world<span class="token punctuation">.</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ animationView<span class="token punctuation">.</span><span class="token function">playAnimation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>从<code>网络请求</code>加载动画：<br><code>Lottie</code> 的一个优点是可以从网络请求加载动画。所以，应该将网络请求的响应内容转换为字符串格式。Lottie 使用一个流化的 json 反序列化器来提高性能和内存使用率，所以不要将它转换成您自己的 JSONObject，这只会损害性能。</p>
+<pre class=" language-java"><code class="language-java"> LottieAnimationView animationView <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+ <span class="token comment" spellcheck="true">// This allows lottie to use the streaming deserializer mentioned above.</span>
+ JsonReader jsonReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JsonReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StringReader</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ animationView<span class="token punctuation">.</span><span class="token function">setAnimation</span><span class="token punctuation">(</span>jsonReader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ animationView<span class="token punctuation">.</span><span class="token function">playAnimation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="2-4-Lottie-的缓存策略"><a href="#2-4-Lottie-的缓存策略" class="headerlink" title="2.4 Lottie 的缓存策略"></a>2.4 Lottie 的缓存策略</h3><p>应用程序中可能会有一些经常使用的动画，比如加载动画等等。为了避免每次加载文件和发序列化的开销，你可以在你的动画上设置一个缓存策略。上面所有的 <code>setAnimation()</code> APIs都可以采用可选的第二个参数 <code>CacheStrategy</code>。在默认情况下，Lottie 将保存对动画的弱引用，这对于大多数情况来说应该足够了。但是，如果确定某个动画肯定会经常使用，那么请将其缓存策略更改为 <code>CacheStrategy.Strong</code>；或者如果确定某个动画很大而且不会经常使用，把缓存策略改成 <code>CacheStrategy.None</code>。</p>
 <p><code>CacheStrategy</code> 可以是<code>None</code>、<code>Weak</code> 和 <code>Strong</code> 三种形式来让 <code>LottieAnimationView</code> 对加载和解析动画的使用强或弱引用的方式。弱或强表示缓存中组合的 GC 引用强度。</p>
-<h3 id="2-5-直接使用-LottieDrawable"><a href="#2-5-直接使用-LottieDrawable" class="headerlink" title="2.5 直接使用 LottieDrawable"></a>2.5 直接使用 <code>LottieDrawable</code></h3><p>LottieAnimationView 是基于 <code>LottieDrawable</code> 的一个包装好的 <code>ImageView</code> 。LottieAnimationView 上的所有 API 都在 LottieDrawable 上进行镜像，因此可以创建自己的实例并在任何可以使用drawable的地方使用它，例如自定义 View 或菜单。</p>
-<h3 id="2-6-使用-LottieComposition-去预加载动画"><a href="#2-6-使用-LottieComposition-去预加载动画" class="headerlink" title="2.6 使用 LottieComposition 去预加载动画"></a>2.6 使用 <code>LottieComposition</code> 去预加载动画</h3><p>动画的支持模型是 <code>LottieComposition</code>。在大多数情况下，在 <code>LottieAnimationView</code> 或 <code>LottieDrawable</code> 上调用 <code>setAnimation(…)</code> 便足够了。但是，如果要预加载动画以使其立即可用，则可以使用 <code>LottieComposition.Factory</code> API返回可以直接在 <code>LottieAnimationView</code> 或 <code>LottieDrawable</code> 设置的 <code>LottieComposition</code> 对象。同样，通常不需要自己添加管理 compositions 的开销。<code>LottieAnimationView</code> 中的默认缓存足以满足大多数用例的需要。</p>
+<h3 id="2-5-直接使用-LottieDrawable"><a href="#2-5-直接使用-LottieDrawable" class="headerlink" title="2.5 直接使用 LottieDrawable"></a>2.5 直接使用 <code>LottieDrawable</code></h3><p><code>LottieAnimationView</code> 是基于 <code>LottieDrawable</code> 的一个包装好的 <code>ImageView</code>。<code>LottieAnimationView</code> 上的所有 API 都在 <code>LottieDrawable</code> 上进行镜像，因此可以创建自己的实例并在任何可以使用 drawable 的地方使用它，例如自定义 View 或菜单。</p>
+<h3 id="2-6-使用-LottieComposition-去预加载动画"><a href="#2-6-使用-LottieComposition-去预加载动画" class="headerlink" title="2.6 使用 LottieComposition 去预加载动画"></a>2.6 使用 <code>LottieComposition</code> 去预加载动画</h3><p>动画的支持模型是 <code>LottieComposition</code>。在大多数情况下，在 <code>LottieAnimationView</code> 或 <code>LottieDrawable</code> 上调用 <code>setAnimation()</code> 便足够了。但是，如果要预加载动画以使其立即可用，则可以使用 <code>LottieComposition.Factory</code> API返回可以直接在 <code>LottieAnimationView</code> 或 <code>LottieDrawable</code> 设置的 <code>LottieComposition</code> 对象。同样，通常不需要自己添加管理 compositions 的开销。<code>LottieAnimationView</code> 中的默认缓存足以满足大多数用例的需要。</p>
 <pre class=" language-java"><code class="language-java">LottieAnimationView animationView <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
  Cancellable compositionLoader <span class="token operator">=</span> LottieComposition<span class="token punctuation">.</span>Factory<span class="token punctuation">.</span><span class="token function">fromJsonString</span><span class="token punctuation">(</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> jsonString<span class="token punctuation">,</span> <span class="token punctuation">(</span>composition<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -1181,7 +1181,7 @@ animator<span class="token punctuation">.</span><span class="token function">sta
             
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">346.8k</span>
+                <span class="white-color">354.3k</span>
             
 
 	    
