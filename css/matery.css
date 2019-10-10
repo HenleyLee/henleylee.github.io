@@ -518,7 +518,14 @@ header .go-back i {
 }
 
 .dream .text {
-    border-radius: 5px;
+    opacity: .6;
+    font-size: 1.1rem;
+}
+
+.music-player,
+.video-player {
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .music,
@@ -536,11 +543,6 @@ header .go-back i {
 }
 
 @media only screen and (min-width: 1418px) {
-    .notice {
-        margin-top: 30px;
-        padding: 0 0.75rem;
-    }
-
     .recommend {
         margin-top: 20px;
         padding: 0 0.75rem;
@@ -936,7 +938,7 @@ article .article-tags .chip {
 }
 
 #artDetail .reprint .reprint-tip {
-    margin-right: 3px;
+    margin: 0 3px 22px 0;
     font-size: 1.05rem;
     font-weight: 500;
 }
@@ -1166,7 +1168,7 @@ table tr:nth-child(2n), thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #0f9d58;
+    background: #007AFF;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1727,7 +1729,7 @@ footer .copy-right {
 }
 
 .img-margin {
-  margin: 15px auto 10px auto;
+    margin: 25px auto 10px auto;
 }
 
 .caption {
@@ -1744,4 +1746,143 @@ footer .copy-right {
 .lg-sub-html .center-caption {
     color: #fff !important;
     border-bottom: none;
+}
+
+.overflow-policy {
+    overflow: hidden;
+}
+
+/* styles for '...' */
+.block-with-text {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.5em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 4.5em;
+    /* fix problem when last visible word doesn't adjoin right side  */
+    text-align: justify;
+    /* place for '...' */
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+/* create the ... style */
+.block-with-text:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+}
+/*二级菜单*/
+
+.nav-menu {}
+.nav-menu li .sub-nav{
+     position:absolute;top:77px;
+	 list-style:none;margin-left: -20px;
+	 display:none;
+}
+.nav-menu li .sub-nav li{
+       text-align:center;
+	   clear:left;
+	   width:140px;
+	   height:35px;
+	   line-height:35px;
+	   position:relative;
+ }
+.nav-menu li .sub-nav li a{
+         height:34px;
+		 line-height:34px;
+		 width:138px;
+		 padding: 0px;
+		 display:inline-block;
+		 border-radius: 5px;
+		 color: #000;
+}
+.nav-show i[aria-hidden=true]{
+    -webkit-transform: rotate(180deg)!important;
+    -moz-transform: rotate(180deg)!important;
+    -o-transform: rotate(180deg)!important;
+    -ms-transform: rotate(180deg)!important;
+    transform: rotate(180deg)!important;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+.menus_item_child {
+    background-color: rgba(255,255,255,.8);
+    width: fit-content;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 20px -4px rgba(0,0,0,.5);
+    box-shadow: 0 5px 20px -4px rgba(0,0,0,.5);
+    display: none;
+    opacity: 0.98;
+    -ms-filter: none;
+    filter: none;
+    -webkit-animation: sub_menus .3s .1s ease both;
+    -moz-animation: sub_menus .3s .1s ease both;
+    -o-animation: sub_menus .3s .1s ease both;
+    -ms-animation: sub_menus .3s .1s ease both;
+    animation: sub_menus .3s .1s ease both;
+}
+.menus_item_child:before{
+     content:"";
+     position:absolute;
+	 top:-20px;left:50%;
+	 margin-left:-10px;
+	 border-width:10px;
+	 border-style:solid;
+	 border-color:transparent transparent rgba(255,255,255,.8)
+}
+.m-nav-item{position: relative;}
+.m-nav-item ul{display: none;}
+.m-nav-item ul li{	
+ width:255px;
+ height:50px;
+ line-height: 50px;
+ text-align: center;
+}
+.m-nav-show .m-icon{    
+    -webkit-transform: rotate(90deg)!important;
+    -moz-transform: rotate(90deg)!important;
+    -o-transform: rotate(90deg)!important;
+    -ms-transform: rotate(90deg)!important;
+    transform: rotate(90deg)!important;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+.m-nav-show,.m-nav-item>a:hover{color: #FFF;background:rgba(255,255,255,.8);}
+.m-nav-show>a:before,.m-nav-item>a:hover:before{opacity:1;}
+.m-nav-item .m-icon{
+	 position:absolute; 
+	 right:15px;
+	 height:50px;
+	 padding:0px;
+	 margin:0px;
 }

@@ -1,6 +1,6 @@
 function createtime() {
 	var now = new Date(); // 当前时间
-    var grt = new Date("06/01/2018 12:00:00"); // 建站时间或者网站上线时间
+    var grt = new Date("06/01/2018 00:00:00"); // 建站时间或者网站上线时间
     now.setTime(now.getTime() + 250);
     days = (now - grt) / 1000 / 60 / 60 / 24;
     dnum = Math.floor(days);
