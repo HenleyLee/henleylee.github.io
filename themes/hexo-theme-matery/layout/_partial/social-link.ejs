@@ -10,9 +10,33 @@
     </a>
 <% } %>
 
+<% if (theme.socialLink.facebook) { %>
+    <a href="<%= theme.socialLink.facebook %>" class="tooltipped" target="_blank" data-tooltip="Facebook" data-position="top" data-delay="50">
+        <i class="fa fa-facebook"></i>
+    </a>
+<% } %>
+
+<% if (theme.socialLink.twitter) { %>
+    <a href="<%= theme.socialLink.twitter %>" class="tooltipped" target="_blank" data-tooltip="Twitter" data-position="top" data-delay="50">
+        <i class="fa fa-twitter"></i>
+    </a>
+<% } %>
+
 <% if (theme.socialLink.qq) { %>
     <a href="tencent://message/?uin=<%= theme.socialLink.qq %>&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
         <i class="fa fa-qq"></i>
+    </a>
+<% } %>
+
+<% if (theme.socialLink.weibo) { %>
+    <a href="<%= theme.socialLink.weibo %>" class="tooltipped" target="_blank" data-tooltip="Î¢²©" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+<% } %>
+
+<% if (theme.socialLink.zhihu) { %>
+    <a href="<%= theme.socialLink.zhihu %>" class="tooltipped" target="_blank" data-tooltip="Öªºõ" data-position="top" data-delay="50">
+	<i class="fab fa-zhihu"></i>
     </a>
 <% } %>
 

@@ -11,6 +11,7 @@
 <%- partial('_partial/search') %>
 <%- partial('_partial/back-top') %>
 
+<script src="<%- theme.libs.js.device %>"></script>
 <script src="<%- theme.libs.js.materialize %>"></script>
 <script src="<%- theme.libs.js.masonry %>"></script>
 <script src="<%- theme.libs.js.aos %>"></script>
@@ -18,19 +19,22 @@
 <script src="<%- theme.libs.js.lightgallery %>"></script>
 <script src="/js/matery.js"></script>
 
-<script src="/libs/device/current-device.js"></script>
-
 <!-- 谷歌分析 -->
 <%- partial('_partial/google-analytics') %>
 
 <!-- 页面点击小红心 -->
 <% if (theme.clickLove.enable) { %>
-    <script src="/libs/others/click-love.js"></script>
+    <script src="<%- theme.libs.js.clicklove %>"></script>
 <% } %>
 
 <!-- 不蒜子统计 -->
 <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="<%- theme.libs.js.busuanzi %>"></script>
+<% } %>
+
+<!-- 本站运行时间 -->
+<% if (theme.runTime.enable) { %>
+    <script src="<%- theme.libs.js.runtime %>"></script>
 <% } %>
 
 <!-- 页面动态背景 -->
@@ -47,11 +51,6 @@
 	    document.getElementsByTagName("head")[0].appendChild(script);
         }
     </script>
-<% } %>
-
-<!-- 本站运行时间 -->
-<% if (theme.runTime.enable) { %>
-    <script src="/libs/others/run-time.js"></script>
 <% } %>
 
 </body>
