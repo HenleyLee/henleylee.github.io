@@ -31,25 +31,15 @@ method(lock, { "我是body的方法体" })// lock是一个Lock对象
 
 被 `inline` 关键字标记的函数就是内联函数，其原理就是：在编译时期，把调用这个函数的地方用这个函数的方法体进行替换。
 
-## run() ##
+## let() ##
 ### 定义 ###
-`run()` 函数的定义如下：
+`let()` 函数的定义如下：
 ```kotlin
-public inline fun <R> run(block: () -> R): R
-public inline fun <T, R> T.run(block: T.() -> R): R
+public inline fun <T, R> T.let(block: (T) -> R): R
 ```
 
 ### 功能 ###
-`run()` 函数的功能：调用指定的函数 `block`，返回值为函数的最后一行或 `return` 表达式。
-
-### 示例 ###
-返回 `return` 表达式，`return` 后面的代码不再执行(注意写法 `@run`)：
-```kotlin
-run {
-    return@run println("11")
-    println("22")
-}
-```
+`let()` 函数的功能：定义一个变量在一个特定的作用域范围内使用，返回值为函数的最后一行或 `return` 表达式。
 
 ## with() ##
 ### 定义 ###
@@ -99,6 +89,26 @@ var list = with(mutableListOf<String>()) {
 }
 ```
 
+## run() ##
+### 定义 ###
+`run()` 函数的定义如下：
+```kotlin
+public inline fun <R> run(block: () -> R): R
+public inline fun <T, R> T.run(block: T.() -> R): R
+```
+
+### 功能 ###
+`run()` 函数的功能：调用指定的函数 `block`，以闭包形式返回，返回值为函数的最后一行或 `return` 表达式。
+
+### 示例 ###
+返回 `return` 表达式，`return` 后面的代码不再执行(注意写法 `@run`)：
+```kotlin
+run {
+    return@run println("11")
+    println("22")
+}
+```
+
 ## apply() ##
 ### 定义 ###
 `apply()` 函数的定义如下：
@@ -107,7 +117,7 @@ public inline fun <T> T.apply(block: T.() -> Unit): T
 ```
 
 ### 功能 ###
-`apply()` 函数的功能：使用 `this` 值作为接收器调用指定的函数 `block`，在函数范围内可以任意调用该对象的任意方法，返回值为 `this` 值(该对象)。
+`apply()` 函数的功能：使用 `this` 值作为接收器调用指定的函数 `block`，在函数范围内可以任意调用该对象的任意方法，返回值为 `this` 值(传入对象的本身)。
 
 ### 示例 ###
 1. 在自定义 View 中初始化画笔时很多时候会写下以下代码：
@@ -154,7 +164,7 @@ public inline fun <T> T.also(block: (T) -> Unit): T
 ```
 
 ### 功能 ###
-`also()` 函数的功能：使用 `this` 值作为参数调用指定的函数 `block`，在函数范围内可以通过 `it` 指代该对象，返回值为 `this` 值(该对象)。
+`also()` 函数的功能：使用 `this` 值作为参数调用指定的函数 `block`，在函数范围内可以通过 `it` 指代该对象，返回值为 `this` 值(传入对象的本身)。
 
 ### 示例 ###
 在自定义 View 中初始化画笔时很多时候会写下以下代码：
@@ -173,13 +183,6 @@ var textView = Paint().also {
     it.textSize = 18.0f
     it.isAntiAlias = true
 }
-```
-
-## let() ##
-### 定义 ###
-`let()` 函数的定义如下：
-```kotlin
-public inline fun <T, R> T.let(block: (T) -> R): R
 ```
 
 ### 功能 ###
@@ -230,4 +233,15 @@ public inline fun repeat(times: Int, action: (Int) -> Unit)
 
 ## 函数选择 ##
 ![Kotlin内联函数选择](https://henleylee.github.io/medias/kotlin/kotlin_inline_function.png)
+
+## let,with,run,apply,also函数区别 ##
+
+| 函数名  | 定义inline的结构                                                     | 函数体内使用的对象	    | 返回值	   | 是否是扩展函数 | 适用的场景                                                                                                                                                                                                                 |
+|---------|----------------------------------------------------------------------|--------------------------|--------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `let`   | fun <T, R> T.let(block: (T) -> R): R = block(this)                   | it指代当前对象	    | 闭包形式返回 | 是	            | 适用于处理不为null的操作场景                                                                                                                                                                                               |
+| `with`  | fun <T, R> with(receiver: T, block: T.() -> R): R = receiver.block() | this指代当前对象或者省略 | 闭包形式返回 | 否	            | 适用于调用同一个类的多个方法时，可以省去类名重复，直接调用类的方法即可，经常用于Android中RecyclerView中onBinderViewHolder中，数据model的属性映射到UI上                                                                     |
+| `run`   | fun <T, R> T.run(block: T.() -> R): R = block()                      | this指代当前对象或者省略 | 闭包形式返回 | 是	            | 适用于let,with函数任何场景                                                                                                                                                                                                 |
+| `apply` | fun T.apply(block: T.() -> Unit): T { block(); return this }         | this指代当前对象或者省略 | 返回this     | 是	            | 适用于run函数的任何场景，一般用于初始化一个对象实例的时候，操作对象属性，并最终返回这个对象；动态inflate出一个XML的View的时候需要给View绑定数据也会用到；一般可用于多个扩展函数链式调用；数据model多层级包裹判空处理的问题 |
+| `also`  | fun T.also(block: (T) -> Unit): T { block(this); return this }       | it指代当前对象	    | 返回this     | 是             | 适用于let函数的任何场景，一般可用于多个扩展函数链式调用                                                                                                                                                                    |
+
 

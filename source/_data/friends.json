@@ -1,26 +1,5 @@
 [
     {
-        "avatar": "https://henleylee.github.io/medias/friends/luokangyuan.jpg",
-        "name": "码酱",
-        "introduction": "我不是大佬，只是在追寻大佬的脚步",
-        "url": "http://luokangyuan.com/",
-        "title": "前去学习"
-    },
-    {
-        "avatar": "https://henleylee.github.io/medias/friends/gityuan.png",
-        "name": "Gityuan",
-        "introduction": "Gityuan —— Keep on going never give up!",
-        "url": "https://gityuan.com/",
-        "title": "前去学习"
-    },
-    {
-        "avatar": "https://henleylee.github.io/medias/friends/gcssloop.jpg",
-        "name": "GcsSloop",
-        "introduction": "GcsSloop —— 一名来自2.5次元的魔法师",
-        "url": "https://www.gcssloop.com/",
-        "title": "前去学习"
-    },
-    {
         "avatar": "https://henleylee.github.io/medias/friends/lmj623565791.jpg",
         "name": "张鸿洋",
         "introduction": "生命不息，奋斗不止，万事起于忽微，量变引起质变",
@@ -35,10 +14,31 @@
         "title": "前去学习"
     },
     {
+        "avatar": "https://henleylee.github.io/medias/friends/gityuan.png",
+        "name": "Gityuan",
+        "introduction": "Gityuan —— Keep on going never give up!",
+        "url": "https://gityuan.com/",
+        "title": "前去学习"
+    },
+    {
         "avatar": "https://henleylee.github.io/medias/friends/luoshengyang.jpg",
         "name": "罗升阳",
         "introduction": "老罗的Android之旅 —— 爱生活，爱Android",
         "url": "https://me.csdn.net/Luoshengyang",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://henleylee.github.io/medias/friends/gcssloop.jpg",
+        "name": "GcsSloop",
+        "introduction": "GcsSloop —— 一名来自2.5次元的魔法师",
+        "url": "https://www.gcssloop.com/",
+        "title": "前去学习"
+    },
+    {
+        "avatar": "https://henleylee.github.io/medias/friends/luokangyuan.jpg",
+        "name": "码酱",
+        "introduction": "我不是大佬，只是在追寻大佬的脚步",
+        "url": "http://luokangyuan.com/",
         "title": "前去学习"
     },
     {

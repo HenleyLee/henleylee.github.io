@@ -44,9 +44,10 @@ Java 8 的 `Stream API` 充分利用 `Lambda 表达式`的特性，极大的提�
 
 ## Stream 的创建 ##
 最常用的 Stream 的创建方式有以下几种途径：
- - 通过 Stream 接口的`静态工厂方法`；
- - 通过 Collection 接口的默认方法– `stream()`，把一个 Collection 对象转换成 Stream。
- - 通过 Arrays 类的`静态工厂方法`。
+ - 通过 **`Stream`** 接口的`静态工厂方法`；
+ - 通过 **`Collection`** 接口的默认方法– `stream()`，为集合创建`串行流`。
+ - 通过 **`Collection`** 接口的默认方法– `parallelStream()`，为集合创建`并行流`。
+ - 通过 **`Arrays`** 类的 `stream()` 静态工厂方法。
 
 > 需要注意的是，对于基本数值型，目前有三种对应的包装类型 Stream：`IntStream`、`LongStream`、`DoubleStream`。当然我们也可以用 `Stream<Integer>`、`Stream<Long>`、`Stream<Double>`，但是 `boxing` 和 `unboxing` 会很耗时，所以特别为这三种基本数值型提供了对应的 Stream。
 > Java 8 中还没有提供其它数值型 Stream，因为这将导致扩增的内容较多。而常规的数值型聚合运算可以通过上面三种 Stream 进行。
@@ -90,8 +91,8 @@ Java 8 的 `Stream API` 充分利用 `Lambda 表达式`的特性，极大的提�
 
 ## Stream 的转换 ##
 当把一个数据结构包装成 Stream 后，就要开始对里面的元素进行各类操作了。常见的操作可以归类如下。
- - **`中间操作(Intermediate)：`**一个流可以后面跟随零个或多个 Intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用，这种操作也叫做惰性求值方法。如：map (mapToInt, flatMap 等)、filter、distinct、sorted、peek、limit、skip、parallel、sequential、unordered
- - **`终止操作(Terminal)：`**一个流只能有一个 Terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。如：forEach、forEachOrdered、toArray、reduce、collect、min、max、count、anyMatch、allMatch、noneMatch、findFirst、findAny、iterator
+ - **`中间操作(Intermediate)：`**一个流可以后面跟随零个或多个 Intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用，这种操作也叫做惰性求值方法。如：map (mapToInt, flatMap 等)、filter、distinct、sorted、peek、limit、skip、parallel、sequential、unordered；
+ - **`终止操作(Terminal)：`**一个流只能有一个 Terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。如：forEach、forEachOrdered、toArray、reduce、collect、min、max、count、anyMatch、allMatch、noneMatch、findFirst、findAny、iterator。
 
 我们下面看一下 Stream 的比较典型用法。
 
@@ -100,7 +101,7 @@ Java 8 的 `Stream API` 充分利用 `Lambda 表达式`的特性，极大的提�
 
 ![distinct 方法示意图](https://henleylee.github.io/medias/java/stream_distinct.jpg)
 
-以下代码片段使用 distinct 方法去除重复的元素并排序后输出：
+以下代码片段使用 distinct() 方法去除重复的元素并排序后输出：
 ```java
 List<Character> letters = Arrays.asList('A', 'D', 'C', 'B', 'D', 'A');
 letters.stream()
@@ -108,13 +109,14 @@ letters.stream()
         .sorted()
         .forEach(System.out::println);
 ```
+> 如果需要去重的元素是对象，则引用的对象要实现 `hashCode()` 方法和 `equal()` 方法，否则去重是无效的。
 
 ### filter() ###
 **`filter()`** 方法对于 Stream 中包含的元素使用给定的过滤函数进行过滤操作，新生成的 Stream 只包含符合条件的元素。
 
 ![filter 方法示意图](https://henleylee.github.io/medias/java/stream_filter.jpg)
 
-以下代码片段使用 filter 方法过滤出长度小于5的语言个数：
+以下代码片段使用 filter() 方法过滤出长度小于5的语言个数：
 ```java
 List<String> languages = Arrays.asList("java", "scala", "python", "shell", "ruby");
 long num = languages.parallelStream().filter(s -> s.length() < 5).count();
@@ -126,7 +128,7 @@ System.out.println(num);
 
 ![map 方法示意图](https://henleylee.github.io/medias/java/stream_map.jpg)
 
-以下代码片段使用 map 得到元素对应的平方数并去除重复元素后转换为集合：
+以下代码片段使用 map() 方法得到元素对应的平方数并去除重复元素后转换为集合：
 ```java
 List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
 List<Integer> squaresList = numbers.stream()
@@ -136,11 +138,11 @@ List<Integer> squaresList = numbers.stream()
 ```
 
 ### flatMap() ###
-**`flatMap()`** 方法和 map 类似，不同的是其每个元素转换得到的是 Stream 对象，会把子 Stream 中的元素压缩到重新生成的集合中。
+**`flatMap()`** 方法和 map() 方法类似，不同的是其每个元素转换得到的是 Stream 对象，会把子 Stream 中的元素压缩到重新生成的集合中。
 
 ![flatMap 方法示意图](https://henleylee.github.io/medias/java/stream_flatMap.jpg)
 
-以下代码片段使用 flatMap 将多个 Stream 连接成一个 Stream 并转换为集合后输出：
+以下代码片段使用 flatMap() 方法将多个 Stream 连接成一个 Stream 并转换为集合后输出：
 ```java
 Stream<List<Integer>> numbersStream = Stream.of(
         Arrays.asList(1),
@@ -174,7 +176,7 @@ System.out.println("Result value: " + peeks);
 
 ![limit 方法示意图](https://henleylee.github.io/medias/java/stream_limit.jpg)
 
-以下代码片段使用 limit 得到前2个元素并输出：
+以下代码片段使用 limit() 方法得到前2个元素并输出：
 ```java
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 System.out.println("limit:");
@@ -188,7 +190,7 @@ numbers.stream()
 
 ![skip 方法示意图](https://henleylee.github.io/medias/java/stream_skip.jpg)
 
-以下代码片段使用 skip 得到前2个元素后剩下的元素并输出：
+以下代码片段使用 skip() 方法得到前2个元素后剩下的元素并输出：
 ```java
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 numbers.stream()
@@ -197,7 +199,7 @@ numbers.stream()
 ```
 
 ### reduce() ###
-**`reduce()`** 方法用于从 Stream 中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，`count`、`min` 和 `max` 方法，因为常用而被纳入标准库中。事实上，这些方法都是 `reduce` 操作。
+**`reduce()`** 方法用于从 Stream 中生成一个值，其生成的值不是随意的，而是根据指定的计算模型。比如，`min()`、`max()` 和 `count()` 方法，因为常用而被纳入标准库中。事实上，这些方法都是 `reduce` 操作。
 
 ![reduce 方法示意图](https://henleylee.github.io/medias/java/stream_reduce.jpg)
 
@@ -208,7 +210,7 @@ Optional<T> reduce(BinaryOperator<T> accumulator)
 <U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);
 ```
 
-以下代码片段使用 reduce 得到所有元素的和并输出：
+以下代码片段使用 reduce() 方法得到所有元素的和并输出：
 ```java
 Optional<Integer> reduce1 = Stream.of(1, 2, 3, 4).reduce((identity, item) -> {
     int result = identity + item;
@@ -227,6 +229,70 @@ System.out.println("reduce2: " + reduce2);
 从打印结果可以看出，reduce前两种变形，因为接受参数不同，其执行的操作也有相应变化：
  - 变形1：未定义初始值，从而第一次执行的时候第一个参数的值是 Stream 的第一个元素，第二个参数是 Stream 的第二个元素
  - 变形2：定义了初始值，从而第一次执行的时候第一个参数的值是初始值，第二个参数是 Stream 的第一个元素
+
+### sorted() ###
+**`sorted()`** 方法用于对 Stream 进行自然顺序排序或比较器规则排序，并返回排序后的新 Stream。
+
+`sorted()` 方法有两种变形：
+```java
+Stream<T> sorted()
+Stream<T> sorted(Comparator<? super T> comparator)
+```
+
+以下代码片段使用 sorted() 方法进行排序后得到所有元素并输出：
+```java
+List<Integer> values = Arrays.asList(1,0,2,-1,-10,6,0,-25,90);
+
+// 1. 自然顺序排序
+values.stream()
+        .sorted()
+        .forEach(System.out::println);
+// 2. 比较器顺序排序(自然顺序排序)
+values.stream()
+        .sorted(Comparator.naturalOrder())
+        .forEach(System.out::println);
+// 3. 比较器顺序排序(自然顺序逆序排序)
+values.stream()
+        .sorted(Comparator.reverseOrder())
+        .forEach(System.out::println);
+// 4. 比较器顺序排序(自然顺序逆序排序)
+values.stream()
+        .sorted((Comparator<Integer>) (o1, o2) -> o1.compareTo(o2))
+        .forEach(System.out::println);
+```
+
+### anyMatch() ###
+**`anyMatch()`** 方法对于 Stream 中包含的元素使用给定的过滤函数进行匹配操作，Stream 中任意一个元素符合传入的 predicate，返回 true。
+
+以下代码片段使用 anyMatch() 方法判断是否有大于1的元素：
+```java
+boolean anyMatch = Stream.of(1, 2, 3, 4).anyMatch(value -> value > 1);
+if (anyMatch) {
+    System.out.println("有大于1的元素");
+}
+```
+
+### allMatch() ###
+**`allMatch()`** 方法对于 Stream 中包含的元素使用给定的过滤函数进行匹配操作，Stream 中全部元素符合传入的 predicate，返回 true。
+
+以下代码片段使用 allMatch() 方法判断是否所有元素都大于0：
+```java
+boolean allMatch = Stream.of(1, 2, 3, 4).allMatch(value -> value > 0);
+if (allMatch) {
+    System.out.println("所有元素都大于0");
+}
+```
+
+### noneMatch() ###
+**`noneMatch()`** 方法对于 Stream 中包含的元素使用给定的过滤函数进行匹配操作，Stream 中没有一个元素符合传入的 predicate，返回 true。
+
+以下代码片段使用 noneMatch() 方法判断是否没有小于0的元素：
+```java
+boolean noneMatch = Stream.of(1, 2, 3, 4).noneMatch(value -> value < 0);
+if (noneMatch) {
+    System.out.println("没有小于0的元素");
+}
+```
 
 ## Collector ##
 `Collector` 是 `Stream` 中对于 `Reduce` 操作的抽象，此接口中定义了常用的 `Reduce` 操作，包括：将元素累积到集合中，使用 StringBuilder连接字符串；计算元素相关的统计信息，例如 sum，min，max 或 average 等。`Collectors(类收集器)`提供了许多常见的可变减少操作的实现。
@@ -249,7 +315,7 @@ System.out.println("reduce2: " + reduce2);
 Set<Characteristics> characteristics()
 ```
 
-而 `Characteristics` 是 `Collector` 内的一个枚举类，声明了以下三个属性，用来约束Collector的属性：
+而 `Characteristics`是 `Collector` 内的一个枚举类，声明了以下三个属性，用来约束Collector的属性：
  - `CONCURRENT：`表示此收集器支持并发，意味着允许在多个线程中，累加器可以调用结果容器
  - `UNORDERED：`表示收集器并不按照 Stream 中的元素输入顺序执行
  - `IDENTITY_FINISH：`表示 finisher 实现的是识别功能，可以省略。
@@ -298,15 +364,15 @@ Collector<T, ?, M> toMap(Function<? super T, ? extends K> keyMapper, Function<? 
 ```
 
  - 类型参数：
-   - T：输入元素的类型
-   - K：Key 映射函数的输出类型
-   - U：Value 映射函数的输出类型
-   - M：生成的 Map 类型
+   - `T：`输入元素的类型
+   - `K：`Key 映射函数的输出类型
+   - `U：`Value 映射函数的输出类型
+   - `M：`生成的 Map 类型
  - 参数：
-   - keyMapper：用于生成 Key 的映射函数
-   - valueMapper：用于生成 Value 的映射函数
-   - mergeFunction：合并函数，用于解决与相同 Key 关联的 Value 之间的冲突
-   - mapSupplier：返回一个用于存储结果的新的空 Map 实例
+   - `keyMapper：`用于生成 Key 的映射函数
+   - `valueMapper：`用于生成 Value 的映射函数
+   - `mergeFunction：`合并函数，用于解决与相同 Key 关联的 Value 之间的冲突
+   - `mapSupplier：`返回一个用于存储结果的新的空 Map 实例
 
 代码示例如下：
 ```java
@@ -322,19 +388,19 @@ System.out.println(map);
 
 ### 转换成值 ###
 使用 `collect()` 可以将 Stream 转换成值。
- - averagingDouble：求平均值，Stream 的元素类型为 double
- - averagingInt：求平均值，Stream 的元素类型为 int
- - averagingLong：求平均值，Stream 的元素类型为 long
- - counting：Stream 的元素个数
- - maxBy：在指定条件下的，Stream 的最大元素
- - minBy：在指定条件下的，Stream 的最小元素
- - reducing：reduce 操作
- - summarizingDouble：统计 Stream 的数据(double)状态，其中包括 count，min，max，sum 和平均。
- - summarizingInt：统计 Stream 的数据(int)状态，其中包括 count，min，max，sum 和平均。
- - summarizingLong：统计 Stream 的数据(long)状态，其中包括 count，min，max，sum 和平均。
- - summingDouble：求和，Stream 的元素类型为 double
- - summingInt：求和，Stream 的元素类型为 int
- - summingLong：求和，Stream 的元素类型为 long
+ - `averagingDouble()：`求平均值，Stream 的元素类型为 double
+ - `averagingInt()：`求平均值，Stream 的元素类型为 int
+ - `averagingLong()：`求平均值，Stream 的元素类型为 long
+ - `counting()：`Stream 的元素个数
+ - `maxBy()：`在指定条件下的，Stream 的最大元素
+ - `minBy()：`在指定条件下的，Stream 的最小元素
+ - `reducing()：`reduce 操作
+ - `summarizingInt()：`统计 Stream 的数据(int)状态，其中包括 count，min，max，sum 和平均。
+ - `summarizingLong()：`统计 Stream 的数据(long)状态，其中包括 count，min，max，sum 和平均。
+ - `summarizingDouble()：`统计 Stream 的数据(double)状态，其中包括 count，min，max，sum 和平均。
+ - `summingDouble()：`求和，Stream 的元素类型为 double
+ - `summingInt()：`求和，Stream 的元素类型为 int
+ - `summingLong()：`求和，Stream 的元素类型为 long
 
 代码示例如下：
 ```java
@@ -384,7 +450,7 @@ System.out.println("joining: " + joining);
 ### 组合 Collector ###
 `Collectors` 库中的 `partitioningBy()` 和 `groupingBy()` 方法还可以接收一个 `Collector`，用以收集最终结果的一个子集，这些 `Collector` 叫作下游收集器。收集器是生成最终结果的一剂配方，下游收集器则是生成部分结果的配方，主收集器中会用到下游收集器。这种组合使用收集器的方式， 使得它们在 Stream 类库中的作用更加强大。
 
-那些为基本类型特殊定制的函数，如 `averagingInt`、`summarizingLong` 等，事实上和调用特殊 Stream 上的方法是等价的，加上它们是为了将它们当作下游收集器来使用的。
+那些为基本类型特殊定制的函数，如 `averagingInt()`、`summarizingLong()` 等，事实上和调用特殊 Stream 上的方法是等价的，加上它们是为了将它们当作下游收集器来使用的。
 
 比如要收集各个分组的列表中的元素个数，代码示例如下：
 ```java

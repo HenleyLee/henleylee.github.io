@@ -49,15 +49,15 @@ Charles 的主界面视图如下图所示：
 Charles 顶部为菜单导航栏，菜单导航栏下面为工具导航栏。视图如下图所示：
 ![](https://user-gold-cdn.xitu.io/2018/8/22/16560de1a421b600?w=453&h=66&f=png&s=13217)
 工具导航栏中提供了几种常用工具：
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560dea3bdcfc14?w=42&h=36&f=png&s=1093" style="vertical-align:middle;"/> ：清除捕获到的所有请求
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560df2fde58597?w=43&h=38&f=png&s=2015" style="vertical-align:middle;"/> ：红点状态说明正在捕获请求，灰色状态说明目前没有捕获请求。
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e008f96c3e6?w=41&h=35&f=png&s=1196" style="vertical-align:middle;"/> ：灰色状态说明是没有开启网速节流，绿色状态说明开启了网速节流。
-  - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e0542d18279?w=40&h=34&f=png&s=1182" style="vertical-align:middle;"/> ：灰色状态说明是没有开启断点，绿色状态说明开启了断点。
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e0edf939b25?w=40&h=36&f=png&s=1024" style="vertical-align:middle;"/> ：编辑修改请求，点击之后可以修改请求的内容。
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e1399e3537d?w=37&h=32&f=png&s=1176" style="vertical-align:middle;"/> ：重复发送请求，点击之后选中的请求会被再次发送。
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e186e4c3278?w=44&h=34&f=png&s=888" style="vertical-align:middle;"/> ：验证选中的请求的响应。
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e1d8a265db0?w=41&h=40&f=png&s=1584" style="vertical-align:middle;"/> ：常用功能，包含了 Tools 菜单中的常用功能。
- - <img src="https://user-gold-cdn.xitu.io/2018/8/22/16560e21d127f1fc?w=42&h=33&f=png&s=1538" style="vertical-align:middle;"/> ：常用设置，包含了 Proxy 菜单中的常用设置。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db3867658eeece?w=32&h=32&f=png&s=1418" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：清除捕获到的所有请求
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db386b4b6e0ead?w=32&h=32&f=png&s=2309" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：红点状态说明正在捕获请求，灰色状态说明目前没有捕获请求。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db386f0e10a371?w=32&h=32&f=png&s=1612" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：灰色状态说明是没有开启网速节流，绿色状态说明开启了网速节流。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db38710d3217c3?w=32&h=32&f=png&s=1708" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：灰色状态说明是没有开启断点，红色状态说明开启了断点。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db387471d369dc?w=32&h=32&f=png&s=1314" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：编辑修改请求，点击之后可以修改请求的内容。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db387c21f47e6e?w=32&h=32&f=png&s=1566" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：重复发送请求，点击之后选中的请求会被再次发送。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db387fb3206808?w=32&h=32&f=png&s=1241" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：验证选中的请求的响应。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db388436059c60?w=32&h=32&f=png&s=2276" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：常用功能，包含了 Tools 菜单中的常用功能。
+ - <img src="https://user-gold-cdn.xitu.io/2019/10/10/16db3887609ae613?w=32&h=32&f=png&s=2388" style="vertical-align:middle;padding:2px;margin:2px;background:#f9f9f9;"/> ：常用设置，包含了 Proxy 菜单中的常用设置。
 
 ### 主界面视图 ###
 Charles 主要提供两种查看封包的视图，分别名为 `Structure` 和 `Sequence`。
