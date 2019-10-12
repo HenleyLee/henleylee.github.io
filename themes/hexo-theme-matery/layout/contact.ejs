@@ -1,14 +1,46 @@
 <%- partial('_partial/bg-cover') %>
+<style>
+    .mytk {
+        text-align: center;
+        width: 65%;
+        position: absolute;
+    }
+
+    .mytk ul {
+        margin-top: 10px;
+    }
+
+    .myeach {
+        margin-left: 65%;
+        margin-bottom: 5%;
+        width: 35%;
+        height: 28%;
+    }
+</style>
 
 <main class="content">
-    <div id="contact" class="container contact-container">
+    <div id="contact" class="container chip-container">
         <div class="card">
             <div class="card-content">
-                <div class="card-content article-card-content">
-                    <div id="articleContent" data-aos="fade-up">
-                        <%- page.content %>
+                <div class="tag-title center-align">
+                    <i class="fas fa-comments"></i>&nbsp;&nbsp;<%= __('contact') %>
+                </div>
+                
+                <div style="margin:-20px 0px;padding:0px;">
+                    <span class="mytk">
+                        <br>
+                        <h4>欢迎来到本博客的留言板！</h4>
+                        <h6>您可以在这里交流讨论任何问题</h6>
+                        <h6>您也可以在这里反馈意见</h6>
+			<h6>欢迎在下方留言，一起交流学习！</h6>
+                    </span>
+                    <div class="myeach">
+                        <iframe style="background:transparent !important" scrolling="no" allowtransparency="true" src="//rf.revolvermaps.com/w/8/a/a2.php?i=5oz3fdz05fl&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;s=200&amp;z=11" width="200" height="200" frameborder="0"></iframe>
                     </div>
                 </div>
+
+                <%- page.content %>
+
             </div>
         </div>
         <div class="card">

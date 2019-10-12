@@ -2,7 +2,7 @@
 
 [![HitCount](http://hits.dwyl.io/blinkfox/hexo-theme-matery.svg)](http://hits.dwyl.io/blinkfox/hexo-theme-matery) [![Gitter](https://img.shields.io/gitter/room/blinkfox/hexo-theme-matery.svg)](https://gitter.im/hexo-theme-matery/Lobby?utm_source=badge) [![GitHub issues](https://img.shields.io/github/issues/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/issues) [![GitHub license](https://img.shields.io/github/license/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/blob/master/LICENSE) [![Download](https://img.shields.io/badge/downloads-master-green.svg)](https://codeload.github.com/blinkfox/hexo-theme-matery/zip/master) [![Hexo Version](https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg)](http://hexo.io) [![GitHub forks](https://img.shields.io/github/forks/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/network) [![GitHub stars](https://img.shields.io/github/stars/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/stargazers)
 
-[中文说明](README_CN.md) | [DEMO](https://blinkfox.github.io/)
+[🇨🇳中文说明](README_CN.md) | [DEMO](https://blinkfox.github.io/)
 
 > This is a Hexo blog theme with 'Material Design' and responsive design.
 
@@ -26,14 +26,17 @@
 - Integrated [Busuanzi Statistics](http://busuanzi.ibruce.info/), `Google Analytics` and post word count statistics.
 - Support music playback and video playback on the homepage
 - Support the `emoji` emoticon and use the `markdown emoji` grammar to directly generate the corresponding emoticon.
-- Support for the creation of [secondary directory]().
+- Support [DaoVoice](http://www.daovoice.io/)、[Tidio](https://www.tidio.com/) online chat.
+
 ## Contributor
 
 Thanks to these contributors, without whom, hexo-theme-matery won't be this perfect.
 
 - [@HarborZeng](https://github.com/HarborZeng)
 - [@shw2018](https://github.com/shw2018)
-- [@Five](https://github.com/Five-great)
+- [@L1cardo](https://github.com/L1cardo)
+- [@Five-great](https://github.com/Five-great)
+
 ## Download
 
 You should have a [Hexo](https://hexo.io/zh-cn/) blog when you see it here.If not,try to use the hexo and [Markdown](https://www.appinn.com/markdown/) to write your blog and post.
@@ -176,66 +179,80 @@ Also, create a new `_data` directory in your blog's `source` directory and a new
     "title": "Read More"
 }]
 ```
+
 ### Menu navigation configuration
+
 #### Configure the name of the basic menu navigation, path url and icon icon.
+
 1. The menu navigation name can be Chinese or English (eg: `Index` or `Home`)
-2. Icon icon can be found in [Font Awesome] (https://fontawesome.com/icons)
-```
+2. Icon icon can be found in [Font Awesome](https://fontawesome.com/icons)
+
+```yaml
 menu:
   Index:
     url: /
-    icon: fa-home
+    icon: fas fa-home
   Tags:
     url: /tags
-    icon: fa-tags
+    icon: fas fa-tags
   Categories:
     url: /categories
-    icon: fa-bookmark
+    icon: fas fa-bookmark
   Archives:
     url: /archives
-    icon: fa-archive
+    icon: fas fa-archive
   About:
     url: /about
-    icon: fa-user-circle-o
+    icon: fas fa-user-circle
   Friends:
     url: /friends
-    icon: fa-address-book
+    icon: fas fa-address-book
 ```
+
 #### Secondary menu configuration method
+
 If you need a secondary menu, you can do the following on the basis of the original basic menu navigation.
+
 1. Add the `children` keyword to the first level menu that needs to add a secondary menu (eg: add `children` under the `About` menu)
 2. Create a secondary menu name, path url and icon icon under `children`.
 3. Note that each secondary menu module must be preceded by `-`.
 4. Note the indentation format.
-```
+
+```yaml
 menu:
   Index:
     url: /
-    icon: fa-home
+    icon: fas fa-home
   Tags:
     url: /tags
-    icon: fa-tags
+    icon: fas fa-tags
   Categories:
     url: /categories
-    icon: fa-bookmark
+    icon: fas fa-bookmark
   Archives:
     url: /archives
-    icon: fa-archive
+    icon: fas fa-archive
   About:
     url: /about
-    icon: fa-user-circle-o
-    children:
-        -
-          name: 自我介绍
-          url: /about
-          icon: fa-user-circle-o
-        -
-          name: Github
-          url: https://github.com/XXXXX
-          icon: fa-github
+    icon: fas fa-user-circle
   Friends:
     url: /friends
-    icon: fa-address-book
+    icon: fas fa-address-book
+  Medias:
+    icon: fas fa-list
+    children:
+      - name: Musics
+        url: /musics
+        icon: fas fa-music
+      - name: Movies
+        url: /movies
+        icon: fas fa-film
+      - name: Books
+        url: /books
+        icon: fas fa-book
+      - name: Galleries
+        url: /galleries
+        icon: fas fa-image
 ```
 
 ### Add emoji support (Optional)
@@ -361,34 +378,45 @@ feed:
 
 Execute `hexo clean && hexo g` to regenerate the blog file, and then you can see the `atom.xml` file in the `public` folder, indicating that you have successfully installed.
 
+### [DaoVoice](http://www.daovoice.io/) online chat (Optional)
+
+Go to the official website of [DaoVoice](http://www.daovoice.io/), register and get the `app_id`. Fill the `app_id` into the the theme `_config.yml` file.
+
+### [Tidio](https://www.tidio.com/) online chat (Optional)
+
+Go to the official website of [Tidio](https://www.tidio.com/), register and get the `Public Key`. Fill the `Public Key` into the the theme `_config.yml` file.
+
 ### Modify website footer
 
 Website footer may need to be customized, and it is not convenient to make configuration information, So need to modify and process it by yourself. The changes are in the `/layout/_partial/footer.ejs` file, including the site, the theme used, the amount of traffic and so on.
 
 ### Modify social links
 
-In the theme `_config.yml` file, the configuration of `QQ`, `GitHub` and mailbox is supported by default. In the `/layout/_partial/social-link.ejs` file of the theme, you can add or modify the social link address as you need. To add a link, please refer to the following code:
+In the theme `_config.yml` file, the configurations of `QQ`, `GitHub` and mailbox and more are supported by default. In the `/layout/_partial/social-link.ejs` file of the theme, you can add or modify the social link address as you need. To add a link, please refer to the following code:
 
 ```html
-<a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
+<% if (theme.socialLink.github) { %>
+    <a href="<%= theme.socialLink.github %>" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+<% } %>
 ```
 
-You can search social icon such as `fa-github` in [Font Awesome](https://fontawesome.com/icons).There are common social icons you can reference:
+You can search social icon such as `fab fa-github` in [Font Awesome](https://fontawesome.com/icons).There are common social icons you can reference:
 
-- Facebook: `fa-facebook`
-- Twitter: `fa-twitter`
-- Google-plus: `fa-google-plus`
-- Linkedin: `fa-linkedin`
-- Tumblr: `fa-tumblr`
-- Medium: `fa-medium`
-- Slack: `fa-slack`
-- Sina Weibo: `fa-weibo`
-- Wechat: `fa-wechat`
-- QQ: `fa-qq`
+- Facebook: `fab fa-facebook`
+- Twitter: `fab fa-twitter`
+- Google-plus: `fab fa-google-plus`
+- Linkedin: `fab fa-linkedin`
+- Tumblr: `fab fa-tumblr`
+- Medium: `fab fa-medium`
+- Slack: `fab fa-slack`
+- Sina Weibo: `fab fa-weibo`
+- Wechat: `fab fa-weixin`
+- QQ: `fab fa-qq`
+- Zhihu: `fab fa-zhihu`
 
-> **Note**: The version of `Font Awesome` is `4.7.0`.
+> **Note**: The version of `Font Awesome` is `5.11.0`.
 
 ### Configure music player (optional)
 
@@ -569,7 +597,6 @@ There are 24 featured pictures in `/source/medias/featureimages`,you can add or 
 ## Changelog
 
 - v1.1.0
-  - Added support for `second level menu';
   - Added support for `emoji`;
   - Added site run time statistics and configuration;
   - Added the function of message board, it is not enabled by default;

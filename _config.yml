@@ -112,6 +112,18 @@ permalink_pinyin:
   enable: false
   separator: '-'                       # Separator of the slug, default: '-'
 
+#嵌入豆瓣个人主页(https://github.com/mythsman/hexo-douban)
+douban:
+  user: henleylee
+  builtin: true                        # 是否将生成页面的功能嵌入hexo s和hexo g中，默认是false
+  book:
+    title: '图书'
+    quote: '书中自有黄金屋'
+  movie:
+    title: '电影'
+    quote: '过去、现在、未来'
+  timeout: 10000 
+
 # Live2D(https://github.com/EYHN/hexo-helper-live2d)
 live2d:
   enable: false
