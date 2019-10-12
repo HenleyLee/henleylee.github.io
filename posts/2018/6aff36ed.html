@@ -16,7 +16,7 @@
     <title>IntelliJ IDEA 共享 IDE 设置 | Henley</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
@@ -28,14 +28,14 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
-
-<header class="navbar-fixed">
+    <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
+        <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
@@ -46,80 +46,80 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
 <ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
     
-	<li class="hide-on-med-and-down nav-item">
-		
-					  <a href="/" class="waves-effect waves-light">
-						
-						<i class="fa fa-home"></i>
-						
-						<span>首页</span>
-					</a>
-          
-        </li>
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
     
-	<li class="hide-on-med-and-down nav-item">
-		
-					  <a href="/tags" class="waves-effect waves-light">
-						
-						<i class="fa fa-tags"></i>
-						
-						<span>标签</span>
-					</a>
-          
-        </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-	<li class="hide-on-med-and-down nav-item">
-		
-					  <a href="/categories" class="waves-effect waves-light">
-						
-						<i class="fa fa-bookmark"></i>
-						
-						<span>分类</span>
-					</a>
-          
-        </li>
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
     
-	<li class="hide-on-med-and-down nav-item">
-		
-					  <a href="/archives" class="waves-effect waves-light">
-						
-						<i class="fa fa-archive"></i>
-						
-						<span>归档</span>
-					</a>
-          
-        </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-	<li class="hide-on-med-and-down nav-item">
-		
-					  <a href="/about" class="waves-effect waves-light">
-						
-						<i class="fa fa-user-circle-o"></i>
-						
-						<span>关于</span>
-					</a>
-          
-        </li>
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
     
-	<li class="hide-on-med-and-down nav-item">
-		
-					  <a href="/friends" class="waves-effect waves-light">
-						
-						<i class="fa fa-address-book"></i>
-						
-						<span>友情链接</span>
-					</a>
-          
-        </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li>
-        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
-        </a>
-    </li>
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
 </ul>
 
 <div id="mobile-nav" class="side-nav sidenav">
@@ -144,7 +144,7 @@
 	  
 		<a href="/" class="waves-effect waves-light">
 			
-			    <i class="fa fa-fw fa-home"></i>
+			    <i class="fa-fw fas fa-home"></i>
 			
 			首页
 		</a>
@@ -155,7 +155,7 @@
 	  
 		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa fa-fw fa-tags"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
 			标签
 		</a>
@@ -166,7 +166,7 @@
 	  
 		<a href="/categories" class="waves-effect waves-light">
 			
-			    <i class="fa fa-fw fa-bookmark"></i>
+			    <i class="fa-fw fas fa-bookmark"></i>
 			
 			分类
 		</a>
@@ -177,7 +177,7 @@
 	  
 		<a href="/archives" class="waves-effect waves-light">
 			
-			    <i class="fa fa-fw fa-archive"></i>
+			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
 		</a>
@@ -188,7 +188,7 @@
 	  
 		<a href="/about" class="waves-effect waves-light">
 			
-			    <i class="fa fa-fw fa-user-circle-o"></i>
+			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
 		</a>
@@ -199,7 +199,7 @@
 	  
 		<a href="/friends" class="waves-effect waves-light">
 			
-			    <i class="fa fa-fw fa-address-book"></i>
+			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
 		</a>
@@ -210,12 +210,13 @@
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>GitHub
+                <i class="fab fa-github-square fa-fw"></i>GitHub
             </a>
         </li>
         
     </ul>
 </div>
+
 
         </div>
 
@@ -277,12 +278,12 @@
 
 </header>
 
-
+    
 
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
-    <div class="container">
+    <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
@@ -294,6 +295,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -370,7 +372,7 @@
 
     #floating-toc-btn {
         position: fixed;
-        right: 20px;
+        right: 15px;
         bottom: 76px;
         padding-top: 15px;
         margin-bottom: 0;
@@ -412,7 +414,7 @@
                 <div class="col s5 right-align">
                     
                     <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
                             <a href="/categories/工具/" class="post-category" target="_blank">
                                 工具
@@ -425,21 +427,21 @@
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
-                    <i class="fa fa-calendar fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
                     2018-08-12
                 </div>
 
                 
                     
                     <div class="info-break-policy">
-                        <i class="fa fa-file-word-o fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        <i class="far fa-file-word fa-fw"></i>&nbsp;文章字数:&nbsp;
                         1.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
-                        <i class="fa fa-hourglass-half"></i>&nbsp;阅读时长:&nbsp;
+                        <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
                         5 分
                     </div>
                     
@@ -447,10 +449,10 @@
 				
                 
                     <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="fa fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <i class="far fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
                     </div>
-				
+                
             </div>
         </div>
         <hr class="clearfix">
@@ -614,7 +616,7 @@
     <!-- Modal Structure -->
     <div id="rewardModal" class="modal">
         <div class="modal-content">
-            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
             <h4 class="reward-title">你的赏识是我前进的动力</h4>
             <div class="reward-content">
                 <div class="reward-tabs">
@@ -645,11 +647,15 @@
 
 <div id="article-share">
     
-    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
     
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
 </div>
 
-<script src="/libs/share/js/social-share.min.js"></script>
 
             
     <div class="reprint">
@@ -664,7 +670,6 @@
     </div>
 
             
-
 
 
         </div>
@@ -709,7 +714,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/posts/2018/26cb225c.html">
                     <div class="card-image">
@@ -729,11 +734,11 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-calendar fa-fw icon-date"></i>2018-08-18
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2018-08-18
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
                             <a href="/categories/Android/" class="post-category" target="_blank">
                                     Android
@@ -766,7 +771,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/posts/2018/da575840.html">
@@ -787,11 +792,11 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw icon-date"></i>2018-08-11
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2018-08-11
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
                             <a href="/categories/工具/" class="post-category" target="_blank">
                                     工具
@@ -862,7 +867,7 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
-            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -872,7 +877,7 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
 
 <div id="floating-toc-btn" class="hide-on-med-and-down">
     <a class="btn-floating btn-large bg-color">
-        <i class="fa fa-list"></i>
+        <i class="fas fa-list-ul"></i>
     </a>
 </div>
 
@@ -957,50 +962,77 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
 </main>
 
 
-<footer class="page-footer foot-bg-color">
+
+    <footer class="page-footer foot-bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io/" target="_blank">HenleyLee</a>. All rights reserved.
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>. All rights reserved.
             Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
             
             
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">354.3k</span>
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">354.3k</span>&nbsp;字
+            
+	    <br>
+	    
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+            <i class="far fa-eye"></i>&nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+            <i class="fas fa-user"></i>&nbsp;访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+            </span>
             
 
 	    
-                
-                <br>
-                
-                <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-eye fa-fw"></i>
-                    本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
-                </span>
-                
-                
-                <span id="busuanzi_container_site_uv">
-                    <i class="fa fa-user"></i>
-                    访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
-                </span>
-                
+            <span id="run-time">
+            <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+            </span>
+            <script>
+                function createtime() {
+                    var now = new Date(); // 当前时间
+                    var grt = new Date("06/01/2018 00:00:00"); // 建站时间或者网站上线时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+	    
+	    <br>
             
-
-	    
-                <span id="run-time">
-                    <i class="fa fa-clock-o fa-fw"></i><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
-                </span>
-	    
-	    
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
+        <i class="fab fa-github"></i>
     </a>
 
 
 
     <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
+        <i class="fas fa-envelope-open"></i>
     </a>
 
 
@@ -1010,7 +1042,7 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
 
 
     <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
+        <i class="fab fa-qq"></i>
     </a>
 
 
@@ -1020,7 +1052,7 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
 
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
-        <i class="fa fa-rss"></i>
+        <i class="fas fa-rss"></i>
     </a>
 </div>
     </div>
@@ -1029,11 +1061,11 @@ Charles 简介Charles 是在 PC 端常用的网络封包截取工具，在做移
 <div class="progress-bar"></div>
 
 
-<!-- 搜索遮罩框 -->
+    <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
             <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
@@ -1046,57 +1078,84 @@ $(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
-<!-- 回到顶部按钮 -->
+    <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fa fa-angle-double-up"></i>
+        <i class="fas fa-angle-double-up"></i>
     </a>
 </div>
 
 
-<script src="/libs/others/current-device.js"></script>
-<script src="/libs/materialize/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/matery.js"></script>
+    <script src="/libs/others/current-device.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
-<!-- 谷歌分析 -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<!-- 页面点击小红心 -->
-
-    <script src="/libs/others/clicklove.js"></script>
+    <!-- Baidu Analytics -->
 
 
-<!-- 不蒜子统计 -->
+    <!-- Baidu Push -->
 
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-
-
-<!-- 本站运行时间 -->
-
-    <script src="/libs/others/runtime.js"></script>
-
-
-<!-- 页面动态背景 -->
-
-    <script>
-        window.onload = function() {
-            console.log("device.mobile() === %s", device.mobile());
-            if(device.mobile()) {
-	        return;
-            }
-	    var script = document.createElement("script");
-	    script.setAttribute("type", "text/javascript");
-	    script.src = "/libs/others/canvas-nest.min.js";
-	    document.getElementsByTagName("head")[0].appendChild(script);
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
         }
-    </script>
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
 
 </body>
+
 </html>
