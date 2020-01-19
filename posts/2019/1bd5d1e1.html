@@ -1,0 +1,1493 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android Context 解析, Android, Google, Blog">
+    <meta name="description" content="一个 Context 意味着一个场景，一个场景就是用户和软件进行交互的一个过程。那么从安卓程序的角度来看，Context 是什么？其实一个 Activity 就是一个 Context，一个 Service 也是一个 Context。
+Con">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android Context 解析 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android Context 解析
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2019-07-05
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="far fa-file-word fa-fw"></i>&nbsp;文章字数:&nbsp;
+                        2.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
+                        10 分
+                    </div>
+                    
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>一个 <code>Context</code> 意味着一个场景，一个场景就是用户和软件进行交互的一个过程。那么从安卓程序的角度来看，<code>Context</code> 是什么？其实一个 <code>Activity</code> 就是一个 <code>Context</code>，一个 <code>Service</code> 也是一个 <code>Context</code>。</p>
+<h2 id="Context-简介"><a href="#Context-简介" class="headerlink" title="Context 简介"></a>Context 简介</h2><p><code>Context</code> 的类关系图如下：<br><img src="https://henleylee.github.io/medias/android/context_uml.webp" alt="Context 类关系图"></p>
+<p><code>Context</code> 本身是一个抽象类，有两个直系子类，一个是 <code>ContextWrapper</code>，一个是 <code>ContextImpl</code>。<br>从类名称上就可以看出，<code>ContextWrapper</code> 是 <code>Context</code> 的代理类，而 <code>ContextImpl</code> 则是 <code>Context</code> 的实现类。另外 <code>ContextWrapper</code> 有三个直接的子类 <code>ContextThemeWrapper</code>、<code>Service</code> 和 <code>Application</code>，其中 <code>ContextThemeWrapper</code> 是一个带主题的封装类，而它有一个直接子类就是 <code>Activity</code>。</p>
+<h2 id="Context-数量"><a href="#Context-数量" class="headerlink" title="Context 数量"></a>Context 数量</h2><p>一个应用程序中到底有多少个 <code>Context</code> 呢？<br>其实根据上面的 <code>Context</code>类型就已经可以得出答案了。<code>Context</code> 一共有 <code>Application</code>、<code>Activity</code> 和 <code>Service</code> 三种类型，因此一个应用程序中 <code>Context</code> 数量的计算公式就可以这样写：</p>
+<blockquote>
+<p>Context 数量 = Activity 数量 + Service 数量 + 1</p>
+</blockquote>
+<p>上面的 <code>1</code> 代表着 <code>Application</code> 的数量，因为一个应用程序中可以有多个 <code>Activity</code> 和多个 <code>Service</code>，但是只能有一个 <code>Application</code>。当然，这只是普通情况，不考虑多进程或其他因素的影响。</p>
+<h2 id="Context-功能"><a href="#Context-功能" class="headerlink" title="Context 功能"></a>Context 功能</h2><p><code>Context</code> 到底可以实现哪些功能呢？这个就实在是太多了，弹出 <code>Toast</code>、启动 <code>Activity</code>、启动 <code>Service</code>、发送广播、操作数据库等都需要用到 <code>Context</code>。<br>由于 <code>Context</code> 的具体能力是由 <code>ContextImpl</code> 类去实现的，因此在绝大多数场景下，<code>Activity</code>、<code>Service</code> 和 <code>Application</code> 这三种类型的 <code>Context</code> 都是可以通用的。<br>不过有几种场景比较特殊，比如启动 <code>Activity</code>，还有弹出 <code>Dialog</code>。出于安全原因的考虑，<code>Android</code> 是不允许 <code>Activity</code> 或 <code>Dialog</code> 凭空出现的。<code>Activity</code> 的启动必须要建立在另一个 <code>Activity</code> 的基础之上，也就是以此形成的返回栈。而 <code>Dialog</code> 则必须在一个 <code>Activity</code> 上面弹出(除非是 <code>System Alert</code> 类型的 <code>Dialog</code>)，因此在这种场景下，只能使用 <code>Activity</code> 类型的 <code>Context</code>，否则将会出错。</p>
+<h2 id="Context-作用"><a href="#Context-作用" class="headerlink" title="Context 作用"></a>Context 作用</h2><p>要想知道 <code>Context</code> 的作用，首先先看一下 <code>Context</code> 提供的方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Context</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">// 四大组件相关</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">startActivity</span><span class="token punctuation">(</span>Intent intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">startActivity</span><span class="token punctuation">(</span>Intent intent<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> Bundle options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">startActivities</span><span class="token punctuation">(</span>Intent<span class="token punctuation">[</span><span class="token punctuation">]</span> intents<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">startActivities</span><span class="token punctuation">(</span>Intent<span class="token punctuation">[</span><span class="token punctuation">]</span> intents<span class="token punctuation">,</span> Bundle options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">sendBroadcast</span><span class="token punctuation">(</span>Intent intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">sendBroadcast</span><span class="token punctuation">(</span>Intent intent<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> String receiverPermission<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">sendOrderedBroadcast</span><span class="token punctuation">(</span>Intent intent<span class="token punctuation">,</span> String receiverPermission<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Intent <span class="token function">registerReceiver</span><span class="token punctuation">(</span>BroadcastReceiver receiver<span class="token punctuation">,</span> IntentFilter filter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>BroadcastReceiver receiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> ComponentName <span class="token function">startService</span><span class="token punctuation">(</span>Intent service<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> ComponentName <span class="token function">startForegroundService</span><span class="token punctuation">(</span>Intent service<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">stopService</span><span class="token punctuation">(</span>Intent service<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">bindService</span><span class="token punctuation">(</span>Intent service<span class="token punctuation">,</span> ServiceConnection conn<span class="token punctuation">,</span> <span class="token keyword">int</span> flags<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">unbindService</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> ServiceConnection conn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> ContentResolver <span class="token function">getContentResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 获取系统资源</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> AssetManager <span class="token function">getAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Resources <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> PackageManager <span class="token function">getPackageManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> ClassLoader <span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Context <span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Context <span class="token function">createConfigurationContext</span><span class="token punctuation">(</span>Configuration overrideConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Context <span class="token function">createDisplayContext</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> Display display<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token annotation punctuation">@Nullable</span> Object <span class="token function">getSystemService</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ServiceName</span> <span class="token annotation punctuation">@NonNull</span> String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token annotation punctuation">@Nullable</span> <span class="token operator">&lt;</span>T<span class="token operator">></span> T <span class="token function">getSystemService</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> Class<span class="token operator">&lt;</span>T<span class="token operator">></span> serviceClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 获取应用资源</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> CharSequence <span class="token function">getText</span><span class="token punctuation">(</span><span class="token annotation punctuation">@StringRes</span> <span class="token keyword">int</span> resId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> String <span class="token function">getString</span><span class="token punctuation">(</span><span class="token annotation punctuation">@StringRes</span> <span class="token keyword">int</span> resId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> String <span class="token function">getString</span><span class="token punctuation">(</span><span class="token annotation punctuation">@StringRes</span> <span class="token keyword">int</span> resId<span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> formatArgs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">getColor</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ColorRes</span> <span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> Drawable <span class="token function">getDrawable</span><span class="token punctuation">(</span><span class="token annotation punctuation">@DrawableRes</span> <span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> ColorStateList <span class="token function">getColorStateList</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ColorRes</span> <span class="token keyword">int</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">setTheme</span><span class="token punctuation">(</span><span class="token annotation punctuation">@StyleRes</span> <span class="token keyword">int</span> resid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Resources<span class="token punctuation">.</span>Theme <span class="token function">getTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> TypedArray <span class="token function">obtainStyledAttributes</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> TypedArray <span class="token function">obtainStyledAttributes</span><span class="token punctuation">(</span><span class="token annotation punctuation">@StyleRes</span> <span class="token keyword">int</span> resid<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> attrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 获取应用相关信息</span>
+    <span class="token keyword">public</span> String <span class="token function">getOpPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> Executor <span class="token function">getMainExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> Looper <span class="token function">getMainLooper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> String <span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> ApplicationInfo <span class="token function">getApplicationInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> String <span class="token function">getPackageResourcePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> String <span class="token function">getPackageCodePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token annotation punctuation">@Nullable</span> String <span class="token function">getSystemServiceName</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> serviceClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">int</span> <span class="token function">checkPermission</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> String permission<span class="token punctuation">,</span> <span class="token keyword">int</span> pid<span class="token punctuation">,</span> <span class="token keyword">int</span> uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">int</span> <span class="token function">checkSelfPermission</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> String permission<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 文件相关</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">deleteFile</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getDataDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getFilesDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getNoBackupFilesDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getExternalFilesDir</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> String type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getExternalFilesDirs</span><span class="token punctuation">(</span>String type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getObbDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getObbDirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getCacheDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getCodeCacheDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File <span class="token function">getExternalCacheDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getExternalCacheDirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> File<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getExternalMediaDirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> SharedPreferences <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> mode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">moveSharedPreferencesFrom</span><span class="token punctuation">(</span>Context sourceContext<span class="token punctuation">,</span> String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">reloadSharedPreferences</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> FileInputStream <span class="token function">openFileInput</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> FileOutputStream <span class="token function">openFileOutput</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token annotation punctuation">@FileMode</span> <span class="token keyword">int</span> mode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 数据库相关</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> SQLiteDatabase <span class="token function">openOrCreateDatabase</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> mode<span class="token punctuation">,</span> CursorFactory f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">deleteDatabase</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">databaseList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 其他</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerComponentCallbacks</span><span class="token punctuation">(</span>ComponentCallbacks callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">unregisterComponentCallbacks</span><span class="token punctuation">(</span>ComponentCallbacks callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>根据 <code>Context</code> 的源码可以发现，<code>Context</code> 就相当于 <code>Application</code> 的大管家，主要负责：</p>
+<ul>
+<li>四大组件的交互：包括启动 <code>Activity</code>、<code>Broadcast</code>、<code>Service</code>，获取 <code>ContentResolver</code> 等；</li>
+<li>获取系统资源：包括获取 <code>AssetManager</code>、<code>PackageManager</code>、<code>Resources</code>、<code>System Service</code> 等；</li>
+<li>获取应用资源：包括获取 <code>color</code>、<code>string</code>、<code>drawable</code>、<code>theme</code> 等；</li>
+<li>文件相关：包括获取各种应用目录、<code>SharedPreference</code>、删除文件等；</li>
+<li>数据库相关：包括打开数据库、删除数据库、获取数据库路径等；</li>
+<li>其它辅助功能：比如设置 <code>ComponentCallbacks</code>，即监听配置信息改变、内存不足等事件的发生。</li>
+</ul>
+<h2 id="Context-区别"><a href="#Context-区别" class="headerlink" title="Context 区别"></a>Context 区别</h2><h3 id="ContextWrapper"><a href="#ContextWrapper" class="headerlink" title="ContextWrapper"></a>ContextWrapper</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * Proxying implementation of Context that simply delegates all of its calls to
+ * another Context.  Can be subclassed to modify behavior without changing
+ * the original Context.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ContextWrapper</span> <span class="token keyword">extends</span> <span class="token class-name">Context</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@UnsupportedAppUsage</span>
+    Context mBase<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 注意这个成员</span>
+
+    <span class="token keyword">public</span> <span class="token function">ContextWrapper</span><span class="token punctuation">(</span>Context base<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mBase <span class="token operator">=</span> base<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Set the base context for this ContextWrapper.  All calls will then be
+     * delegated to the base context.  Throws
+     * IllegalStateException if a base context has already been set.
+     *
+     * @param base The new base context for this wrapper.
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">attachBaseContext</span><span class="token punctuation">(</span>Context base<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mBase <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"Base context already set"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mBase <span class="token operator">=</span> base<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * @return the base context as set by the constructor or setBaseContext
+     */</span>
+    <span class="token keyword">public</span> Context <span class="token function">getBaseContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mBase<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> AssetManager <span class="token function">getAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mBase<span class="token punctuation">.</span><span class="token function">getAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Resources <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mBase<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> PackageManager <span class="token function">getPackageManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mBase<span class="token punctuation">.</span><span class="token function">getPackageManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> ContentResolver <span class="token function">getContentResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mBase<span class="token punctuation">.</span><span class="token function">getContentResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>可以看到，<code>ContextWrapper</code> 实际上就是 <code>Context</code> 的代理类而已，所有的操作都是通过内部成员 <code>mBase</code> 完成的。另外，<code>Activity</code>、<code>Service</code> 的 <code>getBaseContext()</code> 方法返回的就是这个 <code>mBase</code> 对象。</p>
+<h3 id="ContextThemeWrapper"><a href="#ContextThemeWrapper" class="headerlink" title="ContextThemeWrapper"></a>ContextThemeWrapper</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * A context wrapper that allows you to modify or replace the theme of the wrapped context.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ContextThemeWrapper</span> <span class="token keyword">extends</span> <span class="token class-name">ContextWrapper</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> mThemeResource<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Resources<span class="token punctuation">.</span>Theme mTheme<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> LayoutInflater mInflater<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Configuration mOverrideConfiguration<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Resources mResources<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">ContextThemeWrapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">ContextThemeWrapper</span><span class="token punctuation">(</span>Context base<span class="token punctuation">,</span> <span class="token annotation punctuation">@StyleRes</span> <span class="token keyword">int</span> themeResId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mThemeResource <span class="token operator">=</span> themeResId<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">ContextThemeWrapper</span><span class="token punctuation">(</span>Context base<span class="token punctuation">,</span> Resources<span class="token punctuation">.</span>Theme theme<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>base<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mTheme <span class="token operator">=</span> theme<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">attachBaseContext</span><span class="token punctuation">(</span>Context newBase<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">attachBaseContext</span><span class="token punctuation">(</span>newBase<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 在Recource初始化之前，传入配置信息
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">applyOverrideConfiguration</span><span class="token punctuation">(</span>Configuration overrideConfiguration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mResources <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span>
+                    <span class="token string">"getResources() or getAssets() has already been called"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mOverrideConfiguration <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"Override configuration has already been set"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mOverrideConfiguration <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Configuration</span><span class="token punctuation">(</span>overrideConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Resources <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">getResourcesInternal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> Resources <span class="token function">getResourcesInternal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mResources <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mOverrideConfiguration <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mResources <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">>=</span> <span class="token number">17</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 根据配置信息初始化 Resource</span>
+                <span class="token comment" spellcheck="true">// 注意，这里创建了另一个和 Base Context 不同的 Resource</span>
+                <span class="token keyword">final</span> Context resContext <span class="token operator">=</span> <span class="token function">createConfigurationContext</span><span class="token punctuation">(</span>mOverrideConfiguration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mResources <span class="token operator">=</span> resContext<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> mResources<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setTheme</span><span class="token punctuation">(</span><span class="token keyword">int</span> resid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mThemeResource <span class="token operator">!=</span> resid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mThemeResource <span class="token operator">=</span> resid<span class="token punctuation">;</span>
+            <span class="token function">initializeTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Resources<span class="token punctuation">.</span>Theme <span class="token function">getTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 只会初始化一次</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mTheme <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mTheme<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mThemeResource <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mThemeResource <span class="token operator">=</span> R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>Theme_AppCompat_Light<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">initializeTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> mTheme<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 初始化Theme
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initializeTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token keyword">boolean</span> first <span class="token operator">=</span> mTheme <span class="token operator">==</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>first<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 根据 Resource 获取 Theme</span>
+            mTheme <span class="token operator">=</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 复制内容</span>
+            Resources<span class="token punctuation">.</span>Theme theme <span class="token operator">=</span> <span class="token function">getBaseContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>theme <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mTheme<span class="token punctuation">.</span><span class="token function">setTo</span><span class="token punctuation">(</span>theme<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">onApplyThemeResource</span><span class="token punctuation">(</span>mTheme<span class="token punctuation">,</span> mThemeResource<span class="token punctuation">,</span> first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onApplyThemeResource</span><span class="token punctuation">(</span>Resources<span class="token punctuation">.</span>Theme theme<span class="token punctuation">,</span> <span class="token keyword">int</span> resid<span class="token punctuation">,</span> <span class="token keyword">boolean</span> first<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        theme<span class="token punctuation">.</span><span class="token function">applyStyle</span><span class="token punctuation">(</span>resid<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">getSystemService</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>LAYOUT_INFLATER_SERVICE<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mInflater <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mInflater <span class="token operator">=</span> LayoutInflater<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token function">getBaseContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">cloneInContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> mInflater<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token function">getBaseContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSystemService</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> AssetManager <span class="token function">getAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>结合注释及源码，可以发现，<code>ContextThemeWrapper</code> 内部包含了与主题相关的接口，有自己的 <code>Theme</code> 和 <code>Resource</code> 成员，并且 <code>Resource</code> 可以传入自己的配置初始化。即 <code>Theme</code> 和 <code>Resource</code> 相关的行为不再是直接调用 <code>mBase</code> 的方法了，也就说，<code>ContextThemeWrapper</code> 和它的 <code>mBase</code> 成员在 <code>Resource</code> 和 <code>Theme</code> 相关的行为上是不同的。</p>
+<h3 id="ContextImpl"><a href="#ContextImpl" class="headerlink" title="ContextImpl"></a>ContextImpl</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * Common implementation of Context API, which provides the base
+ * context object for Activity and other application components.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ContextImpl</span> <span class="token keyword">extends</span> <span class="token class-name">Context</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Resources mResources<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> mThemeResource <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Resources<span class="token punctuation">.</span>Theme mTheme <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Resources <span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> mResources<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">setResources</span><span class="token punctuation">(</span>Resources r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token keyword">instanceof</span> <span class="token class-name">CompatResources</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">(</span><span class="token punctuation">(</span>CompatResources<span class="token punctuation">)</span> r<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mResources <span class="token operator">=</span> r<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setTheme</span><span class="token punctuation">(</span><span class="token keyword">int</span> resId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mSync<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mThemeResource <span class="token operator">!=</span> resId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mThemeResource <span class="token operator">=</span> resId<span class="token punctuation">;</span>
+                <span class="token function">initializeTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getThemeResId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mSync<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mThemeResource<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Resources<span class="token punctuation">.</span>Theme <span class="token function">getTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>mSync<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mTheme <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> mTheme<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            mThemeResource <span class="token operator">=</span> Resources<span class="token punctuation">.</span><span class="token function">selectDefaultTheme</span><span class="token punctuation">(</span>mThemeResource<span class="token punctuation">,</span>
+                    <span class="token function">getOuterContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getApplicationInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>targetSdkVersion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">initializeTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> mTheme<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 初始化Theme
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initializeTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mTheme <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mTheme <span class="token operator">=</span> mResources<span class="token punctuation">.</span><span class="token function">newTheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mTheme<span class="token punctuation">.</span><span class="token function">applyStyle</span><span class="token punctuation">(</span>mThemeResource<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Resources <span class="token function">createResources</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ResourcesManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> ContextImpl <span class="token function">createSystemContext</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">{</span>
+        LoadedApk packageInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LoadedApk</span><span class="token punctuation">(</span>mainThread<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ContextImpl context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setResources</span><span class="token punctuation">(</span>packageInfo<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> context<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> ContextImpl <span class="token function">createAppContext</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>packageInfo <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"packageInfo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ContextImpl context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setResources</span><span class="token punctuation">(</span>packageInfo<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> context<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> ContextImpl <span class="token function">createActivityContext</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ContextImpl context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">final</span> ResourcesManager resourcesManager <span class="token operator">=</span> ResourcesManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">setResources</span><span class="token punctuation">(</span>resourcesManager<span class="token punctuation">.</span><span class="token function">createBaseActivityResources</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> context<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>从代码中可以看出，<code>ContextImpl</code> 真正实现了 <code>Context</code> 中所有的方法，另外，<code>ContextImpl</code> 可以用于创建 <code>Activity</code>、<code>Service</code> 以及 <code>Application</code> 的 <code>mBase</code> 成员。</p>
+<p>不同组件创建 <code>ContextImpl</code> 的方式：</p>
+<ul>
+<li><strong><code>Activity：</code></strong>调用 <code>ActivityThread.createBaseContextForActivity()</code> 方法；</li>
+<li><strong><code>Service/Application：</code>**</strong>调用 <code>ContextImpl.createAppContext()</code> 方法；</li>
+<li><strong><code>Provider：</code>**</strong>调用 <code>ContextImpl.createPackageContext()</code> 方法；</li>
+<li><strong><code>BroadcastReceiver：</code>**</strong>调用 <code>Application.getBaseContext()</code> 方法。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>Context</code> 的继承关系如下：<br><img src="https://henleylee.github.io/medias/android/context_structure.webp" alt="Context 继承关系"></p>
+<ul>
+<li><code>ContextWrapper</code>、<code>ContextThemeWrapper</code> 都是 <code>Context</code> 的代理类，二者的区别在于 <code>ContextThemeWrapper</code> 有自己的 <code>Theme</code> 以及 <code>Resource</code>，并且 <code>Resource</code> 可以传入自己的配置初始化；</li>
+<li><code>ContextImpl</code> 是 <code>Context</code> 的主要实现类，<code>Activity</code>、<code>Service</code> 和 <code>Application</code> 的 <code>Base Context</code> 都是由它创建的，即 <code>ContextWrapper</code> 代理的就是 <code>ContextImpl</code> 对象本身；</li>
+<li><code>Activity</code>、<code>Service</code> 和 <code>Application</code> 的 <code>Base Context</code> 都是由 <code>ContextImpl</code> 创建的，且创建的都是 <code>ContextImpl</code> 对象，即它们都是 <code>ContextImpl</code> 的代理类；</li>
+<li><code>Service</code> 和 <code>Application</code> 使用同一个 <code>Recource</code>，和 <code>Activity</code> 使用的 <code>Resource</code> 不同。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&amp;mid=2247494403&amp;idx=1&amp;sn=0f5caf177fce03e82e524b9f39c37abc" target="_blank" rel="noopener">关于Context不得不说的细节</a></p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+    <div class="reprint">
+        <p>
+            <span class="reprint-tip">
+                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;转载请注明:
+            </span>
+            <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
+            <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+            <a href="/posts/2019/1bd5d1e1.html" class="b-link-green">Android Context 解析</a>
+        </p>
+    </div>
+
+            
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2019-07-05T10-30-35',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2019/8a697fa9.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Java 中12个常见的语法糖">
+                        
+                        <span class="card-title">Java 中12个常见的语法糖</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文转载自：https://mp.weixin.qq.com/s/EBnM7QAOPjDk5bG3M0Mu-w
+本文从 Java 编译原理角度，深入字节码及 class 文件，抽丝剥茧，了解 Java 中的语法糖原理及用法，帮助大家在学会如
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-07-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/" target="_blank">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2019/5fe63be9.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="深入理解 Gradle 框架之二：依赖实现分析">
+                        
+                        <span class="card-title">深入理解 Gradle 框架之二：依赖实现分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文转载自：https://mp.weixin.qq.com/s/WQCqUaYDPHDIjUHlxjRIkw
+引言大家在日常开发中，见过最多的可能就是下面3种依赖声明：
+
+implementation “org.jetbrains.kot
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-06-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Gradle/" class="post-category" target="_blank">
+                                    Gradle
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Gradle/" target="_blank">
+                        <span class="chip tag-bg-color">Gradle</span>
+                    </a>
+                    
+                    <a href="/tags/Plugin/" target="_blank">
+                        <span class="chip tag-bg-color">Plugin</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '作者: HenleyLee<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+    <footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>. All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">381.6k</span>&nbsp;字
+            
+	    <br>
+	    
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+            <i class="far fa-eye"></i>&nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+            <i class="fas fa-user"></i>&nbsp;访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+            </span>
+            
+
+	    
+            <span id="run-time">
+            <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+            </span>
+            <script>
+                function createtime() {
+                    var now = new Date(); // 当前时间
+                    var grt = new Date("06/01/2018 00:00:00"); // 建站时间或者网站上线时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+	    
+	    <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/others/current-device.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+    
+    
+
+</body>
+
+</html>

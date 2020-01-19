@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2019-07-29T02:03:18.241Z</updated>
+  <updated>2020-01-19T07:15:37.497Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -17,11 +17,168 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java 中 LinkedList 的实现原理</title>
+    <link href="https://henleylee.github.io/posts/2019/5fab622a.html"/>
+    <id>https://henleylee.github.io/posts/2019/5fab622a.html</id>
+    <published>2019-08-06T07:56:35.000Z</published>
+    <updated>2020-01-19T07:15:37.497Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; 是用链表结构存储数据的，比较适合数据的动态插入和删除，随机访问和遍历速度比较慢，还提供了 &lt;code&gt;List&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 中 ArrayList 的实现原理</title>
+    <link href="https://henleylee.github.io/posts/2019/8e8b3427.html"/>
+    <id>https://henleylee.github.io/posts/2019/8e8b3427.html</id>
+    <published>2019-08-03T10:26:15.000Z</published>
+    <updated>2020-01-19T07:15:52.834Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;ArrayList&lt;/code&gt; 不是线程安全的，只能用在单线程环境下，多线程环境下可以考虑用 &lt;code&gt;Collections.synchronizedList(List&amp;lt;T&amp;gt; list)&lt;/code&gt; 函数返回一个线程安全的
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java ConcurrentHashMap 的实现原理</title>
+    <link href="https://henleylee.github.io/posts/2019/9cd25f5c.html"/>
+    <id>https://henleylee.github.io/posts/2019/9cd25f5c.html</id>
+    <published>2019-07-21T10:36:55.000Z</published>
+    <updated>2020-01-17T09:56:31.026Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在多线程环境下，使用 &lt;code&gt;HashMap&lt;/code&gt; 进行 &lt;code&gt;put&lt;/code&gt; 操作时存在丢失数据的情况，为了避免这种 bug 的隐患，强烈建议使用 &lt;code&gt;ConcurrentHashMap&lt;/code&gt; 代替
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 中的 ANR 原理分析及解决办法</title>
+    <link href="https://henleylee.github.io/posts/2019/d8e5ccc6.html"/>
+    <id>https://henleylee.github.io/posts/2019/d8e5ccc6.html</id>
+    <published>2019-07-18T05:56:50.000Z</published>
+    <updated>2020-01-17T03:36:58.953Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;有过 Android 开发经历的人都不会对 ANR 陌生，它和崩溃一样是程序设计的问题。本文将以较为深入的视角来介绍什么是 ANR，出现场景，如何避免以及如何定位分析 ANR，希望可以帮助大家在编写程序时有所帮助。&lt;/p&gt;
+&lt;h2 id=&quot;ANR-简介&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 中12个常见的语法糖</title>
+    <link href="https://henleylee.github.io/posts/2019/8a697fa9.html"/>
+    <id>https://henleylee.github.io/posts/2019/8a697fa9.html</id>
+    <published>2019-07-08T04:36:20.000Z</published>
+    <updated>2020-01-17T03:36:32.425Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&amp;amp;mid=2650121987&amp;amp;idx=1&amp;amp;sn=70bba3f7f42a269eeada9cecb34c10a5&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Context 解析</title>
+    <link href="https://henleylee.github.io/posts/2019/1bd5d1e1.html"/>
+    <id>https://henleylee.github.io/posts/2019/1bd5d1e1.html</id>
+    <published>2019-07-05T02:30:35.000Z</published>
+    <updated>2020-01-17T03:35:06.290Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;一个 &lt;code&gt;Context&lt;/code&gt; 意味着一个场景，一个场景就是用户和软件进行交互的一个过程。那么从安卓程序的角度来看，&lt;code&gt;Context&lt;/code&gt; 是什么？其实一个 &lt;code&gt;Activity&lt;/code&gt; 就是一个
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
     <title>深入理解 Gradle 框架之二：依赖实现分析</title>
     <link href="https://henleylee.github.io/posts/2019/5fe63be9.html"/>
     <id>https://henleylee.github.io/posts/2019/5fe63be9.html</id>
-    <published>2019-06-14T10:36:29.000Z</published>
-    <updated>2019-07-29T02:03:18.241Z</updated>
+    <published>2019-06-26T10:36:29.000Z</published>
+    <updated>2020-01-17T03:34:23.708Z</updated>
     
     <summary type="html">
     
@@ -48,8 +205,8 @@
     <title>深入理解 Gradle 框架之一：Plugin、Extension、buildSrc</title>
     <link href="https://henleylee.github.io/posts/2019/babf38d8.html"/>
     <id>https://henleylee.github.io/posts/2019/babf38d8.html</id>
-    <published>2019-06-10T10:30:55.000Z</published>
-    <updated>2019-07-29T03:54:31.618Z</updated>
+    <published>2019-06-21T10:50:55.000Z</published>
+    <updated>2020-01-17T03:33:59.930Z</updated>
     
     <summary type="html">
     
@@ -69,6 +226,33 @@
       <category term="Gradle" scheme="https://henleylee.github.io/tags/Gradle/"/>
     
       <category term="Plugin" scheme="https://henleylee.github.io/tags/Plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle 入门详解</title>
+    <link href="https://henleylee.github.io/posts/2019/8317ffc8.html"/>
+    <id>https://henleylee.github.io/posts/2019/8317ffc8.html</id>
+    <published>2019-06-10T10:30:55.000Z</published>
+    <updated>2020-01-17T03:31:59.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Java 作为一门世界级主流编程语言，有一款高效易用的项目管理工具是 Java 开发者想要的。先是 2000 年的 Ant，后有 2004 年 Maven 的诞生，都在 Java 市场上取得了巨大的成功。但二者都有一定的不足和局限性。&lt;/p&gt;
+&lt;p&gt;2012年基于 Ant
+        
+      
+    
+    </summary>
+    
+      <category term="Gradle" scheme="https://henleylee.github.io/categories/Gradle/"/>
+    
+    
+      <category term="Gradle" scheme="https://henleylee.github.io/tags/Gradle/"/>
     
   </entry>
   
@@ -368,193 +552,6 @@
     
     
       <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 刘海屏适配指南</title>
-    <link href="https://henleylee.github.io/posts/2019/430c6e50.html"/>
-    <id>https://henleylee.github.io/posts/2019/430c6e50.html</id>
-    <published>2019-04-15T10:46:56.000Z</published>
-    <updated>2019-05-07T01:04:59.202Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Apple 一直在引领设计的潮流，自从 iPhone X 发布之后，“刘海屏”就一直存在争议，本以为是一个美丽的错误，却造就了一时间“刘海屏”的模仿潮。目前，国内已经推出的刘海屏”手机有 OPPO R15 和 华为 P20，并且 Google 也在 I/O
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 全面屏适配指南</title>
-    <link href="https://henleylee.github.io/posts/2019/62291f67.html"/>
-    <id>https://henleylee.github.io/posts/2019/62291f67.html</id>
-    <published>2019-04-13T02:52:36.000Z</published>
-    <updated>2019-05-07T01:08:19.384Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;全面屏是手机业界对于超高屏占比手机设计的一个宽泛的定义。从字面上解释就是，手机的正面全部都是屏幕，四个边框位置都是采用无边框设计，追求接近 100% 的屏占比。但受限于目前的技术，还不能做到手机正面屏占比 100% 的手机。现在业内所说的全面屏手机是指真实屏占比可以达到
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 线程池详解</title>
-    <link href="https://henleylee.github.io/posts/2019/cf2a801.html"/>
-    <id>https://henleylee.github.io/posts/2019/cf2a801.html</id>
-    <published>2019-04-09T10:52:50.000Z</published>
-    <updated>2019-05-05T10:08:31.931Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Java 中，使用线程来异步执行任务。Java
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MVC、MVP 和 MVVM 之间的区别</title>
-    <link href="https://henleylee.github.io/posts/2019/de9d67a4.html"/>
-    <id>https://henleylee.github.io/posts/2019/de9d67a4.html</id>
-    <published>2019-04-03T02:26:35.000Z</published>
-    <updated>2019-05-05T05:07:09.666Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;MVC&lt;/code&gt;、&lt;code&gt;MVP&lt;/code&gt; 和 &lt;code&gt;MVVM&lt;/code&gt; 都是常见的软件架构设计模式(Architectural Pattern)，它通过分离关注点来改进代码的组织方式。不同于设计模式(Design
-        
-      
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL 之高级操作</title>
-    <link href="https://henleylee.github.io/posts/2019/c55cd1a6.html"/>
-    <id>https://henleylee.github.io/posts/2019/c55cd1a6.html</id>
-    <published>2019-03-31T02:36:55.000Z</published>
-    <updated>2019-04-12T01:50:09.544Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;&lt;code&gt;SQL&lt;/code&gt;&lt;/strong&gt; 是用于访问和处理数据库的标准的计算机语言。&lt;/p&gt;
-&lt;h2 id=&quot;SQL-约束&quot;&gt;&lt;a href=&quot;#SQL-约束&quot; class=&quot;headerlink&quot; title=&quot;SQL 约束&quot;&gt;&lt;/a&gt;SQL
-        
-      
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL 之基础操作</title>
-    <link href="https://henleylee.github.io/posts/2019/38865d3b.html"/>
-    <id>https://henleylee.github.io/posts/2019/38865d3b.html</id>
-    <published>2019-03-28T10:56:25.000Z</published>
-    <updated>2019-04-12T01:50:09.544Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;&lt;code&gt;SQL&lt;/code&gt;&lt;/strong&gt; 是用于访问和处理数据库的标准的计算机语言。&lt;/p&gt;
-&lt;h2 id=&quot;SQL-简介&quot;&gt;&lt;a href=&quot;#SQL-简介&quot; class=&quot;headerlink&quot; title=&quot;SQL 简介&quot;&gt;&lt;/a&gt;SQL
-        
-      
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构-散列表</title>
-    <link href="https://henleylee.github.io/posts/2019/8a8eeb6c.html"/>
-    <id>https://henleylee.github.io/posts/2019/8a8eeb6c.html</id>
-    <published>2019-03-25T10:52:36.000Z</published>
-    <updated>2019-04-12T02:11:38.847Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;&lt;code&gt;散列表(Hash table)&lt;/code&gt;&lt;/strong&gt;是实现字典操作的一种有效的数据结构。&lt;/p&gt;
-&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="数据结构" scheme="https://henleylee.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
