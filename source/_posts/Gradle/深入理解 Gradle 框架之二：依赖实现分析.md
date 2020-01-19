@@ -5,10 +5,11 @@ tags:
   - Gradle
   - Plugin
 abbrlink: 5fe63be9
-date: 2019-06-14 18:36:29
+date: 2019-06-26 18:36:29
 ---
 
 本文转载自：[https://mp.weixin.qq.com/s/WQCqUaYDPHDIjUHlxjRIkw](https://mp.weixin.qq.com/s/WQCqUaYDPHDIjUHlxjRIkw)
+
 
 ## 引言 ##
 大家在日常开发中，见过最多的可能就是下面3种依赖声明：

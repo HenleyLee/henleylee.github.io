@@ -5,10 +5,11 @@ tags:
   - Gradle
   - Plugin
 abbrlink: babf38d8
-date: 2019-06-10 18:30:55
+date: 2019-06-21 18:50:55
 ---
 
 本文转载自：[https://mp.weixin.qq.com/s/mDCTtQZb6mhWOFAvLYKBSg](https://mp.weixin.qq.com/s/mDCTtQZb6mhWOFAvLYKBSg)
+
 
 ## 缘起 ##
 从2018年下半年开始，因为工作需要，开始深入了解 `Android Gradle plugin` 和 `Gradle` 框架，在看完 `Android Gradle plugin` 3.1.x 和 3.2.x 版本的源码之后，发现目前开源的几乎所有插件化框架，因为没有理解 `Android Gradle plugin` 的原理，打包代码的实现都非常混乱，导致的结果就是很难随着 `Android Gradle plugin` 的升级而快速升级，所以目前几乎所有开源的插件化项目都因不适应新的 Gradle 版本问题而不可用。
