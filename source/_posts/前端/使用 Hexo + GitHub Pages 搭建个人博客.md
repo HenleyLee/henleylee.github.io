@@ -221,7 +221,7 @@ $ npm i -S hexo-prism-plugin
 ```
 
 然后，修改 Hexo 根目录下`_config.yml`文件中`highlight.enable`的值为`false`，并新增`prism`插件相关的配置，主要配置如下：
-```yml
+```yaml
 highlight:
   enable: false
 
@@ -239,7 +239,7 @@ $ npm install hexo-generator-search --save
 ```
 
 在 Hexo 站点根目录下的`_config.yml`文件中，新增以下的配置项：
-```yml
+```yaml
 search:
   path: search.xml
   field: post
@@ -253,7 +253,7 @@ $ npm install hexo-generator-feed --save
 ```
 
 在 Hexo 站点根目录下的 `_config.yml` 文件中，新增以下的配置项：
-```yml
+```yaml
 feed:
   type: atom
   path: atom.xml
@@ -265,6 +265,22 @@ feed:
   order_by: -date
 ```
 
+### Emoji 表情 ###
+安装 [hexo-filter-github-emojis](https://npm.taobao.org/package/hexo-filter-github-emojis) 在 `Hexo` 中支持 `emoji` 表情的生成，把对应的 `markdown emoji` 语法（`::`,例如：`:smile:`）转变成会跳跃的 `emoji` 表情，安装命令如下：
+```bash
+$ npm install hexo-filter-github-emojis --save
+```
+
+在 Hexo 站点根目录下的 `_config.yml` 文件中，新增以下的配置项：
+```yaml
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+```
+
 ### 中文链接转拼音 ###
 如果博客文章的名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 `SEO`，且 `gitment` 评论对中文链接也不支持。我们可以用[hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) Hexo 插件使在生成文章时生成中文拼音的永久链接。
 
@@ -274,7 +290,7 @@ $ npm i hexo-permalink-pinyin --save
 ```
 
 在 Hexo 根目录下的 `_config.yml` 文件中，新增以下的配置项：
-```yml
+```yaml
 permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
@@ -291,12 +307,12 @@ $ npm install hexo-abbrlink --save
 ```
 
 在 Hexo 根目录下的 `_config.yml` 文件中，修改以下的配置项：
-```yml
+```yaml
 permalink: posts/:abbrlink/    # posts 部分可自行修改
 ```
 
 然后，在 Hexo 根目录下的 `_config.yml` 文件中，新增以下的配置项：
-```yml
+```yaml
 abbrlink:
   alg: crc32  # 算法：crc16(default) and crc32
   rep: hex    # 进制：dec(default) and hex
@@ -353,7 +369,7 @@ $ npm install live2d-widget-model-wanko
 ```
 
 安装完成后，在 Hexo 站点根目录下的 `_config.yml` 文件或主题的 `_config.yml` 文件中，新增以下的配置项：
-```yml
+```yaml
 live2d:
   enable: true
   scriptFrom: local
@@ -379,7 +395,7 @@ $ npm i --save hexo-wordcount
 ```
 
 在当前主题下的 `_config.yml` 文件中，新增以下的配置项：
-```yml
+```yaml
 wordCount:
   enable: true
   wordCount: true      # 单篇 字数统计
@@ -516,7 +532,7 @@ $ npm install hexo-deployer-git --save
 
 ### 修改配置 ###
 在 Hexo 站点根目录下的 `_config.yml` 文件中，修改以下的配置项：
-```yml
+```yaml
 deploy:
   type: git
   repo: <repository url>

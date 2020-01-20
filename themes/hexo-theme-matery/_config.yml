@@ -22,22 +22,22 @@ menu:
   Friends:
     url: /friends
     icon: fas fa-address-book
-  #Resources:
-  #  url: /resources
-  #  icon: fas fa-list
-  #  children:
-  #    - name: 音乐
-  #      url: /musics
-  #      icon: fas fa-music
-  #    - name: 电影
-  #      url: /movies
-  #      icon: fas fa-film
-  #    - name: 图书
-  #      url: /books
-  #      icon: fas fa-book
-  #    - name: 相册
-  #      url: /galleries
-  #      icon: fas fa-image
+  Resources:
+    url: /resources
+    icon: fas fa-list
+    children:
+      - name: 音乐
+        url: /musics
+        icon: fas fa-music
+      - name: 电影
+        url: /movies
+        icon: fas fa-film
+      - name: 图书
+        url: /books
+        icon: fas fa-book
+      - name: 相册
+        url: /galleries
+        icon: fas fa-image
 
 # Website start time.
 # 站点运行开始时间.
@@ -53,6 +53,8 @@ cover:
   autoLoop: true       # 是否自动轮播. Whether it is automatically rotated.
   duration: 120        # 切换延迟时间. Switching delay time.
   intervalTime: 5000   # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
+  useConfig: false # 是否使用配置文件, 在 _data/covers.json 下配置推荐文章, false则使用主题在文章中的配置 cover coverImg
+  # useConfig 使用方式: 将主题 hexo-theme-matery/source/_data/covers.json 移动到 my-blog/source/_data/下修改配置即可
 
 # index page dream text,
 # 配置首页显示"梦想"的语句.
@@ -97,7 +99,10 @@ video:
 # Whether to display the title of the recommended posts
 # 是否显示推荐文章的标题
 recommend:
+  enable: true
   showTitle: true
+  useConfig: false # 是否使用配置文件, 在 _data/recommends.json 下配置推荐文章, false则会走主题配置的 top 属性
+  # useConfig 使用方式: 将主题 hexo-theme-matery/source/_data/recommends.json 移动到 my-blog/source/_data/下修改配置即可
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
@@ -133,12 +138,15 @@ socialLink:
 toc:
   enable: true
   heading: h2, h3, h4, h5
+  collapseDepth: 0 # 目录默认展开层级
   showToggleBtn: true # 是否显示切换TOC目录展开收缩的按钮
 
-# Whether the code is broken.
-# 代码是否折行
+# 代码块相关
 code:
-  break: true
+  lang: true     # 代码块是否显示名称
+  copy: true     # 代码块是否可复制
+  shrink: true   # 代码块是否可以收缩
+  break: false   # 代码是否折行
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
@@ -169,11 +177,13 @@ mathjax:
 # install the plugin command: `npm i --save hexo-wordcount`.
 # 文章字数统计、阅读时长、总字数统计(https://github.com/willin/hexo-wordcount)
 # 激活前请确认你已经安装了 hexo-wordcount 插件，安装命令: `npm i --save hexo-wordcount`
-wordCount:
-  enable: true
-  wordCount: true      # 单篇 字数统计
-  min2read: true       # 单篇 阅读时长
-  totalCount: true     # 全站 字数统计
+postInfo:
+  date: true           # 发布日期
+  update: false        # 更新日期
+  wordCount: true      # 文章字数统计
+  totalCount: true     # 站点总文章字数
+  min2read: true       # 文章阅读时长
+  readCount: false     # 文章阅读次数
 
 # Whether to activate the 'love' effect of clicking on the page.
 # 是否激活点击页面的'爱心'效果，默认激活.
@@ -335,8 +345,8 @@ googleAnalytics:
 # 添加 baidu Analytics 配置
 baiduAnalytics:
   enable: false
-  id: 
-  
+  id:
+
 # 百度搜索资源平台提交链接
 baiduPush: true
 
@@ -356,7 +366,7 @@ libs:
     jqcloud: /libs/jqcloud/jqcloud.css
     tocbot: /libs/tocbot/tocbot.css
   js:
-    jquery: /libs/jquery/jquery-2.2.0.min.js
+    jquery: /libs/jquery/jquery.min.js
     materialize: /libs/materialize/materialize.min.js # 1.0.0
     masonry: /libs/masonry/masonry.pkgd.min.js # v4.0.0
     aos: /libs/aos/aos.js
@@ -375,12 +385,13 @@ libs:
     tocbot: /libs/tocbot/tocbot.min.js
     canvas_nest: /libs/background/canvas-nest.js
     ribbon: /libs/background/ribbon.min.js
+    ribbonRefresh: /libs/background/ribbon-refresh.min.js
     ribbon_dynamic: /libs/background/ribbon-dynamic.js
     instantpage: /libs/instantpage/instantpage.js
 
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
-featureImages: 
+featureImages:
 - /medias/featureimages/0.jpg
 - /medias/featureimages/1.jpg
 - /medias/featureimages/2.jpg
@@ -428,20 +439,20 @@ featureImages:
 reprint:
   enable: false # whether enable reprint section 是否启用“转载规则限定模块”
   default: cc_by
-  
-# DaoVoice online contact 
-daovoice: 
-  enable: true
+
+# DaoVoice online contact
+daovoice:
+  enable: false
   app_id:
-  
-# Tidio online contact 
+
+# Tidio online contact
 tidio:
   enable: false
-  public_key: 
- 
+  public_key:
+
 #背景canvas-nest
 canvas_nest:
-  enable: false
+  enable: true
   color: 0,0,255           # 线条颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
   pointColor: 0,0,255      # 交点颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
   opacity: 0.7             # 线条透明度（0~1）, 默认: 0.5
@@ -454,11 +465,11 @@ ribbon:
   size: 150                # 彩带大小, 默认: 90.
   alpha: 0.6               # 彩带透明度 (0 ~ 1), 默认: 0.6.
   zIndex: -1               # 背景的z-index属性，css属性用于控制所在层的位置, 默认: -1.
-  click_to_change: false   # 设置是否每次点击都更换彩带.
+  clickChange: false       # 设置是否每次点击都更换彩带.
 
 # 背景动态彩带.
 ribbon_dynamic:
-  enable: true
+  enable: false
 
 # sharejs文章分享模块.
 # 支持顺序，可选项目为twitter, facebook, google, qq, qzone, wechat, weibo, douban, linkedin.
@@ -469,11 +480,11 @@ sharejs:
 # addthis文章分享模块.
 addthis:
   enable: false
-  pubid:  #前往https://www.addthis.com/获取
-  
+  pubid:  # 前往https://www.addthis.com/获取
+
 # 打字效果副标题.
 # 如果有符号 ‘ ，请在 ’ 前面加上 \
-subtitle: 
+subtitle:
   enable: true
   loop: true            # 是否循环
   showCursor: true      # 是否显示光标
@@ -482,18 +493,20 @@ subtitle:
   backSpeed: 50         # 删除速度
   sub1: 从来没有真正的绝境, 只有心灵的迷途
   sub2: Never really desperate, only the lost of the soul
-  
+
 # 手机二级菜单.
 navMenu:
   mleft: false # 二级侧栏子菜单是否对齐左边
   bgColor: " " # 二级侧栏子菜单背景颜色,留空即为全局背景色
 
 # 网页预加载.
-instantpage: true
+instantpage:
+  enable: true
 
 # banner 是否每日切换.
 # 若为 false, 则 banner 默认为 /medias/banner/0.jpg
-banner: true
+banner:
+  enable: true
 
 #ICP备案信息尾部显示
 icp:

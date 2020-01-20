@@ -42,6 +42,7 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
 highlight:
   enable: false
   line_number: true
@@ -115,12 +116,12 @@ permalink_pinyin:
 #嵌入豆瓣个人主页(https://github.com/mythsman/hexo-douban)
 douban:
   user: henleylee
-  builtin: true                        # 是否将生成页面的功能嵌入hexo s和hexo g中，默认是false
+  builtin: false                    # 是否将生成页面的功能嵌入hexo s和hexo g中，默认是false
   book:
-    title: '图书'
-    quote: '书中自有黄金屋'
+    title: '我喜欢的书籍'
+    quote: '知识是智慧的火炬'
   movie:
-    title: '电影'
+    title: '那些年, 我看过的电影'
     quote: '过去、现在、未来'
   timeout: 10000 
 

@@ -29,11 +29,17 @@
 
     // keywords.
     var keyWords = config.keywords ? config.keywords : config.title;
-    keyWords = title ? title  + ', ' + keyWords : keyWords;
+    if (page.keywords) {
+        keyWords = page.keywords;
+    } else {
+    	keyWords = title ? title  + ', ' + keyWords : keyWords;
+    }
 
     // description.
     var description = null;
-    if (page.hasOwnProperty('__post') && page.__post) {
+    if (page.summary) {
+        description = page.summary;
+    } else if (page.hasOwnProperty('__post') && page.__post) {
         description = strip_html(page.content).substring(0, 120);
     }
     description = description ? description : pageTitle;
@@ -78,14 +84,7 @@
     <link rel="stylesheet" type="text/css" href="<%- theme.libs.css.lightgallery %>">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <style type="text/css">
-        <% if (!theme.code.break) { %>
-        code[class*="language-"], pre[class*="language-"] {
-            white-space: pre !important;
-        }
-        <% } %>
-    </style>
-
+    
     <script src="<%- theme.libs.js.jquery %>"></script>
     
 </head>

@@ -1,10 +1,12 @@
 <footer class="page-footer foot-bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="<%- config.url %>" target="_blank"><%- config.author %></a>. All rights reserved.
-            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="<%- config.url %>" target="_blank"><%- config.author %></a>.
+	    &nbsp;All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>.
+	    &nbsp;Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
             
-            <% if (theme.wordCount.enable && theme.wordCount.totalCount) { %>
+            <% if (theme.postInfo.totalCount) { %>
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
                 <span class="white-color"><%= totalcount(site) %></span>&nbsp;字
             <% } %>
@@ -20,14 +22,13 @@
             <% } %>
             <% if (theme.busuanziStatistics && theme.busuanziStatistics.totalNumberOfvisitors) { %>
             <span id="busuanzi_container_site_uv">
-            <i class="fas fa-user"></i>&nbsp;访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+                &nbsp;<i class="fas fa-user"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人&nbsp;
             </span>
             <% } %>
-
-	    <% if (theme.time.enable) { %>
-            <span id="run-time">
-            <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
-            </span>
+            
+            <% if (theme.time.enable) { %>
+	    <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
             <script>
                 function createtime() {
                     var now = new Date(); // 当前时间
@@ -55,8 +56,8 @@
                 }
                 setInterval("createtime()", 250);
             </script>
-	    <% } %>
-	    <br>
+            <% } %>
+            <br>
             <% if (theme.icp.enable) { %>
             <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
                 <a href="<%- theme.icp.url %>" target="_blank"><%- theme.icp.text %></a>
