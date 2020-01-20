@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2020-01-19T07:15:37.497Z</updated>
+  <updated>2020-01-20T06:34:55.141Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 博客中加入豆瓣读书功能</title>
+    <link href="https://henleylee.github.io/posts/2019/efcad6e3.html"/>
+    <id>https://henleylee.github.io/posts/2019/efcad6e3.html</id>
+    <published>2019-12-18T03:33:45.000Z</published>
+    <updated>2020-01-20T06:34:55.141Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt; 博客个性化定制中，加入豆瓣读书界面是一个很不错的功能，那么是怎么做到的呢？其实很简单，我们只需要加入一个
+        
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="https://henleylee.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Hexo" scheme="https://henleylee.github.io/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 中 LinkedList 的实现原理</title>
@@ -509,32 +535,6 @@
     <id>https://henleylee.github.io/posts/2019/54a06e13.html</id>
     <published>2019-04-23T10:50:55.000Z</published>
     <updated>2019-05-07T03:25:29.266Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在 &lt;code&gt;java.util.concurrent.atomic&lt;/code&gt; 包下，有
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java Atomic 类之 AtomicBoolean</title>
-    <link href="https://henleylee.github.io/posts/2019/842a4d70.html"/>
-    <id>https://henleylee.github.io/posts/2019/842a4d70.html</id>
-    <published>2019-04-19T10:32:36.000Z</published>
-    <updated>2019-05-07T03:25:27.859Z</updated>
     
     <summary type="html">
     

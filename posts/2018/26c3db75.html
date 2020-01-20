@@ -23,11 +23,8 @@
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <style type="text/css">
-        
-    </style>
-
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
     
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -112,6 +109,58 @@
       
       <span>友情链接</span>
     </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/resources" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>图书</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -203,6 +252,61 @@
 			
 			友情链接
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul style="background:  ;">
+              
+                <li>   
+				
+                  <a href="/musics " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px"></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/movies " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px"></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/books " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px"></i>
+			      
+		          <span>图书</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/galleries " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px"></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+               
+            </ul>
           
         </li>
         
@@ -327,6 +431,7 @@
     }
 
     .toc-widget {
+        width: 345px;
         padding-left: 20px;
     }
 
@@ -341,6 +446,11 @@
     .toc-widget ol {
         padding: 0;
         list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
     }
 
     #toc-content ol {
@@ -422,34 +532,32 @@
             </div>
 
             <div class="post-info">
+                
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
                     2018-06-03
                 </div>
+                
 
                 
-                    
-                    <div class="info-break-policy">
-                        <i class="far fa-file-word fa-fw"></i>&nbsp;文章字数:&nbsp;
-                        4.3k
-                    </div>
-                    
 
-                    
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.4k
+                </div>
+                
+
+                
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
-                        17 分
+                        18 分
                     </div>
-                    
                 
 				
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-                
             </div>
+            
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
@@ -808,46 +916,57 @@ INFO  Hexo is running at http://localhost:4000 <span class="token keyword">.</sp
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> i -S hexo-prism-plugin
 </code></pre>
 <p>然后，修改 Hexo 根目录下<code>_config.yml</code>文件中<code>highlight.enable</code>的值为<code>false</code>，并新增<code>prism</code>插件相关的配置，主要配置如下：</p>
-<pre class=" language-yml"><code class="language-yml">highlight:
-  enable: false
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">highlight</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
 
-prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'tomorrow'
-  line_number: false    # default false
-  custom_css:
+<span class="token key atrule">prism_plugin</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token string">'preprocess'</span>    <span class="token comment" spellcheck="true"># realtime/preprocess</span>
+  <span class="token key atrule">theme</span><span class="token punctuation">:</span> <span class="token string">'tomorrow'</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">false    </span><span class="token comment" spellcheck="true"># default false</span>
+  <span class="token key atrule">custom_css</span><span class="token punctuation">:</span>
 </code></pre>
 <h3 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h3><p>安装 <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a> 在 <code>Hexo</code> 中实现搜索功能，在站点的根目录下执行以下命令：</p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-generator-search --save
 </code></pre>
 <p>在 Hexo 站点根目录下的<code>_config.yml</code>文件中，新增以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">search:
-  path: search.xml
-  field: post
-  content: true
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">search</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> search.xml
+  <span class="token key atrule">field</span><span class="token punctuation">:</span> post
+  <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
 <h3 id="RSS-订阅"><a href="#RSS-订阅" class="headerlink" title="RSS 订阅"></a>RSS 订阅</h3><p>安装 <a href="https://github.com/hexojs/hexo-generator-feed" target="_blank" rel="noopener">hexo-generator-feed</a> 在 <code>Hexo</code> 中实现 <code>RSS 订阅</code>功能，安装命令如下：</p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-generator-feed --save
 </code></pre>
 <p>在 Hexo 站点根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">feed:
-  type: atom
-  path: atom.xml
-  limit: 20
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' '
-  order_by: -date
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">feed</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> atom
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> atom.xml
+  <span class="token key atrule">limit</span><span class="token punctuation">:</span> <span class="token number">20</span>
+  <span class="token key atrule">hub</span><span class="token punctuation">:</span>
+  <span class="token key atrule">content</span><span class="token punctuation">:</span>
+  <span class="token key atrule">content_limit</span><span class="token punctuation">:</span> <span class="token number">140</span>
+  <span class="token key atrule">content_limit_delim</span><span class="token punctuation">:</span> <span class="token string">' '</span>
+  <span class="token key atrule">order_by</span><span class="token punctuation">:</span> <span class="token punctuation">-</span>date
+</code></pre>
+<h3 id="Emoji-表情"><a href="#Emoji-表情" class="headerlink" title="Emoji 表情"></a>Emoji 表情</h3><p>安装 <a href="https://npm.taobao.org/package/hexo-filter-github-emojis" target="_blank" rel="noopener">hexo-filter-github-emojis</a> 在 <code>Hexo</code> 中支持 <code>emoji</code> 表情的生成，把对应的 <code>markdown emoji</code> 语法（<code>::</code>,例如：<code>:smile:</code>）转变成会跳跃的 <code>emoji</code> 表情，安装命令如下：</p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-filter-github-emojis --save
+</code></pre>
+<p>在 Hexo 站点根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">githubEmojis</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">className</span><span class="token punctuation">:</span> github<span class="token punctuation">-</span>emoji
+  <span class="token key atrule">inject</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">styles</span><span class="token punctuation">:</span>
+  <span class="token key atrule">customEmojis</span><span class="token punctuation">:</span>
 </code></pre>
 <h3 id="中文链接转拼音"><a href="#中文链接转拼音" class="headerlink" title="中文链接转拼音"></a>中文链接转拼音</h3><p>如果博客文章的名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 <code>SEO</code>，且 <code>gitment</code> 评论对中文链接也不支持。我们可以用<a href="https://github.com/viko16/hexo-permalink-pinyin" target="_blank" rel="noopener">hexo-permalink-pinyin</a> Hexo 插件使在生成文章时生成中文拼音的永久链接。</p>
 <p>安装命令如下：</p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> i hexo-permalink-pinyin --save
 </code></pre>
 <p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">permalink_pinyin:
-  enable: true
-  separator: '-' # default: '-'
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">permalink_pinyin</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">separator</span><span class="token punctuation">:</span> <span class="token string">'-'</span> <span class="token comment" spellcheck="true"># default: '-'</span>
 </code></pre>
 <blockquote>
 <p><strong>注</strong>：除了此插件外，<a href="https://github.com/rozbo/hexo-abbrlink" target="_blank" rel="noopener">hexo-abbrlink</a> 插件也可以生成非中文的链接。</p>
@@ -857,12 +976,12 @@ prism_plugin:
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-abbrlink --save
 </code></pre>
 <p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，修改以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">permalink: posts/:abbrlink/    # posts 部分可自行修改
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">permalink</span><span class="token punctuation">:</span> posts/<span class="token punctuation">:</span>abbrlink/    <span class="token comment" spellcheck="true"># posts 部分可自行修改</span>
 </code></pre>
 <p>然后，在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">abbrlink:
-  alg: crc32  # 算法：crc16(default) and crc32
-  rep: hex    # 进制：dec(default) and hex
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">abbrlink</span><span class="token punctuation">:</span>
+  <span class="token key atrule">alg</span><span class="token punctuation">:</span> crc32  <span class="token comment" spellcheck="true"># 算法：crc16(default) and crc32</span>
+  <span class="token key atrule">rep</span><span class="token punctuation">:</span> hex    <span class="token comment" spellcheck="true"># 进制：dec(default) and hex</span>
 </code></pre>
 <p>不同的算法和进制组合会得到不同的链接，下面提供了参考，如何选择就看需要了，需要注意的是使用 <code>crc16</code> 算法的文章数上限是 <code>65535</code>。</p>
 <pre><code>crc16 &amp; hex
@@ -906,32 +1025,32 @@ live2d-widget-model-z16
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> live2d-widget-model-wanko
 </code></pre>
 <p>安装完成后，在 Hexo 站点根目录下的 <code>_config.yml</code> 文件或主题的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">live2d:
-  enable: true
-  scriptFrom: local
-  pluginRootPath: live2dw/
-  pluginJsPath: lib/
-  pluginModelPath: assets/
-  tagMode: false
-  debug: false
-  model:
-    use: live2d-widget-model-wanko
-  display:
-    position: right
-    width: 150
-    height: 300
-  mobile:
-    show: true
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">live2d</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">scriptFrom</span><span class="token punctuation">:</span> local
+  <span class="token key atrule">pluginRootPath</span><span class="token punctuation">:</span> live2dw/
+  <span class="token key atrule">pluginJsPath</span><span class="token punctuation">:</span> lib/
+  <span class="token key atrule">pluginModelPath</span><span class="token punctuation">:</span> assets/
+  <span class="token key atrule">tagMode</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">debug</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">model</span><span class="token punctuation">:</span>
+    <span class="token key atrule">use</span><span class="token punctuation">:</span> live2d<span class="token punctuation">-</span>widget<span class="token punctuation">-</span>model<span class="token punctuation">-</span>wanko
+  <span class="token key atrule">display</span><span class="token punctuation">:</span>
+    <span class="token key atrule">position</span><span class="token punctuation">:</span> right
+    <span class="token key atrule">width</span><span class="token punctuation">:</span> <span class="token number">150</span>
+    <span class="token key atrule">height</span><span class="token punctuation">:</span> <span class="token number">300</span>
+  <span class="token key atrule">mobile</span><span class="token punctuation">:</span>
+    <span class="token key atrule">show</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
 <h3 id="文章字数阅读时长统计"><a href="#文章字数阅读时长统计" class="headerlink" title="文章字数阅读时长统计"></a>文章字数阅读时长统计</h3><p>安装 <a href="https://github.com/willin/hexo-wordcount" target="_blank" rel="noopener">hexo-wordcount</a> 在 <code>Hexo</code> 中实现 <code>文章字数、阅读时长统计</code>功能，安装命令如下：</p>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> i --save hexo-wordcount
 </code></pre>
 <p>在当前主题下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">wordCount:
-  enable: true
-  wordCount: true      # 单篇 字数统计
-  min2read: true       # 单篇 阅读时长
-  totalCount: true     # 全站 字数统计
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">wordCount</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">wordCount</span><span class="token punctuation">:</span> <span class="token boolean important">true      </span><span class="token comment" spellcheck="true"># 单篇 字数统计</span>
+  <span class="token key atrule">min2read</span><span class="token punctuation">:</span> <span class="token boolean important">true       </span><span class="token comment" spellcheck="true"># 单篇 阅读时长</span>
+  <span class="token key atrule">totalCount</span><span class="token punctuation">:</span> <span class="token boolean important">true     </span><span class="token comment" spellcheck="true"># 全站 字数统计</span>
 </code></pre>
 <h2 id="添加-Hexo-个性化设置"><a href="#添加-Hexo-个性化设置" class="headerlink" title="添加 Hexo 个性化设置"></a>添加 Hexo 个性化设置</h2><h3 id="鼠标点击出现爱心特效"><a href="#鼠标点击出现爱心特效" class="headerlink" title="鼠标点击出现爱心特效"></a>鼠标点击出现爱心特效</h3><p>在当前主题的 <code>source/js</code> 下创建 <code>love.js</code> 文件，并将以下代码复制到创建的 <code>love.js</code> 文件中：</p>
 <pre class=" language-javascript"><code class="language-javascript"> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>window<span class="token punctuation">,</span> document<span class="token punctuation">,</span> undefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1041,12 +1160,12 @@ $ hexo d
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-git --save
 </code></pre>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>在 Hexo 站点根目录下的 <code>_config.yml</code> 文件中，修改以下的配置项：</p>
-<pre class=" language-yml"><code class="language-yml">deploy:
-  type: git
-  repo: <repository url="">
-  branch: [branch]
-  message: [message]
-</repository></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span> &lt;repository url<span class="token punctuation">></span>
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>branch<span class="token punctuation">]</span>
+  <span class="token key atrule">message</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>message<span class="token punctuation">]</span>
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -1090,14 +1209,47 @@ $ hexo deploy
             <hr>
 
             
-            <style>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
     #reward {
         margin: 40px 0;
         text-align: center;
     }
 
     #reward .reward-link {
-        font-size: 1.88rem;
+        font-size: 1.4rem;
+        line-height: 38px;
     }
 
     #reward .btn-floating:hover {
@@ -1183,7 +1335,7 @@ $ hexo deploy
 </style>
 
 <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
 
     <!-- Modal Structure -->
     <div id="rewardModal" class="modal">
@@ -1214,36 +1366,6 @@ $ hexo deploy
     });
 </script>
             
-
-            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
-<div id="article-share">
-    
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-
-            
-    <div class="reprint">
-        <p>
-            <span class="reprint-tip">
-                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;转载请注明:
-            </span>
-            <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
-            <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-            <a href="/posts/2018/26c3db75.html" class="b-link-green">使用 Hexo + GitHub Pages 搭建个人博客</a>
-        </p>
-    </div>
-
-            
-
-
         </div>
     </div>
 
@@ -1252,6 +1374,10 @@ $ hexo deploy
 <link rel="stylesheet" href="/css/my-gitalk.css">
 
 <div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
     <div id="gitalk-container" class="card-content"></div>
 </div>
 
@@ -1316,7 +1442,7 @@ Android Studio中
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                            <a href="/categories/学习笔记/" class="post-category">
                                     学习笔记
                                 </a>
                             
@@ -1327,11 +1453,11 @@ Android Studio中
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Android/" target="_blank">
+                    <a href="/tags/Android/">
                         <span class="chip tag-bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/学习笔记/" target="_blank">
+                    <a href="/tags/学习笔记/">
                         <span class="chip tag-bg-color">学习笔记</span>
                     </a>
                     
@@ -1370,7 +1496,7 @@ Android Studio中
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/前端/" class="post-category" target="_blank">
+                            <a href="/categories/前端/" class="post-category">
                                     前端
                                 </a>
                             
@@ -1381,7 +1507,7 @@ Android Studio中
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/" target="_blank">
+                    <a href="/tags/Hexo/">
                         <span class="chip tag-bg-color">Hexo</span>
                     </a>
                     
@@ -1423,14 +1549,39 @@ Android Studio中
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Henley<br />'
-            + '作者: HenleyLee<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '文章作者: HenleyLee<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
         selection.selectAllChildren(newdiv);
         window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
     });
 </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
@@ -1457,7 +1608,7 @@ Android Studio中
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            // headingsOffset: -205,
+            collapseDepth: Number('0'),
             headingSelector: 'h2, h3, h4, h5'
         });
 
@@ -1514,10 +1665,10 @@ Android Studio中
         let $mainContent = $('#main-content');
         $('#floating-toc-btn .btn-floating').click(function () {
             if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).slideUp(500);
+                $tocAside.removeClass(expandedClass).hide();
                 $mainContent.removeClass('l9');
             } else {
-                $tocAside.addClass(expandedClass).slideDown(500);
+                $tocAside.addClass(expandedClass).show();
                 $mainContent.addClass('l9');
             }
             fixPostCardWidth('artDetail', 'prenext-posts');
@@ -1534,12 +1685,14 @@ Android Studio中
     <footer class="page-footer foot-bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>. All rights reserved.
-            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>.
+	    &nbsp;All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>.
+	    &nbsp;Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">381.6k</span>&nbsp;字
+                <span class="white-color">382.6k</span>&nbsp;字
             
 	    <br>
 	    
@@ -1553,14 +1706,12 @@ Android Studio中
             
             
             <span id="busuanzi_container_site_uv">
-            <i class="fas fa-user"></i>&nbsp;访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+                &nbsp;<i class="fas fa-user"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
             </span>
             
-
-	    
-            <span id="run-time">
-            <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
-            </span>
+            
+            
+	    <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
             <script>
                 function createtime() {
                     var now = new Date(); // 当前时间
@@ -1588,8 +1739,8 @@ Android Studio中
                 }
                 setInterval("createtime()", 250);
             </script>
-	    
-	    <br>
+            
+            <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
@@ -1694,34 +1845,20 @@ $(function () {
     
 
     
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i["DaoVoiceObject"] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            a.charset = "utf-8";
-            m.parentNode.insertBefore(a, m)
-        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
-        daovoice('init', {
-            app_id: ""
-        });
-        daovoice('update');
-    </script>
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     
 
     
-
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
     
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
 </body>

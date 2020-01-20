@@ -24,11 +24,8 @@ JetBrains，作为目前广受欢迎的 Java IDE IntelliJ IDEA 的开发商，�
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <style type="text/css">
-        
-    </style>
-
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
     
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -113,6 +110,58 @@ JetBrains，作为目前广受欢迎的 Java IDE IntelliJ IDEA 的开发商，�
       
       <span>友情链接</span>
     </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/resources" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>图书</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -204,6 +253,61 @@ JetBrains，作为目前广受欢迎的 Java IDE IntelliJ IDEA 的开发商，�
 			
 			友情链接
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul style="background:  ;">
+              
+                <li>   
+				
+                  <a href="/musics " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px"></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/movies " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px"></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/books " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px"></i>
+			      
+		          <span>图书</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/galleries " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px"></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+               
+            </ul>
           
         </li>
         
@@ -328,6 +432,7 @@ JetBrains，作为目前广受欢迎的 Java IDE IntelliJ IDEA 的开发商，�
     }
 
     .toc-widget {
+        width: 345px;
         padding-left: 20px;
     }
 
@@ -342,6 +447,11 @@ JetBrains，作为目前广受欢迎的 Java IDE IntelliJ IDEA 的开发商，�
     .toc-widget ol {
         padding: 0;
         list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
     }
 
     #toc-content ol {
@@ -423,34 +533,32 @@ JetBrains，作为目前广受欢迎的 Java IDE IntelliJ IDEA 的开发商，�
             </div>
 
             <div class="post-info">
+                
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
                     2018-11-08
                 </div>
+                
 
                 
-                    
-                    <div class="info-break-policy">
-                        <i class="far fa-file-word fa-fw"></i>&nbsp;文章字数:&nbsp;
-                        995
-                    </div>
-                    
 
-                    
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    995
+                </div>
+                
+
+                
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
                         3 分
                     </div>
-                    
                 
 				
                 
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>&nbsp;阅读次数:&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-                
             </div>
+            
         </div>
         <hr class="clearfix">
         <div class="card-content article-card-content">
@@ -544,14 +652,47 @@ Flowable
             <hr>
 
             
-            <style>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Kotlin/">
+                                    <span class="chip bg-color">Kotlin</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
     #reward {
         margin: 40px 0;
         text-align: center;
     }
 
     #reward .reward-link {
-        font-size: 1.88rem;
+        font-size: 1.4rem;
+        line-height: 38px;
     }
 
     #reward .btn-floating:hover {
@@ -637,7 +778,7 @@ Flowable
 </style>
 
 <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
 
     <!-- Modal Structure -->
     <div id="rewardModal" class="modal">
@@ -668,36 +809,6 @@ Flowable
     });
 </script>
             
-
-            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
-<div id="article-share">
-    
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-
-            
-    <div class="reprint">
-        <p>
-            <span class="reprint-tip">
-                <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;转载请注明:
-            </span>
-            <a href="https://henleylee.github.io" class="b-link-green">Henley</a>
-            <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-            <a href="/posts/2018/b8875af9.html" class="b-link-green">Kotlin 简介与入门指南</a>
-        </p>
-    </div>
-
-            
-
-
         </div>
     </div>
 
@@ -706,6 +817,10 @@ Flowable
 <link rel="stylesheet" href="/css/my-gitalk.css">
 
 <div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
     <div id="gitalk-container" class="card-content"></div>
 </div>
 
@@ -776,7 +891,7 @@ Kotlin on GitHub
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Kotlin/" class="post-category" target="_blank">
+                            <a href="/categories/Kotlin/" class="post-category">
                                     Kotlin
                                 </a>
                             
@@ -787,7 +902,7 @@ Kotlin on GitHub
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Kotlin/" target="_blank">
+                    <a href="/tags/Kotlin/">
                         <span class="chip tag-bg-color">Kotlin</span>
                     </a>
                     
@@ -826,7 +941,7 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Android/" class="post-category" target="_blank">
+                            <a href="/categories/Android/" class="post-category">
                                     Android
                                 </a>
                             
@@ -837,11 +952,11 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Android/" target="_blank">
+                    <a href="/tags/Android/">
                         <span class="chip tag-bg-color">Android</span>
                     </a>
                     
-                    <a href="/tags/AndroidX/" target="_blank">
+                    <a href="/tags/AndroidX/">
                         <span class="chip tag-bg-color">AndroidX</span>
                     </a>
                     
@@ -883,14 +998,39 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Henley<br />'
-            + '作者: HenleyLee<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '文章作者: HenleyLee<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
         selection.selectAllChildren(newdiv);
         window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
     });
 </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
@@ -917,7 +1057,7 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            // headingsOffset: -205,
+            collapseDepth: Number('0'),
             headingSelector: 'h2, h3, h4, h5'
         });
 
@@ -974,10 +1114,10 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
         let $mainContent = $('#main-content');
         $('#floating-toc-btn .btn-floating').click(function () {
             if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).slideUp(500);
+                $tocAside.removeClass(expandedClass).hide();
                 $mainContent.removeClass('l9');
             } else {
-                $tocAside.addClass(expandedClass).slideDown(500);
+                $tocAside.addClass(expandedClass).show();
                 $mainContent.addClass('l9');
             }
             fixPostCardWidth('artDetail', 'prenext-posts');
@@ -994,12 +1134,14 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
     <footer class="page-footer foot-bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>. All rights reserved.
-            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>.
+	    &nbsp;All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>.
+	    &nbsp;Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">381.6k</span>&nbsp;字
+                <span class="white-color">382.6k</span>&nbsp;字
             
 	    <br>
 	    
@@ -1013,14 +1155,12 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
             
             
             <span id="busuanzi_container_site_uv">
-            <i class="fas fa-user"></i>&nbsp;访客数&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+                &nbsp;<i class="fas fa-user"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
             </span>
             
-
-	    
-            <span id="run-time">
-            <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
-            </span>
+            
+            
+	    <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
             <script>
                 function createtime() {
                     var now = new Date(); // 当前时间
@@ -1048,8 +1188,8 @@ AndroidX 是对原始 Android Support Library的重大改进 。与支持库一�
                 }
                 setInterval("createtime()", 250);
             </script>
-	    
-	    <br>
+            
+            <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
@@ -1154,34 +1294,20 @@ $(function () {
     
 
     
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i["DaoVoiceObject"] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            a.charset = "utf-8";
-            m.parentNode.insertBefore(a, m)
-        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
-            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
-        daovoice('init', {
-            app_id: ""
-        });
-        daovoice('update');
-    </script>
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     
 
     
-
-    
-    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
     
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
 </body>
