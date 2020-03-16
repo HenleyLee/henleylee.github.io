@@ -32,7 +32,7 @@ Java 中 `ArrayList`、`LinkedList`、`Vector` 是编程中经常使用的集合
  - 缺点：访问元素的平均效率低，需要对链表进行遍历。
 
 #### Vector ####
-**`Vector`**和 `ArrayList` 一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写 `Vector`，但实现同步需要很高的花费，因此，访问它比访问`ArrayList`慢。 
+**`Vector`**和 `ArrayList` 一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写 `Vector`，但实现同步需要很高的花费，因此，访问它比访问 `ArrayList` 慢。 
 
 ### 线程安全性 ###
 在多线程并发的时候，`ArrayList` 和 `LinkedList` 是非线程安全的，并且是不同步的。`Vector` 的所有方法都用了 `synchronized` 关键字修饰，是线程安全的，但是 `Vector` 中的方法组合起来使用不是线程安全的。

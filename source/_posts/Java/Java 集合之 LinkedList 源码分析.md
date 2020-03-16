@@ -1,9 +1,9 @@
 ---
-title: Java 中 LinkedList 的实现原理
+title: Java 集合之 LinkedList 源码分析
 categories: Java
 tags:
   - Java
-abbrlink: 5fab622a
+abbrlink: 2d1165aa
 date: 2019-08-06 15:56:35
 ---
 
@@ -23,11 +23,9 @@ date: 2019-08-06 15:56:35
  - `LinkedList` 实现 `java.util.Deque` 接口，即能将 `LinkedList` 当作双端队列使用。
  - `LinkedList` 实现了 `java.lang.Cloneable` 接口，即覆盖了 `clone()` 方法，能克隆。
  - `LinkedList` 实现 `java.io.Serializable` 接口，这意味着 `LinkedList` 支持序列化，能通过序列化去传输。
- - `LinkedList` 是非同步的。
+ - `LinkedList` 是非线程安全的。
 
-`LinkedList` 有两个构造器，一个是无参构造器，另一个是传入外部集合构造器，它。
-
-`LinkedList` 持有头节点和尾节点的引用，提供了三个构造函数：
+`LinkedList` 持有头节点和尾节点的引用，提供了两个构造函数：
  - `LinkedList()：`构造一个空 LinkedList。
  - `LinkedList(Collection<? extends E> c)：`构造一个包含指定 Collection 的元素的 LinkedList。
 
@@ -323,7 +321,7 @@ public boolean contains(Object o) {
 ```java
 public int indexOf(Object o) {
     int index = 0;
-    // 判断需要被移除的元素是否为null
+    // 判断指定元素是否为null
     if (o == null) {
         // 遍历链表中的元素
         for (Node<E> x = first; x != null; x = x.next) {

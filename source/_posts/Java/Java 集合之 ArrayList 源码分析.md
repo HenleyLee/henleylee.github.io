@@ -1,9 +1,9 @@
 ---
-title: Java 中 ArrayList 的实现原理
+title: Java 集合之 ArrayList 源码分析
 categories: Java
 tags:
   - Java
-abbrlink: 8e8b3427
+abbrlink: bc5813b9
 date: 2019-08-03 18:26:15
 ---
 
@@ -17,10 +17,17 @@ date: 2019-08-03 18:26:15
  - 元素可重复；
  - 每个元素都有自己的顺序索引。
 
+`ArrayList` 有以下特点：
+ - `ArrayList` 是一个继承于 `java.util.AbstractSequentialList` 的双向链表。它也可以被当作堆栈、队列或双端队列进行操作。
+ - `ArrayList` 实现 `java.util.List` 接口，能对它进行队列操作(添加、删除、修改、遍历等)。
+ - `ArrayList` 实现了 `java.lang.Cloneable` 接口，即覆盖了 `clone()` 方法，能克隆。
+ - `ArrayList` 实现 `java.io.Serializable` 接口，这意味着 `Vector` 支持序列化，能通过序列化去传输。
+ - `ArrayList` 是非线程安全的。
+
 `java.util.ArrayList` 实现了 `java.io.Serializable` 接口，因此它支持序列化，能够通过序列化传输，实现了 `java.lang.Cloneable` 接口，能被克隆。
 
 `ArrayList` 提供了三个构造函数：
- - `ArrayList()：`构造一个具有默认初始容量 (10) 的空 ArrayList。
+ - `ArrayList()：`构造一个具有默认初始容量(10)的空 ArrayList。
  - `ArrayList(int initialCapacity)：`构造一个带指定初始容量的空 ArrayList。
  - `ArrayList(Collection<? extends E> c)：`构造一个包含指定 Collection 的元素的 ArrayList。
 
@@ -201,7 +208,7 @@ public boolean contains(Object o) {
 **`indexOf(Object o)`**方法用于返回指定元素在列表中首次出现的索引；如果列表不包含该元素，则返回-1。下面分析 `indexOf(Object o)` 方法的源码： 
 ```java
 public int indexOf(Object o) {
-    // 判断需要被移除的元素是否为null
+    // 判断指定元素是否为null
     if (o == null) {
         // 遍历列表中的元素
         for (int i = 0; i < size; i++)
@@ -242,22 +249,23 @@ public void ensureCapacity(int minCapacity) {
 
 private void ensureExplicitCapacity(int minCapacity) {
     modCount++;
-    // 所需的最小容量大于当前数组的长度
     // overflow-conscious code
+    // 所需的最小容量大于扩容前的数组长度
     if (minCapacity - elementData.length > 0)
         grow(minCapacity);
 }
 
 private void grow(int minCapacity) {
     // overflow-conscious code
+    // 旧的容量为扩容前的数组长度
     int oldCapacity = elementData.length;
     // 得到新的容量
     int newCapacity = oldCapacity + (oldCapacity >> 1);
-    // 新的容量小于旧的容量
+    // 如果新的容量小于最小容量
     if (newCapacity - minCapacity < 0)
-        // 取旧的容量为新的容量
+        // 取最小容量为新的容量
         newCapacity = minCapacity;
-    // 新的容量大于数组的最大长度
+    // 如果新的容量大于数组的最大长度
     if (newCapacity - MAX_ARRAY_SIZE > 0)
         // 如果所需最小容量大于数组的最大长度，则取Integer.MAX_VALUE，反之取数组的最大长度
         newCapacity = hugeCapacity(minCapacity);
@@ -274,7 +282,7 @@ private void grow(int minCapacity) {
 ```java
 public void trimToSize() {
     modCount++;
-    // 当前元素数量小于数组长度
+    // 判断当前元素数量是否小于数组长度
     if (size < elementData.length) {
         // 将底层数组的容量调整为当前列表保存的实际元素的大小
         elementData = (size == 0)

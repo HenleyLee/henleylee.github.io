@@ -707,8 +707,8 @@ git config --global user.email "user-email"
 
 ### 7.2 Create a new repository ###
 ```shell
-git clone <remote-repository>
-cd <directory>
+git clone "remote-repository"
+cd "directory"
 touch README.md
 git add README.md
 git commit -m "add README"
@@ -717,9 +717,9 @@ git push -u origin master
 
 ### 7.3 Existing folder ###
 ```shell
-cd <existing-folder>
+cd "existing-folder"
 git init
-git remote add origin <remote-repository>
+git remote add origin "remote-repository"
 git add .
 git commit -m "Initial commit"
 git push -u origin master
@@ -727,9 +727,9 @@ git push -u origin master
 
 ### 7.4 Existing Git repository ###
 ```shell
-cd <existing-repository>
+cd "existing-repository"
 git remote rename origin old-origin
-git remote add origin <remote-repository>
+git remote add origin "remote-repository"
 git push -u origin --all
 git push -u origin --tags
 ```
