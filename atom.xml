@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2020-01-20T06:34:55.141Z</updated>
+  <updated>2020-04-15T08:51:13.553Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java 日期处理的十个坑</title>
+    <link href="https://henleylee.github.io/posts/2020/e2c003c6.html"/>
+    <id>https://henleylee.github.io/posts/2020/e2c003c6.html</id>
+    <published>2020-04-12T04:56:25.000Z</published>
+    <updated>2020-04-15T08:51:13.553Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;整理了 Java 日期处理的十个坑，希望对大家有帮助。&lt;/p&gt;
+&lt;h2 id=&quot;1、用Calendar设置时间的坑&quot;&gt;&lt;a href=&quot;#1、用Calendar设置时间的坑&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo 博客中加入豆瓣读书功能</title>
     <link href="https://henleylee.github.io/posts/2019/efcad6e3.html"/>
     <id>https://henleylee.github.io/posts/2019/efcad6e3.html</id>
     <published>2019-12-18T03:33:45.000Z</published>
-    <updated>2020-01-20T06:34:55.141Z</updated>
+    <updated>2020-01-20T07:37:56.868Z</updated>
     
     <summary type="html">
     
@@ -43,11 +70,150 @@
   </entry>
   
   <entry>
-    <title>Java 中 LinkedList 的实现原理</title>
-    <link href="https://henleylee.github.io/posts/2019/5fab622a.html"/>
-    <id>https://henleylee.github.io/posts/2019/5fab622a.html</id>
-    <published>2019-08-06T07:56:35.000Z</published>
-    <updated>2020-01-19T07:15:37.497Z</updated>
+    <title>Android 各国语言 values 文件夹命名规则</title>
+    <link href="https://henleylee.github.io/posts/2019/62bca61e.html"/>
+    <id>https://henleylee.github.io/posts/2019/62bca61e.html</id>
+    <published>2019-11-07T10:36:32.000Z</published>
+    <updated>2020-04-21T10:02:15.230Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在开发应用时，进行资源适配会用到不同国家的语言文件夹，Android 常见的各国语言文件夹名称汇总如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;国家/地区&lt;/th&gt;
+&lt;th
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 架构组件 WorkManager 详解</title>
+    <link href="https://henleylee.github.io/posts/2019/4dc7d848.html"/>
+    <id>https://henleylee.github.io/posts/2019/4dc7d848.html</id>
+    <published>2019-10-22T10:56:52.000Z</published>
+    <updated>2020-04-20T08:08:19.050Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;&lt;code&gt;WorkManager&lt;/code&gt;&lt;/strong&gt; 架构组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>可以提高千倍效率的 Java 代码小技巧</title>
+    <link href="https://henleylee.github.io/posts/2019/a780fcc1.html"/>
+    <id>https://henleylee.github.io/posts/2019/a780fcc1.html</id>
+    <published>2019-10-11T10:45:35.000Z</published>
+    <updated>2020-04-15T09:59:10.896Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;代码优化
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用的 JVM 配置参数</title>
+    <link href="https://henleylee.github.io/posts/2019/399ccee7.html"/>
+    <id>https://henleylee.github.io/posts/2019/399ccee7.html</id>
+    <published>2019-09-23T07:38:32.000Z</published>
+    <updated>2020-04-15T08:17:24.790Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xms：&lt;/code&gt;&lt;/strong&gt;初始堆大小。只要启动，就占用的堆大小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xmx：&lt;/code&gt;&lt;/strong&gt;最大堆大小。java.lang.OutOfMemoryError
+        
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://henleylee.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="IntelliJ IDEA" scheme="https://henleylee.github.io/tags/IntelliJ-IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 集合之 Vector 源码分析</title>
+    <link href="https://henleylee.github.io/posts/2019/83ddd470.html"/>
+    <id>https://henleylee.github.io/posts/2019/83ddd470.html</id>
+    <published>2019-09-14T11:06:25.000Z</published>
+    <updated>2020-04-15T08:16:29.018Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;Vector&lt;/code&gt; 和 &lt;code&gt;ArrayList&lt;/code&gt; 有一些相似，其内部都是通过一个容量能够动态增长的数组来实现的。不同点是 &lt;code&gt;Vector&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 集合之 LinkedList 源码分析</title>
+    <link href="https://henleylee.github.io/posts/2019/2d1165aa.html"/>
+    <id>https://henleylee.github.io/posts/2019/2d1165aa.html</id>
+    <published>2019-08-25T07:56:35.000Z</published>
+    <updated>2020-04-15T08:15:51.518Z</updated>
     
     <summary type="html">
     
@@ -69,11 +235,11 @@
   </entry>
   
   <entry>
-    <title>Java 中 ArrayList 的实现原理</title>
-    <link href="https://henleylee.github.io/posts/2019/8e8b3427.html"/>
-    <id>https://henleylee.github.io/posts/2019/8e8b3427.html</id>
-    <published>2019-08-03T10:26:15.000Z</published>
-    <updated>2020-01-19T07:15:52.834Z</updated>
+    <title>Java 集合之 ArrayList 源码分析</title>
+    <link href="https://henleylee.github.io/posts/2019/bc5813b9.html"/>
+    <id>https://henleylee.github.io/posts/2019/bc5813b9.html</id>
+    <published>2019-08-15T10:26:15.000Z</published>
+    <updated>2020-04-15T08:15:11.991Z</updated>
     
     <summary type="html">
     
@@ -98,8 +264,8 @@
     <title>Java ConcurrentHashMap 的实现原理</title>
     <link href="https://henleylee.github.io/posts/2019/9cd25f5c.html"/>
     <id>https://henleylee.github.io/posts/2019/9cd25f5c.html</id>
-    <published>2019-07-21T10:36:55.000Z</published>
-    <updated>2020-01-17T09:56:31.026Z</updated>
+    <published>2019-07-30T10:36:55.000Z</published>
+    <updated>2020-04-15T08:14:05.207Z</updated>
     
     <summary type="html">
     
@@ -124,8 +290,8 @@
     <title>Android 中的 ANR 原理分析及解决办法</title>
     <link href="https://henleylee.github.io/posts/2019/d8e5ccc6.html"/>
     <id>https://henleylee.github.io/posts/2019/d8e5ccc6.html</id>
-    <published>2019-07-18T05:56:50.000Z</published>
-    <updated>2020-01-17T03:36:58.953Z</updated>
+    <published>2019-07-20T05:56:50.000Z</published>
+    <updated>2020-04-15T08:12:41.254Z</updated>
     
     <summary type="html">
     
@@ -394,164 +560,6 @@
     
     
       <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android LocalBroadcastManager 详解</title>
-    <link href="https://henleylee.github.io/posts/2019/5cf56a1.html"/>
-    <id>https://henleylee.github.io/posts/2019/5cf56a1.html</id>
-    <published>2019-05-10T11:06:30.000Z</published>
-    <updated>2019-07-30T08:47:15.841Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Android 中有两种广播机制，一种是 &lt;code&gt;BroadcastReceiver&lt;/code&gt;，另一种是
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Activity 启动流程详解</title>
-    <link href="https://henleylee.github.io/posts/2019/6497dc60.html"/>
-    <id>https://henleylee.github.io/posts/2019/6497dc60.html</id>
-    <published>2019-05-06T10:30:55.000Z</published>
-    <updated>2019-07-29T02:03:37.365Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;主要对象介绍&quot;&gt;&lt;a href=&quot;#主要对象介绍&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java ClassLoader 详解</title>
-    <link href="https://henleylee.github.io/posts/2019/b7c8c167.html"/>
-    <id>https://henleylee.github.io/posts/2019/b7c8c167.html</id>
-    <published>2019-05-02T11:16:25.000Z</published>
-    <updated>2019-06-06T07:47:40.073Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Java 类加载器(Java ClassLoader)是 Java 运行时环境(Java Runtime Environment)的一部分，负责动态加载 Java 类到 Java
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kotlin 内联函数的使用</title>
-    <link href="https://henleylee.github.io/posts/2019/edcfdfb8.html"/>
-    <id>https://henleylee.github.io/posts/2019/edcfdfb8.html</id>
-    <published>2019-04-28T03:26:36.000Z</published>
-    <updated>2019-09-29T08:10:59.284Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Kotlin 一个强大之处就在于它的扩展函数，巧妙的运用这些扩展函数可以让你写出的代码更加优雅，阅读起来更加流畅。&lt;/p&gt;
-&lt;h2 id=&quot;内联函数&quot;&gt;&lt;a href=&quot;#内联函数&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Kotlin" scheme="https://henleylee.github.io/categories/Kotlin/"/>
-    
-    
-      <category term="Kotlin" scheme="https://henleylee.github.io/tags/Kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>推荐十大经典排序算法</title>
-    <link href="https://henleylee.github.io/posts/2019/2ef6609b.html"/>
-    <id>https://henleylee.github.io/posts/2019/2ef6609b.html</id>
-    <published>2019-04-27T03:06:25.000Z</published>
-    <updated>2019-05-09T01:00:14.156Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;排序算法是《数据结构与算法》中最基本的算法之一。&lt;/p&gt;
-&lt;p&gt;排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的内部排序算法有：&lt;strong&gt;插入排序、希尔排
-        
-      
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java Atomic 类之 AtomicInteger</title>
-    <link href="https://henleylee.github.io/posts/2019/54a06e13.html"/>
-    <id>https://henleylee.github.io/posts/2019/54a06e13.html</id>
-    <published>2019-04-23T10:50:55.000Z</published>
-    <updated>2019-05-07T03:25:29.266Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在 &lt;code&gt;java.util.concurrent.atomic&lt;/code&gt; 包下，有
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
     
   </entry>
   

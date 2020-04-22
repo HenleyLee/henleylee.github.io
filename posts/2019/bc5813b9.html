@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java 中 ArrayList 的实现原理, Android, Google, Blog">
+    <meta name="keywords" content="Java 集合之 ArrayList 源码分析, Android, Google, Blog">
     <meta name="description" content="ArrayList 不是线程安全的，只能用在单线程环境下，多线程环境下可以考虑用 Collections.synchronizedList(List&amp;lt;T&amp;gt; list) 函数返回一个线程安全的 List 类，也可以使用 java.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java 中 ArrayList 的实现原理 | Henley</title>
+    <title>Java 集合之 ArrayList 源码分析 | Henley</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -386,13 +386,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java 中 ArrayList 的实现原理
+                        Java 集合之 ArrayList 源码分析
                     </div>
                 </div>
             </div>
@@ -535,7 +535,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
-                    2019-08-03
+                    2019-08-15
                 </div>
                 
 
@@ -544,7 +544,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3k
                 </div>
                 
 
@@ -570,10 +570,18 @@
 <li>元素可重复；</li>
 <li>每个元素都有自己的顺序索引。</li>
 </ul>
+<p><code>ArrayList</code> 有以下特点：</p>
+<ul>
+<li><code>ArrayList</code> 是一个继承于 <code>java.util.AbstractSequentialList</code> 的双向链表。它也可以被当作堆栈、队列或双端队列进行操作。</li>
+<li><code>ArrayList</code> 实现 <code>java.util.List</code> 接口，能对它进行队列操作(添加、删除、修改、遍历等)。</li>
+<li><code>ArrayList</code> 实现了 <code>java.lang.Cloneable</code> 接口，即覆盖了 <code>clone()</code> 方法，能克隆。</li>
+<li><code>ArrayList</code> 实现 <code>java.io.Serializable</code> 接口，这意味着 <code>Vector</code> 支持序列化，能通过序列化去传输。</li>
+<li><code>ArrayList</code> 是非线程安全的。</li>
+</ul>
 <p><code>java.util.ArrayList</code> 实现了 <code>java.io.Serializable</code> 接口，因此它支持序列化，能够通过序列化传输，实现了 <code>java.lang.Cloneable</code> 接口，能被克隆。</p>
 <p><code>ArrayList</code> 提供了三个构造函数：</p>
 <ul>
-<li><code>ArrayList()：</code>构造一个具有默认初始容量 (10) 的空 ArrayList。</li>
+<li><code>ArrayList()：</code>构造一个具有默认初始容量(10)的空 ArrayList。</li>
 <li><code>ArrayList(int initialCapacity)：</code>构造一个带指定初始容量的空 ArrayList。</li>
 <li><code>ArrayList(Collection&lt;? extends E&gt; c)：</code>构造一个包含指定 Collection 的元素的 ArrayList。</li>
 </ul>
@@ -725,7 +733,7 @@
 </code></pre>
 <h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p><strong><code>indexOf(Object o)</code></strong>方法用于返回指定元素在列表中首次出现的索引；如果列表不包含该元素，则返回-1。下面分析 <code>indexOf(Object o)</code> 方法的源码： </p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 判断需要被移除的元素是否为null</span>
+    <span class="token comment" spellcheck="true">// 判断指定元素是否为null</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// 遍历列表中的元素</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> size<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
@@ -764,22 +772,23 @@
 
 <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">ensureExplicitCapacity</span><span class="token punctuation">(</span><span class="token keyword">int</span> minCapacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 所需的最小容量大于当前数组的长度</span>
     <span class="token comment" spellcheck="true">// overflow-conscious code</span>
+    <span class="token comment" spellcheck="true">// 所需的最小容量大于扩容前的数组长度</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>minCapacity <span class="token operator">-</span> elementData<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
         <span class="token function">grow</span><span class="token punctuation">(</span>minCapacity<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">grow</span><span class="token punctuation">(</span><span class="token keyword">int</span> minCapacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// overflow-conscious code</span>
+    <span class="token comment" spellcheck="true">// 旧的容量为扩容前的数组长度</span>
     <span class="token keyword">int</span> oldCapacity <span class="token operator">=</span> elementData<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 得到新的容量</span>
     <span class="token keyword">int</span> newCapacity <span class="token operator">=</span> oldCapacity <span class="token operator">+</span> <span class="token punctuation">(</span>oldCapacity <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 新的容量小于旧的容量</span>
+    <span class="token comment" spellcheck="true">// 如果新的容量小于最小容量</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>newCapacity <span class="token operator">-</span> minCapacity <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token comment" spellcheck="true">// 取旧的容量为新的容量</span>
+        <span class="token comment" spellcheck="true">// 取最小容量为新的容量</span>
         newCapacity <span class="token operator">=</span> minCapacity<span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 新的容量大于数组的最大长度</span>
+    <span class="token comment" spellcheck="true">// 如果新的容量大于数组的最大长度</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>newCapacity <span class="token operator">-</span> MAX_ARRAY_SIZE <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
         <span class="token comment" spellcheck="true">// 如果所需最小容量大于数组的最大长度，则取Integer.MAX_VALUE，反之取数组的最大长度</span>
         newCapacity <span class="token operator">=</span> <span class="token function">hugeCapacity</span><span class="token punctuation">(</span>minCapacity<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -794,7 +803,7 @@
 <h3 id="trimToSize"><a href="#trimToSize" class="headerlink" title="trimToSize()"></a>trimToSize()</h3><p><strong><code>trimToSize()</code></strong>方法用于将底层数组的容量调整为当前列表保存的实际元素的大小。下面分析 <code>trimToSize()</code> 方法的源码： </p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">trimToSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 当前元素数量小于数组长度</span>
+    <span class="token comment" spellcheck="true">// 判断当前元素数量是否小于数组长度</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>size <span class="token operator">&lt;</span> elementData<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// 将底层数组的容量调整为当前列表保存的实际元素的大小</span>
         elementData <span class="token operator">=</span> <span class="token punctuation">(</span>size <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -996,7 +1005,7 @@
         repo: 'henleylee.github.io',
         owner: 'HenleyLee',
         admin: "HenleyLee",
-        id: '2019-08-03T18-26-15',
+        id: '2019-08-15T18-26-15',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1021,13 +1030,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2019/5fab622a.html">
+                <a href="/posts/2019/2d1165aa.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Java 中 LinkedList 的实现原理">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Java 集合之 LinkedList 源码分析">
                         
-                        <span class="card-title">Java 中 LinkedList 的实现原理</span>
+                        <span class="card-title">Java 集合之 LinkedList 源码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1039,7 +1048,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-08-06
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-08-25
                         </span>
                         <span class="publish-author">
                             
@@ -1089,7 +1098,7 @@ HashTable 是一个线程安全的类，它使用 synch
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-07-21
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-07-30
                             </span>
                         <span class="publish-author">
                             
@@ -1291,7 +1300,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">382.6k</span>&nbsp;字
+                <span class="white-color">397.2k</span>&nbsp;字
             
 	    <br>
 	    

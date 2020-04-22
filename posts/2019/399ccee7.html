@@ -4,8 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="我喜欢的书籍, Android, Google, Blog">
-    <meta name="description" content="我喜欢的书籍 | Henley">
+    <meta name="keywords" content="常用的 JVM 配置参数, Android, Google, Blog">
+    <meta name="description" content="
+-Xms：初始堆大小。只要启动，就占用的堆大小。
+-Xmx：最大堆大小。java.lang.OutOfMemoryError：Java heap 这个错误可以通过配置 -Xms 和 -Xmx 参数来设置。
+-Xss：栈大小分配。栈是每个线">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>我喜欢的书籍 | Henley</title>
+    <title>常用的 JVM 配置参数 | Henley</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -386,13 +389,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        我喜欢的书籍
+                        常用的 JVM 配置参数
                     </div>
                 </div>
             </div>
@@ -508,12 +511,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/IntelliJ-IDEA/" target="_blank">
+                                <span class="chip tag-bg-color">IntelliJ IDEA</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/工具/" class="post-category" target="_blank">
+                                工具
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -522,7 +538,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
-                    2020-01-20
+                    2019-09-23
                 </div>
                 
 
@@ -531,14 +547,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    851
+                    312
                 </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
-                        4 分
+                        1 分
                     </div>
                 
 				
@@ -549,356 +565,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-    <p>知识是智慧的火炬</p>
-</blockquote>
-
-<style>
-    
-.hexo-douban-tabs {
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.hexo-douban-tab {
-    padding: 5px;
-}
-
-.hexo-douban-active {
-    background: #657b83;
-    color: #fff;
-}
-
-.hexo-douban-item {
-    padding-bottom: 10px;
-    position: relative;
-    clear: both;
-    min-height: 170px;
-    padding: 10px 0;
-    border-bottom: 1px #ddd solid;
-}
-
-@media screen and (max-width: 600px) {
-    .hexo-douban-item {
-        width: 100%;
-    }
-}
-
-.hexo-douban-picture {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 100px;
-}
-
-.hexo-douban-info {
-    padding-left: 120px;
-}
-
-.hexo-douban-meta {
-    font-size: 12px;
-    padding-right: 10px;
-}
-
-.hexo-douban-comments {
-    font-size: 12px;
-}
-
-.hexo-douban-pagination {
-    margin-top: 15px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.hexo-douban-button {
-    padding: 5px;
-}
-
-.hexo-douban-button:hover {
-    background: #657b83;
-    color: #fff;
-}
-
-.hexo-douban-hide {
-    display: none;
-}
-
-.hexo-douban-show {
-    display: block;
-}
-
-
-</style>
-
-<div class="hexo-douban-tabs">
-    <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;" rel="external">
-        在读
-        (3)</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;" rel="external">
-        想读
-        (1)</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;" rel="external">
-        已读
-        (2)</a>
-</div>
-<div>
-    <div id="hexo-douban-item1">
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s29413793.jpg" referrerpolicy="no-referrer"></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/27008702/"> 剑指Offer：名企面试官精讲典型编程题（第2版）</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  何海涛 / 电子工业出版社 / 2017-5 / 65.00
-
-        </div>
-        <div class="hexo-douban-meta">2020-01-20
-      在读 /  面试 工作</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s24870013.jpg" referrerpolicy="no-referrer"></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/20556210/"> Android软件安全与逆向分析</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  丰生强 / 人民邮电出版社 / 2013-2 / 69.00元
-
-        </div>
-        <div class="hexo-douban-meta">2019-10-12
-      在读 /  Android 安全</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s29572743.jpg" referrerpolicy="no-referrer"></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26915433/"> 第一行代码：Android（第2版）</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  郭霖 / 人民邮电出版社 / 2016-12-1 / CNY 79.00
-
-        </div>
-        <div class="hexo-douban-meta">2019-10-12
-      在读 /  Android 编程</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-pagination">
-    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
-    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
-    <span class="hexo-douban-pagenum">2 / 3</span>
-    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
-    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
-</div>
-    </div>
-    <div id="hexo-douban-item2">
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s1091698.jpg" referrerpolicy="no-referrer"></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1017143/"> 不能承受的生命之轻</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [捷克] 米兰·昆德拉 / 许钧 / 上海译文出版社 / 2003-7 / 23.00元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2019-10-12
-      想读 /  米兰・昆德拉 文学</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-pagination">
-    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
-    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
-    <span class="hexo-douban-pagenum">2 / 3</span>
-    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
-    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
-</div>
-
-    </div>
-    <div id="hexo-douban-item3">
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s29640312.jpg" referrerpolicy="no-referrer"></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/27605355/"> 阿里巴巴Java开发手册</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  杨冠宝 / 电子工业出版社 / 2018-1 / 35
-
-      </div>
-        <div class="hexo-douban-meta">2019-10-12
-      读过 /  Java 规范 / </div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s6050358.jpg" referrerpolicy="no-referrer"></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3879823/"> Java开发实战经典</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  李兴华 编著 / 清华大学出版社 / 2009-8 / 79.80元
-
-      </div>
-        <div class="hexo-douban-meta">2019-10-12
-      读过 /  Java 编程 / ★★★★★ 力荐</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-pagination">
-    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
-    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
-    <span class="hexo-douban-pagenum">2 / 3</span>
-    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
-    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
-</div>
-    </div>
-
-</div>
-
-<script>
-    /**
- * Created by myths on 18-2-8.
- */
-
-Element.prototype.siblings = function () {
-    var siblingElement = [];
-    var sibs = this.parentNode.children;
-    for (var i = 0; i < sibs.length; i++) {
-        if (sibs[i] !== this) {
-            siblingElement.push(sibs[i]);
-        }
-    }
-    return siblingElement;
-};
-function tabClick() {
-    //修改标签样式
-    this.classList.add('hexo-douban-active');
-    var sibs = this.siblings();
-    for (var j = 0; j < sibs.length; j++) {
-        sibs[j].classList.remove('hexo-douban-active');
-    }
-    //显示对应板块
-    var itemId = this.id.replace('tab', 'item');
-    var target = document.getElementById(itemId);
-    target.classList.remove('hexo-douban-hide');
-    target.classList.add('hexo-douban-show');
-    sibs = document.getElementById(itemId).siblings();
-    for (var k = 0; k < sibs.length; k++) {
-        sibs[k].classList.remove('hexo-douban-show');
-        sibs[k].classList.add('hexo-douban-hide');
-    }
-}
-var tabs = document.getElementsByClassName("hexo-douban-tab");
-for (var i = 0; i < tabs.length; i++) {
-    tabs[i].onclick = tabClick;
-    tabs[i].onclick.apply(tabs[i]);
-}
-tabs[2].click();
-
-    var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
-var previouspages = document.getElementsByClassName("hexo-douban-previouspage");
-var nextpages = document.getElementsByClassName("hexo-douban-nextpage");
-var lastpages = document.getElementsByClassName("hexo-douban-lastpage");
-var pagenums = document.getElementsByClassName("hexo-douban-pagenum");
-
-function makePageNum(num, arr) {
-    return (num + 1) + ' / ' + (Math.ceil(arr.length / 10 === 0 ? 1 : Math.ceil(arr.length / 10)));
-}
-
-function firstBtn() {
-    var sibs = this.parentNode.siblings();
-    displayPage(sibs, 0);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(0, sibs);
-}
-
-function previousBtn() {
-    var sibs = this.parentNode.siblings();
-    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
-    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
-    currNum = parseInt(currNum, 10) - 1;
-    if (currNum > 0) {
-        currNum--;
-    }
-    displayPage(sibs, currNum);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
-}
-
-function nextBtn() {
-    var sibs = this.parentNode.siblings();
-    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
-    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
-    currNum = parseInt(currNum, 10) - 1;
-    if (currNum < Math.ceil(sibs.length / 10) - 1) {
-        currNum++;
-    }
-    displayPage(sibs, currNum);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
-}
-
-function lastBtn() {
-    var sibs = this.parentNode.siblings();
-    displayPage(sibs, Math.ceil(sibs.length / 10) - 1);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(Math.ceil(sibs.length / 10) - 1 === -1 ? 0 : Math.ceil(sibs.length / 10) - 1, sibs);
-}
-
-function displayPage(arr, num) {
-    for (var i = 0; i < arr.length; i++) {
-        if (Math.floor(i / 10) === num) {
-            arr[i].classList.remove('hexo-douban-hide');
-            var img = arr[i].getElementsByTagName('img')[0];
-            img.src = img.getAttribute('data-src');
-        } else {
-            arr[i].classList.add('hexo-douban-hide');
-        }
-    }
-}
-
-for (var i = 0; i < firstpages.length; i++) {
-
-    //add listener
-    firstpages[i].onclick = firstBtn;
-    previouspages[i].onclick = previousBtn;
-    nextpages[i].onclick = nextBtn;
-    lastpages[i].onclick = lastBtn;
-
-    //set page num
-    var size = pagenums[i].parentNode.siblings().length;
-    pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
-    firstpages[i].click();
-}
-
-</script>
-
+                <ol>
+<li><strong><code>-Xms：</code></strong>初始堆大小。只要启动，就占用的堆大小。</li>
+<li><strong><code>-Xmx：</code></strong>最大堆大小。java.lang.OutOfMemoryError：Java heap 这个错误可以通过配置 -Xms 和 -Xmx 参数来设置。</li>
+<li><strong><code>-Xss：</code></strong>栈大小分配。栈是每个线程私有的区域，通常只有几百K大小，决定了函数调用的深度，而局部变量、参数都分配到栈上。<br>当出现大量局部变量，递归时，会发生栈空间 OOM（java.lang.StackOverflowError）之类的错误。</li>
+<li><strong><code>-XX:NewSize：</code></strong>设置新生代大小的绝对值。</li>
+<li><strong><code>-XX:NewRatio：</code></strong>设置年轻代和年老代的比值。比如设置为3，则新生代：老年代=1:3，新生代占总 heap 的1/4。</li>
+<li><strong><code>-XX:MaxPermSize：</code></strong>设置持久代大小。<br>java.lang.OutOfMemoryError:PermGenspace 这个 OOM 错误需要合理调大 PermSize 和 MaxPermSize 大小。</li>
+<li><strong><code>-XX:SurvivorRatio：</code></strong>年轻代中 Eden 区与两个 Survivor 区的比值。注意，Survivor 区有 form 和 to 两个。比如设置为8时，那么 eden:form:to=8:1:1。</li>
+<li><strong><code>-XX:HeapDumpOnOutOfMemoryError：</code></strong>发生 OOM 时转储堆到文件，这是一个非常好的诊断方法。</li>
+<li><strong><code>-XX:HeapDumpPath：</code></strong>导出堆的转储文件路径。</li>
+<li><strong><code>-XX:OnOutOfMemoryError：</code></strong>OOM 时，执行一个脚本，比如发送邮件报警，重启程序。后面跟着一个脚本的路径。</li>
+</ol>
 
             </div>
             <hr>
@@ -911,7 +589,11 @@ for (var i = 0; i < firstpages.length; i++) {
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/IntelliJ-IDEA/">
+                                    <span class="chip bg-color">IntelliJ IDEA</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1080,7 +762,7 @@ for (var i = 0; i < firstpages.length; i++) {
         repo: 'henleylee.github.io',
         owner: 'HenleyLee',
         admin: "HenleyLee",
-        id: '2020-01-20T14-33-23',
+        id: '2019-09-23T15-38-32',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1103,48 +785,51 @@ for (var i = 0; i < firstpages.length; i++) {
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/books/index.html">
+                <a href="/posts/2019/a780fcc1.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="我喜欢的书籍">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="可以提高千倍效率的 Java 代码小技巧">
                         
-                        <span class="card-title">我喜欢的书籍</span>
+                        <span class="card-title">可以提高千倍效率的 Java 代码小技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-    知识是智慧的火炬
-
-
-
-    
-.hexo-douban-tabs {
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.hexo-douban-tab 
+                            前言代码优化 ，一个很重要的课题。可能有些人觉得没用，一些细小的地方有什么好修改的，改与不改对于代码的运行效率有什么影响呢？这个问题我是这么考虑的，就像大海里面的鲸鱼一样，它吃一条小虾米有用吗？没用，但是，吃的小虾米一多之后，鲸鱼就被喂饱了
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-01-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-10-11
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            HenleyLee
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/学习笔记/">
+                        <span class="chip tag-bg-color">学习笔记</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1152,48 +837,49 @@ for (var i = 0; i < firstpages.length; i++) {
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/books/index.html">
+                <a href="/posts/2019/83ddd470.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="我喜欢的书籍">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java 集合之 Vector 源码分析">
                         
-                        <span class="card-title">我喜欢的书籍</span>
+                        <span class="card-title">Java 集合之 Vector 源码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-    知识是智慧的火炬
-
-
-
-    
-.hexo-douban-tabs {
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.hexo-douban-tab 
+                            Vector 和 ArrayList 有一些相似，其内部都是通过一个容量能够动态增长的数组来实现的。不同点是 Vector 是线程安全的，因为其内部有很多同步代码快来保证线程安全。
+简介java.util.Vector 实现了 java.u
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-01-20
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-09-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            HenleyLee
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1374,7 +1060,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">382.6k</span>&nbsp;字
+                <span class="white-color">397.2k</span>&nbsp;字
             
 	    <br>
 	    

@@ -587,7 +587,7 @@ Array">
 <li>优点：添加、删除元素的效率高，只需要改变指针指向即可。</li>
 <li>缺点：访问元素的平均效率低，需要对链表进行遍历。</li>
 </ul>
-<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p><strong><code>Vector</code></strong>和 <code>ArrayList</code> 一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写 <code>Vector</code>，但实现同步需要很高的花费，因此，访问它比访问<code>ArrayList</code>慢。 </p>
+<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p><strong><code>Vector</code></strong>和 <code>ArrayList</code> 一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写 <code>Vector</code>，但实现同步需要很高的花费，因此，访问它比访问 <code>ArrayList</code> 慢。 </p>
 <h3 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h3><p>在多线程并发的时候，<code>ArrayList</code> 和 <code>LinkedList</code> 是非线程安全的，并且是不同步的。<code>Vector</code> 的所有方法都用了 <code>synchronized</code> 关键字修饰，是线程安全的，但是 <code>Vector</code> 中的方法组合起来使用不是线程安全的。</p>
 <blockquote>
 <p>由 <code>Vector</code> 创建的 <code>Iterator</code>，虽然和 <code>ArrayList</code> 创建的 <code>Iterator</code> 是同一接口，但是，因为 <code>Vector</code> 是同步的，当一个 <code>Iterator</code> 被创建而且正在被使用，另一个线程改变了 <code>Vector</code> 的状态(例如，添加、删除元素)，这时调用 <code>Iterator</code> 的方法时将抛出 <code>ConcurrentModificationException</code>，因此必须捕获该异常。</p>
@@ -1113,7 +1113,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">382.6k</span>&nbsp;字
+                <span class="white-color">397.2k</span>&nbsp;字
             
 	    <br>
 	    

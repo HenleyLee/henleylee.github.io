@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java 中 LinkedList 的实现原理, Android, Google, Blog">
+    <meta name="keywords" content="Java 集合之 LinkedList 源码分析, Android, Google, Blog">
     <meta name="description" content="LinkedList 是用链表结构存储数据的，比较适合数据的动态插入和删除，随机访问和遍历速度比较慢，还提供了 List 接口中没有定义的方法，专门用于操作表头和表尾的元素，所以可以当作堆栈、队列和双向队列来使用。
 简介java.util.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java 中 LinkedList 的实现原理 | Henley</title>
+    <title>Java 集合之 LinkedList 源码分析 | Henley</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -387,13 +387,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java 中 LinkedList 的实现原理
+                        Java 集合之 LinkedList 源码分析
                     </div>
                 </div>
             </div>
@@ -536,7 +536,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
-                    2019-08-06
+                    2019-08-25
                 </div>
                 
 
@@ -545,7 +545,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    3.8k
                 </div>
                 
 
@@ -578,10 +578,9 @@
 <li><code>LinkedList</code> 实现 <code>java.util.Deque</code> 接口，即能将 <code>LinkedList</code> 当作双端队列使用。</li>
 <li><code>LinkedList</code> 实现了 <code>java.lang.Cloneable</code> 接口，即覆盖了 <code>clone()</code> 方法，能克隆。</li>
 <li><code>LinkedList</code> 实现 <code>java.io.Serializable</code> 接口，这意味着 <code>LinkedList</code> 支持序列化，能通过序列化去传输。</li>
-<li><code>LinkedList</code> 是非同步的。</li>
+<li><code>LinkedList</code> 是非线程安全的。</li>
 </ul>
-<p><code>LinkedList</code> 有两个构造器，一个是无参构造器，另一个是传入外部集合构造器，它。</p>
-<p><code>LinkedList</code> 持有头节点和尾节点的引用，提供了三个构造函数：</p>
+<p><code>LinkedList</code> 持有头节点和尾节点的引用，提供了两个构造函数：</p>
 <ul>
 <li><code>LinkedList()：</code>构造一个空 LinkedList。</li>
 <li><code>LinkedList(Collection&lt;? extends E&gt; c)：</code>构造一个包含指定 Collection 的元素的 LinkedList。</li>
@@ -838,7 +837,7 @@
 <h4 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h4><p><strong><code>indexOf(Object o)</code></strong>方法用于返回指定元素在链表中首次出现的索引；如果链表不包含该元素，则返回-1。下面分析 <code>indexOf(Object o)</code> 方法的源码： </p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 判断需要被移除的元素是否为null</span>
+    <span class="token comment" spellcheck="true">// 判断指定元素是否为null</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// 遍历链表中的元素</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>E<span class="token operator">></span> x <span class="token operator">=</span> first<span class="token punctuation">;</span> x <span class="token operator">!=</span> null<span class="token punctuation">;</span> x <span class="token operator">=</span> x<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1156,7 +1155,7 @@
         repo: 'henleylee.github.io',
         owner: 'HenleyLee',
         admin: "HenleyLee",
-        id: '2019-08-06T15-56-35',
+        id: '2019-08-25T15-56-35',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1181,33 +1180,32 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2019/efcad6e3.html">
+                <a href="/posts/2019/83ddd470.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Hexo 博客中加入豆瓣读书功能">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java 集合之 Vector 源码分析">
                         
-                        <span class="card-title">Hexo 博客中加入豆瓣读书功能</span>
+                        <span class="card-title">Java 集合之 Vector 源码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在 Hexo 博客个性化定制中，加入豆瓣读书界面是一个很不错的功能，那么是怎么做到的呢？其实很简单，我们只需要加入一个 hexo-douban 模块即可。
-简介hexo-douban是一个在 Hexo 页面中嵌入豆瓣个人主页的小插件。
-Gi
+                            Vector 和 ArrayList 有一些相似，其内部都是通过一个容量能够动态增长的数组来实现的。不同点是 Vector 是线程安全的，因为其内部有很多同步代码快来保证线程安全。
+简介java.util.Vector 实现了 java.u
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-12-18
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-09-14
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/前端/" class="post-category">
-                                    前端
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -1217,8 +1215,8 @@ Gi
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip tag-bg-color">Hexo</span>
+                    <a href="/tags/Java/">
+                        <span class="chip tag-bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1232,13 +1230,13 @@ Gi
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/2019/8e8b3427.html">
+                <a href="/posts/2019/bc5813b9.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Java 中 ArrayList 的实现原理">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Java 集合之 ArrayList 源码分析">
                         
-                        <span class="card-title">Java 中 ArrayList 的实现原理</span>
+                        <span class="card-title">Java 集合之 ArrayList 源码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1249,7 +1247,7 @@ Gi
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-08-03
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-08-15
                             </span>
                         <span class="publish-author">
                             
@@ -1451,7 +1449,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">382.6k</span>&nbsp;字
+                <span class="white-color">397.2k</span>&nbsp;字
             
 	    <br>
 	    
