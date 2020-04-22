@@ -4,7 +4,7 @@ categories: Java
 tags:
   - Java
 abbrlink: 9cd25f5c
-date: 2019-07-21 18:36:55
+date: 2019-07-30 18:36:55
 ---
 
 在多线程环境下，使用 `HashMap` 进行 `put` 操作时存在丢失数据的情况，为了避免这种 bug 的隐患，强烈建议使用 `ConcurrentHashMap` 代替 `HashMap`。

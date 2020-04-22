@@ -4,7 +4,7 @@ categories: Java
 tags:
   - Java
 abbrlink: 83ddd470
-date: 2019-08-16 19:06:25
+date: 2019-09-14 19:06:25
 ---
 
 `Vector` 和 `ArrayList` 有一些相似，其内部都是通过一个容量能够动态增长的数组来实现的。不同点是 `Vector` 是线程安全的，因为其内部有很多同步代码快来保证线程安全。

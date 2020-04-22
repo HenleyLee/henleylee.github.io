@@ -4,7 +4,7 @@ categories: Java
 tags:
   - Java
 abbrlink: bc5813b9
-date: 2019-08-03 18:26:15
+date: 2019-08-15 18:26:15
 ---
 
 `ArrayList` 不是线程安全的，只能用在单线程环境下，多线程环境下可以考虑用 `Collections.synchronizedList(List<T> list)` 函数返回一个线程安全的 `List` 类，也可以使用 `java.util.concurrent` 并发包下的 `CopyOnWriteArrayList` 类。

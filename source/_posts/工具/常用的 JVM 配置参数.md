@@ -4,7 +4,7 @@ categories: 工具
 tags:
   - IntelliJ IDEA
 abbrlink: 399ccee7
-date: 2019-08-21 15:38:32
+date: 2019-09-23 15:38:32
 ---
 
 1. **`-Xms：`**初始堆大小。只要启动，就占用的堆大小。
