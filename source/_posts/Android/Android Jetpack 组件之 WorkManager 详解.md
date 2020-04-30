@@ -1,19 +1,20 @@
 ---
-title: Android 架构组件 WorkManager 详解
+title: Android Jetpack 组件之 WorkManager 详解
 categories: Android
 tags:
   - Android
-abbrlink: 4dc7d848
-date: 2019-10-22 18:56:52
+  - Jetpack
+abbrlink: 5d46ccc
+date: 2019-12-07 12:56:12
 ---
 
-**`WorkManager`** 架构组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如 `JobScheduler`、`AlarmManger`，再比如 `AsyncTask`、`ThreadPool`。`WorkManager` 的优势在哪里，为什么要使用 `WorkManager`。下面从两个方面来说明 `WorkManager` 的优势：
+**`WorkManager`** 组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如 `JobScheduler`、`AlarmManger`，再比如 `AsyncTask`、`ThreadPool`。`WorkManager` 的优势在哪里，为什么要使用 `WorkManager`。下面从两个方面来说明 `WorkManager` 的优势：
  - `WorkManager` 对比 `JobScheduler`、`AlarmManger` 的优势：虽然 `AlarmManager`是一直存在但是 `JobScheduler` 是 Android 5.0 之后才有的。`WorkManager` 的底层实现，会根据你的设备 API 的情况，自动选用 `JobScheduler` 或 `AlarmManager` 来实现后台任务。
  - `WorkManager` 对比 `AsyncTask`、`ThreadPool`的优势：`WorkManager` 里面的任务在应用退出之后还可以继续执行，`AsyncTask` 和 `ThreadPool` 里面的任务在应用退出之后不会执行。
 
 > 使用 WorkManager API 可以轻松地调度即使在应用退出或设备重启时仍应运行的可延迟异步任务。
 
-## 主要功能 ##
+## 功能 ##
 **`WorkManager`**具有以下功能：
  - 最高向后兼容到 API 14
   - 在运行 API 23 及以上级别的设备上使用 JobScheduler
@@ -32,6 +33,29 @@ date: 2019-10-22 18:56:52
 `WorkManager` 不适用于应用进程结束时能够安全终止的运行中后台工作，也不适用于需要立即执行的任务。
 
 > **注意：**要将 `WorkManager` 库导入您的 Android 项目，请按照 [WorkManager 版本说明](https://developer.android.com/jetpack/androidx/releases/work#declaring_dependencies)中的说明声明依赖项。
+
+## 依赖 ##
+要将 `WorkManager` 库引入到 Android 项目中，请将以下依赖项添加到应用或模块的 `build.gradle` 文件中：
+```gradle
+dependencies {
+    def work_version = "2.3.4"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // optional - RxJava2 support
+    implementation "androidx.work:work-rxjava2:$work_version"
+
+    // optional - GCMNetworkManager support
+    implementation "androidx.work:work-gcm:$work_version"
+
+    // optional - Test helpers
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+  }
+```
 
 ## 相关类介绍 ##
 **`WorkManager`** 架构组件主要由 `Worker`、`WorkRequest` 和 `WorkManager` 三个最主要的类组成。

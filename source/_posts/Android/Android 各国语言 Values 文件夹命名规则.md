@@ -3,8 +3,8 @@ title: Android 各国语言 values 文件夹命名规则
 categories: Android
 tags:
   - Android
-abbrlink: 62bca61e
-date: 2019-11-07 18:36:32
+abbrlink: 540305be
+date: 2019-10-22 18:56:52
 ---
 
 在开发应用时，进行资源适配会用到不同国家的语言文件夹，Android 常见的各国语言文件夹名称汇总如下：
