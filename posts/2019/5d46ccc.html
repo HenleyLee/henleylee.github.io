@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Android 架构组件 WorkManager 详解, Android, Google, Blog">
-    <meta name="description" content="WorkManager 架构组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如 JobScheduler、AlarmManger，再比如 AsyncTask、ThreadPool。Work">
+    <meta name="keywords" content="Android Jetpack 组件之 WorkManager 详解, Android, Google, Blog">
+    <meta name="description" content="WorkManager 组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如 JobScheduler、AlarmManger，再比如 AsyncTask、ThreadPool。WorkMa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Android 架构组件 WorkManager 详解 | Henley</title>
+    <title>Android Jetpack 组件之 WorkManager 详解 | Henley</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -386,13 +386,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Android 架构组件 WorkManager 详解
+                        Android Jetpack 组件之 WorkManager 详解
                     </div>
                 </div>
             </div>
@@ -514,6 +514,10 @@
                                 <span class="chip tag-bg-color">Android</span>
                             </a>
                         
+                            <a href="/tags/Jetpack/" target="_blank">
+                                <span class="chip tag-bg-color">Jetpack</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -535,7 +539,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
-                    2019-10-22
+                    2019-12-07
                 </div>
                 
 
@@ -544,7 +548,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    2.8k
                 </div>
                 
 
@@ -562,7 +566,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong><code>WorkManager</code></strong> 架构组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如 <code>JobScheduler</code>、<code>AlarmManger</code>，再比如 <code>AsyncTask</code>、<code>ThreadPool</code>。<code>WorkManager</code> 的优势在哪里，为什么要使用 <code>WorkManager</code>。下面从两个方面来说明 <code>WorkManager</code> 的优势：</p>
+                <p><strong><code>WorkManager</code></strong> 组件是由 Google 提供的用来管理后台工作任务。Android 已经有很多管理后台任务的类了，比如 <code>JobScheduler</code>、<code>AlarmManger</code>，再比如 <code>AsyncTask</code>、<code>ThreadPool</code>。<code>WorkManager</code> 的优势在哪里，为什么要使用 <code>WorkManager</code>。下面从两个方面来说明 <code>WorkManager</code> 的优势：</p>
 <ul>
 <li><code>WorkManager</code> 对比 <code>JobScheduler</code>、<code>AlarmManger</code> 的优势：虽然 <code>AlarmManager</code>是一直存在但是 <code>JobScheduler</code> 是 Android 5.0 之后才有的。<code>WorkManager</code> 的底层实现，会根据你的设备 API 的情况，自动选用 <code>JobScheduler</code> 或 <code>AlarmManager</code> 来实现后台任务。</li>
 <li><code>WorkManager</code> 对比 <code>AsyncTask</code>、<code>ThreadPool</code>的优势：<code>WorkManager</code> 里面的任务在应用退出之后还可以继续执行，<code>AsyncTask</code> 和 <code>ThreadPool</code> 里面的任务在应用退出之后不会执行。</li>
@@ -570,7 +574,7 @@
 <blockquote>
 <p>使用 WorkManager API 可以轻松地调度即使在应用退出或设备重启时仍应运行的可延迟异步任务。</p>
 </blockquote>
-<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p><strong><code>WorkManager</code></strong>具有以下功能：</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p><strong><code>WorkManager</code></strong>具有以下功能：</p>
 <ul>
 <li>最高向后兼容到 API 14<ul>
 <li>在运行 API 23 及以上级别的设备上使用 JobScheduler</li>
@@ -593,6 +597,26 @@
 <blockquote>
 <p><strong>注意：</strong>要将 <code>WorkManager</code> 库导入您的 Android 项目，请按照 <a href="https://developer.android.com/jetpack/androidx/releases/work#declaring_dependencies" target="_blank" rel="noopener">WorkManager 版本说明</a>中的说明声明依赖项。</p>
 </blockquote>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>要将 <code>WorkManager</code> 库引入到 Android 项目中，请将以下依赖项添加到应用或模块的 <code>build.gradle</code> 文件中：</p>
+<pre class=" language-gradle"><code class="language-gradle">dependencies {
+    def work_version = "2.3.4"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // optional - RxJava2 support
+    implementation "androidx.work:work-rxjava2:$work_version"
+
+    // optional - GCMNetworkManager support
+    implementation "androidx.work:work-gcm:$work_version"
+
+    // optional - Test helpers
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+  }
+</code></pre>
 <h2 id="相关类介绍"><a href="#相关类介绍" class="headerlink" title="相关类介绍"></a>相关类介绍</h2><p><strong><code>WorkManager</code></strong> 架构组件主要由 <code>Worker</code>、<code>WorkRequest</code> 和 <code>WorkManager</code> 三个最主要的类组成。</p>
 <h3 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h3><p><strong><code>Worker</code></strong>是个抽象类，用于指定需要执行的具体任务。<code>Worker</code> 类的源码如下：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Worker</span> <span class="token keyword">extends</span> <span class="token class-name">ListenableWorker</span> <span class="token punctuation">{</span>
@@ -1030,6 +1054,10 @@
                                     <span class="chip bg-color">Android</span>
                                 </a>
                             
+                                <a href="/tags/Jetpack/">
+                                    <span class="chip bg-color">Jetpack</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1198,7 +1226,7 @@
         repo: 'henleylee.github.io',
         owner: 'HenleyLee',
         admin: "HenleyLee",
-        id: '2019-10-22T18-56-52',
+        id: '2019-12-07T12-56-12',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1223,43 +1251,77 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2019/62bca61e.html">
+                <a href="/posts/2019/efcad6e3.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Android 各国语言 values 文件夹命名规则">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Hexo 博客中加入豆瓣读书功能">
                         
-                        <span class="card-title">Android 各国语言 values 文件夹命名规则</span>
+                        <span class="card-title">Hexo 博客中加入豆瓣读书功能</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在开发应用时，进行资源适配会用到不同国家的语言文件夹，Android 常见的各国语言文件夹名称汇总如下：
-
-
-
-国家/地区
-文件夹名称
-
-
-
-
-中文(中国)
-values-zh-rCN
-
-
-中文(台湾)
-values-zh-rTW
-
-
-中文
+                            在 Hexo 博客个性化定制中，加入豆瓣读书界面是一个很不错的功能，那么是怎么做到的呢？其实很简单，我们只需要加入一个 hexo-douban 模块即可。
+简介hexo-douban是一个在 Hexo 页面中嵌入豆瓣个人主页的小插件。
+Gi
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-11-07
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-12-18
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip tag-bg-color">Hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2019/6efd8b7a.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Android Jetpack 组件之 ViewModel 详解">
+                        
+                        <span class="card-title">Android Jetpack 组件之 ViewModel 详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android 框架可以管理 UI 控制器(Activity 和 Fragment)的生命周期。Android 框架可能会决定销毁或重新创建 UI 控制器，以响应完全不受控制的某些用户操作或设备事件。
+如果系统销毁或重新创建 UI 控制器，
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-11-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1279,57 +1341,8 @@ values-zh-rTW
                         <span class="chip tag-bg-color">Android</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/2019/a780fcc1.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="可以提高千倍效率的 Java 代码小技巧">
-                        
-                        <span class="card-title">可以提高千倍效率的 Java 代码小技巧</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            前言代码优化 ，一个很重要的课题。可能有些人觉得没用，一些细小的地方有什么好修改的，改与不改对于代码的运行效率有什么影响呢？这个问题我是这么考虑的，就像大海里面的鲸鱼一样，它吃一条小虾米有用吗？没用，但是，吃的小虾米一多之后，鲸鱼就被喂饱了
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2019-10-11
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/学习笔记/" class="post-category">
-                                    学习笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip tag-bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/学习笔记/">
-                        <span class="chip tag-bg-color">学习笔记</span>
+                    <a href="/tags/Jetpack/">
+                        <span class="chip tag-bg-color">Jetpack</span>
                     </a>
                     
                 </div>
@@ -1513,7 +1526,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">397.2k</span>&nbsp;字
+                <span class="white-color">406.7k</span>&nbsp;字
             
 	    <br>
 	    
