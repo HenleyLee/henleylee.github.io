@@ -43,7 +43,7 @@ Android 开发版本按照字母代号划分为不同的系列，这些代号的
 | (NONE)	     | 1.0	   | API 1     |
 
 
-如果需要查看当前 Android 设备的 SDK 版本，可以通过一下代码：
+如果需要查看当前 Android 设备的 SDK 版本，可以通过以下代码：
 ```java
 android.os.Build.VERSION.SDK_INT
 ```

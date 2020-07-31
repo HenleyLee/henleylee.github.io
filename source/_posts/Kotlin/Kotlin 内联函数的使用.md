@@ -31,27 +31,30 @@ method(lock, { "我是body的方法体" })// lock是一个Lock对象
 
 被 `inline` 关键字标记的函数就是内联函数，其原理就是：在编译时期，把调用这个函数的地方用这个函数的方法体进行替换。
 
-## let() ##
-### 定义 ###
+## 标准函数 ##
+在 Kotlin 源码的 `Standard.kt` 文件中提供了一些很好用的内置高阶函数，可以帮助我们写出更优雅的 Kotlin 代码，提高生产力。
+
+### let() ###
+##### 定义 ####
 `let()` 函数的定义如下：
 ```kotlin
 public inline fun <T, R> T.let(block: (T) -> R): R
 ```
 
-### 功能 ###
+#### 功能 ####
 `let()` 函数的功能：定义一个变量在一个特定的作用域范围内使用，返回值为函数的最后一行或 `return` 表达式。
 
-## with() ##
-### 定义 ###
+### with() ###
+#### 定义 ####
 `with()` 函数的定义如下：
 ```kotlin
 public inline fun <T, R> with(receiver: T, block: T.() -> R): R
 ```
 
-### 功能 ###
+#### 功能 ####
 `with()` 函数的功能：使用给定的 `receiver` 作为接收器调用指定的函数 `block`，在函数内可以通过 `this` 指代该对象，返回值为函数的最后一行或 `return` 表达式。
 
-### 示例 ###
+#### 示例 ####
 1. 在自定义 View 中初始化画笔时很多时候会写下以下代码：
 ```kotlin
 var paint = Paint()
@@ -89,18 +92,18 @@ var list = with(mutableListOf<String>()) {
 }
 ```
 
-## run() ##
-### 定义 ###
+### run() ###
+#### 定义 ####
 `run()` 函数的定义如下：
 ```kotlin
 public inline fun <R> run(block: () -> R): R
 public inline fun <T, R> T.run(block: T.() -> R): R
 ```
 
-### 功能 ###
+#### 功能 ####
 `run()` 函数的功能：调用指定的函数 `block`，以闭包形式返回，返回值为函数的最后一行或 `return` 表达式。
 
-### 示例 ###
+#### 示例 ####
 返回 `return` 表达式，`return` 后面的代码不再执行(注意写法 `@run`)：
 ```kotlin
 run {
@@ -109,17 +112,17 @@ run {
 }
 ```
 
-## apply() ##
-### 定义 ###
+### apply() ###
+#### 定义 ####
 `apply()` 函数的定义如下：
 ```kotlin
 public inline fun <T> T.apply(block: T.() -> Unit): T
 ```
 
-### 功能 ###
+#### 功能 ####
 `apply()` 函数的功能：使用 `this` 值作为接收器调用指定的函数 `block`，在函数范围内可以任意调用该对象的任意方法，返回值为 `this` 值(传入对象的本身)。
 
-### 示例 ###
+#### 示例 ####
 1. 在自定义 View 中初始化画笔时很多时候会写下以下代码：
 ```kotlin
 var paint = Paint()
@@ -156,17 +159,17 @@ var list = mutableListOf<Int>().apply {
 
 > 注意 `apply()` 和 `run()` 函数的区别，`run()` 函数返回的是最后一行，`apply()` 函数返回的是对象本身。由 `apply()` 函数的定义可以看出 `apply()` 函数适用于那些对象初始化需要给其属性赋值的情况。
 
-## also() ##
-### 定义 ###
+### also() ###
+#### 定义 ####
 `also()` 函数的定义如下：
 ```kotlin
 public inline fun <T> T.also(block: (T) -> Unit): T
 ```
 
-### 功能 ###
+#### 功能 ####
 `also()` 函数的功能：使用 `this` 值作为参数调用指定的函数 `block`，在函数范围内可以通过 `it` 指代该对象，返回值为 `this` 值(传入对象的本身)。
 
-### 示例 ###
+#### 示例 ####
 在自定义 View 中初始化画笔时很多时候会写下以下代码：
 ```kotlin
 var paint = Paint()
@@ -185,10 +188,10 @@ var textView = Paint().also {
 }
 ```
 
-### 功能 ###
+#### 功能 ####
 `let()` 函数的功能：使用 `this` 值作为参数调用指定的函数 `block`，在函数范围内可以通过 `it` 指代该对象，返回值为函数的最后一行或 `return` 表达式。
 
-### 示例 ###
+#### 示例 ####
 `let()` 函数有点类似于 `run()` 函数，`let()` 函数在使用中可用于空安全验证，`变量?.let{}`：
 ```kotlin
 var paint: Paint?
@@ -201,40 +204,40 @@ paint?.let {
 }
 ```
 
-## takeIf() ##
-### 定义 ###
+### takeIf() ###
+#### 定义 ####
 `takeIf()` 函数的定义如下：
 ```kotlin
 public inline fun <T> T.takeIf(predicate: (T) -> Boolean): T?
 ```
 
-### 功能 ###
+#### 功能 ####
 `takeIf()` 函数的功能：使用 `this` 值作为参数判断是否满足给定的 `predicate`，如果满足则返回 `this`，否则返回 `null`。
 
-## takeUnless() ##
-### 定义 ###
+### takeUnless() ###
+#### 定义 ####
 `takeUnless()` 函数的定义如下：
 ```kotlin
 public inline fun <T> T.takeUnless(predicate: (T) -> Boolean): T?
 ```
 
-### 功能 ###
+#### 功能 ####
 `takeUnless()` 函数的功能：使用 `this` 值作为参数判断是否满足给定的 `predicate`，如果不满足则返回 `this`，否则返回 `null`，和 `takeIf()` 函数正好相反。
 
-## repeat() ##
-### 定义 ###
+### repeat() ###
+#### 定义 ####
 `repeat()` 函数的定义如下：
 ```kotlin
 public inline fun repeat(times: Int, action: (Int) -> Unit)
 ```
 
-### 功能 ###
+#### 功能 ####
 `repeat()` 函数的功能：连续执行指定次数的指定函数 `action`，其实就是简化了 `for` 循环。
 
-## 函数选择 ##
+### 函数选择 ###
 ![Kotlin内联函数选择](https://henleylee.github.io/medias/kotlin/kotlin_inline_function.png)
 
-## let,with,run,apply,also函数区别 ##
+### 函数区别 ###
 
 | 函数名  | 定义inline的结构                                                     | 函数体内使用的对象	    | 返回值	   | 是否是扩展函数 | 适用的场景                                                                                                                                                                                                                 |
 |---------|----------------------------------------------------------------------|--------------------------|--------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

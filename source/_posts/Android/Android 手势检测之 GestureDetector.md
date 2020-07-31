@@ -14,8 +14,7 @@ date: 2019-01-13 10:36:35
 Android SDK 提供了 `GestureDetector` 类来帮助开发者识别一些基本的触摸手势，主要是通过它的 `onTouchEvent(event)` 方法完成了不同手势的识别。虽然它能识别手势，但是不同的手势要怎么处理，应该是提供给程序员实现的。
 
 ## GestureDetector 介绍 ##
-
-Detector 的意思就是探测者，所以 `GestureDetector` 就是用来监听手势的发生。`GestureDetector` 类对外提供了三个接口：`OnGestureListener`、`OnDoubleTapListener`、`OnContextClickListener`，用来回调不同类型的触摸事件。`GestureDetector` 的类图如下如所示：
+`Detector` 的意思就是探测者，所以 `GestureDetector` 就是用来监听手势的发生。`GestureDetector` 类对外提供了三个接口：`OnGestureListener`、`OnDoubleTapListener`、`OnContextClickListener`，用来回调不同类型的触摸事件。`GestureDetector` 的类图如下如所示：
 ![GestureDetector类图](https://henleylee.github.io/medias/view/view_gesture_detector.png)
 
 `GestureDetector` 类里这些接口的方法，就是相应触摸事件的回调，实现了这些方法，就能实现传入触摸事件之后做出相应的回调。`GestureDetector` 还有一个内部类 `SimpleOnGestureListener`，实现了这三个接口。
@@ -24,26 +23,26 @@ Detector 的意思就是探测者，所以 `GestureDetector` 就是用来监听�
 **`OnGestureListener`** 接口主要用于手势检测，有以下类型事件：按下(Down)、触摸反馈(ShowPress)、长按(LongPress)、单击抬起(SingleTapUp)、滚动(Scroll)、抛(Fling)。`OnGestureListener` 接口包含以下方法：
  - **`boolean onDown(MotionEvent e)：`**用户按下屏幕就会触发。
  - **`void onShowPress(MotionEvent e)：`**用户按下屏幕后100ms(Android 源码)还没有松开或者移动就会触发，官方在源码的解释是说一般用于告诉用户已经识别按下事件的回调。
- - **`void onLongPress(MotionEvent e)：`**用户按下屏幕一定时间后(源码里默认是100ms+500ms)触发，触发之后不会触发其他回调，直至松开(UP事件)。 
- - **`boolean onSingleTapUp(MotionEvent e)：`**用户手指松开(UP事件)的时候如果没有执行 onScroll() 和 onLongPress() 这两个回调的话，就会触发，说明这是一个点击抬起事件，但是不能区分是否双击事件的抬起。
- - **`boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)：`**手指滑动时就会触发(接收到 MOVE 事件，且位移大于一定距离)，e1、e2 分别是之前 DOWN 事件和当前的 MOVE 事件，distanceX 和 distanceY 分别表示自上次调用 onScroll() 以来，沿 X、Y 轴滑动的距离。 
- - **`boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)：`**用户按下屏幕执行抛操作之后的回调，MOVE 事件之后手松开(UP 事件)瞬间的 X 或者 Y 方向速度，如果达到一定数值(源码默认是每秒50px)，就是抛操作(也就是快速滑动的时候松手会有这个回调，因此基本上有 onFling() 必然有 onScroll())。
+ - **`void onLongPress(MotionEvent e)：`**用户按下屏幕一定时间后(源码里默认是100ms+500ms)触发，触发之后不会触发其他回调，直至松开(`UP` 事件)。 
+ - **`boolean onSingleTapUp(MotionEvent e)：`**用户手指松开(UP事件)的时候如果没有执行 `onScroll()` 和 `onLongPress()` 这两个回调的话，就会触发，说明这是一个点击抬起事件，但是不能区分是否双击事件的抬起。
+ - **`boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)：`**手指滑动时就会触发(接收到 `MOVE` 事件，且位移大于一定距离)，`e1`、`e2` 分别是之前 `DOWN` 事件和当前的 `MOVE` 事件，`distanceX` 和 `distanceY` 分别表示自上次调用 `onScroll()` 以来，沿 `X`、`Y` 轴滑动的距离。 
+ - **`boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)：`**用户按下屏幕执行抛操作之后的回调，`MOVE` 事件之后手松开(`UP` 事件)瞬间的 `X` 或者 `Y` 方向速度，如果达到一定数值(源码默认是每秒50px)，就是抛操作(也就是快速滑动的时候松手会有这个回调，因此基本上有 `onFling()` 必然有 `onScroll()`)。
 
 ### OnDoubleTapListener ###
 **`OnDoubleTapListener`** 接口主要用于监听监听单击和双击事件，有以下类型事件：双击(DoubleTap)、单击确认(SingleTapConfirmed) 和 双击事件回调(DoubleTapEvent)。`OnDoubleTapListener` 接口包含以下方法：
  - **`boolean onSingleTapConfirmed(MotionEvent e)：`**当单击事件发生时(确认为单击事件而非双击事件)触发。
  - **`boolean onDoubleTap(MotionEvent e)：`**当双击事件发生时触发。
- - **`boolean onDoubleTapEvent(MotionEvent e)：`**onDoubleTap() 回调之后的输入事件(DOWN、MOVE、UP)都会触发这个方法(该方法可以实现一些双击后的控制，如让 View 双击后变得可拖动等)。
+ - **`boolean onDoubleTapEvent(MotionEvent e)：`**`onDoubleTap()` 回调之后的输入事件(DOWN、MOVE、UP)都会触发这个方法(该方法可以实现一些双击后的控制，如让 View 双击后变得可拖动等)。
 
 ### OnContextClickListener ###
-**`OnContextClickListener`** 接口主要用于检测外部设备上的按钮是否按下，它是在 Android 6.0(API 23)才添加的一个接口。`OnContextClickListener` 接口包含以下方法：
+**`OnContextClickListener`** 接口主要用于检测外部设备上的按钮是否按下，它是在 Android 6.0(API 23) 才添加的一个接口。`OnContextClickListener` 接口包含以下方法：
  - **`boolean onContextClick(MotionEvent e)：`**外部设备上的按钮被按下就会触发。
 
 ### SimpleOnGestureListener ###
 **`SimpleOnGestureListener`** 类是上述三个接口的空实现，一般情况下使用这个比较多，也比较方便。
 
 ## GestureDetector 使用 ##
-**`GestureDetector`** 可以使用 `MotionEvent` 检测各种手势和事件。`GestureDetector.OnGestureListener` 回调将在特定的事件发生时通知用户。这个类只能用于检测触摸事件的 MotionEvent，不能用于轨迹球事件。 
+**`GestureDetector`** 可以使用 `MotionEvent` 检测各种手势和事件。`GestureDetector.OnGestureListener` 回调将在特定的事件发生时通知用户。这个类只能用于检测触摸事件的 `MotionEvent`，不能用于轨迹球事件。 
 
 ### 使用方法 ###
 使用 `GestureDetector` 需要以下几个步骤：
@@ -100,13 +99,13 @@ new Thread(new Runnable() {
 ### 相关方法 ###
 `GestureDetector` 中除了各类监听器之外，与 `GestureDetector` 相关的方法其实并不多，只有以下几个：
 
-| 方法                                                          | 描述                                                                                   |
-|---------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| void setIsLongpressEnabled(boolean isLongpressEnabled)        | 通过布尔值设置是否允许触发长按事件，true 表示允许，false 表示不允许                    |
-| boolean isLongpressEnabled()                                  | 判断当前是否允许触发长按事件，true 表示允许，false 表示不允许                          |
-| boolean onTouchEvent(MotionEvent ev)                          | 这个是其中一个重要的方法，在最开始已经演示过使用方式了                                 |
-| boolean onGenericMotionEvent(MotionEvent ev)                  | 这个是在 API 23 之后才添加的内容，主要是为 OnContextClickListener 服务的，暂时不用关注 |
-| void setOnDoubleTapListener(OnDoubleTapListener listener)     | 设置 OnDoubleTapListener                                                               |
-| void setContextClickListener(OnContextClickListener listener) | 设置 ContextClickListener                                                              |
+| 方法                                                            | 描述                                                                                     |
+|-----------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| `void setIsLongpressEnabled(boolean isLongpressEnabled)`        | 通过布尔值设置是否允许触发长按事件，true 表示允许，false 表示不允许                      |
+| `boolean isLongpressEnabled()`                                  | 判断当前是否允许触发长按事件，true 表示允许，false 表示不允许                            |
+| `boolean onTouchEvent(MotionEvent ev)`                          | 这个是其中一个重要的方法，在最开始已经演示过使用方式了                                   |
+| `boolean onGenericMotionEvent(MotionEvent ev)`                  | 这个是在 API 23 之后才添加的内容，主要是为 `OnContextClickListener` 服务的，暂时不用关注 |
+| `void setOnDoubleTapListener(OnDoubleTapListener listener)`     | 设置 `OnDoubleTapListener`                                                               |
+| `void setContextClickListener(OnContextClickListener listener)` | 设置 `ContextClickListener`                                                              |
 
 

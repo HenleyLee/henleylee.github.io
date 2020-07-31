@@ -89,7 +89,7 @@ public class UserActivity extends AppCompatActivity {
 
 ## 生命周期 ##
 `ViewModel` 对象存在的时间范围是获取 `ViewModel` 时传递给 `ViewModelProvider` 的 `Lifecycle`。`ViewModel` 将一直留在内存中，直到限定其存在时间范围的 `Lifecycle` 永久消失(Activity 被销毁或 Fragment 被移除)。`ViewModel` 的生命周期如下图所示：
-![ViewModel的生命周期](https://henleylee.github.io/medias/android/viewmodel-lifecycle.png)
+![ViewModel的生命周期](https://henleylee.github.io/medias/android/viewmodel_lifecycle.png)
 
 通常在系统首次调用 `Activity` 对象的 `onCreate()` 方法时创建 `ViewModel`。系统可能会在 `Activity` 的整个生命周期内多次调用 `onCreate()` 方法(如在旋转设备屏幕时)。`ViewModel` 存在的时间范围是从首次创建 `ViewModel` 直到 `Activity` 被销毁。
 

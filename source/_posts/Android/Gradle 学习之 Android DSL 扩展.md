@@ -8,28 +8,28 @@ abbrlink: 5b2977c1
 date: 2018-12-29 12:36:55
 ---
 
-在 Android 项目的每个 Module 中的  build.gradle 配置文件中都有一个名称为 `android` 的函数，该函数接收闭包作为参数，然而其实在 [Gradle API 文档](https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html)中是不存在这个函数的。
+在 `Android` 项目的每个 `Module` 中的  `build.gradle` 配置文件中都有一个名称为 `android` 的函数，该函数接收闭包作为参数，然而其实在 [Gradle API 文档](https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html)中是不存在这个函数的。
 
-那么 `android` 函数怎么会出现在这里呢？答案就是 `apply plugin: 'com.android.application'`。这个插件提供了 Android 构建所需要的各种 script。 
+那么 `android` 函数怎么会出现在这里呢？答案就是 `apply plugin: 'com.android.application'`。这个插件提供了 `Android` 构建所需要的各种 `script`。 
 
-[Android Plugin DSL Reference](http://google.github.io/android-gradle-dsl/)：Android 插件 DSL 扩展文档，各个版本的都有。 
+[Android Plugin DSL Reference](http://google.github.io/android-gradle-dsl/)：Android 插件 `DSL` 扩展文档，各个版本的都有。 
 
 ## Gradle 扩展类型 ##
-`BaseExtension` 是所有 Android 插件的基本扩展，使用过程中不直接使用此扩展，而是使用以下之一：
+`BaseExtension` 是所有 `Android` 插件的基本扩展，使用过程中不直接使用此扩展，而是使用以下之一：
  - **`AppExtension：`**用于构建 `Android app module` 的 `com.android.application` 插件扩展。
  - **`LibraryExtension：`**用于构建 `Android library module` 的 `com.android.library` 插件扩展。
  - **`TestExtension：`**用于构建 `Android test module` 的 `com.android.test` 插件扩展。
  - **`FeatureExtension：`**用于构建 `Android Instant Apps` 的 `com.android.feature` 插件扩展。
 
 ## Gradle 通用配置块 ##
-Android Plugin 一些通用的 Script blocks，对于以上四种类型的扩展都支持。
+`Android Plugin` 一些通用的 `Script blocks`，对于以上四种类型的扩展都支持。
 
 ### defaultConfig ###
 **`defaultConfig{}`** 闭包用于配置 Android 插件应用于所有构建变体的变体属性。DSL 对象为 `DefaultConfig`。
 
 `DefaultConfig` 具有以下属性：
- - **`applicationId：`**应用程序ID。
- - **`applicationIdSuffix：`**应用程序ID后缀。
+ - **`applicationId：`**应用程序 ID。
+ - **`applicationIdSuffix：`**应用程序 ID 后缀。
  - **`consumerProguardFiles：`**包含在发布的 AAR 中的 ProGuard 规则文件。
  - **`dimension：`**指定 product flavor 所属的 flavor 维度。
  - **`externalNativeBuild：`**指定使用 CMake 或 ndk-build 的外部 native 构建选项。

@@ -17,7 +17,7 @@ Java 应用中最常见的 bug 就是[空值异常](https://examples.javacodegee
 
 | 方法                                                                           | 描述                                                                                                                                           |
 |--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `static <T> Optional<T> empty()`                                                | 返回空的 Optional 实例                                                                                                                         |
+| `static <T> Optional<T> empty()`                                               | 返回空的 Optional 实例                                                                                                                         |
 | `static <T> Optional<T> of(T value)`                                           | 返回一个描述指定非 null 值的 Optional 实例                                                                                                     |
 | `static <T> Optional<T> ofNullable(T value)`                                   | 如果指定的值为非空，则返回具有指定值的 Optional 实例，返回空的 Optional 实例                                                                   |
 | `T get()`                                                                      | 如果在这个 Optional 中存在一个非 null 值，则返回该值，否则抛出 NoSuchElementException                                                          |

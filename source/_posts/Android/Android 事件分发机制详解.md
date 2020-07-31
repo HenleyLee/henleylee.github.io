@@ -7,23 +7,23 @@ abbrlink: f360d385
 date: 2019-01-19 11:15:26
 ---
 
-Android 上的 View 是树形结构的，View 可能会重叠在一起，当我们点击的地方有多个 View 都可以响应的时候，这个点击事件应该给谁呢？事件分发机制就是为了处理这个问题的。
+`Android` 上的 `View` 是树形结构的，`View` 可能会重叠在一起，当我们点击的地方有多个 `View` 都可以响应的时候，这个点击事件应该给谁呢？事件分发机制就是为了处理这个问题的。
 
 ## 事件分发基础认知 ##
 ### 事件分发的对象是谁？ ###
 **答：点击事件(Touch 事件)**
 
- - 定义：当用户触摸屏幕时(View 或 ViewGroup 派生的控件)，将产生点击事件(Touch 事件)。
-  > Touch事件相关细节（发生触摸的位置、时间、历史记录、手势动作等）被封装成MotionEvent对象
+ - 定义：当用户触摸屏幕时(`View` 或 `ViewGroup` 派生的控件)，将产生点击事件(`Touch` 事件)。
+  > `Touch` 事件相关细节（发生触摸的位置、时间、历史记录、手势动作等）被封装成 `MotionEvent` 对象
 
- - 主要发生的 Touch 事件的事件类型有如下四种：
+ - 主要发生的 `Touch` 事件的事件类型有如下四种：
 
-| 事件类型                  | 具体动作                  |
-|---------------------------|---------------------------|
-| MotionEvent.ACTION_DOWN   | 按下 View(所有事件的开始) |
-| MotionEvent.ACTION_MOVE   | 滑动 View                 |
-| MotionEvent.ACTION_UP     | 抬起 View(与 DOWN 对应)   |
-| MotionEvent.ACTION_CANCEL | 非人为原因结束事件        |
+| 事件类型                    | 具体动作                    |
+|-----------------------------|-----------------------------|
+| `MotionEvent.ACTION_DOWN`   | 按下 `View`(所有事件的开始) |
+| `MotionEvent.ACTION_MOVE`   | 滑动 `View`                 |
+| `MotionEvent.ACTION_UP`     | 抬起 `View`(与 `DOWN` 对应) |
+| `MotionEvent.ACTION_CANCEL` | 非人为原因结束事件          |
 
  - 特别说明：事件列
    从手指接触屏幕 至 手指离开屏幕，这个过程产生的一系列事件，就叫事件列。
@@ -32,23 +32,23 @@ Android 上的 View 是树形结构的，View 可能会重叠在一起，当我�
   即当一个 `MotionEvent` 产生后，系统需要把这个事件传递给一个具体的 `View` 去处理。
 
 ### 事件分发的本质是什么？ ###
-**答：将点击事件(MotionEvent)传递到某个具体的 View 并处理的整个过程**
-> 即当一个点击事件发生后，系统需要将这个事件传递给一个具体的 View 去处理。这个事件传递的过程就是分发过程。
+**答：将点击事件(`MotionEvent`)传递到某个具体的 `View` 并处理的整个过程**
+> 即当一个点击事件发生后，系统需要将这个事件传递给一个具体的 `View` 去处理。这个事件传递的过程就是分发过程。
 
 ### 事件在哪些对象之间进行传递？ ###
-**答：Activity、ViewGroup、View**
+**答：`Activity`、`ViewGroup`、`View`**
 > 一个事件产生后，传递顺序是：`Activity(Window) -> ViewGroup -> View`，事件分发的顺序就是事件传递的顺序。
 
-| 对象      | 简介                                     | 备注                                                                           |
-|-----------|------------------------------------------|--------------------------------------------------------------------------------|
-| Activity  | 控制生命周期并处理事件                   | 统筹视图的加载和显示，通过其它回调方法与 Window、View 交互                     |
-| ViewGroup | 一组 View 的集合(包含多个子 View)        | ViewGroup 继承自 View，区别于单一 View，多了可包含子 View 和定义布局参数的功能 |
-| View      | 所有 UI 组件的基类(不包含子 View 的组件) | 不包含子 View 的单一 View，如 TextView、ImageView、Button 等                   |
+| 对象        | 简介                                         | 备注                                                                           |
+|-------------|----------------------------------------------|--------------------------------------------------------------------------------|
+| `Activity`  | 控制生命周期并处理事件                       | 统筹视图的加载和显示，通过其它回调方法与 Window、View 交互                     |
+| `ViewGroup` | 一组 `View` 的集合(包含多个子 `View`)        | ViewGroup 继承自 View，区别于单一 View，多了可包含子 View 和定义布局参数的功能 |
+| `View`      | 所有 `UI` 组件的基类(不包含子 `View` 的组件) | 不包含子 View 的单一 View，如 TextView、ImageView、Button 等                   |
 
-Android 的 UI 界面是由 `Activity`、`ViewGroup`、`View` 及其派生类组合而成的。View 是所有 UI 组件的基类，ViewGroup 是容纳 UI 组件的容器，即一组 View 的集合(包含很多子 View 和子 VewGroup)。
+`Android` 的 `UI` 界面是由 `Activity`、`ViewGroup`、`View` 及其派生类组合而成的。`View` 是所有 `UI` 组件的基类，`ViewGroup` 是容纳 `UI` 组件的容器，即一组 `View` 的集合(包含很多子 `View` 和子 `VewGroup`)。
 
 ### 事件分发过程由哪些方法协作完成？ ###
-**答：dispatchTouchEvent() 、onInterceptTouchEvent() 和 onTouchEvent()**
+**答：`dispatchTouchEvent()`、`onInterceptTouchEvent()` 和 `onTouchEvent()`**
 ![事件分发过程的方法](https://henleylee.github.io/medias/touch/event_method.png)
 
 ### 总结 ###
@@ -74,14 +74,14 @@ Android 的 UI 界面是由 `Activity`、`ViewGroup`、`View` 及其派生类组
 
 ![dispatchTouchEvent()方法返回情况(返回true)业务流程说明图](https://henleylee.github.io/medias/touch/event_dispatch_process_true.png)
 
-> 事件停止分发，逐层往上返回`(若无上层返回，则结束)`；后续事件会继续分发到该 View。
+> 事件停止分发，逐层往上返回`(若无上层返回，则结束)`；后续事件会继续分发到该 `View`。
 
 #### 返回情况：返回false ####
 ![dispatchTouchEvent()方法返回情况(返回false)](https://henleylee.github.io/medias/touch/event_dispatch_return_false.png)
 
 ![dispatchTouchEvent()方法返回情况(返回false)业务流程说明图](https://henleylee.github.io/medias/touch/event_dispatch_process_false.png)
 
-> 将事件回传给上层的 `onTouchEvent()` 处理`(若无上层返回，则结束)`；当前 View 仍然接受此事件的其他事件`(与 onTouchEvent() 区别)`。
+> 将事件回传给上层的 `onTouchEvent()` 处理`(若无上层返回，则结束)`；当前 `View` 仍然接受此事件的其他事件`(与 onTouchEvent() 区别)`。
 
 ### onInterceptTouchEvent() ###
 #### 简介 ####
@@ -95,14 +95,14 @@ Android 的 UI 界面是由 `Activity`、`ViewGroup`、`View` 及其派生类组
 
 ![onInterceptTouchEvent()方法返回情况(返回true)业务流程说明图](https://henleylee.github.io/medias/touch/event_intercept_process_true.png)
 
-> 拦截事件，事件停止往下传递，ViewGroup 自己处理事件，调用父类 super.dispatchTouchEvent()，最终执行自己的 onTouchEvent()；同一个事件的其他事件列都交由该 View 处理；在同一个事件列中该方法不会再次被调用。
+> 拦截事件，事件停止往下传递，`ViewGroup` 自己处理事件，调用父类 `super.dispatchTouchEvent()`，最终执行自己的 `onTouchEvent()`；同一个事件的其他事件列都交由该 `View` 处理；在同一个事件列中该方法不会再次被调用。
 
 #### 返回情况：返回false(默认) ####
 ![onInterceptTouchEvent()方法返回情况(返回false)](https://henleylee.github.io/medias/touch/event_intercept_return_false.png)
 
 ![onInterceptTouchEvent()方法返回情况(返回false)业务流程说明图](https://henleylee.github.io/medias/touch/event_intercept_process_false.png)
 
-> 不拦截事件，事件继续往下传递，事件传递到子 View，调用父类 View.dispatchTouchEvent() 方法中去处理；当前 View 仍然接受此事件的其他事件`(与 onTouchEvent() 区别)`。
+> 不拦截事件，事件继续往下传递，事件传递到子 `View`，调用父类 `View.dispatchTouchEvent()` 方法中去处理；当前 `View` 仍然接受此事件的其他事件`(与 onTouchEvent() 区别)`。
 
 ### onTouchEvent() ###
 #### 简介 ####
@@ -123,7 +123,7 @@ Android 的 UI 界面是由 `Activity`、`ViewGroup`、`View` 及其派生类组
 
 ![onTouchEvent()方法返回情况(返回false)业务流程说明图](https://henleylee.github.io/medias/touch/event_touch_process_false.png)
 
-> 将事件向上传递给给上层的 `onTouchEvent()` 处理`(若无上层返回，则结束)`；当前 View 不再接受此事件的其他事件`(与 dispatchTouchEvent()onInterceptTouchEvent() 区别)`。
+> 将事件向上传递给给上层的 `onTouchEvent()` 处理`(若无上层返回，则结束)`；当前 `View` 不再接受此事件的其他事件`(与 dispatchTouchEvent() onInterceptTouchEvent() 区别)`。
 
 ### 三者关系 ###
 下面将用一段伪代码来阐述上述三个方法的关系和点击事件传递规则：
@@ -260,7 +260,7 @@ public boolean shouldCloseOnTouch(Context context, MotionEvent event) {
 ```
 
 #### 总结 ####
- - 过程：当一个点击事件发生时，从 Activity 的事件分发开始(Activity.dispatchTouchEvent())
+ - 过程：当一个点击事件发生时，从 `Activity` 的事件分发开始(`Activity.dispatchTouchEvent()`)
 ![Activity事件分发的过程](https://henleylee.github.io/medias/touch/event_activity_summary_process.png)
 
  - 核心方法总结：
@@ -270,7 +270,7 @@ public boolean shouldCloseOnTouch(Context context, MotionEvent event) {
 从 `Activity` 事件分发机制可知，`ViewGroup` 的事件分发机制从 `dispatchTouchEvent()` 开始。
 
 #### 源码分析 ####
-> Android 5.0 后，ViewGroup.dispatchTouchEvent() 的源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。
+> Android 5.0 后，`ViewGroup.dispatchTouchEvent()` 的源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。
 
 ```java
 /**
@@ -426,7 +426,7 @@ button.setOnTouchListener(new OnTouchListener() {
 ```
 
 接下来，继续进行 onTouchEvent(event) 的源码分析：
-> Android 5.0 后 View.onTouchEvent() 源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。
+> Android 5.0 后 `View.onTouchEvent()` 源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。
 
 ```java
 /**
@@ -539,22 +539,22 @@ mOnTouchListener != null && (mViewFlags & ENABLED_MASK) == ENABLED && mOnTouchLi
 ```
 
 ### Touch 事件的后续事件(MOVE、UP)层级传递 ###
- - 如果给控件注册了 `Touch` 事件，每次点击都会触发一系列 `action` 事件(ACTION_DOWN、ACTION_MOVE、ACTION_UP 等)；
- - 当 `dispatchTouchEvent()` 在进行事件分发的时候，只有前一个事件(如 ACTION_DOWN)返回 `true`，才会收到后一个事件(ACTION_MOVE 和 ACTION_UP)；
-> 即如果在执行 ACTION_DOWN 时返回 false，后面一系列的 ACTION_MOVE 和 ACTION_UP 事件都不会执行。
+ - 如果给控件注册了 `Touch` 事件，每次点击都会触发一系列 `action` 事件(`ACTION_DOWN`、`ACTION_MOVE`、`ACTION_UP` 等)；
+ - 当 `dispatchTouchEvent()` 在进行事件分发的时候，只有前一个事件(如 `ACTION_DOWN`)返回 `true`，才会收到后一个事件(`ACTION_MOVE` 和 `ACTION_UP`)；
+> 即如果在执行 `ACTION_DOWN` 时返回 false，后面一系列的 `ACTION_MOVE` 和 `ACTION_UP` 事件都不会执行。
 
 从上面对事件分发机制分析知：
- - `dispatchTouchEvent()` 和 `onTouchEvent()` 消费事件、终结事件传递(返回 true)；
- - 而 `onInterceptTouchEvent()` 并不能消费事件，它相当于是一个分叉口起到分流导流的作用，对后续的 ACTION_MOVE 和 ACTION_UP 事件接收起到非常大的作用。
-> 注意：接收了 ACTION_DOWN 事件的函数不一定能收到后续事件(ACTION_MOVE、ACTION_UP)。
+ - `dispatchTouchEvent()` 和 `onTouchEvent()` 消费事件、终结事件传递(返回 `true`)；
+ - 而 `onInterceptTouchEvent()` 并不能消费事件，它相当于是一个分叉口起到分流导流的作用，对后续的 `ACTION_MOVE` 和 `ACTION_UP` 事件接收起到非常大的作用。
+> 注意：接收了 `ACTION_DOWN` 事件的函数不一定能收到后续事件(`ACTION_MOVE`、`ACTION_UP`)。
 
-ACTION_MOVE 和 ACTION_UP 事件的传递结论：
- - 结论1：若对象(Activity、ViewGroup、View)的 `dispatchTouchEvent()` 方法分发事件后消费了事件(返回 true)，那么收到 ACTION_DOWN 的函数也能收到 ACTION_MOVE 和 ACTION_UP；
+`ACTION_MOVE` 和 `ACTION_UP` 事件的传递结论：
+ - 结论1：若对象(`Activity`、`ViewGroup`、`View`)的 `dispatchTouchEvent()` 方法分发事件后消费了事件(返回 `true`)，那么收到 `ACTION_DOWN` 的函数也能收到 `ACTION_MOVE` 和 `ACTION_UP`；
 > ![ACTION_MOVE和ACTION_UP事件的传递结论1](https://henleylee.github.io/medias/touch/event_action_conclusion_1.png)
 > 黑线：ACTION_DOWN 事件传递方向
 > 红线：ACTION_MOVE、ACTION_UP 事件传递方向
 
- - 结论2：若对象(Activity、ViewGroup、View)的 `onTouchEvent()` 方法处理了事件(返回 true)，那么 ACTION_MOVE、ACTION_UP 的事件从上往下传到该 `View` 后就不再往下传递，而是直接传给自己的 `onTouchEvent()` 方法并结束本次事件传递过程。
+ - 结论2：若对象(`Activity`、`ViewGroup`、`View`)的 `onTouchEvent()` 方法处理了事件(返回 `true`)，那么 `ACTION_MOVE`、`ACTION_UP` 的事件从上往下传到该 `View` 后就不再往下传递，而是直接传给自己的 `onTouchEvent()` 方法并结束本次事件传递过程。
 > ![ACTION_MOVE和ACTION_UP事件的传递结论2](https://henleylee.github.io/medias/touch/event_action_conclusion_2.png)
 > 黑线：ACTION_DOWN 事件传递方向
 > 红线：ACTION_MOVE、ACTION_UP 事件传递方向

@@ -8,25 +8,25 @@ date: 2019-01-10 18:55:27
 ---
 
 ## 作用 ##
-在自定义 View 过程中，Draw 的主要作用就是**`绘制 View 视图`**。
+在自定义 `View` 过程中，`Draw` 的主要作用就是**`绘制 View 视图`**。
 
-> 绘制 View 视图就是绘制 `View` 自身和装饰：背景、内容、滚动指示器、滚动条、和前景等。
+> 绘制 `View` 视图就是绘制 `View` 自身和装饰：背景、内容、滚动指示器、滚动条、和前景等。
 
 ## draw 过程详解 ##
-**`draw`** 过程根据 View 的类型分为以下两种情况：
+**`draw`** 过程根据 `View` 的类型分为以下两种情况：
  - **`单一 View：`**仅绘制 `View` 自身。
  - **`ViewGroup：`**除了绘制 `View` 自身外，还需要绘制父容器中的其它所有子 `View`(遍历调用所有子元素的 `draw()` 和各子元素再递归去执行该流程)。
 
 ### 单一 View 的 draw 过程 ###
 #### 应用场景 ####
-在没有现成的控件 View 满足需求、需自己实现时，则使用自定义单一 View。
+在没有现成的控件 `View` 满足需求、需自己实现时，则使用自定义单一 `View`。
 
 #### 使用方法 ####
 继承自 `View`、`SurfaceView` 或 其他 `View`；`不包含子 View`。
 
 #### 绘制原理 ####
-绘制 View 视图一般分为2个步骤：
-1. View 绘制自身(含背景、内容)；
+绘制 `View` 视图一般分为2个步骤：
+1. `View` 绘制自身(含背景、内容)；
 2. 绘制装饰(滚动指示器、滚动条、和前景)。
 
 #### 绘制流程 ####
@@ -231,15 +231,15 @@ date: 2019-01-10 18:55:27
 继承自 `ViewGroup` 或各种 `Layout`；`包含子 View`。
 
 #### 绘制原理 ####
-绘制 ViewGroup 视图一般分为2个步骤：
-1. ViewGroup 绘制自身(含背景、内容)；
-2. ViewGroup 遍历其所有子 View 并绘制其所有子 View。
+绘制 `ViewGroup` 视图一般分为2个步骤：
+1. `ViewGroup` 绘制自身(含背景、内容)；
+2. `ViewGroup` 遍历其所有子 `View` 并绘制其所有子 `View`。
 
 ![ViewGroup自上而下遍历](https://henleylee.github.io//medias/view/view_group_tree.png)
 
 #### 绘制流程 ####
 ![ViewGroup的draw过程](https://henleylee.github.io//medias/view/view_draw_group.png)
-`ViewGroup` 和 `View` 同样拥有 `draw()` 和 `ondraw()`，但二者不同的：
+`ViewGroup` 和 `View` 同样拥有 `draw()` 和 `onDraw()`，但二者不同的：
 
 下面将 `draw` 过程中的方法进行详细分析：`draw` 过程入口为 `draw()`
 ```java
@@ -324,7 +324,7 @@ date: 2019-01-10 18:55:27
     }
 ```
 
-由于在 `draw()` 中绘制步骤调用的 `drawBackground()`、`onDraw()`、`onDrawForeground()` 方法，与单一 View 的 draw 过程类似，下面只详细分析一下与单一 View 的 draw 过程最大不同的步骤：`dispatchDraw()`
+由于在 `draw()` 中绘制步骤调用的 `drawBackground()`、`onDraw()`、`onDrawForeground()` 方法，与单一 `View` 的 `draw` 过程类似，下面只详细分析一下与单一 `View` 的 `draw` 过程最大不同的步骤：`dispatchDraw()`
 ```java
     /**
      * 源码分析：dispatchDraw()

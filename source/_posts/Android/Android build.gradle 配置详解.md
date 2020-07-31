@@ -11,12 +11,12 @@ date: 2018-12-20 18:25:36
 ## Gradle 简介 ##
 Android Studio 是采用 `Gradle` 来构建项目的。`Gradle` 是一个非常先进的项目构建工具，若想用 Gradle 构建 Android 项目，需要创建一个脚本，此脚本被称为 `build.gradle`。
 
-Gradle 构建脚本并非基于传统的 `XML` 文件(如Ant和Maven)，而是 `Groovy` 的领域专业语言(`DSL`)。`Groovy` 是一种基于 `JVM` 的动态语言，优势更加显著。
+Gradle 构建脚本并非基于传统的 `XML` 文件(如 Ant 和 Maven)，而是 `Groovy` 的领域专业语言(`DSL`)。`Groovy` 是一种基于 `JVM` 的动态语言，优势更加显著。
 
 > 若只是用它构建普通的工程，可以不去学 Groovy 语言；若想深入的研究自定义的构建插件，可以考虑学 Groovy，因为 Groovy 语言是基于 JVM 的动态语言，所以有 Java 基础的同学学习 Groovy 语言不会很难。
 
 ## build.gradle 文件 ##
-在一个 Android 项目中一般会出现至少 2 个 `build.gradle` 文件，一个是 `Project` 的 gradle 文件，其他的都是 `Module` 的 gradle 文件。
+在一个 `Android` 项目中一般会出现至少 2 个 `build.gradle` 文件，一个是 `Project` 的 `gradle` 文件，其他的都是 `Module` 的 `gradle` 文件。
 
 > 如果项目目录结构切换到 Android 模式下，则所有的 `gradle` 文件都在 `Gradle Scripts` 分组下。
 
@@ -58,12 +58,12 @@ task clean(type: Delete) {
 }
 ```
 
-可以看到 Project 的 build.gradle 配置包含以下内容：
+可以看到 `Project` 的 `build.gradle` 配置包含以下内容：
  - **`buildscript{}：`**配置 Gradle 脚本执行所需依赖分别是对应的 Maven 库和插件。
    - **`repositories{}：`**配置 Gradle 脚本依赖项上所需要的存储库。
    - **`dependencies{}：`**配置 Gradle 脚本所需要的依赖项。
  - **`allprojects{}：`**配置项目本身及其每个子项目所需要的依赖。
- - **`task clean(type: Delete){}：`**运行 gradle clean 时，执行此处定义的 task 任务。该任务继承自 Delete，删除根目录中的 build 目录。
+ - **`task clean(type: Delete){}：`**运行 `gradle clean` 时，执行此处定义的 task 任务。该任务继承自 Delete，删除根目录中的 build 目录。
 
 ### Module 的 build.gradle 文件 ###
 **`Module`** 的 `build.gradle` 文件对应的默认配置如下：
@@ -101,7 +101,7 @@ dependencies {
 }
 ```
 
-可以看到 Module 的 build.gradle 配置包含以下内容：
+可以看到 `Module` 的 `build.gradle` 配置包含以下内容：
  - **`apply plugin：`**配置 Module 应用的插件。
  - **`android：`**配置项目构建的各种属性。
    - **`compileSdkVersion：`**配置编译版本。

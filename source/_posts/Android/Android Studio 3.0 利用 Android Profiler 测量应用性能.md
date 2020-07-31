@@ -16,15 +16,15 @@ Android Studio 3.0 采用全新的 `Android Profiler` 窗口取代 `Android Moni
 ## Android Profiler 的使用方法 ##
 ### Android Profiler 的打开步骤 ###
 要打开 **Android Profiler** 窗口，请按以下步骤操作：
-1. 点击 **View > Tool Windows > Android Profiler**（也可以点击工具栏中的 **Android Profiler** <img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e53ac183fbbb?w=24&h=24&f=png&s=1193" style="vertical-align:middle;"/>）。
+1. 点击 **View > Tool Windows > Android Profiler**（也可以点击工具栏中的 **Android Profiler** <img src="https://henleylee.github.io/medias/android/android_profiler_icon.jpg" style="vertical-align:middle;"/>）。
 2. 从 Android Profiler 工具栏中选择您想要分析的设备和应用进程。 如果您通过 USB 连接了某个设备但该设备未在设备列表中列出，请确保您已[启用 USB 调试](https://developer.android.google.cn/studio/debug/dev-options.html#enable)（如果您使用的是 Android Emulator 或已取得 root 权限的设备，Android Profiler 将列出所有正在运行的进程，即使这些进程可能无法调试。 当您发布可调试应用时，将会默认选择此进程）。
 3. 在 **Android Profiler** 窗口顶部（如下图所示），选择您想要分析的设备和应用进程。
 
 Android Profiler 共享时间线的视图显示如下图所示：
-![](https://user-gold-cdn.xitu.io/2018/8/6/1650e54e3a40d6da?w=1228&h=960&f=png&s=519840)
+![Android Profiler 共享时间线](https://henleylee.github.io/medias/android/android_profiler_timeline.jpg)
 Android Profiler 目前可显示共享时间线视图，可以在按钮①的位置选择设备，通过按钮②的位置选择想要的app进程，工具最底部显示了一个时间轴，其中包含了CPU、内存和网络使用的实时图。该窗口还包括时间轴缩放控制按钮③，一个跳转到实时更新的按钮④，以及显示活动状态、用户输入事件和屏幕旋转事件⑤的事件时间轴。
 
-当您启动 Android Profiler 后，它会持续收集分析数据，直至您断开设备连接或点击 **Close** <img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e53d003e386b?w=24&h=24&f=png&s=986" style="vertical-align:middle;"/>。
+当您启动 Android Profiler 后，它会持续收集分析数据，直至您断开设备连接或点击 **Close** <img src="https://henleylee.github.io/medias/android/android_profiler_close.jpg" style="vertical-align:middle;"/>。
 
 此共享时间线视图只显示时间线图表。 要使用详细分析工具，请点击与您想查看的性能数据对应的图表。 例如，要使用工具查看堆数据和跟踪内存分配，可点击 **MEMORY** 图表。
 
@@ -60,7 +60,7 @@ Android Profiler 目前可显示共享时间线视图，可以在按钮①的位
 
 ### CPU Profiler 概览 ###
 当您打开 CPU Profiler 时，它将立即开始显示应用的 CPU 使用率和线程活动。CPU Profiler 的默认视图如下图所示：
-![CPU Profiler](https://user-gold-cdn.xitu.io/2018/8/7/165135123618ed9d?w=900&h=546&f=png&s=174876)
+![CPU Profiler](https://henleylee.github.io/medias/android/android_profiler_cpu_default.jpg)
 
 如图所示，CPU Profiler 的默认视图包括以下内容：
 1. **Event 时间线：** 显示应用中在其生命周期不同状态间转换的活动，并表明用户与设备的交互，包括屏幕旋转 Event。 如需了解有关 Event 时间线的更多信息，包括如何启用它，请阅读 [启用高级分析](https://developer.android.google.cn/studio/profile/android-profiler.html#advanced-profiling)。
@@ -79,9 +79,9 @@ Android Profiler 目前可显示共享时间线视图，可以在按钮①的位
 >注： 分析器还会报告 Android Studio 和 Android 平台添加到您的应用进程（如 JDWP、Profile Saver、Studio:VMStats、Studio:Perfa 以及 Studio:Heartbeat，尽管它们在线程活动时间线中显示的确切名称可能有所不同）的线程 CPU 使用率。 这表示 CPU 时间线中应用的 CPU 使用率还可反映这些线程使用的 CPU 时间。 您可以在线程活动时间线中查看其中的一些线程并监控其活动。 （不过，由于分析器线程执行原生代码，因此，您无法为它们记录函数跟踪数据。）Android Studio 将报告此数据，以便当线程活动及 CPU 使用率实际上是由应用代码引发时，您可以轻松识别。
 
 ### 记录和检查函数跟踪 ###
-要开始记录函数跟踪，从下拉菜单中选择 **Sampled** 或 **Instrumented** 记录配置，或选择您创建的[自定义记录配置](https://developer.android.google.cn/studio/profile/cpu-profiler#configurations)，然后点击 **Record** <img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e9376175da3f?w=24&h=24&f=png&s=704" style="vertical-align:middle;"/>。 与应用交互并在完成后点击 **Stop recording** <img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e938a6b85760?w=24&h=24&f=png&s=246" style="vertical-align:middle;"/>。 分析器将自动选择记录的时间范围，并在函数跟踪窗格中显示其跟踪信息。如果您想检查另一个线程的函数跟踪，只需从线程活动时间线中选中它。
+要开始记录函数跟踪，从下拉菜单中选择 **Sampled** 或 **Instrumented** 记录配置，或选择您创建的[自定义记录配置](https://developer.android.google.cn/studio/profile/cpu-profiler#configurations)，然后点击 **Record** <img src="https://henleylee.github.io/medias/android/android_profiler_record_start.jpg" style="vertical-align:middle;"/>。 与应用交互并在完成后点击 **Stop recording** <img src="https://henleylee.github.io/medias/android/android_profiler_record_stop.jpg" style="vertical-align:middle;"/>。 分析器将自动选择记录的时间范围，并在函数跟踪窗格中显示其跟踪信息。如果您想检查另一个线程的函数跟踪，只需从线程活动时间线中选中它。
 记录函数跟踪后的 CPU Profiler 视图，如下图所示：
-![CPU Profiler](https://user-gold-cdn.xitu.io/2018/8/7/16513522c74d5886?w=900&h=519&f=png&s=287135)
+![CPU Profiler](https://henleylee.github.io/medias/android/android_profiler_cpu_work.jpg)
 如图所示，记录函数跟踪后的 CPU Profiler 视图包括以下内容：
 1. **选择时间范围：** 用于确定您要在跟踪窗格中检查所记录时间范围的哪一部分。 当您首次记录函数跟踪时，CPU Profiler 将在 CPU 时间线中自动选择您的记录的完整长度。 如果您想仅检查所记录时间范围一小部分的函数跟踪数据，您可以点击并拖动突出显示的区域边缘以修改其长度。
 2. **时间戳：** 用于表示所记录函数跟踪的开始和结束时间（相对于分析器从设备开始收集 CPU 使用率信息的时间）。 在选择时间范围时，您可以点击时间戳以自动选择完整记录，如果您有多个要进行切换的记录，则此做法尤其有用。
@@ -109,7 +109,7 @@ Android 提供一个[托管内存环境](https://developer.android.google.cn/top
 
 ### Memory Profiler 概览 ###
 当您首次打开 Memory Profiler 时，您将看到一条表示应用内存使用量的详细时间线，并可访问用于强制执行垃圾回收、捕捉堆转储和记录内存分配的各种工具。Memory Profiler 的默认视图如下图所示：
-![Memory Profiler](https://user-gold-cdn.xitu.io/2018/8/7/1651358b73ca33ff?w=900&h=427&f=png&s=147425)
+![Memory Profiler](https://henleylee.github.io/medias/android/android_profiler_memory_default.jpg)
 
 如图所示，Memory Profiler 的默认视图包括以下各项：
 1. 用于强制执行垃圾回收 Event 的按钮。
@@ -133,7 +133,7 @@ Android 提供一个[托管内存环境](https://developer.android.google.cn/top
 #### 如何计算内存 ####
 您在 Memory Profiler 顶部看到的数字取决于您的应用根据 Android 系统机制所提交的所有私有内存页面数。 此计数不包含与系统或其他应用共享的页面。
 Memory Profiler 顶部的内存计数图例，如下图所示：
-![Memory Profiler Counts](https://user-gold-cdn.xitu.io/2018/8/7/16513597eb498e14?w=900&h=26&f=png&s=22990)
+![Memory Profiler Counts](https://henleylee.github.io/medias/android/android_profiler_memory_counts.jpg)
 
 内存计数中的类别如下所示：
 
@@ -161,11 +161,11 @@ Memory Profiler 顶部的内存计数图例，如下图所示：
  - 每个分配的堆叠追踪，包括在哪个线程中。
  - 对象在何时被取消分配（仅当使用运行 Android 8.0 或更高版本的设备时）。
 
-如果您的设备运行 Android 8.0 或更高版本，您可以随时按照下述方法查看您的对象分配： 只需点击并按住时间线，并拖动选择您想要查看分配的区域。 不需要开始记录会话，因为 Android 8.0 及更高版本附带设备内置分析工具，可持续跟踪您的应用分配。如下如所示：
-![](https://user-gold-cdn.xitu.io/2018/8/20/1655579d3b39c0c8?w=800&h=552&f=gif&s=2824291)
+如果您的设备运行 Android 8.0 或更高版本，您可以随时按照下述方法查看您的对象分配： 只需点击并按住时间线，并拖动选择您想要查看分配的区域。不需要开始记录会话，因为 Android 8.0 及更高版本附带设备内置分析工具，可持续跟踪您的应用分配。如下如所示：
+![](https://henleylee.github.io/medias/android/android_profiler_memory_looking.gif)
 
-如果您的设备运行 Android 7.1 或更低版本，则在 Memory Profiler 工具栏中点击 **Record memory allocations** <img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e9376175da3f?w=24&h=24&f=png&s=704" style="vertical-align:middle;"/>。 记录时，Android Monitor 将跟踪您的应用中进行的所有分配。 操作完成后，点击 **Stop recording** <img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e938a6b85760?w=24&h=24&f=png&s=246" style="vertical-align:middle;"/>（同一个按钮）以查看分配。如下如所示：
-![](https://user-gold-cdn.xitu.io/2018/8/20/165557bab738c330?w=800&h=552&f=gif&s=1907540)
+如果您的设备运行 Android 7.1 或更低版本，则在 Memory Profiler 工具栏中点击 **Record memory allocations** <img src="https://henleylee.github.io/medias/android/android_profiler_record_start.jpg" style="vertical-align:middle;"/>。 记录时，Android Monitor 将跟踪您的应用中进行的所有分配。 操作完成后，点击 **Stop recording** <img src="https://henleylee.github.io/medias/android/android_profiler_record_stop.jpg" style="vertical-align:middle;"/>（同一个按钮）以查看分配。如下如所示：
+![](https://henleylee.github.io/medias/android/android_profiler_memory_recording.gif)
 
 在选择一个时间线区域后（或当您使用运行 Android 7.1 或更低版本的设备完成记录会话时），已分配对象的列表将显示在时间线下方，按类名称进行分组，并按其堆计数排序。
 
@@ -176,7 +176,7 @@ Memory Profiler 顶部的内存计数图例，如下图所示：
 2. 在 **Instance View** 窗格中，点击一个实例。 此时下方将出现 **Call Stack** 标签，显示该实例被分配到何处以及哪个线程中。
 3. 在 **Call Stack** 标签中，点击任意行以在编辑器中跳转到该代码。
 有关每个已分配对象的详情在右侧的 Instance View 中的显示，如下图所示：
-![Memory Profiler Allocations Detail](https://user-gold-cdn.xitu.io/2018/8/7/165135a30bccf7ad?w=900&h=509&f=png&s=355818)
+![Memory Profiler Allocations Detail](https://henleylee.github.io/medias/android/android_profiler_memory_stack.jpg)
 
 默认情况下，左侧的分配列表按类名称排列。在列表顶部，您可以使用右侧的下拉列表在以下排列方式之间进行切换：
  - **Arrange by class：** 基于类名称对所有分配进行分组。
@@ -191,10 +191,10 @@ Memory Profiler 顶部的内存计数图例，如下图所示：
  - 在代码中的何处仍在引用每个对象。
  - 对象所分配到的调用堆栈（目前，如果您在记录分配时捕获堆转储，则只有在 Android 7.1 及更低版本中，堆转储才能使用调用堆栈）。
 
-要捕获堆转储，在 Memory Profiler 工具栏中点击 **Dump Java heap** <img src="https://user-gold-cdn.xitu.io/2018/8/7/1651331695f5cd62?w=24&h=24&f=png&s=902" style="vertical-align:middle;"/>。 在转储堆期间，Java 内存量可能会暂时增加。 这很正常，因为堆转储与您的应用发生在同一进程中，并需要一些内存来收集数据。
+要捕获堆转储，在 Memory Profiler 工具栏中点击 **Dump Java heap** <img src="https://henleylee.github.io/medias/android/android_profiler_heap_icon.jpg" style="vertical-align:middle;"/>。 在转储堆期间，Java 内存量可能会暂时增加。 这很正常，因为堆转储与您的应用发生在同一进程中，并需要一些内存来收集数据。
 
 堆转储显示在内存时间线下，显示堆中的所有类类型，如下图所示：
-![Memory Profiler Dump](https://user-gold-cdn.xitu.io/2018/8/7/165132c7acf3cd47?w=800&h=556&f=png&s=258174)
+![Memory Profiler Dump](https://henleylee.github.io/medias/android/android_profiler_heap_timeline.jpg)
 
 > 注：如果您需要更精确地了解转储的创建时间，可以通过调用 [dumpHprofData()](https://developer.android.google.cn/reference/android/os/Debug.html#dumpHprofData(java.lang.String)) 在应用代码的关键点创建堆转储。
 
@@ -206,7 +206,7 @@ Memory Profiler 顶部的内存计数图例，如下图所示：
 
 默认情况下，堆转储不会向您显示每个已分配对象的堆叠追踪。 要获取堆叠追踪，在点击 Dump Java heap 之前，您必须先开始记录内存分配。然后，您可以在 Instance View 中选择一个实例，并查看 Call Stack 标签以及 References 标签，如下图所示。不过，在您开始记录分配之前，可能已分配一些对象，因此，调用堆栈不能用于这些对象。包含调用堆栈的实例在图标  上用一个“堆栈”标志表示。（遗憾的是，由于堆叠追踪需要您执行分配记录，因此，您目前无法在 Android 8.0 上查看堆转储的堆叠追踪。）
 
-默认情况下，堆转储不会向您显示每个已分配对象的堆叠追踪。 要获取堆叠追踪，在点击 Dump Java heap 之前，您必须先开始记录内存分配。然后，您可以在 Instance View 中选择一个实例，并查看 Call Stack 标签以及 References 标签，如下图所示。不过，在您开始记录分配之前，可能已分配一些对象，因此，调用堆栈不能用于这些对象。包含调用堆栈的实例在图标 <img src="https://user-gold-cdn.xitu.io/2018/8/7/16513318e337e050?w=24&h=24&f=png&s=971" style="vertical-align:middle;"/> 上用一个“堆栈”标志表示。（遗憾的是，由于堆叠追踪需要您执行分配记录，因此，您目前无法在 Android 8.0 上查看堆转储的堆叠追踪。）
+默认情况下，堆转储不会向您显示每个已分配对象的堆叠追踪。 要获取堆叠追踪，在点击 Dump Java heap 之前，您必须先开始记录内存分配。然后，您可以在 Instance View 中选择一个实例，并查看 Call Stack 标签以及 References 标签，如下图所示。不过，在您开始记录分配之前，可能已分配一些对象，因此，调用堆栈不能用于这些对象。包含调用堆栈的实例在图标 <img src="https://henleylee.github.io/medias/android/android_profiler_instance_icon.jpg" style="vertical-align:middle;"/> 上用一个“堆栈”标志表示。（遗憾的是，由于堆叠追踪需要您执行分配记录，因此，您目前无法在 Android 8.0 上查看堆转储的堆叠追踪。）
 
 在您的堆转储中，请注意由下列任意情况引起的内存泄漏：
 
@@ -215,7 +215,7 @@ Memory Profiler 顶部的内存计数图例，如下图所示：
  - 对象保持时间超出所需时间的缓存。
 
 捕获堆转储需要的持续时间标示在时间线中，如下图所示：
-![Memory Profiler Dump Stacktrace](https://user-gold-cdn.xitu.io/2018/8/7/1651337080c57ed4?w=900&h=474&f=png&s=360396)
+![Memory Profiler Dump Stacktrace](https://henleylee.github.io/medias/android/android_profiler_instance_timeline.jpg)
 
 在类列表中，您可以查看以下信息：
 
@@ -245,7 +245,7 @@ Memory Profiler 顶部的内存计数图例，如下图所示：
  - **Retained Size：** 此实例支配的内存大小（根据 [dominator 树](https://en.wikipedia.org/wiki/Dominator_(graph_theory))）。
 
 #### 将堆转储另存为 HPROF ####
-在捕获堆转储后，仅当分析器运行时才能在 Memory Profiler 中查看数据。 当您退出分析会话时，您将丢失堆转储。 因此，如果您要保存堆转储以供日后查看，可通过点击时间线下方工具栏中的 **Export heap dump as HPROF file** <img src="https://user-gold-cdn.xitu.io/2018/8/7/165133f23446e14d?w=24&h=24&f=png&s=1086" style="vertical-align:middle;"/>，将堆转储导出到一个 HPROF 文件中。 在显示的对话框中，确保使用 `.hprof` 后缀保存文件。
+在捕获堆转储后，仅当分析器运行时才能在 Memory Profiler 中查看数据。 当您退出分析会话时，您将丢失堆转储。 因此，如果您要保存堆转储以供日后查看，可通过点击时间线下方工具栏中的 **Export heap dump as HPROF file** <img src="https://henleylee.github.io/medias/android/android_profiler_export_icon.jpg" style="vertical-align:middle;"/>，将堆转储导出到一个 HPROF 文件中。 在显示的对话框中，确保使用 `.hprof` 后缀保存文件。
 
 然后，通过将此文件拖到一个空的编辑器窗口（或将其拖到文件标签栏中），您可以在 Android Studio 中重新打开该文件。
 
@@ -276,7 +276,7 @@ Network Profiler 能够在时间线上显示实时网络活动，包括发送和
 
 ### Network Profiler 概览 ###
 Network Profiler 的默认视图如下图所示：
-![Network Profiler](https://user-gold-cdn.xitu.io/2018/8/7/1651348d8674a836?w=900&h=525&f=png&s=363578)
+![Network Profiler](https://henleylee.github.io/medias/android/android_profiler_network_default.jpg)
 窗口的顶部的①处,可以看见wifi无线信号的强弱，在时间线上可以在②处点击和拖动一部分的时间线来检测流量，然后在窗口③中会显示所选时间段内收发的文件，包括文件名，大小，类型，状态和花费时间，你可以对窗口③的列表根据列来进行排序。还可以查看所选时间段的详细拆分，拆分的timeline可以显示文件是什么时候收发的，点击窗口3的其中一个文件，可以在窗口④中查看文件的详细信息。通过切换窗口④上方标签可以查看响应数据、标题信息和调用堆栈。
 
 > 注： 必须启用高级分析才能从时间线中选择要检查的片段，查看发送和接收的文件列表，或查看有关所发送或接收的选定文件的详细信息。 要启用高级分析，请参阅[启用高级分析](https://developer.android.google.cn/studio/profile/android-profiler.html#advanced-profiling)。

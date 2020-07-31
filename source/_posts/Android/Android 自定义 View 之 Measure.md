@@ -8,25 +8,25 @@ date: 2019-01-06 18:39:26
 ---
 
 ## 作用 ##
-在自定义 View 过程中，Measure 的主要作用就是**`测量 View 的宽/高`**。
+在自定义 `View` 过程中，`Measure` 的主要作用就是**`测量 View 的宽/高`**。
 
-> 在某些情况下，需要多次测量(`measure`)才能确定 View 最终的宽/高；该情况下，`measure` 过程后得到的宽/高可能不准确；此处建议：在 `layout` 过程中 `onLayout()` 去获取最终的宽/高。
+> 在某些情况下，需要多次测量(`measure`)才能确定 `View` 最终的宽/高；该情况下，`measure` 过程后得到的宽/高可能不准确；此处建议：在 `layout` 过程中 `onLayout()` 去获取最终的宽/高。
 
 ## LayoutParams ##
 **`android.view.ViewGroup.LayoutParams`** 类是 `android.view.ViewGroup` 的一个内部类，表示布局参数。
 
 ### 作用 ###
-`LayoutParams` 的主要作用是用来指定 View 的高度(height)和 宽度(width)等布局参数。
+`LayoutParams` 的主要作用是用来指定 `View` 的高度(height)和 宽度(width)等布局参数。
 
 ### 具体使用 ###
 `LayoutParams` 主要通过以下参数指定：
 
-| 参数         | 解释                                                         |
-|--------------|--------------------------------------------------------------|
-| 具体值       | 指定具体的宽/高(dp / px)                                     |
-| fill_parent  | 强制性使子视图的大小扩展至与父视图大小相等(不含 padding)     |
-| match_parent | 与 fill_parent 相同，用于 Android 2.3 及以上版本             |
-| wrap_content | 自适应大小，强制性地使视图扩展以便显示其全部内容(含 padding) |
+| 参数           | 解释                                                         |
+|----------------|--------------------------------------------------------------|
+| 具体值         | 指定具体的宽/高(dp / px)                                     |
+| `fill_parent`  | 强制性使子视图的大小扩展至与父视图大小相等(不含 padding)     |
+| `match_parent` | 与 `fill_parent` 相同，用于 Android 2.3 及以上版本           |
+| `wrap_content` | 自适应大小，强制性地使视图扩展以便显示其全部内容(含 padding) |
 
 ### 构造方法 ###
 ```java
@@ -41,22 +41,22 @@ public LayoutParams(android.view.ViewGroup.LayoutParams source)
 **`android.view.View.MeasureSpec`** 类是 `android.view.View` 的一个内部类，表示测量规格。
 
 ### 作用 ###
-`MeasureSpec` 的主要作用是用来作为测量 View 的大小(宽/高)的依据。
+`MeasureSpec` 的主要作用是用来作为测量 `View` 的大小(宽/高)的依据。
 
 ### 组成 ###
-`MeasureSpec` 由测量模式(`mode`)和测量大小(`size`)。MeasureSpec 是 View 中的内部类，基本都是二进制运算。由于 int 是 32 位的，用**高两位表示 mode，低 30 位表示 size**，MODE_SHIFT = 30 的作用是移位。
+`MeasureSpec` 由测量模式(`mode`)和测量大小(`size`)。`MeasureSpec` 是 `View` 中的内部类，基本都是二进制运算。由于 `int` 是 `32` 位的，用**`高两位表示 mode，低 30 位表示 size`**，`MODE_SHIFT = 30` 的作用是移位。
 
 ### 测量模式 ###
-测量模式(`mode`)的类型有3种：UNSPECIFIED、EXACTLY 和 AT_MOST。具体如下：
+测量模式(`mode`)的类型有3种：`UNSPECIFIED`、`EXACTLY` 和 `AT_MOST`。具体如下：
 
-| 模式        | 描述                                                                           | 应用场景                |
-|-------------|--------------------------------------------------------------------------------|-------------------------|
-| UNSPECIFIED | 父控件没有给子视图任何限制，子视图可以设置为任意大小(不常用)                   | ListView，ScrollView    |
-| EXACTLY     | 父控件为子视图指定了确切的尺寸，子视图大小必须在该指定尺寸内                   | 具体数值或 march_parent |
-| AT_MOST     | 父控件为子视图指定一个最大尺寸，子视图必须确保自身和所有子视图可适应在该尺寸内 | wrap_content            |
+| 模式          | 描述                                                                           | 应用场景                |
+|---------------|--------------------------------------------------------------------------------|-------------------------|
+| `UNSPECIFIED` | 父控件没有给子视图任何限制，子视图可以设置为任意大小(不常用)                   | ListView，ScrollView    |
+| `EXACTLY`     | 父控件为子视图指定了确切的尺寸，子视图大小必须在该指定尺寸内                   | 具体数值或 march_parent |
+| `AT_MOST`     | 父控件为子视图指定一个最大尺寸，子视图必须确保自身和所有子视图可适应在该尺寸内 | wrap_content            |
 
 ### 具体使用 ###
-`MeasureSpec` 类用1个变量封装了2个数据(size  和 mode)：通过使用二进制，将测量模式(mode)和测量大小(size)打包成一个 int 值来，并提供了打包和解包的方法。
+`MeasureSpec` 类用1个变量封装了2个数据(`size`  和 `mode`)：通过使用二进制，将`测量模式(mode)`和`测量大小(size)`打包成一个 `int` 值来，并提供了打包和解包的方法。
 ```java
 // 获取测量模式(Mode)
 int specMode = MeasureSpec.getMode(measureSpec)
@@ -65,7 +65,7 @@ int specMode = MeasureSpec.getMode(measureSpec)
 int specSize = MeasureSpec.getSize(measureSpec)
 
 // 通过 Mode 和 Size 生成新的 SpecMode
-int measureSpec=MeasureSpec.makeMeasureSpec(size, mode)
+int measureSpec = MeasureSpec.makeMeasureSpec(size, mode)
 ```
 
 ### 源码分析 ###
@@ -148,13 +148,13 @@ public class MeasureSpec {
 ```
 
 ## measure 过程详解 ##
-**`measure`** 过程根据 View 的类型分为以下两种情况：
+**`measure`** 过程根据 `View` 的类型分为以下两种情况：
  - **`单一 View：`**仅测量 `View` 自身的大小。
  - **`ViewGroup：`**对 `ViewGroup` 视图中的所有子 `View` 都进行测量(遍历调用所有子元素的 `measure()` 和各子元素再递归去执行该流程)。
 
 ### 单一 View 的 measure 过程 ###
 #### 应用场景 ####
-在没有现成的控件 View 满足需求、需自己实现时，则使用自定义单一 View。
+在没有现成的控件 `View` 满足需求、需自己实现时，则使用自定义单一 `View`。
 
 #### 使用方法 ####
 继承自 `View`、`SurfaceView` 或 其他 `View`；`不包含子 View`。
@@ -294,7 +294,7 @@ public class MeasureSpec {
 继承自 `ViewGroup` 或各种 `Layout`；`包含子 View`。
 
 #### 测量原理 ####
-自上而下、一层层地传递下去，直到完成整个 View 树的 `measure()` 过程：
+自上而下、一层层地传递下去，直到完成整个 `View` 树的 `measure()` 过程：
 1. 遍历测量所有子 `View` 的尺寸。
 2. 将所有子 `View` 的尺寸进行合并，最终得到 `ViewGroup` 父视图的测量值。
 
@@ -349,11 +349,11 @@ public class MeasureSpec {
     }
 ```
 
-由于不同的 `ViewGroup` 子类(`LinearLayout`、`RelativeLayout`、`自定义 ViewGroup 子类`等)具备不同的布局特性，这导致它们的子 `View` 的测量方法各有不同，而 `onMeasure()` 方法的作用就是测量 View 的宽/高值。因此 ViewGroup 的 measure 过程无法像单一 View 的 measure 过程那样可以对 onMeasure() 做统一的实现。这个也是单一 View 的 measure 过程与 ViewGroup 过程最大的不同。
+由于不同的 `ViewGroup` 子类(`LinearLayout`、`RelativeLayout`、`自定义 ViewGroup 子类`等)具备不同的布局特性，这导致它们的子 `View` 的测量方法各有不同，而 `onMeasure()` 方法的作用就是测量 `View` 的宽/高值。因此 `ViewGroup` 的 `measure` 过程无法像单一 `View` 的 `measure` 过程那样可以对 `onMeasure()` 做统一的实现。这个也是单一 `View` 的 `measure` 过程与 `ViewGroup` 过程最大的不同。
 
-> 注：其实，在单一 View 的 measure 过程中，getDefaultSize() 只是简单的测量了宽高值，在实际使用时有时需更精细的测量，所以有时候也需重写 onMeasure() 方法。
+> 注：其实，在单一 `View` 的 `measure` 过程中，`getDefaultSize()` 只是简单的测量了宽高值，在实际使用时有时需更精细的测量，所以有时候也需重写 `onMeasure()` 方法。
 
-在自定义 `ViewGroup` 中，关键在于：根据需求复写 `onMeasure()` 从而实现子 View 测量逻辑。复写 `onMeasure()` 的实现如下：
+在自定义 `ViewGroup` 中，关键在于：根据需求复写 `onMeasure()` 从而实现子 `View` 测量逻辑。复写 `onMeasure()` 的实现如下：
 ```java
     /**
      * 根据自身的测量逻辑复写 onMeasure()，分为3步

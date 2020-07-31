@@ -8,18 +8,18 @@ date: 2019-01-08 18:53:29
 ---
 
 ## 作用 ##
-在自定义 View 过程中，Layout 的主要作用就是**`计算 View 的位置`**。
+在自定义 `View` 过程中，`Layout` 的主要作用就是**`计算 View 的位置`**。
 
-> 计算 View 的位置就是计算 `View` 的四个顶点位置：`Left`、`Top`、`Right` 和 `Bottom`。
+> 计算 `View` 的位置就是计算 `View` 的四个顶点位置：`Left`、`Top`、`Right` 和 `Bottom`。
 
 ## layout 过程详解 ##
-**`layout`** 过程根据 View 的类型分为以下两种情况：
+**`layout`** 过程根据 `View` 的类型分为以下两种情况：
  - **`单一 View：`**仅计算 `View` 自身的位置。
  - **`ViewGroup：`**除了计算 `View` 自身的位置外，还需要确定子 `View` 在父容器中的位置(遍历调用所有子元素的 `layout()` 和各子元素再递归去执行该流程)。
 
 ### 单一 View 的 layout 过程 ###
 #### 应用场景 ####
-在没有现成的控件 View 满足需求、需自己实现时，则使用自定义单一 View。
+在没有现成的控件 `View` 满足需求、需自己实现时，则使用自定义单一 `View`。
 
 #### 使用方法 ####
 继承自 `View`、`SurfaceView` 或 其他 `View`；`不包含子 View`。
@@ -147,9 +147,9 @@ date: 2019-01-08 18:53:29
 继承自 `ViewGroup` 或各种 `Layout`；`包含子 View`。
 
 #### 计算原理 ####
-自上而下、一层层地传递下去，直到完成整个 View 树的 `layout()` 过程：
+自上而下、一层层地传递下去，直到完成整个 `View` 树的 `layout()` 过程：
 1. 计算自身 `ViewGroup` 的位置：`layout()`。
-2. 遍历所有子 `View` 并确定子 `View` 自身在 ViewGroup 中的位置(调用子 View 的 layout() 方法)：onLayout()。
+2. 遍历所有子 `View` 并确定子 `View` 自身在 `ViewGroup` 中的位置(调用子 `View` 的 `layout()` 方法)：`onLayout()`。
 
 ![ViewGroup自上而下遍历](https://henleylee.github.io//medias/view/view_group_tree.png)
 

@@ -8,18 +8,18 @@ date: 2019-01-02 18:46:35
 ---
 
 ## View 的分类 ##
-视图 View 主要分为两类：
+视图 `View` 主要分为两类：
 
-| 类别     | 解释                                          | 特点          |
-| :------: | :-------------------------------------------: | :------------ |
-| 单一视图 | 即一个View，如 TextView                       | 不包含子 View |
-| 视图容器 | 即多个 View 组成的 ViewGroup，如 LinearLayout | 包含子 View   |
+| 类别     | 解释                                              | 特点            |
+| :------: | :-----------------------------------------------: | :-------------- |
+| 单一视图 | 即一个 `View`，如 TextView                        | 不包含子 `View` |
+| 视图容器 | 即多个 `View` 组成的 `ViewGroup`，如 LinearLayout | 包含子 `View`   |
 
 ## View 类简介 ##
- - View 类是 Android 中各种组件的基类，如 View 是 ViewGroup 的基类。
- - View 表现为显示在屏幕上的各种视图，在屏幕上占据一个矩形区域，负责绘图和事件处理。
-    > Android 中的 UI 组件都由 View、ViewGroup 组成。
- - View 的构造函数：共有4个，具体如下：
+ - `View` 类是 `Android` 中各种组件的基类，如 `View` 是 `ViewGroup` 的基类。
+ - `View` 表现为显示在屏幕上的各种视图，在屏幕上占据一个矩形区域，负责绘图和事件处理。
+    > `Android` 中的 `UI` 组件都由 `View`、`ViewGroup` 组成。
+ - `View` 的构造函数：共有4个，具体如下：
     ```java
     public class CustomView extends View {
     
@@ -49,7 +49,7 @@ date: 2019-01-02 18:46:35
 
 
 ## View 视图结构 ##
-对于多 View 的视图，结构是**`树形结构`**：最顶层是 ViewGroup，ViewGroup 下可能有多个 ViewGroup 或 View，如下图：
+对于多 `View` 的视图，结构是**`树形结构`**：最顶层是 `ViewGroup`，`ViewGroup` 下可能有多个 `ViewGroup` 或 `View`，如下图：
 ![View 视图结构](https://henleylee.github.io/medias/view/view_structure.png)
 
 > 无论是 measure 过程、layout 过程还是 draw 过程，**永远都是从 View 树的根节点开始测量或计算（即从树的顶端开始），一层一层、一个分支一个分支地进行（即树形递归）**，最终计算整个 View 树中各个 View，最终确定整个 View 树的相关属性。
@@ -57,8 +57,8 @@ date: 2019-01-02 18:46:35
 ## Android 坐标系 ##
 Android 的坐标系定义为：
  - 屏幕的左上角为坐标原点；
- - 向右为 X 轴增大方向；
- - 向下为 Y 轴增大方向。
+ - 向右为 `X` 轴增大方向；
+ - 向下为 `Y` 轴增大方向。
 
 具体如下图： 
 ![Android 坐标系](https://henleylee.github.io/medias/view/android_coordinate_system.png)
@@ -71,23 +71,23 @@ View 的位置由4个顶点决定的（如下A、B、C、D）：
 ![View 位置](https://henleylee.github.io/medias/view/view_location.png)
 
 4个顶点的位置描述分别由4个值决定：
- - Top：子 View 上边界到父 View 上边界的距离；
- - Left：子 View 左边界到父 View 左边界的距离；
- - Bottom：子 View 下边距到父 View 上边界的距离；
- - Right：子 View 右边界到父 View 左边界的距离。
+ - **`Top：`**子 View 上边界到父 View 上边界的距离；
+ - **`Left：`**子 View 左边界到父 View 左边界的距离；
+ - **`Bottom：`**子 View 下边距到父 View 上边界的距离；
+ - **`Right：`**子 View 右边界到父 View 左边界的距离。
 
 如下图：
 ![View 位置](https://henleylee.github.io/medias/view/view_location_get.png)
 可以按顶点位置来记忆：
- - Top：子 View 左上角距父 View 顶部的距离；
- - Left：子 View 左上角距父 View 左侧的距离；
- - Bottom：子 View 右下角距父 View 顶部的距离；
- - Right：子 View 右下角距父 View 左侧的距离。
+ - **`Top：`**子 View 左上角距父 View 顶部的距离；
+ - **`Left：`**子 View 左上角距父 View 左侧的距离；
+ - **`Bottom：`**子 View 右下角距父 View 顶部的距离；
+ - **`Right：`**子 View 右下角距父 View 左侧的距离。
 
 > View 的位置是相对于父控件而言的。
 
 ### View 位置获取方式 ###
- - View的位置是通过 `view.getxxx()` 函数进行获取：
+ - `View` 的位置是通过 `view.getxxx()` 函数进行获取：
     ```java
     getTop();        // 获取子 View 左上角距父 View 顶部的距离
     getLeft();       // 获取子 View 左上角距父 View 左侧的距离
@@ -95,7 +95,7 @@ View 的位置由4个顶点决定的（如下A、B、C、D）：
     getRight();      // 获取子 View 右下角距父 View 左侧的距离
     ```
 
- - 与 MotionEvent 中 `get()` 和 `getRaw()` 的区别：
+ - 与 `MotionEvent` 中 `get()` 和 `getRaw()` 的区别：
     ```java
     // get() ：触摸点相对于其所在组件坐标系的坐标
     event.getX();       
@@ -109,8 +109,8 @@ View 的位置由4个顶点决定的（如下A、B、C、D）：
 ![MotionEvent 坐标](https://henleylee.github.io/medias/view/motion_event_location_get.png)
 
 ## Android 的角度与弧度 ##
- - 自定义 View 实际上是将一些简单的形状通过计算，从而组合到一起形成的效果。
-    > 这会涉及到画布的相关操作(旋转)、正余弦函数计算等，即会涉及到角度(angle)与弧度(radian)的相关知识。
+ - 自定义 `View` 实际上是将一些简单的形状通过计算，从而组合到一起形成的效果。
+    > 这会涉及到画布的相关操作(旋转)、正余弦函数计算等，即会涉及到`角度(angle)`与`弧度(radian)`的相关知识。
  - 角度和弧度都是描述角的一种度量单位，区别如下图：
 ![角度与弧度的区别](https://henleylee.github.io/medias/view/differ_angle_radian.png)
 
