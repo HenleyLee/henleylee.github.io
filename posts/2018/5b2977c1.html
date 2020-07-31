@@ -567,22 +567,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在 Android 项目的每个 Module 中的  build.gradle 配置文件中都有一个名称为 <code>android</code> 的函数，该函数接收闭包作为参数，然而其实在 <a href="https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html" target="_blank" rel="noopener">Gradle API 文档</a>中是不存在这个函数的。</p>
-<p>那么 <code>android</code> 函数怎么会出现在这里呢？答案就是 <code>apply plugin: &#39;com.android.application&#39;</code>。这个插件提供了 Android 构建所需要的各种 script。 </p>
-<p><a href="http://google.github.io/android-gradle-dsl/" target="_blank" rel="noopener">Android Plugin DSL Reference</a>：Android 插件 DSL 扩展文档，各个版本的都有。 </p>
-<h2 id="Gradle-扩展类型"><a href="#Gradle-扩展类型" class="headerlink" title="Gradle 扩展类型"></a>Gradle 扩展类型</h2><p><code>BaseExtension</code> 是所有 Android 插件的基本扩展，使用过程中不直接使用此扩展，而是使用以下之一：</p>
+                <p>在 <code>Android</code> 项目的每个 <code>Module</code> 中的  <code>build.gradle</code> 配置文件中都有一个名称为 <code>android</code> 的函数，该函数接收闭包作为参数，然而其实在 <a href="https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html" target="_blank" rel="noopener">Gradle API 文档</a>中是不存在这个函数的。</p>
+<p>那么 <code>android</code> 函数怎么会出现在这里呢？答案就是 <code>apply plugin: &#39;com.android.application&#39;</code>。这个插件提供了 <code>Android</code> 构建所需要的各种 <code>script</code>。 </p>
+<p><a href="http://google.github.io/android-gradle-dsl/" target="_blank" rel="noopener">Android Plugin DSL Reference</a>：Android 插件 <code>DSL</code> 扩展文档，各个版本的都有。 </p>
+<h2 id="Gradle-扩展类型"><a href="#Gradle-扩展类型" class="headerlink" title="Gradle 扩展类型"></a>Gradle 扩展类型</h2><p><code>BaseExtension</code> 是所有 <code>Android</code> 插件的基本扩展，使用过程中不直接使用此扩展，而是使用以下之一：</p>
 <ul>
 <li><strong><code>AppExtension：</code></strong>用于构建 <code>Android app module</code> 的 <code>com.android.application</code> 插件扩展。</li>
 <li><strong><code>LibraryExtension：</code></strong>用于构建 <code>Android library module</code> 的 <code>com.android.library</code> 插件扩展。</li>
 <li><strong><code>TestExtension：</code></strong>用于构建 <code>Android test module</code> 的 <code>com.android.test</code> 插件扩展。</li>
 <li><strong><code>FeatureExtension：</code></strong>用于构建 <code>Android Instant Apps</code> 的 <code>com.android.feature</code> 插件扩展。</li>
 </ul>
-<h2 id="Gradle-通用配置块"><a href="#Gradle-通用配置块" class="headerlink" title="Gradle 通用配置块"></a>Gradle 通用配置块</h2><p>Android Plugin 一些通用的 Script blocks，对于以上四种类型的扩展都支持。</p>
+<h2 id="Gradle-通用配置块"><a href="#Gradle-通用配置块" class="headerlink" title="Gradle 通用配置块"></a>Gradle 通用配置块</h2><p><code>Android Plugin</code> 一些通用的 <code>Script blocks</code>，对于以上四种类型的扩展都支持。</p>
 <h3 id="defaultConfig"><a href="#defaultConfig" class="headerlink" title="defaultConfig"></a>defaultConfig</h3><p><strong><code>defaultConfig{}</code></strong> 闭包用于配置 Android 插件应用于所有构建变体的变体属性。DSL 对象为 <code>DefaultConfig</code>。</p>
 <p><code>DefaultConfig</code> 具有以下属性：</p>
 <ul>
-<li><strong><code>applicationId：</code></strong>应用程序ID。</li>
-<li><strong><code>applicationIdSuffix：</code></strong>应用程序ID后缀。</li>
+<li><strong><code>applicationId：</code></strong>应用程序 ID。</li>
+<li><strong><code>applicationIdSuffix：</code></strong>应用程序 ID 后缀。</li>
 <li><strong><code>consumerProguardFiles：</code></strong>包含在发布的 AAR 中的 ProGuard 规则文件。</li>
 <li><strong><code>dimension：</code></strong>指定 product flavor 所属的 flavor 维度。</li>
 <li><strong><code>externalNativeBuild：</code></strong>指定使用 CMake 或 ndk-build 的外部 native 构建选项。</li>
@@ -1115,13 +1115,13 @@ The flavor &#39;flavor_name&#39; is not assigned to a flavor dimension.
 
 
 单一视图
-即一个View，如 TextView
+即一个 View，如 TextView
 不包含子 View
 
 
 视图容器
 即多个 View 组成的 ViewGroup，如 LinearLayout
-包
+
                         
                     </div>
                     <div class="publish-info">
@@ -1381,7 +1381,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">406.7k</span>&nbsp;字
+                <span class="white-color">426.6k</span>&nbsp;字
             
 	    <br>
 	    

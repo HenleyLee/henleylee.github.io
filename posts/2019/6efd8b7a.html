@@ -633,7 +633,7 @@
 <p><strong>注意：</strong><code>ViewModel</code> 绝不能引用 <code>View</code>、<code>Lifecycle</code> 或可能持有对 <code>Activity</code> 上下文的引用的任何类。</p>
 </blockquote>
 <p><code>ViewModel</code> 对象可以包含 <code>LifecycleObserver</code>，如 <code>LiveData</code> 对象。如果 <code>ViewModel</code> 需要持有 <code>Application</code> 上下文(可以查找系统服务)，则可以继承 <code>AndroidViewModel</code> 类并设置用于接收 <code>Application</code> 的构造函数。</p>
-<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><code>ViewModel</code> 对象存在的时间范围是获取 <code>ViewModel</code> 时传递给 <code>ViewModelProvider</code> 的 <code>Lifecycle</code>。<code>ViewModel</code> 将一直留在内存中，直到限定其存在时间范围的 <code>Lifecycle</code> 永久消失(Activity 被销毁或 Fragment 被移除)。<code>ViewModel</code> 的生命周期如下图所示：<br><img src="https://henleylee.github.io/medias/android/viewmodel-lifecycle.png" alt="ViewModel的生命周期"></p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><code>ViewModel</code> 对象存在的时间范围是获取 <code>ViewModel</code> 时传递给 <code>ViewModelProvider</code> 的 <code>Lifecycle</code>。<code>ViewModel</code> 将一直留在内存中，直到限定其存在时间范围的 <code>Lifecycle</code> 永久消失(Activity 被销毁或 Fragment 被移除)。<code>ViewModel</code> 的生命周期如下图所示：<br><img src="https://henleylee.github.io/medias/android/viewmodel_lifecycle.png" alt="ViewModel的生命周期"></p>
 <p>通常在系统首次调用 <code>Activity</code> 对象的 <code>onCreate()</code> 方法时创建 <code>ViewModel</code>。系统可能会在 <code>Activity</code> 的整个生命周期内多次调用 <code>onCreate()</code> 方法(如在旋转设备屏幕时)。<code>ViewModel</code> 存在的时间范围是从首次创建 <code>ViewModel</code> 直到 <code>Activity</code> 被销毁。</p>
 <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="ViewModelProviders"><a href="#ViewModelProviders" class="headerlink" title="ViewModelProviders"></a>ViewModelProviders</h3><p>可以通过 <code>ViewModelProviders.of().get(modelClass)</code> 创建 <code>ViewModel</code>。<code>ViewModelProviders</code> 的源码如下：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ViewModelProviders</span> <span class="token punctuation">{</span>
@@ -1537,7 +1537,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">406.7k</span>&nbsp;字
+                <span class="white-color">426.6k</span>&nbsp;字
             
 	    <br>
 	    

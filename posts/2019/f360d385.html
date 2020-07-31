@@ -563,15 +563,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Android 上的 View 是树形结构的，View 可能会重叠在一起，当我们点击的地方有多个 View 都可以响应的时候，这个点击事件应该给谁呢？事件分发机制就是为了处理这个问题的。</p>
+                <p><code>Android</code> 上的 <code>View</code> 是树形结构的，<code>View</code> 可能会重叠在一起，当我们点击的地方有多个 <code>View</code> 都可以响应的时候，这个点击事件应该给谁呢？事件分发机制就是为了处理这个问题的。</p>
 <h2 id="事件分发基础认知"><a href="#事件分发基础认知" class="headerlink" title="事件分发基础认知"></a>事件分发基础认知</h2><h3 id="事件分发的对象是谁？"><a href="#事件分发的对象是谁？" class="headerlink" title="事件分发的对象是谁？"></a>事件分发的对象是谁？</h3><p><strong>答：点击事件(Touch 事件)</strong></p>
 <ul>
-<li><p>定义：当用户触摸屏幕时(View 或 ViewGroup 派生的控件)，将产生点击事件(Touch 事件)。</p>
+<li><p>定义：当用户触摸屏幕时(<code>View</code> 或 <code>ViewGroup</code> 派生的控件)，将产生点击事件(<code>Touch</code> 事件)。</p>
 <blockquote>
-<p>Touch事件相关细节（发生触摸的位置、时间、历史记录、手势动作等）被封装成MotionEvent对象</p>
+<p><code>Touch</code> 事件相关细节（发生触摸的位置、时间、历史记录、手势动作等）被封装成 <code>MotionEvent</code> 对象</p>
 </blockquote>
 </li>
-<li><p>主要发生的 Touch 事件的事件类型有如下四种：</p>
+<li><p>主要发生的 <code>Touch</code> 事件的事件类型有如下四种：</p>
 </li>
 </ul>
 <table>
@@ -583,19 +583,19 @@
 </thead>
 <tbody>
 <tr>
-<td>MotionEvent.ACTION_DOWN</td>
-<td>按下 View(所有事件的开始)</td>
+<td><code>MotionEvent.ACTION_DOWN</code></td>
+<td>按下 <code>View</code>(所有事件的开始)</td>
 </tr>
 <tr>
-<td>MotionEvent.ACTION_MOVE</td>
-<td>滑动 View</td>
+<td><code>MotionEvent.ACTION_MOVE</code></td>
+<td>滑动 <code>View</code></td>
 </tr>
 <tr>
-<td>MotionEvent.ACTION_UP</td>
-<td>抬起 View(与 DOWN 对应)</td>
+<td><code>MotionEvent.ACTION_UP</code></td>
+<td>抬起 <code>View</code>(与 <code>DOWN</code> 对应)</td>
 </tr>
 <tr>
-<td>MotionEvent.ACTION_CANCEL</td>
+<td><code>MotionEvent.ACTION_CANCEL</code></td>
 <td>非人为原因结束事件</td>
 </tr>
 </tbody>
@@ -606,11 +606,11 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="事件分发的本质是什么？"><a href="#事件分发的本质是什么？" class="headerlink" title="事件分发的本质是什么？"></a>事件分发的本质是什么？</h3><p><strong>答：将点击事件(MotionEvent)传递到某个具体的 View 并处理的整个过程</strong></p>
+<h3 id="事件分发的本质是什么？"><a href="#事件分发的本质是什么？" class="headerlink" title="事件分发的本质是什么？"></a>事件分发的本质是什么？</h3><p><strong>答：将点击事件(<code>MotionEvent</code>)传递到某个具体的 <code>View</code> 并处理的整个过程</strong></p>
 <blockquote>
-<p>即当一个点击事件发生后，系统需要将这个事件传递给一个具体的 View 去处理。这个事件传递的过程就是分发过程。</p>
+<p>即当一个点击事件发生后，系统需要将这个事件传递给一个具体的 <code>View</code> 去处理。这个事件传递的过程就是分发过程。</p>
 </blockquote>
-<h3 id="事件在哪些对象之间进行传递？"><a href="#事件在哪些对象之间进行传递？" class="headerlink" title="事件在哪些对象之间进行传递？"></a>事件在哪些对象之间进行传递？</h3><p><strong>答：Activity、ViewGroup、View</strong></p>
+<h3 id="事件在哪些对象之间进行传递？"><a href="#事件在哪些对象之间进行传递？" class="headerlink" title="事件在哪些对象之间进行传递？"></a>事件在哪些对象之间进行传递？</h3><p><strong>答：<code>Activity</code>、<code>ViewGroup</code>、<code>View</code></strong></p>
 <blockquote>
 <p>一个事件产生后，传递顺序是：<code>Activity(Window) -&gt; ViewGroup -&gt; View</code>，事件分发的顺序就是事件传递的顺序。</p>
 </blockquote>
@@ -624,24 +624,24 @@
 </thead>
 <tbody>
 <tr>
-<td>Activity</td>
+<td><code>Activity</code></td>
 <td>控制生命周期并处理事件</td>
 <td>统筹视图的加载和显示，通过其它回调方法与 Window、View 交互</td>
 </tr>
 <tr>
-<td>ViewGroup</td>
-<td>一组 View 的集合(包含多个子 View)</td>
+<td><code>ViewGroup</code></td>
+<td>一组 <code>View</code> 的集合(包含多个子 <code>View</code>)</td>
 <td>ViewGroup 继承自 View，区别于单一 View，多了可包含子 View 和定义布局参数的功能</td>
 </tr>
 <tr>
-<td>View</td>
-<td>所有 UI 组件的基类(不包含子 View 的组件)</td>
+<td><code>View</code></td>
+<td>所有 <code>UI</code> 组件的基类(不包含子 <code>View</code> 的组件)</td>
 <td>不包含子 View 的单一 View，如 TextView、ImageView、Button 等</td>
 </tr>
 </tbody>
 </table>
-<p>Android 的 UI 界面是由 <code>Activity</code>、<code>ViewGroup</code>、<code>View</code> 及其派生类组合而成的。View 是所有 UI 组件的基类，ViewGroup 是容纳 UI 组件的容器，即一组 View 的集合(包含很多子 View 和子 VewGroup)。</p>
-<h3 id="事件分发过程由哪些方法协作完成？"><a href="#事件分发过程由哪些方法协作完成？" class="headerlink" title="事件分发过程由哪些方法协作完成？"></a>事件分发过程由哪些方法协作完成？</h3><p><strong>答：dispatchTouchEvent() 、onInterceptTouchEvent() 和 onTouchEvent()</strong><br><img src="https://henleylee.github.io/medias/touch/event_method.png" alt="事件分发过程的方法"></p>
+<p><code>Android</code> 的 <code>UI</code> 界面是由 <code>Activity</code>、<code>ViewGroup</code>、<code>View</code> 及其派生类组合而成的。<code>View</code> 是所有 <code>UI</code> 组件的基类，<code>ViewGroup</code> 是容纳 <code>UI</code> 组件的容器，即一组 <code>View</code> 的集合(包含很多子 <code>View</code> 和子 <code>VewGroup</code>)。</p>
+<h3 id="事件分发过程由哪些方法协作完成？"><a href="#事件分发过程由哪些方法协作完成？" class="headerlink" title="事件分发过程由哪些方法协作完成？"></a>事件分发过程由哪些方法协作完成？</h3><p><strong>答：<code>dispatchTouchEvent()</code>、<code>onInterceptTouchEvent()</code> 和 <code>onTouchEvent()</code></strong><br><img src="https://henleylee.github.io/medias/touch/event_method.png" alt="事件分发过程的方法"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://henleylee.github.io/medias/touch/event_base_summary.png" alt="事件分发基础认知总结"></p>
 <h2 id="事件分发机制核心方法"><a href="#事件分发机制核心方法" class="headerlink" title="事件分发机制核心方法"></a>事件分发机制核心方法</h2><p>事件分发过程由 <code>dispatchTouchEvent()</code>、<code>onInterceptTouchEvent()</code> 和 <code>onTouchEvent()</code> 三个核心方法协助完成，如下图所示：<br><img src="https://henleylee.github.io/medias/touch/event_core_method.png" alt="事件分发机制核心方法"></p>
 <h3 id="dispatchTouchEvent"><a href="#dispatchTouchEvent" class="headerlink" title="dispatchTouchEvent()"></a>dispatchTouchEvent()</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p><img src="https://henleylee.github.io/medias/touch/event_dispatch_intro.png" alt="dispatchTouchEvent()方法简介"></p>
@@ -651,12 +651,12 @@
 <h4 id="返回情况：返回true"><a href="#返回情况：返回true" class="headerlink" title="返回情况：返回true"></a>返回情况：返回true</h4><p><img src="https://henleylee.github.io/medias/touch/event_dispatch_return_true.png" alt="dispatchTouchEvent()方法返回情况(返回true)"></p>
 <p><img src="https://henleylee.github.io/medias/touch/event_dispatch_process_true.png" alt="dispatchTouchEvent()方法返回情况(返回true)业务流程说明图"></p>
 <blockquote>
-<p>事件停止分发，逐层往上返回<code>(若无上层返回，则结束)</code>；后续事件会继续分发到该 View。</p>
+<p>事件停止分发，逐层往上返回<code>(若无上层返回，则结束)</code>；后续事件会继续分发到该 <code>View</code>。</p>
 </blockquote>
 <h4 id="返回情况：返回false"><a href="#返回情况：返回false" class="headerlink" title="返回情况：返回false"></a>返回情况：返回false</h4><p><img src="https://henleylee.github.io/medias/touch/event_dispatch_return_false.png" alt="dispatchTouchEvent()方法返回情况(返回false)"></p>
 <p><img src="https://henleylee.github.io/medias/touch/event_dispatch_process_false.png" alt="dispatchTouchEvent()方法返回情况(返回false)业务流程说明图"></p>
 <blockquote>
-<p>将事件回传给上层的 <code>onTouchEvent()</code> 处理<code>(若无上层返回，则结束)</code>；当前 View 仍然接受此事件的其他事件<code>(与 onTouchEvent() 区别)</code>。</p>
+<p>将事件回传给上层的 <code>onTouchEvent()</code> 处理<code>(若无上层返回，则结束)</code>；当前 <code>View</code> 仍然接受此事件的其他事件<code>(与 onTouchEvent() 区别)</code>。</p>
 </blockquote>
 <h3 id="onInterceptTouchEvent"><a href="#onInterceptTouchEvent" class="headerlink" title="onInterceptTouchEvent()"></a>onInterceptTouchEvent()</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p><img src="https://henleylee.github.io/medias/touch/event_intercept_intro.png" alt="onInterceptTouchEvent()方法简介"></p>
 <blockquote>
@@ -666,12 +666,12 @@
 <h4 id="返回情况：返回true-1"><a href="#返回情况：返回true-1" class="headerlink" title="返回情况：返回true"></a>返回情况：返回true</h4><p><img src="https://henleylee.github.io/medias/touch/event_intercept_return_true.png" alt="onInterceptTouchEvent()方法返回情况(返回true)"></p>
 <p><img src="https://henleylee.github.io/medias/touch/event_intercept_process_true.png" alt="onInterceptTouchEvent()方法返回情况(返回true)业务流程说明图"></p>
 <blockquote>
-<p>拦截事件，事件停止往下传递，ViewGroup 自己处理事件，调用父类 super.dispatchTouchEvent()，最终执行自己的 onTouchEvent()；同一个事件的其他事件列都交由该 View 处理；在同一个事件列中该方法不会再次被调用。</p>
+<p>拦截事件，事件停止往下传递，<code>ViewGroup</code> 自己处理事件，调用父类 <code>super.dispatchTouchEvent()</code>，最终执行自己的 <code>onTouchEvent()</code>；同一个事件的其他事件列都交由该 <code>View</code> 处理；在同一个事件列中该方法不会再次被调用。</p>
 </blockquote>
 <h4 id="返回情况：返回false-默认"><a href="#返回情况：返回false-默认" class="headerlink" title="返回情况：返回false(默认)"></a>返回情况：返回false(默认)</h4><p><img src="https://henleylee.github.io/medias/touch/event_intercept_return_false.png" alt="onInterceptTouchEvent()方法返回情况(返回false)"></p>
 <p><img src="https://henleylee.github.io/medias/touch/event_intercept_process_false.png" alt="onInterceptTouchEvent()方法返回情况(返回false)业务流程说明图"></p>
 <blockquote>
-<p>不拦截事件，事件继续往下传递，事件传递到子 View，调用父类 View.dispatchTouchEvent() 方法中去处理；当前 View 仍然接受此事件的其他事件<code>(与 onTouchEvent() 区别)</code>。</p>
+<p>不拦截事件，事件继续往下传递，事件传递到子 <code>View</code>，调用父类 <code>View.dispatchTouchEvent()</code> 方法中去处理；当前 <code>View</code> 仍然接受此事件的其他事件<code>(与 onTouchEvent() 区别)</code>。</p>
 </blockquote>
 <h3 id="onTouchEvent"><a href="#onTouchEvent" class="headerlink" title="onTouchEvent()"></a>onTouchEvent()</h3><h4 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h4><p><img src="https://henleylee.github.io/medias/touch/event_touch_intro.png" alt="onTouchEvent()方法简介"></p>
 <blockquote>
@@ -686,7 +686,7 @@
 <h4 id="返回情况：返回false-默认-1"><a href="#返回情况：返回false-默认-1" class="headerlink" title="返回情况：返回false(默认)"></a>返回情况：返回false(默认)</h4><p><img src="https://henleylee.github.io/medias/touch/event_touch_return_false.png" alt="onTouchEvent()方法返回情况(返回false)"></p>
 <p><img src="https://henleylee.github.io/medias/touch/event_touch_process_false.png" alt="onTouchEvent()方法返回情况(返回false)业务流程说明图"></p>
 <blockquote>
-<p>将事件向上传递给给上层的 <code>onTouchEvent()</code> 处理<code>(若无上层返回，则结束)</code>；当前 View 不再接受此事件的其他事件<code>(与 dispatchTouchEvent()onInterceptTouchEvent() 区别)</code>。</p>
+<p>将事件向上传递给给上层的 <code>onTouchEvent()</code> 处理<code>(若无上层返回，则结束)</code>；当前 <code>View</code> 不再接受此事件的其他事件<code>(与 dispatchTouchEvent() onInterceptTouchEvent() 区别)</code>。</p>
 </blockquote>
 <h3 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h3><p>下面将用一段伪代码来阐述上述三个方法的关系和点击事件传递规则：</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
@@ -817,14 +817,14 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ul>
-<li><p>过程：当一个点击事件发生时，从 Activity 的事件分发开始(Activity.dispatchTouchEvent())<br><img src="https://henleylee.github.io/medias/touch/event_activity_summary_process.png" alt="Activity事件分发的过程"></p>
+<li><p>过程：当一个点击事件发生时，从 <code>Activity</code> 的事件分发开始(<code>Activity.dispatchTouchEvent()</code>)<br><img src="https://henleylee.github.io/medias/touch/event_activity_summary_process.png" alt="Activity事件分发的过程"></p>
 </li>
 <li><p>核心方法总结：<br><img src="https://henleylee.github.io/medias/touch/event_activity_summary_mathod.png" alt="Activity事件分发的方法总结"></p>
 </li>
 </ul>
 <h3 id="ViewGroup-的事件分发机制"><a href="#ViewGroup-的事件分发机制" class="headerlink" title="ViewGroup 的事件分发机制"></a>ViewGroup 的事件分发机制</h3><p>从 <code>Activity</code> 事件分发机制可知，<code>ViewGroup</code> 的事件分发机制从 <code>dispatchTouchEvent()</code> 开始。</p>
 <h4 id="源码分析-1"><a href="#源码分析-1" class="headerlink" title="源码分析"></a>源码分析</h4><blockquote>
-<p>Android 5.0 后，ViewGroup.dispatchTouchEvent() 的源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。</p>
+<p>Android 5.0 后，<code>ViewGroup.dispatchTouchEvent()</code> 的源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 源码分析：ViewGroup.dispatchTouchEvent（）
@@ -973,7 +973,7 @@ button<span class="token punctuation">.</span><span class="token function">setOn
 </code></pre>
 <p>接下来，继续进行 onTouchEvent(event) 的源码分析：</p>
 <blockquote>
-<p>Android 5.0 后 View.onTouchEvent() 源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。</p>
+<p>Android 5.0 后 <code>View.onTouchEvent()</code> 源码发生了变化(更加复杂)，但原理相同；为了更容易理解，故采用 Android 5.0 前的版本。</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 源码分析：View.onTouchEvent()
@@ -1077,28 +1077,28 @@ button<span class="token punctuation">.</span><span class="token function">setOn
 mOnTouchListener <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>mViewFlags <span class="token operator">&amp;</span> ENABLED_MASK<span class="token punctuation">)</span> <span class="token operator">==</span> ENABLED <span class="token operator">&amp;&amp;</span> mOnTouchListener<span class="token punctuation">.</span><span class="token function">onTouch</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> event<span class="token punctuation">)</span>
 </code></pre>
 <h3 id="Touch-事件的后续事件-MOVE、UP-层级传递"><a href="#Touch-事件的后续事件-MOVE、UP-层级传递" class="headerlink" title="Touch 事件的后续事件(MOVE、UP)层级传递"></a>Touch 事件的后续事件(MOVE、UP)层级传递</h3><ul>
-<li>如果给控件注册了 <code>Touch</code> 事件，每次点击都会触发一系列 <code>action</code> 事件(ACTION_DOWN、ACTION_MOVE、ACTION_UP 等)；</li>
-<li>当 <code>dispatchTouchEvent()</code> 在进行事件分发的时候，只有前一个事件(如 ACTION_DOWN)返回 <code>true</code>，才会收到后一个事件(ACTION_MOVE 和 ACTION_UP)；<blockquote>
-<p>即如果在执行 ACTION_DOWN 时返回 false，后面一系列的 ACTION_MOVE 和 ACTION_UP 事件都不会执行。</p>
+<li>如果给控件注册了 <code>Touch</code> 事件，每次点击都会触发一系列 <code>action</code> 事件(<code>ACTION_DOWN</code>、<code>ACTION_MOVE</code>、<code>ACTION_UP</code> 等)；</li>
+<li>当 <code>dispatchTouchEvent()</code> 在进行事件分发的时候，只有前一个事件(如 <code>ACTION_DOWN</code>)返回 <code>true</code>，才会收到后一个事件(<code>ACTION_MOVE</code> 和 <code>ACTION_UP</code>)；<blockquote>
+<p>即如果在执行 <code>ACTION_DOWN</code> 时返回 false，后面一系列的 <code>ACTION_MOVE</code> 和 <code>ACTION_UP</code> 事件都不会执行。</p>
 </blockquote>
 </li>
 </ul>
 <p>从上面对事件分发机制分析知：</p>
 <ul>
-<li><code>dispatchTouchEvent()</code> 和 <code>onTouchEvent()</code> 消费事件、终结事件传递(返回 true)；</li>
-<li>而 <code>onInterceptTouchEvent()</code> 并不能消费事件，它相当于是一个分叉口起到分流导流的作用，对后续的 ACTION_MOVE 和 ACTION_UP 事件接收起到非常大的作用。<blockquote>
-<p>注意：接收了 ACTION_DOWN 事件的函数不一定能收到后续事件(ACTION_MOVE、ACTION_UP)。</p>
+<li><code>dispatchTouchEvent()</code> 和 <code>onTouchEvent()</code> 消费事件、终结事件传递(返回 <code>true</code>)；</li>
+<li>而 <code>onInterceptTouchEvent()</code> 并不能消费事件，它相当于是一个分叉口起到分流导流的作用，对后续的 <code>ACTION_MOVE</code> 和 <code>ACTION_UP</code> 事件接收起到非常大的作用。<blockquote>
+<p>注意：接收了 <code>ACTION_DOWN</code> 事件的函数不一定能收到后续事件(<code>ACTION_MOVE</code>、<code>ACTION_UP</code>)。</p>
 </blockquote>
 </li>
 </ul>
-<p>ACTION_MOVE 和 ACTION_UP 事件的传递结论：</p>
+<p><code>ACTION_MOVE</code> 和 <code>ACTION_UP</code> 事件的传递结论：</p>
 <ul>
-<li><p>结论1：若对象(Activity、ViewGroup、View)的 <code>dispatchTouchEvent()</code> 方法分发事件后消费了事件(返回 true)，那么收到 ACTION_DOWN 的函数也能收到 ACTION_MOVE 和 ACTION_UP；</p>
+<li><p>结论1：若对象(<code>Activity</code>、<code>ViewGroup</code>、<code>View</code>)的 <code>dispatchTouchEvent()</code> 方法分发事件后消费了事件(返回 <code>true</code>)，那么收到 <code>ACTION_DOWN</code> 的函数也能收到 <code>ACTION_MOVE</code> 和 <code>ACTION_UP</code>；</p>
 <blockquote>
 <p><img src="https://henleylee.github.io/medias/touch/event_action_conclusion_1.png" alt="ACTION_MOVE和ACTION_UP事件的传递结论1"><br>黑线：ACTION_DOWN 事件传递方向<br>红线：ACTION_MOVE、ACTION_UP 事件传递方向</p>
 </blockquote>
 </li>
-<li><p>结论2：若对象(Activity、ViewGroup、View)的 <code>onTouchEvent()</code> 方法处理了事件(返回 true)，那么 ACTION_MOVE、ACTION_UP 的事件从上往下传到该 <code>View</code> 后就不再往下传递，而是直接传给自己的 <code>onTouchEvent()</code> 方法并结束本次事件传递过程。</p>
+<li><p>结论2：若对象(<code>Activity</code>、<code>ViewGroup</code>、<code>View</code>)的 <code>onTouchEvent()</code> 方法处理了事件(返回 <code>true</code>)，那么 <code>ACTION_MOVE</code>、<code>ACTION_UP</code> 的事件从上往下传到该 <code>View</code> 后就不再往下传递，而是直接传给自己的 <code>onTouchEvent()</code> 方法并结束本次事件传递过程。</p>
 <blockquote>
 <p><img src="https://henleylee.github.io/medias/touch/event_action_conclusion_2.png" alt="ACTION_MOVE和ACTION_UP事件的传递结论2"><br>黑线：ACTION_DOWN 事件传递方向<br>红线：ACTION_MOVE、ACTION_UP 事件传递方向</p>
 </blockquote>
@@ -1588,7 +1588,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">406.7k</span>&nbsp;字
+                <span class="white-color">426.6k</span>&nbsp;字
             
 	    <br>
 	    

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2020-04-15T08:51:13.553Z</updated>
+  <updated>2020-07-31T09:30:03.981Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -15,6 +15,117 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 样式和主题背景</title>
+    <link href="https://henleylee.github.io/posts/2020/eade425f.html"/>
+    <id>https://henleylee.github.io/posts/2020/eade425f.html</id>
+    <published>2020-07-20T10:55:36.000Z</published>
+    <updated>2020-07-31T09:30:03.981Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Android 提供了功能强大的样式系统 (&lt;a href=&quot;https://developer.android.com/guide/topics/ui/look-and-feel/themes&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Jetpack 组件之 App Startup 详解</title>
+    <link href="https://henleylee.github.io/posts/2020/48ae060.html"/>
+    <id>https://henleylee.github.io/posts/2020/48ae060.html</id>
+    <published>2020-07-10T04:36:32.000Z</published>
+    <updated>2020-07-14T04:02:18.686Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;App Startup&lt;/code&gt; 和 &lt;code&gt;Lifecycle&lt;/code&gt; 、&lt;code&gt;DataBinding&lt;/code&gt; 一样都是 &lt;code&gt;Jetpack&lt;/code&gt; 的组件之一。&lt;/p&gt;
+&lt;p&gt;官方网址：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+      <category term="Jetpack" scheme="https://henleylee.github.io/tags/Jetpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Android Studio Profiler 工具解析应用的内存和 CPU 使用数据</title>
+    <link href="https://henleylee.github.io/posts/2020/176e58e5.html"/>
+    <id>https://henleylee.github.io/posts/2020/176e58e5.html</id>
+    <published>2020-06-25T10:35:55.000Z</published>
+    <updated>2020-07-31T08:15:58.563Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s/MIuSi85lnrETqq3rl0Hc6A&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="https://henleylee.github.io/tags/Android-Studio/"/>
+    
+      <category term="Android Profiler" scheme="https://henleylee.github.io/tags/Android-Profiler/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ IDEA 快捷键大全</title>
+    <link href="https://henleylee.github.io/posts/2020/9df0c18c.html"/>
+    <id>https://henleylee.github.io/posts/2020/9df0c18c.html</id>
+    <published>2020-05-20T10:05:20.000Z</published>
+    <updated>2020-05-22T06:08:15.116Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;工欲善其事，必先利其器，使用 &lt;a href=&quot;https://www.jetbrains.com/idea/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;IntelliJ IDEA&lt;/code&gt;&lt;/a&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://henleylee.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="IntelliJ IDEA" scheme="https://henleylee.github.io/tags/IntelliJ-IDEA/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 日期处理的十个坑</title>
@@ -44,11 +155,120 @@
   </entry>
   
   <entry>
+    <title>Android Gradle 常用命令</title>
+    <link href="https://henleylee.github.io/posts/2020/f592fe8e.html"/>
+    <id>https://henleylee.github.io/posts/2020/f592fe8e.html</id>
+    <published>2020-02-19T04:56:26.000Z</published>
+    <updated>2020-07-13T03:12:11.338Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;Gradle&lt;/code&gt; 是基于 &lt;code&gt;Groovy&lt;/code&gt; 语言实现的一个编译系统， Google 针对 &lt;code&gt;Android&lt;/code&gt; 编译用 Groovy 语言开发了一套 DSL。&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+      <category term="Gradle" scheme="https://henleylee.github.io/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle 缓存目录结构说明</title>
+    <link href="https://henleylee.github.io/posts/2020/d1b3c0f5.html"/>
+    <id>https://henleylee.github.io/posts/2020/d1b3c0f5.html</id>
+    <published>2020-02-07T10:32:50.000Z</published>
+    <updated>2020-07-13T02:24:12.789Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Gradle-缓存策略&quot;&gt;&lt;a href=&quot;#Gradle-缓存策略&quot; class=&quot;headerlink&quot; title=&quot;Gradle 缓存策略&quot;&gt;&lt;/a&gt;Gradle 缓存策略&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Gradle&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Gradle" scheme="https://henleylee.github.io/categories/Gradle/"/>
+    
+    
+      <category term="Gradle" scheme="https://henleylee.github.io/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 8 Lambda 表达式详解</title>
+    <link href="https://henleylee.github.io/posts/2020/c8aac55f.html"/>
+    <id>https://henleylee.github.io/posts/2020/c8aac55f.html</id>
+    <published>2020-01-26T04:25:18.000Z</published>
+    <updated>2020-05-11T06:52:05.794Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;Lambda&lt;/code&gt;&lt;/strong&gt; 表达式，也可称为&lt;code&gt;闭包&lt;/code&gt;，它是推动
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+      <category term="JDK" scheme="https://henleylee.github.io/tags/JDK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin 操作符重载</title>
+    <link href="https://henleylee.github.io/posts/2020/40b85fa7.html"/>
+    <id>https://henleylee.github.io/posts/2020/40b85fa7.html</id>
+    <published>2020-01-16T10:20:36.000Z</published>
+    <updated>2020-04-30T07:18:55.953Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现。这些操作符具有固定的符号表示(如 &lt;code&gt;+&lt;/code&gt; 或
+        
+      
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="https://henleylee.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Kotlin" scheme="https://henleylee.github.io/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android SDK 和 API Level 对照表</title>
     <link href="https://henleylee.github.io/posts/2019/c4a7cb6a.html"/>
     <id>https://henleylee.github.io/posts/2019/c4a7cb6a.html</id>
     <published>2019-12-30T04:36:32.000Z</published>
-    <updated>2020-04-30T02:07:55.701Z</updated>
+    <updated>2020-04-30T03:57:42.752Z</updated>
     
     <summary type="html">
     
@@ -160,7 +380,7 @@
     <link href="https://henleylee.github.io/posts/2019/6efd8b7a.html"/>
     <id>https://henleylee.github.io/posts/2019/6efd8b7a.html</id>
     <published>2019-11-27T10:36:32.000Z</published>
-    <updated>2020-04-30T01:51:47.188Z</updated>
+    <updated>2020-07-13T10:21:53.949Z</updated>
     
     <summary type="html">
     
@@ -303,7 +523,7 @@
     <link href="https://henleylee.github.io/posts/2019/399ccee7.html"/>
     <id>https://henleylee.github.io/posts/2019/399ccee7.html</id>
     <published>2019-09-23T07:38:32.000Z</published>
-    <updated>2020-04-15T08:17:24.790Z</updated>
+    <updated>2020-06-03T01:33:53.416Z</updated>
     
     <summary type="html">
     
@@ -312,8 +532,8 @@
         
         
           &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xms：&lt;/code&gt;&lt;/strong&gt;初始堆大小。只要启动，就占用的堆大小。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xmx：&lt;/code&gt;&lt;/strong&gt;最大堆大小。java.lang.OutOfMemoryError
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xms：&lt;/code&gt;&lt;/strong&gt;初始堆内存。只要启动，就占用的堆大小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xmx：&lt;/code&gt;&lt;/strong&gt;最大堆内存。如果遇到 OutOfMemoryError
         
       
     
@@ -349,219 +569,6 @@
     
     
       <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合之 LinkedList 源码分析</title>
-    <link href="https://henleylee.github.io/posts/2019/2d1165aa.html"/>
-    <id>https://henleylee.github.io/posts/2019/2d1165aa.html</id>
-    <published>2019-08-25T07:56:35.000Z</published>
-    <updated>2020-04-15T08:15:51.518Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; 是用链表结构存储数据的，比较适合数据的动态插入和删除，随机访问和遍历速度比较慢，还提供了 &lt;code&gt;List&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合之 ArrayList 源码分析</title>
-    <link href="https://henleylee.github.io/posts/2019/bc5813b9.html"/>
-    <id>https://henleylee.github.io/posts/2019/bc5813b9.html</id>
-    <published>2019-08-15T10:26:15.000Z</published>
-    <updated>2020-04-15T08:15:11.991Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;ArrayList&lt;/code&gt; 不是线程安全的，只能用在单线程环境下，多线程环境下可以考虑用 &lt;code&gt;Collections.synchronizedList(List&amp;lt;T&amp;gt; list)&lt;/code&gt; 函数返回一个线程安全的
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java ConcurrentHashMap 的实现原理</title>
-    <link href="https://henleylee.github.io/posts/2019/9cd25f5c.html"/>
-    <id>https://henleylee.github.io/posts/2019/9cd25f5c.html</id>
-    <published>2019-07-30T10:36:55.000Z</published>
-    <updated>2020-04-15T08:14:05.207Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在多线程环境下，使用 &lt;code&gt;HashMap&lt;/code&gt; 进行 &lt;code&gt;put&lt;/code&gt; 操作时存在丢失数据的情况，为了避免这种 bug 的隐患，强烈建议使用 &lt;code&gt;ConcurrentHashMap&lt;/code&gt; 代替
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 中的 ANR 原理分析及解决办法</title>
-    <link href="https://henleylee.github.io/posts/2019/d8e5ccc6.html"/>
-    <id>https://henleylee.github.io/posts/2019/d8e5ccc6.html</id>
-    <published>2019-07-20T05:56:50.000Z</published>
-    <updated>2020-04-15T08:12:41.254Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;有过 Android 开发经历的人都不会对 ANR 陌生，它和崩溃一样是程序设计的问题。本文将以较为深入的视角来介绍什么是 ANR，出现场景，如何避免以及如何定位分析 ANR，希望可以帮助大家在编写程序时有所帮助。&lt;/p&gt;
-&lt;h2 id=&quot;ANR-简介&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 中12个常见的语法糖</title>
-    <link href="https://henleylee.github.io/posts/2019/8a697fa9.html"/>
-    <id>https://henleylee.github.io/posts/2019/8a697fa9.html</id>
-    <published>2019-07-08T04:36:20.000Z</published>
-    <updated>2020-01-17T03:36:32.425Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&amp;amp;mid=2650121987&amp;amp;idx=1&amp;amp;sn=70bba3f7f42a269eeada9cecb34c10a5&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Context 解析</title>
-    <link href="https://henleylee.github.io/posts/2019/1bd5d1e1.html"/>
-    <id>https://henleylee.github.io/posts/2019/1bd5d1e1.html</id>
-    <published>2019-07-05T02:30:35.000Z</published>
-    <updated>2020-01-17T03:35:06.290Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;一个 &lt;code&gt;Context&lt;/code&gt; 意味着一个场景，一个场景就是用户和软件进行交互的一个过程。那么从安卓程序的角度来看，&lt;code&gt;Context&lt;/code&gt; 是什么？其实一个 &lt;code&gt;Activity&lt;/code&gt; 就是一个
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解 Gradle 框架之二：依赖实现分析</title>
-    <link href="https://henleylee.github.io/posts/2019/5fe63be9.html"/>
-    <id>https://henleylee.github.io/posts/2019/5fe63be9.html</id>
-    <published>2019-06-26T10:36:29.000Z</published>
-    <updated>2020-01-17T03:34:23.708Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s/WQCqUaYDPHDIjUHlxjRIkw&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Gradle" scheme="https://henleylee.github.io/categories/Gradle/"/>
-    
-    
-      <category term="Gradle" scheme="https://henleylee.github.io/tags/Gradle/"/>
-    
-      <category term="Plugin" scheme="https://henleylee.github.io/tags/Plugin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解 Gradle 框架之一：Plugin、Extension、buildSrc</title>
-    <link href="https://henleylee.github.io/posts/2019/babf38d8.html"/>
-    <id>https://henleylee.github.io/posts/2019/babf38d8.html</id>
-    <published>2019-06-21T10:50:55.000Z</published>
-    <updated>2020-01-17T03:33:59.930Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s/mDCTtQZb6mhWOFAvLYKBSg&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Gradle" scheme="https://henleylee.github.io/categories/Gradle/"/>
-    
-    
-      <category term="Gradle" scheme="https://henleylee.github.io/tags/Gradle/"/>
-    
-      <category term="Plugin" scheme="https://henleylee.github.io/tags/Plugin/"/>
     
   </entry>
   

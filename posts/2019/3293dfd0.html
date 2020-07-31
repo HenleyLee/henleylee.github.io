@@ -566,16 +566,16 @@ layout 过程详解layout 过程根">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>在自定义 View 过程中，Layout 的主要作用就是<strong><code>计算 View 的位置</code></strong>。</p>
+                <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>在自定义 <code>View</code> 过程中，<code>Layout</code> 的主要作用就是<strong><code>计算 View 的位置</code></strong>。</p>
 <blockquote>
-<p>计算 View 的位置就是计算 <code>View</code> 的四个顶点位置：<code>Left</code>、<code>Top</code>、<code>Right</code> 和 <code>Bottom</code>。</p>
+<p>计算 <code>View</code> 的位置就是计算 <code>View</code> 的四个顶点位置：<code>Left</code>、<code>Top</code>、<code>Right</code> 和 <code>Bottom</code>。</p>
 </blockquote>
-<h2 id="layout-过程详解"><a href="#layout-过程详解" class="headerlink" title="layout 过程详解"></a>layout 过程详解</h2><p><strong><code>layout</code></strong> 过程根据 View 的类型分为以下两种情况：</p>
+<h2 id="layout-过程详解"><a href="#layout-过程详解" class="headerlink" title="layout 过程详解"></a>layout 过程详解</h2><p><strong><code>layout</code></strong> 过程根据 <code>View</code> 的类型分为以下两种情况：</p>
 <ul>
 <li><strong><code>单一 View：</code></strong>仅计算 <code>View</code> 自身的位置。</li>
 <li><strong><code>ViewGroup：</code></strong>除了计算 <code>View</code> 自身的位置外，还需要确定子 <code>View</code> 在父容器中的位置(遍历调用所有子元素的 <code>layout()</code> 和各子元素再递归去执行该流程)。</li>
 </ul>
-<h3 id="单一-View-的-layout-过程"><a href="#单一-View-的-layout-过程" class="headerlink" title="单一 View 的 layout 过程"></a>单一 View 的 layout 过程</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>在没有现成的控件 View 满足需求、需自己实现时，则使用自定义单一 View。</p>
+<h3 id="单一-View-的-layout-过程"><a href="#单一-View-的-layout-过程" class="headerlink" title="单一 View 的 layout 过程"></a>单一 View 的 layout 过程</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>在没有现成的控件 <code>View</code> 满足需求、需自己实现时，则使用自定义单一 <code>View</code>。</p>
 <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>继承自 <code>View</code>、<code>SurfaceView</code> 或 其他 <code>View</code>；<code>不包含子 View</code>。</p>
 <h4 id="计算流程"><a href="#计算流程" class="headerlink" title="计算流程"></a>计算流程</h4><p><img src="https://henleylee.github.io//medias/view/view_layout_single.png" alt="单一View的layout过程"></p>
 <p>下面将 <code>layout</code> 过程中的方法进行详细分析：<code>layout</code> 过程入口为 <code>layout()</code></p>
@@ -687,10 +687,10 @@ layout 过程详解layout 过程根">
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="https://henleylee.github.io//medias/view/view_layout_single_all.png" alt="单一View的layout过程总结"></p>
 <h3 id="ViewGroup-的-layout-过程"><a href="#ViewGroup-的-layout-过程" class="headerlink" title="ViewGroup 的 layout 过程"></a>ViewGroup 的 layout 过程</h3><h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h4><p>利用现有的组件根据特定的布局方式来组成新的组件。</p>
 <h4 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h4><p>继承自 <code>ViewGroup</code> 或各种 <code>Layout</code>；<code>包含子 View</code>。</p>
-<h4 id="计算原理"><a href="#计算原理" class="headerlink" title="计算原理"></a>计算原理</h4><p>自上而下、一层层地传递下去，直到完成整个 View 树的 <code>layout()</code> 过程：</p>
+<h4 id="计算原理"><a href="#计算原理" class="headerlink" title="计算原理"></a>计算原理</h4><p>自上而下、一层层地传递下去，直到完成整个 <code>View</code> 树的 <code>layout()</code> 过程：</p>
 <ol>
 <li>计算自身 <code>ViewGroup</code> 的位置：<code>layout()</code>。</li>
-<li>遍历所有子 <code>View</code> 并确定子 <code>View</code> 自身在 ViewGroup 中的位置(调用子 View 的 layout() 方法)：onLayout()。</li>
+<li>遍历所有子 <code>View</code> 并确定子 <code>View</code> 自身在 <code>ViewGroup</code> 中的位置(调用子 <code>View</code> 的 <code>layout()</code> 方法)：<code>onLayout()</code>。</li>
 </ol>
 <p><img src="https://henleylee.github.io//medias/view/view_group_tree.png" alt="ViewGroup自上而下遍历"></p>
 <h4 id="计算流程-1"><a href="#计算流程-1" class="headerlink" title="计算流程"></a>计算流程</h4><p><img src="https://henleylee.github.io//medias/view/view_layout_group.png" alt="ViewGroup的layout过程"><br><code>ViewGroup</code> 和 <code>View</code> 同样拥有 <code>layout()</code> 和 <code>onLayout()</code>，但二者不同的：</p>
@@ -1309,7 +1309,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">406.7k</span>&nbsp;字
+                <span class="white-color">426.6k</span>&nbsp;字
             
 	    <br>
 	    

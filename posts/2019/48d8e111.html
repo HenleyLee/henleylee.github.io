@@ -564,12 +564,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>在自定义 View 过程中，Measure 的主要作用就是<strong><code>测量 View 的宽/高</code></strong>。</p>
+                <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>在自定义 <code>View</code> 过程中，<code>Measure</code> 的主要作用就是<strong><code>测量 View 的宽/高</code></strong>。</p>
 <blockquote>
-<p>在某些情况下，需要多次测量(<code>measure</code>)才能确定 View 最终的宽/高；该情况下，<code>measure</code> 过程后得到的宽/高可能不准确；此处建议：在 <code>layout</code> 过程中 <code>onLayout()</code> 去获取最终的宽/高。</p>
+<p>在某些情况下，需要多次测量(<code>measure</code>)才能确定 <code>View</code> 最终的宽/高；该情况下，<code>measure</code> 过程后得到的宽/高可能不准确；此处建议：在 <code>layout</code> 过程中 <code>onLayout()</code> 去获取最终的宽/高。</p>
 </blockquote>
 <h2 id="LayoutParams"><a href="#LayoutParams" class="headerlink" title="LayoutParams"></a>LayoutParams</h2><p><strong><code>android.view.ViewGroup.LayoutParams</code></strong> 类是 <code>android.view.ViewGroup</code> 的一个内部类，表示布局参数。</p>
-<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p><code>LayoutParams</code> 的主要作用是用来指定 View 的高度(height)和 宽度(width)等布局参数。</p>
+<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p><code>LayoutParams</code> 的主要作用是用来指定 <code>View</code> 的高度(height)和 宽度(width)等布局参数。</p>
 <h3 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h3><p><code>LayoutParams</code> 主要通过以下参数指定：</p>
 <table>
 <thead>
@@ -584,15 +584,15 @@
 <td>指定具体的宽/高(dp / px)</td>
 </tr>
 <tr>
-<td>fill_parent</td>
+<td><code>fill_parent</code></td>
 <td>强制性使子视图的大小扩展至与父视图大小相等(不含 padding)</td>
 </tr>
 <tr>
-<td>match_parent</td>
-<td>与 fill_parent 相同，用于 Android 2.3 及以上版本</td>
+<td><code>match_parent</code></td>
+<td>与 <code>fill_parent</code> 相同，用于 Android 2.3 及以上版本</td>
 </tr>
 <tr>
-<td>wrap_content</td>
+<td><code>wrap_content</code></td>
 <td>自适应大小，强制性地使视图扩展以便显示其全部内容(含 padding)</td>
 </tr>
 </tbody>
@@ -604,9 +604,9 @@
 <span class="token keyword">public</span> <span class="token function">LayoutParams</span><span class="token punctuation">(</span>android<span class="token punctuation">.</span>view<span class="token punctuation">.</span>ViewGroup<span class="token punctuation">.</span>LayoutParams source<span class="token punctuation">)</span>
 </code></pre>
 <h2 id="MeasureSpec"><a href="#MeasureSpec" class="headerlink" title="MeasureSpec"></a>MeasureSpec</h2><p><strong><code>android.view.View.MeasureSpec</code></strong> 类是 <code>android.view.View</code> 的一个内部类，表示测量规格。</p>
-<h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p><code>MeasureSpec</code> 的主要作用是用来作为测量 View 的大小(宽/高)的依据。</p>
-<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p><code>MeasureSpec</code> 由测量模式(<code>mode</code>)和测量大小(<code>size</code>)。MeasureSpec 是 View 中的内部类，基本都是二进制运算。由于 int 是 32 位的，用<strong>高两位表示 mode，低 30 位表示 size</strong>，MODE_SHIFT = 30 的作用是移位。</p>
-<h3 id="测量模式"><a href="#测量模式" class="headerlink" title="测量模式"></a>测量模式</h3><p>测量模式(<code>mode</code>)的类型有3种：UNSPECIFIED、EXACTLY 和 AT_MOST。具体如下：</p>
+<h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p><code>MeasureSpec</code> 的主要作用是用来作为测量 <code>View</code> 的大小(宽/高)的依据。</p>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p><code>MeasureSpec</code> 由测量模式(<code>mode</code>)和测量大小(<code>size</code>)。<code>MeasureSpec</code> 是 <code>View</code> 中的内部类，基本都是二进制运算。由于 <code>int</code> 是 <code>32</code> 位的，用<strong><code>高两位表示 mode，低 30 位表示 size</code></strong>，<code>MODE_SHIFT = 30</code> 的作用是移位。</p>
+<h3 id="测量模式"><a href="#测量模式" class="headerlink" title="测量模式"></a>测量模式</h3><p>测量模式(<code>mode</code>)的类型有3种：<code>UNSPECIFIED</code>、<code>EXACTLY</code> 和 <code>AT_MOST</code>。具体如下：</p>
 <table>
 <thead>
 <tr>
@@ -617,23 +617,23 @@
 </thead>
 <tbody>
 <tr>
-<td>UNSPECIFIED</td>
+<td><code>UNSPECIFIED</code></td>
 <td>父控件没有给子视图任何限制，子视图可以设置为任意大小(不常用)</td>
 <td>ListView，ScrollView</td>
 </tr>
 <tr>
-<td>EXACTLY</td>
+<td><code>EXACTLY</code></td>
 <td>父控件为子视图指定了确切的尺寸，子视图大小必须在该指定尺寸内</td>
 <td>具体数值或 march_parent</td>
 </tr>
 <tr>
-<td>AT_MOST</td>
+<td><code>AT_MOST</code></td>
 <td>父控件为子视图指定一个最大尺寸，子视图必须确保自身和所有子视图可适应在该尺寸内</td>
 <td>wrap_content</td>
 </tr>
 </tbody>
 </table>
-<h3 id="具体使用-1"><a href="#具体使用-1" class="headerlink" title="具体使用"></a>具体使用</h3><p><code>MeasureSpec</code> 类用1个变量封装了2个数据(size  和 mode)：通过使用二进制，将测量模式(mode)和测量大小(size)打包成一个 int 值来，并提供了打包和解包的方法。</p>
+<h3 id="具体使用-1"><a href="#具体使用-1" class="headerlink" title="具体使用"></a>具体使用</h3><p><code>MeasureSpec</code> 类用1个变量封装了2个数据(<code>size</code>  和 <code>mode</code>)：通过使用二进制，将<code>测量模式(mode)</code>和<code>测量大小(size)</code>打包成一个 <code>int</code> 值来，并提供了打包和解包的方法。</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 获取测量模式(Mode)</span>
 <span class="token keyword">int</span> specMode <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">getMode</span><span class="token punctuation">(</span>measureSpec<span class="token punctuation">)</span>
 
@@ -641,7 +641,7 @@
 <span class="token keyword">int</span> specSize <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span>measureSpec<span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">// 通过 Mode 和 Size 生成新的 SpecMode</span>
-<span class="token keyword">int</span> measureSpec<span class="token operator">=</span>MeasureSpec<span class="token punctuation">.</span><span class="token function">makeMeasureSpec</span><span class="token punctuation">(</span>size<span class="token punctuation">,</span> mode<span class="token punctuation">)</span>
+<span class="token keyword">int</span> measureSpec <span class="token operator">=</span> MeasureSpec<span class="token punctuation">.</span><span class="token function">makeMeasureSpec</span><span class="token punctuation">(</span>size<span class="token punctuation">,</span> mode<span class="token punctuation">)</span>
 </code></pre>
 <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * MeasureSpec 类的源码分析
@@ -719,12 +719,12 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="measure-过程详解"><a href="#measure-过程详解" class="headerlink" title="measure 过程详解"></a>measure 过程详解</h2><p><strong><code>measure</code></strong> 过程根据 View 的类型分为以下两种情况：</p>
+<h2 id="measure-过程详解"><a href="#measure-过程详解" class="headerlink" title="measure 过程详解"></a>measure 过程详解</h2><p><strong><code>measure</code></strong> 过程根据 <code>View</code> 的类型分为以下两种情况：</p>
 <ul>
 <li><strong><code>单一 View：</code></strong>仅测量 <code>View</code> 自身的大小。</li>
 <li><strong><code>ViewGroup：</code></strong>对 <code>ViewGroup</code> 视图中的所有子 <code>View</code> 都进行测量(遍历调用所有子元素的 <code>measure()</code> 和各子元素再递归去执行该流程)。</li>
 </ul>
-<h3 id="单一-View-的-measure-过程"><a href="#单一-View-的-measure-过程" class="headerlink" title="单一 View 的 measure 过程"></a>单一 View 的 measure 过程</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>在没有现成的控件 View 满足需求、需自己实现时，则使用自定义单一 View。</p>
+<h3 id="单一-View-的-measure-过程"><a href="#单一-View-的-measure-过程" class="headerlink" title="单一 View 的 measure 过程"></a>单一 View 的 measure 过程</h3><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>在没有现成的控件 <code>View</code> 满足需求、需自己实现时，则使用自定义单一 <code>View</code>。</p>
 <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>继承自 <code>View</code>、<code>SurfaceView</code> 或 其他 <code>View</code>；<code>不包含子 View</code>。</p>
 <h4 id="测量流程"><a href="#测量流程" class="headerlink" title="测量流程"></a>测量流程</h4><p><img src="https://henleylee.github.io/medias/view/view_measure_single.png" alt="单一View的measure过程"></p>
 <p>下面将 <code>measure</code> 过程中的方法进行详细分析：<code>measure</code> 过程入口为 <code>measure()</code></p>
@@ -849,7 +849,7 @@
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="https://henleylee.github.io/medias/view/view_measure_single_all.png" alt="单一View的measure过程总结"></p>
 <h3 id="ViewGroup-的-measure-过程"><a href="#ViewGroup-的-measure-过程" class="headerlink" title="ViewGroup 的 measure 过程"></a>ViewGroup 的 measure 过程</h3><h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h4><p>利用现有的组件根据特定的布局方式来组成新的组件。</p>
 <h4 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h4><p>继承自 <code>ViewGroup</code> 或各种 <code>Layout</code>；<code>包含子 View</code>。</p>
-<h4 id="测量原理"><a href="#测量原理" class="headerlink" title="测量原理"></a>测量原理</h4><p>自上而下、一层层地传递下去，直到完成整个 View 树的 <code>measure()</code> 过程：</p>
+<h4 id="测量原理"><a href="#测量原理" class="headerlink" title="测量原理"></a>测量原理</h4><p>自上而下、一层层地传递下去，直到完成整个 <code>View</code> 树的 <code>measure()</code> 过程：</p>
 <ol>
 <li>遍历测量所有子 <code>View</code> 的尺寸。</li>
 <li>将所有子 <code>View</code> 的尺寸进行合并，最终得到 <code>ViewGroup</code> 父视图的测量值。</li>
@@ -900,11 +900,11 @@
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<p>由于不同的 <code>ViewGroup</code> 子类(<code>LinearLayout</code>、<code>RelativeLayout</code>、<code>自定义 ViewGroup 子类</code>等)具备不同的布局特性，这导致它们的子 <code>View</code> 的测量方法各有不同，而 <code>onMeasure()</code> 方法的作用就是测量 View 的宽/高值。因此 ViewGroup 的 measure 过程无法像单一 View 的 measure 过程那样可以对 onMeasure() 做统一的实现。这个也是单一 View 的 measure 过程与 ViewGroup 过程最大的不同。</p>
+<p>由于不同的 <code>ViewGroup</code> 子类(<code>LinearLayout</code>、<code>RelativeLayout</code>、<code>自定义 ViewGroup 子类</code>等)具备不同的布局特性，这导致它们的子 <code>View</code> 的测量方法各有不同，而 <code>onMeasure()</code> 方法的作用就是测量 <code>View</code> 的宽/高值。因此 <code>ViewGroup</code> 的 <code>measure</code> 过程无法像单一 <code>View</code> 的 <code>measure</code> 过程那样可以对 <code>onMeasure()</code> 做统一的实现。这个也是单一 <code>View</code> 的 <code>measure</code> 过程与 <code>ViewGroup</code> 过程最大的不同。</p>
 <blockquote>
-<p>注：其实，在单一 View 的 measure 过程中，getDefaultSize() 只是简单的测量了宽高值，在实际使用时有时需更精细的测量，所以有时候也需重写 onMeasure() 方法。</p>
+<p>注：其实，在单一 <code>View</code> 的 <code>measure</code> 过程中，<code>getDefaultSize()</code> 只是简单的测量了宽高值，在实际使用时有时需更精细的测量，所以有时候也需重写 <code>onMeasure()</code> 方法。</p>
 </blockquote>
-<p>在自定义 <code>ViewGroup</code> 中，关键在于：根据需求复写 <code>onMeasure()</code> 从而实现子 View 测量逻辑。复写 <code>onMeasure()</code> 的实现如下：</p>
+<p>在自定义 <code>ViewGroup</code> 中，关键在于：根据需求复写 <code>onMeasure()</code> 从而实现子 <code>View</code> 测量逻辑。复写 <code>onMeasure()</code> 的实现如下：</p>
 <pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
      * 根据自身的测量逻辑复写 onMeasure()，分为3步
      * 1. 遍历所有子 View 并测量：measureChildren()
@@ -1555,7 +1555,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">406.7k</span>&nbsp;字
+                <span class="white-color">426.6k</span>&nbsp;字
             
 	    <br>
 	    
