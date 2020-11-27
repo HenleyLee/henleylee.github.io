@@ -709,11 +709,11 @@ Color<span class="token punctuation">.</span><span class="token function">HSVToC
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> alpha <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token number">255</span> <span class="token operator">*</span> i <span class="token operator">*</span> <span class="token number">1.0f</span> <span class="token operator">/</span> <span class="token number">100f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String hexStr <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>hexStr<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            hexStr <span class="token operator">=</span> <span class="token string">"0"</span> <span class="token operator">+</span> hexStr<span class="token punctuation">;</span>
+        String hex <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">toHexString</span><span class="token punctuation">(</span>alpha<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>hex<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            hex <span class="token operator">=</span> <span class="token string">"0"</span> <span class="token operator">+</span> hex<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"%, "</span> <span class="token operator">+</span> hexStr<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">"% ==> "</span> <span class="token operator">+</span> hex<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -895,11 +895,11 @@ Color<span class="token punctuation">.</span><span class="token function">HSVToC
 <td>96</td>
 </tr>
 <tr>
-<td>57%</td>
+<td>58%</td>
 <td>94</td>
 </tr>
 <tr>
-<td>56%</td>
+<td>57%</td>
 <td>91</td>
 </tr>
 <tr>
@@ -1773,7 +1773,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    

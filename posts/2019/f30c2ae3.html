@@ -549,14 +549,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.8k
+                    7k
                 </div>
                 
 
                 
                     <div class="info-break-policy">
                         <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
-                        23 分
+                        24 分
                     </div>
                 
 				
@@ -575,7 +575,7 @@
 </blockquote>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><code>树</code>具有以下的特点：</p>
 <ul>
-<li>有且仅有一个特定的称为根(root)节点；</li>
+<li>有且仅有一个特定的称为根(root)的节点；</li>
 <li>每棵树有且只有一个根节点；</li>
 <li>每个节点都只有有限个子节点或无子节点；</li>
 <li>每一个非根节点有且只有一个父节点；</li>
@@ -723,7 +723,7 @@ typedef struct CSNode{
 }CSNode, *CSTree;
 </code></pre><h2 id="树的分类"><a href="#树的分类" class="headerlink" title="树的分类"></a>树的分类</h2><p>数据结构中有很多树的结构，其中包括二叉树、二叉搜索树、平衡二叉树、2-3 树、红黑树等等。</p>
 <h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树是数据结构中一种重要的数据结构，也是树表家族最为基础的结构。</p>
-<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p><strong><code>二叉树(Binary Tree)</code></strong>是一个有根树，并且每个节点最多只有2科子树(即二叉树中不存在度大于2的结点)，并且二叉树的子树有左右之分，其次序不能任意颠倒。</p>
+<h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p><strong><code>二叉树(Binary Tree)</code></strong>是一个有根树，并且每个节点最多只有2棵子树(即二叉树中不存在度大于2的结点)，并且二叉树的子树有左右之分，其次序不能任意颠倒。</p>
 <p>二叉树的数据结构如下图所示：<br><img src="https://henleylee.github.io/medias/study/data_structure_binary_tree.png" alt="二叉树的数据结构"></p>
 <p>二叉树的第 n 层至多有 2<sup>n-1</sup> 个结点；深度为 k 的二叉树至多有 2<sup>k-1</sup> 个结点；对任何一棵非空二叉树 T，如果其树叶总数为 n<sub>0</sub>，度为2的结点数为 n<sub>2</sub>，则 n<sub>0</sub>=n<sub>2</sub>+1。</p>
 <h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><p>二叉树的性质：</p>
@@ -731,7 +731,7 @@ typedef struct CSNode{
 <li>在非空二叉树中，第 i 层的结点总数不超过 2<sup>i-1</sup>(i&gt;=1);</li>
 <li>深度为 k 的二叉树最多有 2<sup>k</sup>-1 个结点(k&gt;=1)，最少有 k 个结点;</li>
 <li>对于任意一棵二叉树，如果其终端结点数为 n<sub>0</sub>，而度数为2的结点总数为 n<sub>2</sub>，则 n<sub>0</sub>=n<sub>2</sub>+1;</li>
-<li>具有 n 个结点的完全二叉树的深度为 log<sub>2</sub>(n+1);</li>
+<li>具有 n 个结点的完全二叉树的深度为 log<sub>2</sub>(n)+1;</li>
 <li>具有 n 个结点的完全二叉树各结点如果用顺序方式存储，则对任一结点 i(1≤i≤n) 之间有如下关系：<ul>
 <li>如果 i=1，则节点 i 是二叉树的根，无双亲；如果 i&gt;1，则其双亲是节点 i/2；</li>
 <li>如果 2i&gt;n，则节点 i 无左孩子，节点 i 是叶子节点；否则其左孩子(即左子树的根结点)是节点 2i；</li>
@@ -741,6 +741,8 @@ typedef struct CSNode{
 <li>给定n个节点，能构成 h(n) 种不同的二叉树，其中 h(n) 为卡特兰数的第 n 项，h(n)=C(2*n, n)/(n+1)。</li>
 <li>设有 i 个枝点，I 为所有枝点的道路长度总和，J 为叶的道路长度总和 J=I+2<sup>i</sup>。</li>
 </ul>
+<h4 id="存储结构-1"><a href="#存储结构-1" class="headerlink" title="存储结构"></a>存储结构</h4><p>二叉树的顺序存储是用一组地址连续的存储单元依次自上而下、自左至右存储完全二叉树上的结点元素。对于一般二叉树，则应将其每个结点与完全二叉树上的结点相对照，存储在一维数组的相应分量中，以“0”表示不存在的结点。 </p>
+<p>在二叉树的链式存储结构中，结点至少包含3个域：数据域和左、右指针域。左、右指针分别指向其左右子树的两个分支。有时，为了便于找到结点的双亲，则还可在结点结构中增加一个指向其双亲结点的指针域。</p>
 <h4 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h4><p><strong><code>满二叉树(Full Binary Tree)：</code></strong>除最后一层无任何子节点外，每一层上的所有结点都有两个子结点。也可以这样理解，除叶子结点外的所有结点均有两个子结点。节点数达到最大值，所有叶子结点必须在同一层上。</p>
 <p>满二叉树的数据结构如下图所示：<br><img src="https://henleylee.github.io/medias/study/data_structure_full_binary_tree.png" alt="满二叉树的数据结构"></p>
 <p>满二叉树的性质：</p>
@@ -752,6 +754,7 @@ typedef struct CSNode{
 </ul>
 <h4 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h4><p><strong><code>完全二叉树(Complete Binary Tree)</code></strong>是指从根结点到倒数第二层满足完美二叉树，最后一层可以不完全填充，其叶子结点都靠左对齐。</p>
 <p>完全二叉树的数据结构如下图所示：<br><img src="https://henleylee.github.io/medias/study/data_structure_complete_binary_tree.png" alt="完全二叉树的数据结构"></p>
+<p>满二叉树和：满二叉树必定是完全二叉树，而完全二叉树不一定是满二叉树！</p>
 <blockquote>
 <p>注：完全二叉树是效率很高的数据结构，堆是一种完全二叉树或者近似完全二叉树，所以效率极高，像十分常用的排序算法、Dijkstra算法、Prim算法等都要用堆才能优化，二叉排序树的效率也要借助平衡性来提高，而平衡性基于完全二叉树。</p>
 </blockquote>
@@ -874,12 +877,21 @@ typedef struct CSNode{
 <li>“串”排序：给定 N 个互不相同的仅由一个单词构成的英文名，将他们按字典序从小到大输出。用字典树进行排序，采用数组的方式创建字典树，这棵树的每个结点的所有儿子很显然地按照其字母大小排序。对这棵树进行先序遍历即可。</li>
 <li>最长公共前缀：对所有串建立字典树，对于两个串的最长公共前缀的长度即他们所在的结点的公共祖先个数，于是，问题就转化为求公共祖先的问题。</li>
 </ul>
-<h2 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h2><p>树的遍历是树的一种重要的运算。所谓遍历是指对树中所有结点的信息的访问，即依次对树中每个结点访问一次且仅访问一次。</p>
-<p>二叉树的遍历方式分为3种：</p>
+<h2 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h2><p>树的遍历是树的一种重要的运算。所谓遍历是指按某条搜索路径巡访树中每个结点，使得每个结点均被访问一次，而且仅被访问一次。</p>
+<p>二叉树的遍历是指从根结点出发，按照某种次序依次访问二叉树中所有的结点，使得每个结点被访问依次且仅被访问一次。二叉树的遍历方式分为3种：</p>
 <ul>
-<li><strong><code>前序遍历：</code></strong>先根节点，后左孩子节点，再右孩子结点。即：若树为空，则空操作返回。否则，先访问根节点，然后前序遍历左子树，再前序遍历右子树。</li>
-<li><strong><code>中序遍历：</code></strong>先左孩子结点，后根节点，再右孩子结点。即：若树为空，则空操作返回。否则，从根节点开始(注意并不是先访问根节点)，中序遍历根节点的左子树，然后是访问根节点，最后中序遍历根节点的右子树。</li>
-<li><strong><code>后序遍历：</code></strong>先左孩子节点，后右孩子结点，再根节点。即：若树为空，则空操作返回。否则，从左到右先叶子后节点的方式遍历访问左右子树，最后访问根节点。</li>
+<li><strong><code>前序遍历：</code></strong>先根节点，后左孩子节点，再右孩子结点。<blockquote>
+<p>若树为空，则空操作返回。否则，先访问根节点，然后前序遍历左子树，再前序遍历右子树。</p>
+</blockquote>
+</li>
+<li><strong><code>中序遍历：</code></strong>先左孩子结点，后根节点，再右孩子结点。<blockquote>
+<p>若树为空，则空操作返回。否则，从根节点开始(注意并不是先访问根节点)，中序遍历根节点的左子树，然后是访问根节点，最后中序遍历根节点的右子树。</p>
+</blockquote>
+</li>
+<li><strong><code>后序遍历：</code></strong>先左孩子节点，后右孩子结点，再根节点。<blockquote>
+<p>若树为空，则空操作返回。否则，先后序遍历左子树，然后后序遍历右子树，最后访问根节点。</p>
+</blockquote>
+</li>
 </ul>
 <blockquote>
 <p>注意：这里的<strong><code>序</code></strong>为<strong>根节点的遍历顺序</strong>。</p>
@@ -1378,7 +1390,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    

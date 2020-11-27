@@ -1205,7 +1205,7 @@
     mAsynchronous <span class="token operator">=</span> async<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>对于 <code>Handler</code> 的不指定 <code>Looper</code> 的构造方法，默认采用当前线程 <code>TLS</code> 中的 <code>Looper</code> 对象，只要执行的 <code>Looper.prepare()</code> 方法，那么便可以获取有效的 <code>Looper</code> 对象。</p>
+<p>对于 <code>Handler</code> 的不指定 <code>Looper</code> 的构造方法，默认采用当前线程 <code>TLS</code> 中的 <code>Looper</code> 对象，只要执行了 <code>Looper.prepare()</code> 方法，那么便可以获取有效的 <code>Looper</code> 对象。</p>
 <h4 id="指定-Looper"><a href="#指定-Looper" class="headerlink" title="指定 Looper"></a>指定 Looper</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">Handler</span><span class="token punctuation">(</span>Looper looper<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">(</span>looper<span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -1910,7 +1910,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    

@@ -545,7 +545,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.9k
                 </div>
                 
 
@@ -603,7 +603,7 @@
 <blockquote>
 <p><code>LinkedList</code> 底层的数据结构是基于<code>双向循环链表</code>的，且头结点中不存放数据。</p>
 </blockquote>
-<h3 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h3><p><code>java.util.LinkedList.Node</code> 是 <code>LinkedList</code> 中的节点所对应的类：</p>
+<h3 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h3><p><code>Node</code> 是 <code>LinkedList</code> 类的一个私有的静态内部类，用于存放 <code>LinkedList</code> 中的节点信息，源码如下：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">/** 存放数据 */</span>
     E item<span class="token punctuation">;</span>
@@ -619,6 +619,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p><code>LinkedList</code> 是一个双向链表，每一个节点都由三部分组成，前后节点和值。</p>
 <h3 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a>集合操作</h3><h4 id="set"><a href="#set" class="headerlink" title="set()"></a>set()</h4><p><strong><code>set(int index, E element)</code></strong>方法用于用指定的元素替代此链表中指定位置上的元素，并返回以前位于该位置上的元素。下面分析 <code>set(int index, E element)</code> 方法的源码： </p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> E <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> E element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 检查指定的索引是否在范围内</span>
@@ -1449,7 +1450,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    

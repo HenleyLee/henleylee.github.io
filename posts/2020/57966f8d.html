@@ -1,0 +1,1993 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android ViewTreeObserver 原理详解, Android, Google, Blog">
+    <meta name="description" content="View 和 ViewGroup 是 Android UI 的基本组件， 而 ViewGroup 作为容器，可以包含一组 View， 并且 ViewGroup 其本身就是 View 的扩展。
+ViewTree：视图树。在 Android 中">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Android ViewTreeObserver 原理详解 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/resources" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>图书</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul style="background:  ;">
+              
+                <li>   
+				
+                  <a href="/musics " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px"></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/movies " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px"></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/books " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px"></i>
+			      
+		          <span>图书</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/galleries " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px"></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Android ViewTreeObserver 原理详解
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/" target="_blank">
+                                <span class="chip tag-bg-color">Android</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                Android
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2020-03-12
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.1k
+                </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
+                        21 分
+                    </div>
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><code>View</code> 和 <code>ViewGroup</code> 是 Android UI 的基本组件， 而 <code>ViewGroup</code> 作为容器，可以包含一组 <code>View</code>， 并且 <code>ViewGroup</code> 其本身就是 <code>View</code> 的扩展。</p>
+<p><code>ViewTree</code>：视图树。在 Android 中，所有视图由 <code>View</code> 和 <code>View</code> 的子类组成。<code>ViewGroup</code> 也是 <code>View</code> 的子类，它是 <code>View</code> 的容器，它可以装载 <code>View</code> 和 <code>ViewGroup</code>。这样 <code>ViewGroup</code> 和 <code>View</code> 以树形结构一层一层的嵌套组合，就形成了视图树。</p>
+<p><code>Observer</code>：观察者。使用了观察者的设计模式，在这里，即 <code>ViewTree</code> 时被观察者，<code>ViewTreeObserver</code> 是观察者，通过 <code>ViewTreeObserver</code> 注册监听来观察 <code>ViewTree</code> 的变化，当 <code>ViewTree</code> 发生变化，就会调用 <code>ViewTreeObserver</code> 的相关方法来通知其这一改变。可以在 <code>ViewTreeObserver</code> 中 <code>add</code> 自己的监听器，从而得到 <code>ViewTree</code> 的某一变化的通知做出自己的逻辑处理。</p>
+<h2 id="ViewTreeObserver"><a href="#ViewTreeObserver" class="headerlink" title="ViewTreeObserver"></a>ViewTreeObserver</h2><p><a href="https://developer.android.com/reference/android/view/ViewTreeObserver" target="_blank" rel="noopener"><code>ViewTreeObserver</code></a> 是用于注册在 <code>ViewTree</code> 状态发生变化时可被<strong>全局通知</strong>的 <code>Listener</code>。这些 <code>Listeners</code> 包括视图树的布局、视图树的焦点、视图树将要绘制、视图树滚动等发生变化等场景。</p>
+<p><code>ViewTreeObserver</code> 不能被外部实例化，因为它是由视图提供，只能通过 <code>android.view.View#getViewTreeObserver()</code> 方式获取。</p>
+<h2 id="公共接口"><a href="#公共接口" class="headerlink" title="公共接口"></a>公共接口</h2><p><code>ViewTreeObserver</code> 为应用提供了全局监听的 <code>View</code> 状态变化，那具体可以帮助我们监听哪些状态呢？</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:left">Interface</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:left">OnWindowAttachListener</td>
+<td style="text-align:left">当视图层次结构关联到窗口或与之分离时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:left">OnWindowFocusChangeListener</td>
+<td style="text-align:left">当视图层次结构的窗口焦点状态发生改变时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:left">OnGlobalFocusChangeListener</td>
+<td style="text-align:left">当视图树中的焦点状态发生改变时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:left">OnGlobalLayoutListener</td>
+<td style="text-align:left">当视图树全局布局状态发生改变或视图树中某个视图的可视状态发生改变时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">OnPreDrawListener</td>
+<td style="text-align:left">当视图树即将开始绘制时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:left">OnDrawListener</td>
+<td style="text-align:left">当视图树即将开始绘制时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:left">OnTouchModeChangeListener</td>
+<td style="text-align:left">当视图树的触摸模式发生改变时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:left">OnScrollChangedListener</td>
+<td style="text-align:left">当视图树中的一些组件发生滚动时回调</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:left">…</td>
+<td style="text-align:left">被 @hide 声明</td>
+</tr>
+</tbody>
+</table>
+<p>上述接口在 <code>ViewTreeObserver</code> 中的管理：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnWindowFocusChangeListener<span class="token operator">></span> mOnWindowFocusListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnWindowAttachListener<span class="token operator">></span> mOnWindowAttachListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnGlobalFocusChangeListener<span class="token operator">></span> mOnGlobalFocusListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnTouchModeChangeListener<span class="token operator">></span> mOnTouchModeChangeListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CopyOnWriteArray<span class="token operator">&lt;</span>OnGlobalLayoutListener<span class="token operator">></span> mOnGlobalLayoutListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CopyOnWriteArray<span class="token operator">&lt;</span>OnScrollChangedListener<span class="token operator">></span> mOnScrollChangedListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CopyOnWriteArray<span class="token operator">&lt;</span>OnPreDrawListener<span class="token operator">></span> mOnPreDrawListeners<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> ArrayList<span class="token operator">&lt;</span>OnDrawListener<span class="token operator">></span> mOnDrawListeners<span class="token punctuation">;</span>
+</code></pre>
+<p><code>ViewTreeObserver</code> 内部使用 <code>CopyOnWriteArrayList</code> 保存相关 <code>Listener</code>，这主要考虑可能出现的多线程场景，不过熟悉它的朋友知道，之所以叫做 <code>CopyOnWrite</code> 就是当添加元素的时候，不直接向当前容器添加，而是先将当前容器进行 Copy，复制出一个新的容器，然后新的容器里添加元素，添加完元素之后，再将原容器的引用指向新的容器。如果频发的申请与释放其实对内存还是有一定影响的。</p>
+<p><code>ViewTreeObserver</code> 不能被外部实例化，只能通过 <code>view.getViewTreeObserver()</code> 方式获取：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> ViewTreeObserver <span class="token function">getViewTreeObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mAttachInfo <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 在绘制流程开始时，才会被赋值，</span>
+        <span class="token comment" spellcheck="true">// 此时所有的View共用ViewRootImpl中提供的ViewTreeObserver</span>
+        <span class="token keyword">return</span> mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mFloatingTreeObserver <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 懒加载，为当前View创建ViewTreeObserver</span>
+        mFloatingTreeObserver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ViewTreeObserver</span><span class="token punctuation">(</span>mContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> mFloatingTreeObserver<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意 <code>mAttachInfo</code>，它的类型是 <code>AttachInfo</code>，内部持有一个 <code>ViewTreeObserver</code>，<code>mAttachInfo</code> 在 <code>View</code> 绘制任务的开始阶段被赋值，但是在此之前，每个 <code>View</code> 会临时创建一个 <code>ViewTreeObserver</code> 用于保存当前添加的 <code>Listener</code>。</p>
+<p><code>View</code> 一旦被关联 <code>AttachInfo</code>，它会合并该 <code>View</code> 的 <code>ViewTreeObserver</code>，后续的添加的 <code>Listener</code> 都被保存在该 <code>AttachInfo</code> 内部的 <code>ViewTreeObserver</code>，即同一个 <code>View Hierarchy</code> 内所有 <code>View</code> 共用同一个 <code>ViewTreeObserver</code>。该过程在后面会分析到。</p>
+<p>获取到 <code>ViewTreeObserver</code> 后就可以添加 <code>Listener</code> 了，<code>ViewTreeObserver</code> 内部对所有保存 <code>Listener</code> 的容器均采用懒加载方式管理，这里仅以 <code>OnWindowAttachListener</code> 为例：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addOnWindowAttachListener</span><span class="token punctuation">(</span>OnWindowAttachListener listener<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 检查当前ViewTreeObserver是否可用</span>
+    <span class="token comment" spellcheck="true">// 当绘制流程开始时，所有View内部的ViewTreeObserver替换为</span>
+    <span class="token comment" spellcheck="true">// ViewRootImpl内部的，故在同一个View Hierarchy内共用同一个。</span>
+    <span class="token function">checkIsAlive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mOnWindowAttachListeners <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 当使用时在创建</span>
+        mOnWindowAttachListeners
+                <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CopyOnWriteArrayList</span><span class="token operator">&lt;</span>OnWindowAttachListener<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    mOnWindowAttachListeners<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>具体的 <code>Listener</code> 是在什么时机被回调的呢？既然所有 <code>View</code>（同一个 <code>View Hierarchy</code> 内） 的 <code>ViewTreeObserver</code> 最终要被合并到 <code>AttachInfo</code> 内的 <code>ViewTreeObserver</code>，在合并之前肯定不会被调用，所以，此时有必要去跟踪下 <code>AttachInfo</code> 被关联的时机：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**执行View绘制任务*/</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">performTraversals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// host是DecorView</span>
+    <span class="token comment" spellcheck="true">// 每个ViewRootImpl包含一个AttachInfo</span>
+    <span class="token comment" spellcheck="true">// 为所有的childView关联AttachInfo，即同一个View Hierarchy内共用一个AttachInfo</span>
+    <span class="token comment" spellcheck="true">// AttachInfo 中包含ViewTreeObserver</span>
+    host<span class="token punctuation">.</span><span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>mAttachInfo<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 回调 OnWindowAttachedListener</span>
+    mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnWindowAttachedChange</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// 开始测量</span>
+    <span class="token function">performMeasure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token comment" spellcheck="true">// 开始布局</span>
+    <span class="token function">performLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// 开始绘制</span>
+    <span class="token function">performDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在 <code>Activity</code> 中，<code>View</code> 绘制任务的开始时机是在 <code>ActivityThread</code> 的 <code>handleResumeActivity()</code> 方法，在该方法首先完成 <code>onResume()</code> 生命周期方法回调。然后发起 <code>View</code> 绘制任务，最终会执行到 <code>ViewRootImpl</code> 的 <code>performTraversals</code> 方法，在该方法真正开始执行 <code>View</code> 的三大绘制流程。</p>
+<blockquote>
+<p>注意上面的 <code>host</code>，它的实际类型是 <code>DecorView</code>。</p>
+</blockquote>
+<p>每个 <code>Activity</code> 都有一个关联的 <code>Window</code> 对象(实际类型是 <code>PhoneWindow</code>)，用来描述应用程序窗口，每个窗口内部又包含一个 <code>DecorView</code> 对象(继承自 <code>FrameLayout</code>)，<code>DecorView</code> 用来描述窗口的根视图 — <code>xml</code> 布局。</p>
+<p>这里实际调用其父类 <code>ViewGroup</code> 的 <code>dispatchAttachedToWindow()</code> 方法，参数 <code>mAttachInfo</code> 很关键，看下它在 <code>ViewRootImpl</code> 中的声明：</p>
+<pre class=" language-java"><code class="language-java">mAttachInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>AttachInfo</span><span class="token punctuation">(</span>mWindowSession<span class="token punctuation">,</span> mWindow<span class="token punctuation">,</span> display<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> mHandler<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+    context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><code>ViewGroup</code> 的 <code>dispatchAttachedToWindow()</code> 方法如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * ViewGroup重写View的dispatchAttachedToWindow
+ */</span>
+<span class="token keyword">void</span> <span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>AttachInfo info<span class="token punctuation">,</span> <span class="token keyword">int</span> visibility<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mGroupFlags <span class="token operator">|=</span> FLAG_PREVENT_DISPATCH_ATTACHED_TO_WINDOW<span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span> visibility<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mGroupFlags <span class="token operator">&amp;=</span> <span class="token operator">~</span>FLAG_PREVENT_DISPATCH_ATTACHED_TO_WINDOW<span class="token punctuation">;</span>
+
+    <span class="token keyword">final</span> <span class="token keyword">int</span> count <span class="token operator">=</span> mChildrenCount<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> View<span class="token punctuation">[</span><span class="token punctuation">]</span> children <span class="token operator">=</span> mChildren<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 遍历所有childView</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> View child <span class="token operator">=</span> children<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 调用子View的dispatchAttachedToWindow</span>
+        child<span class="token punctuation">.</span><span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span>
+                <span class="token function">combineVisibility</span><span class="token punctuation">(</span>visibility<span class="token punctuation">,</span> child<span class="token punctuation">.</span><span class="token function">getVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">final</span> <span class="token keyword">int</span> transientCount <span class="token operator">=</span> mTransientIndices <span class="token operator">==</span> null <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> mTransientIndices<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> transientCount<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        View view <span class="token operator">=</span> mTransientViews<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        view<span class="token punctuation">.</span><span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span>
+                <span class="token function">combineVisibility</span><span class="token punctuation">(</span>visibility<span class="token punctuation">,</span> view<span class="token punctuation">.</span><span class="token function">getVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>可以看到遍历所有 <code>childView</code>，将 <code>ViewRootImpl</code> 的 <code>AttachInfo</code> 作为参数调用子 <code>View</code> 的 <code>dispatchAttachedToWindow()</code> 方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * View的dispatchAttachedToWindow
+ */</span>
+<span class="token keyword">void</span> <span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>AttachInfo info<span class="token punctuation">,</span> <span class="token keyword">int</span> visibility<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 给当前View赋值AttachInfo，此时所有的View共用同一个AttachInfo（同一个ViewRootImpl内）</span>
+    mAttachInfo <span class="token operator">=</span> info<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// View浮层，是在Android 4.3添加的</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mOverlay <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 任何一个View都有一个ViewOverlay</span>
+        <span class="token comment" spellcheck="true">// ViewGroup的是ViewGroupOverlay</span>
+        <span class="token comment" spellcheck="true">// 它区别于直接在类似RelativeLaout/FrameLayout添加View，通过ViewOverlay添加的元素没有任何事件</span>
+        <span class="token comment" spellcheck="true">// 此时主要分发给这些View浮层</span>
+        mOverlay<span class="token punctuation">.</span><span class="token function">getOverlayView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">dispatchAttachedToWindow</span><span class="token punctuation">(</span>info<span class="token punctuation">,</span> visibility<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    mWindowAttachCount<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// We will need to evaluate the drawable state at least once.</span>
+    mPrivateFlags <span class="token operator">|=</span> PFLAG_DRAWABLE_STATE_DIRTY<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mFloatingTreeObserver <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 合并当前View的ViewTreeObserver到ViewRootImpl的ViewTreeObserver</span>
+        info<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span>mFloatingTreeObserver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mFloatingTreeObserver <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">registerPendingFrameMetricsObservers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>mPrivateFlags <span class="token operator">&amp;</span> PFLAG_SCROLL_CONTAINER<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mAttachInfo<span class="token punctuation">.</span>mScrollContainers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPrivateFlags <span class="token operator">|=</span> PFLAG_SCROLL_CONTAINER_ADDED<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// Transfer all pending runnables.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mRunQueue <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 执行使用View.post的任务，info是AttachInfo</span>
+        mRunQueue<span class="token punctuation">.</span><span class="token function">executeActions</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>mHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 保存延迟任务的队列被置为null，因为此时所有的View共用AttachInfo</span>
+        mRunQueue <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">performCollectViewAttributes</span><span class="token punctuation">(</span>mAttachInfo<span class="token punctuation">,</span> visibility<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 回调View的onAttachedToWindow()方法</span>
+    <span class="token comment" spellcheck="true">// 在Activity的onResume()方法中调用，但是在View绘制流程之前</span>
+    <span class="token function">onAttachedToWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    ListenerInfo li <span class="token operator">=</span> mListenerInfo<span class="token punctuation">;</span>
+    <span class="token keyword">final</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnAttachStateChangeListener<span class="token operator">></span> listeners <span class="token operator">=</span>
+            li <span class="token operator">!=</span> null <span class="token operator">?</span> li<span class="token punctuation">.</span>mOnAttachStateChangeListeners <span class="token operator">:</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// NOTE: because of the use of CopyOnWriteArrayList, we *must* use an iterator to</span>
+        <span class="token comment" spellcheck="true">// perform the dispatching. The iterator is a safe guard against listeners that</span>
+        <span class="token comment" spellcheck="true">// could mutate the list by calling the various add/remove methods. This prevents</span>
+        <span class="token comment" spellcheck="true">// the array from being modified while we iterate it.</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>OnAttachStateChangeListener listener <span class="token operator">:</span> listeners<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 通知所有监听View已经onAttachToWindow的客户端，即view.addOnAttachStateChangeListener();</span>
+            <span class="token comment" spellcheck="true">// 但此时View还没有开始绘制，不能正确获取测量大小或View实际大小</span>
+            listener<span class="token punctuation">.</span><span class="token function">onViewAttachedToWindow</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> vis <span class="token operator">=</span> info<span class="token punctuation">.</span>mWindowVisibility<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>vis <span class="token operator">!=</span> GONE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">onWindowVisibilityChanged</span><span class="token punctuation">(</span>vis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isShown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Calling onVisibilityAggregated directly here since the subtree will also</span>
+            <span class="token comment" spellcheck="true">// receive dispatchAttachedToWindow and this same call</span>
+            <span class="token function">onVisibilityAggregated</span><span class="token punctuation">(</span>vis <span class="token operator">==</span> VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 回调View的onVisibilityChanged</span>
+    <span class="token comment" spellcheck="true">// 注意这时候View绘制流程还未真正开始</span>
+    <span class="token function">onVisibilityChanged</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> visibility<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>mPrivateFlags <span class="token operator">&amp;</span> PFLAG_DRAWABLE_STATE_DIRTY<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// If nobody has evaluated the drawable state yet, then do it now.</span>
+        <span class="token function">refreshDrawableState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">needGlobalAttributesUpdate</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">notifyEnterOrExitForAutoFillIfNeeded</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在该方法中，首先将 <code>AttachInfo</code> 赋值给当前 <code>childView</code>，记得前面分析到的 <code>addXxxListener()</code>，此后所有添加的 <code>Listener</code> 都被保存在该 <code>AttachInfo</code> 的 <code>ViewTreeObserver</code> 内。</p>
+<p>这里还要着重看下 <code>info.mTreeObserver.merge()</code>，前面有提到，<code>View</code> 在被关联 <code>AttachInfo</code> 之前，每个 <code>View</code> 拥有自己临时的 <code>ViewTreeObserver</code>，在绘制任务的开始阶段，会为每个 <code>View</code> 关联一个 <code>AttachInfo</code>，此时便将当前 <code>View</code> 的 <code>ViewTreeObserver</code> 合并到 <code>AttachInfo</code> 的 <code>ViewTreeObserver</code>。看下这一合并过程 <code>ViewTreeObserver</code> 的 <code>merge()</code> 方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 在 ViewRootImpl 的 dispatchAttachedToWindow() 方法被调用
+ *
+ * @param observer 子View的ViewTreeObserver
+ */</span>
+<span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span>ViewTreeObserver observer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 合并OnWindowAttachListener</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>observer<span class="token punctuation">.</span>mOnWindowAttachListeners <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mOnWindowAttachListeners <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 添加到AttachInfo的ViewTreeObserver</span>
+            mOnWindowAttachListeners<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>observer<span class="token punctuation">.</span>mOnWindowAttachListeners<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 首次直接赋值</span>
+            mOnWindowAttachListeners <span class="token operator">=</span> observer<span class="token punctuation">.</span>mOnWindowAttachListeners<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 合并OnWindowFocusListener</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>observer<span class="token punctuation">.</span>mOnWindowFocusListeners <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mOnWindowFocusListeners <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mOnWindowFocusListeners<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>observer<span class="token punctuation">.</span>mOnWindowFocusListeners<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            mOnWindowFocusListeners <span class="token operator">=</span> observer<span class="token punctuation">.</span>mOnWindowFocusListeners<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 合并OnGlobalFocusListener</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>observer<span class="token punctuation">.</span>mOnGlobalFocusListeners <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mOnGlobalFocusListeners <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            mOnGlobalFocusListeners<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>observer<span class="token punctuation">.</span>mOnGlobalFocusListeners<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            mOnGlobalFocusListeners <span class="token operator">=</span> observer<span class="token punctuation">.</span>mOnGlobalFocusListeners<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    observer<span class="token punctuation">.</span><span class="token function">kill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>可以看到，依次将 <code>View</code> 内部的 <code>ViewTreeObserver</code> 合并到 <code>AttachInfo</code> 的 <code>ViewTreeObserver</code>。</p>
+<h3 id="OnWindowAttachListener"><a href="#OnWindowAttachListener" class="headerlink" title="OnWindowAttachListener"></a>OnWindowAttachListener</h3><p>注意 <code>ViewRootImpl</code> 的 <code>performTraversals()</code> 方法，该方法将依次完成 <code>View</code> 的三大绘制流程，不过在此之前先回调 <code>AttachInfo</code> 内 <code>ViewTreeObserver</code> 的 <code>dispatchOnWindowAttachChange()</code> 方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 通知已注册的监听器窗口已被关联/分离
+ */</span>
+<span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">dispatchOnWindowAttachedChange</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> attached<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 注意:由于使用了CopyOnWriteArrayList，必须使用迭代器来执行调度。</span>
+    <span class="token comment" spellcheck="true">// 迭代器是对侦听器的安全防护，可以通过调用各种添加/删除方法来改变列表。</span>
+    <span class="token comment" spellcheck="true">// 这样可以防止当我们迭代数组时，数组不会被修改。</span>
+    <span class="token keyword">final</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnWindowAttachListener<span class="token operator">></span> listeners
+            <span class="token operator">=</span> mOnWindowAttachListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>OnWindowAttachListener listener <span class="token operator">:</span> listeners<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>attached<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// View 被附加到窗口</span>
+                listener<span class="token punctuation">.</span><span class="token function">onWindowAttached</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// View 从窗口中分离</span>
+                listener<span class="token punctuation">.</span><span class="token function">onWindowDetached</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>即 <code>onWindowAttached()</code> 方法的调用在 <code>Activity</code> 生命周期 <code>onResume()</code> 方法之后，在绘制流程之前。此时 <code>View</code> 的绘制流程还未开始，在该方法不能直接获取到 <code>View</code> 的实际宽高。</p>
+<p>那 <code>onWindowDetached()</code> 方法是在什么时候被回调呢？又在 <code>Activity</code> 的哪个生命周期阶段呢？</p>
+<p>它的调用时机是在 <code>ActivityThread</code> 的 <code>handleDestoryActivity()</code> 方法，在该方法首先回调 <code>Activity</code> 的 <code>onDestory()</code> 生命周期方法，然后将当前窗口从 <code>WindowManager</code> 移除，最终调用到 <code>ViewRootImpl</code> 的 <code>doDie()</code>，在该方法将完成 <code>dispatchDetachedFromWindow()</code> 通知：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">dispatchDetachedFromWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 回调 OnWindowAttachListener 的 onWindowDetached 方法</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mView <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> mView<span class="token punctuation">.</span>mAttachInfo <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnWindowAttachedChange</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mView<span class="token punctuation">.</span><span class="token function">dispatchDetachedFromWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p><code>onWindowAttached()</code> 在 <code>Activity</code> 生命周期 <code>onResume()</code> 方法之后，但是在 <code>View</code> 绘制流程之前；<code>onWindowDetached()</code> 在 <code>Activity</code> 生命周期 <code>onDestory()</code> 方法之后，此时 <code>View</code> 已经从窗口中移除。</p>
+</blockquote>
+<h3 id="OnWindowFocusChangeListener"><a href="#OnWindowFocusChangeListener" class="headerlink" title="OnWindowFocusChangeListener"></a>OnWindowFocusChangeListener</h3><p><code>OnWindowFocusChangeListener</code> 表示当窗口焦点发生变化时回调，它在 <code>ViewTreeObserver</code> 内的分发过程如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 通知已注册的侦听器窗口焦点已更改
+ */</span>
+<span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">dispatchOnWindowFocusChange</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> hasFocus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnWindowFocusChangeListener<span class="token operator">></span> listeners
+            <span class="token operator">=</span> mOnWindowFocusListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>OnWindowFocusChangeListener listener <span class="token operator">:</span> listeners<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 回调OnWindowFocusChangeListener的onWindowFocusChanged()方法</span>
+            listener<span class="token punctuation">.</span><span class="token function">onWindowFocusChanged</span><span class="token punctuation">(</span>hasFocus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>那么，它是在哪里被回调的呢？</p>
+<p>猜测肯定还是离不开 <code>ViewRootImpl</code>。查找发现在 <code>ViewRootImpl</code> 的静态内部类 <code>W</code> 中，简单看下这一过程：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * mWindow是ViewRootImpl的静态内部类，内部持有当前ViewRootImpl
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">W</span> <span class="token keyword">extends</span> <span class="token class-name">IWindow<span class="token punctuation">.</span>Stub</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 弱引用持有当前ViewRootImpl</span>
+    <span class="token comment" spellcheck="true">// 因为它将被保存在WindowManagerService</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> WeakReference<span class="token operator">&lt;</span>ViewRootImpl<span class="token operator">></span> mViewAncestor<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> IWindowSession mWindowSession<span class="token punctuation">;</span>
+
+    <span class="token function">W</span><span class="token punctuation">(</span>ViewRootImpl viewAncestor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mViewAncestor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakReference</span><span class="token operator">&lt;</span>ViewRootImpl<span class="token operator">></span><span class="token punctuation">(</span>viewAncestor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mWindowSession <span class="token operator">=</span> viewAncestor<span class="token punctuation">.</span>mWindowSession<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment" spellcheck="true">/**
+     * 由远程 WMS 通知窗口焦点发生变化
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">windowFocusChanged</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> hasFocus<span class="token punctuation">,</span> <span class="token keyword">boolean</span> inTouchMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> ViewRootImpl viewAncestor <span class="token operator">=</span> mViewAncestor<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>viewAncestor <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            viewAncestor<span class="token punctuation">.</span><span class="token function">windowFocusChanged</span><span class="token punctuation">(</span>hasFocus<span class="token punctuation">,</span> inTouchMode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>W</code> 本质是一个 <code>Binder</code> 对象，内部通过弱引用持有当前的 <code>ViewRootImpl</code>，它将作为客户端保存在 <code>WMS</code>(<code>WindowManagerService</code>)，用来和 <code>WindowSession</code> 交互，实际间接在与 <code>WMS</code> 交互。</p>
+<p><code>windowFocusChanged()</code> 方法最终会发送消息到当前绘制线程，关键代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">case</span> MSG_WINDOW_FOCUS_CHANGED<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>mView <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 通知 View 窗口焦点发生变化</span>
+        mView<span class="token punctuation">.</span><span class="token function">dispatchWindowFocusChanged</span><span class="token punctuation">(</span>hasWindowFocus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 通知 ViewTreeObserver 窗口焦点发生变化</span>
+        mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnWindowFocusChange</span><span class="token punctuation">(</span>hasWindowFocus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="OnGlobalFocusChangeListener"><a href="#OnGlobalFocusChangeListener" class="headerlink" title="OnGlobalFocusChangeListener"></a>OnGlobalFocusChangeListener</h3><p><code>OnGlobalFocusChangeListener</code> 表示当视图树中的焦点状态更改时回调，它在 <code>ViewTreeObserver</code> 内的分发过程如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 通知已注册的侦听器焦点已更改
+ */</span>
+<span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">dispatchOnGlobalFocusChange</span><span class="token punctuation">(</span>View oldFocus<span class="token punctuation">,</span> View newFocus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnGlobalFocusChangeListener<span class="token operator">></span> listeners <span class="token operator">=</span> mOnGlobalFocusListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>OnGlobalFocusChangeListener listener <span class="token operator">:</span> listeners<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 回调OnGlobalFocusChangeListener的onGlobalFocusChanged()方法</span>
+            listener<span class="token punctuation">.</span><span class="token function">onGlobalFocusChanged</span><span class="token punctuation">(</span>oldFocus<span class="token punctuation">,</span> newFocus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>onGlobalFocusChanged()</code> 方法的参数如下：</p>
+<ul>
+<li><code>oldFocus：</code>之前获取到焦点的视图</li>
+<li><code>newFocus：</code>当前获取到焦点的视图</li>
+</ul>
+<blockquote>
+<p>注意：<code>oldFocus</code> 和 <code>newFocus</code> 都有可能为 <code>null</code>。</p>
+</blockquote>
+<p>如果要监听某个 <code>View</code> 是否获取到焦点，我们可以使用如下方式：</p>
+<pre class=" language-java"><code class="language-java">    mView<span class="token punctuation">.</span><span class="token function">setOnFocusChangeListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnFocusChangeListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onFocusChange</span><span class="token punctuation">(</span>View v<span class="token punctuation">,</span> <span class="token keyword">boolean</span> hasFocus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 监听当前 View 是否获取到焦点</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>不过，当要监听的 <code>View</code> 数量较多时，这种方式好像就不太友好了，此时我们便可以使用如下方式，监听整个视图树内 <code>View</code> 焦点的变化：</p>
+<pre class=" language-java"><code class="language-java">    mView<span class="token punctuation">.</span><span class="token function">getViewTreeObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addOnGlobalFocusChangeListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ViewTreeObserver<span class="token punctuation">.</span>OnGlobalFocusChangeListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onGlobalFocusChanged</span><span class="token punctuation">(</span>View oldFocus<span class="token punctuation">,</span> View newFocus<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 监听整个视图树内的View焦点变化</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="OnGlobalLayoutListener"><a href="#OnGlobalLayoutListener" class="headerlink" title="OnGlobalLayoutListener"></a>OnGlobalLayoutListener</h3><p><code>OnGlobalLayoutListener</code> 表示视图树中的的布局状态或视图的可见性更改时回调，它在 <code>ViewTreeObserver</code> 内的分发过程如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 通知已注册的侦听器发生了布局状态或视图的可见性改变。
+ * 如果正在强制视图或视图层次结构上的布局不附加到窗口或处于消失状态，则可以手动调用此方法。
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">dispatchOnGlobalLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> CopyOnWriteArray<span class="token operator">&lt;</span>OnGlobalLayoutListener<span class="token operator">></span> listeners <span class="token operator">=</span> mOnGlobalLayoutListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 调用了 start，此时如果有其他线程要 add 内容就会执行copyOnWrite</span>
+        CopyOnWriteArray<span class="token punctuation">.</span>Access<span class="token operator">&lt;</span>OnGlobalLayoutListener<span class="token operator">></span> access <span class="token operator">=</span> listeners<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> count <span class="token operator">=</span> access<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 回调OnGlobalLayoutListener的onGlobalLayout()方法</span>
+                access<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onGlobalLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            listeners<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意保存 <code>OnGlobalLayoutListener</code> 的容器是 <code>CopyOnWriteArray</code>，而非 <code>CopyOnWriteArrayList</code>，前者是 <code>ViewTreeObserver</code> 的静态内部类，后者是 <code>Java</code> 内置的并发工具类，两者有什么区别吗？<code>CopyOnWriteArray</code> 在没有遍历任务时(未调用 <code>start()</code> 方法)，此时执行 <code>add</code> 操作直接添加到原容器，否则才会执行 <code>CopyOnWrite</code>，这有助于减少内存抖动场景的发生。</p>
+<p>如果仅从名字来看，它应该和 <code>View</code> 的 <code>layout</code> 阶段有关，下面就再看下 <code>View</code> 的绘制流程：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">performTraversals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// View的测量阶段</span>
+    <span class="token function">performMeasure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// View 的布局阶段</span>
+    <span class="token function">performLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+    <span class="token comment" spellcheck="true">// 关键方法在这里</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>triggerGlobalLayoutListener<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mAttachInfo<span class="token punctuation">.</span>mRecomputeGlobalAttributes <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 布局阶段完成之后回调 OnGlobalLayoutListener，</span>
+        <span class="token comment" spellcheck="true">// 在该方法中可以正确获取 View 的实际宽高</span>
+        mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnGlobalLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// View 的绘制阶段</span>
+    <span class="token function">performDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>dispatchOnGlobalLayout()</code> 的回调是在 <code>performLayout()</code> 方法之后，此时视图树的布局阶段已经完成，在该方法中可以正确获取到 <code>View</code> 的实际宽高：</p>
+<pre class=" language-java"><code class="language-java">    view<span class="token punctuation">.</span><span class="token function">getViewTreeObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addOnGlobalLayoutListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ViewTreeObserver<span class="token punctuation">.</span>OnGlobalLayoutListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onGlobalLayout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 正确获取到View的宽高</span>
+            <span class="token keyword">int</span> width <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> height <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>注意：此时 <code>View</code> 的绘制任务还未开始！</p>
+</blockquote>
+<h3 id="OnPreDrawListener"><a href="#OnPreDrawListener" class="headerlink" title="OnPreDrawListener"></a>OnPreDrawListener</h3><p><code>OnPreDrawListener</code> 表示当视图即将绘制时回调，它在 <code>ViewTreeObserver</code> 内的分发过程如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 通知已注册的侦听器视图即将开始绘制。
+ * 如果要强制在未附加到Window或处于GONE状态的View或View的层次结构上进行绘图，则可以手动调用此方法。
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">dispatchOnPreDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">boolean</span> cancelDraw <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> CopyOnWriteArray<span class="token operator">&lt;</span>OnPreDrawListener<span class="token operator">></span> listeners <span class="token operator">=</span> mOnPreDrawListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 调用了 start，此时如果有其他线程要 add 内容就会执行copyOnWrite</span>
+        CopyOnWriteArray<span class="token punctuation">.</span>Access<span class="token operator">&lt;</span>OnPreDrawListener<span class="token operator">></span> access <span class="token operator">=</span> listeners<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> count <span class="token operator">=</span> access<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 回调OnPreDrawListener的onPreDraw()方法</span>
+                cancelDraw <span class="token operator">|=</span> <span class="token operator">!</span><span class="token punctuation">(</span>access<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onPreDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            listeners<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> cancelDraw<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>OnPreDrawListener</code> 和 <code>OnDrawListener</code> 两者有什么区别呢？<code>Pre</code> 表达的应该是 <code>Previous</code>，即在 <code>Draw</code> 之前，直接看下 <code>View</code> 的绘制任务：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">performTraversals</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// 调用 AttachInfo 内 ViewTreeObserver 的 dispatchOnPreDraw方法</span>
+    <span class="token keyword">boolean</span> cancelDraw <span class="token operator">=</span> mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnPreDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>isViewVisible<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 只要有一个 Listener 返回true，将重新发起绘制流程</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cancelDraw<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mPendingTransitions <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> mPendingTransitions<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mPendingTransitions<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mPendingTransitions<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">startChangingAnimations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            mPendingTransitions<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//执行绘制操作</span>
+        <span class="token function">performDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>isViewVisible<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 重新发起绘制流程，measure、layout</span>
+            <span class="token function">scheduleTraversals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>mPendingTransitions <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> mPendingTransitions<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mPendingTransitions<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                mPendingTransitions<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">endChangingAnimations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            mPendingTransitions<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如果 <code>dispatchOnPreDraw()</code> 方法返回 <code>true</code>，此时将拦截 <code>performDraw()</code> 的绘制任务，重新发起绘制流程 <code>scheduleTraversals()</code>。其实它的主要作用是在绘制任务之前给一次拦截机会，例如有新的 <code>View</code> 需要添加到当前视图树中，此时可以拦截该次绘制任务，重新发起 <code>measure</code>、<code>layout</code> 流程。</p>
+<h3 id="OnDrawListener"><a href="#OnDrawListener" class="headerlink" title="OnDrawListener"></a>OnDrawListener</h3><p><code>OnDrawListener</code> 与 <code>OnPreDrawListener</code> 类似，后者可以拦截绘制任务，重新发起绘制流程，它在 <code>ViewTreeObserver</code> 内的分发过程如下：<br>/**</p>
+<ul>
+<li>通知已注册的侦听器绘图即将开始<br>*/<br>public final void dispatchOnDraw() {<br> if (mOnDrawListeners != null) {<pre><code> mInDispatchOnDraw = true;
+ final ArrayList&lt;OnDrawListener&gt; listeners = mOnDrawListeners;
+ int numListeners = listeners.size();
+ for (int i = 0; i &lt; numListeners; ++i) {
+     // 回调OnDrawListener的onDraw()方法，通知View开始绘制
+     listeners.get(i).onDraw();
+ }
+ mInDispatchOnDraw = false;
+</code></pre> }<br>}</li>
+</ul>
+<p><code>onDraw</code> 肯定和 <code>View</code> 的绘制任务有关！还是要从 <code>ViewRootImpl</code> 入手，<code>View</code> 的绘制任务 <code>performDraw()</code> 方法最终会调用到 <code>draw()</code> 方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> fullRedrawNeeded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 窗口都关联有一个 Surface</span>
+    <span class="token comment" spellcheck="true">// 在 Android 中，所有的元素都在 Surface 这张画纸上进行绘制和渲染，</span>
+    <span class="token comment" spellcheck="true">// 普通 View（例如非 SurfaceView 或 TextureView） 是没有 Surface 的，</span>
+    <span class="token comment" spellcheck="true">// 一般 Activity 包含多个 View 形成 View Hierachy 的树形结构，只有最顶层的 DecorView 才是对 WindowManagerService “可见的”。</span>
+    <span class="token comment" spellcheck="true">// 而为普通 View 提供 Surface 的正是 ViewRootImpl。</span>
+    Surface surface <span class="token operator">=</span> mSurface<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 判断Surface 是否有效</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>surface<span class="token punctuation">.</span><span class="token function">isValid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 跟踪FPS</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>DEBUG_FPS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">trackFPS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token function">scrollToRectOrFocus</span><span class="token punctuation">(</span>null<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mAttachInfo<span class="token punctuation">.</span>mViewScrollChanged<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mAttachInfo<span class="token punctuation">.</span>mViewScrollChanged <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 注意 OnScrollChangedListener 在这里回调</span>
+        mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnScrollChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token comment" spellcheck="true">// 回调 ViewTreeObserver内的dispatchOnDraw()方法</span>
+    mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnDraw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token keyword">boolean</span> useAsyncReport <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dirty<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> mIsAnimating <span class="token operator">||</span> accessibilityFocusDirty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mAttachInfo<span class="token punctuation">.</span>mThreadedRenderer <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> mAttachInfo<span class="token punctuation">.</span>mThreadedRenderer<span class="token punctuation">.</span><span class="token function">isEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 是否开启了硬件加速</span>
+            <span class="token keyword">boolean</span> invalidateRoot <span class="token operator">=</span> accessibilityFocusDirty <span class="token operator">||</span> mInvalidateRootRequested<span class="token punctuation">;</span>
+            mInvalidateRootRequested <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// ...</span>
+
+            useAsyncReport <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 开启硬件加速绘制执行这里，最终还是执行View的draw()开始</span>
+            mAttachInfo<span class="token punctuation">.</span>mThreadedRenderer<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>mView<span class="token punctuation">,</span> mAttachInfo<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// ...</span>
+
+            <span class="token comment" spellcheck="true">// 最终调用到drawSoftware</span>
+            <span class="token comment" spellcheck="true">// surface，每个 View 都由某一个窗口管理，而每一个窗口都关联有一个 Surface</span>
+            <span class="token comment" spellcheck="true">// mDirty.set(0, 0, mWidth, mHeight); dirty 表示画纸尺寸，对于DecorView，left = 0,</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">drawSoftware</span><span class="token punctuation">(</span>surface<span class="token punctuation">,</span> mAttachInfo<span class="token punctuation">,</span> xOffset<span class="token punctuation">,</span> yOffset<span class="token punctuation">,</span>
+                    scalingRequired<span class="token punctuation">,</span> dirty<span class="token punctuation">,</span> surfaceInsets<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// ...</span>
+
+    <span class="token keyword">return</span> useAsyncReport<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>需要注意，此时 <code>View</code> 绘制流程的前两个阶段：<code>measure</code> 和 <code>layout</code> 都已经完成。通过该 <code>Listener</code> 可以监听开始执行绘制任务。</p>
+<h3 id="OnTouchModeChangeListener"><a href="#OnTouchModeChangeListener" class="headerlink" title="OnTouchModeChangeListener"></a>OnTouchModeChangeListener</h3><p><code>OnTouchModeChangeListener</code> 表示当触摸模式改变时回调，它在 <code>ViewTreeObserver</code> 内的分发过程如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 通知已注册的侦听器触摸模式已更改
+ */</span>
+<span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">dispatchOnTouchModeChanged</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> inTouchMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> CopyOnWriteArrayList<span class="token operator">&lt;</span>OnTouchModeChangeListener<span class="token operator">></span> listeners <span class="token operator">=</span>
+            mOnTouchModeChangeListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>OnTouchModeChangeListener listener <span class="token operator">:</span> listeners<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 回调OnTouchModeChangeListener的onTouchModeChanged()方法</span>
+            listener<span class="token punctuation">.</span><span class="token function">onTouchModeChanged</span><span class="token punctuation">(</span>inTouchMode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>前面分析 <code>OnWindowFocusChangeListener</code> 的回调是通过 <code>ViewRootImpl</code> 静态内部类 <code>W</code> 完成的，在该类中 <code>windowFocusChanged()</code> 方法接收远程 <code>WMS</code> 的回调通知，发送消息到当前绘制线程：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">case</span> MSG_WINDOW_FOCUS_CHANGED<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hasWindowFocus<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> inTouchMode <span class="token operator">=</span> msg<span class="token punctuation">.</span>arg2 <span class="token operator">!=</span> <span class="token number">0</span>
+        <span class="token comment" spellcheck="true">// 这里将回调 OnTouchModeChangeListener</span>
+        <span class="token function">ensureTouchModeLocally</span><span class="token punctuation">(</span>inTouchMode<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// ... 下面回调 dispatchWindowFocusChanged() 方法</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>ensureTouchModeLocally()</code> 方法将会完成该过程：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">ensureTouchModeLocally</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> inTouchMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mAttachInfo<span class="token punctuation">.</span>mInTouchMode <span class="token operator">==</span> inTouchMode<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    mAttachInfo<span class="token punctuation">.</span>mInTouchMode <span class="token operator">=</span> inTouchMode<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 回调AttachInfo内ViewTreeObserver的dispatchOnTouchModeChanged()方法</span>
+    mAttachInfo<span class="token punctuation">.</span>mTreeObserver<span class="token punctuation">.</span><span class="token function">dispatchOnTouchModeChanged</span><span class="token punctuation">(</span>inTouchMode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>inTouchMode<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">enterTouchMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">leaveTouchMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="OnScrollChangedListener"><a href="#OnScrollChangedListener" class="headerlink" title="OnScrollChangedListener"></a>OnScrollChangedListener</h3><p><code>OnScrollChangeListener</code> 表示当视图树中的某些内容被滚动时回调，它在 <code>ViewTreeObserver</code> 内的分发过程如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 通知已注册的侦听器某些内容发生滚动滚动
+ */</span>
+<span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">dispatchOnScrollChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> CopyOnWriteArray<span class="token operator">&lt;</span>OnScrollChangedListener<span class="token operator">></span> listeners <span class="token operator">=</span> mOnScrollChangedListeners<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>listeners <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> listeners<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CopyOnWriteArray<span class="token punctuation">.</span>Access<span class="token operator">&lt;</span>OnScrollChangedListener<span class="token operator">></span> access <span class="token operator">=</span> listeners<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> count <span class="token operator">=</span> access<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 回调OnScrollChangedListener的onScrollChanged()方法</span>
+                access<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onScrollChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            listeners<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>是否有注意到前面分析 <code>OnDrawListener</code> 时的绘制方法 <code>draw()</code>，在调用 <code>ViewTreeObserver</code> 的 <code>dispatchOnDraw()</code> 方法之前，会根据情况率先执行 <code>ViewTreeObserver</code> 的 <code>dispachOnScrollChanged()</code> 方法。</p>
+<p><code>OnScrollChangedListener</code> 回调在 <code>OnDrawListener</code> 之前，用于通知外部当前视图树中有 <code>View</code> 发生滚动。</p>
+<h2 id="公共方法"><a href="#公共方法" class="headerlink" title="公共方法"></a>公共方法</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">addOnWindowAttachListener()</td>
+<td style="text-align:left">注册视图层次结构关联到窗口或与之分离的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnWindowAttachListener()</td>
+<td style="text-align:left">移除视图层次结构关联到窗口或与之分离的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnWindowFocusChangeListener()</td>
+<td style="text-align:left">注册视图层次结构的窗口焦点状态发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnWindowFocusChangeListener()</td>
+<td style="text-align:left">移除视图层次结构的窗口焦点状态发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnGlobalFocusChangeListener()</td>
+<td style="text-align:left">注册视图树中的焦点状态发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnGlobalFocusChangeListener()</td>
+<td style="text-align:left">移除视图树中的焦点状态发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnGlobalLayoutListener()</td>
+<td style="text-align:left">注册视图树全局布局状态发生改变或视图树中某个视图的可视状态发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnGlobalLayoutListener()</td>
+<td style="text-align:left">移除视图树全局布局状态发生改变或视图树中某个视图的可视状态发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnPreDrawListener()</td>
+<td style="text-align:left">注册视图树即将开始绘制的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnPreDrawListener()</td>
+<td style="text-align:left">移除视图树即将开始绘制的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnDrawListener()</td>
+<td style="text-align:left">注册视图树即将开始绘制的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnDrawListener()</td>
+<td style="text-align:left">移除视图树即将开始绘制的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnScrollChangedListener()</td>
+<td style="text-align:left">注册视图树中的一些组件发生滚动的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnScrollChangedListener()</td>
+<td style="text-align:left">移除视图树中的一些组件发生滚动的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnTouchModeChangeListener()</td>
+<td style="text-align:left">注册视图树的触摸模式发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnTouchModeChangeListener()</td>
+<td style="text-align:left">移除视图树的触摸模式发生改变的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">addOnWindowShownListener()</td>
+<td style="text-align:left">注册视图树显示的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">removeOnWindowShownListener()</td>
+<td style="text-align:left">移除视图树显示的监听</td>
+</tr>
+<tr>
+<td style="text-align:left">isAlive()</td>
+<td style="text-align:left">判断当前的 ViewTreeObserver 是否可用，当不可用时，对方法的任何调用(除此方法外)都将引发异常</td>
+</tr>
+<tr>
+<td style="text-align:left">dispatchOnGlobalLayout()</td>
+<td style="text-align:left">通知已注册的侦听器发生了布局状态或视图的可见性改变</td>
+</tr>
+<tr>
+<td style="text-align:left">dispatchOnPreDraw()</td>
+<td style="text-align:left">通知已注册的侦听器视图即将开始绘制</td>
+</tr>
+<tr>
+<td style="text-align:left">dispatchOnDraw()</td>
+<td style="text-align:left">通知已注册的侦听器视图即将开始绘制</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <hr>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Android/">
+                                    <span class="chip bg-color">Android</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2020-03-12T18-45-56',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/2020/f831dca5.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Android Choreographer 渲染机制详解">
+                        
+                        <span class="card-title">Android Choreographer 渲染机制详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Android 的 UI 渲染性能是 Google 长期以来非常重视的，基本每次 Google I/O 都会花很多篇幅讲这一块。不过随着 Android 系统的不断演进和完善，时至今日，关于 Android UI 卡顿的话题也越来越少。
+V
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-03-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2020/d7d7c7c2.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Android View.post() 原理详解">
+                        
+                        <span class="card-title">Android View.post() 原理详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在 Android 开发中，子线程是不能进行 UI 操作的，或者很多场景下，一些操作需要延迟执行，这些都可以通过 Handler 来解决。有时候为了避免重新定义一个 Handler 对象，经常会用到 View.post() 方法或 View
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-03-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip tag-bg-color">Android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '文章作者: HenleyLee<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+    <footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>.
+	    &nbsp;All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>.
+	    &nbsp;Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">454.7k</span>&nbsp;字
+            
+	    <br>
+	    
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+            <i class="far fa-eye"></i>&nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                &nbsp;<i class="fas fa-user"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+            </span>
+            
+            
+            
+	    <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+            <script>
+                function createtime() {
+                    var now = new Date(); // 当前时间
+                    var grt = new Date("06/01/2018 00:00:00"); // 建站时间或者网站上线时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/others/current-device.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

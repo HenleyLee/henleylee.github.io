@@ -1,0 +1,1324 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Kotlin 1.4 的新特性, Android, Google, Blog">
+    <meta name="description" content="Kotlin 1.4 新特性Kotlin 1.4 新特性包含以下几个方面：
+
+语言特性与改进
+Kotlin 接口的 SAM 转换
+面向库作者的显式 API 模式
+混用命名参数与位置参数
+尾随逗号
+可调用引用改进
+循环中的 when 内部可以">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Kotlin 1.4 的新特性 | Henley</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Henley</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/resources" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>图书</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Henley</div>
+        <div class="logo-desc">
+            
+            让信念坚持下去，梦想就会实现
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul style="background:  ;">
+              
+                <li>   
+				
+                  <a href="/musics " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px"></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/movies " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px"></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/books " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px"></i>
+			      
+		          <span>图书</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/galleries " style="margin-left:75px" ;="">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px"></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/HenleyLee" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #1D62F0;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/HenleyLee" class="github-corner tooltipped hide-on-med-and-down" target="_blank">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Kotlin 1.4 的新特性
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #007aff;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #007aff;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #007aff;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Kotlin/" target="_blank">
+                                <span class="chip tag-bg-color">Kotlin</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kotlin/" class="post-category" target="_blank">
+                                Kotlin
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-alt fa-fw"></i>&nbsp;发布日期:&nbsp;
+                    2020-09-03
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.2k
+                </div>
+                
+
+                
+                    <div class="info-break-policy">
+                        <i class="far fa-clock fa-fw"></i>&nbsp;阅读时长:&nbsp;
+                        8 分
+                    </div>
+                
+				
+                
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Kotlin-1-4-新特性"><a href="#Kotlin-1-4-新特性" class="headerlink" title="Kotlin 1.4 新特性"></a>Kotlin 1.4 新特性</h2><p>Kotlin 1.4 新特性包含以下几个方面：</p>
+<ul>
+<li>语言特性与改进<ul>
+<li>Kotlin 接口的 SAM 转换</li>
+<li>面向库作者的显式 API 模式</li>
+<li>混用命名参数与位置参数</li>
+<li>尾随逗号</li>
+<li>可调用引用改进</li>
+<li>循环中的 when 内部可以 break 及 continue</li>
+</ul>
+</li>
+<li>IDE 中的新工具<ul>
+<li>新的灵活项目向导</li>
+<li>协程调试器</li>
+</ul>
+</li>
+<li>新的更强大的类型推断算法<ul>
+<li>会自动推断类型的更多情况</li>
+<li>lambda 表达式最后一个表达式的智能转换</li>
+<li>可调用引用的智能转换</li>
+<li>属性委托的更佳推导</li>
+<li>具有不同参数的 Java 接口的 SAM 转换</li>
+</ul>
+</li>
+<li>Gradle 项目改进<ul>
+<li>现在默认添加了对标准库的依赖</li>
+<li>Kotlin 项目需要最近版本的 Gradle</li>
+<li>改进了 IDE 对 Kotlin Gradle DSL 的支持</li>
+</ul>
+</li>
+</ul>
+<h2 id="语言特性与改进"><a href="#语言特性与改进" class="headerlink" title="语言特性与改进"></a>语言特性与改进</h2><h3 id="Kotlin-接口的-SAM-转换"><a href="#Kotlin-接口的-SAM-转换" class="headerlink" title="Kotlin 接口的 SAM 转换"></a>Kotlin 接口的 SAM 转换</h3><p>一个就是大家期待已久的 Kotlin 接口和函数的 <code>SAM(Single Abstract Method)</code> 转换。得益于新的类型推导算法，Kotlin 1.4 之前一直只有调用接收 Java 单一方法接口的 Java 的方法时才可以有 SAM 转换，现在，Kotlin 1.4 可以将 Kotlin 接口标记为功能接口，并通过添加 <code>fun</code> 关键字让它们以类似方式工作：</p>
+<p>更多信息请参考 <a href="https://www.kotlincn.net/docs/reference/fun-interfaces.html" target="_blank" rel="noopener">函数式(SAM)接口</a></p>
+<h3 id="面向库作者的显式-API-模式"><a href="#面向库作者的显式-API-模式" class="headerlink" title="面向库作者的显式 API 模式"></a>面向库作者的显式 API 模式</h3><p>Kotlin 编译器为库作者提供了显式的 API 模式。在这种模式下，编译器会执行其他检查，以帮助使库的 API 更清晰，更一致。它为暴露于库的公共 API 的声明增加了以下要求：</p>
+<ul>
+<li>如果默认可见性将其公开给公共 API，则声明必须使用可见性修饰符。这有助于确保任何声明都不会无意间暴露给公共 API。</li>
+<li>对于公开 API 公开的属性和函数，需要明确的类型规范。这样可以保证 API 用户知道他们使用的 API 成员的类型。</li>
+</ul>
+<p>根据配置，这些显式 API 可能会产生错误(严格模式)或警告(警告模式)。为了便于阅读和常识，某些类型的声明从此类检查中排除：</p>
+<ul>
+<li>主构造方法</li>
+<li>数据类的属性</li>
+<li>属性的 getters/setters</li>
+<li>被重写的方法</li>
+</ul>
+<p>显式 API 模式仅分析模块的生产源。要以显式API模式编译模块，请在Gradle构建脚本中添加以下几行：</p>
+<pre class=" language-gradle"><code class="language-gradle">kotlin {    
+    // for strict mode
+    explicitApi() 
+    // or
+    explicitApi = 'strict'
+
+    // for warning mode
+    explicitApiWarning()
+    // or
+    explicitApi = 'warning'
+}
+</code></pre>
+<p>使用命令行编译时，通过添加 <code>-Xexplicit-api</code> 编译器选项(其值为 <code>strict</code> 或 <code>warning</code>)来切换到显式 API 模式。</p>
+<pre class=" language-gradle"><code class="language-gradle">-Xexplicit-api={strict|warning}
+</code></pre>
+<p>有关显式 API 模式的更多详细信息，请参见 <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/explicit-api-mode.md" target="_blank" rel="noopener">Explicit API mode</a>。</p>
+<h3 id="混用命名参数与位置参数"><a href="#混用命名参数与位置参数" class="headerlink" title="混用命名参数与位置参数"></a>混用命名参数与位置参数</h3><p>在 Kotlin 1.3 中，当使用命名参数调用函数时，必须将所有不带名称的参数(位置参数)放在第一个命名参数之前。例如，可以调用 <code>f(1，y = 2)</code>，但不能调用 <code>f(x = 1，2)</code>。</p>
+<p>在 Kotlin 1.4 中，没有这种限制。现在可以在一组位置参数的中间为参数指定名称。此外，还可以按自己喜欢的任何方式混合使用位置和命名参数，只要它们保持正确的顺序即可。这对于明确弄清布尔值或 <code>null</code> 值属于哪个属性特别有用。</p>
+<h3 id="尾随逗号"><a href="#尾随逗号" class="headerlink" title="尾随逗号"></a>尾随逗号</h3><p>使用 Kotlin 1.4，可以在枚举中添加尾随逗号，例如参数和参数列表，<code>when</code> 条目以及解构声明的组件。使用结尾逗号，可以添加新项并更改其顺序，而无需添加或删除逗号。</p>
+<p>如果对参数或值使用多行语法，这将特别有用。 添加结尾逗号后，可以轻松地将行与参数或值交换。</p>
+<h3 id="在循环中的-when-内部使用-break-与-continue"><a href="#在循环中的-when-内部使用-break-与-continue" class="headerlink" title="在循环中的 when 内部使用 break 与 continue"></a>在循环中的 when 内部使用 break 与 continue</h3><p>在 Kotlin 1.3 中，不能循环中的 <code>when</code> 表达式内部使用非限定的 <code>break</code> 和 <code>continue</code>，原因是这些关键字是为 <code>when</code> 表达式中可能出现的失败行为保留的。如果要在循环中的 <code>when</code> 表达式内部使用 <code>break</code> 和 <code>continue</code> 的原因，则必须给它们加上标签。</p>
+<p>在 Kotlin 1.4 中，当 <code>when</code> 表达式包含在循环中时，可以在没有标签的情况下使用 <code>break</code> 和 <code>continue</code>，它们通过终止最近的封闭循环或继续执行下一个步骤来执行预期的行为。</p>
+<h2 id="新的更强大的类型推断算法"><a href="#新的更强大的类型推断算法" class="headerlink" title="新的更强大的类型推断算法"></a>新的更强大的类型推断算法</h2><h3 id="会自动推断类型的更多情况"><a href="#会自动推断类型的更多情况" class="headerlink" title="会自动推断类型的更多情况"></a>会自动推断类型的更多情况</h3><p>类型推导让 Kotlin 的语法获得了极大的简洁性。不过，大家在使用 Kotlin 开发时，一定会发现有些情况下明明类型是很确定的，编译器却一定要让我们显式的声明出来，这其实就是类型推导算法没有覆盖到的场景了。</p>
+<p>在旧算法要求显式指定类型的许多情况下，新的类型推导算法可以推导出类型，能够应付更加复杂的推导场景。</p>
+<h3 id="lambda-表达式最后一个表达式的智能转换"><a href="#lambda-表达式最后一个表达式的智能转换" class="headerlink" title="lambda 表达式最后一个表达式的智能转换"></a>lambda 表达式最后一个表达式的智能转换</h3><p>在 Kotlin 1.3 中，lambda 中的最后一个表达式没有进行智能强制转换，除非指定了预期的类型。因此，在下面的例子中，Kotlin 1.3推断字符串?作为结果变量的类型:在 Kotlin 1.4 中，由于有了新的推理算法，lambda 内部的最后一个表达式进行了智能类型转换，这个新的、更精确的类型用于推断得到的 lambda 类型。</p>
+<p>在 Kotlin 1.3 中，经常需要添加显式类型转换(或者 <code>!!</code>)或者类型强制转换(<code>as String</code>)，以使这些用例工作，现在这些强制转换已经没有必要了。</p>
+<h3 id="可调用引用的智能转换"><a href="#可调用引用的智能转换" class="headerlink" title="可调用引用的智能转换"></a>可调用引用的智能转换</h3><p>在 Kotlin 1.3 中，不能直接访问智能转换类型的成员引用。在 Kotlin 1.4 中，类型检查之后，可以直接访问对应于子类型的成员引用。</p>
+<h3 id="具有不同参数的-Java-接口的-SAM-转换"><a href="#具有不同参数的-Java-接口的-SAM-转换" class="headerlink" title="具有不同参数的 Java 接口的 SAM 转换"></a>具有不同参数的 Java 接口的 SAM 转换</h3><p>Kotlin 从一开始就支持 Java 接口的 SAM 转换，但有一种情况不受支持，在使用现有 Java 库时，这有时很烦人。如果调用的 Java 方法采用两个 SAM 接口作为参数，那么两个参数都需要是 lambdas 或常规对象，不能将一个参数作为 lambda 传递，另一个参数作为对象传递。新的算法解决了这个问题，并且可以在任何情况下传递一个 lambda 而不是 SAM 接口。</p>
+<h2 id="Gradle-项目改进"><a href="#Gradle-项目改进" class="headerlink" title="Gradle 项目改进"></a>Gradle 项目改进</h2><h3 id="默认添加了对标准库的依赖"><a href="#默认添加了对标准库的依赖" class="headerlink" title="默认添加了对标准库的依赖"></a>默认添加了对标准库的依赖</h3><p>在任何 Kotlin Gradle 项目(包括多平台项目)中，您不再需要声明对 <code>stdlib</code> 库的依赖。默认情况下添加该依赖项。自动添加的标准库与 Kotlin Gradle 插件的版本相同，因为它们有相同的版本控制。</p>
+<p>对于特定于平台的源集，使用库的相应特定于平台的变体，而其余部分则添加一个通用的标准库。 Kotlin Gradle 插件将根据 Gradle 构建脚本的 <code>kotlinOptions.jvmTarget</code> 编译器选项选择适当的 JVM 标准库。</p>
+<h3 id="Kotlin-项目的最低-Gradle-版本"><a href="#Kotlin-项目的最低-Gradle-版本" class="headerlink" title="Kotlin 项目的最低 Gradle 版本"></a>Kotlin 项目的最低 Gradle 版本</h3><p>要使用 Kotlin 项目中的新特性，需要将 Gradle 升级到最新版本。多平台项目需要 Gradle 6.0 或更高版本，而其他 Kotlin 项目使用 Gradle 5.4 或更高版本。</p>
+<h3 id="改进了-IDE-对-gradle-kts-的支持"><a href="#改进了-IDE-对-gradle-kts-的支持" class="headerlink" title="改进了 IDE 对 *.gradle.kts 的支持"></a>改进了 IDE 对 *.gradle.kts 的支持</h3><p>在 Kotlin 1.4 中，继续改进了对 Gradle Kotlin DSL脚本(<code>*.gradle.kts</code> 文件)的IDE支持。显式加载脚本配置以获得更好的性能。以前，您对构建脚本所做的更改将在后台自动加载。为了提高性能，在 Kotlin 1.4 中禁用了构建脚本配置的自动加载。现在只有在显式应用更改时，IDE 才加载更改。</p>
+<p>在 Gradle 6.0 之前的版本中，需要通过在编辑器中单击 <code>Load Configuration</code> 手动加载脚本配置。在 Gradle 6.0 及以上版本中，可以通过点击 <code>Load Gradle Changes</code> 或通过重新导入 Gradle 项目来显式地应用变化。</p>
+<p>在Gradle 6.0及更高版本的 IntelliJ IDEA 2020.1 中添加了另一项操作——<code>Load Script Configurations(加载脚本配置)</code>，该操作可加载对脚本配置的更改，而无需更新整个项目。这比重新导入整个项目所需的时间少得多。还应该为新创建的脚本加载脚本配置，或者在第一次使用新的 Kotlin 插件打开项目时加载脚本配置。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://kotlinlang.org/docs/reference/whatsnew14.html" target="_blank" rel="noopener">What’s New in Kotlin 1.4</a></p>
+
+            </div>
+            <hr>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Kotlin/">
+                                    <span class="chip bg-color">Kotlin</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'b27d1ff57c26076f312f',
+        clientSecret: '813ecb40fe6f0fa06e02837facf17ecbbb037ad6',
+        repo: 'henleylee.github.io',
+        owner: 'HenleyLee',
+        admin: "HenleyLee",
+        id: '2020-09-03T12-36-22',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/2020/664dda02.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Kotlin 1.4 的新特性">
+                        
+                        <span class="card-title">Kotlin 1.4 的新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Kotlin 1.4 新特性Kotlin 1.4 新特性包含以下几个方面：
+
+语言特性与改进
+Kotlin 接口的 SAM 转换
+面向库作者的显式 API 模式
+混用命名参数与位置参数
+尾随逗号
+可调用引用改进
+循环中的 when 内部可以
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-09-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Kotlin/" class="post-category">
+                                    Kotlin
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Kotlin/">
+                        <span class="chip tag-bg-color">Kotlin</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/2020/448473dc.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java 关键字分类详解">
+                        
+                        <span class="card-title">Java 关键字分类详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Java 关键字是预先定义的具有特别意义的标识符，也可以叫 Java 保留字，Java 关键字不能用作包名、类名、方法名、变量名和参数。
+访问控制
+
+
+关键字
+含义
+
+
+
+
+public
+一种访问控制方式：共有模式，可以应用于类、方法或成员
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-08-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip tag-bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Henley<br />'
+            + '文章作者: HenleyLee<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+    <footer class="page-footer foot-bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            <i class="fa fa-copyright"></i> 2018 <a class="foot-titlt-bg" href="https://henleylee.github.io" target="_blank">HenleyLee</a>.
+	    &nbsp;All rights reserved.
+            Powered by <a class="foot-titlt-bg" href="https://hexo.io/" target="_blank">Hexo</a>.
+	    &nbsp;Theme by <a class="foot-titlt-bg" href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>.
+            
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">454.7k</span>&nbsp;字
+            
+	    <br>
+	    
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+            <i class="far fa-eye"></i>&nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次&nbsp;
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                &nbsp;<i class="fas fa-user"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人&nbsp;
+            </span>
+            
+            
+            
+	    <i class="far fa-clock"></i>&nbsp;<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>&nbsp;
+            <script>
+                function createtime() {
+                    var now = new Date(); // 当前时间
+                    var grt = new Date("06/01/2018 00:00:00"); // 建站时间或者网站上线时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HenleyLee" class="tooltipped" target="_blank" data-tooltip="GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:henleylee@yeah.net" class="tooltipped" data-tooltip="Email" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://message/?uin=873825813&Site=QQ&Menu=yes" class="tooltipped" data-tooltip="QQ" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/others/current-device.js"></script>
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

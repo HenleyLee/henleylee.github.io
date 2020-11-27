@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henleylee.github.io/"/>
-  <updated>2020-07-31T09:30:03.981Z</updated>
+  <updated>2020-09-27T09:11:12.109Z</updated>
   <id>https://henleylee.github.io/</id>
   
   <author>
@@ -17,11 +17,89 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kotlin 1.4 的新特性</title>
+    <link href="https://henleylee.github.io/posts/2020/664dda02.html"/>
+    <id>https://henleylee.github.io/posts/2020/664dda02.html</id>
+    <published>2020-09-03T04:36:22.000Z</published>
+    <updated>2020-09-27T09:11:12.109Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Kotlin-1-4-新特性&quot;&gt;&lt;a href=&quot;#Kotlin-1-4-新特性&quot; class=&quot;headerlink&quot; title=&quot;Kotlin 1.4 新特性&quot;&gt;&lt;/a&gt;Kotlin 1.4 新特性&lt;/h2&gt;&lt;p&gt;Kotlin 1.4
+        
+      
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="https://henleylee.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Kotlin" scheme="https://henleylee.github.io/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 关键字分类详解</title>
+    <link href="https://henleylee.github.io/posts/2020/448473dc.html"/>
+    <id>https://henleylee.github.io/posts/2020/448473dc.html</id>
+    <published>2020-08-16T02:16:25.000Z</published>
+    <updated>2020-09-06T03:48:01.810Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Java 关键字是预先定义的具有特别意义的标识符，也可以叫 Java 保留字，Java
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>130个资源网站，总有一个你用得着</title>
+    <link href="https://henleylee.github.io/posts/2020/bd0b5ffe.html"/>
+    <id>https://henleylee.github.io/posts/2020/bd0b5ffe.html</id>
+    <published>2020-08-05T10:45:35.000Z</published>
+    <updated>2020-08-20T06:19:12.929Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;搞学习&quot;&gt;&lt;a href=&quot;#搞学习&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android 样式和主题背景</title>
     <link href="https://henleylee.github.io/posts/2020/eade425f.html"/>
     <id>https://henleylee.github.io/posts/2020/eade425f.html</id>
     <published>2020-07-20T10:55:36.000Z</published>
-    <updated>2020-07-31T09:30:03.981Z</updated>
+    <updated>2020-07-31T09:52:53.557Z</updated>
     
     <summary type="html">
     
@@ -102,6 +180,32 @@
   </entry>
   
   <entry>
+    <title>Android Window 类参数详解</title>
+    <link href="https://henleylee.github.io/posts/2020/7605f9c8.html"/>
+    <id>https://henleylee.github.io/posts/2020/7605f9c8.html</id>
+    <published>2020-06-07T04:15:56.000Z</published>
+    <updated>2020-08-26T07:38:05.660Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;Window&lt;/code&gt; 是一个抽象类，它作为一个顶级视图添加到 &lt;code&gt;WindowManager&lt;/code&gt; 中，&lt;code&gt;View&lt;/code&gt; 是依附于 &lt;code&gt;Window&lt;/code&gt; 而存在的，对 &lt;code&gt;View&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
     <title>IntelliJ IDEA 快捷键大全</title>
     <link href="https://henleylee.github.io/posts/2020/9df0c18c.html"/>
     <id>https://henleylee.github.io/posts/2020/9df0c18c.html</id>
@@ -131,8 +235,8 @@
     <title>Java 日期处理的十个坑</title>
     <link href="https://henleylee.github.io/posts/2020/e2c003c6.html"/>
     <id>https://henleylee.github.io/posts/2020/e2c003c6.html</id>
-    <published>2020-04-12T04:56:25.000Z</published>
-    <updated>2020-04-15T08:51:13.553Z</updated>
+    <published>2020-04-11T04:56:25.000Z</published>
+    <updated>2020-08-20T06:47:01.068Z</updated>
     
     <summary type="html">
     
@@ -151,6 +255,84 @@
     
     
       <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Choreographer 渲染机制详解</title>
+    <link href="https://henleylee.github.io/posts/2020/f831dca5.html"/>
+    <id>https://henleylee.github.io/posts/2020/f831dca5.html</id>
+    <published>2020-03-24T10:35:26.000Z</published>
+    <updated>2020-08-21T06:00:55.556Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Android 的 UI 渲染性能是 Google 长期以来非常重视的，基本每次 Google I/O 都会花很多篇幅讲这一块。不过随着 Android 系统的不断演进和完善，时至今日，关于 Android UI
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android ViewTreeObserver 原理详解</title>
+    <link href="https://henleylee.github.io/posts/2020/57966f8d.html"/>
+    <id>https://henleylee.github.io/posts/2020/57966f8d.html</id>
+    <published>2020-03-12T10:45:56.000Z</published>
+    <updated>2020-08-16T06:50:59.378Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;View&lt;/code&gt; 和 &lt;code&gt;ViewGroup&lt;/code&gt; 是 Android UI 的基本组件， 而 &lt;code&gt;ViewGroup&lt;/code&gt; 作为容器，可以包含一组 &lt;code&gt;View&lt;/code&gt;， 并且
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android View.post() 原理详解</title>
+    <link href="https://henleylee.github.io/posts/2020/d7d7c7c2.html"/>
+    <id>https://henleylee.github.io/posts/2020/d7d7c7c2.html</id>
+    <published>2020-03-02T10:25:36.000Z</published>
+    <updated>2020-08-17T07:46:48.792Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在 Android 开发中，子线程是不能进行 UI 操作的，或者很多场景下，一些操作需要延迟执行，这些都可以通过 &lt;code&gt;Handler&lt;/code&gt; 来解决。有时候为了避免重新定义一个 &lt;code&gt;Handler&lt;/code&gt; 对象，经常会用到
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
     
   </entry>
   
@@ -372,203 +554,6 @@
       <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
     
       <category term="Jetpack" scheme="https://henleylee.github.io/tags/Jetpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Jetpack 组件之 ViewModel 详解</title>
-    <link href="https://henleylee.github.io/posts/2019/6efd8b7a.html"/>
-    <id>https://henleylee.github.io/posts/2019/6efd8b7a.html</id>
-    <published>2019-11-27T10:36:32.000Z</published>
-    <updated>2020-07-13T10:21:53.949Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Android 框架可以管理 UI 控制器(&lt;code&gt;Activity&lt;/code&gt; 和 &lt;code&gt;Fragment&lt;/code&gt;)的生命周期。Android 框架可能会决定销毁或重新创建 UI
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-      <category term="Jetpack" scheme="https://henleylee.github.io/tags/Jetpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Jetpack 组件之 LiveData 详解</title>
-    <link href="https://henleylee.github.io/posts/2019/fd298b9f.html"/>
-    <id>https://henleylee.github.io/posts/2019/fd298b9f.html</id>
-    <published>2019-11-17T10:36:32.000Z</published>
-    <updated>2020-04-29T07:47:13.847Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;&lt;code&gt;LiveData&lt;/code&gt;&lt;/strong&gt; 是一个可观察的数据持有者类，与常规 &lt;code&gt;Observable&lt;/code&gt; 不同，&lt;code&gt;LiveData&lt;/code&gt; 是生命周期感知的，&lt;code&gt;LiveData&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-      <category term="Jetpack" scheme="https://henleylee.github.io/tags/Jetpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Jetpack 组件之 Lifecycle 详解</title>
-    <link href="https://henleylee.github.io/posts/2019/322089e5.html"/>
-    <id>https://henleylee.github.io/posts/2019/322089e5.html</id>
-    <published>2019-11-07T10:36:32.000Z</published>
-    <updated>2020-04-29T08:01:25.080Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;Lifecycle&lt;/code&gt; 组件是 Android Jetpack 的一部分，该组件可以感知 &lt;code&gt;Activity&lt;/code&gt; 和 &lt;code&gt;Fragment&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-      <category term="Jetpack" scheme="https://henleylee.github.io/tags/Jetpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 各国语言 values 文件夹命名规则</title>
-    <link href="https://henleylee.github.io/posts/2019/540305be.html"/>
-    <id>https://henleylee.github.io/posts/2019/540305be.html</id>
-    <published>2019-10-22T10:56:52.000Z</published>
-    <updated>2020-04-27T06:36:05.827Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在开发应用时，进行资源适配会用到不同国家的语言文件夹，Android 常见的各国语言文件夹名称汇总如下：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;国家/地区&lt;/th&gt;
-&lt;th
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://henleylee.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://henleylee.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可以提高千倍效率的 Java 代码小技巧</title>
-    <link href="https://henleylee.github.io/posts/2019/a780fcc1.html"/>
-    <id>https://henleylee.github.io/posts/2019/a780fcc1.html</id>
-    <published>2019-10-11T10:45:35.000Z</published>
-    <updated>2020-04-15T09:59:10.896Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;代码优化
-        
-      
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
-    
-      <category term="学习笔记" scheme="https://henleylee.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用的 JVM 配置参数</title>
-    <link href="https://henleylee.github.io/posts/2019/399ccee7.html"/>
-    <id>https://henleylee.github.io/posts/2019/399ccee7.html</id>
-    <published>2019-09-23T07:38:32.000Z</published>
-    <updated>2020-06-03T01:33:53.416Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xms：&lt;/code&gt;&lt;/strong&gt;初始堆内存。只要启动，就占用的堆大小。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;-Xmx：&lt;/code&gt;&lt;/strong&gt;最大堆内存。如果遇到 OutOfMemoryError
-        
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="https://henleylee.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="IntelliJ IDEA" scheme="https://henleylee.github.io/tags/IntelliJ-IDEA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 集合之 Vector 源码分析</title>
-    <link href="https://henleylee.github.io/posts/2019/83ddd470.html"/>
-    <id>https://henleylee.github.io/posts/2019/83ddd470.html</id>
-    <published>2019-09-14T11:06:25.000Z</published>
-    <updated>2020-04-15T08:16:29.018Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;Vector&lt;/code&gt; 和 &lt;code&gt;ArrayList&lt;/code&gt; 有一些相似，其内部都是通过一个容量能够动态增长的数组来实现的。不同点是 &lt;code&gt;Vector&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://henleylee.github.io/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://henleylee.github.io/tags/Java/"/>
     
   </entry>
   

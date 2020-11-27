@@ -597,8 +597,8 @@
 </blockquote>
 <h4 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h4><p>双向链表的优缺点如下：</p>
 <ul>
-<li>优点：可以从两个方向进行遍历，可以找到前驱和后继。</li>
-<li>缺点：增加删除节点复杂，多需要分配一个指针存储空间。</li>
+<li>优点：查找元素时可以从两个方向进行遍历，一定程度上提升了查找数据元素的速度。</li>
+<li>缺点：增加、删除节点复杂，需要多分配一个指针存储空间，增加了额外的内存开销。</li>
 </ul>
 <h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><p><strong><code>循环链表</code></strong>指的是在单向链表和双向链表的基础上，将两种链表的最后一个节点指向第一个节点从而实现循环。</p>
 <p>循环链表与单向链表和循环链表有以下不同：</p>
@@ -611,7 +611,8 @@
 </blockquote>
 <h4 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h4><p>循环链表的优缺点如下：</p>
 <ul>
-<li>优点：没有 NULL 指针，可以从任一节点遍历整个链表，可以找到前驱和后继。</li>
+<li>优点：没有 NULL 指针，遍历的时候可以从任意节点开始，增加了遍历的灵活性。</li>
+<li>缺点：没有解决单链表查找元素速度较慢的问题。</li>
 </ul>
 
             </div>
@@ -1106,7 +1107,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    

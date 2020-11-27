@@ -652,7 +652,7 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
 +  android:background="?attr/colorPrimarySurface" />
 </code></pre>
 <p>但是我们还可以使用哪些主题背景属性的功能呢？下面列举了常用的的关于主题背景属性的通用功能，它们广泛应用在 <code>Material</code>、<code>AppCompact</code>，或者是平台 (<code>Platform</code>) 中。</p>
-<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>这些颜色大部分来自于 <a href="https://material.io/design/color/the-color-system.html#color-usage-and-palettes" target="_blank" rel="noopener">Material 颜色系统</a> (<code>Material color system</code>) ，它们给每个颜色取了语义化的名称可以让您在应用中使用它们 (<a href="https://material.io/develop/android/theming/color/" target="_blank" rel="noopener">体现为主题背景属性</a>) 。<br><img src="https://henleylee.github.io/medias/android/material_color_system.png" alt=""></p>
+<h3 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h3><p>这些颜色大部分来自于 <a href="https://material.io/design/color/the-color-system.html#color-usage-and-palettes" target="_blank" rel="noopener">Material 颜色系统</a> (<code>Material color system</code>) ，它们给每个颜色取了语义化的名称可以让您在应用中使用它们 (<a href="https://material.io/develop/android/theming/color/" target="_blank" rel="noopener">体现为主题背景属性</a>) 。<br><img src="https://henleylee.github.io/medias/android/material_color_system.png" alt=""></p>
 <ul>
 <li><strong><code>?attr/colorPrimary：</code></strong>应用的主要颜色；</li>
 <li><strong><code>?attr/colorSecondary：</code></strong>应用的次要颜色，通常作为主要颜色补充；</li>
@@ -671,7 +671,7 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
 <li><strong><code>?android:attr/textColorPrimary：</code></strong>设置给文本的主要颜色；</li>
 <li><strong><code>?android:attr/textColorSecondary：</code></strong>设置给文本的次要颜色。</li>
 </ul>
-<h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><ul>
+<h3 id="Dimens"><a href="#Dimens" class="headerlink" title="Dimens"></a>Dimens</h3><ul>
 <li><strong><code>?attr/listPreferredItemHeight：</code></strong>列表项的标准高度 (最小值)；</li>
 <li><strong><code>?attr/actionBarSize：</code></strong>工具栏的高度。</li>
 </ul>
@@ -697,13 +697,13 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
 <li><strong><code>?attr/textAppearanceButton：</code></strong>默认为 14sp 全大写 medium 文本；</li>
 <li><strong><code>?attr/textAppearanceOverline：</code></strong>默认为 10sp 全大写 regular 文本。</li>
 </ul>
-<h3 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h3><p><code>Material</code> 采用了形状系统 (<a href="https://material.io/design/shape/" target="_blank" rel="noopener">Shape system</a>)，它是由主题背景属性<a href="https://material.io/develop/android/theming/shape" target="_blank" rel="noopener">实现</a>了 <code>small</code>、<code>medium</code>、<code>large</code> 等不同的部件。请注意，如果您想给自定义的部件设置形状外观，您应该使用 <a href="https://developer.android.com/reference/com/google/android/material/shape/MaterialShapeDrawable" target="_blank" rel="noopener">MaterialShapeDrawable</a> 作为它的背景，因为它能够理解并能实现具体形状。<br><img src="https://henleylee.github.io/medias/android/material_shape_system.png" alt=""></p>
+<h3 id="Shape"><a href="#Shape" class="headerlink" title="Shape"></a>Shape</h3><p><code>Material</code> 采用了形状系统 (<a href="https://material.io/design/shape/" target="_blank" rel="noopener">Shape system</a>)，它是由主题背景属性<a href="https://material.io/develop/android/theming/shape" target="_blank" rel="noopener">实现</a>了 <code>small</code>、<code>medium</code>、<code>large</code> 等不同的部件。请注意，如果您想给自定义的部件设置形状外观，您应该使用 <a href="https://developer.android.com/reference/com/google/android/material/shape/MaterialShapeDrawable" target="_blank" rel="noopener">MaterialShapeDrawable</a> 作为它的背景，因为它能够理解并能实现具体形状。<br><img src="https://henleylee.github.io/medias/android/material_shape_system.png" alt=""></p>
 <ul>
 <li><strong><code>?attr/shapeAppearanceSmallComponent：</code></strong>默认圆角为 4dp，用于 Buttons、Chips、TextFields 等；</li>
 <li><strong><code>?attr/shapeAppearanceMediumComponent：</code></strong>默认圆角为 4dp，用于 Cards、Dialogs、Date Pickers 等；</li>
 <li><strong><code>?attr/shapeAppearanceLargeComponent：</code></strong>默认圆角为 0dp (其实是方形)，用于 Bottom Sheets 等。</li>
 </ul>
-<h3 id="按钮风格"><a href="#按钮风格" class="headerlink" title="按钮风格"></a>按钮风格</h3><p><img src="https://henleylee.github.io/medias/android/material_button_style.webp" alt=""></p>
+<h3 id="Button-Styles"><a href="#Button-Styles" class="headerlink" title="Button Styles"></a>Button Styles</h3><p><img src="https://henleylee.github.io/medias/android/material_button_style.webp" alt=""></p>
 <p><code>Material</code> 提供了三种不同类型的按钮: <a href="https://material.io/components/buttons/#contained-button" target="_blank" rel="noopener">Contained</a>、<a href="https://material.io/components/buttons/#text-button" target="_blank" rel="noopener">Text</a> 以及 <a href="https://material.io/components/buttons/#outlined-button" target="_blank" rel="noopener">Outlined</a>。MDC 提供了主题背景属性，您可以使用它们给 <a href="https://developer.android.com/reference/com/google/android/material/button/MaterialButton" target="_blank" rel="noopener">MaterialButton</a> 设置样式:</p>
 <ul>
 <li><strong><code>?attr/materialButtonStyle：</code></strong>(defaults)默认是 Contained 类型 (或者直接省略样式)；</li>
@@ -715,11 +715,11 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
 <li><strong><code>?android:attr/primaryContentAlpha：</code></strong>设置给 foreground 元素的 alpha 值；</li>
 <li><strong><code>?android:attr/secondaryContentAlpha：</code></strong>设置给 secondary 元素的 alpha 值。</li>
 </ul>
-<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>命名空间分为<code>应用命名空间</code>和 <code>Android 命名空间</code>。<br>您可能注意到有些属性的引用是通过 <code>?android:attr/foo</code> 而有些只是通过 <code>?attr/bar</code>。这是因为一些属性是由 <code>Android</code> 平台定义的，所以需要使用 <code>android</code> 命名空间来引用由它们自己定义的属性 (类似于布局中使用 <code>View</code> 属性 <code>android:id</code>) 。编译到应用但不是来自于静态库的属性 (<code>AppCompact</code> 或者 <code>MDC</code>) ，使用它们时不需要命名空间 (类似于布局中使用 <code>app:baz</code>) 。平台跟库有时候定义了相同的属性，如 <code>colorPrimary</code>。这时候系统优先使用非平台版本的属性，它们可以被所有级别的 <code>API</code> 使用。为了向后兼容，它们会被完整的复制到库中。上面列举的都是非平台版本的案例。</p>
+<h3 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h3><p>命名空间分为<code>应用命名空间</code>和 <code>Android 命名空间</code>。<br>您可能注意到有些属性的引用是通过 <code>?android:attr/foo</code> 而有些只是通过 <code>?attr/bar</code>。这是因为一些属性是由 <code>Android</code> 平台定义的，所以需要使用 <code>android</code> 命名空间来引用由它们自己定义的属性 (类似于布局中使用 <code>View</code> 属性 <code>android:id</code>) 。编译到应用但不是来自于静态库的属性 (<code>AppCompact</code> 或者 <code>MDC</code>) ，使用它们时不需要命名空间 (类似于布局中使用 <code>app:baz</code>) 。平台跟库有时候定义了相同的属性，如 <code>colorPrimary</code>。这时候系统优先使用非平台版本的属性，它们可以被所有级别的 <code>API</code> 使用。为了向后兼容，它们会被完整的复制到库中。上面列举的都是非平台版本的案例。</p>
 <blockquote>
 <p>优先使用非平台版本的属性，它们可以被所有级别的 <code>API</code> 使用</p>
 </blockquote>
-<h3 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a>更多资源</h3><p>为了获取可以使用的全部主题背景属性，请查阅以下信息:</p>
+<h3 id="More-Resources"><a href="#More-Resources" class="headerlink" title="More Resources"></a>More Resources</h3><p>为了获取可以使用的全部主题背景属性，请查阅以下信息:</p>
 <ul>
 <li><a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/attrs.xml" target="_blank" rel="noopener">Android platform</a></li>
 <li><a href="https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/appcompat/appcompat/src/main/res/values/attrs.xml" target="_blank" rel="noopener">AppCompat</a></li>
@@ -730,7 +730,7 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
 <li><a href="https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/shape/res/values/attrs.xml" target="_blank" rel="noopener">Shape</a></li>
 <li><a href="https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/typography/res/values/attrs.xml" target="_blank" rel="noopener">Type</a></li>
 </ul>
-<h3 id="自己动手"><a href="#自己动手" class="headerlink" title="自己动手"></a>自己动手</h3><p>当想使用主题背景功能抽象某个东西的时候，发现没有现成的主题背景可用时，可以自定义一个。可以参考 <a href="https://github.com/google/iosched" target="_blank" rel="noopener">Google I/O 应用</a>，它实现了在两个界面中显示主题演讲的列表:<br><img src="https://henleylee.github.io/medias/android/material_shape_system.png" alt=""></p>
+<h3 id="Do-It-Yourself"><a href="#Do-It-Yourself" class="headerlink" title="Do It Yourself"></a>Do It Yourself</h3><p>当想使用主题背景功能抽象某个东西的时候，发现没有现成的主题背景可用时，可以自定义一个。可以参考 <a href="https://github.com/google/iosched" target="_blank" rel="noopener">Google I/O 应用</a>，它实现了在两个界面中显示主题演讲的列表:<br><img src="https://henleylee.github.io/medias/android/material_shape_system.png" alt=""></p>
 <p>这两个界面大部分看起来比较相似，除了左边界面有个显示时间的功能而右边是没有的。</p>
 <p>将 item 的对齐部分抽象成一个主题背景属性，给不同界面使用的同一个布局中使用主题背景来区分它们的差异:</p>
 <ol>
@@ -752,7 +752,7 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
 ```xml
 &lt;Guideline …
     app:layout_constraintGuide_begin=&quot;?attr/sessionListKeyline&quot; /&gt;
-</code></pre><h3 id="保持探索"><a href="#保持探索" class="headerlink" title="保持探索"></a>保持探索</h3><p>了解了能够使用的主题背景属性功能后，可以在编写布局、样式、drawables 时使用它们。</p>
+</code></pre><h3 id="Question-mark-everything"><a href="#Question-mark-everything" class="headerlink" title="Question (mark) everything"></a>Question (mark) everything</h3><p>了解了能够使用的主题背景属性功能后，可以在编写布局、样式、drawables 时使用它们。</p>
 <p>使用主题背景属性功能更容易实现主题功能 (如深色主题背景)，而且可以编写出更灵活，更易于维护的代码。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://developer.android.com/guide/topics/ui/look-and-feel/themes" target="_blank" rel="noopener">Styles and Themes</a></li>
@@ -966,46 +966,62 @@ val view <span class="token operator">=</span> <span class="token function">MyVi
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/2020/eade425f.html">
+                <a href="/posts/2020/bd0b5ffe.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Android 样式和主题背景">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="130个资源网站，总有一个你用得着">
                         
-                        <span class="card-title">Android 样式和主题背景</span>
+                        <span class="card-title">130个资源网站，总有一个你用得着</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Android 提供了功能强大的样式系统 (Android styling system) 来实现应用的视觉设计，但它也容易被误用。正确地使用样式系统会让您在开发应用的时候更容易维护主题与样式，在开发新功能的时候少一些抓狂，而且还可以支持深
+                            搞学习
+
+
+名称
+地址
+
+
+
+
+CSDN
+https://www.csdn.net/
+
+
+TED(最优质的演讲)
+https://www.ted.com/
+
+
+谷粉学术
+https://gfsoso.99lb.net/scholar.htm
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-07-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-calendar-alt fa-fw icon-date"></i>2020-08-05
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Android/" class="post-category">
-                                    Android
+                            <a href="/categories/学习笔记/" class="post-category">
+                                    学习笔记
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Android/">
-                        <span class="chip tag-bg-color">Android</span>
+                    <a href="/tags/学习笔记/">
+                        <span class="chip tag-bg-color">学习笔记</span>
                     </a>
                     
                 </div>
@@ -1244,7 +1260,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    

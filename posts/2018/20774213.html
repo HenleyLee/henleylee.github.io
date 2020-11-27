@@ -567,32 +567,32 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="1-内存分配"><a href="#1-内存分配" class="headerlink" title="1. 内存分配"></a>1. 内存分配</h2><p><code>Java 虚拟机</code>在执行 <code>Java</code> 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途、创建和销毁的时间，有一些是随虚拟机的启动而创建，随虚拟机的退出而销毁，有些则是与线程一一对应，随线程的开始和结束而创建和销毁。</p>
-<p><code>Java 虚拟机</code>所管理的内存将会包括以下几个运行时数据区域，如下图（图片来自网络）：<br><img src="https://user-gold-cdn.xitu.io/2018/8/2/164f93ea24c894a0" alt="Java 虚拟机内存区域"></p>
+<p><code>Java 虚拟机</code>所管理的内存将会包括以下几个运行时数据区域，如下图（图片来自网络）：<br><img src="https://henleylee.github.io/medias/java/java_memory_partition.png" alt="Java 虚拟机内存区域"></p>
 <h3 id="1-1-程序计数器（Program-Counter-Register）"><a href="#1-1-程序计数器（Program-Counter-Register）" class="headerlink" title="1.1 程序计数器（Program Counter Register）"></a>1.1 程序计数器（Program Counter Register）</h3><p>程序计数器是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的信号指示器。字节码解释器就是通过改变该计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需依赖计数器来完成。</p>
-<p>每一个JVM线程都有独立的程序计数器，各线程间的计数器互不影响，独立存储，确保线程切换后能够恢复到正确的执行位置。</p>
-<p>在任意时刻，一条JVM线程只会执行一个方法的代码。该方法称为该线程的当前方法（Current Method），如果该方法是Java方法，那计数器保存JVM正在执行的字节码指令的地址；如果该方法是Native，那PC寄存器的值为空（Undefined）。</p>
-<p>此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。</p>
-<h3 id="1-2-Java虚拟机栈（Java-Virtual-Machine-Stack）"><a href="#1-2-Java虚拟机栈（Java-Virtual-Machine-Stack）" class="headerlink" title="1.2 Java虚拟机栈（Java Virtual Machine Stack）"></a>1.2 Java虚拟机栈（Java Virtual Machine Stack）</h3><p>Java虚拟机栈与程序计数器一样，也是线程私有的，其生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧（Stack Frame）用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每一个方法被调用直至执行完成的过程就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</p>
-<p>局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型）和returnAddress类型（指向了一条字节码指令的地址）。其中64位长度的long和double会占用2个局部变量空间（Slot），其余数据类型只占用1个。局部变量表所需的空间在编译期间完成分配，当进入一个方法时，其需要在帧中分配多大的局部变量空间是确定的，方法运行期间不会改变局部变量表的大小。</p>
-<p>Java虚拟机规范中对该区域规定了两种异常情况：</p>
+<p>每一个 JVM 线程都有独立的程序计数器，各线程间的计数器互不影响，独立存储，确保线程切换后能够恢复到正确的执行位置。</p>
+<p>在任意时刻，一条 JVM 线程只会执行一个方法的代码。该方法称为该线程的当前方法(Current Method)，如果该方法是 Java 方法，那计数器保存 JVM 正在执行的字节码指令的地址；如果该方法是 Native，那 PC 寄存器的值为空(Undefined)。</p>
+<p>此内存区域是唯一一个在 Java 虚拟机规范中没有规定任何 OutOfMemoryError 情况的区域。</p>
+<h3 id="1-2-Java虚拟机栈（Java-Virtual-Machine-Stack）"><a href="#1-2-Java虚拟机栈（Java-Virtual-Machine-Stack）" class="headerlink" title="1.2 Java虚拟机栈（Java Virtual Machine Stack）"></a>1.2 Java虚拟机栈（Java Virtual Machine Stack）</h3><p>Java 虚拟机栈与程序计数器一样，也是线程私有的，其生命周期与线程相同。虚拟机栈描述的是 Java 方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧(Stack Frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每一个方法被调用直至执行完成的过程就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</p>
+<p>局部变量表存放了编译期可知的各种基本数据类型(boolean、byte、char、short、int、float、long、double)、对象引用(Reference 类型)和 returnAddress 类型（指向了一条字节码指令的地址）。其中64位长度的 long 和 double 会占用2个局部变量空间(Slot)，其余数据类型只占用1个。局部变量表所需的空间在编译期间完成分配，当进入一个方法时，其需要在帧中分配多大的局部变量空间是确定的，方法运行期间不会改变局部变量表的大小。</p>
+<p>Java 虚拟机规范中对该区域规定了两种异常情况：</p>
 <ul>
-<li>如线程请求的深度大于虚拟机所允许的深度，抛出StackOverflowError异常。</li>
-<li>虚拟机栈动态扩展无法申请到足够的内存时，抛出OutOfMemoryError异常。</li>
+<li>如线程请求的深度大于虚拟机所允许的深度，抛出 StackOverflowError 异常。</li>
+<li>虚拟机栈动态扩展无法申请到足够的内存时，抛出 OutOfMemoryError 异常。</li>
 </ul>
-<h3 id="1-3-本地方法栈（Native-Method-Stack）"><a href="#1-3-本地方法栈（Native-Method-Stack）" class="headerlink" title="1.3 本地方法栈（Native Method Stack）"></a>1.3 本地方法栈（Native Method Stack）</h3><p>Java虚拟机可能会使用到传统的栈来支持native方法（使用Java语言以外的其它语言编写的方法）的执行，这个栈就是本地方法栈（Native Method Stack）。本地方法栈与虚拟机栈非常类似，区别是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，二本地方法栈则为虚拟机使用到的Native方法服务。虚拟机规范对本地方法栈中的方法是用语言、使用方式与数据结构没强制规定，因此虚拟机可以自由实现，如Sun HotSpot虚拟机直接把本地方法栈和虚拟机栈合二为一。</p>
-<p>Java虚拟机规范中对该区域规定了两种异常情况：</p>
+<h3 id="1-3-本地方法栈（Native-Method-Stack）"><a href="#1-3-本地方法栈（Native-Method-Stack）" class="headerlink" title="1.3 本地方法栈（Native Method Stack）"></a>1.3 本地方法栈（Native Method Stack）</h3><p>Java 虚拟机可能会使用到传统的栈来支持 native 方法（使用 Java 语言以外的其它语言编写的方法）的执行，这个栈就是本地方法栈(Native Method Stack)。本地方法栈与虚拟机栈非常类似，区别是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，二本地方法栈则为虚拟机使用到的Native方法服务。虚拟机规范对本地方法栈中的方法是用语言、使用方式与数据结构没强制规定，因此虚拟机可以自由实现，如Sun HotSpot虚拟机直接把本地方法栈和虚拟机栈合二为一。</p>
+<p>Java 虚拟机规范中对该区域规定了两种异常情况：</p>
 <ul>
-<li>如线程请求的深度大于虚拟机所允许的深度，抛出StackOverflowError异常。</li>
-<li>虚拟机栈动态扩展无法申请到足够的内存时，抛出OutOfMemoryError异常。</li>
+<li>如线程请求的深度大于虚拟机所允许的深度，抛出 StackOverflowError 异常。</li>
+<li>虚拟机栈动态扩展无法申请到足够的内存时，抛出 OutOfMemoryError 异常。</li>
 </ul>
-<h3 id="1-4-Java堆（Java-Heap）"><a href="#1-4-Java堆（Java-Heap）" class="headerlink" title="1.4 Java堆（Java Heap）"></a>1.4 Java堆（Java Heap）</h3><p>Java堆是Java虚拟机管理内存中最大的一块，是所有线程共享的内存区域，随虚拟机的启动而创建。该区域唯一目的是存放对象实例，几乎所有对象的实例都在堆里面分配。Java堆是垃圾收集器管理的主要区域，被称作“GC堆”。</p>
-<p>Java虚拟机规范规定，Java堆可以出于物理上物理上不连续的内存空间中，只要逻辑上连续即可，如同磁盘空间一样，既可以实现成固定大小，也可以是扩展的，当前主流虚拟机都是按照扩展来实现的（通过-Xmx和-Xms控制）。</p>
-<p>Java虚拟机规范中对该区域规定了OutOfMemoryError异常：如果堆中没有内存完成实例分配，并且堆无法再扩展则抛出OutOfMemoryError异常。</p>
-<h3 id="1-5-方法区（Method-Area）"><a href="#1-5-方法区（Method-Area）" class="headerlink" title="1.5 方法区（Method Area）"></a>1.5 方法区（Method Area）</h3><p>方法区与Java堆一样，是各个线程共享的内存区域，用于存储一杯虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。Java虚拟机对这个区域的限制非常宽松，处理和Java对一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。</p>
-<p>Java虚拟机规范中对该区域规定了OutOfMemoryError异常： 如果方法区的内存空间不能满足内存分配请求，那Java虚拟机将抛出一个OutOfMemoryError异常。</p>
-<h3 id="1-6-运行时常量池（Runtime-Constant-Pool）"><a href="#1-6-运行时常量池（Runtime-Constant-Pool）" class="headerlink" title="1.6 运行时常量池（Runtime Constant Pool）"></a>1.6 运行时常量池（Runtime Constant Pool）</h3><p>运行时常量池是方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等信息外，还有一项信息是常量池，用于存放编译期生成的各种字面常量和符号引用，这部分内容在类加载后存放到方法区的常量池中。</p>
-<p>Java虚拟机规范中对该区域规定了OutOfMemoryError异常： 当常量池无法申请到内存时抛出OutOfMemoryError异常。</p>
-<h3 id="1-7-直接内存（Direct-Memory）"><a href="#1-7-直接内存（Direct-Memory）" class="headerlink" title="1.7 直接内存（Direct Memory）"></a>1.7 直接内存（Direct Memory）</h3><p>直接内存并不是虚拟机运行时数据区域的一部分，也不是Java虚拟规范中定义的内存区域，但这部分内存也被频繁使用，并且可能导致OutOfMemoryError异常出现。<br>Java虚拟机需要根据实际内存的大小来设置-Xmx等参数信息，如果忽略了直接内存，使得各个内存区域的总和大于物理内存限制，从而导致动态扩展时抛出OutOfMemoryError异常。</p>
+<h3 id="1-4-Java堆（Java-Heap）"><a href="#1-4-Java堆（Java-Heap）" class="headerlink" title="1.4 Java堆（Java Heap）"></a>1.4 Java堆（Java Heap）</h3><p>Java 堆是 Java 虚拟机管理内存中最大的一块，是所有线程共享的内存区域，随虚拟机的启动而创建。该区域唯一目的是存放对象实例，几乎所有对象的实例都在堆里面分配。Java 堆是垃圾收集器管理的主要区域，被称作“GC堆”。</p>
+<p>Java 虚拟机规范规定，Java 堆可以出于物理上物理上不连续的内存空间中，只要逻辑上连续即可，如同磁盘空间一样，既可以实现成固定大小，也可以是扩展的，当前主流虚拟机都是按照扩展来实现的（通过 -Xmx 和 -Xms 控制）。</p>
+<p>Java 虚拟机规范中对该区域规定了 OutOfMemoryError 异常：如果堆中没有内存完成实例分配，并且堆无法再扩展则抛出 OutOfMemoryError 异常。</p>
+<h3 id="1-5-方法区（Method-Area）"><a href="#1-5-方法区（Method-Area）" class="headerlink" title="1.5 方法区（Method Area）"></a>1.5 方法区（Method Area）</h3><p>方法区与 Java 堆一样，是各个线程共享的内存区域，用于存储一杯虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。Java 虚拟机对这个区域的限制非常宽松，处理和 Java 对一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。</p>
+<p>Java 虚拟机规范中对该区域规定了 OutOfMemoryError 异常： 如果方法区的内存空间不能满足内存分配请求，那 Java 虚拟机将抛出一个 OutOfMemoryError 异常。</p>
+<h3 id="1-6-运行时常量池（Runtime-Constant-Pool）"><a href="#1-6-运行时常量池（Runtime-Constant-Pool）" class="headerlink" title="1.6 运行时常量池（Runtime Constant Pool）"></a>1.6 运行时常量池（Runtime Constant Pool）</h3><p>运行时常量池是方法区的一部分。Class 文件中除了有类的版本、字段、方法、接口等信息外，还有一项信息是常量池，用于存放编译期生成的各种字面常量和符号引用，这部分内容在类加载后存放到方法区的常量池中。</p>
+<p>Java 虚拟机规范中对该区域规定了 OutOfMemoryError 异常： 当常量池无法申请到内存时抛出 OutOfMemoryError 异常。</p>
+<h3 id="1-7-直接内存（Direct-Memory）"><a href="#1-7-直接内存（Direct-Memory）" class="headerlink" title="1.7 直接内存（Direct Memory）"></a>1.7 直接内存（Direct Memory）</h3><p>直接内存并不是虚拟机运行时数据区域的一部分，也不是Java虚拟规范中定义的内存区域，但这部分内存也被频繁使用，并且可能导致 OutOfMemoryError 异常出现。<br>Java虚拟机需要根据实际内存的大小来设置-Xmx等参数信息，如果忽略了直接内存，使得各个内存区域的总和大于物理内存限制，从而导致动态扩展时抛出 OutOfMemoryError 异常。</p>
 <h2 id="2-内存优化"><a href="#2-内存优化" class="headerlink" title="2. 内存优化"></a>2. 内存优化</h2><p>内存优化的目的就是让我们在开发中有效的避免应用出现内存泄漏的问题。内存泄漏大家都不陌生了，简单粗俗的讲，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。</p>
 <p>像 Java 这样具有垃圾回收功能的语言的好处之一，就是程序员无需手动管理内存分配。这减少了段错误（Segmentation fault，即访问的内存超出了系统所给这个程序的内存空间）导致的闪退，也减少了内存泄漏导致的堆空间膨胀，让编写的代码更加安全。然而，Java中依然有可能发生内存泄漏。所以你的 APP 依然有可能浪费了大量的内存，甚至由于内存耗尽（OOM）导致闪退，内存优化也就至关重要。</p>
 <h2 id="3-内存泄漏"><a href="#3-内存泄漏" class="headerlink" title="3. 内存泄漏"></a>3. 内存泄漏</h2><p>传统的内存泄漏是由忘记释放分配的内存导致的，而逻辑上的内存泄漏则是由于忘记在对象不再被使用的时候释放对其的引用导致的。如果一个对象仍然存在强引用，垃圾回收器就无法对其进行垃圾回收。</p>
@@ -1289,7 +1289,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">426.6k</span>&nbsp;字
+                <span class="white-color">454.7k</span>&nbsp;字
             
 	    <br>
 	    
