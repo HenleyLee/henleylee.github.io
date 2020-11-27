@@ -835,4 +835,3 @@ public class Launcher extends Activity implements LauncherExterns, View.OnClickL
 [Activity启动流程](https://juejin.im/entry/5abdcdea51882555784e114d)
 [Activity 启动过程全解析](https://blog.csdn.net/zhaokaiqiang1992/article/details/49428287)
 [Android Activity启动流程](https://www.jianshu.com/p/6719238ae5f0)
-

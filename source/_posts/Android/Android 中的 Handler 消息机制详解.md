@@ -713,7 +713,7 @@ public Handler(Handler.Callback callback, boolean async) {
 }
 ```
 
-对于 `Handler` 的不指定 `Looper` 的构造方法，默认采用当前线程 `TLS` 中的 `Looper` 对象，只要执行的 `Looper.prepare()` 方法，那么便可以获取有效的 `Looper` 对象。
+对于 `Handler` 的不指定 `Looper` 的构造方法，默认采用当前线程 `TLS` 中的 `Looper` 对象，只要执行了 `Looper.prepare()` 方法，那么便可以获取有效的 `Looper` 对象。
 
 #### 指定 Looper ####
  ```java

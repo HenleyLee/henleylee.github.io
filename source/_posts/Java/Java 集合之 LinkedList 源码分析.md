@@ -52,7 +52,7 @@ transient Node<E> last;
 > `LinkedList` 底层的数据结构是基于`双向循环链表`的，且头结点中不存放数据。
 
 ### Node ###
-`java.util.LinkedList.Node` 是 `LinkedList` 中的节点所对应的类：
+`Node` 是 `LinkedList` 类的一个私有的静态内部类，用于存放 `LinkedList` 中的节点信息，源码如下：
 ```java
 private static class Node<E> {
     /** 存放数据 */
@@ -69,6 +69,8 @@ private static class Node<E> {
     }
 }
 ```
+
+`LinkedList` 是一个双向链表，每一个节点都由三部分组成，前后节点和值。
 
 ### 集合操作 ###
 #### set() ####

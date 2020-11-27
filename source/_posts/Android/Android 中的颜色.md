@@ -113,11 +113,11 @@ Color(float[], android.graphics.ColorSpace)
 public static void main(String[] args) {
     for (int i = 0; i <= 100; i++) {
         int alpha = Math.round(255 * i * 1.0f / 100f);
-        String hexStr = Integer.toHexString(alpha);
-        if (hexStr.length() < 2) {
-            hexStr = "0" + hexStr;
+        String hex = Integer.toHexString(alpha);
+        if (hex.length() < 2) {
+            hex = "0" + hex;
         }
-        System.out.println(i + "%, " + hexStr.toUpperCase());
+        System.out.println(i + "% ==> " + hex.toUpperCase());
     }
 }
 ```
@@ -169,8 +169,8 @@ public static void main(String[] args) {
 | 61%    | 9C       |
 | 60%    | 99       |
 | 59%    | 96       |
-| 57%    | 94       |
-| 56%    | 91       |
+| 58%    | 94       |
+| 57%    | 91       |
 | 56%    | 8F       |
 | 55%    | 8C       |
 | 54%    | 8A       |

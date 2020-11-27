@@ -132,9 +132,9 @@ val view = MyView(if (isDarkTheme) darkPalette else lightPalette)
 
 但是我们还可以使用哪些主题背景属性的功能呢？下面列举了常用的的关于主题背景属性的通用功能，它们广泛应用在 `Material`、`AppCompact`，或者是平台 (`Platform`) 中。
 
-### 颜色 ###
+### Colors ###
 这些颜色大部分来自于 [Material 颜色系统](https://material.io/design/color/the-color-system.html#color-usage-and-palettes) (`Material color system`) ，它们给每个颜色取了语义化的名称可以让您在应用中使用它们 ([体现为主题背景属性](https://material.io/develop/android/theming/color/)) 。
-![](http://localhost:4000/medias/android/material_color_system.png)
+![](https://henleylee.github.io/medias/android/material_color_system.png)
 
  - **`?attr/colorPrimary：`**应用的主要颜色；
  - **`?attr/colorSecondary：`**应用的次要颜色，通常作为主要颜色补充；
@@ -152,7 +152,7 @@ val view = MyView(if (isDarkTheme) darkPalette else lightPalette)
  - **`?android:attr/textColorPrimary：`**设置给文本的主要颜色；
  - **`?android:attr/textColorSecondary：`**设置给文本的次要颜色。
 
-### 大小 ###
+### Dimens ###
  - **`?attr/listPreferredItemHeight：`**列表项的标准高度 (最小值)；
  - **`?attr/actionBarSize：`**工具栏的高度。
 
@@ -164,7 +164,7 @@ val view = MyView(if (isDarkTheme) darkPalette else lightPalette)
 
 ### TextAppearance ###
 `Material` 定义了缩放类型，它是在整个应用中使用的一组由文本样式组成的离散集合，集合中的每个值都是一个主题背景属性，可以被设置为 `textApperance`。请点击 [Material type scale generator](https://material.io/design/typography/the-type-system.html#type-scale) 获得更多关于生成不同字体缩放的帮助。
-![](http://localhost:4000/medias/android/material_type_system.png)
+![](https://henleylee.github.io/medias/android/material_type_system.png)
 
  - **`?attr/textAppearanceHeadline1：`**默认为 96sp light 文本；
  - **`?attr/textAppearanceHeadline2：`**默认为 60sp light 文本；
@@ -180,16 +180,16 @@ val view = MyView(if (isDarkTheme) darkPalette else lightPalette)
  - **`?attr/textAppearanceButton：`**默认为 14sp 全大写 medium 文本；
  - **`?attr/textAppearanceOverline：`**默认为 10sp 全大写 regular 文本。
 
-### 形状 ###
+### Shape ###
 `Material` 采用了形状系统 ([Shape system](https://material.io/design/shape/))，它是由主题背景属性[实现](https://material.io/develop/android/theming/shape)了 `small`、`medium`、`large` 等不同的部件。请注意，如果您想给自定义的部件设置形状外观，您应该使用 [MaterialShapeDrawable](https://developer.android.com/reference/com/google/android/material/shape/MaterialShapeDrawable) 作为它的背景，因为它能够理解并能实现具体形状。
-![](http://localhost:4000/medias/android/material_shape_system.png)
+![](https://henleylee.github.io/medias/android/material_shape_system.png)
 
  - **`?attr/shapeAppearanceSmallComponent：`**默认圆角为 4dp，用于 Buttons、Chips、TextFields 等；
  - **`?attr/shapeAppearanceMediumComponent：`**默认圆角为 4dp，用于 Cards、Dialogs、Date Pickers 等；
  - **`?attr/shapeAppearanceLargeComponent：`**默认圆角为 0dp (其实是方形)，用于 Bottom Sheets 等。
 
-### 按钮风格 ###
-![](http://localhost:4000/medias/android/material_button_style.webp)
+### Button Styles ###
+![](https://henleylee.github.io/medias/android/material_button_style.webp)
 
 `Material` 提供了三种不同类型的按钮: [Contained](https://material.io/components/buttons/#contained-button)、[Text](https://material.io/components/buttons/#text-button) 以及 [Outlined](https://material.io/components/buttons/#outlined-button)。MDC 提供了主题背景属性，您可以使用它们给 [MaterialButton](https://developer.android.com/reference/com/google/android/material/button/MaterialButton) 设置样式:
  - **`?attr/materialButtonStyle：`**(defaults)默认是 Contained 类型 (或者直接省略样式)；
@@ -201,13 +201,13 @@ val view = MyView(if (isDarkTheme) darkPalette else lightPalette)
  - **`?android:attr/primaryContentAlpha：`**设置给 foreground 元素的 alpha 值；
  - **`?android:attr/secondaryContentAlpha：`**设置给 secondary 元素的 alpha 值。
 
-### 命名空间 ###
+### namespace ###
 命名空间分为`应用命名空间`和 `Android 命名空间`。
 您可能注意到有些属性的引用是通过 `?android:attr/foo` 而有些只是通过 `?attr/bar`。这是因为一些属性是由 `Android` 平台定义的，所以需要使用 `android` 命名空间来引用由它们自己定义的属性 (类似于布局中使用 `View` 属性 `android:id`) 。编译到应用但不是来自于静态库的属性 (`AppCompact` 或者 `MDC`) ，使用它们时不需要命名空间 (类似于布局中使用 `app:baz`) 。平台跟库有时候定义了相同的属性，如 `colorPrimary`。这时候系统优先使用非平台版本的属性，它们可以被所有级别的 `API` 使用。为了向后兼容，它们会被完整的复制到库中。上面列举的都是非平台版本的案例。
 
 > 优先使用非平台版本的属性，它们可以被所有级别的 `API` 使用
 
-### 更多资源 ###
+### More Resources ###
 为了获取可以使用的全部主题背景属性，请查阅以下信息:
  - [Android platform](https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/attrs.xml)
  - [AppCompat](https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/appcompat/appcompat/src/main/res/values/attrs.xml)
@@ -217,9 +217,9 @@ Material 设计的部件:
  - [Shape](https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/shape/res/values/attrs.xml)
  - [Type](https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/typography/res/values/attrs.xml)
 
-### 自己动手 ###
+### Do It Yourself ###
 当想使用主题背景功能抽象某个东西的时候，发现没有现成的主题背景可用时，可以自定义一个。可以参考 [Google I/O 应用](https://github.com/google/iosched)，它实现了在两个界面中显示主题演讲的列表:
-![](http://localhost:4000/medias/android/material_shape_system.png)
+![](https://henleylee.github.io/medias/android/material_shape_system.png)
 
 这两个界面大部分看起来比较相似，除了左边界面有个显示时间的功能而右边是没有的。
 
@@ -248,7 +248,7 @@ Material 设计的部件:
     app:layout_constraintGuide_begin="?attr/sessionListKeyline" />
 ```
 
-### 保持探索 ###
+### Question (mark) everything ###
 了解了能够使用的主题背景属性功能后，可以在编写布局、样式、drawables 时使用它们。
 
 使用主题背景属性功能更容易实现主题功能 (如深色主题背景)，而且可以编写出更灵活，更易于维护的代码。
